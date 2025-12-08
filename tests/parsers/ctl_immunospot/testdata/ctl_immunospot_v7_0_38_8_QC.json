@@ -17,10 +17,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -161,10 +172,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -305,10 +327,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -449,10 +482,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -593,10 +637,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -737,10 +792,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -881,10 +947,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1025,10 +1102,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1169,10 +1257,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1313,10 +1412,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1457,10 +1567,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1601,10 +1722,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1745,10 +1877,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1889,10 +2032,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2033,10 +2187,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2177,10 +2342,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2321,10 +2497,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2465,10 +2652,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2609,10 +2807,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2753,10 +2962,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2897,10 +3117,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3041,10 +3272,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3185,10 +3427,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3329,10 +3582,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3473,10 +3737,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3617,10 +3892,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3761,10 +4047,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3905,10 +4202,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4049,10 +4357,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4193,10 +4512,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4337,10 +4667,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4481,10 +4822,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4625,10 +4977,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4769,10 +5132,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -4913,10 +5287,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5057,10 +5442,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5201,10 +5597,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5345,10 +5752,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5489,10 +5907,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5633,10 +6062,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5777,10 +6217,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5921,10 +6372,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6065,10 +6527,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6209,10 +6682,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6353,10 +6837,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6497,10 +6992,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6641,10 +7147,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6785,10 +7302,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -6929,10 +7457,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7073,10 +7612,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7217,10 +7767,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7361,10 +7922,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7505,10 +8077,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7649,10 +8232,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7793,10 +8387,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7937,10 +8542,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8081,10 +8697,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8225,10 +8852,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8369,10 +9007,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8513,10 +9162,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8657,10 +9317,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8801,10 +9472,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8945,10 +9627,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9089,10 +9782,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9233,10 +9937,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9377,10 +10092,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9521,10 +10247,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9665,10 +10402,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9809,10 +10557,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9953,10 +10712,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10097,10 +10867,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10241,10 +11022,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10385,10 +11177,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10529,10 +11332,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10673,10 +11487,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10817,10 +11642,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10961,10 +11797,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11105,10 +11952,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11249,10 +12107,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11393,10 +12262,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11537,10 +12417,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11681,10 +12572,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11825,10 +12727,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -11969,10 +12882,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12113,10 +13037,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12257,10 +13192,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12401,10 +13347,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12545,10 +13502,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12689,10 +13657,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12833,10 +13812,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -12977,10 +13967,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -13121,10 +14122,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -13265,10 +14277,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -13409,10 +14432,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -13553,10 +14587,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -13697,10 +14742,21 @@
                                     {
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
-                                        "custom information document": {
-                                            "Counting": "8 bit",
-                                            "Scanning": "8 bit",
-                                            "Counting window size": "600x600"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Counting"
+                                                },
+                                                {
+                                                    "scalar string datum": "600x600",
+                                                    "datum label": "Counting window size"
+                                                },
+                                                {
+                                                    "scalar string datum": "8 bit",
+                                                    "datum label": "Scanning"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -13840,7 +14896,7 @@
             "software name": "ImmunoSpot",
             "software version": "7.0.38.8",
             "ASM converter name": "allotropy_ctl_immunospot",
-            "ASM converter version": "0.1.105"
+            "ASM converter version": "0.1.110"
         }
     }
 }

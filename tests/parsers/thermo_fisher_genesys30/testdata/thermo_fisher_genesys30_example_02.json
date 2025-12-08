@@ -13,16 +13,23 @@
                                     {
                                         "device type": "absorbance detector",
                                         "detection type": "ABS",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": 325.0,
-                                                "unit": "nm"
-                                            },
-                                            "operating maximum": {
-                                                "value": 480.0,
-                                                "unit": "nm"
-                                            },
-                                            "number of sampled points": 156
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 156.0,
+                                                    "datum label": "number of sampled points"
+                                                },
+                                                {
+                                                    "scalar double datum": 480.0,
+                                                    "unit": "nm",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "scalar double datum": 325.0,
+                                                    "unit": "nm",
+                                                    "datum label": "operating minimum"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -75,7 +82,7 @@
             "UNC path": "tests/parsers/thermo_fisher_genesys30/testdata/thermo_fisher_genesys30_example_02.csv",
             "software name": "Genesys 30 instrument software",
             "ASM converter name": "allotropy_thermo_fisher_scientific_genesys30",
-            "ASM converter version": "0.1.106"
+            "ASM converter version": "0.1.110"
         }
     }
 }

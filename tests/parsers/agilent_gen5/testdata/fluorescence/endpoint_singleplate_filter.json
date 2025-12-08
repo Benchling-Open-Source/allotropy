@@ -10,6 +10,14 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Reader",
+                                                    "datum label": "Reading Type"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
@@ -37,9 +45,6 @@
                                         "excitation bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -48,10 +53,15 @@
                             "sample document": {
                                 "location identifier": "A1",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 200.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 200.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
@@ -124,10 +134,15 @@
                             "sample document": {
                                 "location identifier": "A2",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 200.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 200.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
@@ -1646,10 +1661,15 @@
                             "sample document": {
                                 "location identifier": "B1",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 200.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 200.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -1714,10 +1734,15 @@
                             "sample document": {
                                 "location identifier": "B2",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 200.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 200.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
@@ -3268,10 +3293,15 @@
                             "sample document": {
                                 "location identifier": "C1",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -3336,10 +3366,15 @@
                             "sample document": {
                                 "location identifier": "C2",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -4922,10 +4957,15 @@
                             "sample document": {
                                 "location identifier": "D1",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -4990,10 +5030,15 @@
                             "sample document": {
                                 "location identifier": "D2",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -6600,10 +6645,15 @@
                             "sample document": {
                                 "location identifier": "E1",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -6668,10 +6718,15 @@
                             "sample document": {
                                 "location identifier": "E2",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -8286,10 +8341,15 @@
                             "sample document": {
                                 "location identifier": "F1",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -8354,10 +8414,15 @@
                             "sample document": {
                                 "location identifier": "F2",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -9988,10 +10053,15 @@
                             "sample document": {
                                 "location identifier": "G1",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
@@ -10064,10 +10134,15 @@
                             "sample document": {
                                 "location identifier": "G2",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -11674,10 +11749,15 @@
                             "sample document": {
                                 "location identifier": "H1",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
@@ -11750,10 +11830,15 @@
                             "sample document": {
                                 "location identifier": "H2",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -13360,10 +13445,15 @@
                             "sample document": {
                                 "location identifier": "I1",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -13428,10 +13518,15 @@
                             "sample document": {
                                 "location identifier": "I2",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -15038,10 +15133,15 @@
                             "sample document": {
                                 "location identifier": "J1",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -15106,10 +15206,15 @@
                             "sample document": {
                                 "location identifier": "J2",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -16692,10 +16797,15 @@
                             "sample document": {
                                 "location identifier": "K1",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.2
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.2,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -16760,10 +16870,15 @@
                             "sample document": {
                                 "location identifier": "K2",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.2
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.2,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -18330,10 +18445,15 @@
                             "sample document": {
                                 "location identifier": "L1",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.2
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.2,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
@@ -18406,10 +18526,15 @@
                             "sample document": {
                                 "location identifier": "L2",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.2
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.2,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -19976,10 +20101,15 @@
                             "sample document": {
                                 "location identifier": "M1",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.1
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.1,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -20044,10 +20174,15 @@
                             "sample document": {
                                 "location identifier": "M2",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.1
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.1,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -21550,10 +21685,15 @@
                             "sample document": {
                                 "location identifier": "N1",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.1
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.1,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -21618,10 +21758,15 @@
                             "sample document": {
                                 "location identifier": "N2",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.1
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.1,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
@@ -36204,7 +36349,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_singleplate_filter.txt",
             "file name": "endpoint_singleplate_filter.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.97",
+            "ASM converter version": "0.1.110",
             "software name": "Gen5",
             "software version": "3.15.15"
         },

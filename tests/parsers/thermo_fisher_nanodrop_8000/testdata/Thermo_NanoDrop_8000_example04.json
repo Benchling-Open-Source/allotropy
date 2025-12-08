@@ -16,11 +16,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -40,24 +43,31 @@
                                             "value": 542.7,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.016,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 10.854,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.016,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 10.854,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -70,11 +80,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -87,11 +100,14 @@
                                 "value": 5.978,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 10.854,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 10.854,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -113,11 +129,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -137,24 +156,31 @@
                                             "value": 581.2,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.006,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 11.625,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.006,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 11.625,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -167,11 +193,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -184,11 +213,14 @@
                                 "value": 6.413,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 11.625,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 11.625,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -210,11 +242,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -234,24 +269,31 @@
                                             "value": 311.6,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": -0.023,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 6.233,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": -0.023,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 6.233,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -264,11 +306,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -281,11 +326,14 @@
                                 "value": 3.376,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 6.233,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 6.233,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -307,11 +355,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -331,24 +382,31 @@
                                             "value": 484.6,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.012,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 9.693,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.012,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 9.693,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -361,11 +419,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -378,11 +439,14 @@
                                 "value": 5.315,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 9.693,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 9.693,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -404,11 +468,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -428,24 +495,31 @@
                                             "value": 464.0,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.007,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 9.28,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.007,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 9.28,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -458,11 +532,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -475,11 +552,14 @@
                                 "value": 5.049,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 9.28,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 9.28,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -501,11 +581,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -525,24 +608,31 @@
                                             "value": 319.8,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.014,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 6.396,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.014,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 6.396,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -555,11 +645,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -572,11 +665,14 @@
                                 "value": 3.464,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 6.396,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 6.396,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -598,11 +694,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -622,24 +721,31 @@
                                             "value": 446.8,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.023,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 8.936,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.023,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 8.936,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -652,11 +758,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -669,11 +778,14 @@
                                 "value": 4.871,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 8.936,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 8.936,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -695,11 +807,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -719,24 +834,31 @@
                                             "value": 486.4,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": 0.095,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 9.728,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.095,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 9.728,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -749,11 +871,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -766,11 +891,14 @@
                                 "value": 5.328,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 9.728,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 9.728,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -792,11 +920,14 @@
                                             "value": 260,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -816,24 +947,31 @@
                                             "value": 498.5,
                                             "unit": "ng/µL"
                                         },
-                                        "custom information document": {
-                                            "conc. factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "ng/µL",
+                                                    "datum label": "conc. factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "340 raw": {
-                                    "value": -0.032,
-                                    "unit": "mAU"
-                                },
-                                "Cursor Abs.": {
-                                    "value": 9.97,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": -0.032,
+                                        "unit": "mAU",
+                                        "datum label": "340 raw"
+                                    },
+                                    {
+                                        "scalar double datum": 9.97,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         },
                         {
@@ -846,11 +984,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 260.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 260.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -863,11 +1004,14 @@
                                 "value": 5.449,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 9.97,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 9.97,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -884,7 +1028,7 @@
             "file name": "Thermo_NanoDrop_8000_example04.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_8000_example04.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.106"
+            "ASM converter version": "0.1.110"
         },
         "calculated data aggregate document": {
             "calculated data document": [

@@ -10,13 +10,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -25,6 +45,14 @@
                             "sample document": {
                                 "sample identifier": "GFP",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "e2bfae9f-1b2e-435c-ab3a-86f9a5b98665",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -577,9 +605,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "e2bfae9f-1b2e-435c-ab3a-86f9a5b98665"
                             }
                         }
                     ],
@@ -1875,13 +1900,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1890,6 +1935,14 @@
                             "sample document": {
                                 "sample identifier": "GFP CD19",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "81bb5331-69e1-46dd-8fe9-015bdcf17d36",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2442,9 +2495,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "81bb5331-69e1-46dd-8fe9-015bdcf17d36"
                             }
                         }
                     ],
@@ -3740,13 +3790,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -3755,6 +3825,14 @@
                             "sample document": {
                                 "sample identifier": "GFP Mac1",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "e4000a05-5758-483b-903e-31cda86e9340",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4290,9 +4368,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "e4000a05-5758-483b-903e-31cda86e9340"
                             }
                         }
                     ],
@@ -5588,13 +5663,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -5603,6 +5698,14 @@
                             "sample document": {
                                 "sample identifier": "GFP t3",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "f2d693fc-6805-45fb-9b13-9770ef3bc00e",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6122,9 +6225,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "f2d693fc-6805-45fb-9b13-9770ef3bc00e"
                             }
                         }
                     ],
@@ -7420,13 +7520,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -7435,6 +7555,14 @@
                             "sample document": {
                                 "sample identifier": "Gapmer C- t3",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "85a760c3-b155-4fef-8679-a908509d2fc4",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7962,9 +8090,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "85a760c3-b155-4fef-8679-a908509d2fc4"
                             }
                         }
                     ],
@@ -9260,13 +9385,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -9275,6 +9420,14 @@
                             "sample document": {
                                 "sample identifier": "Gapmer 881 t3",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "c0960d94-94f9-4244-8712-999b80d5c87b",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9583,9 +9736,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "c0960d94-94f9-4244-8712-999b80d5c87b"
                             }
                         }
                     ],
@@ -10881,13 +11031,33 @@
                                 "device control document": [
                                     {
                                         "device type": "Flow Cytometer",
-                                        "custom information document": {
-                                            "CST SETUP STATUS": "SUCCESS",
-                                            "CST BEADS LOT ID": "49706",
-                                            "CYTOMETER CONFIG NAME": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
-                                            "CYTOMETER CONFIG CREATE DATE": "04/25/2012 05:48:01 AM",
-                                            "CST SETUP DATE": "11/02/2016 02:15:19 PM",
-                                            "CST BASELINE DATE": "03/30/2016 03:58:09 PM"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "03/30/2016 03:58:09 PM",
+                                                    "datum label": "CST BASELINE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "49706",
+                                                    "datum label": "CST BEADS LOT ID"
+                                                },
+                                                {
+                                                    "scalar string datum": "11/02/2016 02:15:19 PM",
+                                                    "datum label": "CST SETUP DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "SUCCESS",
+                                                    "datum label": "CST SETUP STATUS"
+                                                },
+                                                {
+                                                    "scalar string datum": "04/25/2012 05:48:01 AM",
+                                                    "datum label": "CYTOMETER CONFIG CREATE DATE"
+                                                },
+                                                {
+                                                    "scalar string datum": "2-Blue 3-Violet 3-Red 5-YG (PRBB)",
+                                                    "datum label": "CYTOMETER CONFIG NAME"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -10896,6 +11066,14 @@
                             "sample document": {
                                 "sample identifier": "Gapmer 882 t3",
                                 "batch identifier": "190415"
+                            },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "c1fa81e6-3204-4681-9bf5-4c499723f67b",
+                                        "datum label": "GUID"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11653,9 +11831,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "GUID": "c1fa81e6-3204-4681-9bf5-4c499723f67b"
                             }
                         }
                     ],
@@ -12950,7 +13125,7 @@
             "UNC path": "tests/parsers/bd_biosciences_facsdiva/testdata/facsdiva_example_1.xml",
             "file name": "facsdiva_example_1.xml",
             "ASM converter name": "allotropy_bd_biosciences_facsdiva",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.110",
             "software name": "BD FACSDiva",
             "software version": "Version 6.2"
         },

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
@@ -9,6 +9,8 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     CalculatedDataDocumentItem,
     CalibrationAggregateDocument,
     CalibrationDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -161,8 +163,11 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
-                device_system_document=add_custom_information_document(
-                    DeviceSystemDocument(
+                device_system_document=add_custom_information_aggregate_document(
+                    data.metadata.custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=DeviceSystemDocument(
                         model_number=data.metadata.model_number,
                         product_manufacturer=data.metadata.product_manufacturer,
                         firmware_version=data.metadata.firmware_version,
@@ -171,7 +176,6 @@ class Mapper(SchemaMapper[Data, Model]):
                             data.metadata.calibrations
                         ),
                     ),
-                    custom_info_doc=data.metadata.custom_info,
                 ),
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
@@ -199,8 +203,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MultiAnalyteProfilingDocumentItem:
         return MultiAnalyteProfilingDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
+            measurement_aggregate_document=add_custom_information_aggregate_document(
+                measurement_group.custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=MeasurementAggregateDocument(
                     experiment_type=measurement_group.experiment_type,
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     method_version=measurement_group.method_version,
@@ -214,7 +221,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement in measurement_group.measurements
                     ],
                 ),
-                custom_info_doc=measurement_group.custom_info,
             ),
         )
 
@@ -224,14 +230,19 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement_document = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
-            sample_document=add_custom_information_document(
-                self._get_sample_document(measurement),
-                custom_info_doc=measurement.sample_custom_info,
+            sample_document=add_custom_information_aggregate_document(
+                measurement.sample_custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=self._get_sample_document(measurement),
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        DeviceControlDocumentItem(
+                    add_custom_information_aggregate_document(
+                        measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=DeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             sample_volume_setting=quantity_or_none(
                                 TQuantityValueMicroliter,
@@ -247,15 +258,17 @@ class Mapper(SchemaMapper[Data, Model]):
                                 measurement.minimum_assay_bead_count_setting,
                             ),
                         ),
-                        custom_info_doc=measurement.device_control_custom_info,
                     )
                 ]
             ),
             assay_bead_count=TQuantityValueNumber(value=measurement.assay_bead_count),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
-                    add_custom_information_document(
-                        AnalyteDocumentItem(
+                    add_custom_information_aggregate_document(
+                        analyte.custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=AnalyteDocumentItem(
                             analyte_identifier=analyte.identifier,
                             analyte_name=analyte.name,
                             assay_bead_identifier=analyte.assay_bead_identifier,
@@ -292,7 +305,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                 else None
                             ),
                         ),
-                        custom_info_doc=analyte.custom_info,
                     )
                     for analyte in measurement.analytes
                 ]
@@ -302,9 +314,11 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-        return add_custom_information_document(
-            measurement_document,
-            custom_info_doc=measurement.measurement_custom_info,
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.measurement_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=measurement_document,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:

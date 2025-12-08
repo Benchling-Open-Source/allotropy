@@ -104,8 +104,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -168,8 +173,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -241,14 +251,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 1,
-                                    "injection name": "Blank",
-                                    "injection position": "RA1",
-                                    "injection status": "Finished",
-                                    "injection type": "Blank",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Blank",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA1",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Blank",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -271,17 +304,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -396,8 +422,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -460,8 +491,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -533,14 +569,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 2,
-                                    "injection name": "SST Standard",
-                                    "injection position": "RA2",
-                                    "injection status": "Finished",
-                                    "injection type": "CheckStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 2.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "SST Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA2",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CheckStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -563,17 +622,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -688,8 +740,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -752,8 +809,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -825,14 +887,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 3,
-                                    "injection name": "SST Standard",
-                                    "injection position": "RA3",
-                                    "injection status": "Finished",
-                                    "injection type": "CheckStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 3.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "SST Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA3",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CheckStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -855,17 +940,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -980,8 +1058,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1044,8 +1127,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1117,14 +1205,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 4,
-                                    "injection name": "SST Standard",
-                                    "injection position": "RA4",
-                                    "injection status": "Finished",
-                                    "injection type": "CheckStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 4.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "SST Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA4",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CheckStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -1147,17 +1258,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -1272,8 +1376,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1336,8 +1445,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1409,14 +1523,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 5,
-                                    "injection name": "SST Standard",
-                                    "injection position": "RA5",
-                                    "injection status": "Finished",
-                                    "injection type": "CheckStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 5.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "SST Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA5",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CheckStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -1439,17 +1576,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -1564,8 +1694,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1628,8 +1763,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1701,14 +1841,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 6,
-                                    "injection name": "SST Standard",
-                                    "injection position": "RA6",
-                                    "injection status": "Finished",
-                                    "injection type": "CheckStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 6.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "SST Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA6",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CheckStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -1731,17 +1894,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -1856,8 +2012,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1920,8 +2081,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -1993,14 +2159,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 7,
-                                    "injection name": "Calibration Standard",
-                                    "injection position": "RA7",
-                                    "injection status": "Finished",
-                                    "injection type": "CalibrationStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 7.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Calibration Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA7",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CalibrationStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -2023,17 +2212,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -2148,8 +2330,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -2212,8 +2399,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -2285,14 +2477,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 8,
-                                    "injection name": "Calibration Standard",
-                                    "injection position": "RA8",
-                                    "injection status": "Finished",
-                                    "injection type": "CalibrationStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 8.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Calibration Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RA8",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CalibrationStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -2315,17 +2530,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -2440,8 +2648,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -2504,8 +2717,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -2577,14 +2795,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 9,
-                                    "injection name": "Dosage Unit 1",
-                                    "injection position": "RB1",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 9.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 1",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB1",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -2607,17 +2848,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -2724,8 +2958,13 @@
                                                         "value": 2.5125274922897276,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7921827104097128
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7921827104097128,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -2788,8 +3027,13 @@
                                                         "value": 1.2504001610860744,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.67820507372619
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.67820507372619,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -2861,14 +3105,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 10,
-                                    "injection name": "Dosage Unit 2",
-                                    "injection position": "RB2",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 2",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB2",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -2891,17 +3158,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -3016,8 +3276,13 @@
                                                         "value": 1.2429515766789119,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7437195488170474
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7437195488170474,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3072,8 +3337,13 @@
                                                         "value": 2.6080649923787314,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.695214860804459
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.695214860804459,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3145,14 +3415,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 11,
-                                    "injection name": "Dosage Unit 3",
-                                    "injection position": "RB3",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 11.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 3",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB3",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -3175,17 +3468,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -3300,8 +3586,13 @@
                                                         "value": 1.2429191094451182,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7408423252069716
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7408423252069716,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3364,8 +3655,13 @@
                                                         "value": 1.2345401873992436,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6492481035473205
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6492481035473205,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3437,14 +3733,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 12,
-                                    "injection name": "Dosage Unit 4",
-                                    "injection position": "RB4",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 12.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 4",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB4",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -3467,17 +3786,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -3592,8 +3904,13 @@
                                                         "value": 1.2326636525976313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7412426300787887
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7412426300787887,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3656,8 +3973,13 @@
                                                         "value": 1.2144758398527444,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.658792313762178
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.658792313762178,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3729,14 +4051,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 13,
-                                    "injection name": "Dosage Unit 5",
-                                    "injection position": "RB5",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 13.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 5",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB5",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -3759,17 +4104,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -3884,8 +4222,13 @@
                                                         "value": 1.2306435910376186,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.740979771724609
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.740979771724609,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -3948,8 +4291,13 @@
                                                         "value": 1.2111349728666854,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6606635927954727
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6606635927954727,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4021,14 +4369,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 14,
-                                    "injection name": "Dosage Unit 6",
-                                    "injection position": "RB6",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 14.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 6",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB6",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -4051,17 +4422,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -4176,8 +4540,13 @@
                                                         "value": 1.2230214050017518,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7495471541221888
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7495471541221888,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4240,8 +4609,13 @@
                                                         "value": 1.2015141700726726,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.677192009548953
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.677192009548953,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4313,14 +4687,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 15,
-                                    "injection name": "Dosage Unit 7",
-                                    "injection position": "RB7",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 15.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 7",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB7",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -4343,17 +4740,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -4468,8 +4858,13 @@
                                                         "value": 1.2267071354510781,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7576977725711733
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7576977725711733,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4532,8 +4927,13 @@
                                                         "value": 1.2097204397456138,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6879874289445005
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6879874289445005,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4605,14 +5005,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 16,
-                                    "injection name": "Dosage Unit 8",
-                                    "injection position": "RB8",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 16.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 8",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RB8",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -4635,17 +5058,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -4760,8 +5176,13 @@
                                                         "value": 1.2434756881211064,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7339906038336619
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7339906038336619,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4824,8 +5245,13 @@
                                                         "value": 1.2313828806414842,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6452680063735947
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6452680063735947,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -4897,14 +5323,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 17,
-                                    "injection name": "Dosage Unit 9",
-                                    "injection position": "RC1",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 17.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 9",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RC1",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -4927,17 +5376,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -5052,8 +5494,13 @@
                                                         "value": 1.2431705731053309,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7294086271087814
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7294086271087814,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5108,8 +5555,13 @@
                                                         "value": 2.6245288900138855,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.642611786755101
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.642611786755101,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5181,14 +5633,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 18,
-                                    "injection name": "Dosage Unit 10",
-                                    "injection position": "RC2",
-                                    "injection status": "Finished",
-                                    "injection type": "Unknown",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 18.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Dosage Unit 10",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RC2",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -5211,17 +5686,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -5336,8 +5804,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5400,8 +5873,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5473,14 +5951,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 19,
-                                    "injection name": "Calibration Standard",
-                                    "injection position": "RC3",
-                                    "injection status": "Finished",
-                                    "injection type": "CalibrationStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 19.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Calibration Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RC3",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CalibrationStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -5503,17 +6004,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -5628,8 +6122,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5692,8 +6191,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5765,14 +6269,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 20,
-                                    "injection name": "Calibration Standard",
-                                    "injection position": "RC4",
-                                    "injection status": "Finished",
-                                    "injection type": "CalibrationStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Calibration Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RC4",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CalibrationStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -5795,17 +6322,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -5920,8 +6440,13 @@
                                                         "value": 1.2188763229155313,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 1.7453679568237164,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -5984,8 +6509,13 @@
                                                         "value": 1.2416718222238794,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar double datum": 2.6568677245626446,
+                                                                "datum label": "chromatographic peak resolution (usp)"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -6057,14 +6587,37 @@
                                     "value": 10.0,
                                     "unit": "μL"
                                 },
-                                "custom information document": {
-                                    "injection": 21,
-                                    "injection name": "Check Standard",
-                                    "injection position": "RC5",
-                                    "injection status": "Finished",
-                                    "injection type": "CheckStandard",
-                                    "last update user name": "anatoliy.kolesnick",
-                                    "creation user name": "anatoliy.kolesnick"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "creation user name"
+                                        },
+                                        {
+                                            "scalar double datum": 21.0,
+                                            "datum label": "injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Check Standard",
+                                            "datum label": "injection name"
+                                        },
+                                        {
+                                            "scalar string datum": "RC5",
+                                            "datum label": "injection position"
+                                        },
+                                        {
+                                            "scalar string datum": "Finished",
+                                            "datum label": "injection status"
+                                        },
+                                        {
+                                            "scalar string datum": "CheckStandard",
+                                            "datum label": "injection type"
+                                        },
+                                        {
+                                            "scalar string datum": "anatoliy.kolesnick",
+                                            "datum label": "last update user name"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -6087,17 +6640,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
@@ -6113,7 +6659,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
-            "ASM converter version": "0.1.75",
+            "ASM converter version": "0.1.110",
             "file name": "chromeleon_example.json",
             "software name": "Thermo Fisher Scientific Chromeleon",
             "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example.json"
@@ -6135,12 +6681,29 @@
                 }
             ]
         },
-        "custom information document": {
-            "Sequence Creation Time": "2024-10-21T12:15:44.51+02:00",
-            "Sequence Directory": "Suppositories - 3 Peaks",
-            "Sequence Name": "Content Uniformity Stage 1 (10 units) 2011-08-17 15-34-22",
-            "Sequence Update operator": "anatoliy.kolesnick",
-            "Sequence Update Time": "2024-10-21T12:15:44.51+02:00"
+        "custom information aggregate document": {
+            "custom information document": [
+                {
+                    "scalar string datum": "2024-10-21T12:15:44.51+02:00",
+                    "datum label": "Sequence Creation Time"
+                },
+                {
+                    "scalar string datum": "Suppositories - 3 Peaks",
+                    "datum label": "Sequence Directory"
+                },
+                {
+                    "scalar string datum": "Content Uniformity Stage 1 (10 units) 2011-08-17 15-34-22",
+                    "datum label": "Sequence Name"
+                },
+                {
+                    "scalar string datum": "2024-10-21T12:15:44.51+02:00",
+                    "datum label": "Sequence Update Time"
+                },
+                {
+                    "scalar string datum": "anatoliy.kolesnick",
+                    "datum label": "Sequence Update operator"
+                }
+            ]
         }
     }
 }
