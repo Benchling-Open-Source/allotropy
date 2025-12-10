@@ -58,11 +58,11 @@
                                                 "reference sample description": "800",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "BADROX": "N",
-                                                "NOISE": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -198,11 +198,11 @@
                                                 "reference sample description": "800",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "BADROX": "N",
-                                                "NOISE": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -615,7 +615,7 @@
             "file name": "appbio_quantstudio_minimal_test04.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test04.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
@@ -623,6 +623,32 @@
             "device identifier": "278880034",
             "equipment serial number": "278880034",
             "model number": "QuantStudio(TM) 7 Flex System"
+        },
+        "custom information document": {
+            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+            "Calibration Uniformity performed on": "10-13-2010",
+            "Calibration ROI performed on": "10-13-2010",
+            "Signal Smoothing On": "true",
+            "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+            "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Relative Standard Curve Example.eds",
+            "Calibration Pure Dye FAM performed on": "10-13-2010",
+            "Date Created": "2014-09-10 04:22:11 AM EDT",
+            "Calibration Pure Dye VIC is expired": "No",
+            "Calibration Background performed on": "10-13-2010",
+            "Calibration Uniformity is expired": "No",
+            "Calibration RNaseP performed on": "10-15-2010",
+            "Calibration Pure Dye ROX performed on": "10-13-2010",
+            "Calibration ROI is expired": "No",
+            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+            "Calibration Background is expired": "No",
+            "Calibration Pure Dye ROX is expired": "No",
+            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+            "Calibration Pure Dye VIC performed on": "10-13-2010",
+            "Calibration Pure Dye SYBR is expired": "No",
+            "Calibration Pure Dye FAM is expired": "No",
+            "Calibration HRM MELTDOCTOR is expired": "No",
+            "Calibration RNaseP is expired": "No"
         }
     }
 }

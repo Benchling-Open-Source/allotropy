@@ -54,11 +54,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -173,11 +173,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -309,11 +309,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -428,11 +428,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1067,7 +1067,7 @@
             "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_multiple_cal_doc_wells.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
@@ -1075,6 +1075,11 @@
             "device identifier": "278880031",
             "equipment serial number": "278880031",
             "model number": "QuantStudio(TM) 7 Flex System"
+        },
+        "custom information document": {
+            "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Standard Curve Example.eds",
+            "Signal Smoothing On": "true",
+            "Date Created": "2014-09-10 04:19:15 AM EDT"
         }
     }
 }
