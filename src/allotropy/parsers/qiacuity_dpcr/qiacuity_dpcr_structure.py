@@ -31,7 +31,9 @@ def create_measurements(data: SeriesData) -> Measurement:
 
     identifier = data.get(str, "_measurement_identifier") or random_uuid_str()
 
-    sample_custom_info = data.get_custom_keys({"IC", "Control type"})
+    sample_custom_info = data.get_custom_keys(
+        {"IC", "Control type", "Target (IC)", "Target (Control)"}
+    )
     for key in sample_custom_info:
         if sample_custom_info[key] in ("", "-", "-", "--"):
             sample_custom_info[key] = None
@@ -43,11 +45,22 @@ def create_measurements(data: SeriesData) -> Measurement:
         sample_role_type=sample_role_type,
         location_identifier=data[str, "Well Name"],
         plate_identifier=data.get(str, "Plate ID"),
-        target_identifier=data[str, "Target"],
-        total_partition_count=data[int, "Partitions (valid)"],
-        concentration=data[float, ["Concentration (copies/μL)", "Conc. [copies/μL]"]],
-        positive_partition_count=data[int, "Partitions (positive)"],
-        negative_partition_count=data.get(int, "Partitions (negative)"),
+        target_identifier=data[str, ["Target", "Target (Name)"]],
+        total_partition_count=data[int, ["Partitions (valid)", "Partitions (Valid)"]],
+        concentration=data[
+            float,
+            [
+                "Concentration (copies/μL)",
+                "Conc. [copies/μL]",
+                "Conc. [cp/μL] (dPCR reaction)",
+            ],
+        ],
+        positive_partition_count=data[
+            int, ["Partitions (positive)", "Partitions (Positive)"]
+        ],
+        negative_partition_count=data.get(
+            int, ["Partitions (negative)", "Partitions (Negative)"]
+        ),
         fluorescence_intensity_threshold_setting=data.get(float, "Threshold"),
         sample_custom_info=sample_custom_info,
         custom_info=data.get_unread(),
