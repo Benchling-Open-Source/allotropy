@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import re
 from typing import Any, TypeVar
 
@@ -62,6 +62,7 @@ class Header:
     analyst: str | None
     experimental_data_identifier: str
     well_volume: float
+    extra_data: dict[str, Any] = field(default_factory=dict)
 
     @staticmethod
     def create(data: SeriesData) -> Header:
@@ -102,6 +103,7 @@ class Header:
             analyst=data.get(str, "Experiment User Name"),
             experimental_data_identifier=data[str, "Experiment Name"],
             well_volume=get_well_volume(block_type) if block_type else NEGATIVE_ZERO,
+            extra_data=data.get_unread(),
         )
 
 
@@ -181,7 +183,32 @@ class WellItem(Referenceable):
                     "sample color": data.get(str, "Sample Color"),
                     "biogroup color": data.get(str, "Biogroup Color"),
                     "target color": data.get(str, "Target Color"),
-                    **data.get_unread(),
+                    **data.get_unread(
+                        skip={
+                            # Baseline fields - duplicated in data processing document
+                            "Baseline End",
+                            "Baseline Start",
+                            "Automatic Baseline",
+                            # Ct/Crt/Cq threshold variations - duplicated in data processing document
+                            "Ct Threshold",
+                            "Crt Threshold",
+                            "Cq Threshold",
+                            "Automatic Ct Threshold",
+                            "Automatic Crt Threshold",
+                            "Automatic Cq Threshold",
+                            # Ct/Crt/Cq result values - duplicated in processed data document
+                            "CT",
+                            "Ct",
+                            "CRT",
+                            "Crt",
+                            "CQ",
+                            "Cq",
+                            # Omit - duplicated in data processing document custom info
+                            "Omit",
+                            # Tm1 - duplicated in processed data document custom info
+                            "Tm1",
+                        }
+                    ),
                 },
             ),
         )
@@ -210,7 +237,32 @@ class WellItem(Referenceable):
                 "sample color": data.get(str, "Sample Color"),
                 "biogroup color": data.get(str, "Biogroup Color"),
                 "target color": data.get(str, "Target Color"),
-                **data.get_unread(),
+                **data.get_unread(
+                    skip={
+                        # Baseline fields - duplicated in data processing document
+                        "Baseline End",
+                        "Baseline Start",
+                        "Automatic Baseline",
+                        # Ct/Crt/Cq threshold variations - duplicated in data processing document
+                        "Ct Threshold",
+                        "Crt Threshold",
+                        "Cq Threshold",
+                        "Automatic Ct Threshold",
+                        "Automatic Crt Threshold",
+                        "Automatic Cq Threshold",
+                        # Ct/Crt/Cq result values - duplicated in processed data document
+                        "CT",
+                        "Ct",
+                        "CRT",
+                        "Crt",
+                        "CQ",
+                        "Cq",
+                        # Omit - duplicated in data processing document custom info
+                        "Omit",
+                        # Tm1 - duplicated in processed data document custom info
+                        "Tm1",
+                    }
+                ),
             },
         )
 

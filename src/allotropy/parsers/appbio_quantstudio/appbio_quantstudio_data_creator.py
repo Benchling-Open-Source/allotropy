@@ -311,6 +311,7 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type.value,
         container_type=constants.CONTAINER_TYPE,
+        custom_info=header.extra_data if header.extra_data else None,
     )
 
 
