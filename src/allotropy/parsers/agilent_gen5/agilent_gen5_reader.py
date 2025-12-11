@@ -69,7 +69,8 @@ class AgilentGen5Reader:
         self.sections["Procedure Details"] = list(plate_reader.pop_until_empty())
         plate_reader.drop_empty()
 
-        # Track the last read label for associating with Time sections
+        # Track the last section name for associating with Time sections
+        last_section_name: str | None = None
         last_read_label: str | None = None
 
         while plate_reader.current_line_exists():
@@ -87,12 +88,22 @@ class AgilentGen5Reader:
                 last_read_label = section_name
                 continue
 
-            # If this is a Time section and we have a read label, store it with the read label
-            if section_name == "Time" and last_read_label:
-                self.time_sections[last_read_label] = lines
-                last_read_label = None
+            # If this is a Time section, associate it with a read label if we have one
+            if section_name == "Time":
+                if last_read_label:
+                    # Format: "Read X:label" -> Time section
+                    self.time_sections[last_read_label] = lines
+                    last_read_label = None
+                elif last_section_name:
+                    # Format: "{label}" section followed by Time section
+                    # Store with just the label as key for kinetic files
+                    self.time_sections[last_section_name] = lines
+                else:
+                    # Standalone Time section (shouldn't happen, but store it anyway)
+                    self.sections[section_name] = lines
             else:
                 self.sections[section_name] = lines
+                last_section_name = section_name
 
             plate_reader.drop_empty()
 
@@ -223,10 +234,19 @@ class AgilentGen5Reader:
 
         # Check if any labels have Time sections (indicating kinetic data)
         for label in labels_to_process:
+            # Try both "Read X:label" format and plain label format
             time_key = f"Read {read_index}:{label}"
+            label_only_key = label
+
+            time_section_lines = None
             if time_key in self.time_sections:
+                time_section_lines = self.time_sections[time_key]
+            elif label_only_key in self.time_sections:
+                time_section_lines = self.time_sections[label_only_key]
+
+            if time_section_lines:
                 has_time_section = True
-                kinetic_result = get_kinetic_measurements(self.time_sections[time_key])
+                kinetic_result = get_kinetic_measurements(time_section_lines)
                 if kinetic_result:
                     km, ket, ke = kinetic_result
                     # For the first label found, use its kinetic data
@@ -241,15 +261,23 @@ class AgilentGen5Reader:
                 has_results_section = True
 
         # Based on what sections exist, get the appropriate data
+        uses_combined_results = False
         if has_time_section:
             # This is a kinetic read - we already loaded the kinetic data above
-            pass
+            # But check for a Results section which may contain calculated data
+            if not has_results_section:
+                results_section = self.get_results_section() or []
+            else:
+                results_section = self._get_results_for_read(
+                    read_index, labels_to_process
+                )
         elif has_results_section:
             # This is an endpoint read - get the results section
             results_section = self._get_results_for_read(read_index, labels_to_process)
         else:
             # Fallback - check the combined results section
             results_section = self.get_results_section() or []
+            uses_combined_results = bool(results_section)
 
         # If specific_label was provided, create a modified ReadData with only that label
         if specific_label:
@@ -257,9 +285,15 @@ class AgilentGen5Reader:
 
             read_data = replace(read_data, measurement_labels={specific_label})
 
+        # If using combined results section, include all read_data so all measurement labels are known
+        # Otherwise, use just the single read_data for this sub-context
+        context_read_data = (
+            base_context.read_data if uses_combined_results else [read_data]
+        )
+
         return Gen5DataContext(
             header_data=base_context.header_data,
-            read_data=[read_data],  # Single ReadData for this sub-context
+            read_data=context_read_data,
             kinetic_data=base_context.kinetic_data if has_time_section else None,
             results_section=results_section,
             sample_identifiers=base_context.sample_identifiers,

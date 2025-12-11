@@ -50,6 +50,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     NAN_EMISSION_EXCITATION,
+    NO_MEASUREMENTS_ERROR,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_DATA_MEASUREMENT_ERROR,
@@ -814,6 +815,13 @@ def get_kinetic_measurements(
     error_documents: dict[str, list[ErrorDocument]] = {}
 
     for col_name, column in data.items():
+        # Skip temperature columns (e.g., "T∞ 600" or "T° 600")
+        col_name_str = str(col_name)
+        if col_name_str.startswith("T") and any(
+            char in col_name_str for char in ["∞", "°", "\u221e", "\u00b0"]
+        ):
+            continue
+
         well_values: list[float | None] = []
         for idx, value in enumerate(column):
             # Handle empty values
@@ -885,6 +893,9 @@ def create_results(
     actual_temperature: float | None,
     concentration_values: dict[str, float | None] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+    if not result_lines:
+        raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
+
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)
@@ -958,11 +969,11 @@ def create_results(
                 for measurement in measurements
             ],
         )
-        for well_position, measurements in sorted(well_to_measurements.items())
+        for well_position, measurements in well_to_measurements.items()
     ]
 
     calculated_data_items = []
-    for well_position, well_calculated_data in sorted(calculated_data.items()):
+    for well_position, well_calculated_data in calculated_data.items():
         if well_position not in well_to_measurements:
             continue  # Skip wells without measurements
         for label, value in well_calculated_data:
@@ -1033,12 +1044,25 @@ def create_kinetic_results(
                 calculated_data[well_pos].append((label, well_value))
 
     # Get all well positions from kinetic measurements (primary) or calculated data
-    well_positions = set(kinetic_measurements.keys()) | set(calculated_data.keys())
+    # Preserve order from kinetic_measurements, then add any wells only in calculated_data
+    well_positions = list(kinetic_measurements.keys())
+    for well_pos in calculated_data.keys():
+        if well_pos not in well_positions:
+            well_positions.append(well_pos)
+
+    # Determine plate_well_count from data if header value is not reliable
+    # For kinetic data, if header has a valid plate count, use it
+    # Otherwise count wells from the actual data
+    if header_data.plate_well_count and header_data.plate_well_count > 1:
+        plate_well_count = int(header_data.plate_well_count)
+    else:
+        # Fallback: count wells from the data
+        plate_well_count = len(well_positions)
 
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=header_data.plate_well_count,
+            plate_well_count=plate_well_count,
             measurements=[
                 _create_measurement(
                     measurement := MeasurementData(
@@ -1059,7 +1083,7 @@ def create_kinetic_results(
                 )
             ],
         )
-        for well_position in sorted(well_positions)
+        for well_position in well_positions
     ]
 
     groups_by_well_position = {
@@ -1084,8 +1108,9 @@ def create_kinetic_results(
             name=label,
             value=value,
         )
-        for well_position, well_calculated_data in sorted(calculated_data.items())
-        if well_position in groups_by_well_position  # Only create for wells with measurements
+        for well_position, well_calculated_data in calculated_data.items()
+        if well_position
+        in groups_by_well_position  # Only create for wells with measurements
         for label, value in well_calculated_data
     ]
 
