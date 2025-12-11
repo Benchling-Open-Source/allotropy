@@ -65,9 +65,11 @@ from allotropy.parsers.agilent_gen5.constants import (
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.constants import (
+    get_well_count_by_well_ids,
     NEGATIVE_ZERO,
     NOT_APPLICABLE,
     POSSIBLE_WELL_COUNTS,
+    round_to_nearest_well_count,
 )
 from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -948,11 +950,15 @@ def create_results(
             elif well_value is not None:
                 calculated_data[well_pos].append((label, well_value))
 
+    # Calculate plate well count from data dimensions and round to nearest valid count
+    plate_well_count = round_to_nearest_well_count(len(set(data.index.tolist())) * len(
+        set(data.columns[1:].tolist())
+    ))
+
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=len(set(data.index.tolist()))
-            * len(set(data.columns[1:].tolist())),
+            plate_well_count=plate_well_count,
             measurements=[
                 _create_measurement(
                     measurement,
@@ -1046,23 +1052,11 @@ def create_kinetic_results(
     # Get all well positions from kinetic measurements (primary) or calculated data
     # Preserve order from kinetic_measurements, then add any wells only in calculated_data
     well_positions = list(kinetic_measurements.keys())
-    for well_pos in calculated_data.keys():
-        if well_pos not in well_positions:
-            well_positions.append(well_pos)
-
-    # Determine plate_well_count from data if header value is not reliable
-    # For kinetic data, if header has a valid plate count, use it
-    # Otherwise count wells from the actual data
-    if header_data.plate_well_count and header_data.plate_well_count > 1:
-        plate_well_count = int(header_data.plate_well_count)
-    else:
-        # Fallback: count wells from the data
-        plate_well_count = len(well_positions)
 
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=plate_well_count,
+            plate_well_count=get_well_count_by_well_ids(well_locations=well_positions),
             measurements=[
                 _create_measurement(
                     measurement := MeasurementData(
@@ -1295,7 +1289,7 @@ def create_spectrum_results(
     if not read_data:
         return [], []
 
-    measurements = []
+    measurements: list[Measurement] = []
     if read_data.read_mode == ReadMode.ABSORBANCE:
         measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
     elif read_data.read_mode == ReadMode.FLUORESCENCE and read_data.is_emission:
@@ -1430,10 +1424,13 @@ def create_spectrum_results(
                 else:
                     measurement.error_document = errors
 
+    # Calculate plate_well_count from all well positions in header (including empty wells)
+    plate_well_count = get_well_count_by_well_ids(well_locations=[col for col in data.columns if col != "Wavelength"])
+
     measurement_groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=header_data.plate_well_count,
+            plate_well_count=plate_well_count,
             measurements=[measurement],
         )
         for measurement in measurements
