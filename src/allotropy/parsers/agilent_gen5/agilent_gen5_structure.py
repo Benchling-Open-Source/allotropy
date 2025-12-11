@@ -50,6 +50,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     NAN_EMISSION_EXCITATION,
+    NO_MEASUREMENTS_ERROR,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_DATA_MEASUREMENT_ERROR,
@@ -814,6 +815,13 @@ def get_kinetic_measurements(
     error_documents: dict[str, list[ErrorDocument]] = {}
 
     for col_name, column in data.items():
+        # Skip temperature columns (e.g., "T∞ 600" or "T° 600")
+        col_name_str = str(col_name)
+        if col_name_str.startswith("T") and any(
+            char in col_name_str for char in ["∞", "°", "\u221e", "\u00b0"]
+        ):
+            continue
+
         well_values: list[float | None] = []
         for idx, value in enumerate(column):
             # Handle empty values
@@ -864,11 +872,17 @@ class MeasurementData:
 
 def _get_label(row: pd.Series[Any], measurement_labels: set[str]) -> tuple[str, bool]:
     raw_label = row.iloc[-1]
-    if str(raw_label) in measurement_labels:
-        return str(raw_label), True
+    label_str = str(raw_label)
+
+    # Strip "Read X:" prefix if present (e.g., "Read 1:450,490" -> "450,490")
+    if label_str.startswith("Read ") and ":" in label_str:
+        label_str = label_str.split(":", 1)[1]
+
+    if label_str in measurement_labels:
+        return label_str, True
     if isinstance(raw_label, float) and str(int(raw_label)) in measurement_labels:
         return str(int(raw_label)), True
-    return str(raw_label), False
+    return label_str, False
 
 
 def create_results(
@@ -879,6 +893,9 @@ def create_results(
     actual_temperature: float | None,
     concentration_values: dict[str, float | None] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+    if not result_lines:
+        raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
+
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)
@@ -955,10 +972,12 @@ def create_results(
         for well_position, measurements in well_to_measurements.items()
     ]
 
-    calculated_data_items = [
-        CalculatedDocument(
-            uuid=random_uuid_str(),
-            data_sources=[
+    calculated_data_items = []
+    for well_position, well_calculated_data in calculated_data.items():
+        if well_position not in well_to_measurements:
+            continue  # Skip wells without measurements
+        for label, value in well_calculated_data:
+            data_sources = [
                 DataSource(
                     reference=Referenceable(measurement.identifier),
                     feature=item.read_mode.value.lower(),
@@ -967,14 +986,18 @@ def create_results(
                     label, well_to_measurements[well_position]
                 )
                 for item in read_data
-            ],
-            unit=UNITLESS,
-            name=label,
-            value=value,
-        )
-        for well_position, well_calculated_data in calculated_data.items()
-        for label, value in well_calculated_data
-    ]
+            ]
+            # Only create calculated document if we have data sources
+            if data_sources:
+                calculated_data_items.append(
+                    CalculatedDocument(
+                        uuid=random_uuid_str(),
+                        data_sources=data_sources,
+                        unit=UNITLESS,
+                        name=label,
+                        value=value,
+                    )
+                )
 
     return groups, calculated_data_items
 
@@ -991,14 +1014,6 @@ def create_kinetic_results(
     kinetic_errors: dict[str, list[ErrorDocument]] | None = None,
     concentration_values: dict[str, float | None] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
-    if result_lines[0].strip() != "Results":
-        msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
-        raise AllotropeConversionError(msg)
-
-    # Create dataframe from tabular data and forward fill empty values in index
-    data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
-    data = data.set_index(data.index.to_series().ffill(axis="index").values)
-
     calculated_data: defaultdict[str, list[tuple[str, float]]] = defaultdict(
         list[tuple[str, float]]
     )
@@ -1012,21 +1027,42 @@ def create_kinetic_results(
         for well, errors in kinetic_errors.items():
             error_documents_per_well[well].extend(errors)
 
-    for row_name, row in data.iterrows():
-        label = row.iloc[-1]
-        for col_index, value in enumerate(row.iloc[:-1]):
-            well_pos = f"{row_name}{col_index + 1}"
-            well_value = try_non_nan_float_or_none(value)
-            # TODO: Report error documents for NaN values
-            if not well_value:
-                continue
-            calculated_data[well_pos].append((label, well_value))
+    # Parse calculated data from results section if present
+    if result_lines and result_lines[0].strip() == "Results":
+        # Create dataframe from tabular data and forward fill empty values in index
+        data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+        data = data.set_index(data.index.to_series().ffill(axis="index").values)
+
+        for row_name, row in data.iterrows():
+            label = row.iloc[-1]
+            for col_index, value in enumerate(row.iloc[:-1]):
+                well_pos = f"{row_name}{col_index + 1}"
+                well_value = try_non_nan_float_or_none(value)
+                # TODO: Report error documents for NaN values
+                if not well_value:
+                    continue
+                calculated_data[well_pos].append((label, well_value))
+
+    # Get all well positions from kinetic measurements (primary) or calculated data
+    # Preserve order from kinetic_measurements, then add any wells only in calculated_data
+    well_positions = list(kinetic_measurements.keys())
+    for well_pos in calculated_data.keys():
+        if well_pos not in well_positions:
+            well_positions.append(well_pos)
+
+    # Determine plate_well_count from data if header value is not reliable
+    # For kinetic data, if header has a valid plate count, use it
+    # Otherwise count wells from the actual data
+    if header_data.plate_well_count and header_data.plate_well_count > 1:
+        plate_well_count = int(header_data.plate_well_count)
+    else:
+        # Fallback: count wells from the data
+        plate_well_count = len(well_positions)
 
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=len(set(data.index.tolist()))
-            * len(set(data.columns[1:].tolist())),
+            plate_well_count=plate_well_count,
             measurements=[
                 _create_measurement(
                     measurement := MeasurementData(
@@ -1047,7 +1083,7 @@ def create_kinetic_results(
                 )
             ],
         )
-        for well_position in calculated_data.keys()
+        for well_position in well_positions
     ]
 
     groups_by_well_position = {
@@ -1073,6 +1109,8 @@ def create_kinetic_results(
             value=value,
         )
         for well_position, well_calculated_data in calculated_data.items()
+        if well_position
+        in groups_by_well_position  # Only create for wells with measurements
         for label, value in well_calculated_data
     ]
 
