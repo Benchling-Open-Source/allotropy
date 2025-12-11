@@ -1109,8 +1109,6 @@ def create_kinetic_results(
             value=value,
         )
         for well_position, well_calculated_data in calculated_data.items()
-        if well_position
-        in groups_by_well_position  # Only create for wells with measurements
         for label, value in well_calculated_data
     ]
 
