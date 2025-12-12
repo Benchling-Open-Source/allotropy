@@ -8,7 +8,7 @@ import pandas as pd
 from allotropy.parsers.roche_cedex_bioht.constants import (
     ANALYTES_LOOKUP,
     DATA_HEADER_V5,
-    DATA_HEADER_V6,
+    DATA_HEADER_V6_V7,
     DETECTION_KIT_LOOKUP,
     DETECTION_KIT_RANGE_LOOKUP,
     INFO_HEADER,
@@ -47,8 +47,8 @@ class RocheCedexBiohtReader:
         software_version = self.title_data[str, "software version"]
         if software_version.startswith("5"):
             data_header = DATA_HEADER_V5
-        elif software_version.startswith("6"):
-            data_header = DATA_HEADER_V6
+        elif software_version.startswith("6") or software_version.startswith("7"):
+            data_header = DATA_HEADER_V6_V7
         else:
             msg = f"Unsupported software version: {software_version}"
             raise ValueError(msg)
