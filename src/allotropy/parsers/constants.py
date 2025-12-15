@@ -43,4 +43,4 @@ def get_well_count_by_well_ids(
             ord(largest_column.upper()) - ord("A") + 1
         ) * largest_row
     largest_well_number = max(well_number_by_ids, well_number_by_position)
-    return round_to_nearest_well_count(largest_well_number)
+    return round_to_nearest_well_count(largest_well_number) or largest_well_number

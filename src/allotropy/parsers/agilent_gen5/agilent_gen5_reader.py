@@ -73,20 +73,20 @@ class AgilentGen5Reader:
         last_section_name: str | None = None
         last_read_label: str | None = None
 
-        while plate_reader.current_line_exists():
-            lines = list(plate_reader.pop_until_empty())
-
-            # Skip empty sections
-            if not lines:
-                plate_reader.drop_empty()
-                continue
-
+        while lines := list(plate_reader.pop_until_empty()):
             section_name = lines[0].split("\t")[0].strip(":")
 
             # Check if this is a "Read X:label" section (single line, starts with "Read ")
+            # If so, store the label and immediately read the next section
             if len(lines) == 1 and section_name.startswith("Read "):
                 last_read_label = section_name
-                continue
+                plate_reader.drop_empty()
+                # Read the actual data section following this label
+                lines = list(plate_reader.pop_until_empty())
+                if not lines:
+                    # No data section after the label, just continue
+                    continue
+                section_name = lines[0].split("\t")[0].strip(":")
 
             # If this is a Time section, associate it with a read label if we have one
             if section_name == "Time":
