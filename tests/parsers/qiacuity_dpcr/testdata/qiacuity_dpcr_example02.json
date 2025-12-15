@@ -60,8 +60,13 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Reaction Mix": "5p"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "5p",
+                                        "datum label": "Reaction Mix"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -110,8 +115,13 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Reaction Mix": "5p"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "5p",
+                                        "datum label": "Reaction Mix"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -160,8 +170,13 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Reaction Mix": "5p"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "5p",
+                                        "datum label": "Reaction Mix"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -210,8 +225,13 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Reaction Mix": "5p"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "5p",
+                                        "datum label": "Reaction Mix"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -260,8 +280,13 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Reaction Mix": "5p"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "5p",
+                                        "datum label": "Reaction Mix"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -310,8 +335,13 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Reaction Mix": "5p"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "5p",
+                                        "datum label": "Reaction Mix"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -323,7 +353,7 @@
             "UNC path": "tests/parsers/qiacuity_dpcr/testdata/qiacuity_dpcr_example02.csv",
             "software name": "Qiacuity Software Suite",
             "ASM converter name": "allotropy_qiacuity_dpcr",
-            "ASM converter version": "0.1.107"
+            "ASM converter version": "0.1.110"
         },
         "calculated data aggregate document": {
             "calculated data document": [

@@ -10,12 +10,23 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "custom information document": {
-                                            "path length mode": "single",
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "single",
+                                                    "datum label": "path length mode"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
+                                        "detection type": "Absorbance"
                                     }
                                 ]
                             },
@@ -24,10 +35,15 @@
                                 "location identifier": "A1",
                                 "sample identifier": "sample_A1",
                                 "batch identifier": "Sample Group",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "dsDNA (Single point)",
                             "absorption spectrum data cube": {
@@ -81,12 +97,23 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "custom information document": {
-                                            "path length mode": "single",
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "single",
+                                                    "datum label": "path length mode"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
+                                        "detection type": "Absorbance"
                                     }
                                 ]
                             },
@@ -95,10 +122,15 @@
                                 "location identifier": "A3",
                                 "sample identifier": "reference_A3",
                                 "batch identifier": "Sample Group",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "dsDNA (Single point)",
                             "absorption spectrum data cube": {
@@ -146,12 +178,23 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "custom information document": {
-                                            "path length mode": "single",
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "single",
+                                                    "datum label": "path length mode"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
+                                        "detection type": "Absorbance"
                                     }
                                 ]
                             },
@@ -160,10 +203,15 @@
                                 "location identifier": "B3",
                                 "sample identifier": "blank_B3",
                                 "batch identifier": "Sample Group",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "dsDNA (Single point)",
                             "error aggregate document": {
@@ -370,7 +418,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/spectrum_measurement.csv",
             "file name": "spectrum_measurement.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {

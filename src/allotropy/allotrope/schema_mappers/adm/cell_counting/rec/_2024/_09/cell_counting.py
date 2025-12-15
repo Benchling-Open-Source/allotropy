@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     CellCountingAggregateDocument,
     CellCountingDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
@@ -170,8 +172,11 @@ class Mapper(SchemaMapper[Data, Model]):
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
-                device_system_document=add_custom_information_document(
-                    DeviceSystemDocument(
+                device_system_document=add_custom_information_aggregate_document(
+                    data.metadata.device_system_custom_info or {},
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=DeviceSystemDocument(
                         model_number=data.metadata.model_number,
                         product_manufacturer=data.metadata.product_manufacturer,
                         brand_name=data.metadata.brand_name,
@@ -180,10 +185,12 @@ class Mapper(SchemaMapper[Data, Model]):
                         description=data.metadata.description,
                         equipment_serial_number=data.metadata.equipment_serial_number,
                     ),
-                    data.metadata.device_system_custom_info or {},
                 ),
-                data_system_document=add_custom_information_document(
-                    DataSystemDocument(
+                data_system_document=add_custom_information_aggregate_document(
+                    data.metadata.data_system_custom_info or {},
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=DataSystemDocument(
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
                         file_name=data.metadata.file_name,
                         UNC_path=data.metadata.unc_path,
@@ -193,7 +200,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                         ASM_file_identifier=data.metadata.asm_file_identifier,
                     ),
-                    data.metadata.data_system_custom_info or {},
                 ),
                 cell_counting_document=[
                     self._get_technique_document(
@@ -212,8 +218,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
+            measurement_aggregate_document=add_custom_information_aggregate_document(
+                measurement_group.custom_info or {},
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=MeasurementAggregateDocument(
                     measurement_document=[
                         self._get_measurement_document(measurement, metadata)
                         for measurement in measurement_group.measurements
@@ -222,23 +231,24 @@ class Mapper(SchemaMapper[Data, Model]):
                         calculated_data
                     ),
                 ),
-                measurement_group.custom_info or {},
             ),
         )
 
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        device_control_doc = DeviceControlDocumentItem(
-            device_type=metadata.device_type,
-            detection_type=metadata.detection_type,
-            sample_volume_setting=quantity_or_none(
-                TQuantityValueMicroliter,
-                measurement.sample_volume_setting,
+        device_control_doc = add_custom_information_aggregate_document(
+            measurement.device_control_custom_info or {},
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=DeviceControlDocumentItem(
+                device_type=metadata.device_type,
+                detection_type=metadata.detection_type,
+                sample_volume_setting=quantity_or_none(
+                    TQuantityValueMicroliter,
+                    measurement.sample_volume_setting,
+                ),
             ),
-        )
-        device_control_doc = add_custom_information_document(
-            device_control_doc, measurement.device_control_custom_info or {}
         )
         measurement_document = MeasurementDocument(
             measurement_time=self.get_date_time(measurement.timestamp),
@@ -255,11 +265,13 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             image_aggregate_document=ImageAggregateDocument(
                 image_document=[
-                    add_custom_information_document(
-                        ImageDocumentItem(
+                    add_custom_information_aggregate_document(
+                        measurement.image_processing_custom_info or {},
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=ImageDocumentItem(
                             experimental_data_identifier=measurement.experimental_data_identifier
                         ),
-                        measurement.image_processing_custom_info or {},
                     )
                 ],
             )
@@ -267,8 +279,11 @@ class Mapper(SchemaMapper[Data, Model]):
             or measurement.image_processing_custom_info
             else None,
         )
-        return add_custom_information_document(
-            measurement_document, measurement.custom_info or {}
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info or {},
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=measurement_document,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -285,13 +300,15 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         }
         custom_document.update(measurement.sample_custom_info or {})
-        return add_custom_information_document(
-            SampleDocument(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            custom_document,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
                 written_name=measurement.written_name,
             ),
-            custom_document,
         )
 
     def _get_processed_data_aggregate_document(
@@ -334,8 +351,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.debris_index
             ),
         }
-        data_processing_document = add_custom_information_document(
-            DataProcessingDocument(
+        data_processing_document = add_custom_information_aggregate_document(
+            measurement.data_processing_custom_info or {},
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=DataProcessingDocument(
                 cell_type_processing_method=measurement.cell_type_processing_method,
                 minimum_cell_diameter_setting=quantity_or_none(
                     TQuantityValueMicrometer,
@@ -350,7 +370,6 @@ class Mapper(SchemaMapper[Data, Model]):
                     measurement.cell_density_dilution_factor,
                 ),
             ),
-            measurement.data_processing_custom_info or {},
         )
         processed_data_document = ProcessedDataDocumentItem(
             processed_data_identifier=measurement.processed_data_identifier,
@@ -403,9 +422,11 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                add_custom_information_document(
-                    processed_data_document,
+                add_custom_information_aggregate_document(
                     custom_document | (measurement.processed_data_custom_info or {}),
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=processed_data_document,
                 )
             ]
         )

@@ -19,6 +19,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 65.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -45,29 +59,32 @@
                                         "average total cell diameter": {
                                             "value": 12.2,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 0.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 65.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "1",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -91,6 +108,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 17.5,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 45.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -117,29 +148,32 @@
                                         "average total cell diameter": {
                                             "value": 11.7,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 17.5,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 45.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "2",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -163,6 +197,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 4.5,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 45.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -189,29 +237,32 @@
                                         "average total cell diameter": {
                                             "value": 13.8,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 4.5,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 45.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "3",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -235,6 +286,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 2.5,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 60.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -261,29 +326,32 @@
                                         "average total cell diameter": {
                                             "value": 11.3,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 2.5,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 60.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "4",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -307,6 +375,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 6.3,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 45.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -333,29 +415,32 @@
                                         "average total cell diameter": {
                                             "value": 11.8,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 6.3,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 45.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "5",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -379,6 +464,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 8.7,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 40.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -405,29 +504,32 @@
                                         "average total cell diameter": {
                                             "value": 13.4,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 8.7,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 40.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -451,6 +553,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 8.9,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 40.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -477,29 +593,32 @@
                                         "average total cell diameter": {
                                             "value": 14.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 8.9,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 40.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -523,6 +642,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 24.4,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -549,29 +682,32 @@
                                         "average total cell diameter": {
                                             "value": 16.3,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 24.4,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 20.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "8",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "Warning: Foreign object detected"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Warning: Foreign object detected",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -595,6 +731,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 16.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -621,29 +771,32 @@
                                         "average total cell diameter": {
                                             "value": 16.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 16.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 20.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "9",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -667,6 +820,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 24.6,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 15.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -693,29 +860,32 @@
                                         "average total cell diameter": {
                                             "value": 17.0,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 24.6,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 15.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "10",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -739,6 +909,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 24.8,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -765,29 +949,32 @@
                                         "average total cell diameter": {
                                             "value": 17.7,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 24.8,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "11",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "Warning: Foreign object detected"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Warning: Foreign object detected",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -811,6 +998,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 39.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -837,29 +1038,32 @@
                                         "average total cell diameter": {
                                             "value": 17.9,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 39.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "12",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -883,6 +1087,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 36.6,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -909,29 +1127,32 @@
                                         "average total cell diameter": {
                                             "value": 17.8,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 36.6,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "13",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -955,6 +1176,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 2.1,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 55.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -981,29 +1216,32 @@
                                         "average total cell diameter": {
                                             "value": 11.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 2.1,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 55.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "14",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1027,6 +1265,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.2,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 55.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1053,29 +1305,32 @@
                                         "average total cell diameter": {
                                             "value": 12.3,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 1.2,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 55.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "15",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1099,6 +1354,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.2,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 65.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1125,29 +1394,32 @@
                                         "average total cell diameter": {
                                             "value": 11.5,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 1.2,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 65.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "16",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1171,6 +1443,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 5.8,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1197,29 +1483,32 @@
                                         "average total cell diameter": {
                                             "value": 12.9,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 5.8,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "17",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1243,6 +1532,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 4.3,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 55.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1269,29 +1572,32 @@
                                         "average total cell diameter": {
                                             "value": 12.3,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 4.3,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 55.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "18",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1315,6 +1621,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 35.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1341,29 +1661,32 @@
                                         "average total cell diameter": {
                                             "value": 14.5,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 3.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 35.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "19",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1387,6 +1710,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 4.2,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 25.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1413,29 +1750,32 @@
                                         "average total cell diameter": {
                                             "value": 14.7,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 4.2,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 25.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "20",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1459,6 +1799,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 9.2,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1485,29 +1839,32 @@
                                         "average total cell diameter": {
                                             "value": 14.7,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 9.2,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "21",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1531,6 +1888,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 15.3,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1557,29 +1928,32 @@
                                         "average total cell diameter": {
                                             "value": 14.9,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 15.3,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "22",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1603,6 +1977,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 7.2,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1629,29 +2017,32 @@
                                         "average total cell diameter": {
                                             "value": 14.8,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 7.2,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "23",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1675,6 +2066,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 33.8,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 15.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1701,29 +2106,32 @@
                                         "average total cell diameter": {
                                             "value": 15.8,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 33.8,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 15.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "24",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1747,6 +2155,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 18.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 35.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1773,29 +2195,32 @@
                                         "average total cell diameter": {
                                             "value": 17.3,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 18.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 35.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "25",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1819,6 +2244,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 29.6,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1845,29 +2284,32 @@
                                         "average total cell diameter": {
                                             "value": 17.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 29.6,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "26",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1891,6 +2333,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 30.5,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 15.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1917,29 +2373,32 @@
                                         "average total cell diameter": {
                                             "value": 17.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 30.5,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 15.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "27",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1963,6 +2422,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 32.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -1989,29 +2462,32 @@
                                         "average total cell diameter": {
                                             "value": 18.5,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 32.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "28",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2035,6 +2511,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 38.5,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -2061,29 +2551,32 @@
                                         "average total cell diameter": {
                                             "value": 18.2,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 38.5,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "29",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2107,6 +2600,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 39.8,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -2133,29 +2640,32 @@
                                         "average total cell diameter": {
                                             "value": 17.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 39.8,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "30",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2179,6 +2689,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 34.0,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -2205,29 +2729,32 @@
                                         "average total cell diameter": {
                                             "value": 18.4,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 34.0,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "31",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2251,6 +2778,20 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 43.7,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                },
+                                                {
+                                                    "scalar double datum": 25.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "debris index"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
@@ -2277,29 +2818,32 @@
                                         "average total cell diameter": {
                                             "value": 18.6,
                                             "unit": "µm"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 43.7,
-                                                "unit": "%"
-                                            },
-                                            "debris index": {
-                                                "value": 25.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "32",
-                                "custom information document": {
-                                    "MEDIA": "Via2-Cassette"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Via2-Cassette",
+                                            "datum label": "MEDIA"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "method name": "Count & Viability",
-                                "STATUS": "OK"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "OK",
+                                        "datum label": "STATUS"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability",
+                                        "datum label": "method_name"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2313,10 +2857,15 @@
             "file name": "chememotec_nc_view_example.csv",
             "UNC path": "tests/parsers/chemometec_nc_view/testdata/chememotec_nc_view_example.csv",
             "ASM converter name": "allotropy_chemometec_nc_view",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "NC-View",
-            "custom information document": {
-                "USER": "na"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "na",
+                        "datum label": "USER"
+                    }
+                ]
             }
         },
         "device system document": {

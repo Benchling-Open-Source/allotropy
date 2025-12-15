@@ -10,6 +10,35 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 25.0,
+                                                    "datum label": "analysis temperature"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "unit": "mL",
+                                                    "datum label": "buffer volume"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "normalize"
+                                                },
+                                                {
+                                                    "scalar double datum": 4.0,
+                                                    "datum label": "number of flow cells"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "number of spots"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "prime"
+                                                }
+                                            ]
+                                        },
                                         "flow cell identifier": "1",
                                         "flow rate": {
                                             "value": 10.0,
@@ -23,28 +52,28 @@
                                             "value": 90.0,
                                             "unit": "%"
                                         },
-                                        "flow path": "1",
-                                        "custom information document": {
-                                            "number of flow cells": 4,
-                                            "number of spots": 1,
-                                            "buffer volume": {
-                                                "value": 100.0,
-                                                "unit": "mL"
-                                            },
-                                            "analysis temperature": 25.0,
-                                            "prime": false,
-                                            "normalize": false
-                                        }
+                                        "flow path": "1"
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_0",
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "custom information document": {
-                                    "Rack2": "REAG2",
-                                    "Lock Positions": false,
-                                    "Cycle": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Cycle"
+                                        },
+                                        {
+                                            "scalar boolean datum": false,
+                                            "datum label": "Lock Positions"
+                                        },
+                                        {
+                                            "scalar string datum": "REAG2",
+                                            "datum label": "Rack2"
+                                        }
+                                    ]
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -64,15 +93,30 @@
                                                         "value": 281.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "10",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "Yes",
-                                                        "Aprog": "Amine_1"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_1",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Yes",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "10",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -90,15 +134,30 @@
                                                         "value": 839.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "10",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_1"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_1",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "10",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -116,15 +175,30 @@
                                                         "value": 1325.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "10",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_1"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_1",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "10",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
@@ -165,32 +239,109 @@
                                 "sensor chip identifier": "190904-1227:1950172",
                                 "sensor chip type": "CM5",
                                 "product manufacturer": "Cytiva",
-                                "custom information document": {
-                                    "ifc identifier": "IFC105",
-                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
-                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
-                                    "DisplayName": "CM5",
-                                    "IFCDesc": "IFC105",
-                                    "Ligand1,1": "[Blank]",
-                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
-                                    "Comment1,1": "",
-                                    "Ligand2,1": "Her2-Her3",
-                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
-                                    "Level2,1": "6153.95084635416",
-                                    "Comment2,1": "",
-                                    "Ligand3,1": "Her2-Her3",
-                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
-                                    "Level3,1": "6055.79654947917",
-                                    "Comment3,1": "",
-                                    "Ligand4,1": "Her2-Her3",
-                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
-                                    "Level4,1": "5965.12727864583",
-                                    "Comment4,1": ""
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "CM5",
+                                            "datum label": "DisplayName"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "IFCDesc"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6153.95084635416",
+                                            "datum label": "Level2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6055.79654947917",
+                                            "datum label": "Level3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "5965.12727864583",
+                                            "datum label": "Level4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "[Blank]",
+                                            "datum label": "Ligand1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:32:23.242004+00:00",
+                                            "datum label": "first dock date"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "ifc identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T15:21:36.301000+00:00",
+                                            "datum label": "last modified time"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:33:50.039997+00:00",
+                                            "datum label": "last use time"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -199,6 +350,35 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 25.0,
+                                                    "datum label": "analysis temperature"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "unit": "mL",
+                                                    "datum label": "buffer volume"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "normalize"
+                                                },
+                                                {
+                                                    "scalar double datum": 4.0,
+                                                    "datum label": "number of flow cells"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "number of spots"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "prime"
+                                                }
+                                            ]
+                                        },
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 5.0,
@@ -212,28 +392,28 @@
                                             "value": 90.0,
                                             "unit": "%"
                                         },
-                                        "flow path": "2",
-                                        "custom information document": {
-                                            "number of flow cells": 4,
-                                            "number of spots": 1,
-                                            "buffer volume": {
-                                                "value": 100.0,
-                                                "unit": "mL"
-                                            },
-                                            "analysis temperature": 25.0,
-                                            "prime": false,
-                                            "normalize": false
-                                        }
+                                        "flow path": "2"
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_4",
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "custom information document": {
-                                    "Rack2": "REAG2",
-                                    "Lock Positions": false,
-                                    "Cycle": 2.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 2.0,
+                                            "datum label": "Cycle"
+                                        },
+                                        {
+                                            "scalar boolean datum": false,
+                                            "datum label": "Lock Positions"
+                                        },
+                                        {
+                                            "scalar string datum": "REAG2",
+                                            "datum label": "Rack2"
+                                        }
+                                    ]
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -253,15 +433,30 @@
                                                         "value": 282.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "19",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "Yes",
-                                                        "Aprog": "Amine_2"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_2",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Yes",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "19",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -279,15 +474,30 @@
                                                         "value": 835.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "19",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_2"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_2",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "19",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -305,15 +515,30 @@
                                                         "value": 1523.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "19",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_2"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_2",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "19",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -331,15 +556,30 @@
                                                         "value": 2009.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "19",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_2"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_2",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "19",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
@@ -380,32 +620,109 @@
                                 "sensor chip identifier": "190904-1227:1950172",
                                 "sensor chip type": "CM5",
                                 "product manufacturer": "Cytiva",
-                                "custom information document": {
-                                    "ifc identifier": "IFC105",
-                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
-                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
-                                    "DisplayName": "CM5",
-                                    "IFCDesc": "IFC105",
-                                    "Ligand1,1": "[Blank]",
-                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
-                                    "Comment1,1": "",
-                                    "Ligand2,1": "Her2-Her3",
-                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
-                                    "Level2,1": "6153.95084635416",
-                                    "Comment2,1": "",
-                                    "Ligand3,1": "Her2-Her3",
-                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
-                                    "Level3,1": "6055.79654947917",
-                                    "Comment3,1": "",
-                                    "Ligand4,1": "Her2-Her3",
-                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
-                                    "Level4,1": "5965.12727864583",
-                                    "Comment4,1": ""
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "CM5",
+                                            "datum label": "DisplayName"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "IFCDesc"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6153.95084635416",
+                                            "datum label": "Level2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6055.79654947917",
+                                            "datum label": "Level3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "5965.12727864583",
+                                            "datum label": "Level4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "[Blank]",
+                                            "datum label": "Ligand1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:32:23.242004+00:00",
+                                            "datum label": "first dock date"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "ifc identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T15:21:36.301000+00:00",
+                                            "datum label": "last modified time"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:33:50.039997+00:00",
+                                            "datum label": "last use time"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -414,6 +731,35 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 25.0,
+                                                    "datum label": "analysis temperature"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "unit": "mL",
+                                                    "datum label": "buffer volume"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "normalize"
+                                                },
+                                                {
+                                                    "scalar double datum": 4.0,
+                                                    "datum label": "number of flow cells"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "number of spots"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "prime"
+                                                }
+                                            ]
+                                        },
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 5.0,
@@ -427,28 +773,28 @@
                                             "value": 90.0,
                                             "unit": "%"
                                         },
-                                        "flow path": "3",
-                                        "custom information document": {
-                                            "number of flow cells": 4,
-                                            "number of spots": 1,
-                                            "buffer volume": {
-                                                "value": 100.0,
-                                                "unit": "mL"
-                                            },
-                                            "analysis temperature": 25.0,
-                                            "prime": false,
-                                            "normalize": false
-                                        }
+                                        "flow path": "3"
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_9",
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "custom information document": {
-                                    "Rack2": "REAG2",
-                                    "Lock Positions": false,
-                                    "Cycle": 3.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.0,
+                                            "datum label": "Cycle"
+                                        },
+                                        {
+                                            "scalar boolean datum": false,
+                                            "datum label": "Lock Positions"
+                                        },
+                                        {
+                                            "scalar string datum": "REAG2",
+                                            "datum label": "Rack2"
+                                        }
+                                    ]
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -468,15 +814,30 @@
                                                         "value": 290.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "30",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "Yes",
-                                                        "Aprog": "Amine_3"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_3",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Yes",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "30",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -494,15 +855,30 @@
                                                         "value": 844.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "30",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_3"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_3",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "30",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -520,15 +896,30 @@
                                                         "value": 1532.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "30",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_3"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_3",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "30",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -546,15 +937,30 @@
                                                         "value": 2018.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "30",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_3"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_3",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "30",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
@@ -595,32 +1001,109 @@
                                 "sensor chip identifier": "190904-1227:1950172",
                                 "sensor chip type": "CM5",
                                 "product manufacturer": "Cytiva",
-                                "custom information document": {
-                                    "ifc identifier": "IFC105",
-                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
-                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
-                                    "DisplayName": "CM5",
-                                    "IFCDesc": "IFC105",
-                                    "Ligand1,1": "[Blank]",
-                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
-                                    "Comment1,1": "",
-                                    "Ligand2,1": "Her2-Her3",
-                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
-                                    "Level2,1": "6153.95084635416",
-                                    "Comment2,1": "",
-                                    "Ligand3,1": "Her2-Her3",
-                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
-                                    "Level3,1": "6055.79654947917",
-                                    "Comment3,1": "",
-                                    "Ligand4,1": "Her2-Her3",
-                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
-                                    "Level4,1": "5965.12727864583",
-                                    "Comment4,1": ""
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "CM5",
+                                            "datum label": "DisplayName"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "IFCDesc"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6153.95084635416",
+                                            "datum label": "Level2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6055.79654947917",
+                                            "datum label": "Level3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "5965.12727864583",
+                                            "datum label": "Level4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "[Blank]",
+                                            "datum label": "Ligand1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:32:23.242004+00:00",
+                                            "datum label": "first dock date"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "ifc identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T15:21:36.301000+00:00",
+                                            "datum label": "last modified time"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:33:50.039997+00:00",
+                                            "datum label": "last use time"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -629,6 +1112,35 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 25.0,
+                                                    "datum label": "analysis temperature"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "unit": "mL",
+                                                    "datum label": "buffer volume"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "normalize"
+                                                },
+                                                {
+                                                    "scalar double datum": 4.0,
+                                                    "datum label": "number of flow cells"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "number of spots"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "prime"
+                                                }
+                                            ]
+                                        },
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 5.0,
@@ -642,28 +1154,28 @@
                                             "value": 90.0,
                                             "unit": "%"
                                         },
-                                        "flow path": "4",
-                                        "custom information document": {
-                                            "number of flow cells": 4,
-                                            "number of spots": 1,
-                                            "buffer volume": {
-                                                "value": 100.0,
-                                                "unit": "mL"
-                                            },
-                                            "analysis temperature": 25.0,
-                                            "prime": false,
-                                            "normalize": false
-                                        }
+                                        "flow path": "4"
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_14",
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "custom information document": {
-                                    "Rack2": "REAG2",
-                                    "Lock Positions": false,
-                                    "Cycle": 4.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 4.0,
+                                            "datum label": "Cycle"
+                                        },
+                                        {
+                                            "scalar boolean datum": false,
+                                            "datum label": "Lock Positions"
+                                        },
+                                        {
+                                            "scalar string datum": "REAG2",
+                                            "datum label": "Rack2"
+                                        }
+                                    ]
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -683,15 +1195,30 @@
                                                         "value": 282.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "39",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "Yes",
-                                                        "Aprog": "Amine_4"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_4",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Yes",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "39",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -709,15 +1236,30 @@
                                                         "value": 835.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "39",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_4"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_4",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "39",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -735,15 +1277,30 @@
                                                         "value": 1523.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "39",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_4"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_4",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "39",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -761,15 +1318,30 @@
                                                         "value": 2009.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "diode row": "39",
-                                                        "window": {
-                                                            "value": 5.0,
-                                                            "unit": "s"
-                                                        },
-                                                        "quality": "Ok",
-                                                        "baseline": "No",
-                                                        "Aprog": "Amine_4"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "Amine_4",
+                                                                "datum label": "Aprog"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "No",
+                                                                "datum label": "baseline"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "39",
+                                                                "datum label": "diode_row"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Ok",
+                                                                "datum label": "quality"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "unit": "s",
+                                                                "datum label": "window"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
@@ -810,48 +1382,139 @@
                                 "sensor chip identifier": "190904-1227:1950172",
                                 "sensor chip type": "CM5",
                                 "product manufacturer": "Cytiva",
-                                "custom information document": {
-                                    "ifc identifier": "IFC105",
-                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
-                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
-                                    "DisplayName": "CM5",
-                                    "IFCDesc": "IFC105",
-                                    "Ligand1,1": "[Blank]",
-                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
-                                    "Comment1,1": "",
-                                    "Ligand2,1": "Her2-Her3",
-                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
-                                    "Level2,1": "6153.95084635416",
-                                    "Comment2,1": "",
-                                    "Ligand3,1": "Her2-Her3",
-                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
-                                    "Level3,1": "6055.79654947917",
-                                    "Comment3,1": "",
-                                    "Ligand4,1": "Her2-Her3",
-                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
-                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
-                                    "Level4,1": "5965.12727864583",
-                                    "Comment4,1": ""
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "",
+                                            "datum label": "Comment4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "CM5",
+                                            "datum label": "DisplayName"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "IFCDesc"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T00:00:00+00:00",
+                                            "datum label": "ImmobDate4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                            "datum label": "ImmobFile4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6153.95084635416",
+                                            "datum label": "Level2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "6055.79654947917",
+                                            "datum label": "Level3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "5965.12727864583",
+                                            "datum label": "Level4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "[Blank]",
+                                            "datum label": "Ligand1,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand2,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand3,1"
+                                        },
+                                        {
+                                            "scalar string datum": "Her2-Her3",
+                                            "datum label": "Ligand4,1"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:32:23.242004+00:00",
+                                            "datum label": "first dock date"
+                                        },
+                                        {
+                                            "scalar string datum": "IFC105",
+                                            "datum label": "ifc identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T15:21:36.301000+00:00",
+                                            "datum label": "last modified time"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-09-04T12:33:50.039997+00:00",
+                                            "datum label": "last use time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
                     "measurement time": "2019-09-04T13:16:14.326997+00:00",
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2019-09-04T15:21:36.253999+00:00",
+                                "datum label": "EndTime"
+                            },
+                            {
+                                "scalar string datum": "TimeAndFlow",
+                                "datum label": "Procedure"
+                            },
+                            {
+                                "scalar string datum": "Immobilization",
+                                "datum label": "Run Type"
+                            },
+                            {
+                                "scalar string datum": "72d018f3-ce7c-4351-acea-ed7cb4c6ccb0",
+                                "datum label": "RunGUID"
+                            }
+                        ]
+                    },
                     "experiment type": "immobilizationWizard",
                     "analytical method identifier": "C:\\Users\\Administrator\\Documents\\Elena\\Methods\\20190227 immobilization Her2-Her3 fc234.bwImmob",
                     "compartment temperature": {
                         "value": 25.0,
                         "unit": "degC"
-                    },
-                    "custom information document": {
-                        "Run Type": "Immobilization",
-                        "RunGUID": "72d018f3-ce7c-4351-acea-ed7cb4c6ccb0",
-                        "EndTime": "2019-09-04T15:21:36.253999+00:00",
-                        "Procedure": "TimeAndFlow"
                     }
                 },
                 "analyst": "Administrator"
@@ -2070,10 +2733,21 @@
             "ASM converter version": "0.1.110",
             "software name": "Biacore T200 Control Software",
             "software version": "2.0.1",
-            "custom information document": {
-                "IFCType": "TYPE105",
-                "OSVersion": "6.1.7601.65536",
-                "OSType": "Win32NT"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "TYPE105",
+                        "datum label": "IFCType"
+                    },
+                    {
+                        "scalar string datum": "Win32NT",
+                        "datum label": "OSType"
+                    },
+                    {
+                        "scalar string datum": "6.1.7601.65536",
+                        "datum label": "OSVersion"
+                    }
+                ]
             }
         },
         "device system document": {
@@ -2084,68 +2758,192 @@
                 {
                     "device type": "Flowcell",
                     "device identifier": "1",
-                    "custom information document": {
-                        "DiluteWith": "",
-                        "Regeneration": "50 mM NaOH",
-                        "Procedure": 2,
-                        "TargetLevel": 10000,
-                        "DetectionType": 1,
-                        "UseFlowcell": true,
-                        "CustomMethod": false,
-                        "DiluteLigand": false
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "CustomMethod"
+                            },
+                            {
+                                "scalar double datum": 1.0,
+                                "datum label": "DetectionType"
+                            },
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "DiluteLigand"
+                            },
+                            {
+                                "scalar string datum": "",
+                                "datum label": "DiluteWith"
+                            },
+                            {
+                                "scalar double datum": 2.0,
+                                "datum label": "Procedure"
+                            },
+                            {
+                                "scalar string datum": "50 mM NaOH",
+                                "datum label": "Regeneration"
+                            },
+                            {
+                                "scalar double datum": 10000.0,
+                                "datum label": "TargetLevel"
+                            },
+                            {
+                                "scalar boolean datum": true,
+                                "datum label": "UseFlowcell"
+                            }
+                        ]
                     }
                 },
                 {
                     "device type": "Flowcell",
                     "device identifier": "2",
-                    "custom information document": {
-                        "DiluteWith": "",
-                        "Regeneration": "50 mM NaOH",
-                        "Procedure": 0,
-                        "TargetLevel": 10000,
-                        "DetectionType": 1,
-                        "UseFlowcell": true,
-                        "CustomMethod": false,
-                        "DiluteLigand": false
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "CustomMethod"
+                            },
+                            {
+                                "scalar double datum": 1.0,
+                                "datum label": "DetectionType"
+                            },
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "DiluteLigand"
+                            },
+                            {
+                                "scalar string datum": "",
+                                "datum label": "DiluteWith"
+                            },
+                            {
+                                "scalar double datum": 0.0,
+                                "datum label": "Procedure"
+                            },
+                            {
+                                "scalar string datum": "50 mM NaOH",
+                                "datum label": "Regeneration"
+                            },
+                            {
+                                "scalar double datum": 10000.0,
+                                "datum label": "TargetLevel"
+                            },
+                            {
+                                "scalar boolean datum": true,
+                                "datum label": "UseFlowcell"
+                            }
+                        ]
                     }
                 },
                 {
                     "device type": "Flowcell",
                     "device identifier": "3",
-                    "custom information document": {
-                        "DiluteWith": "",
-                        "Regeneration": "50 mM NaOH",
-                        "Procedure": 0,
-                        "TargetLevel": 10000,
-                        "DetectionType": 1,
-                        "UseFlowcell": true,
-                        "CustomMethod": false,
-                        "DiluteLigand": false
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "CustomMethod"
+                            },
+                            {
+                                "scalar double datum": 1.0,
+                                "datum label": "DetectionType"
+                            },
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "DiluteLigand"
+                            },
+                            {
+                                "scalar string datum": "",
+                                "datum label": "DiluteWith"
+                            },
+                            {
+                                "scalar double datum": 0.0,
+                                "datum label": "Procedure"
+                            },
+                            {
+                                "scalar string datum": "50 mM NaOH",
+                                "datum label": "Regeneration"
+                            },
+                            {
+                                "scalar double datum": 10000.0,
+                                "datum label": "TargetLevel"
+                            },
+                            {
+                                "scalar boolean datum": true,
+                                "datum label": "UseFlowcell"
+                            }
+                        ]
                     }
                 },
                 {
                     "device type": "Flowcell",
                     "device identifier": "4",
-                    "custom information document": {
-                        "DiluteWith": "",
-                        "Regeneration": "50 mM NaOH",
-                        "Procedure": 0,
-                        "TargetLevel": 10000,
-                        "DetectionType": 1,
-                        "UseFlowcell": true,
-                        "CustomMethod": false,
-                        "DiluteLigand": false
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "CustomMethod"
+                            },
+                            {
+                                "scalar double datum": 1.0,
+                                "datum label": "DetectionType"
+                            },
+                            {
+                                "scalar boolean datum": false,
+                                "datum label": "DiluteLigand"
+                            },
+                            {
+                                "scalar string datum": "",
+                                "datum label": "DiluteWith"
+                            },
+                            {
+                                "scalar double datum": 0.0,
+                                "datum label": "Procedure"
+                            },
+                            {
+                                "scalar string datum": "50 mM NaOH",
+                                "datum label": "Regeneration"
+                            },
+                            {
+                                "scalar double datum": 10000.0,
+                                "datum label": "TargetLevel"
+                            },
+                            {
+                                "scalar boolean datum": true,
+                                "datum label": "UseFlowcell"
+                            }
+                        ]
                     }
                 }
             ],
             "product manufacturer": "Cytiva",
-            "custom information document": {
-                "VacuumUnitIdleTime": "1920-06-24T00:00:00+00:00",
-                "VacuumUnitWorkingTime": "1900-01-05T00:00:00+00:00",
-                "DegasserErrors": "0",
-                "VacuumUnitErrors": "0",
-                "SystemControllerId": "BIACORE-T200",
-                "DegasserWorkingTime": "1920-08-04T00:00:00+00:00"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "0",
+                        "datum label": "DegasserErrors"
+                    },
+                    {
+                        "scalar string datum": "1920-08-04T00:00:00+00:00",
+                        "datum label": "DegasserWorkingTime"
+                    },
+                    {
+                        "scalar string datum": "BIACORE-T200",
+                        "datum label": "SystemControllerId"
+                    },
+                    {
+                        "scalar string datum": "0",
+                        "datum label": "VacuumUnitErrors"
+                    },
+                    {
+                        "scalar string datum": "1920-06-24T00:00:00+00:00",
+                        "datum label": "VacuumUnitIdleTime"
+                    },
+                    {
+                        "scalar string datum": "1900-01-05T00:00:00+00:00",
+                        "datum label": "VacuumUnitWorkingTime"
+                    }
+                ]
             }
         }
     }

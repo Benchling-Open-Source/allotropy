@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Any, TypeVar
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
@@ -189,8 +189,9 @@ class Mapper(SchemaMapper[Data, Model]):
             well_plate_identifier=measurement.plate_identifier,
             sample_role_type=measurement.sample_role_type,
         )
-        sample_document = add_custom_information_document(
-            sample_document, measurement.sample_custom_info
+        sample_document = add_custom_information_aggregate_document(
+            measurement.sample_custom_info,
+            aggregate_document=sample_document,
         )
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
@@ -238,19 +239,24 @@ class Mapper(SchemaMapper[Data, Model]):
                         confidence_interval__95__=quantity_or_none(
                             TQuantityValueNumber, measurement.confidence_interval__95__
                         ),
-                        data_processing_document=DataProcessingDocument(
-                            fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
-                                value=measurement.fluorescence_intensity_threshold_setting
+                        data_processing_document=(
+                            DataProcessingDocument(
+                                fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
+                                    value=measurement.fluorescence_intensity_threshold_setting
+                                )
                             )
-                        )
-                        if measurement.fluorescence_intensity_threshold_setting
-                        else None,
+                            if measurement.fluorescence_intensity_threshold_setting
+                            else None
+                        ),
                     )
                 ]
             ),
         )
 
-        return add_custom_information_document(measurement_doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            aggregate_document=measurement_doc,
+        )
 
     def _get_calculated_data_aggregate_document(
         self, calculated_data_items: list[CalculatedDataItem] | None

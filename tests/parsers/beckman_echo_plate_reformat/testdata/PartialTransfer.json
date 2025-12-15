@@ -10,19 +10,45 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "current fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "Eppendorf_PCR_384",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "fluid composition"
+                                                },
+                                                {
+                                                    "scalar string datum": "AQ",
+                                                    "datum label": "fluid type"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.1,
+                                                    "datum label": "intended transfer volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "384PP_AQ_BP",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "survey fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0",
+                                                    "datum label": "transfer status"
+                                                }
+                                            ]
+                                        },
                                         "injection volume setting": {
                                             "value": 0.1,
                                             "unit": "μL"
-                                        },
-                                        "custom information document": {
-                                            "survey fluid volume": 0.0,
-                                            "current fluid volume": 0.0,
-                                            "intended transfer volume": 0.1,
-                                            "source labware name": "384PP_AQ_BP",
-                                            "destination labware name": "Eppendorf_PCR_384",
-                                            "fluid composition": "0",
-                                            "fluid type": "AQ",
-                                            "transfer status": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0"
                                         }
                                     }
                                 ]
@@ -60,19 +86,45 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "current fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "Eppendorf_PCR_384",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "fluid composition"
+                                                },
+                                                {
+                                                    "scalar string datum": "AQ",
+                                                    "datum label": "fluid type"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.1,
+                                                    "datum label": "intended transfer volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "384PP_AQ_BP",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "survey fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0",
+                                                    "datum label": "transfer status"
+                                                }
+                                            ]
+                                        },
                                         "injection volume setting": {
                                             "value": 0.1,
                                             "unit": "μL"
-                                        },
-                                        "custom information document": {
-                                            "survey fluid volume": 0.0,
-                                            "current fluid volume": 0.0,
-                                            "intended transfer volume": 0.1,
-                                            "source labware name": "384PP_AQ_BP",
-                                            "destination labware name": "Eppendorf_PCR_384",
-                                            "fluid composition": "0",
-                                            "fluid type": "AQ",
-                                            "transfer status": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0"
                                         }
                                     }
                                 ]
@@ -110,19 +162,45 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 53.578,
+                                                    "datum label": "current fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "Eppendorf_PCR_384",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "100",
+                                                    "datum label": "fluid composition"
+                                                },
+                                                {
+                                                    "scalar string datum": "AQ",
+                                                    "datum label": "fluid type"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.1,
+                                                    "datum label": "intended transfer volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "384PP_AQ_BP",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar double datum": 53.678,
+                                                    "datum label": "survey fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "N/A",
+                                                    "datum label": "transfer status"
+                                                }
+                                            ]
+                                        },
                                         "injection volume setting": {
                                             "value": 0.1,
                                             "unit": "μL"
-                                        },
-                                        "custom information document": {
-                                            "survey fluid volume": 53.678,
-                                            "current fluid volume": 53.578,
-                                            "intended transfer volume": 0.1,
-                                            "source labware name": "384PP_AQ_BP",
-                                            "destination labware name": "Eppendorf_PCR_384",
-                                            "fluid composition": "100",
-                                            "fluid type": "AQ",
-                                            "transfer status": "N/A"
                                         }
                                     }
                                 ]
@@ -152,19 +230,45 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 53.478,
+                                                    "datum label": "current fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "Eppendorf_PCR_384",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "100",
+                                                    "datum label": "fluid composition"
+                                                },
+                                                {
+                                                    "scalar string datum": "AQ",
+                                                    "datum label": "fluid type"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.1,
+                                                    "datum label": "intended transfer volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "384PP_AQ_BP",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar double datum": 53.678,
+                                                    "datum label": "survey fluid volume"
+                                                },
+                                                {
+                                                    "scalar string datum": "N/A",
+                                                    "datum label": "transfer status"
+                                                }
+                                            ]
+                                        },
                                         "injection volume setting": {
                                             "value": 0.1,
                                             "unit": "μL"
-                                        },
-                                        "custom information document": {
-                                            "survey fluid volume": 53.678,
-                                            "current fluid volume": 53.478,
-                                            "intended transfer volume": 0.1,
-                                            "source labware name": "384PP_AQ_BP",
-                                            "destination labware name": "Eppendorf_PCR_384",
-                                            "fluid composition": "100",
-                                            "fluid type": "AQ",
-                                            "transfer status": "N/A"
                                         }
                                     }
                                 ]
@@ -190,11 +294,16 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-12-09 13:39:19",
+                                "datum label": "Run Date/Time"
+                            }
+                        ]
+                    },
                     "analytical method identifier": "connect_test_protocol.epr",
-                    "experimental data identifier": "1733769202",
-                    "custom information document": {
-                        "Run Date/Time": "2024-12-09 13:39:19"
-                    }
+                    "experimental data identifier": "1733769202"
                 },
                 "analyst": "LabAutomation"
             }
@@ -205,7 +314,7 @@
             "file name": "PartialTransfer.csv",
             "UNC path": "tests/parsers/beckman_echo_plate_reformat/testdata/PartialTransfer.csv",
             "ASM converter name": "allotropy_beckman_echo_plate_reformat",
-            "ASM converter version": "0.1.87",
+            "ASM converter version": "0.1.110",
             "software name": "Labcyte Echo Plate Reformat",
             "software version": "1.7.2"
         },
@@ -213,8 +322,13 @@
             "equipment serial number": "E5XX-19119",
             "model number": "Echo 525",
             "product manufacturer": "Beckman Coulter",
-            "custom information document": {
-                "Instrument Software Version": "2.6.3"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "2.6.3",
+                        "datum label": "Instrument Software Version"
+                    }
+                ]
             }
         }
     }

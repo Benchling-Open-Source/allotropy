@@ -26,13 +26,21 @@
                                     "unit": "pg/mL"
                                 }
                             },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Spike (FL.1.5.1)",
+                                        "datum label": "assay identifier"
+                                    },
+                                    {
+                                        "scalar string datum": "Above Detection Range",
+                                        "datum label": "detection range"
+                                    }
+                                ]
+                            },
                             "luminescence": {
                                 "value": 3513.0,
                                 "unit": "RLU"
-                            },
-                            "custom information document": {
-                                "detection range": "Above Detection Range",
-                                "assay identifier": "Spike (FL.1.5.1)"
                             }
                         },
                         {
@@ -56,13 +64,21 @@
                                     "unit": "pg/mL"
                                 }
                             },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Spike (Wuhan)",
+                                        "datum label": "assay identifier"
+                                    },
+                                    {
+                                        "scalar string datum": "Above Fit Curve Range",
+                                        "datum label": "detection range"
+                                    }
+                                ]
+                            },
                             "luminescence": {
                                 "value": 341.0,
                                 "unit": "RLU"
-                            },
-                            "custom information document": {
-                                "detection range": "Above Fit Curve Range",
-                                "assay identifier": "Spike (Wuhan)"
                             }
                         }
                     ],
@@ -98,13 +114,21 @@
                                     "unit": "pg/mL"
                                 }
                             },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Spike (FL.1.5.1)",
+                                        "datum label": "assay identifier"
+                                    },
+                                    {
+                                        "scalar string datum": "Above Fit Curve Range",
+                                        "datum label": "detection range"
+                                    }
+                                ]
+                            },
                             "luminescence": {
                                 "value": 3328.0,
                                 "unit": "RLU"
-                            },
-                            "custom information document": {
-                                "detection range": "Above Fit Curve Range",
-                                "assay identifier": "Spike (FL.1.5.1)"
                             }
                         },
                         {
@@ -128,13 +152,21 @@
                                     "unit": "pg/mL"
                                 }
                             },
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Spike (Wuhan)",
+                                        "datum label": "assay identifier"
+                                    },
+                                    {
+                                        "scalar string datum": "Above Fit Curve Range",
+                                        "datum label": "detection range"
+                                    }
+                                ]
+                            },
                             "luminescence": {
                                 "value": 315.0,
                                 "unit": "RLU"
-                            },
-                            "custom information document": {
-                                "detection range": "Above Fit Curve Range",
-                                "assay identifier": "Spike (Wuhan)"
                             }
                         }
                     ],
@@ -509,7 +541,7 @@
             "file name": "tests/parsers/msd_workbench/testdata/msd_workbench_test_1.csv",
             "UNC path": "tests/parsers/msd_workbench/testdata/msd_workbench_test_1.csv",
             "ASM converter name": "allotropy_msd_discovery_workbench",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.110",
             "software name": "MSD Workbench"
         },
         "device system document": {

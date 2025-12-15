@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 from enum import Enum
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     BindingAffinityAnalyzerAggregateDocument,
     BindingAffinityAnalyzerDocumentItem,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -161,42 +163,48 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             binding_affinity_analyzer_aggregate_document=BindingAffinityAnalyzerAggregateDocument(
-                data_system_document=add_custom_information_document(
-                    DataSystemDocument(
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
-                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                        file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
-                        software_version=data.metadata.software_version,
-                        software_name=data.metadata.software_name,
+                data_system_document=DataSystemDocument(
+                    ASM_file_identifier=data.metadata.asm_file_identifier,
+                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                    ASM_converter_name=self.converter_name,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
+                    software_version=data.metadata.software_version,
+                    software_name=data.metadata.software_name,
+                    custom_information_aggregate_document=add_custom_information_aggregate_document(
+                        data.metadata.data_system_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
                     ),
-                    data.metadata.data_system_custom_info,
                 ),
-                device_system_document=add_custom_information_document(
-                    DeviceSystemDocument(
-                        device_identifier=data.metadata.device_identifier,
-                        model_number=data.metadata.model_number,
-                        brand_name=data.metadata.brand_name,
-                        product_manufacturer=data.metadata.product_manufacturer,
-                        equipment_serial_number=data.metadata.equipment_serial_number,
-                        device_document=(
-                            [
-                                add_custom_information_document(
-                                    DeviceDocumentItem(
-                                        device_type=device_document_item.device_type,
-                                        device_identifier=device_document_item.device_identifier,
-                                    ),
-                                    custom_info_doc=device_document_item.device_custom_info,
-                                )
-                                for device_document_item in data.metadata.device_document
-                            ]
-                            if data.metadata.device_document
-                            else None
-                        ),
+                device_system_document=DeviceSystemDocument(
+                    device_identifier=data.metadata.device_identifier,
+                    model_number=data.metadata.model_number,
+                    brand_name=data.metadata.brand_name,
+                    product_manufacturer=data.metadata.product_manufacturer,
+                    equipment_serial_number=data.metadata.equipment_serial_number,
+                    device_document=(
+                        [
+                            DeviceDocumentItem(
+                                device_type=device_document_item.device_type,
+                                device_identifier=device_document_item.device_identifier,
+                                custom_information_aggregate_document=add_custom_information_aggregate_document(
+                                    device_document_item.device_custom_info,
+                                    CustomInformationAggregateDocument,
+                                    CustomInformationDocumentItem,
+                                ),
+                            )
+                            for device_document_item in data.metadata.device_document
+                        ]
+                        if data.metadata.device_document
+                        else None
                     ),
-                    data.metadata.device_system_custom_info,
+                    custom_information_aggregate_document=add_custom_information_aggregate_document(
+                        data.metadata.device_system_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                    ),
                 ),
                 binding_affinity_analyzer_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -213,22 +221,24 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> BindingAffinityAnalyzerDocumentItem:
         return BindingAffinityAnalyzerDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
-                    measurement_time=self.get_date_time(
-                        assert_not_none(measurement_group.measurement_time)
-                    ),
-                    experiment_type=measurement_group.experiment_type,
-                    analytical_method_identifier=measurement_group.analytical_method_identifier,
-                    compartment_temperature=quantity_or_none(
-                        TQuantityValueDegreeCelsius, metadata.compartment_temperature
-                    ),
-                    measurement_document=[
-                        self._get_measurement_document_item(measurements, metadata)
-                        for measurements in measurement_group.measurements
-                    ],
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_time=self.get_date_time(
+                    assert_not_none(measurement_group.measurement_time)
                 ),
-                custom_info_doc=measurement_group.measurement_aggregate_custom_info,
+                experiment_type=measurement_group.experiment_type,
+                analytical_method_identifier=measurement_group.analytical_method_identifier,
+                compartment_temperature=quantity_or_none(
+                    TQuantityValueDegreeCelsius, metadata.compartment_temperature
+                ),
+                measurement_document=[
+                    self._get_measurement_document_item(measurements, metadata)
+                    for measurements in measurement_group.measurements
+                ],
+                custom_information_aggregate_document=add_custom_information_aggregate_document(
+                    measurement_group.measurement_aggregate_custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                ),
             ),
         )
 
@@ -272,11 +282,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueResponseUnit,
                 measurement.maximum_binding_capacity__rmax_,
             ),
+            custom_information_aggregate_document=add_custom_information_aggregate_document(
+                measurement.processed_data_custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+            ),
             report_point_aggregate_document=(
                 ReportPointAggregateDocument(
                     report_point_document=[
-                        add_custom_information_document(
-                            ReportPointDocumentItem(
+                        add_custom_information_aggregate_document(
+                            report_point.custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
+                            aggregate_document=ReportPointDocumentItem(
                                 report_point_identifier=report_point.identifier,
                                 identifier_role=report_point.identifier_role,
                                 absolute_resonance=TQuantityValueResponseUnit(
@@ -290,7 +308,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                     value=report_point.time_setting
                                 ),
                             ),
-                            custom_info_doc=report_point.custom_info,
                         )
                         for report_point in measurement.report_point_data
                     ]
@@ -302,17 +319,19 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
-            sample_document=add_custom_information_document(
-                SampleDocument(
-                    sample_identifier=measurement.sample_identifier,
-                    sample_role_type=measurement.sample_role_type,
-                    location_identifier=measurement.location_identifier,
-                    well_plate_identifier=measurement.well_plate_identifier,
-                    concentration=quantity_or_none(
-                        TQuantityValueNanomolar, measurement.concentration
-                    ),
+            sample_document=SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                sample_role_type=measurement.sample_role_type,
+                location_identifier=measurement.location_identifier,
+                well_plate_identifier=measurement.well_plate_identifier,
+                concentration=quantity_or_none(
+                    TQuantityValueNanomolar, measurement.concentration
                 ),
-                custom_info_doc=measurement.sample_custom_info,
+                custom_information_aggregate_document=add_custom_information_aggregate_document(
+                    measurement.sample_custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                ),
             ),
             detection_type=metadata.detection_type,
             method_name=measurement.method_name,
@@ -320,50 +339,49 @@ class Mapper(SchemaMapper[Data, Model]):
             sensorgram_data_cube=get_data_cube(
                 measurement.sensorgram_data_cube, TDatacube
             ),
-            sensor_chip_document=add_custom_information_document(
-                SensorChipDocument(
-                    sensor_chip_identifier=metadata.sensor_chip_identifier,
-                    sensor_chip_type=metadata.sensor_chip_type,
-                    lot_number=metadata.lot_number,
-                    product_manufacturer=metadata.product_manufacturer,
+            sensor_chip_document=SensorChipDocument(
+                sensor_chip_identifier=metadata.sensor_chip_identifier,
+                sensor_chip_type=metadata.sensor_chip_type,
+                lot_number=metadata.lot_number,
+                product_manufacturer=metadata.product_manufacturer,
+                custom_information_aggregate_document=add_custom_information_aggregate_document(
+                    metadata.sensor_chip_custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
                 ),
-                custom_info_doc=metadata.sensor_chip_custom_info,
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        DeviceControlDocumentItem(
-                            sample_temperature_setting=quantity_or_none(
-                                TQuantityValueDegreeCelsius,
-                                device_control.sample_temperature_setting,
-                            ),
-                            flow_cell_identifier=device_control.flow_cell_identifier,
-                            flow_path=device_control.flow_path,
-                            flow_rate=quantity_or_none(
-                                TQuantityValueMicroliterPerMinute,
-                                device_control.flow_rate,
-                            ),
-                            contact_time=quantity_or_none(
-                                TQuantityValueSecondTime, device_control.contact_time
-                            ),
-                            dilution_factor=quantity_or_none(
-                                TQuantityValuePercent, device_control.dilution
-                            ),
-                            device_type=device_control.device_type,
+                    DeviceControlDocumentItem(
+                        sample_temperature_setting=quantity_or_none(
+                            TQuantityValueDegreeCelsius,
+                            device_control.sample_temperature_setting,
                         ),
-                        custom_info_doc=device_control.device_control_custom_info,
+                        flow_cell_identifier=device_control.flow_cell_identifier,
+                        flow_path=device_control.flow_path,
+                        flow_rate=quantity_or_none(
+                            TQuantityValueMicroliterPerMinute,
+                            device_control.flow_rate,
+                        ),
+                        contact_time=quantity_or_none(
+                            TQuantityValueSecondTime, device_control.contact_time
+                        ),
+                        dilution_factor=quantity_or_none(
+                            TQuantityValuePercent, device_control.dilution
+                        ),
+                        device_type=device_control.device_type,
+                        custom_information_aggregate_document=add_custom_information_aggregate_document(
+                            device_control.device_control_custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
+                        ),
                     )
                     for device_control in measurement.device_control_document
                 ]
             ),
             processed_data_aggregate_document=(
                 ProcessedDataAggregateDocument(
-                    processed_data_document=[
-                        add_custom_information_document(
-                            processed_data_document,
-                            custom_info_doc=measurement.processed_data_custom_info,
-                        )
-                    ]
+                    processed_data_document=[processed_data_document]
                 )
                 if has_value(processed_data_document)
                 else None

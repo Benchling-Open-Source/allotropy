@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_handler import (
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -107,14 +109,20 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            liquid_handler_aggregate_document=add_custom_information_document(
-                LiquidHandlerAggregateDocument(
+            liquid_handler_aggregate_document=add_custom_information_aggregate_document(
+                data.metadata.custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=LiquidHandlerAggregateDocument(
                     liquid_handler_document=[
                         self._get_technique_document(group, data.metadata)
                         for group in data.measurement_groups
                     ],
-                    device_system_document=add_custom_information_document(
-                        DeviceSystemDocument(
+                    device_system_document=add_custom_information_aggregate_document(
+                        data.metadata.device_system_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=DeviceSystemDocument(
                             equipment_serial_number=data.metadata.equipment_serial_number,
                             product_manufacturer=data.metadata.product_manufacturer,
                             model_number=data.metadata.model_number,
@@ -130,7 +138,6 @@ class Mapper(SchemaMapper[Data, Model]):
                             if data.metadata.devices
                             else None,
                         ),
-                        data.metadata.device_system_custom_info,
                     ),
                     data_system_document=DataSystemDocument(
                         ASM_file_identifier=data.metadata.asm_file_identifier,
@@ -143,7 +150,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         software_version=data.metadata.software_version,
                     ),
                 ),
-                data.metadata.custom_info,
             ),
             field_asm_manifest=self.MANIFEST,
         )
@@ -153,8 +159,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> LiquidHandlerDocumentItem:
         return LiquidHandlerDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
+            measurement_aggregate_document=add_custom_information_aggregate_document(
+                measurement_group.custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=MeasurementAggregateDocument(
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     measurement_document=[
@@ -162,7 +171,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement in measurement_group.measurements
                     ],
                 ),
-                measurement_group.custom_info,
             ),
         )
 
@@ -181,15 +189,17 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        DeviceControlDocumentItem(
+                    add_custom_information_aggregate_document(
+                        measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=DeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             injection_volume_setting=quantity_or_none(
                                 TQuantityValueMicroliter,
                                 measurement.injection_volume_setting,
                             ),
                         ),
-                        measurement.device_control_custom_info,
                     )
                 ]
             ),
@@ -197,7 +207,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.errors
             ),
         )
-        return add_custom_information_document(doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=doc,
+        )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         return SampleDocument(
