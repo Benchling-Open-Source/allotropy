@@ -1,3 +1,4 @@
+from dataclasses import replace
 from io import StringIO
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
@@ -56,7 +57,7 @@ class AgilentGen5Reader:
         self.header_data = df_to_series_data(df)
 
         self.sections = {}
-        self.time_sections: dict[str, list[str]] = {}
+        self.kinetic_sections: dict[str, list[str]] = {}
 
         # Special handling for the "Procedure Details" section, which has an empty line after the title.
         assert_not_none(
@@ -92,12 +93,12 @@ class AgilentGen5Reader:
             if section_name == "Time":
                 if last_read_label:
                     # Format: "Read X:label" -> Time section
-                    self.time_sections[last_read_label] = lines
+                    self.kinetic_sections[last_read_label] = lines
                     last_read_label = None
                 elif last_section_name:
                     # Format: "{label}" section followed by Time section
                     # Store with just the label as key for kinetic files
-                    self.time_sections[last_section_name] = lines
+                    self.kinetic_sections[last_section_name] = lines
                 else:
                     # Standalone Time section (shouldn't happen, but store it anyway)
                     self.sections[section_name] = lines
@@ -239,10 +240,10 @@ class AgilentGen5Reader:
             label_only_key = label
 
             time_section_lines = None
-            if time_key in self.time_sections:
-                time_section_lines = self.time_sections[time_key]
-            elif label_only_key in self.time_sections:
-                time_section_lines = self.time_sections[label_only_key]
+            if time_key in self.kinetic_sections:
+                time_section_lines = self.kinetic_sections[time_key]
+            elif label_only_key in self.kinetic_sections:
+                time_section_lines = self.kinetic_sections[label_only_key]
 
             if time_section_lines:
                 has_time_section = True
@@ -281,8 +282,6 @@ class AgilentGen5Reader:
 
         # If specific_label was provided, create a modified ReadData with only that label
         if specific_label:
-            from dataclasses import replace
-
             read_data = replace(read_data, measurement_labels={specific_label})
 
         # If using combined results section, include all read_data so all measurement labels are known

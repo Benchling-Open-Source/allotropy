@@ -1715,8 +1715,6 @@ def merge_measurement_groups(
     Each list of measurement groups represents results from a different read/filter set.
     This function combines them so that each well has all its measurements in a single group.
     """
-    from collections import defaultdict
-
     # Group by well position
     groups_by_well: dict[str, list[MeasurementGroup]] = defaultdict(list)
     for group_list in all_groups:
