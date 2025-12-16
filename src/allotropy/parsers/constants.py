@@ -29,7 +29,7 @@ def round_to_nearest_well_count(
 
 def get_well_count_by_well_ids(
     well_identifiers: list[int] | None = None, well_locations: list[str] | None = None
-) -> int | None:
+) -> int:
     if not well_identifiers and not well_locations:
         msg = "Must provide either well_identifiers or well_locations when determining plate size."
         raise AllotropeConversionError(msg)
@@ -43,6 +43,4 @@ def get_well_count_by_well_ids(
             ord(largest_column.upper()) - ord("A") + 1
         ) * largest_row
     largest_well_number = max(well_number_by_ids, well_number_by_position)
-    if largest_well_number:
-        return round_to_nearest_well_count(largest_well_number)
-    return None
+    return round_to_nearest_well_count(largest_well_number) or largest_well_number
