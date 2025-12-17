@@ -5,15 +5,11 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
     Data,
     Mapper,
 )
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_reader import AgilentGen5Reader
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     create_metadata,
-    get_processor,
-)
-from allotropy.parsers.agilent_gen5.constants import (
-    NO_MEASUREMENTS_ERROR,
+    process_all_reads,
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
@@ -29,11 +25,8 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
         reader = AgilentGen5Reader(named_file_contents)
         context = reader.extract_data_context(named_file_contents.original_file_path)
 
-        processor = get_processor(context)
-        measurement_groups, calculated_data = processor.process(context)
-
-        if not measurement_groups:
-            raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
+        # Process all reads and merge results
+        measurement_groups, calculated_data = process_all_reads(reader, context)
 
         return Data(
             metadata=create_metadata(context.header_data),

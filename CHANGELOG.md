@@ -5,6 +5,14 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.112] - 2025-12-15
+
+### Added
+
+- Update Roche BioHT Adapter for v7.0 support (#1132)
+- Agilent Gen5 - handle multiple different read types in one file (#1130)
+- BMG Mars - Updated parser to support BMG Labtech format (#1126)
+
 ## [0.1.111] - 2025-11-19
 
 ### Added
