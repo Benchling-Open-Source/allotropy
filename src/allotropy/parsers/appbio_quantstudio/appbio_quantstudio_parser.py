@@ -29,6 +29,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AppBioQuantStudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def parse_data(
         self, reader: AppBioQuantStudioReader, original_file_path: str

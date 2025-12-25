@@ -25,8 +25,8 @@ class NanodropEightParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific NanoDrop Eight"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NanodropEightReader.SUPPORTED_EXTENSIONS
-
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = NanodropEightReader(named_file_contents)
