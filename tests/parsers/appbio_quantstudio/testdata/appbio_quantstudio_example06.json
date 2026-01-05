@@ -28,12 +28,23 @@
                                 "sample identifier": "Lung",
                                 "location identifier": "37",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D1",
-                                "custom information document": {
-                                    "well identifier": 37,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 37.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "D1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -53,16 +64,45 @@
                                                 "value": 25,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -168,12 +208,23 @@
                                 "sample identifier": "Lung",
                                 "location identifier": "38",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D2",
-                                "custom information document": {
-                                    "well identifier": 38,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 38.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "D2"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -193,16 +244,45 @@
                                                 "value": 25,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -310,12 +390,23 @@
                                 "sample identifier": "Liver",
                                 "location identifier": "46",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D10",
-                                "custom information document": {
-                                    "well identifier": 46,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(139,137,112)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 46.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "D10"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -335,16 +426,45 @@
                                                 "value": 25,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -450,12 +570,23 @@
                                 "sample identifier": "Lung",
                                 "location identifier": "49",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E1",
-                                "custom information document": {
-                                    "well identifier": 49,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 49.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "E1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -475,16 +606,45 @@
                                                 "value": 25,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -590,12 +750,23 @@
                                 "sample identifier": "Liver",
                                 "location identifier": "58",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E10",
-                                "custom information document": {
-                                    "well identifier": 58,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(139,137,112)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 58.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "E10"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -615,16 +786,45 @@
                                                 "value": 25,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -730,12 +930,23 @@
                                 "sample identifier": "Lung",
                                 "location identifier": "85",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H1",
-                                "custom information document": {
-                                    "well identifier": 85,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(0,0,255)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 85.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "H1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -755,16 +966,45 @@
                                                 "value": 29,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -870,12 +1110,23 @@
                                 "sample identifier": "Lung",
                                 "location identifier": "86",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H2",
-                                "custom information document": {
-                                    "well identifier": 86,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(0,0,255)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 86.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "H2"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -895,16 +1146,45 @@
                                                 "value": 29,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1010,12 +1290,23 @@
                                 "sample identifier": "Liver",
                                 "location identifier": "94",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H10",
-                                "custom information document": {
-                                    "well identifier": 94,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(139,137,112)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(0,0,255)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 94.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "H10"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1035,16 +1326,45 @@
                                                 "value": 29,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1150,12 +1470,23 @@
                                 "sample identifier": "Liver",
                                 "location identifier": "95",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H11",
-                                "custom information document": {
-                                    "well identifier": 95,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(139,137,112)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(0,0,255)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 95.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "H11"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1175,16 +1506,45 @@
                                                 "value": 29,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "Singleplex",
+                                                        "datum label": "Analysis Type"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 95.0,
+                                                        "datum label": "RQ Min/Max Confidence Level"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "GAPDH",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Liver",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1947,7 +2307,7 @@
             "file name": "appbio_quantstudio_example06.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example06.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

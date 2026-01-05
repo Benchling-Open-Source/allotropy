@@ -2,10 +2,12 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, TypeVar
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
@@ -214,8 +216,11 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             field_asm_manifest=self.MANIFEST,
-            qpcr_aggregate_document=add_custom_information_document(
-                QpcrAggregateDocument(
+            qpcr_aggregate_document=add_custom_information_aggregate_document(
+                data.metadata.custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=QpcrAggregateDocument(
                     device_system_document=DeviceSystemDocument(
                         device_identifier=data.metadata.device_identifier,
                         model_number=data.metadata.model_number,
@@ -240,7 +245,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         data
                     ),
                 ),
-                data.metadata.custom_info,
             ),
         )
 
@@ -249,8 +253,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> QpcrDocumentItem:
         return QpcrDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
+            measurement_aggregate_document=add_custom_information_aggregate_document(
+                measurement_group.custom_info or {},
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=MeasurementAggregateDocument(
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
                     container_type=metadata.container_type.value,
@@ -268,7 +275,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         measurement_group.error_document
                     ),
                 ),
-                measurement_group.custom_info or {},
             ),
         )
 
@@ -314,7 +320,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
-        return add_custom_information_document(measurement_doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=measurement_doc,
+        )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be added to ASM.
@@ -330,8 +341,11 @@ class Mapper(SchemaMapper[Data, Model]):
             well_plate_identifier=measurement.well_plate_identifier,
             location_identifier=measurement.location_identifier,
         )
-        return add_custom_information_document(
-            sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            (measurement.sample_custom_info or {}) | custom_info_doc,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=sample_doc,
         )
 
     def _get_processed_data_aggregate_document(
@@ -340,8 +354,11 @@ class Mapper(SchemaMapper[Data, Model]):
         if not data:
             return None
         doc = ProcessedDataDocumentItem(
-            data_processing_document=add_custom_information_document(
-                DataProcessingDocument(
+            data_processing_document=add_custom_information_aggregate_document(
+                data.data_processing_custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=DataProcessingDocument(
                     automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
                     cycle_threshold_value_setting__qPCR_=quantity_or_none(
                         TQuantityValueUnitless, data.cycle_threshold_value_setting
@@ -360,7 +377,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.baseline_determination_end_cycle_setting,
                     ),
                 ),
-                data.data_processing_custom_info,
             ),
             cycle_threshold_result__qPCR_=quantity_or_none(
                 TQuantityValueUnitless, data.cycle_threshold_result
@@ -383,7 +399,12 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                add_custom_information_document(doc, data.custom_info)
+                add_custom_information_aggregate_document(
+                    data.custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=doc,
+                )
             ]
         )
 

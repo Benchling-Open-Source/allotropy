@@ -15,15 +15,41 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -32,19 +58,57 @@
                                 "sample identifier": "Blank",
                                 "location identifier": "1149",
                                 "sample role type": "unknown sample role",
-                                "custom information document": {
-                                    "SampleConcentration": "0.0",
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1149",
-                                    "Vial": "1",
-                                    "lot number": "Blank",
-                                    "sample weight": 1.0,
-                                    "VialId": "1149",
-                                    "SampleType": "Unknown",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1149",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "0.0",
+                                            "datum label": "SampleConcentration"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1149",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Blank",
+                                            "datum label": "lot_number"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -59,10 +123,21 @@
                                 },
                                 "injection identifier": "1151",
                                 "injection time": "2017-01-04T08:13:41+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Blank",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Blank",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -92,51 +167,175 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T08:13:41",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:13:41",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -154,16 +353,45 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "CirculationNo": "0",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "CirculationNo"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -172,17 +400,49 @@
                                 "sample identifier": "Std 1",
                                 "location identifier": "1175",
                                 "sample role type": "standard sample role",
-                                "custom information document": {
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1175",
-                                    "Vial": "2",
-                                    "sample weight": 1.0,
-                                    "VialId": "1175",
-                                    "SampleType": "Standard",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1175",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Standard",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "2",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1175",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -197,10 +457,21 @@
                                 },
                                 "injection identifier": "1176",
                                 "injection time": "2017-01-04T08:44:56+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Standard",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Standard",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -230,52 +501,179 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T08:44:56",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                        "datum label": "AcqSWVersion"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:44:56",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -293,16 +691,45 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "CirculationNo": "0",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "CirculationNo"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -311,17 +738,49 @@
                                 "sample identifier": "Std 2",
                                 "location identifier": "1178",
                                 "sample role type": "standard sample role",
-                                "custom information document": {
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1178",
-                                    "Vial": "3",
-                                    "sample weight": 1.0,
-                                    "VialId": "1178",
-                                    "SampleType": "Standard",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1178",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Standard",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "3",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1178",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -336,10 +795,21 @@
                                 },
                                 "injection identifier": "1179",
                                 "injection time": "2017-01-04T09:16:10+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Standard",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Standard",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -374,52 +844,179 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T09:16:10",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                        "datum label": "AcqSWVersion"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T09:16:10",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -437,16 +1034,45 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "CirculationNo": "1",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "CirculationNo"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -456,21 +1082,65 @@
                                 "location identifier": "1181",
                                 "sample role type": "unknown sample role",
                                 "written name": "U0101",
-                                "custom information document": {
-                                    "SampleConcentration": "1.0",
-                                    "ELN SampleID": "S240506-0008#1",
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1181",
-                                    "Vial": "4",
-                                    "lot number": "MRE-06MAY24-4",
-                                    "sample weight": 1.0,
-                                    "Label": "U0101",
-                                    "VialId": "1181",
-                                    "SampleType": "Unknown",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "S240506-0008#1",
+                                            "datum label": "ELN_SampleID"
+                                        },
+                                        {
+                                            "scalar string datum": "U0101",
+                                            "datum label": "Label"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1181",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "1.0",
+                                            "datum label": "SampleConcentration"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "4",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1181",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar string datum": "MRE-06MAY24-4",
+                                            "datum label": "lot_number"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -485,10 +1155,21 @@
                                 },
                                 "injection identifier": "1182",
                                 "injection time": "2017-01-04T09:47:28+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Unknown",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -518,56 +1199,195 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T09:47:28",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                        "datum label": "AcqSWVersion"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "Empower HPLC",
+                                        "datum label": "AnalysisMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T09:47:28",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "ELN DocumentID": "USER_1la-2024-0025",
-                        "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "SSM Pattern": "NG_3Rep_Vials",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "USER_1la-2024-0025",
+                                "datum label": "ELN_DocumentID"
+                            },
+                            {
+                                "scalar string datum": "e84bb893-2801-f5e1-3797-c67cc94c002f",
+                                "datum label": "ELN_SectionGUID"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "NG_3Rep_Vials",
+                                "datum label": "SSM_Pattern"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -585,16 +1405,45 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "CirculationNo": "1",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "CirculationNo"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -604,21 +1453,65 @@
                                 "location identifier": "1184",
                                 "sample role type": "unknown sample role",
                                 "written name": "U0101",
-                                "custom information document": {
-                                    "SampleConcentration": "1.0",
-                                    "ELN SampleID": "S240506-0008#2",
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1184",
-                                    "Vial": "5",
-                                    "lot number": "MRE-06MAY24-4",
-                                    "sample weight": 1.0,
-                                    "Label": "U0101",
-                                    "VialId": "1184",
-                                    "SampleType": "Unknown",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "S240506-0008#2",
+                                            "datum label": "ELN_SampleID"
+                                        },
+                                        {
+                                            "scalar string datum": "U0101",
+                                            "datum label": "Label"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1184",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "1.0",
+                                            "datum label": "SampleConcentration"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "5",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1184",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar string datum": "MRE-06MAY24-4",
+                                            "datum label": "lot_number"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -633,10 +1526,21 @@
                                 },
                                 "injection identifier": "1185",
                                 "injection time": "2017-01-04T10:18:46+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Unknown",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -666,56 +1570,195 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T10:18:46",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                        "datum label": "AcqSWVersion"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "Empower HPLC",
+                                        "datum label": "AnalysisMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T10:18:46",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "ELN DocumentID": "USER_1la-2024-0025",
-                        "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "SSM Pattern": "NG_3Rep_Vials",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "USER_1la-2024-0025",
+                                "datum label": "ELN_DocumentID"
+                            },
+                            {
+                                "scalar string datum": "e84bb893-2801-f5e1-3797-c67cc94c002f",
+                                "datum label": "ELN_SectionGUID"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "NG_3Rep_Vials",
+                                "datum label": "SSM_Pattern"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -733,16 +1776,45 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "CirculationNo": "1",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "CirculationNo"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -752,21 +1824,65 @@
                                 "location identifier": "1187",
                                 "sample role type": "unknown sample role",
                                 "written name": "U0101",
-                                "custom information document": {
-                                    "SampleConcentration": "1.0",
-                                    "ELN SampleID": "S240506-0008#3",
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1187",
-                                    "Vial": "6",
-                                    "lot number": "MRE-06MAY24-4",
-                                    "sample weight": 1.0,
-                                    "Label": "U0101",
-                                    "VialId": "1187",
-                                    "SampleType": "Unknown",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "S240506-0008#3",
+                                            "datum label": "ELN_SampleID"
+                                        },
+                                        {
+                                            "scalar string datum": "U0101",
+                                            "datum label": "Label"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1187",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "1.0",
+                                            "datum label": "SampleConcentration"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "6",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1187",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar string datum": "MRE-06MAY24-4",
+                                            "datum label": "lot_number"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -781,10 +1897,21 @@
                                 },
                                 "injection identifier": "1188",
                                 "injection time": "2017-01-04T10:50:07+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Unknown",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -814,56 +1941,195 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T10:50:07",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                        "datum label": "AcqSWVersion"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "Empower HPLC",
+                                        "datum label": "AnalysisMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T10:50:07",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "ELN DocumentID": "USER_1la-2024-0025",
-                        "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "SSM Pattern": "NG_3Rep_Vials",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "USER_1la-2024-0025",
+                                "datum label": "ELN_DocumentID"
+                            },
+                            {
+                                "scalar string datum": "e84bb893-2801-f5e1-3797-c67cc94c002f",
+                                "datum label": "ELN_SectionGUID"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "NG_3Rep_Vials",
+                                "datum label": "SSM_Pattern"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -881,16 +2147,45 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "VWD: Signal A, 220 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "CirculationNo": "1",
-                                            "device acquisition method": "InstrumentMethod1",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 220 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "CirculationNo"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "InstrumentMethod1",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -900,21 +2195,65 @@
                                 "location identifier": "1190",
                                 "sample role type": "unknown sample role",
                                 "written name": "U0102",
-                                "custom information document": {
-                                    "SampleConcentration": "1.0",
-                                    "ELN SampleID": "S170103-0003#2",
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1148",
-                                    "OriginalSampleSetId": "1148",
-                                    "OriginalVialId": "1190",
-                                    "Vial": "7",
-                                    "lot number": "MRE-3Jan17-2b",
-                                    "sample weight": 1.0,
-                                    "Label": "U0102",
-                                    "VialId": "1190",
-                                    "SampleType": "Unknown",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "S170103-0003#2",
+                                            "datum label": "ELN_SampleID"
+                                        },
+                                        {
+                                            "scalar string datum": "U0102",
+                                            "datum label": "Label"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1190",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "1.0",
+                                            "datum label": "SampleConcentration"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1148",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "7",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1190",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar string datum": "MRE-3Jan17-2b",
+                                            "datum label": "lot_number"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -929,10 +2268,21 @@
                                 },
                                 "injection identifier": "1191",
                                 "injection time": "2017-01-04T11:21:26+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "InjectionType": "Unknown",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -962,56 +2312,195 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1",
-                                "DateAcquired": "2017-01-04T11:21:26",
-                                "RunTime": "30.0",
-                                "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
-                                "Factor1Operator": "*",
-                                "Factor2": 1.0,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "2017-01-04T08:12:47",
-                                "Factor3Operator": "*",
-                                "Factor1": 1.0,
-                                "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
-                                "SystemCreateDate": "2014-06-19T10:20:59",
-                                "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                        "datum label": "AcqSWVersion"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "Empower HPLC",
+                                        "datum label": "AnalysisMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "NG MP Curve RS AdjAreaPct",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:21:26",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "Node1",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "USER_1",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1148.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "example_set_2",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T08:12:47",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Example comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2014-06-19T10:20:59",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "237",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-01-04T11:51:45",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "ELN DocumentID": "USER_1la-2017-0009",
-                        "ELN SectionGUID": "6ed20e99-2801-f5a4-4e21-23f8d2fa9d59",
-                        "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": "1150",
-                        "SSM Pattern": "LSN30305077_Combined_Assay_Imp",
-                        "Superseded": "False",
-                        "Node": "Node1",
-                        "measurement method identifier": "example_set_2",
-                        "SampleSetName": "example_set_2",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "USER_1la-2017-0009",
+                                "datum label": "ELN_DocumentID"
+                            },
+                            {
+                                "scalar string datum": "6ed20e99-2801-f5a4-4e21-23f8d2fa9d59",
+                                "datum label": "ELN_SectionGUID"
+                            },
+                            {
+                                "scalar string datum": "1150",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "InstrumentMethod1",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "Node1",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "LSN30305077_Combined_Assay_Imp",
+                                "datum label": "SSM_Pattern"
+                            },
+                            {
+                                "scalar string datum": "1",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "example_set_2",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "USER_1"
@@ -1019,27 +2508,71 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_benchling_waters_empower_adapter",
-            "ASM converter version": "0.1.86",
+            "ASM converter version": "0.1.110",
             "data system instance identifier": "237",
             "file name": "example_with_blanks_and_stds.json",
             "software name": "Waters Empower",
             "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
             "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json",
-            "custom information document": {
-                "account identifier": "system",
-                "project": "PROJECT_2",
-                "password": "manager",
-                "SystemCreateDate": "2014-06-19T10:20:59",
-                "SystemComments": "Example comment",
-                "Node": "Node1",
-                "SampleSetName": "example_set_2",
-                "SampleSetType": "Acquired",
-                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                "sample set name": "example_set_2",
-                "SampleSetId": 1148,
-                "SampleSetComments": "1",
-                "SampleSetStartDate": "2017-01-04T08:12:47",
-                "SampleSetMethod": "example_set_2"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "Node1",
+                        "datum label": "Node"
+                    },
+                    {
+                        "scalar string datum": "1",
+                        "datum label": "SampleSetComments"
+                    },
+                    {
+                        "scalar string datum": "2017-01-04T11:51:45",
+                        "datum label": "SampleSetFinishDate"
+                    },
+                    {
+                        "scalar double datum": 1148.0,
+                        "datum label": "SampleSetId"
+                    },
+                    {
+                        "scalar string datum": "example_set_2",
+                        "datum label": "SampleSetMethod"
+                    },
+                    {
+                        "scalar string datum": "example_set_2",
+                        "datum label": "SampleSetName"
+                    },
+                    {
+                        "scalar string datum": "2017-01-04T08:12:47",
+                        "datum label": "SampleSetStartDate"
+                    },
+                    {
+                        "scalar string datum": "Acquired",
+                        "datum label": "SampleSetType"
+                    },
+                    {
+                        "scalar string datum": "Example comment",
+                        "datum label": "SystemComments"
+                    },
+                    {
+                        "scalar string datum": "2014-06-19T10:20:59",
+                        "datum label": "SystemCreateDate"
+                    },
+                    {
+                        "scalar string datum": "system",
+                        "datum label": "account_identifier"
+                    },
+                    {
+                        "scalar string datum": "manager",
+                        "datum label": "password"
+                    },
+                    {
+                        "scalar string datum": "PROJECT_2",
+                        "datum label": "project"
+                    },
+                    {
+                        "scalar string datum": "example_set_2",
+                        "datum label": "sample_set_name"
+                    }
+                ]
             }
         },
         "device system document": {

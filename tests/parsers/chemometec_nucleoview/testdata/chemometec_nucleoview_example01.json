@@ -54,11 +54,14 @@
                             },
                             "sample document": {
                                 "sample identifier": "cellsABCD",
-                                "custom information document": {
-                                    "dilution volume": {
-                                        "value": 0.0,
-                                        "unit": "μL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "μL",
+                                            "datum label": "dilution volume"
+                                        }
+                                    ]
                                 }
                             },
                             "image aggregate document": {
@@ -106,15 +109,41 @@
                             }
                         ]
                     },
-                    "custom information document": {
-                        "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Event log format": "Plain text",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol adaptation title": "example cell counting",
-                        "Login ID": "admin",
-                        "Protocol template title": "Viability and Cell Count Assay"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "Plain text",
+                                "datum label": "Event log format"
+                            },
+                            {
+                                "scalar string datum": "admin",
+                                "datum label": "Login ID"
+                            },
+                            {
+                                "scalar string datum": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
+                                "datum label": "Protocol adaptation filename"
+                            },
+                            {
+                                "scalar string datum": "Cell Count and Viability with AO and DAPI",
+                                "datum label": "Protocol adaptation purpose"
+                            },
+                            {
+                                "scalar string datum": "example cell counting",
+                                "datum label": "Protocol adaptation title"
+                            },
+                            {
+                                "scalar string datum": "Viability and Cell Count Assay - NC-200.cmsx",
+                                "datum label": "Protocol template filename"
+                            },
+                            {
+                                "scalar string datum": "Cell Count and Viability with AO and DAPI",
+                                "datum label": "Protocol template purpose"
+                            },
+                            {
+                                "scalar string datum": "Viability and Cell Count Assay",
+                                "datum label": "Protocol template title"
+                            }
+                        ]
                     }
                 },
                 "analyst": "DrScientist"
@@ -126,12 +155,20 @@
             "file name": "chemometec_nucleoview_example01.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example01.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.110",
             "software name": "NucleoView",
             "software version": "1.4.2.0",
-            "custom information document": {
-                "21 CFR Part 11": "disabled",
-                "csv file version": 2.0
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "disabled",
+                        "datum label": "21 CFR Part 11"
+                    },
+                    {
+                        "scalar double datum": 2.0,
+                        "datum label": "csv file version"
+                    }
+                ]
             }
         },
         "device system document": {

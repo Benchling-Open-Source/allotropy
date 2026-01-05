@@ -4798,10 +4798,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0737333333333333,
@@ -4829,10 +4834,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0605333333333333,
@@ -4860,10 +4870,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0650333333333333,
@@ -4903,10 +4918,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0520333333333333,
@@ -4934,10 +4954,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0302333333333333,
@@ -4965,10 +4990,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0334333333333333,
@@ -5008,10 +5038,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0545333333333333,
@@ -5039,10 +5074,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0343333333333333,
@@ -5070,10 +5110,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0366333333333333,
@@ -5113,10 +5158,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0533333333333333,
@@ -5144,10 +5194,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0358333333333333,
@@ -5175,10 +5230,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0285333333333333,
@@ -5218,10 +5278,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0392333333333333,
@@ -5249,10 +5314,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0216333333333333,
@@ -5280,10 +5350,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0313333333333333,
@@ -5323,10 +5398,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0612333333333333,
@@ -5354,10 +5434,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0366333333333333,
@@ -5385,10 +5470,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0562333333333333,
@@ -5428,10 +5518,15 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0505333333333333,
@@ -5459,10 +5554,15 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0340333333333333,
@@ -5490,10 +5590,15 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0385333333333334,
@@ -6109,10 +6214,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.197633333333333,
@@ -6140,10 +6250,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.149733333333333,
@@ -6171,10 +6286,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.202433333333333,
@@ -6214,10 +6334,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.160933333333333,
@@ -6245,10 +6370,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.120433333333333,
@@ -6276,10 +6406,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.153633333333333,
@@ -6319,10 +6454,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.255533333333333,
@@ -6350,10 +6490,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.204133333333333,
@@ -6381,10 +6526,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.255233333333333,
@@ -6424,10 +6574,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0774333333333333,
@@ -6455,10 +6610,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0514333333333333,
@@ -6486,10 +6646,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0627333333333333,
@@ -6529,10 +6694,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0816333333333333,
@@ -6560,10 +6730,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0535333333333333,
@@ -6591,10 +6766,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0865333333333333,
@@ -6634,10 +6814,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0633333333333333,
@@ -6665,10 +6850,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0383333333333333,
@@ -6696,10 +6886,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0529333333333333,
@@ -6739,10 +6934,15 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0809333333333333,
@@ -6770,10 +6970,15 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0576333333333333,
@@ -6801,10 +7006,15 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0682333333333333,
@@ -7420,10 +7630,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0879333333333333,
@@ -7451,10 +7666,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0719333333333333,
@@ -7482,10 +7702,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "MPCTDN186",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0736333333333333,
@@ -7525,10 +7750,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0798333333333333,
@@ -7556,10 +7786,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0543333333333333,
@@ -7587,10 +7822,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "MPCTDN187",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0586333333333333,
@@ -7630,10 +7870,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.113233333333333,
@@ -7661,10 +7906,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0868333333333333,
@@ -7692,10 +7942,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "MPCTDN188",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.103933333333333,
@@ -7735,10 +7990,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0366333333333333,
@@ -7766,10 +8026,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0182333333333333,
@@ -7797,10 +8062,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "MPCTDN189",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0145333333333333,
@@ -7840,10 +8110,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0392333333333333,
@@ -7871,10 +8146,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0218333333333333,
@@ -7902,10 +8182,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "MPCTDN190",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0335333333333333,
@@ -7945,10 +8230,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0580333333333333,
@@ -7976,10 +8266,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0390333333333333,
@@ -8007,10 +8302,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "MPCTDN191",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0461333333333333,
@@ -8050,10 +8350,15 @@
                             "sample document": {
                                 "location identifier": "F11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0549333333333333,
@@ -8081,10 +8386,15 @@
                             "sample document": {
                                 "location identifier": "F11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0377333333333333,
@@ -8112,10 +8422,15 @@
                             "sample document": {
                                 "location identifier": "F11",
                                 "sample identifier": "MPCTDN192",
-                                "well plate identifier": "Quantitation",
-                                "custom information document": {
-                                    "group identifier": "0.5mm_2uL"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0.5mm_2uL",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Quantitation"
                             },
                             "absorbance": {
                                 "value": 0.0380333333333334,
@@ -15480,7 +15795,7 @@
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/MD_SMP_absorbance_endpoint_partial_plate_example03.txt",
             "file name": "MD_SMP_absorbance_endpoint_partial_plate_example03.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.92",
+            "ASM converter version": "0.1.110",
             "software name": "SoftMax Pro"
         },
         "device system document": {

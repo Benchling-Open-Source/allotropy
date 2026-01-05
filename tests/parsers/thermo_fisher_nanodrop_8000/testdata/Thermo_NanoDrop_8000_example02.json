@@ -16,11 +16,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -28,11 +31,14 @@
                             "sample document": {
                                 "sample identifier": "8",
                                 "location identifier": "A1",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -46,24 +52,31 @@
                                             "value": 4.142,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.142,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.142,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -84,11 +97,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -96,11 +112,14 @@
                             "sample document": {
                                 "sample identifier": "8",
                                 "location identifier": "B1",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -114,24 +133,31 @@
                                             "value": 4.153,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.153,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.153,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -152,11 +178,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -164,11 +193,14 @@
                             "sample document": {
                                 "sample identifier": "8",
                                 "location identifier": "C1",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -182,24 +214,31 @@
                                             "value": 4.138,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.138,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.138,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -220,11 +259,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -232,11 +274,14 @@
                             "sample document": {
                                 "sample identifier": "11",
                                 "location identifier": "D1",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -250,24 +295,31 @@
                                             "value": 4.158,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.158,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.158,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -288,11 +340,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -300,11 +355,14 @@
                             "sample document": {
                                 "sample identifier": "11",
                                 "location identifier": "E1",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -318,24 +376,31 @@
                                             "value": 4.18,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.18,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.18,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -356,11 +421,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -368,11 +436,14 @@
                             "sample document": {
                                 "sample identifier": "11",
                                 "location identifier": "F1",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -386,24 +457,31 @@
                                             "value": 4.185,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.185,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.185,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -424,11 +502,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -436,11 +517,14 @@
                             "sample document": {
                                 "sample identifier": "13",
                                 "location identifier": "A2",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -454,24 +538,31 @@
                                             "value": 4.56,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.56,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.56,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -492,11 +583,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -504,11 +598,14 @@
                             "sample document": {
                                 "sample identifier": "13",
                                 "location identifier": "B2",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -522,24 +619,31 @@
                                             "value": 4.544,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.544,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.544,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -560,11 +664,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -572,11 +679,14 @@
                             "sample document": {
                                 "sample identifier": "13",
                                 "location identifier": "C2",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -590,24 +700,31 @@
                                             "value": 4.548,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.548,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.548,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -628,11 +745,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -640,11 +760,14 @@
                             "sample document": {
                                 "sample identifier": "6",
                                 "location identifier": "A3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -658,24 +781,31 @@
                                             "value": 41.72,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 41.724,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 41.724,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -696,11 +826,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -708,11 +841,14 @@
                             "sample document": {
                                 "sample identifier": "6",
                                 "location identifier": "B3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -726,24 +862,31 @@
                                             "value": 50.12,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 50.116,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 50.116,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -764,11 +907,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -776,11 +922,14 @@
                             "sample document": {
                                 "sample identifier": "6",
                                 "location identifier": "C3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -794,24 +943,31 @@
                                             "value": 44.99,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 44.989,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 44.989,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -832,11 +988,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -844,11 +1003,14 @@
                             "sample document": {
                                 "sample identifier": "7",
                                 "location identifier": "D3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -862,24 +1024,31 @@
                                             "value": 62.52,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 62.522,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 62.522,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -900,11 +1069,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -912,11 +1084,14 @@
                             "sample document": {
                                 "sample identifier": "7",
                                 "location identifier": "E3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -930,24 +1105,31 @@
                                             "value": -5.338,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": -5.338,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": -5.338,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -968,11 +1150,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -980,11 +1165,14 @@
                             "sample document": {
                                 "sample identifier": "7",
                                 "location identifier": "F3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -998,24 +1186,31 @@
                                             "value": -8.199,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": -8.199,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": -8.199,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1036,11 +1231,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1048,11 +1246,14 @@
                             "sample document": {
                                 "sample identifier": "6",
                                 "location identifier": "A3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1066,24 +1267,31 @@
                                             "value": 4.919,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.919,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.919,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1104,11 +1312,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1116,11 +1327,14 @@
                             "sample document": {
                                 "sample identifier": "6",
                                 "location identifier": "B3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1134,24 +1348,31 @@
                                             "value": 4.871,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.871,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.871,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1172,11 +1393,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1184,11 +1408,14 @@
                             "sample document": {
                                 "sample identifier": "6",
                                 "location identifier": "C3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1202,24 +1429,31 @@
                                             "value": 4.829,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.829,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.829,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1240,11 +1474,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1252,11 +1489,14 @@
                             "sample document": {
                                 "sample identifier": "7",
                                 "location identifier": "D3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1270,24 +1510,31 @@
                                             "value": 5.333,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 5.333,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 5.333,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1308,11 +1555,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1320,11 +1570,14 @@
                             "sample document": {
                                 "sample identifier": "7",
                                 "location identifier": "E3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1338,24 +1591,31 @@
                                             "value": 5.3,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 5.3,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 5.3,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1376,11 +1636,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1388,11 +1651,14 @@
                             "sample document": {
                                 "sample identifier": "7",
                                 "location identifier": "F3",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1406,24 +1672,31 @@
                                             "value": 5.326,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 5.326,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 5.326,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1444,11 +1717,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1456,11 +1732,14 @@
                             "sample document": {
                                 "sample identifier": "9",
                                 "location identifier": "A4",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1474,24 +1753,31 @@
                                             "value": 6.969,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 6.969,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 6.969,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1512,11 +1798,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1524,11 +1813,14 @@
                             "sample document": {
                                 "sample identifier": "9",
                                 "location identifier": "B4",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1542,24 +1834,31 @@
                                             "value": 6.935,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 6.935,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 6.935,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1580,11 +1879,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1592,11 +1894,14 @@
                             "sample document": {
                                 "sample identifier": "9",
                                 "location identifier": "C4",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1610,24 +1915,31 @@
                                             "value": 6.972,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 6.972,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 6.972,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1648,11 +1960,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1660,11 +1975,14 @@
                             "sample document": {
                                 "sample identifier": "10",
                                 "location identifier": "D4",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1678,24 +1996,31 @@
                                             "value": 4.813,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.813,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.813,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1716,11 +2041,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1728,11 +2056,14 @@
                             "sample document": {
                                 "sample identifier": "10",
                                 "location identifier": "E4",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1746,24 +2077,31 @@
                                             "value": 4.795,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.795,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.795,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1784,11 +2122,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1796,11 +2137,14 @@
                             "sample document": {
                                 "sample identifier": "10",
                                 "location identifier": "F4",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1814,24 +2158,31 @@
                                             "value": 4.812,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.812,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.812,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1852,11 +2203,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1864,11 +2218,14 @@
                             "sample document": {
                                 "sample identifier": "12",
                                 "location identifier": "A5",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1882,24 +2239,31 @@
                                             "value": 4.199,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.199,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.199,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1920,11 +2284,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1932,11 +2299,14 @@
                             "sample document": {
                                 "sample identifier": "12",
                                 "location identifier": "B5",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1950,24 +2320,31 @@
                                             "value": 4.175,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.175,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.175,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1988,11 +2365,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2000,11 +2380,14 @@
                             "sample document": {
                                 "sample identifier": "12",
                                 "location identifier": "C5",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2018,24 +2401,31 @@
                                             "value": 4.163,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.163,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.163,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2056,11 +2446,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2068,11 +2461,14 @@
                             "sample document": {
                                 "sample identifier": "14",
                                 "location identifier": "D5",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2086,24 +2482,31 @@
                                             "value": 4.514,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.514,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.514,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2124,11 +2527,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2136,11 +2542,14 @@
                             "sample document": {
                                 "sample identifier": "14",
                                 "location identifier": "E5",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2154,24 +2563,31 @@
                                             "value": 4.528,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.528,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.528,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2192,11 +2608,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2204,11 +2623,14 @@
                             "sample document": {
                                 "sample identifier": "14",
                                 "location identifier": "F5",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2222,24 +2644,31 @@
                                             "value": 4.558,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.558,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.558,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2260,11 +2689,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2272,11 +2704,14 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "location identifier": "A6",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2290,24 +2725,31 @@
                                             "value": 4.572,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.572,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.572,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2328,11 +2770,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2340,11 +2785,14 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "location identifier": "B6",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2358,24 +2806,31 @@
                                             "value": 4.54,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.54,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.54,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2396,11 +2851,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2408,11 +2866,14 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "location identifier": "C6",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2426,24 +2887,31 @@
                                             "value": 4.546,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.546,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.546,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2464,11 +2932,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2476,11 +2947,14 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "location identifier": "D6",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2494,24 +2968,31 @@
                                             "value": 4.532,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.532,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.532,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2532,11 +3013,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2544,11 +3028,14 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "location identifier": "E6",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2562,24 +3049,31 @@
                                             "value": 4.542,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.542,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.542,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2600,11 +3094,14 @@
                                             "value": 280,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "Cursor Pos.": {
-                                                "value": 280.0,
-                                                "unit": "nm"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 280.0,
+                                                    "unit": "nm",
+                                                    "datum label": "Cursor Pos."
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2612,11 +3109,14 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "location identifier": "F6",
-                                "custom information document": {
-                                    "Mol. Wt. kda": {
-                                        "value": 1.0,
-                                        "unit": "kDa"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "unit": "kDa",
+                                            "datum label": "Mol. Wt. kda"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -2630,24 +3130,31 @@
                                             "value": 4.537,
                                             "unit": "mg/mL"
                                         },
-                                        "custom information document": {
-                                            "E1%": {
-                                                "value": 10.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ext. coeff x10e3": {
-                                                "value": 1.0,
-                                                "unit": "M-1cm-1"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "E1%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "M-1cm-1",
+                                                    "datum label": "ext. coeff x10e3"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "Cursor Abs.": {
-                                    "value": 4.537,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 4.537,
+                                        "unit": "mAU",
+                                        "datum label": "Cursor Abs."
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -2663,7 +3170,7 @@
             "file name": "Thermo_NanoDrop_8000_example02.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_8000_example02.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.106"
+            "ASM converter version": "0.1.110"
         },
         "calculated data aggregate document": {
             "calculated data document": [

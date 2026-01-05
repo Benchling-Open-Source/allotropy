@@ -44,11 +44,25 @@
                                             "value": 1.846,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "NH3B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "NH3B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": " 0.278 - 13.89 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -57,11 +71,25 @@
                                             "value": 2.45,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "GLN2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GLN2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.1 - 10.26 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -70,11 +98,25 @@
                                             "value": 0.02,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LAC2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LAC2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0444 - 15.55 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -83,11 +125,25 @@
                                             "value": 1.471103,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LDH2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LDH2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "20 - 1000 U/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -96,11 +152,25 @@
                                             "value": 4.6,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "TP2LB",
-                                            "detection kit": "Low",
-                                            "detection kit range": "0.3 - 6.0 g/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "TP2LB",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Low",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.3 - 6.0 g/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -173,11 +243,25 @@
                                             "value": 1.87,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "NH3B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "NH3B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": " 0.278 - 13.89 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -186,11 +270,25 @@
                                             "value": 2.4,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "GLN2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GLN2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.1 - 10.26 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -199,12 +297,29 @@
                                             "value": -0.0,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LAC2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "flag": "< 0.00",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LAC2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0444 - 15.55 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 0.00",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -213,12 +328,29 @@
                                             "value": -0.0,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LDH2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "flag": "< 20.00",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LDH2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "20 - 1000 U/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 20.00",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -227,12 +359,29 @@
                                             "value": -0.0,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "TP2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "4 - 120 g/L",
-                                            "flag": "< 4.0",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "TP2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "4 - 120 g/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 4.0",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -241,12 +390,29 @@
                                             "value": -0.0,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "TP2D",
-                                            "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "40 - 1200 g/L",
-                                            "flag": "< 40.0",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "TP2D",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "High with Pre - Dilution",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "40 - 1200 g/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 40.0",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -255,11 +421,25 @@
                                             "value": 4.7,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "TP2LB",
-                                            "detection kit": "Low",
-                                            "detection kit range": "0.3 - 6.0 g/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "TP2LB",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Low",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.3 - 6.0 g/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -328,11 +508,25 @@
                                             "value": 1.817,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "NH3B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "NH3B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": " 0.278 - 13.89 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -341,11 +535,25 @@
                                             "value": 2.43,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "GLN2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GLN2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.1 - 10.26 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -354,12 +562,29 @@
                                             "value": -0.0,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LAC2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "flag": "< 0.00",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LAC2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0444 - 15.55 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 0.00",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -368,12 +593,29 @@
                                             "value": -0.0,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LDH2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "flag": "< 20.00",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LDH2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "20 - 1000 U/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 20.00",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -382,12 +624,29 @@
                                             "value": -0.0,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "TP2D",
-                                            "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "40 - 1200 g/L",
-                                            "flag": "< 40.0",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "TP2D",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "High with Pre - Dilution",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "40 - 1200 g/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "< 40.0",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -396,11 +655,25 @@
                                             "value": 4.8,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "TP2LB",
-                                            "detection kit": "Low",
-                                            "detection kit range": "0.3 - 6.0 g/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "TP2LB",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Low",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.3 - 6.0 g/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -453,11 +726,25 @@
                                             "value": 3.788,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "NH3B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "NH3B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": " 0.278 - 13.89 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -466,11 +753,25 @@
                                             "value": 2.07,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "GLN2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GLN2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.1 - 10.26 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -479,12 +780,29 @@
                                             "value": 1.89,
                                             "unit": "g/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LAC2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "flag": "verification",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LAC2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0444 - 15.55 mmol/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "verification",
+                                                    "datum label": "flag"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -493,11 +811,25 @@
                                             "value": 5.591828,
                                             "unit": "mmol/L"
                                         },
-                                        "custom information document": {
-                                            "analyte code": "LDH2B",
-                                            "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "record type": "40"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LDH2B",
+                                                    "datum label": "analyte code"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "detection kit"
+                                                },
+                                                {
+                                                    "scalar string datum": "20 - 1000 U/L",
+                                                    "datum label": "detection kit range"
+                                                },
+                                                {
+                                                    "scalar string datum": "40",
+                                                    "datum label": "record type"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -515,7 +847,7 @@
             "file name": "roche_cedex_bioht_example01.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example01.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)"
         },

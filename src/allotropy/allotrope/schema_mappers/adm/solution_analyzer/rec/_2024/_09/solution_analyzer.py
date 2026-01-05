@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocument,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
@@ -190,18 +192,26 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            solution_analyzer_aggregate_document=add_custom_information_document(
+            solution_analyzer_aggregate_document=add_custom_information_aggregate_document(
+                None,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
                 SolutionAnalyzerAggregateDocument(
-                    device_system_document=add_custom_information_document(
+                    device_system_document=add_custom_information_aggregate_document(
+                        None,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
                         DeviceSystemDocument(
                             model_number=data.metadata.model_number,
                             equipment_serial_number=data.metadata.equipment_serial_number,
                             device_identifier=data.metadata.device_identifier,
                             product_manufacturer=data.metadata.product_manufacturer,
                         ),
-                        None,
                     ),
-                    data_system_document=add_custom_information_document(
+                    data_system_document=add_custom_information_aggregate_document(
+                        None,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
                         DataSystemDocument(
                             ASM_file_identifier=data.metadata.asm_file_identifier,
                             data_system_instance_identifier=data.metadata.data_system_instance_identifier,
@@ -212,7 +222,6 @@ class Mapper(SchemaMapper[Data, Model]):
                             ASM_converter_name=self.converter_name,
                             ASM_converter_version=ASM_CONVERTER_VERSION,
                         ),
-                        None,
                     ),
                     solution_analyzer_document=[
                         self._get_technique_document(measurement_group, data.metadata)
@@ -222,7 +231,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.calculated_data
                     ),
                 ),
-                None,
             ),
             field_asm_manifest=self.MANIFEST,
         )
@@ -232,7 +240,10 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> SolutionAnalyzerDocumentItem:
         return SolutionAnalyzerDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
+            measurement_aggregate_document=add_custom_information_aggregate_document(
+                None,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
                 MeasurementAggregateDocument(
                     data_processing_time=self.get_date_time(
                         measurement_group.data_processing_time
@@ -247,21 +258,26 @@ class Mapper(SchemaMapper[Data, Model]):
                         measurement_group.errors
                     ),
                 ),
-                None,
             ),
         )
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        return add_custom_information_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
             MeasurementDocument(
                 measurement_identifier=measurement.identifier,
                 measurement_time=self.get_date_time(measurement.measurement_time),
                 sample_document=self._get_sample_document(measurement),
                 device_control_aggregate_document=DeviceControlAggregateDocument(
                     device_control_document=[
-                        add_custom_information_document(
+                        add_custom_information_aggregate_document(
+                            measurement.device_control_custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
                             DeviceControlDocumentItem(
                                 device_type=metadata.device_type,
                                 detection_type=measurement.detection_type,
@@ -279,7 +295,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                     metadata.sample_volume_setting,
                                 ),
                             ),
-                            measurement.device_control_custom_info,
                         ),
                     ]
                 ),
@@ -320,17 +335,18 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
                 ),
             ),
-            measurement.custom_info,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return add_custom_information_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            None,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
                 description=measurement.description,
             ),
-            measurement.sample_custom_info,
         )
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
@@ -370,14 +386,22 @@ class Mapper(SchemaMapper[Data, Model]):
             msg = f"Invalid unit for analyte: {analyte.unit}, possible values are: g/L, mL/L, mmol/L"
             raise AllotropeConversionError(msg)
 
-        output = add_custom_information_document(output, analyte.custom_info or {})
+        output = add_custom_information_aggregate_document(
+            analyte.custom_info or {},
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            output,
+        )
 
         return output
 
     def _create_processed_data_document(
         self, measurement: Measurement
     ) -> ProcessedDataAggregateDocument | None:
-        processed_data_document = add_custom_information_document(
+        processed_data_document = add_custom_information_aggregate_document(
+            None,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
             ProcessedDataDocumentItem(
                 viability__cell_counter_=quantity_or_none(
                     TQuantityValuePercent, measurement.viability
@@ -415,7 +439,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None,
                 distribution_aggregate_document=DistributionAggregateDocument(
                     distribution_document=[
-                        add_custom_information_document(
+                        add_custom_information_aggregate_document(
+                            distribution.custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
                             DistributionDocumentItem(
                                 distribution_identifier=distribution.distribution_identifier,
                                 particle_size=TQuantityValueMicrometer(
@@ -434,7 +461,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                     value=distribution.differential_count
                                 ),
                             ),
-                            distribution.custom_info,
                         )
                         for distribution in measurement.distribution_documents
                     ]
@@ -442,7 +468,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement.distribution_documents
                 else None,
             ),
-            None,
         )
 
         if all(value is None for value in processed_data_document.__dict__.values()):
