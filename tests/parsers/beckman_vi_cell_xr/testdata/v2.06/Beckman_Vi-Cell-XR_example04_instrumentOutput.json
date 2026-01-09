@@ -11,9 +11,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -23,6 +31,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.3,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 18.9,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -37,13 +57,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -73,10 +113,6 @@
                                         "average total cell circularity": {
                                             "value": 0.872,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 18.9,
-                                            "Avg. bg intensity": 200.3
                                         }
                                     }
                                 ]
@@ -87,16 +123,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB001.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB001.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -110,9 +156,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -122,6 +176,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 201.6,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 18.7,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -136,13 +202,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -172,10 +258,6 @@
                                         "average total cell circularity": {
                                             "value": 0.866,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 18.7,
-                                            "Avg. bg intensity": 201.6
                                         }
                                     }
                                 ]
@@ -186,16 +268,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB002.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB002.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -209,9 +301,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -221,6 +321,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 202.7,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 26.1,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -235,13 +347,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -271,10 +403,6 @@
                                         "average total cell circularity": {
                                             "value": 0.868,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 26.1,
-                                            "Avg. bg intensity": 202.7
                                         }
                                     }
                                 ]
@@ -285,16 +413,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB003.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB003.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -308,9 +446,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -320,6 +466,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.4,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 19.4,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -334,13 +492,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -370,10 +548,6 @@
                                         "average total cell circularity": {
                                             "value": 0.877,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 19.4,
-                                            "Avg. bg intensity": 203.4
                                         }
                                     }
                                 ]
@@ -384,16 +558,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB004.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB004.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -407,9 +591,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -419,6 +611,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 206.8,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 29.4,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -433,13 +637,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -469,10 +693,6 @@
                                         "average total cell circularity": {
                                             "value": 0.861,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 29.4,
-                                            "Avg. bg intensity": 206.8
                                         }
                                     }
                                 ]
@@ -483,16 +703,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB005.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB005.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -506,9 +736,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -518,6 +756,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.3,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.3,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -532,13 +782,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -568,10 +838,6 @@
                                         "average total cell circularity": {
                                             "value": 0.871,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 30.3,
-                                            "Avg. bg intensity": 203.3
                                         }
                                     }
                                 ]
@@ -582,16 +848,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB006.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB006.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -605,9 +881,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -617,6 +901,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.3,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 26.5,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -631,13 +927,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -667,10 +983,6 @@
                                         "average total cell circularity": {
                                             "value": 0.865,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 26.5,
-                                            "Avg. bg intensity": 203.3
                                         }
                                     }
                                 ]
@@ -681,16 +993,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB007.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB007.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -704,9 +1026,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -716,6 +1046,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 201.8,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 19.3,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -730,13 +1072,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -766,10 +1128,6 @@
                                         "average total cell circularity": {
                                             "value": 0.871,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 19.3,
-                                            "Avg. bg intensity": 201.8
                                         }
                                     }
                                 ]
@@ -780,16 +1138,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB008.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB008.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -803,9 +1171,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -815,6 +1191,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.4,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 21.5,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -829,13 +1217,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -865,10 +1273,6 @@
                                         "average total cell circularity": {
                                             "value": 0.864,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 21.5,
-                                            "Avg. bg intensity": 203.4
                                         }
                                     }
                                 ]
@@ -879,16 +1283,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB009.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB009.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -902,9 +1316,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -914,6 +1336,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 204.0,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 21.8,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -928,13 +1362,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -964,10 +1418,6 @@
                                         "average total cell circularity": {
                                             "value": 0.866,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 21.8,
-                                            "Avg. bg intensity": 204.0
                                         }
                                     }
                                 ]
@@ -978,16 +1428,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB010.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB010.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1001,9 +1461,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1013,6 +1481,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.9,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 26.3,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1027,13 +1507,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1063,10 +1563,6 @@
                                         "average total cell circularity": {
                                             "value": 0.862,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 26.3,
-                                            "Avg. bg intensity": 203.9
                                         }
                                     }
                                 ]
@@ -1077,16 +1573,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB011.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB011.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1100,9 +1606,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1112,6 +1626,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.7,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 18.8,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1126,13 +1652,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1162,10 +1708,6 @@
                                         "average total cell circularity": {
                                             "value": 0.858,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 18.8,
-                                            "Avg. bg intensity": 203.7
                                         }
                                     }
                                 ]
@@ -1176,16 +1718,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB012.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB012.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1199,9 +1751,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1211,6 +1771,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.9,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 19.9,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1225,13 +1797,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1261,10 +1853,6 @@
                                         "average total cell circularity": {
                                             "value": 0.869,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 19.9,
-                                            "Avg. bg intensity": 203.9
                                         }
                                     }
                                 ]
@@ -1275,16 +1863,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB013.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB013.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1298,9 +1896,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1310,6 +1916,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 203.9,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 13.3,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1324,13 +1942,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1360,10 +1998,6 @@
                                         "average total cell circularity": {
                                             "value": 0.856,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 13.3,
-                                            "Avg. bg intensity": 203.9
                                         }
                                     }
                                 ]
@@ -1374,16 +2008,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB014.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB014.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1397,9 +2041,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1409,6 +2061,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 202.1,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 10.2,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1423,13 +2087,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1459,10 +2143,6 @@
                                         "average total cell circularity": {
                                             "value": 0.858,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 10.2,
-                                            "Avg. bg intensity": 202.1
                                         }
                                     }
                                 ]
@@ -1473,16 +2153,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB015.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB015.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1496,9 +2186,17 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Aspirate cycles"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.0,
+                                                    "datum label": "Trypan blue mixing cycles"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1508,6 +2206,18 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 202.6,
+                                                    "datum label": "Avg. bg intensity"
+                                                },
+                                                {
+                                                    "scalar double datum": 13.4,
+                                                    "datum label": "Avg. cells / image"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1522,13 +2232,33 @@
                                                 "value": 50.0,
                                                 "unit": "µm"
                                             },
-                                            "custom information document": {
-                                                "Sharpness": 100.0,
-                                                "Brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0,
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar double datum": 85.0,
+                                                        "datum label": "Brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "Medium",
+                                                        "datum label": "Decluster degree"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 0.0,
+                                                        "datum label": "Minimum circularity"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 100.0,
+                                                        "datum label": "Sharpness"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 75.0,
+                                                        "datum label": "V. cell spot brightness (%)"
+                                                    },
+                                                    {
+                                                        "scalar double datum": 5.0,
+                                                        "datum label": "Viable cell spot area (%)"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1558,10 +2288,6 @@
                                         "average total cell circularity": {
                                             "value": 0.861,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. cells / image": 13.4,
-                                            "Avg. bg intensity": 202.6
                                         }
                                     }
                                 ]
@@ -1572,16 +2298,26 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom information document": {
-                                            "Images": 50.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "datum label": "Images"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "CLB016.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "CLB016.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1593,7 +2329,7 @@
             "file name": "Beckman_Vi-Cell-XR_example04_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example04_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.112",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },
