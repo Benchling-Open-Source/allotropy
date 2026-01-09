@@ -261,16 +261,24 @@ class DataWell(Measurement):
             device_type=DEVICE_TYPE,
             detection_type=measurement_type_str,
             well_plate_identifier=well_plate_identifier,
-            absorbance=value
-            if measurement_type_str
-            == MEASUREMENT_TYPES[MeasurementType.ULTRAVIOLET_ABSORBANCE]
-            else None,
-            fluorescence=value
-            if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.FLUORESCENCE]
-            else None,
-            luminescence=value
-            if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.LUMINESCENCE]
-            else None,
+            absorbance=(
+                value
+                if measurement_type_str
+                == MEASUREMENT_TYPES[MeasurementType.ULTRAVIOLET_ABSORBANCE]
+                else None
+            ),
+            fluorescence=(
+                value
+                if measurement_type_str
+                == MEASUREMENT_TYPES[MeasurementType.FLUORESCENCE]
+                else None
+            ),
+            luminescence=(
+                value
+                if measurement_type_str
+                == MEASUREMENT_TYPES[MeasurementType.LUMINESCENCE]
+                else None
+            ),
             experimental_data_identifier=experimental_data_identifier,
             error_document=error_docs if error_docs else None,
             device_control_custom_info=device_control_custom_info,
@@ -365,9 +373,9 @@ class ThermoSkanItMeasurementGroups:
                         type_=type_,
                         well_plate_identifier=plate.plate_identifier,
                         error_documents=error_docs if error_docs else None,
-                        experimental_data_identifier=session_name.replace(".skax", "")
-                        if session_name
-                        else None,
+                        experimental_data_identifier=(
+                            session_name.replace(".skax", "") if session_name else None
+                        ),
                         device_control_custom_info=device_control_custom_info,
                     )
 

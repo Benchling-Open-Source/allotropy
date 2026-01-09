@@ -18,7 +18,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -58,11 +80,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -126,7 +150,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -158,7 +185,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -198,11 +247,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -268,7 +319,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -300,7 +354,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -340,11 +416,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -408,7 +486,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -440,7 +521,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -480,11 +583,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -548,7 +653,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -580,7 +688,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -620,11 +750,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -688,7 +820,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -720,7 +855,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -760,11 +917,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -828,7 +987,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -860,7 +1022,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -900,11 +1084,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -968,7 +1154,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1000,7 +1189,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -1040,11 +1251,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1108,7 +1321,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1140,7 +1356,29 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Background performed on": "10-13-2010",
+                                            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "10-13-2010",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration HRM MELTDOCTOR is expired": "No",
+                                            "Calibration RNaseP performed on": "10-15-2010",
+                                            "Calibration Uniformity performed on": "10-13-2010",
+                                            "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                                            "Calibration RNaseP is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "10-13-2010",
+                                            "Calibration ROI performed on": "10-13-2010",
+                                            "Calibration Pure Dye VIC performed on": "10-13-2010",
+                                            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010"
+                                        }
                                     }
                                 ]
                             },
@@ -1180,11 +1418,13 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1248,7 +1488,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Date Created": "2014-09-10 04:10:50 AM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1949,38 +2192,15 @@
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
             "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
-            "software version": "1.0"
+            "software version": "1.0",
+            "custom information document": {
+                "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds"
+            }
         },
         "device system document": {
             "device identifier": "N/A",
             "equipment serial number": "N/A",
             "model number": "QuantStudio(TM) 7 Flex System"
-        },
-        "custom information document": {
-            "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
-            "Calibration Uniformity performed on": "10-13-2010",
-            "Calibration ROI performed on": "10-13-2010",
-            "Signal Smoothing On": "true",
-            "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
-            "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
-            "Calibration Pure Dye FAM performed on": "10-13-2010",
-            "Date Created": "2014-09-10 04:10:50 AM EDT",
-            "Calibration Pure Dye VIC is expired": "No",
-            "Calibration Background performed on": "10-13-2010",
-            "Calibration Uniformity is expired": "No",
-            "Calibration RNaseP performed on": "10-15-2010",
-            "Calibration Pure Dye ROX performed on": "10-13-2010",
-            "Calibration ROI is expired": "No",
-            "Calibration Pure Dye SYBR performed on": "10-13-2010",
-            "Calibration Pure Dye MELTDOCTOR is expired": "No",
-            "Calibration Background is expired": "No",
-            "Calibration Pure Dye ROX is expired": "No",
-            "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
-            "Calibration Pure Dye VIC performed on": "10-13-2010",
-            "Calibration Pure Dye SYBR is expired": "No",
-            "Calibration Pure Dye FAM is expired": "No",
-            "Calibration HRM MELTDOCTOR is expired": "No",
-            "Calibration RNaseP is expired": "No"
         }
     }
 }

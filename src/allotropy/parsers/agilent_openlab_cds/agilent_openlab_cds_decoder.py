@@ -1,4 +1,5 @@
-""" Decodes a zipped .rslt folder file into intermediate json"""
+"""Decodes a zipped .rslt folder file into intermediate json"""
+
 import os
 from pathlib import Path
 import re
@@ -216,7 +217,7 @@ def extract_sqx_file(sqx_file: IO[bytes]) -> dict[str, Any]:
 
 
 def decode_acaml_data(
-    acaml_content: dict[str, Any]
+    acaml_content: dict[str, Any],
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     """
     structures the acaml file data

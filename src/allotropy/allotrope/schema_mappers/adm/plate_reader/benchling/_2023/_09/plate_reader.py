@@ -353,21 +353,23 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement.processed_data
             ),
-            custom_information_aggregate_document=CustomInformationAggregateDocument(
-                custom_information_document=[
-                    CustomInformationDocumentItem(
-                        datum_label=data_cube.label,
-                        data_cube=assert_not_none(
-                            get_data_cube(data_cube, TDatacube),
-                            f"Unable to create data cube with label: {data_cube.label}",
-                        ),
-                    )
-                    for data_cube in measurement.custom_data_cubes
-                    if data_cube
-                ]
-            )
-            if measurement.custom_data_cubes
-            else None,
+            custom_information_aggregate_document=(
+                CustomInformationAggregateDocument(
+                    custom_information_document=[
+                        CustomInformationDocumentItem(
+                            datum_label=data_cube.label,
+                            data_cube=assert_not_none(
+                                get_data_cube(data_cube, TDatacube),
+                                f"Unable to create data cube with label: {data_cube.label}",
+                            ),
+                        )
+                        for data_cube in measurement.custom_data_cubes
+                        if data_cube
+                    ]
+                )
+                if measurement.custom_data_cubes
+                else None
+            ),
         )
 
     def _get_ultraviolet_absorbance_measurement_document(
@@ -541,9 +543,11 @@ class Mapper(SchemaMapper[Data, Model]):
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
             batch_identifier=measurement.batch_identifier,
-            sample_role_type=measurement.sample_role_type.value
-            if measurement.sample_role_type
-            else None,
+            sample_role_type=(
+                measurement.sample_role_type.value
+                if measurement.sample_role_type
+                else None
+            ),
         )
         return add_custom_information_document(sample_doc, custom_info)
 
@@ -574,13 +578,15 @@ class Mapper(SchemaMapper[Data, Model]):
                             for image_feature in data.features
                         ]
                     ),
-                    data_processing_document={
-                        key: value
-                        for key, value in data.data_processing_document.items()
-                        if value is not None
-                    }
-                    if data.data_processing_document
-                    else None,
+                    data_processing_document=(
+                        {
+                            key: value
+                            for key, value in data.data_processing_document.items()
+                            if value is not None
+                        }
+                        if data.data_processing_document
+                        else None
+                    ),
                 )
             ]
         )

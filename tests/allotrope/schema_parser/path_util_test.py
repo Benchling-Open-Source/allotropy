@@ -111,11 +111,14 @@ def test_get_model_class_from_schema_windows_path() -> None:
     schema = {"$asm.manifest": MANIFEST}
     fake_module = mock.MagicMock()
     fake_module.Model = "fake_model"
-    with mock.patch(
-        "allotropy.allotrope.schema_parser.path_util.importlib.import_module"
-    ) as mock_import, mock.patch(
-        "allotropy.allotrope.schema_parser.path_util.get_model_path_from_schema_path"
-    ) as mock_get_model_file:
+    with (
+        mock.patch(
+            "allotropy.allotrope.schema_parser.path_util.importlib.import_module"
+        ) as mock_import,
+        mock.patch(
+            "allotropy.allotrope.schema_parser.path_util.get_model_path_from_schema_path"
+        ) as mock_get_model_file,
+    ):
         mock_import.return_value = fake_module
         mock_get_model_file.return_value = Path(
             "adm\\plate_reader\\benchling\\_2023\\_09\\plate_reader.py"

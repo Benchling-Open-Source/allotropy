@@ -17,7 +17,23 @@
                                         },
                                         "qPCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye ROX performed on": "09-12-2010",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "09-12-2010",
+                                            "Calibration ROI performed on": "09-12-2010",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "09-12-2010",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background performed on": "09-12-2010",
+                                            "Calibration Uniformity performed on": "09-12-2010",
+                                            "Calibration Pure Dye VIC performed on": "09-12-2010",
+                                            "Calibration Background is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -61,12 +77,14 @@
                                             },
                                             "custom information document": {
                                                 "omit": false,
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "CQCONF": "N",
                                                 "Method": "Auto",
+                                                "OUTLIERRG": "N",
+                                                "SNP Assay Name": "CYP19_2",
+                                                "CQCONF": "N",
                                                 "BADROX": "N",
-                                                "SNP Assay Name": "CYP19_2"
+                                                "NOISE": "N",
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 3, Step 2"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -133,18 +151,21 @@
                                         "genotyping qPCR result": "Negative Control (NC)",
                                         "custom information document": {
                                             "Allele2 Ct Threshold": 0.132,
-                                            "Pass.Ref": 846041.75,
                                             "Allele1 Cq Conf": 0.0,
+                                            "Allele2 Amp Score": 0.0,
                                             "Allele2 Delta Rn": 0.029,
-                                            "Allele2 Cq Conf": 0.0,
                                             "Quality(%)": 100.0,
+                                            "Pass.Ref": 846041.75,
                                             "Allele1 Amp Score": 0.0,
-                                            "Allele2 Amp Score": 0.0
+                                            "Allele2 Cq Conf": 0.0
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "CYP19_2-Allele 1"
+                            "target DNA description": "CYP19_2-Allele 1",
+                            "custom information document": {
+                                "Date Created": "2014-09-21 22:05:31 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -158,7 +179,23 @@
                                         },
                                         "qPCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Pure Dye ROX performed on": "09-12-2010",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Uniformity is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "09-12-2010",
+                                            "Calibration ROI performed on": "09-12-2010",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye FAM performed on": "09-12-2010",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background performed on": "09-12-2010",
+                                            "Calibration Uniformity performed on": "09-12-2010",
+                                            "Calibration Pure Dye VIC performed on": "09-12-2010",
+                                            "Calibration Background is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -173,10 +210,10 @@
                                     "well identifier": 1,
                                     "sample color": "RGB(238,238,0)",
                                     "SNP Assay Color": "RGB(176,23,31)",
-                                    "Allele1 Quencher": "NFQ-MGB",
-                                    "Allele2 Quencher": "NFQ-MGB",
                                     "Allele2 Color": "RGB(0,139,69)",
-                                    "Allele1 Color": "RGB(0,0,255)"
+                                    "Allele1 Quencher": "NFQ-MGB",
+                                    "Allele1 Color": "RGB(0,0,255)",
+                                    "Allele2 Quencher": "NFQ-MGB"
                                 }
                             },
                             "error aggregate document": {
@@ -207,10 +244,12 @@
                                             },
                                             "custom information document": {
                                                 "omit": false,
-                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 3, Step 2"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -278,7 +317,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "CYP19_2-Allele 2"
+                            "target DNA description": "CYP19_2-Allele 2",
+                            "custom information document": {
+                                "Date Created": "2014-09-21 22:05:31 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well SNP Genotyping Example",
@@ -303,32 +345,15 @@
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
             "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
-            "software version": "1.0"
+            "software version": "1.0",
+            "custom information document": {
+                "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well SNP Genotyping Example.eds"
+            }
         },
         "device system document": {
             "device identifier": "Sponge_Bob_32",
             "equipment serial number": "123456789",
             "model number": "QuantStudio(TM) 7 Flex System"
-        },
-        "custom information document": {
-            "Calibration Uniformity performed on": "09-12-2010",
-            "Calibration ROI performed on": "09-12-2010",
-            "Signal Smoothing On": "true",
-            "Stage/ Cycle where Analysis is performed": "Stage 3, Step 2",
-            "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well SNP Genotyping Example.eds",
-            "Calibration Pure Dye FAM performed on": "09-12-2010",
-            "Date Created": "2014-09-21 22:05:31 PM EDT",
-            "Calibration Pure Dye VIC is expired": "No",
-            "Calibration Background performed on": "09-12-2010",
-            "Calibration Uniformity is expired": "No",
-            "Calibration Pure Dye ROX performed on": "09-12-2010",
-            "Calibration ROI is expired": "No",
-            "Calibration Pure Dye SYBR performed on": "09-12-2010",
-            "Calibration Background is expired": "No",
-            "Calibration Pure Dye ROX is expired": "No",
-            "Calibration Pure Dye VIC performed on": "09-12-2010",
-            "Calibration Pure Dye SYBR is expired": "No",
-            "Calibration Pure Dye FAM is expired": "No"
         }
     }
 }

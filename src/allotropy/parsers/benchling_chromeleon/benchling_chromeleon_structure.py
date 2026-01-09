@@ -28,7 +28,7 @@ from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 
 def _create_device_documents(
-    device_information: dict[str, Any]
+    device_information: dict[str, Any],
 ) -> list[DeviceDocument] | None:
     return [
         DeviceDocument(
@@ -241,14 +241,18 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement] | None:
                 DeviceControlDoc(
                     device_type=constants.DEVICE_TYPE,
                     detection_type=signal.get("detection type"),
-                    detector_offset_setting=val
-                    if (val := signal.get("detector offset setting")) != "unknown"
-                    else None,
+                    detector_offset_setting=(
+                        val
+                        if (val := signal.get("detector offset setting")) != "unknown"
+                        else None
+                    ),
                     detector_wavelength_setting=signal.get("wavelength setting"),
-                    detector_sampling_rate_setting=val
-                    if (val := signal.get("detector sampling rate setting"))
-                    != "unknown"
-                    else None,
+                    detector_sampling_rate_setting=(
+                        val
+                        if (val := signal.get("detector sampling rate setting"))
+                        != "unknown"
+                        else None
+                    ),
                     detector_bandwidth_setting=signal.get("bandwidth setting"),
                     electronic_absorbance_reference_wavelength_setting=signal.get(
                         "reference wavelength setting"
@@ -281,7 +285,7 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement] | None:
 
 
 def create_measurement_groups(
-    injections: list[dict[str, Any]]
+    injections: list[dict[str, Any]],
 ) -> list[MeasurementGroup]:
     return [
         MeasurementGroup(measurements=measurements)

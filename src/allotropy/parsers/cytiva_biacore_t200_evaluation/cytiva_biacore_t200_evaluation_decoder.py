@@ -73,7 +73,7 @@ def _process_xmlbag(entry: dict[str, Any]) -> dict[str, Any]:
 
 
 def _decode_application_template(
-    app_data: dict[str, Any]
+    app_data: dict[str, Any],
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     application_template: dict[str, Any] = {}
     total_samples: list[dict[str, Any]] = []
@@ -200,12 +200,16 @@ def _parse_parameter_string(param_string: str, parameters_dict: dict[str, Any]) 
                                 # Only extract kinetic parameters we're interested in
                                 if param_name in ["ka", "kd", "rmax", "kon", "koff"]:
                                     parameters_dict[param_name] = {
-                                        "value": float(value)
-                                        if value and value != ""
-                                        else None,
-                                        "error": float(error)
-                                        if error and error != ""
-                                        else None,
+                                        "value": (
+                                            float(value)
+                                            if value and value != ""
+                                            else None
+                                        ),
+                                        "error": (
+                                            float(error)
+                                            if error and error != ""
+                                            else None
+                                        ),
                                         "units": _get_parameter_units(param_name),
                                     }
     except AllotropeParsingError:

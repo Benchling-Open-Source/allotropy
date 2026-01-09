@@ -17,7 +17,27 @@
                                         },
                                         "qPCR detection chemistry": "SYBR_GREEN",
                                         "reporter dye setting": "SYBR",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
+                                            "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
+                                            "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT",
+                                            "Calibration SYBR is expired": "Yes",
+                                            "Calibration ROX is expired": "Yes",
+                                            "Calibration TAMRA is expired": "Yes",
+                                            "Calibration SYBR performed on": "2016-08-25 03:13:07 AM EDT",
+                                            "Calibration Uniformity is expired": "Yes",
+                                            "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
+                                            "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
+                                            "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT",
+                                            "Calibration NED is expired": "Yes",
+                                            "Calibration Background is expired": "Yes",
+                                            "Calibration FAM is expired": "Yes",
+                                            "Calibration VIC is expired": "Yes",
+                                            "Calibration FAM performed on": "2016-08-25 02:42:38 AM EDT",
+                                            "Calibration ROI is expired": "Yes",
+                                            "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT"
+                                        }
                                     }
                                 ]
                             },
@@ -56,10 +76,12 @@
                                                 "reference dna description": "N/A",
                                                 "reference sample description": "N/A",
                                                 "omit": false,
-                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "BADROX": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -260,35 +282,15 @@
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
             "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
-            "software version": "1.0"
+            "software version": "1.0",
+            "custom information document": {
+                "Experiment File Name": "C:\\Users\\JoeNegri\\Downloads\\200224 U251p14 200217_14v9_SEMA3F_trial 1.eds"
+            }
         },
         "device system document": {
             "device identifier": "278880086",
             "equipment serial number": "278880086",
             "model number": "ViiA 7"
-        },
-        "custom information document": {
-            "Calibration VIC is expired": "Yes",
-            "Calibration FAM is expired": "Yes",
-            "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
-            "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT",
-            "Signal Smoothing On": "true",
-            "Calibration NED is expired": "Yes",
-            "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
-            "Experiment File Name": "C:\\Users\\JoeNegri\\Downloads\\200224 U251p14 200217_14v9_SEMA3F_trial 1.eds",
-            "Calibration TAMRA is expired": "Yes",
-            "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT",
-            "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
-            "Calibration Uniformity is expired": "Yes",
-            "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT",
-            "Calibration SYBR is expired": "Yes",
-            "Calibration ROI is expired": "Yes",
-            "Calibration Background is expired": "Yes",
-            "Calibration SYBR performed on": "2016-08-25 03:13:07 AM EDT",
-            "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
-            "Calibration FAM performed on": "2016-08-25 02:42:38 AM EDT",
-            "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
-            "Calibration ROX is expired": "Yes"
         }
     }
 }

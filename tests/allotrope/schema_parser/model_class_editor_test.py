@@ -542,7 +542,9 @@ class Item:
     )
 
 
-def test__modify_file_handles_merging_parent_classes_and_removing_unused_parents() -> None:
+def test__modify_file_handles_merging_parent_classes_and_removing_unused_parents() -> (
+    None
+):
     editor = ModelClassEditor(
         "fake_manifest",
         classes_to_skip=set(),

@@ -1,4 +1,4 @@
-""" Constants file for ThermoFisher Qubit 4 Adapter"""
+"""Constants file for ThermoFisher Qubit 4 Adapter"""
 
 # Instrument Software Details
 QUBIT_SOFTWARE = "Qubit 4 software"

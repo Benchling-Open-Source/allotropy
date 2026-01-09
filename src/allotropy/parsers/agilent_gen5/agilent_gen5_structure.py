@@ -793,9 +793,10 @@ def get_temperature(actual_temperature_lines: list[str] | None) -> float | None:
 
 def get_kinetic_measurements(
     kinetic_lines: list[str] | None,
-) -> tuple[
-    dict[str, list[float | None]], list[float], dict[str, list[ErrorDocument]]
-] | None:
+) -> (
+    tuple[dict[str, list[float | None]], list[float], dict[str, list[ErrorDocument]]]
+    | None
+):
     if not kinetic_lines:
         return None
     data = (
@@ -945,9 +946,11 @@ def create_results(
                     sample_identifiers.get(well_position),
                     actual_temperature,
                     error_documents=error_documents_per_well.get(well_position),
-                    concentration_value=concentration_values.get(well_position)
-                    if concentration_values
-                    else None,
+                    concentration_value=(
+                        concentration_values.get(well_position)
+                        if concentration_values
+                        else None
+                    ),
                 )
                 for measurement in measurements
             ],
@@ -1041,9 +1044,11 @@ def create_kinetic_results(
                     kinetic_measurements[well_position],
                     kinetic_elapsed_time,
                     error_documents_per_well.get(well_position, []),
-                    concentration_value=concentration_values.get(well_position)
-                    if concentration_values
-                    else None,
+                    concentration_value=(
+                        concentration_values.get(well_position)
+                        if concentration_values
+                        else None
+                    ),
                 )
             ],
         )
@@ -1361,22 +1366,28 @@ def create_spectrum_results(
             number_of_averages=read_data.number_of_averages,
             detector_carriage_speed=read_data.detector_carriage_speed,
             detector_distance_setting=read_data.detector_distance,
-            scan_position_setting=filter_set.scan_position_setting
-            if filter_set
-            else None,
+            scan_position_setting=(
+                filter_set.scan_position_setting if filter_set else None
+            ),
             detector_gain_setting=filter_set.gain if filter_set else None,
             error_document=error_documents_by_well.get(well_position),
             sample_custom_info={
-                "Conc/Dil": concentration_values.get(well_position)
-                if concentration_values
-                else None,
+                "Conc/Dil": (
+                    concentration_values.get(well_position)
+                    if concentration_values
+                    else None
+                ),
             },
-            analytical_method_identifier=header_data.protocol_file_path
-            if header_data.protocol_file_path
-            else None,
-            experimental_data_identifier=header_data.experiment_file_path
-            if header_data.experiment_file_path
-            else None,
+            analytical_method_identifier=(
+                header_data.protocol_file_path
+                if header_data.protocol_file_path
+                else None
+            ),
+            experimental_data_identifier=(
+                header_data.experiment_file_path
+                if header_data.experiment_file_path
+                else None
+            ),
         )
 
         measurements.append(measurement)
@@ -1544,12 +1555,14 @@ def _create_measurement(
             "Conc/Dil": concentration_value,
         },
         measurement_custom_info=header_data.additional_data,
-        analytical_method_identifier=header_data.protocol_file_path
-        if header_data.protocol_file_path
-        else None,
-        experimental_data_identifier=header_data.experiment_file_path
-        if header_data.experiment_file_path
-        else None,
+        analytical_method_identifier=(
+            header_data.protocol_file_path if header_data.protocol_file_path else None
+        ),
+        experimental_data_identifier=(
+            header_data.experiment_file_path
+            if header_data.experiment_file_path
+            else None
+        ),
     )
 
 

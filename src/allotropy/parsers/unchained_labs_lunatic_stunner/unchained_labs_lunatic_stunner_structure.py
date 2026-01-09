@@ -203,9 +203,11 @@ def _create_measurement(
         wavelength_identifier = wavelength_columns[0]
 
     return Measurement(
-        type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
-        if len(wavelength_columns) > 1
-        else MeasurementType.ULTRAVIOLET_ABSORBANCE,
+        type_=(
+            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+            if len(wavelength_columns) > 1
+            else MeasurementType.ULTRAVIOLET_ABSORBANCE
+        ),
         device_type=DEVICE_TYPE,
         detection_type=detection_type,
         identifier=measurement_identifier,
@@ -245,13 +247,15 @@ def _create_measurement(
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
         error_document=error_documents,
-        processed_data_document=ProcessedDataDocument(
-            identifier=random_uuid_str(),
-            concentration_factor=concentration_factor,
-            peak_list_custom_info=peak_data,
-        )
-        if concentration_factor is not None or peak_data
-        else None,
+        processed_data_document=(
+            ProcessedDataDocument(
+                identifier=random_uuid_str(),
+                concentration_factor=concentration_factor,
+                peak_list_custom_info=peak_data,
+            )
+            if concentration_factor is not None or peak_data
+            else None
+        ),
         calc_docs_custom_info={
             **calculated_data_values,
             **{
