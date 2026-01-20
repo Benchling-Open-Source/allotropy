@@ -283,6 +283,16 @@ class WellItem(Referenceable):
                             "Omit",
                             # Tm1 - duplicated in processed data document custom info
                             "Tm1",
+                            # Calculated data fields - duplicated in calculated data documents
+                            "Quantity",
+                            "Quantity Mean",
+                            "Quantity SD",
+                            "Ct Mean",
+                            "Ct SD",
+                            "Y-Intercept",
+                            "Slope",
+                            "Efficiency",
+                            "R(superscript 2)",
                         }
                     ),
                 },
@@ -337,6 +347,16 @@ class WellItem(Referenceable):
                         "Omit",
                         # Tm1 - duplicated in processed data document custom info
                         "Tm1",
+                        # Calculated data fields - duplicated in calculated data documents
+                        "Quantity",
+                        "Quantity Mean",
+                        "Quantity SD",
+                        "Ct Mean",
+                        "Ct SD",
+                        "Y-Intercept",
+                        "Slope",
+                        "Efficiency",
+                        "R(superscript 2)",
                     }
                 ),
             },

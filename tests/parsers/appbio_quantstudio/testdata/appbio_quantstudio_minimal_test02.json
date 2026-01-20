@@ -19,24 +19,24 @@
                                         "reporter dye setting": "SYBR",
                                         "passive reference dye setting": "ROX",
                                         "custom information document": {
-                                            "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
-                                            "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
-                                            "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT",
-                                            "Calibration SYBR is expired": "Yes",
-                                            "Calibration ROX is expired": "Yes",
+                                            "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
                                             "Calibration TAMRA is expired": "Yes",
                                             "Calibration SYBR performed on": "2016-08-25 03:13:07 AM EDT",
+                                            "Calibration ROX is expired": "Yes",
                                             "Calibration Uniformity is expired": "Yes",
-                                            "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
-                                            "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
-                                            "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT",
-                                            "Calibration NED is expired": "Yes",
-                                            "Calibration Background is expired": "Yes",
-                                            "Calibration FAM is expired": "Yes",
-                                            "Calibration VIC is expired": "Yes",
-                                            "Calibration FAM performed on": "2016-08-25 02:42:38 AM EDT",
                                             "Calibration ROI is expired": "Yes",
-                                            "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT"
+                                            "Calibration SYBR is expired": "Yes",
+                                            "Calibration NED is expired": "Yes",
+                                            "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT",
+                                            "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
+                                            "Calibration FAM is expired": "Yes",
+                                            "Calibration Background is expired": "Yes",
+                                            "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
+                                            "Calibration VIC is expired": "Yes",
+                                            "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT",
+                                            "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
+                                            "Calibration FAM performed on": "2016-08-25 02:42:38 AM EDT",
+                                            "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT"
                                         }
                                     }
                                 ]
@@ -77,11 +77,11 @@
                                                 "reference sample description": "N/A",
                                                 "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "NOISE": "N",
                                                 "BADROX": "N",
                                                 "CQCONF": "N",
-                                                "Signal Smoothing On": "true",
-                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
+                                                "NOISE": "N",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                                                "Signal Smoothing On": "true"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
