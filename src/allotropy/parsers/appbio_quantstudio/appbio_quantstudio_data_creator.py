@@ -104,7 +104,18 @@ def _create_processed_data(
         "Allele2 Automatic Ct Threshold",
         "Allele2 Automatic Baseline",
         "Allele2 Ct",
+        # Fields already in sample document custom info - skip to avoid duplication
+        "Sample Color",
+        "Target Color",
     }
+
+    # Also skip fields that match patterns already in sample document
+    # (Task.1, Target Name.1, etc. - these have suffixes in the data)
+    sample_doc_field_prefixes = {"Task", "Target Name", "Sample Color", "Target Color"}
+    for key in list(extra_data.keys()):
+        base_key = key.rsplit(".", 1)[0] if "." in key else key
+        if base_key in sample_doc_field_prefixes:
+            skip_fields.add(key)
 
     processed_data_custom_info = {
         k: v

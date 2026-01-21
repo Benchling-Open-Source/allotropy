@@ -293,6 +293,8 @@ class WellItem(Referenceable):
                             "Slope",
                             "Efficiency",
                             "R(superscript 2)",
+                            # Cq Conf - duplicated with "cq confidence" in calculated data
+                            "Cq Conf",
                         }
                     ),
                 },
@@ -357,6 +359,8 @@ class WellItem(Referenceable):
                         "Slope",
                         "Efficiency",
                         "R(superscript 2)",
+                        # Cq Conf - duplicated with "cq confidence" in calculated data
+                        "Cq Conf",
                     }
                 ),
             },
@@ -631,6 +635,9 @@ class Result:
                             "Reporter",
                             "Sample Name",
                             "Well Position",
+                            # Fields already in sample document custom info
+                            "Sample Color",
+                            "Target Color",
                         }
                     ),
                 },
