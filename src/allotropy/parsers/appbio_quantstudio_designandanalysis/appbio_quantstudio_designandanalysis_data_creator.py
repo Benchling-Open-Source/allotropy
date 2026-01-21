@@ -78,6 +78,7 @@ def create_metadata(
         device_type=constants.DEVICE_TYPE,
         experiment_type=experiment_type.value,
         measurement_method_identifier=header.measurement_method_identifier,
+        experiment_file_name=header.experiment_file_name,
         custom_info=header.extra_data,
     )
 
@@ -123,6 +124,10 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
             data_processing_custom_info[
                 "RQ Min/Max Confidence Level"
             ] = data.header.extra_data["RQ Min/Max Confidence Level"]
+
+    # Add header-level data processing fields (Stage/Cycle, Signal Smoothing)
+    if data.header.data_processing_extra_data:
+        data_processing_custom_info.update(data.header.data_processing_extra_data)
 
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
@@ -204,6 +209,14 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
             },
             **{"sample volume setting": header.sample_volume_setting},
         },
+        custom_info=(
+            header.measurement_extra_data if header.measurement_extra_data else None
+        ),
+        device_control_custom_info=(
+            header.device_control_extra_data
+            if header.device_control_extra_data
+            else None
+        ),
     )
 
 

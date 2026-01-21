@@ -335,12 +335,16 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
             "analysis temperature": quantity_or_none(
                 TQuantityValueDegreeCelsius, data.run_metadata.analysis_temperature
             ),
-            "prime": str(bool(data.run_metadata.prime)).lower()
-            if data.run_metadata.prime is not None
-            else None,
-            "normalize": str(bool(data.run_metadata.normalize)).lower()
-            if data.run_metadata.normalize is not None
-            else None,
+            "prime": (
+                str(bool(data.run_metadata.prime)).lower()
+                if data.run_metadata.prime is not None
+                else None
+            ),
+            "normalize": (
+                str(bool(data.run_metadata.normalize)).lower()
+                if data.run_metadata.normalize is not None
+                else None
+            ),
         }
 
         # Add any unread detection data to device_control_custom_info

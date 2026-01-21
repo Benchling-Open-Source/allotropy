@@ -163,11 +163,11 @@ class Mapper(SchemaMapper[Data, Model]):
         return SolutionAnalyzerDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
-                data_processing_time=self.get_date_time(
-                    measurement_group.data_processing_time
-                )
-                if measurement_group.data_processing_time
-                else None,
+                data_processing_time=(
+                    self.get_date_time(measurement_group.data_processing_time)
+                    if measurement_group.data_processing_time
+                    else None
+                ),
                 measurement_document=[
                     self._get_measurement_document_item(measurement, metadata)
                     for measurement in measurement_group.measurements
@@ -190,14 +190,16 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                 ]
             ),
-            analyte_aggregate_document=AnalyteAggregateDocument(
-                analyte_document=[
-                    self._create_analyte_document(analyte)
-                    for analyte in measurement.analytes
-                ]
-            )
-            if measurement.analytes
-            else None,
+            analyte_aggregate_document=(
+                AnalyteAggregateDocument(
+                    analyte_document=[
+                        self._create_analyte_document(analyte)
+                        for analyte in measurement.analytes
+                    ]
+                )
+                if measurement.analytes
+                else None
+            ),
             processed_data_aggregate_document=self._create_processed_data_document(
                 measurement
             ),
@@ -256,9 +258,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 return AnalyteDocument(
                     analyte_name=analyte.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
-                        value=analyte.value * 0.0167
-                        if analyte.value > 0
-                        else analyte.value
+                        value=(
+                            analyte.value * 0.0167
+                            if analyte.value > 0
+                            else analyte.value
+                        )
                     ),
                 )
             else:
@@ -290,15 +294,17 @@ class Mapper(SchemaMapper[Data, Model]):
             viable_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.viable_cell_count
             ),
-            data_processing_document=DataProcessingDocument(
-                cell_type_processing_method=measurement.cell_type_processing_method,
-                cell_density_dilution_factor=quantity_or_none(
-                    TQuantityValueUnitless, measurement.cell_density_dilution_factor
-                ),
-            )
-            if measurement.cell_type_processing_method
-            or measurement.cell_density_dilution_factor is not None
-            else None,
+            data_processing_document=(
+                DataProcessingDocument(
+                    cell_type_processing_method=measurement.cell_type_processing_method,
+                    cell_density_dilution_factor=quantity_or_none(
+                        TQuantityValueUnitless, measurement.cell_density_dilution_factor
+                    ),
+                )
+                if measurement.cell_type_processing_method
+                or measurement.cell_density_dilution_factor is not None
+                else None
+            ),
         )
 
         if all(value is None for value in processed_data_document.__dict__.values()):

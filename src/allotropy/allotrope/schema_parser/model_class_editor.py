@@ -49,7 +49,7 @@ def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
 
 
 def get_shared_schema_info(
-    schema: dict[str, Any]
+    schema: dict[str, Any],
 ) -> tuple[set[str], dict[str, set[str]]]:
     classes_to_skip = set()
     imports_to_add = defaultdict(set)
@@ -222,9 +222,11 @@ class DataclassField:
         return DataclassField(
             name=self.name,
             # If default values disagree - this must be a now optional field, make it None
-            default_value=self.default_value
-            if self.default_value == other.default_value
-            else "None",
+            default_value=(
+                self.default_value
+                if self.default_value == other.default_value
+                else "None"
+            ),
             # Note that combining required + not required == not required
             # When combining types, drop a general dict[str, Any] type. This happens when the schema
             # does not specify any fields, but that's a mistake.

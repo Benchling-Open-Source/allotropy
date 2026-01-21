@@ -1,4 +1,4 @@
-""" Constants file for Thermo Fisher Qubit Flex Parser"""
+"""Constants file for Thermo Fisher Qubit Flex Parser"""
 
 # Instrument constants
 SOFTWARE_NAME = "Qubit Flex software"

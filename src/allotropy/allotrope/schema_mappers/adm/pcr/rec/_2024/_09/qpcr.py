@@ -195,6 +195,8 @@ class Metadata:
     software_name: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
+    experiment_file_name: str | None = None
+    data_system_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -212,6 +214,13 @@ class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest"
 
     def map_model(self, data: Data) -> Model:
+        # Build data system custom info with experiment file name if present
+        data_system_custom_info = dict(data.metadata.data_system_custom_info or {})
+        if data.metadata.experiment_file_name:
+            data_system_custom_info[
+                "Experiment File Name"
+            ] = data.metadata.experiment_file_name
+
         return Model(
             field_asm_manifest=self.MANIFEST,
             qpcr_aggregate_document=add_custom_information_document(
@@ -222,15 +231,18 @@ class Mapper(SchemaMapper[Data, Model]):
                         equipment_serial_number=data.metadata.device_serial_number,
                         product_manufacturer=data.metadata.product_manufacturer,
                     ),
-                    data_system_document=DataSystemDocument(
-                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                        file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
-                        software_name=data.metadata.software_name,
-                        software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                    data_system_document=add_custom_information_document(
+                        DataSystemDocument(
+                            data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                            file_name=data.metadata.file_name,
+                            UNC_path=data.metadata.unc_path,
+                            software_name=data.metadata.software_name,
+                            software_version=data.metadata.software_version,
+                            ASM_converter_name=self.converter_name,
+                            ASM_converter_version=ASM_CONVERTER_VERSION,
+                            ASM_file_identifier=data.metadata.asm_file_identifier,
+                        ),
+                        data_system_custom_info if data_system_custom_info else None,
                     ),
                     qpcr_document=[
                         self._get_technique_document(measurement_group, data.metadata)
@@ -277,6 +289,18 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement: Measurement,
         metadata: Metadata,
     ) -> MeasurementDocumentItem:
+        device_control_doc = DeviceControlDocumentItem(
+            device_type=metadata.device_type,
+            measurement_method_identifier=metadata.measurement_method_identifier,
+            total_cycle_number_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.total_cycle_number_setting,
+            ),
+            qPCR_detection_chemistry=measurement.pcr_detection_chemistry,
+            reporter_dye_setting=measurement.reporter_dye_setting,
+            quencher_dye_setting=measurement.quencher_dye_setting,
+            passive_reference_dye_setting=measurement.passive_reference_dye_setting,
+        )
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.timestamp),
@@ -284,17 +308,8 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        measurement_method_identifier=metadata.measurement_method_identifier,
-                        total_cycle_number_setting=quantity_or_none(
-                            TQuantityValueUnitless,
-                            measurement.total_cycle_number_setting,
-                        ),
-                        qPCR_detection_chemistry=measurement.pcr_detection_chemistry,
-                        reporter_dye_setting=measurement.reporter_dye_setting,
-                        quencher_dye_setting=measurement.quencher_dye_setting,
-                        passive_reference_dye_setting=measurement.passive_reference_dye_setting,
+                    add_custom_information_document(
+                        device_control_doc, measurement.device_control_custom_info
                     )
                 ],
             ),

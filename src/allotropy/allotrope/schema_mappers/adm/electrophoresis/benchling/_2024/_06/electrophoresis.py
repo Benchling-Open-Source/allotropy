@@ -259,27 +259,29 @@ class Mapper(SchemaMapper[Data, Model]):
                             for peak in data.peaks
                         ]
                     ),
-                    data_region_aggregate_document=DataRegionAggregateDocument(
-                        data_region_document=[
-                            DataRegionDocumentItem(
-                                region_identifier=data_region.identifier,
-                                region_name=data_region.name,
-                                # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-                                region_start=quantity_or_none_from_unit(data_region.start_unit, data_region.start),  # type: ignore[arg-type]
-                                region_end=quantity_or_none_from_unit(data_region.end_unit, data_region.end),  # type: ignore[arg-type]
-                                region_area=TQuantityValueUnitless(
-                                    value=data_region.area
-                                ),
-                                relative_region_area=TQuantityValuePercent(
-                                    value=data_region.relative_area
-                                ),
-                                comment=data_region.comment,
-                            )
-                            for data_region in data.data_regions
-                        ]
-                    )
-                    if data.data_regions
-                    else None,
+                    data_region_aggregate_document=(
+                        DataRegionAggregateDocument(
+                            data_region_document=[
+                                DataRegionDocumentItem(
+                                    region_identifier=data_region.identifier,
+                                    region_name=data_region.name,
+                                    # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
+                                    region_start=quantity_or_none_from_unit(data_region.start_unit, data_region.start),  # type: ignore[arg-type]
+                                    region_end=quantity_or_none_from_unit(data_region.end_unit, data_region.end),  # type: ignore[arg-type]
+                                    region_area=TQuantityValueUnitless(
+                                        value=data_region.area
+                                    ),
+                                    relative_region_area=TQuantityValuePercent(
+                                        value=data_region.relative_area
+                                    ),
+                                    comment=data_region.comment,
+                                )
+                                for data_region in data.data_regions
+                            ]
+                        )
+                        if data.data_regions
+                        else None
+                    ),
                 )
             ]
         )

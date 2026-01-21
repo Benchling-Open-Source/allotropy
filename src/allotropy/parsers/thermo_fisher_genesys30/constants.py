@@ -1,4 +1,4 @@
-""" Constants file for ThermoFisher Genesys 30 Adapter"""
+"""Constants file for ThermoFisher Genesys 30 Adapter"""
 
 # Instrument software details
 GENESYS_SOFTWARE = "Genesys 30 instrument software"

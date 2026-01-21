@@ -148,7 +148,7 @@ def _extract_general_custom_keywords(
 
 
 def _extract_device_control_keywords_from_map(
-    mapping: dict[str, str]
+    mapping: dict[str, str],
 ) -> dict[str, str]:
     """Filter device control keywords using a pre-built mapping."""
     return {
@@ -157,7 +157,7 @@ def _extract_device_control_keywords_from_map(
 
 
 def _extract_general_custom_keywords_from_map(
-    mapping: dict[str, str]
+    mapping: dict[str, str],
 ) -> dict[str, str]:
     """Filter general custom keywords using a pre-built mapping."""
     result: dict[str, str] = {}
@@ -629,9 +629,11 @@ def _create_compensation_matrix_groups(
                 CompensationMatrix(
                     dimension_identifier=matrix_dim_id,
                     compensation_value=try_float_or_none(value_str),
-                    custom_info=filtered_matrix_row_unread
-                    if filtered_matrix_row_unread
-                    else None,
+                    custom_info=(
+                        filtered_matrix_row_unread
+                        if filtered_matrix_row_unread
+                        else None
+                    ),
                 )
             )
 
@@ -643,9 +645,9 @@ def _create_compensation_matrix_groups(
             CompensationMatrixGroup(
                 dimension_identifier=dimension_identifier,
                 compensation_matrices=compensation_matrices,
-                custom_info=filtered_spillover_unread
-                if filtered_spillover_unread
-                else None,
+                custom_info=(
+                    filtered_spillover_unread if filtered_spillover_unread else None
+                ),
             )
         )
 
@@ -1239,18 +1241,22 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                     processed_data_identifier=random_uuid_str(),
                     populations=_process_sample(sample),
                     data_regions=_create_data_regions(sample),
-                    custom_info=measurement_custom_info
-                    if measurement_custom_info
-                    else None,
-                    sample_custom_info=sample_custom_info
-                    if sample_custom_info
-                    else None,
-                    data_processing_custom_info=data_processing_custom_info
-                    if data_processing_custom_info
-                    else None,
-                    device_control_custom_info=device_control_custom_info
-                    if device_control_custom_info
-                    else None,
+                    custom_info=(
+                        measurement_custom_info if measurement_custom_info else None
+                    ),
+                    sample_custom_info=(
+                        sample_custom_info if sample_custom_info else None
+                    ),
+                    data_processing_custom_info=(
+                        data_processing_custom_info
+                        if data_processing_custom_info
+                        else None
+                    ),
+                    device_control_custom_info=(
+                        device_control_custom_info
+                        if device_control_custom_info
+                        else None
+                    ),
                 )
             ],
         )

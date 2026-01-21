@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import re
 from typing import Any, TypeVar
 
@@ -47,6 +47,53 @@ def get_well_volume(block_type: str) -> float:
     return NEGATIVE_ZERO
 
 
+def _categorize_extra_data(
+    extra_data: dict[str, Any],
+) -> tuple[
+    str | None,  # experiment_file_name
+    dict[str, Any],  # data_processing_extra_data
+    dict[str, Any],  # measurement_extra_data
+    dict[str, Any],  # device_control_extra_data
+    dict[str, Any],  # other_extra_data
+]:
+    """Categorize extra data fields into appropriate document locations."""
+    experiment_file_name = extra_data.pop("Experiment File Name", None)
+
+    # Fields for Data Processing Document custom info
+    data_processing_keys = {
+        "Stage/ Cycle where Analysis is performed",
+        "Stage/ Cycle where Ct Analysis is performed",
+        "Signal Smoothing On",
+    }
+
+    # Fields for Measurement Document custom info
+    measurement_keys = {"Date Created"}
+
+    # Fields for Device Control Document custom info (Calibration fields)
+    device_control_extra_data: dict[str, Any] = {}
+    data_processing_extra_data: dict[str, Any] = {}
+    measurement_extra_data: dict[str, Any] = {}
+    other_extra_data: dict[str, Any] = {}
+
+    for key, value in extra_data.items():
+        if key in data_processing_keys:
+            data_processing_extra_data[key] = value
+        elif key in measurement_keys:
+            measurement_extra_data[key] = value
+        elif key.startswith("Calibration "):
+            device_control_extra_data[key] = value
+        else:
+            other_extra_data[key] = value
+
+    return (
+        experiment_file_name,
+        data_processing_extra_data,
+        measurement_extra_data,
+        device_control_extra_data,
+        other_extra_data,
+    )
+
+
 @dataclass(frozen=True)
 class Header:
     measurement_time: str
@@ -62,6 +109,11 @@ class Header:
     analyst: str | None
     experimental_data_identifier: str
     well_volume: float
+    experiment_file_name: str | None = None
+    data_processing_extra_data: dict[str, Any] = field(default_factory=dict)
+    measurement_extra_data: dict[str, Any] = field(default_factory=dict)
+    device_control_extra_data: dict[str, Any] = field(default_factory=dict)
+    extra_data: dict[str, Any] = field(default_factory=dict)
 
     @staticmethod
     def create(data: SeriesData) -> Header:
@@ -81,27 +133,53 @@ class Header:
             if plate_well_count_search:
                 plate_well_count = int(plate_well_count_search.group())
 
+        # Read all fields first, then get unread data
+        measurement_time = data[str, "Experiment Run End Time"]
+        experiment_type = assert_not_none(
+            experiments_type_options.get(
+                data[str, "Experiment Type"].strip(),
+            ),
+            msg="Unable to find valid experiment type",
+        )
+        device_identifier = data.get(str, "Instrument Name", NOT_APPLICABLE)
+        model_number = data[str, "Instrument Type"]
+        device_serial_number = data.get(str, "Instrument Serial Number", NOT_APPLICABLE)
+        measurement_method_identifier = data[str, "Quantification Cycle Method"]
+        pcr_detection_chemistry = data.get(str, "Chemistry")
+        passive_reference_dye_setting = data.get(str, "Passive Reference")
+        barcode = data.get(str, "Experiment Barcode")
+        analyst = data.get(str, "Experiment User Name")
+        experimental_data_identifier = data[str, "Experiment Name"]
+
+        # Now get unread fields and categorize them
+        raw_extra_data = data.get_unread()
+        (
+            experiment_file_name,
+            data_processing_extra_data,
+            measurement_extra_data,
+            device_control_extra_data,
+            other_extra_data,
+        ) = _categorize_extra_data(raw_extra_data)
+
         return Header(
-            measurement_time=data[str, "Experiment Run End Time"],
+            measurement_time=measurement_time,
             plate_well_count=plate_well_count,
-            experiment_type=assert_not_none(
-                experiments_type_options.get(
-                    data[str, "Experiment Type"].strip(),
-                ),
-                msg="Unable to find valid experiment type",
-            ),
-            device_identifier=(data.get(str, "Instrument Name", NOT_APPLICABLE)),
-            model_number=data[str, "Instrument Type"],
-            device_serial_number=data.get(
-                str, "Instrument Serial Number", NOT_APPLICABLE
-            ),
-            measurement_method_identifier=data[str, "Quantification Cycle Method"],
-            pcr_detection_chemistry=data.get(str, "Chemistry"),
-            passive_reference_dye_setting=data.get(str, "Passive Reference"),
-            barcode=data.get(str, "Experiment Barcode"),
-            analyst=data.get(str, "Experiment User Name"),
-            experimental_data_identifier=data[str, "Experiment Name"],
+            experiment_type=experiment_type,
+            device_identifier=device_identifier,
+            model_number=model_number,
+            device_serial_number=device_serial_number,
+            measurement_method_identifier=measurement_method_identifier,
+            pcr_detection_chemistry=pcr_detection_chemistry,
+            passive_reference_dye_setting=passive_reference_dye_setting,
+            barcode=barcode,
+            analyst=analyst,
+            experimental_data_identifier=experimental_data_identifier,
             well_volume=get_well_volume(block_type) if block_type else NEGATIVE_ZERO,
+            experiment_file_name=experiment_file_name,
+            data_processing_extra_data=data_processing_extra_data,
+            measurement_extra_data=measurement_extra_data,
+            device_control_extra_data=device_control_extra_data,
+            extra_data=other_extra_data,
         )
 
 
@@ -181,7 +259,44 @@ class WellItem(Referenceable):
                     "sample color": data.get(str, "Sample Color"),
                     "biogroup color": data.get(str, "Biogroup Color"),
                     "target color": data.get(str, "Target Color"),
-                    **data.get_unread(),
+                    **data.get_unread(
+                        skip={
+                            # Baseline fields - duplicated in data processing document
+                            "Baseline End",
+                            "Baseline Start",
+                            "Automatic Baseline",
+                            # Ct/Crt/Cq threshold variations - duplicated in data processing document
+                            "Ct Threshold",
+                            "Crt Threshold",
+                            "Cq Threshold",
+                            "Automatic Ct Threshold",
+                            "Automatic Crt Threshold",
+                            "Automatic Cq Threshold",
+                            # Ct/Crt/Cq result values - duplicated in processed data document
+                            "CT",
+                            "Ct",
+                            "CRT",
+                            "Crt",
+                            "CQ",
+                            "Cq",
+                            # Omit - duplicated in data processing document custom info
+                            "Omit",
+                            # Tm1 - duplicated in processed data document custom info
+                            "Tm1",
+                            # Calculated data fields - duplicated in calculated data documents
+                            "Quantity",
+                            "Quantity Mean",
+                            "Quantity SD",
+                            "Ct Mean",
+                            "Ct SD",
+                            "Y-Intercept",
+                            "Slope",
+                            "Efficiency",
+                            "R(superscript 2)",
+                            # Cq Conf - duplicated with "cq confidence" in calculated data
+                            "Cq Conf",
+                        }
+                    ),
                 },
             ),
         )
@@ -210,7 +325,44 @@ class WellItem(Referenceable):
                 "sample color": data.get(str, "Sample Color"),
                 "biogroup color": data.get(str, "Biogroup Color"),
                 "target color": data.get(str, "Target Color"),
-                **data.get_unread(),
+                **data.get_unread(
+                    skip={
+                        # Baseline fields - duplicated in data processing document
+                        "Baseline End",
+                        "Baseline Start",
+                        "Automatic Baseline",
+                        # Ct/Crt/Cq threshold variations - duplicated in data processing document
+                        "Ct Threshold",
+                        "Crt Threshold",
+                        "Cq Threshold",
+                        "Automatic Ct Threshold",
+                        "Automatic Crt Threshold",
+                        "Automatic Cq Threshold",
+                        # Ct/Crt/Cq result values - duplicated in processed data document
+                        "CT",
+                        "Ct",
+                        "CRT",
+                        "Crt",
+                        "CQ",
+                        "Cq",
+                        # Omit - duplicated in data processing document custom info
+                        "Omit",
+                        # Tm1 - duplicated in processed data document custom info
+                        "Tm1",
+                        # Calculated data fields - duplicated in calculated data documents
+                        "Quantity",
+                        "Quantity Mean",
+                        "Quantity SD",
+                        "Ct Mean",
+                        "Ct SD",
+                        "Y-Intercept",
+                        "Slope",
+                        "Efficiency",
+                        "R(superscript 2)",
+                        # Cq Conf - duplicated with "cq confidence" in calculated data
+                        "Cq Conf",
+                    }
+                ),
             },
         )
 
@@ -483,6 +635,9 @@ class Result:
                             "Reporter",
                             "Sample Name",
                             "Well Position",
+                            # Fields already in sample document custom info
+                            "Sample Color",
+                            "Target Color",
                         }
                     ),
                 },

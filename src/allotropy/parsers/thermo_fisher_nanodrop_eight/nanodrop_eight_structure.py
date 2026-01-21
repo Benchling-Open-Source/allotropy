@@ -115,18 +115,20 @@ class SpectroscopyRow:
                     detector_wavelength_setting=wavelength,
                     sample_identifier=sample_id,
                     location_identifier=location_id,
-                    processed_data=ProcessedData(
-                        features=[
-                            ProcessedDataFeature(
-                                result=mass_concentration,
-                                unit=unit,
-                            )
-                        ],
-                    )
-                    if mass_concentration_capture_wavelength == wavelength
-                    and mass_concentration
-                    and unit
-                    else None,
+                    processed_data=(
+                        ProcessedData(
+                            features=[
+                                ProcessedDataFeature(
+                                    result=mass_concentration,
+                                    unit=unit,
+                                )
+                            ],
+                        )
+                        if mass_concentration_capture_wavelength == wavelength
+                        and mass_concentration
+                        and unit
+                        else None
+                    ),
                     sample_custom_info={
                         "Sample Name": data.get(
                             str, "sample name", validate=SeriesData.NOT_NAN

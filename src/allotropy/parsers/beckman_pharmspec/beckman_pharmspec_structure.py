@@ -172,20 +172,28 @@ def create_measurement_groups(
                         "model number": header.custom_info.pop("Sensor Model", None),
                     },
                     sample_custom_info={
-                        "batch identifier": header.custom_info.pop("Batch-Nr", None)
-                        if header.custom_info.get("Batch-Nr", None) != "-"
-                        else None,
+                        "batch identifier": (
+                            header.custom_info.pop("Batch-Nr", None)
+                            if header.custom_info.get("Batch-Nr", None) != "-"
+                            else None
+                        ),
                     },
                     custom_info={
-                        "Ro-Nr": header.custom_info.pop("Ro-Nr", None)
-                        if header.custom_info.get("Ro-Nr", None) != "-"
-                        else None,
-                        "observation 1": header.custom_info.pop("Bemerkungen 1", None)
-                        if header.custom_info.get("Bemerkungen 1", None) != "-"
-                        else None,
-                        "observation 2": header.custom_info.pop("Bemerkungen 2", None)
-                        if header.custom_info.get("Bemerkungen 2", None) != "-"
-                        else None,
+                        "Ro-Nr": (
+                            header.custom_info.pop("Ro-Nr", None)
+                            if header.custom_info.get("Ro-Nr", None) != "-"
+                            else None
+                        ),
+                        "observation 1": (
+                            header.custom_info.pop("Bemerkungen 1", None)
+                            if header.custom_info.get("Bemerkungen 1", None) != "-"
+                            else None
+                        ),
+                        "observation 2": (
+                            header.custom_info.pop("Bemerkungen 2", None)
+                            if header.custom_info.get("Bemerkungen 2", None) != "-"
+                            else None
+                        ),
                     },
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]

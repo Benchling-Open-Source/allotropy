@@ -261,11 +261,11 @@ class Mapper(SchemaMapper[Data, Model]):
             analyst=measurement_group.analyst,
             measurement_aggregate_document=add_custom_information_document(
                 MeasurementAggregateDocument(
-                    data_processing_time=self.get_date_time(
-                        measurement_group.data_processing_time
-                    )
-                    if measurement_group.data_processing_time
-                    else None,
+                    data_processing_time=(
+                        self.get_date_time(measurement_group.data_processing_time)
+                        if measurement_group.data_processing_time
+                        else None
+                    ),
                     measurement_document=[
                         self._get_measurement_document_item(measurement, metadata)
                         for measurement in measurement_group.measurements
@@ -310,14 +310,16 @@ class Mapper(SchemaMapper[Data, Model]):
                         ),
                     ]
                 ),
-                analyte_aggregate_document=AnalyteAggregateDocument(
-                    analyte_document=[
-                        self._create_analyte_document(analyte)
-                        for analyte in measurement.analytes
-                    ]
-                )
-                if measurement.analytes
-                else None,
+                analyte_aggregate_document=(
+                    AnalyteAggregateDocument(
+                        analyte_document=[
+                            self._create_analyte_document(analyte)
+                            for analyte in measurement.analytes
+                        ]
+                    )
+                    if measurement.analytes
+                    else None
+                ),
                 processed_data_aggregate_document=self._create_processed_data_document(
                     measurement
                 ),
@@ -387,9 +389,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 return AnalyteDocument(
                     analyte_name=analyte.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
-                        value=analyte.value * 0.0167
-                        if analyte.value > 0
-                        else analyte.value
+                        value=(
+                            analyte.value * 0.0167
+                            if analyte.value > 0
+                            else analyte.value
+                        )
                     ),
                 )
             else:
@@ -432,45 +436,49 @@ class Mapper(SchemaMapper[Data, Model]):
                 viable_cell_count=quantity_or_none(
                     TQuantityValueCell, measurement.viable_cell_count
                 ),
-                data_processing_document=DataProcessingDocument(
-                    cell_type_processing_method=measurement.data_processing.cell_type_processing_method,
-                    cell_density_dilution_factor=quantity_or_none(
-                        TQuantityValueUnitless,
-                        measurement.data_processing.cell_density_dilution_factor,
-                    ),
-                    dilution_factor_setting=quantity_or_none(
-                        TQuantityValueUnitless,
-                        measurement.data_processing.dilution_factor_setting,
-                    ),
-                    data_processing_omission_setting=measurement.data_processing.data_processing_omission_setting,
-                )
-                if measurement.data_processing
-                else None,
-                distribution_aggregate_document=DistributionAggregateDocument(
-                    distribution_document=[
-                        DistributionDocumentItem(
-                            distribution_identifier=distribution.distribution_identifier,
-                            particle_size=TQuantityValueMicrometer(
-                                value=distribution.particle_size
-                            ),
-                            cumulative_count=TQuantityValueUnitless(
-                                value=distribution.cumulative_count
-                            ),
-                            cumulative_particle_density=TQuantityValueCountsPerMilliliter(
-                                value=distribution.cumulative_particle_density
-                            ),
-                            differential_particle_density=TQuantityValueCountsPerMilliliter(
-                                value=distribution.differential_particle_density
-                            ),
-                            differential_count=TQuantityValueUnitless(
-                                value=distribution.differential_count
-                            ),
-                        )
-                        for distribution in measurement.distribution_documents
-                    ]
-                )
-                if measurement.distribution_documents
-                else None,
+                data_processing_document=(
+                    DataProcessingDocument(
+                        cell_type_processing_method=measurement.data_processing.cell_type_processing_method,
+                        cell_density_dilution_factor=quantity_or_none(
+                            TQuantityValueUnitless,
+                            measurement.data_processing.cell_density_dilution_factor,
+                        ),
+                        dilution_factor_setting=quantity_or_none(
+                            TQuantityValueUnitless,
+                            measurement.data_processing.dilution_factor_setting,
+                        ),
+                        data_processing_omission_setting=measurement.data_processing.data_processing_omission_setting,
+                    )
+                    if measurement.data_processing
+                    else None
+                ),
+                distribution_aggregate_document=(
+                    DistributionAggregateDocument(
+                        distribution_document=[
+                            DistributionDocumentItem(
+                                distribution_identifier=distribution.distribution_identifier,
+                                particle_size=TQuantityValueMicrometer(
+                                    value=distribution.particle_size
+                                ),
+                                cumulative_count=TQuantityValueUnitless(
+                                    value=distribution.cumulative_count
+                                ),
+                                cumulative_particle_density=TQuantityValueCountsPerMilliliter(
+                                    value=distribution.cumulative_particle_density
+                                ),
+                                differential_particle_density=TQuantityValueCountsPerMilliliter(
+                                    value=distribution.differential_particle_density
+                                ),
+                                differential_count=TQuantityValueUnitless(
+                                    value=distribution.differential_count
+                                ),
+                            )
+                            for distribution in measurement.distribution_documents
+                        ]
+                    )
+                    if measurement.distribution_documents
+                    else None
+                ),
             ),
             None,
         )

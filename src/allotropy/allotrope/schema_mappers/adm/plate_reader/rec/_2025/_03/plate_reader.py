@@ -391,39 +391,45 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        processed_data_identifier=measurement.processed_data_document.identifier,
-                        data_processing_document=(
-                            {
-                                "concentration factor": quantity_or_none(
-                                    TQuantityValueNanogramPerMicroliter,
-                                    measurement.processed_data_document.concentration_factor,
+            processed_data_aggregate_document=(
+                ProcessedDataAggregateDocument(
+                    processed_data_document=[
+                        ProcessedDataDocumentItem(
+                            processed_data_identifier=measurement.processed_data_document.identifier,
+                            data_processing_document=(
+                                {
+                                    "concentration factor": quantity_or_none(
+                                        TQuantityValueNanogramPerMicroliter,
+                                        measurement.processed_data_document.concentration_factor,
+                                    )
+                                }
+                                if measurement.processed_data_document.concentration_factor
+                                is not None
+                                else None
+                            ),
+                            peak_list=(
+                                PeakList(
+                                    peak=[
+                                        add_custom_information_document(
+                                            PeakItem(),
+                                            self._process_peak_custom_info(
+                                                peak_custom_info
+                                            ),
+                                        )
+                                        for peak_custom_info in (
+                                            measurement.processed_data_document.peak_list_custom_info
+                                        )
+                                    ]
                                 )
-                            }
-                            if measurement.processed_data_document.concentration_factor
-                            is not None
-                            else None
-                        ),
-                        peak_list=PeakList(
-                            peak=[
-                                add_custom_information_document(
-                                    PeakItem(),
-                                    self._process_peak_custom_info(peak_custom_info),
-                                )
-                                for peak_custom_info in (
-                                    measurement.processed_data_document.peak_list_custom_info
-                                )
-                            ]
+                                if measurement.processed_data_document.peak_list_custom_info
+                                else None
+                            ),
                         )
-                        if measurement.processed_data_document.peak_list_custom_info
-                        else None,
-                    )
-                ]
-            )
-            if measurement.processed_data_document
-            else None,
+                    ]
+                )
+                if measurement.processed_data_document
+                else None
+            ),
         )
         return add_custom_information_document(
             measurement_doc, measurement.measurement_custom_info

@@ -343,9 +343,11 @@ class Mapper(SchemaMapper[Data, Model]):
         return add_custom_information_document(
             MeasurementDocument(
                 measurement_identifier=measurement.measurement_identifier,
-                measurement_time=self.get_date_time(measurement.measurement_time)
-                if measurement.measurement_time is not None
-                else None,
+                measurement_time=(
+                    self.get_date_time(measurement.measurement_time)
+                    if measurement.measurement_time is not None
+                    else None
+                ),
                 chromatography_column_document=self._get_chromatography_column_document(
                     measurement
                 ),

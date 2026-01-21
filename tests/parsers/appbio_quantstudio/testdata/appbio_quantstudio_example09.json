@@ -18,7 +18,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -57,11 +83,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -125,7 +153,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -140,7 +171,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -179,11 +236,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -252,7 +311,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Rhesus"
+                            "target DNA description": "TJP-1 Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -284,7 +346,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -323,11 +411,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -391,7 +481,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -406,7 +499,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -445,11 +564,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -516,7 +637,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Rhesus"
+                            "target DNA description": "TJP-1 Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -548,7 +672,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -587,11 +737,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -655,7 +807,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -670,7 +825,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -709,11 +890,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -780,7 +963,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Rhesus"
+                            "target DNA description": "TJP-1 Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -812,7 +998,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -851,11 +1063,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -919,7 +1133,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -934,7 +1151,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -973,11 +1216,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1044,7 +1289,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Human"
+                            "target DNA description": "TJP-1 Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1076,7 +1324,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1115,11 +1389,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1186,7 +1462,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -1201,7 +1480,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1240,11 +1545,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1311,7 +1618,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Human"
+                            "target DNA description": "TJP-1 Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1343,7 +1653,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1382,11 +1718,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1452,7 +1790,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -1467,7 +1808,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1506,11 +1873,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1577,7 +1946,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Human"
+                            "target DNA description": "TJP-1 Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1609,7 +1981,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1648,11 +2046,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1716,7 +2116,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -1731,7 +2134,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1770,11 +2199,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1841,7 +2272,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AqP4- Rhesus"
+                            "target DNA description": "AqP4- Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1873,7 +2307,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -1912,11 +2372,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1980,7 +2442,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -1995,7 +2460,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2034,11 +2525,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2105,7 +2598,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AqP4- Rhesus"
+                            "target DNA description": "AqP4- Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2137,7 +2633,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2176,11 +2698,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2244,7 +2768,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -2259,7 +2786,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2298,11 +2851,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2375,7 +2930,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AqP4- Rhesus"
+                            "target DNA description": "AqP4- Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2407,7 +2965,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2446,11 +3030,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2514,7 +3100,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -2529,7 +3118,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2568,11 +3183,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2639,7 +3256,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AQP4-Human"
+                            "target DNA description": "AQP4-Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2671,7 +3291,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2710,11 +3356,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2778,7 +3426,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -2793,7 +3444,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2832,11 +3509,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2903,7 +3582,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AQP4-Human"
+                            "target DNA description": "AQP4-Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2935,7 +3617,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -2974,11 +3682,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3042,7 +3752,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -3057,7 +3770,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3096,11 +3835,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3167,7 +3908,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AQP4-Human"
+                            "target DNA description": "AQP4-Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3199,7 +3943,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3238,11 +4008,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3306,7 +4078,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -3321,7 +4096,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3360,11 +4161,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3431,7 +4234,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Rhesus"
+                            "target DNA description": "ANPEP-Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3463,7 +4269,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3502,11 +4334,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3570,7 +4404,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -3585,7 +4422,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3624,11 +4487,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3695,7 +4560,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Rhesus"
+                            "target DNA description": "ANPEP-Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3727,7 +4595,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3766,11 +4660,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3840,7 +4736,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -3855,7 +4754,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -3894,11 +4819,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3983,7 +4910,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Rhesus"
+                            "target DNA description": "ANPEP-Rhesus",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -4015,7 +4945,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -4054,11 +5010,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4130,7 +5088,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -4145,7 +5106,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -4184,11 +5171,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4273,7 +5262,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Human"
+                            "target DNA description": "ANPEP-Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -4305,7 +5297,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -4344,11 +5362,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4412,7 +5432,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -4427,7 +5450,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -4466,11 +5515,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4547,7 +5598,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Human"
+                            "target DNA description": "ANPEP-Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -4579,7 +5633,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -4618,11 +5698,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4690,7 +5772,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S"
+                            "target DNA description": "18S",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -4705,7 +5790,33 @@
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration Normalization FAM-ROX is expired": "No",
+                                            "Calibration Normalization VIC-ROX is expired": "No",
+                                            "Calibration Pure Dye VIC is expired": "No",
+                                            "Calibration Pure Dye SYBR performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM is expired": "No",
+                                            "Calibration ROI is expired": "No",
+                                            "Calibration Pure Dye CY5 performed on": "12-10-2021",
+                                            "Calibration Normalization VIC-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye TAMRA performed on": "07-01-2022",
+                                            "Calibration Background performed on": "07-01-2022",
+                                            "Calibration Pure Dye FAM performed on": "07-01-2022",
+                                            "Calibration Pure Dye VIC performed on": "07-01-2022",
+                                            "Calibration Pure Dye NED is expired": "No",
+                                            "Calibration Pure Dye TAMRA is expired": "No",
+                                            "Calibration Pure Dye ROX performed on": "07-01-2022",
+                                            "Calibration Uniformity performed on": "07-01-2022",
+                                            "Calibration Pure Dye CY5 is expired": "No",
+                                            "Calibration Normalization FAM-ROX performed on": "07-01-2022",
+                                            "Calibration Pure Dye SYBR is expired": "No",
+                                            "Calibration Background is expired": "No",
+                                            "Calibration ROI performed on": "07-01-2022",
+                                            "Calibration Pure Dye ROX is expired": "No",
+                                            "Calibration Pure Dye NED performed on": "07-01-2022",
+                                            "Calibration Uniformity is expired": "No"
+                                        }
                                     }
                                 ]
                             },
@@ -4744,11 +5855,13 @@
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "omit": false,
-                                                "NOISE": "N",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "BADROX": "N",
-                                                "CQCONF": "N"
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4833,7 +5946,10 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Human"
+                            "target DNA description": "ANPEP-Human",
+                            "custom information document": {
+                                "Date Created": "2022-08-12 14:50:21 PM EDT"
+                            }
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -6444,9 +7560,12 @@
             "file name": "appbio_quantstudio_example09.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example09.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
-            "software version": "1.0"
+            "software version": "1.0",
+            "custom information document": {
+                "Experiment File Name": "2022-08-12 145003.eds"
+            }
         },
         "device system document": {
             "device identifier": "12345",

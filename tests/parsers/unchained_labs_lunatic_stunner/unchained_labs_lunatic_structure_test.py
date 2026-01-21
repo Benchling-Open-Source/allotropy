@@ -269,9 +269,7 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5,0.523,2.5,24.9
     assert len(calculated_data) == 4
 
 
-def test_get_calculated_data_items_from_data_with_no_calculated_data_columns() -> (
-    None
-):
+def test_get_calculated_data_items_from_data_with_no_calculated_data_columns() -> None:
     contents = StringIO(
         """
 Sample name,Plate Position,Application,Date,Time,Instrument ID,A260

@@ -238,13 +238,15 @@ class Mapper(SchemaMapper[Data, Model]):
                         confidence_interval__95__=quantity_or_none(
                             TQuantityValueNumber, measurement.confidence_interval__95__
                         ),
-                        data_processing_document=DataProcessingDocument(
-                            fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
-                                value=measurement.fluorescence_intensity_threshold_setting
+                        data_processing_document=(
+                            DataProcessingDocument(
+                                fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
+                                    value=measurement.fluorescence_intensity_threshold_setting
+                                )
                             )
-                        )
-                        if measurement.fluorescence_intensity_threshold_setting
-                        else None,
+                            if measurement.fluorescence_intensity_threshold_setting
+                            else None
+                        ),
                     )
                 ]
             ),
