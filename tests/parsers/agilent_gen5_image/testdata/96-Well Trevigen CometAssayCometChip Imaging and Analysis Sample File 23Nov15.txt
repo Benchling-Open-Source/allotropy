@@ -19,7 +19,7 @@ Reading Type	Reader
 Procedure Details
 
 Plate Type	Trevigen 96-Well Comet Chip and Adapter (Use plate lid)
-Eject plate on completion	
+Eject plate on completion
 Read	2.5x Imaging
 	Image Single Image
 	Full Plate
@@ -29,14 +29,14 @@ Read	2.5x Imaging
 	    LED intensity: 5, Integration time: 110 msec, Camera gain: 0
 	    Autofocus with optional scan
 	    Minimum focus metric ratio: 3
-	    Scan distance: 600 µm
-	    Scan increment: 30 µm
+	    Scan distance: 600 ï¿½m
+	    Scan increment: 30 ï¿½m
 	    Minimum focus delta: 8
 	    Percent of capture exposure for focus: 75
-	    Offset from bottom of well: 0 µm
+	    Offset from bottom of well: 0 ï¿½m
 	    Vibration CV threshold: 0.01
 	    Images to average: 1
-	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Horizontal offset: 0 ï¿½m, Vertical offset: 0 ï¿½m
 	Delay after plate movement: 300 msec
 Read	4x Montage Imaging
 	Image Montage
@@ -47,17 +47,17 @@ Read	4x Montage Imaging
 	    LED intensity: 9, Integration time: 100 msec, Camera gain: 1
 	    Autofocus with optional scan
 	    Minimum focus metric ratio: 3
-	    Scan distance: 600 µm
-	    Scan increment: 30 µm
+	    Scan distance: 600 ï¿½m
+	    Scan increment: 30 ï¿½m
 	    Minimum focus delta: 8
 	    Percent of capture exposure for focus: 75
-	    Offset from bottom of well: 0 µm
+	    Offset from bottom of well: 0 ï¿½m
 	    Vibration CV threshold: 0.01
 	    Images to average: 1
-	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Horizontal offset: 0 ï¿½m, Vertical offset: 0 ï¿½m
 	Delay after plate movement: 300 msec
 	Montage rows: 2, columns: 2
-	Montage horizontal spacing: 1776 µm, vertical spacing: 1311 µm
+	Montage horizontal spacing: 1776 ï¿½m, vertical spacing: 1311 ï¿½m
 	Montage autofocus option: Autofocus option based on objective size
 
 Layout
@@ -201,4 +201,3 @@ H	123	129	129	123	124	129	120	128	122	121	134	123	2.5x Total Comet Cell Count
 	31.358	33.207	32.573	32.081	34.269	31.913	32.483	32.497	31.974	31.274	26.594	24.764	Comet Tail Moment 2.5x Images
 	74.927												Average % DNA in Comet Tail 2.5x
 	31.249												Average Comet Tail Moment 2.5x Images
-
