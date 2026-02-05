@@ -18,6 +18,25 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 5.0,
+                                                    "unit": "cell",
+                                                    "datum label": "aggregate count"
+                                                },
+                                                {
+                                                    "scalar double datum": 22.58,
+                                                    "unit": "µm",
+                                                    "datum label": "aggregate size"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.1446540880503147,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 2.0,
@@ -60,39 +79,46 @@
                                         "dead cell count": {
                                             "value": 15.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 3.1446540880503147,
-                                                "unit": "%"
-                                            },
-                                            "aggregate size": {
-                                                "value": 22.58,
-                                                "unit": "µm"
-                                            },
-                                            "aggregate count": {
-                                                "value": 5.0,
-                                                "unit": "cell"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "1",
-                                "custom information document": {
-                                    "Row": "0",
-                                    "Column": "0",
-                                    "Well Plate Identifier": "Plate1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "Column"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "Row"
+                                        },
+                                        {
+                                            "scalar string datum": "Plate1",
+                                            "datum label": "Well Plate Identifier"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "Scanresult Timestamp": "2025-05-20 12:25:15"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "2025-05-20 12:25:15",
+                                        "datum label": "Scanresult Timestamp"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "assay identifier": "Assay"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "Assay",
+                                "datum label": "assay identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "admin"
@@ -113,6 +139,25 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 7.0,
+                                                    "unit": "cell",
+                                                    "datum label": "aggregate count"
+                                                },
+                                                {
+                                                    "scalar double datum": 33.33,
+                                                    "unit": "µm",
+                                                    "datum label": "aggregate size"
+                                                },
+                                                {
+                                                    "scalar double datum": 4.294478527607362,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 2.0,
@@ -155,39 +200,46 @@
                                         "dead cell count": {
                                             "value": 15.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 4.294478527607362,
-                                                "unit": "%"
-                                            },
-                                            "aggregate size": {
-                                                "value": 33.33,
-                                                "unit": "µm"
-                                            },
-                                            "aggregate count": {
-                                                "value": 7.0,
-                                                "unit": "cell"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "2",
-                                "custom information document": {
-                                    "Row": "0",
-                                    "Column": "1",
-                                    "Well Plate Identifier": "Plate1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Column"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "Row"
+                                        },
+                                        {
+                                            "scalar string datum": "Plate1",
+                                            "datum label": "Well Plate Identifier"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "Scanresult Timestamp": "2025-05-20 12:25:15"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "2025-05-20 12:25:15",
+                                        "datum label": "Scanresult Timestamp"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "assay identifier": "Assay"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "Assay",
+                                "datum label": "assay identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "admin"
@@ -208,6 +260,25 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 12.0,
+                                                    "unit": "cell",
+                                                    "datum label": "aggregate count"
+                                                },
+                                                {
+                                                    "scalar double datum": 41.87,
+                                                    "unit": "µm",
+                                                    "datum label": "aggregate size"
+                                                },
+                                                {
+                                                    "scalar double datum": 5.660377358490567,
+                                                    "unit": "%",
+                                                    "datum label": "cell aggregation percentage"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 2.0,
@@ -250,39 +321,46 @@
                                         "dead cell count": {
                                             "value": 18.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "cell aggregation percentage": {
-                                                "value": 5.660377358490567,
-                                                "unit": "%"
-                                            },
-                                            "aggregate size": {
-                                                "value": 41.87,
-                                                "unit": "µm"
-                                            },
-                                            "aggregate count": {
-                                                "value": 12.0,
-                                                "unit": "cell"
-                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "3",
-                                "custom information document": {
-                                    "Row": "0",
-                                    "Column": "2",
-                                    "Well Plate Identifier": "Plate1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2",
+                                            "datum label": "Column"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "Row"
+                                        },
+                                        {
+                                            "scalar string datum": "Plate1",
+                                            "datum label": "Well Plate Identifier"
+                                        }
+                                    ]
                                 }
                             },
-                            "custom information document": {
-                                "Scanresult Timestamp": "2025-05-20 12:25:15"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "2025-05-20 12:25:15",
+                                        "datum label": "Scanresult Timestamp"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "assay identifier": "Assay"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "Assay",
+                                "datum label": "assay identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "admin"
@@ -294,7 +372,7 @@
             "file name": "Cellaca_Example1.xlsx",
             "UNC path": "tests/parsers/revvity_matrix/testdata/Cellaca_Example1.xlsx",
             "ASM converter name": "allotropy_revvity_matrix",
-            "ASM converter version": "0.1.91",
+            "ASM converter version": "0.1.112",
             "software name": "Revvity Matrix",
             "software version": "2"
         },

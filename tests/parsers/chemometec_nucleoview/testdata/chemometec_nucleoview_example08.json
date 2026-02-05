@@ -41,18 +41,53 @@
                             "sample document": {
                                 "sample identifier": "1111_viability count new 99x_pass 99"
                             },
-                            "custom information document": {
-                                "User": "gih",
-                                "Secure Mode status": "Enable",
-                                "Sample Media": "Via2-Cassette",
-                                "Software version": "9.9.9.99",
-                                "Time (UTC)": "1999-09-99 09:49:29",
-                                "Debris Index": 50.0,
-                                "Instrument": "S/N:99999999999",
-                                "Protocol": "Count & Viability; 1.49",
-                                "Aggregates (%)": 0.0,
-                                "Dilution Factor": 10.0,
-                                "Diameter (um)": 9.7
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "Aggregates (%)"
+                                    },
+                                    {
+                                        "scalar double datum": 50.0,
+                                        "datum label": "Debris Index"
+                                    },
+                                    {
+                                        "scalar double datum": 9.7,
+                                        "datum label": "Diameter (um)"
+                                    },
+                                    {
+                                        "scalar double datum": 10.0,
+                                        "datum label": "Dilution Factor"
+                                    },
+                                    {
+                                        "scalar string datum": "S/N:99999999999",
+                                        "datum label": "Instrument"
+                                    },
+                                    {
+                                        "scalar string datum": "Count & Viability; 1.49",
+                                        "datum label": "Protocol"
+                                    },
+                                    {
+                                        "scalar string datum": "Via2-Cassette",
+                                        "datum label": "Sample Media"
+                                    },
+                                    {
+                                        "scalar string datum": "Enable",
+                                        "datum label": "Secure Mode status"
+                                    },
+                                    {
+                                        "scalar string datum": "9.9.9.99",
+                                        "datum label": "Software version"
+                                    },
+                                    {
+                                        "scalar string datum": "1999-09-99 09:49:29",
+                                        "datum label": "Time (UTC)"
+                                    },
+                                    {
+                                        "scalar string datum": "gih",
+                                        "datum label": "User"
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -66,7 +101,7 @@
             "file name": "chemometec_nucleoview_example08.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example08.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.93",
+            "ASM converter version": "0.1.112",
             "software name": "NucleoView"
         },
         "device system document": {
