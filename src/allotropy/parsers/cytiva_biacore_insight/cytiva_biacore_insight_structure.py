@@ -9,6 +9,7 @@ import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDalton,
+    TQuantityValueMicrogramPerMilliliter,
     TQuantityValueMicroliterPerMinute,
     TQuantityValueNanomolar,
     TQuantityValueResponseUnit,
@@ -36,6 +37,55 @@ from allotropy.parsers.utils.values import (
     quantity_or_none,
 )
 from allotropy.types import DictType
+
+
+def _clean_custom_info(custom_info: dict[str, Any]) -> dict[str, Any]:
+    """Remove None and NaN values from custom_info dictionaries."""
+    return {
+        key: value
+        for key, value in custom_info.items()
+        if value is not None and (not isinstance(value, float) or not np.isnan(value))
+    }
+
+
+def _get_capture_custom_info(
+    channel_data: pd.DataFrame, 
+    capture_1_solution: str | None
+) -> dict[str, Any]:
+    """
+    Dynamically extract all Capture columns (Capture 1-5) that exist in the data.
+    
+    Args:
+        channel_data: DataFrame with channel data
+        capture_1_solution: Pre-extracted Capture 1 Solution value (for backwards compatibility)
+    
+    Returns:
+        Dictionary with all available Capture fields
+    """
+    capture_info = {}
+    
+    # OPTIMIZATION: Get column set once for fast lookups
+    columns_set = set(channel_data.columns)
+    
+    # Check for Capture 1-5 (some files have multiple Capture sets)
+    for capture_num in range(1, 6):
+        solution_col = f"Capture {capture_num} Solution"
+        
+        # Special handling for Capture 1 Solution (use pre-extracted value if provided)
+        if capture_num == 1 and capture_1_solution is not None:
+            capture_info["Capture 1 Solution"] = capture_1_solution
+        elif solution_col in columns_set:
+            capture_info[solution_col] = _first_not_null_or_none(channel_data[solution_col])
+        
+        # Add other Capture fields if they exist
+        for field in ["Plate id", "Position", "Control type"]:
+            col_name = f"Capture {capture_num} {field}"
+            if col_name in columns_set:
+                capture_info[col_name] = _first_not_null_or_none(channel_data[col_name])
+    
+    return capture_info
+    
+    return capture_info
 
 
 def _get_table_from_dataframe(df: pd.DataFrame, split_on: str) -> pd.DataFrame:
@@ -221,19 +271,29 @@ class KineticsData:
     maximum_binding_capacity: float | None = None
     kinetics_chi_squared: float | None = None
     tc: float | None = None
+    offset: float | None = None  # Affinity-specific field
 
     @staticmethod
     def create(kinetics_data: SeriesData) -> KineticsData:
         return KineticsData(
             acceptance_state=kinetics_data.get(str, "Acceptance state"),
             curve_markers=kinetics_data.get(str, "Curve markers"),
-            kinetics_model=kinetics_data.get(str, "Kinetics model"),
+            # Try "Kinetics model" first, fall back to "Affinity model"
+            kinetics_model=(
+                kinetics_data.get(str, "Kinetics model") 
+                or kinetics_data.get(str, "Affinity model")
+            ),
             binding_on_rate_measurement_datum=kinetics_data.get(float, "ka (1/Ms)"),
             binding_off_rate_measurement_datum=kinetics_data.get(float, "kd (1/s)"),
             equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)"),
             maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)"),
-            kinetics_chi_squared=kinetics_data.get(float, "Kinetics Chi² (RU²)"),
+            # Try "Kinetics Chi²" first, fall back to "Affinity Chi²"
+            kinetics_chi_squared=(
+                kinetics_data.get(float, "Kinetics Chi² (RU²)")
+                or kinetics_data.get(float, "Affinity Chi² (RU²)")
+            ),
             tc=kinetics_data.get(float, "tc"),
+            offset=kinetics_data.get(float, "offset (RU)"),  # Affinity-specific
         )
 
 
@@ -242,16 +302,24 @@ class EvaluationKinetics:
 
     def __init__(self, kinetics_table: pd.DataFrame) -> None:
         def _get_key(row: pd.Series[Any]) -> str:
-            return f'{row["Channel"]} {row["Capture 1 Solution"]} {row["Analyte 1 Solution"]}'
+            # Handle both "Channel" and "Flow cell" columns
+            channel_or_flowcell = row.get("Channel", row.get("Flow cell", ""))
+            # For affinity data, we might have multiple capture solutions
+            # Build key with all available capture solutions
+            capture_solution = row.get("Capture 1 Solution", "")
+            analyte_solution = row.get("Analyte 1 Solution", "")
+            return f'{channel_or_flowcell} {capture_solution} {analyte_solution}'
 
-        self._data = {
-            _get_key(row): KineticsData.create(SeriesData(row))
-            for _, row in kinetics_table.iterrows()
-        }
+        self._data = {}
+        if not kinetics_table.empty and len(kinetics_table.columns) > 0:
+            self._data = {
+                _get_key(row): KineticsData.create(SeriesData(row))
+                for _, row in kinetics_table.iterrows()
+            }
 
     def get_data(
         self,
-        channel: int,
+        channel: int | str,
         capture_solution: str | None,
         analyte_solution: str | None,
     ) -> KineticsData:
@@ -310,21 +378,36 @@ class MeasurementData:
         channel_data: pd.DataFrame,
         metadata: BiacoreInsightMetadata,
         evaluation_kinetics: EvaluationKinetics,
+        grouping_column: str = "Channel",
     ) -> MeasurementData:
         identifier = random_uuid_str()
         run_metadata = metadata.runs[0]
         first_row_data = SeriesData(channel_data.iloc[0])
         run = first_row_data[int, "Run"]
         cycle_number = first_row_data[int, "Cycle"]
-        channel = first_row_data[int, "Channel"]
+        
+        # Handle both "Channel" and "Flow cell" as grouping columns
+        # When using Flow cell, convert to string since it can be "2-1" format
+        if grouping_column == "Channel":
+            channel = first_row_data[int, "Channel"]
+        else:
+            # Flow cell can be string like "2-1", store as string
+            channel = str(first_row_data.get(str, grouping_column, ""))
 
         run_table = run_metadata.run_table
         device_control_document = []
         for flow_cell, flow_cell_data in channel_data.groupby("Flow cell"):
-            run_data = run_table[
-                (run_table["Flow cell"].astype(str) == str(flow_cell))
-                & (run_table["Channel"] == channel)
-            ]
+            # Filter run_table using the appropriate column
+            if grouping_column == "Channel" and "Channel" in run_table.columns:
+                run_data = run_table[
+                    (run_table["Flow cell"].astype(str) == str(flow_cell))
+                    & (run_table["Channel"] == channel)
+                ]
+            else:
+                # For new format, just filter by flow cell
+                run_data = run_table[
+                    run_table["Flow cell"].astype(str) == str(flow_cell)
+                ]
             run_info = SeriesData() if run_data.empty else df_to_series_data(run_data)
             # All the info needed in the device control document is the same for all flow cell data
             flow_cell_info = SeriesData(flow_cell_data.iloc[0])
@@ -335,7 +418,7 @@ class MeasurementData:
                     sample_temperature_setting=flow_cell_info.get(
                         float, "Temperature (°C)"
                     ),
-                    device_control_custom_info={
+                    device_control_custom_info=_clean_custom_info({
                         "Analyte 1 Contact time": quantity_or_none(
                             TQuantityValueSecondTime,
                             flow_cell_info.get(float, "Analyte 1 Contact time (s)"),
@@ -370,11 +453,14 @@ class MeasurementData:
                             TQuantityValueResponseUnit,
                             run_info.get(float, "Level (RU)"),
                         ),
-                    },
+                    }),
                 )
             )
 
-        capture_solution = _first_not_null_or_none(channel_data["Capture 1 Solution"])
+        # Capture columns may not exist in all file formats
+        capture_solution = None
+        if "Capture 1 Solution" in channel_data.columns:
+            capture_solution = _first_not_null_or_none(channel_data["Capture 1 Solution"])
         analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
 
         return MeasurementData(
@@ -383,7 +469,7 @@ class MeasurementData:
             method_name=run_metadata.method_name,
             ligand_identifier=run_info.get(str, "Ligand"),
             device_control_document=device_control_document,
-            sample_custom_info={
+            sample_custom_info=_clean_custom_info({
                 "Run": run,
                 "Cycle": cycle_number,
                 "Channel": channel,
@@ -405,27 +491,25 @@ class MeasurementData:
                 "Regeneration 1 Control type": first_row_data.get(
                     str, "Regeneration 1 Control type"
                 ),
-                # Capture data is not reported for the Reference flow cell,
-                # so we have to look for the first non-null value
-                "Capture 1 Solution": capture_solution,
-                "Capture 1 Plate id": _first_not_null_or_none(
-                    channel_data["Capture 1 Plate id"]
-                ),
-                "Capture 1 Position": _first_not_null_or_none(
-                    channel_data["Capture 1 Position"]
-                ),
-                "Capture 1 Control type": _first_not_null_or_none(
-                    channel_data["Capture 1 Control type"]
-                ),
-                "Analyte 1 Concentration": quantity_or_none(
-                    TQuantityValueNanomolar,
-                    first_row_data.get(float, "Analyte 1 Concentration (nM)"),
+                # Capture data may not be present in all file formats
+                # Dynamically add all Capture columns that exist (Capture 1-5)
+                **_get_capture_custom_info(channel_data, capture_solution),
+                "Analyte 1 Concentration": (
+                    # Try nM first, then µg/ml
+                    quantity_or_none(
+                        TQuantityValueNanomolar,
+                        first_row_data.get(float, "Analyte 1 Concentration (nM)"),
+                    )
+                    or quantity_or_none(
+                        TQuantityValueMicrogramPerMilliliter,
+                        first_row_data.get(float, "Analyte 1 Concentration (µg/ml)"),
+                    )
                 ),
                 "Analyte 1 Molecular weight": quantity_or_none(
                     TQuantityValueDalton,
                     first_row_data.get(float, "Analyte 1 Molecular weight (Da)"),
                 ),
-            },
+            }),
             kinetics=evaluation_kinetics.get_data(
                 channel, capture_solution, analyte_solution
             ),
@@ -441,12 +525,51 @@ class Data:
     @staticmethod
     def create(reader: CytivaBiacoreInsightReader) -> Data:
         metadata = BiacoreInsightMetadata.create(reader)
+        
+        # OPTIMIZATION: Parse report point table once, not per cycle
+        report_point_table = _get_table_from_dataframe(
+            reader.data["Report point table"], split_on="Run"
+        )
+        
+        # OPTIMIZATION: Determine grouping column once
+        grouping_column = "Channel" if "Channel" in report_point_table.columns else "Flow cell"
+        
+        # OPTIMIZATION: Parse evaluation/affinity data once, not per cycle
+        evaluation_kinetics = None
+        if "Evaluation - Kinetics" in reader.data:
+            evaluation_kinetics_table = _get_table_from_dataframe(
+                reader.data["Evaluation - Kinetics"], split_on="Group"
+            )
+            evaluation_kinetics = EvaluationKinetics(evaluation_kinetics_table)
+        else:
+            # Look for Affinity sheets (e.g., "Affinity 1", "Affinity 2", etc.)
+            affinity_sheets = [
+                sheet for sheet in reader.data.keys() 
+                if sheet.startswith("Affinity")
+            ]
+            if affinity_sheets:
+                # Use the first Affinity sheet found
+                affinity_table = _get_table_from_dataframe(
+                    reader.data[affinity_sheets[0]], split_on="Group"
+                )
+                evaluation_kinetics = EvaluationKinetics(affinity_table)
+        
+        # If no kinetics or affinity data found, create empty
+        if evaluation_kinetics is None:
+            evaluation_kinetics = EvaluationKinetics(pd.DataFrame())
+        
+        # OPTIMIZATION: Group all data by cycle once using pandas groupby
+        # This is much faster than filtering per cycle
+        cycles_dict = {}
+        for cycle_number, cycle_group in report_point_table.groupby("Cycle"):
+            cycles_dict[int(cycle_number)] = [
+                MeasurementData.create(channel_data, metadata, evaluation_kinetics, grouping_column)
+                for _, channel_data in cycle_group.groupby(grouping_column)
+            ]
+        
         return Data(
             metadata=metadata,
-            cycles={
-                cycle: Data.create_measurements_for_cycle(cycle, metadata, reader)
-                for cycle in range(1, int(metadata.runs[0].number_of_cycles) + 1)
-            },
+            cycles=cycles_dict,
         )
 
     @staticmethod
@@ -455,17 +578,46 @@ class Data:
         metadata: BiacoreInsightMetadata,
         reader: CytivaBiacoreInsightReader,
     ) -> list[MeasurementData]:
+        """
+        DEPRECATED: This method is no longer used for performance reasons.
+        All cycle processing is now done in Data.create() to avoid redundant parsing.
+        Keeping this method for backward compatibility in case it's called externally.
+        """
         # Report point table is the entry point
         report_point_table = _get_table_from_dataframe(
             reader.data["Report point table"], split_on="Run"
         )
         cycle_data = report_point_table[report_point_table["Cycle"] == cycle_number]
-        evaluation_kinetics_table = _get_table_from_dataframe(
-            reader.data["Evaluation - Kinetics"], split_on="Group"
-        )
-        evaluation_kinetics = EvaluationKinetics(evaluation_kinetics_table)
+        
+        # Handle optional kinetics/affinity data
+        # Try "Evaluation - Kinetics" first, then look for "Affinity" sheets
+        evaluation_kinetics = None
+        if "Evaluation - Kinetics" in reader.data:
+            evaluation_kinetics_table = _get_table_from_dataframe(
+                reader.data["Evaluation - Kinetics"], split_on="Group"
+            )
+            evaluation_kinetics = EvaluationKinetics(evaluation_kinetics_table)
+        else:
+            # Look for Affinity sheets (e.g., "Affinity 1", "Affinity 2", etc.)
+            affinity_sheets = [
+                sheet for sheet in reader.data.keys() 
+                if sheet.startswith("Affinity")
+            ]
+            if affinity_sheets:
+                # Use the first Affinity sheet found
+                affinity_table = _get_table_from_dataframe(
+                    reader.data[affinity_sheets[0]], split_on="Group"
+                )
+                evaluation_kinetics = EvaluationKinetics(affinity_table)
+        
+        # If no kinetics or affinity data found, create empty
+        if evaluation_kinetics is None:
+            evaluation_kinetics = EvaluationKinetics(pd.DataFrame())
 
+        # Determine grouping column: use "Channel" if available, otherwise "Flow cell"
+        grouping_column = "Channel" if "Channel" in cycle_data.columns else "Flow cell"
+        
         return [
-            MeasurementData.create(channel_data, metadata, evaluation_kinetics)
-            for _, channel_data in cycle_data.groupby("Channel")
+            MeasurementData.create(channel_data, metadata, evaluation_kinetics, grouping_column)
+            for _, channel_data in cycle_data.groupby(grouping_column)
         ]

@@ -1,8 +1,12 @@
 from pathlib import Path
+from typing import Any
+
+import numpy as np
 
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueHertz,
     TQuantityValueNumber,
+    TQuantityValueResponseUnit,
     TQuantityValueSecondTime,
     TQuantityValueSquareResponseUnit,
     TQuantityValueUnitless,
@@ -33,6 +37,15 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none
+
+
+def _clean_custom_info(custom_info: dict[str, Any]) -> dict[str, Any]:
+    """Remove None and NaN values from custom_info dictionaries."""
+    return {
+        key: value
+        for key, value in custom_info.items()
+        if value is not None and (not isinstance(value, float) or not np.isnan(value))
+    }
 
 
 def create_metadata(metadata: BiacoreInsightMetadata, file_path: str) -> Metadata:
@@ -107,17 +120,19 @@ def _get_measurements(
             maximum_binding_capacity__rmax_=(
                 measurement.kinetics.maximum_binding_capacity
             ),
-            processed_data_custom_info=(
-                {
-                    "Kinetics Chi squared": quantity_or_none(
-                        TQuantityValueSquareResponseUnit,
-                        measurement.kinetics.kinetics_chi_squared,
-                    ),
-                    "tc": quantity_or_none(
-                        TQuantityValueUnitless, measurement.kinetics.tc
-                    ),
-                }
-            ),
+            processed_data_custom_info=_clean_custom_info({
+                "Kinetics Chi squared": quantity_or_none(
+                    TQuantityValueSquareResponseUnit,
+                    measurement.kinetics.kinetics_chi_squared,
+                ),
+                "tc": quantity_or_none(
+                    TQuantityValueUnitless, measurement.kinetics.tc
+                ),
+                "offset": quantity_or_none(
+                    TQuantityValueResponseUnit,
+                    measurement.kinetics.offset,
+                ),
+            }),
             report_point_data=[
                 ReportPoint(
                     identifier=rp.identifier,
@@ -125,21 +140,21 @@ def _get_measurements(
                     absolute_resonance=rp.absolute_resonance,
                     time_setting=rp.time_setting,
                     relative_resonance=rp.relative_resonance,
-                    custom_info={
+                    custom_info=_clean_custom_info({
                         "Step name": rp.step_name,
                         "Step purpose": rp.step_purpose,
                         "Window": quantity_or_none(TQuantityValueSecondTime, rp.window),
                         "Baseline": rp.baseline,
-                    },
+                    }),
                 )
                 for rp in measurement.report_point_data
             ],
-            data_processing_document={
+            data_processing_document=_clean_custom_info({
                 **data_processing_document,
                 "Acceptance State": measurement.kinetics.acceptance_state,
                 "Curve Markers": measurement.kinetics.curve_markers,
                 "Kinetics Model": measurement.kinetics.kinetics_model,
-            },
+            }),
         )
         for measurement in measurement_data
     ]

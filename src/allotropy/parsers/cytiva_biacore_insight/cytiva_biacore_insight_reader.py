@@ -5,8 +5,7 @@ import pandas as pd
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.pandas import read_multisheet_excel
-
-REQUIRED_SHEETS = ("Properties", "Report point table", "Evaluation - Kinetics")
+from allotropy.parsers.cytiva_biacore_insight.constants import REQUIRED_SHEETS
 
 
 class CytivaBiacoreInsightReader:
