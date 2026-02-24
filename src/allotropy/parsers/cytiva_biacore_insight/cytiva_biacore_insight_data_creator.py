@@ -120,19 +120,21 @@ def _get_measurements(
             maximum_binding_capacity__rmax_=(
                 measurement.kinetics.maximum_binding_capacity
             ),
-            processed_data_custom_info=_clean_custom_info({
-                "Kinetics Chi squared": quantity_or_none(
-                    TQuantityValueSquareResponseUnit,
-                    measurement.kinetics.kinetics_chi_squared,
-                ),
-                "tc": quantity_or_none(
-                    TQuantityValueUnitless, measurement.kinetics.tc
-                ),
-                "offset": quantity_or_none(
-                    TQuantityValueResponseUnit,
-                    measurement.kinetics.offset,
-                ),
-            }),
+            processed_data_custom_info=_clean_custom_info(
+                {
+                    "Kinetics Chi squared": quantity_or_none(
+                        TQuantityValueSquareResponseUnit,
+                        measurement.kinetics.kinetics_chi_squared,
+                    ),
+                    "tc": quantity_or_none(
+                        TQuantityValueUnitless, measurement.kinetics.tc
+                    ),
+                    "offset": quantity_or_none(
+                        TQuantityValueResponseUnit,
+                        measurement.kinetics.offset,
+                    ),
+                }
+            ),
             report_point_data=[
                 ReportPoint(
                     identifier=rp.identifier,
@@ -140,21 +142,27 @@ def _get_measurements(
                     absolute_resonance=rp.absolute_resonance,
                     time_setting=rp.time_setting,
                     relative_resonance=rp.relative_resonance,
-                    custom_info=_clean_custom_info({
-                        "Step name": rp.step_name,
-                        "Step purpose": rp.step_purpose,
-                        "Window": quantity_or_none(TQuantityValueSecondTime, rp.window),
-                        "Baseline": rp.baseline,
-                    }),
+                    custom_info=_clean_custom_info(
+                        {
+                            "Step name": rp.step_name,
+                            "Step purpose": rp.step_purpose,
+                            "Window": quantity_or_none(
+                                TQuantityValueSecondTime, rp.window
+                            ),
+                            "Baseline": rp.baseline,
+                        }
+                    ),
                 )
                 for rp in measurement.report_point_data
             ],
-            data_processing_document=_clean_custom_info({
-                **data_processing_document,
-                "Acceptance State": measurement.kinetics.acceptance_state,
-                "Curve Markers": measurement.kinetics.curve_markers,
-                "Kinetics Model": measurement.kinetics.kinetics_model,
-            }),
+            data_processing_document=_clean_custom_info(
+                {
+                    **data_processing_document,
+                    "Acceptance State": measurement.kinetics.acceptance_state,
+                    "Curve Markers": measurement.kinetics.curve_markers,
+                    "Kinetics Model": measurement.kinetics.kinetics_model,
+                }
+            ),
         )
         for measurement in measurement_data
     ]
