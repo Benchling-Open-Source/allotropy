@@ -817,10 +817,11 @@ def get_kinetic_measurements(
     error_documents: dict[str, list[ErrorDocument]] = {}
 
     for col_name, column in data.items():
-        # Skip temperature columns (e.g., "T∞ 600" or "T° 600")
+        # Skip temperature columns (e.g., "T∞ 600" or "T° 600" or "T� Read 2:450,490")
+        # Also skip if it contains the replacement character (�) which appears with encoding issues
         col_name_str = str(col_name)
         if col_name_str.startswith("T") and any(
-            char in col_name_str for char in ["∞", "°", "\u221e", "\u00b0"]
+            char in col_name_str for char in ["∞", "°", "\u221e", "\u00b0", "\ufffd"]
         ):
             continue
 
