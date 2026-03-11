@@ -22,14 +22,18 @@ class MsdWorkbenchExtractor(Extractor[CalculatedDataMeasurementStructure]):
                 "device_type": calc_data_structure.measurement.device_type,
                 "detection_type": calc_data_structure.measurement.detection_type,
                 "mass_concentration": calc_data_structure.measurement.mass_concentration,
-                "sample_role_type": calc_data_structure.measurement.sample_role_type.value
-                if calc_data_structure.measurement.sample_role_type
-                else None,
-                "assay_identifier": calc_data_structure.measurement.measurement_custom_info.get(
-                    "assay identifier"
-                )
-                if calc_data_structure.measurement.measurement_custom_info
-                else None,
+                "sample_role_type": (
+                    calc_data_structure.measurement.sample_role_type.value
+                    if calc_data_structure.measurement.sample_role_type
+                    else None
+                ),
+                "assay_identifier": (
+                    calc_data_structure.measurement.measurement_custom_info.get(
+                        "assay identifier"
+                    )
+                    if calc_data_structure.measurement.measurement_custom_info
+                    else None
+                ),
                 "adjusted_signal": calc_data_structure.adjusted_signal,
                 "mean": calc_data_structure.mean,
                 "adj_sig_mean": calc_data_structure.adj_sig_mean,

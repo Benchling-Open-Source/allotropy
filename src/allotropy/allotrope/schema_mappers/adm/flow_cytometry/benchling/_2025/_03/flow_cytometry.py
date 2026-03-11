@@ -209,23 +209,25 @@ class Mapper(SchemaMapper[Data, Model]):
                             for measurement in measurement_group.measurements
                         ],
                         analyst=measurement_group.analyst,
-                        measurement_time=self.get_date_time(
-                            measurement_group.measurement_time
-                        )
-                        if measurement_group.measurement_time
-                        else None,
+                        measurement_time=(
+                            self.get_date_time(measurement_group.measurement_time)
+                            if measurement_group.measurement_time
+                            else None
+                        ),
                         experimental_data_identifier=measurement_group.experimental_data_identifier,
                         experiment_identifier=measurement_group.experiment_identifier,
                     ),
                     measurement_group.measurement_aggregate_custom_info,
                 ),
                 compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
-                    compensation_matrix_document=[
-                        self._get_compensation_matrix_document(compensation_matrix)
-                        for compensation_matrix in measurement_group.compensation_matrix_groups
-                    ]
-                    if measurement_group.compensation_matrix_groups
-                    else None,
+                    compensation_matrix_document=(
+                        [
+                            self._get_compensation_matrix_document(compensation_matrix)
+                            for compensation_matrix in measurement_group.compensation_matrix_groups
+                        ]
+                        if measurement_group.compensation_matrix_groups
+                        else None
+                    ),
                 ),
             ),
             measurement_group.custom_info,
@@ -255,32 +257,40 @@ class Mapper(SchemaMapper[Data, Model]):
                                 data_processing_document=add_custom_information_document(
                                     DataProcessingDocument(
                                         method_version=measurement.method_version,
-                                        data_processing_time=self.get_date_time(
-                                            measurement.data_processing_time
-                                        )
-                                        if measurement.data_processing_time
-                                        else None,
+                                        data_processing_time=(
+                                            self.get_date_time(
+                                                measurement.data_processing_time
+                                            )
+                                            if measurement.data_processing_time
+                                            else None
+                                        ),
                                     ),
                                     measurement.data_processing_custom_info,
                                 ),
                                 processed_data_identifier=measurement.processed_data_identifier,
                                 population_aggregate_document=[
                                     PopulationAggregateDocumentItem(
-                                        population_document=[
-                                            self._get_population_document(population)
-                                            for population in measurement.populations
-                                        ]
-                                        if measurement.populations
-                                        else None
+                                        population_document=(
+                                            [
+                                                self._get_population_document(
+                                                    population
+                                                )
+                                                for population in measurement.populations
+                                            ]
+                                            if measurement.populations
+                                            else None
+                                        )
                                     )
                                 ],
                                 data_region_aggregate_document=DataRegionAggregateDocument(
-                                    data_region_document=[
-                                        self._get_data_region_document(data_region)
-                                        for data_region in measurement.data_regions
-                                    ]
-                                    if measurement.data_regions
-                                    else None
+                                    data_region_document=(
+                                        [
+                                            self._get_data_region_document(data_region)
+                                            for data_region in measurement.data_regions
+                                        ]
+                                        if measurement.data_regions
+                                        else None
+                                    )
                                 ),
                             ),
                             measurement.processed_data_custom_info,
@@ -337,16 +347,18 @@ class Mapper(SchemaMapper[Data, Model]):
                 data_region_identifier=population.data_region_identifier,
                 count=quantity_or_none(TQuantityValueCounts, value=population.count),
                 parent_population_identifier=population.parent_population_identifier,
-                population_aggregate_document=[
-                    PopulationAggregateDocumentItem(
-                        population_document=[
-                            self._get_population_document(sub_population)
-                            for sub_population in population.sub_populations
-                        ]
-                    )
-                ]
-                if population.sub_populations
-                else None,
+                population_aggregate_document=(
+                    [
+                        PopulationAggregateDocumentItem(
+                            population_document=[
+                                self._get_population_document(sub_population)
+                                for sub_population in population.sub_populations
+                            ]
+                        )
+                    ]
+                    if population.sub_populations
+                    else None
+                ),
                 statistics_aggregate_document=self._get_statistics_aggregate_document(
                     population.statistics
                 ),
@@ -361,21 +373,23 @@ class Mapper(SchemaMapper[Data, Model]):
             CompensationMatrixDocumentItem(
                 dimension_identifier=compensation_matrix_group.dimension_identifier,
                 matrix_aggregate_document=MatrixAggregateDocument(
-                    matrix_document=[
-                        add_custom_information_document(
-                            MatrixDocumentItem(
-                                dimension_identifier=compensation.dimension_identifier,
-                                compensation_value=quantity_or_none(
-                                    TQuantityValueUnitless,
-                                    compensation.compensation_value,
+                    matrix_document=(
+                        [
+                            add_custom_information_document(
+                                MatrixDocumentItem(
+                                    dimension_identifier=compensation.dimension_identifier,
+                                    compensation_value=quantity_or_none(
+                                        TQuantityValueUnitless,
+                                        compensation.compensation_value,
+                                    ),
                                 ),
-                            ),
-                            compensation.custom_info,
-                        )
-                        for compensation in compensation_matrix_group.compensation_matrices
-                    ]
-                    if compensation_matrix_group.compensation_matrices
-                    else None,
+                                compensation.custom_info,
+                            )
+                            for compensation in compensation_matrix_group.compensation_matrices
+                        ]
+                        if compensation_matrix_group.compensation_matrices
+                        else None
+                    ),
                 ),
             ),
             compensation_matrix_group.custom_info,
@@ -399,15 +413,17 @@ class Mapper(SchemaMapper[Data, Model]):
                                         statistical_value=TQuantityValue(
                                             value=statistic_dimension.value,
                                             unit=statistic_dimension.unit,
-                                            has_statistic_datum_role=TStatisticDatumRole(
-                                                statistic_dimension.has_statistic_datum_role
-                                            )
-                                            if statistic_dimension.has_statistic_datum_role
-                                            in {
-                                                role.value
-                                                for role in TStatisticDatumRole
-                                            }
-                                            else None,
+                                            has_statistic_datum_role=(
+                                                TStatisticDatumRole(
+                                                    statistic_dimension.has_statistic_datum_role
+                                                )
+                                                if statistic_dimension.has_statistic_datum_role
+                                                in {
+                                                    role.value
+                                                    for role in TStatisticDatumRole
+                                                }
+                                                else None
+                                            ),
                                         ),
                                     ),
                                     statistic_dimension.custom_info,

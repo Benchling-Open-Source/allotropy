@@ -132,9 +132,9 @@ class Sample:
             pco2_unit=units.get(str, "PCO2"),
             carbon_dioxide_saturation=data.get(float, "CO2 Saturation"),
             oxygen_saturation=data.get(float, "O2 Saturation"),
-            cell_type_processing_method=data.get(str, "Cell Type")
-            if cell_density_dilution
-            else None,
+            cell_type_processing_method=(
+                data.get(str, "Cell Type") if cell_density_dilution else None
+            ),
             cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
             device_control_custom_info=data.get_custom_keys(
                 {

@@ -118,17 +118,19 @@ class Mapper(SchemaMapper[Data, Model]):
                             equipment_serial_number=data.metadata.equipment_serial_number,
                             product_manufacturer=data.metadata.product_manufacturer,
                             model_number=data.metadata.model_number,
-                            device_document=[
-                                DeviceDocumentItem(
-                                    device_type=device.device_type,
-                                    device_identifier=device.identifier,
-                                    equipment_serial_number=device.serial_number,
-                                    product_manufacturer=device.product_manufacturer,
-                                )
-                                for device in data.metadata.devices
-                            ]
-                            if data.metadata.devices
-                            else None,
+                            device_document=(
+                                [
+                                    DeviceDocumentItem(
+                                        device_type=device.device_type,
+                                        device_identifier=device.identifier,
+                                        equipment_serial_number=device.serial_number,
+                                        product_manufacturer=device.product_manufacturer,
+                                    )
+                                    for device in data.metadata.devices
+                                ]
+                                if data.metadata.devices
+                                else None
+                            ),
                         ),
                         data.metadata.device_system_custom_info,
                     ),

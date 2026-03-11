@@ -298,9 +298,11 @@ def json_to_csv(
 
     # Convert metadata datasets to json
     result: dict[str, pd.DataFrame | dict[str, Any]] = {
-        name: _convert_to_json_blob(dataset, config.datasets[name])
-        if config.datasets[name].is_metadata
-        else dataset
+        name: (
+            _convert_to_json_blob(dataset, config.datasets[name])
+            if config.datasets[name].is_metadata
+            else dataset
+        )
         for name, dataset in datasets.items()
     }
     return result

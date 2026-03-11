@@ -72,9 +72,11 @@ class RevvityMatrixReader:
 
         # Extract column names first - these will be our first row of headers
         header_dict = {
-            df.columns[0]: df.columns[1].split(":")[-1].strip()
-            if ":" in df.columns[1]
-            else df.columns[1]
+            df.columns[0]: (
+                df.columns[1].split(":")[-1].strip()
+                if ":" in df.columns[1]
+                else df.columns[1]
+            )
         }
 
         # Extract headers from the rows above the data section

@@ -1,4 +1,5 @@
-""" Constants file for Thermo SkanIt"""
+"""Constants file for Thermo SkanIt"""
+
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 
 SAMPLE_ROLE_MAPPINGS = {

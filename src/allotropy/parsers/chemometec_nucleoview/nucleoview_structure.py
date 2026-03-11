@@ -112,9 +112,11 @@ def create_measurement_groups(
                 cell_density_dilution_factor=data.get(float, "Multiplication factor"),
                 viability=data[float, "Viability (%)"],
                 # Cell counts are measured in cells/mL, but reported in millions of cells/mL
-                viable_cell_density=(viable_cell_density / 1e6)
-                if viable_cell_density
-                else NEGATIVE_ZERO,
+                viable_cell_density=(
+                    (viable_cell_density / 1e6)
+                    if viable_cell_density
+                    else NEGATIVE_ZERO
+                ),
                 dead_cell_density=_converted_value_or_none("Dead (cells/ml)"),
                 total_cell_density=_converted_value_or_none("Total (cells/ml)"),
                 average_total_cell_diameter=data.get(

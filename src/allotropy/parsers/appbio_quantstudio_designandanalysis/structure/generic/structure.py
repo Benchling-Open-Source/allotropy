@@ -11,6 +11,7 @@ import pandas as pd
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    _categorize_extra_data,
     AmplificationData,
     MulticomponentData,
 )
@@ -95,6 +96,10 @@ class Header:
     sample_volume_setting: float | None = None
     analysis_datetime: str | None = None
     exported_on: str | None = None
+    experiment_file_name: str | None = None
+    data_processing_extra_data: dict[str, Any] | None = None
+    measurement_extra_data: dict[str, Any] | None = None
+    device_control_extra_data: dict[str, Any] | None = None
     extra_data: dict[str, Any] | None = None
 
     @staticmethod
@@ -115,46 +120,81 @@ class Header:
         pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
         block_type = header[str, "Block Type"]
 
+        # Read all fields first, then get unread data
+        measurement_time = header[
+            str,
+            ["Run End Date/Time", "Run End Data/Time"],
+            "Unable to find measurement time.",
+        ]
+        plate_well_count = assert_not_none(
+            try_int(
+                assert_not_none(
+                    re.match("(96)|(384)", block_type),
+                    msg="Unable to find plate well count",
+                ).group(),
+                "plate well count",
+            ),
+            msg="Unable to interpret plate well count",
+        )
+        device_identifier = header.get(str, "Instrument Name", NOT_APPLICABLE)
+        model_number = header.get(str, "Instrument Type", NOT_APPLICABLE)
+        device_serial_number = header.get(
+            str, "Instrument Serial Number", NOT_APPLICABLE
+        )
+        measurement_method_identifier = header[str, "Quantification Cycle Method"]
+        pcr_detection_chemistry = header.get(str, "Chemistry")
+        passive_reference_dye_setting = header.get(str, "Passive Reference")
+        barcode = header.get(str, "Barcode")
+        analyst = header.get(str, "Operator")
+        experimental_data_identifier = PureWindowsPath(header[str, "File Name"]).name
+        block_serial_number = header.get(str, "Block Serial Number")
+        heated_cover_serial_number = header.get(str, "Heated Cover Serial Number")
+        run_duration = header.get(str, "Run Duration")
+        cover_temperature = header.get(float, "Cover Temperature")
+        run_start_datetime = header.get(str, "Run Start Date/Time")
+        sample_volume_setting = header.get(float, "Sample Volume")
+        analysis_datetime = header.get(str, "Analysis Date/Time")
+        exported_on = header.get(str, "Exported On")
+
+        # Now get unread fields and categorize them
+        raw_extra_data = header.get_unread()
+        (
+            experiment_file_name,
+            data_processing_extra_data,
+            measurement_extra_data,
+            device_control_extra_data,
+            other_extra_data,
+        ) = _categorize_extra_data(raw_extra_data)
+
         return Header(
-            measurement_time=header[
-                str,
-                ["Run End Date/Time", "Run End Data/Time"],
-                "Unable to find measurement time.",
-            ],
-            plate_well_count=assert_not_none(
-                try_int(
-                    assert_not_none(
-                        re.match("(96)|(384)", block_type),
-                        msg="Unable to find plate well count",
-                    ).group(),
-                    "plate well count",
-                ),
-                msg="Unable to interpret plate well count",
-            ),
-            device_identifier=header.get(str, "Instrument Name", NOT_APPLICABLE),
-            model_number=header.get(str, "Instrument Type", NOT_APPLICABLE),
-            device_serial_number=header.get(
-                str, "Instrument Serial Number", NOT_APPLICABLE
-            ),
-            measurement_method_identifier=header[str, "Quantification Cycle Method"],
-            pcr_detection_chemistry=header.get(str, "Chemistry"),
-            passive_reference_dye_setting=header.get(str, "Passive Reference"),
-            barcode=header.get(str, "Barcode"),
-            analyst=header.get(str, "Operator"),
-            experimental_data_identifier=PureWindowsPath(header[str, "File Name"]).name,
-            block_serial_number=header.get(str, "Block Serial Number"),
-            heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
+            measurement_time=measurement_time,
+            plate_well_count=plate_well_count,
+            device_identifier=device_identifier,
+            model_number=model_number,
+            device_serial_number=device_serial_number,
+            measurement_method_identifier=measurement_method_identifier,
+            pcr_detection_chemistry=pcr_detection_chemistry,
+            passive_reference_dye_setting=passive_reference_dye_setting,
+            barcode=barcode,
+            analyst=analyst,
+            experimental_data_identifier=experimental_data_identifier,
+            block_serial_number=block_serial_number,
+            heated_cover_serial_number=heated_cover_serial_number,
             pcr_stage_number=pcr_stage_number,
             software_name=software_name,
             software_version=software_version,
             well_volume=get_well_volume(block_type),
-            run_duration=header.get(str, "Run Duration"),
-            cover_temperature=header.get(float, "Cover Temperature"),
-            run_start_datetime=header.get(str, "Run Start Date/Time"),
-            sample_volume_setting=header.get(float, "Sample Volume"),
-            analysis_datetime=header.get(str, "Analysis Date/Time"),
-            exported_on=header.get(str, "Exported On"),
-            extra_data=header.get_unread(),
+            run_duration=run_duration,
+            cover_temperature=cover_temperature,
+            run_start_datetime=run_start_datetime,
+            sample_volume_setting=sample_volume_setting,
+            analysis_datetime=analysis_datetime,
+            exported_on=exported_on,
+            experiment_file_name=experiment_file_name,
+            data_processing_extra_data=data_processing_extra_data or None,
+            measurement_extra_data=measurement_extra_data or None,
+            device_control_extra_data=device_control_extra_data or None,
+            extra_data=other_extra_data,
         )
 
 
@@ -223,9 +263,11 @@ class WellItem(Referenceable):
         result_class = cls.get_result_class()
         result = result_class.create(data, identifier)
         quantity_custom_info = {
-            "quantity": result.quantity
-            if result.cycle_threshold_result is None and result.quantity is not None
-            else None
+            "quantity": (
+                result.quantity
+                if result.cycle_threshold_result is None and result.quantity is not None
+                else None
+            )
         }
 
         return WellItem(

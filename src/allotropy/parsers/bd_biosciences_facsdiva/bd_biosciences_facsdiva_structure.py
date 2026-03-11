@@ -111,7 +111,7 @@ def _filter_unread_data(unread_data: dict[str, str | None]) -> dict[str, str | N
 
 
 def _separate_custom_fields(
-    custom_info: dict[str, str]
+    custom_info: dict[str, str],
 ) -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
     device_control_info = {}
     measurement_aggregate_info = {}
@@ -165,9 +165,11 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
         unc_path=file_path,
         device_identifier=constants.DEVICE_IDENTIFIER,
         model_number=model_number.get_text_or_none() if model_number else None,
-        equipment_serial_number=equipment_serial_number.get_text_or_none()
-        if equipment_serial_number
-        else None,
+        equipment_serial_number=(
+            equipment_serial_number.get_text_or_none()
+            if equipment_serial_number
+            else None
+        ),
         data_system_instance_identifier=NOT_APPLICABLE,
         software_name=constants.SOFTWARE_NAME,
         software_version=software_version,
@@ -662,19 +664,23 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
 
             compensation_matrix_groups = _create_compensation_matrix_groups(tube)
             measurement_group = MeasurementGroup(
-                experimental_data_identifier=experimental_data_identifier.get_text_or_none()
-                if experimental_data_identifier
-                else None,
-                measurement_time=measurement_time.get_text_or_none()
-                if measurement_time
-                else None,
+                experimental_data_identifier=(
+                    experimental_data_identifier.get_text_or_none()
+                    if experimental_data_identifier
+                    else None
+                ),
+                measurement_time=(
+                    measurement_time.get_text_or_none() if measurement_time else None
+                ),
                 analyst=analyst.get_text_or_none() if analyst else None,
                 compensation_matrix_groups=compensation_matrix_groups,
                 measurements=measurements,
                 experiment_identifier=experiment_identifier,
-                measurement_aggregate_custom_info=measurement_aggregate_custom_info
-                if measurement_aggregate_custom_info
-                else None,
+                measurement_aggregate_custom_info=(
+                    measurement_aggregate_custom_info
+                    if measurement_aggregate_custom_info
+                    else None
+                ),
             )
 
             result.append(measurement_group)

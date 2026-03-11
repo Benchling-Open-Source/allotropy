@@ -23,10 +23,11 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 from allotropy.parsers.utils.values import assert_not_none
 
 
-def ctr() -> MeasurementConfig:
+def ctr(*, required: bool = False) -> MeasurementConfig:
     return MeasurementConfig(
         name="cycle threshold result",
         value="cycle_threshold_result",
+        required=required,
     )
 
 
@@ -132,7 +133,7 @@ def quantity(
     y_intercept_conf: CalculatedDataConfig | None = None,
     slope_conf: CalculatedDataConfig | None = None,
 ) -> CalculatedDataConfig:
-    ctr_conf = ctr()
+    ctr_conf = ctr(required=True)
     return CalculatedDataConfig(
         name="quantity",
         value="quantity",

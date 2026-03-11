@@ -17,7 +17,27 @@
                                         },
                                         "qPCR detection chemistry": "SYBR_GREEN",
                                         "reporter dye setting": "SYBR",
-                                        "passive reference dye setting": "ROX"
+                                        "passive reference dye setting": "ROX",
+                                        "custom information document": {
+                                            "Calibration SYBR performed on": "2016-08-25 03:13:07 AM EDT",
+                                            "Calibration NED is expired": "Yes",
+                                            "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
+                                            "Calibration ROI is expired": "Yes",
+                                            "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT",
+                                            "Calibration Uniformity is expired": "Yes",
+                                            "Calibration ROX is expired": "Yes",
+                                            "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
+                                            "Calibration FAM performed on": "2016-08-25 02:42:38 AM EDT",
+                                            "Calibration VIC is expired": "Yes",
+                                            "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
+                                            "Calibration TAMRA is expired": "Yes",
+                                            "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
+                                            "Calibration SYBR is expired": "Yes",
+                                            "Calibration FAM is expired": "Yes",
+                                            "Calibration Background is expired": "Yes",
+                                            "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT",
+                                            "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT"
+                                        }
                                     }
                                 ]
                             },
@@ -55,11 +75,13 @@
                                             "custom information document": {
                                                 "reference dna description": "N/A",
                                                 "reference sample description": "N/A",
-                                                "BADROX": "N",
+                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N",
+                                                "BADROX": "N",
                                                 "omit": false,
-                                                "NOISE": "N"
+                                                "CQCONF": "N",
+                                                "Signal Smoothing On": "true",
+                                                "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -258,9 +280,12 @@
             "file name": "appbio_quantstudio_minimal_test02.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test02.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
-            "software version": "1.0"
+            "software version": "1.0",
+            "custom information document": {
+                "Experiment File Name": "C:\\Users\\JoeNegri\\Downloads\\200224 U251p14 200217_14v9_SEMA3F_trial 1.eds"
+            }
         },
         "device system document": {
             "device identifier": "278880086",

@@ -253,19 +253,21 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
-            image_aggregate_document=ImageAggregateDocument(
-                image_document=[
-                    add_custom_information_document(
-                        ImageDocumentItem(
-                            experimental_data_identifier=measurement.experimental_data_identifier
-                        ),
-                        measurement.image_processing_custom_info or {},
-                    )
-                ],
-            )
-            if measurement.experimental_data_identifier
-            or measurement.image_processing_custom_info
-            else None,
+            image_aggregate_document=(
+                ImageAggregateDocument(
+                    image_document=[
+                        add_custom_information_document(
+                            ImageDocumentItem(
+                                experimental_data_identifier=measurement.experimental_data_identifier
+                            ),
+                            measurement.image_processing_custom_info or {},
+                        )
+                    ],
+                )
+                if measurement.experimental_data_identifier
+                or measurement.image_processing_custom_info
+                else None
+            ),
         )
         return add_custom_information_document(
             measurement_document, measurement.custom_info or {}

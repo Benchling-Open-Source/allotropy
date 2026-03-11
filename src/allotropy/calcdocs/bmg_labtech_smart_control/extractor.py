@@ -13,15 +13,19 @@ class BmgLabtechSmartControlExtractor(Extractor[CalculatedDataStructure]):
             data={
                 "uuid": calc_data_struct.measurement.identifier,
                 "measurement": calc_data_struct.measurement.fluorescence,
-                "sample_role_type": measurement.sample_role_type.name
-                if measurement.sample_role_type
-                else None,
-                "corrected_value": calc_data_struct.corrected_value
-                if calc_data_struct.corrected_value
-                else None,
+                "sample_role_type": (
+                    measurement.sample_role_type.name
+                    if measurement.sample_role_type
+                    else None
+                ),
+                "corrected_value": (
+                    calc_data_struct.corrected_value
+                    if calc_data_struct.corrected_value
+                    else None
+                ),
                 "average_of_blank_used": calc_data_struct.average_of_blank_used,
-                "fluorescence": measurement.fluorescence
-                if measurement.fluorescence
-                else None,
+                "fluorescence": (
+                    measurement.fluorescence if measurement.fluorescence else None
+                ),
             },
         )

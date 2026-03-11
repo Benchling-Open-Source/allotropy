@@ -347,19 +347,27 @@ def _create_measurement_from_mapping(
         measurement_time=time_data[str, mapping.time_field],
         sample_identifier=sample_id,
         source_plate=get_source_field(mapping.source_plate_field),
-        source_well=source_data.get(str, mapping.source_well_field)
-        if mapping.source_well_field
-        else None,
-        source_location=source_data.get(str, mapping.source_location_field)
-        if mapping.source_location_field
-        else None,
+        source_well=(
+            source_data.get(str, mapping.source_well_field)
+            if mapping.source_well_field
+            else None
+        ),
+        source_location=(
+            source_data.get(str, mapping.source_location_field)
+            if mapping.source_location_field
+            else None
+        ),
         destination_plate=get_dest_field(mapping.destination_plate_field),
-        destination_well=time_data.get(str, mapping.destination_well_field)
-        if mapping.destination_well_field
-        else None,
-        destination_location=time_data.get(str, mapping.destination_location_field)
-        if mapping.destination_location_field
-        else None,
+        destination_well=(
+            time_data.get(str, mapping.destination_well_field)
+            if mapping.destination_well_field
+            else None
+        ),
+        destination_location=(
+            time_data.get(str, mapping.destination_location_field)
+            if mapping.destination_location_field
+            else None
+        ),
         aspiration_volume=source_data[float, mapping.aspiration_volume_field],
         transfer_volume=time_data[float, mapping.transfer_volume_field],
         device_control_custom_info=custom_info,

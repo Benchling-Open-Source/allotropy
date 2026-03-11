@@ -1,5 +1,6 @@
 from collections.abc import Iterable
 from pathlib import Path
+from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -74,6 +75,7 @@ def _create_processed_data(
     amplification_data: AmplificationData | None,
     result: Result,
     result_metadata: ResultMetadata,
+    header_data_processing_extra_data: dict[str, Any] | None = None,
 ) -> ProcessedData:
     (
         normalized_reporter_data_cube,
@@ -102,7 +104,18 @@ def _create_processed_data(
         "Allele2 Automatic Ct Threshold",
         "Allele2 Automatic Baseline",
         "Allele2 Ct",
+        # Fields already in sample document custom info - skip to avoid duplication
+        "Sample Color",
+        "Target Color",
     }
+
+    # Also skip fields that match patterns already in sample document
+    # (Task.1, Target Name.1, etc. - these have suffixes in the data)
+    sample_doc_field_prefixes = {"Task", "Target Name", "Sample Color", "Target Color"}
+    for key in list(extra_data.keys()):
+        base_key = key.rsplit(".", 1)[0] if "." in key else key
+        if base_key in sample_doc_field_prefixes:
+            skip_fields.add(key)
 
     processed_data_custom_info = {
         k: v
@@ -143,6 +156,10 @@ def _create_processed_data(
             data_processing_custom_info[field] = extra_data[field]
         elif field in data_processing_defaults:
             data_processing_custom_info[field] = data_processing_defaults[field]
+
+    # Add header-level data processing fields (Stage/Cycle, Signal Smoothing)
+    if header_data_processing_extra_data:
+        data_processing_custom_info.update(header_data_processing_extra_data)
 
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
@@ -252,6 +269,19 @@ def _create_measurement(
         well_item.reporter_dye_setting,
         header.passive_reference_dye_setting,
     )
+
+    # Check for errors that should be reported at measurement level
+    errors: list[Error] = []
+
+    # Add error when quantity can't be calculated due to missing cycle threshold result
+    if result.cycle_threshold_result is None and result.quantity is None:
+        errors.append(
+            Error(
+                error="Quantity could not be calculated: missing cycle threshold result",
+                feature="quantity",
+            )
+        )
+
     return Measurement(
         identifier=well_item.uuid,
         timestamp=header.measurement_time,
@@ -272,12 +302,28 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(
-            amplification_data, result, result_metadata
+            amplification_data,
+            result,
+            result_metadata,
+            (
+                header.data_processing_extra_data
+                if header.data_processing_extra_data
+                else None
+            ),
         ),
         sample_custom_info=well_item.extra_data,
+        custom_info=(
+            header.measurement_extra_data if header.measurement_extra_data else None
+        ),
+        device_control_custom_info=(
+            header.device_control_extra_data
+            if header.device_control_extra_data
+            else None
+        ),
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data),
+        error_document=errors if errors else None,
     )
 
 
@@ -297,6 +343,8 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type.value,
         container_type=constants.CONTAINER_TYPE,
+        experiment_file_name=header.experiment_file_name,
+        custom_info=header.extra_data if header.extra_data else None,
     )
 
 

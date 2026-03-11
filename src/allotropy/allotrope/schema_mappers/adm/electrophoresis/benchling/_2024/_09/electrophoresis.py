@@ -243,14 +243,16 @@ class Mapper(SchemaMapper[Data, Model]):
                     peak_list=PeakList(
                         peak=[self._get_peak(peak) for peak in data.peaks]
                     ),
-                    data_region_aggregate_document=DataRegionAggregateDocument(
-                        data_region_document=[
-                            self._get_data_region_agg_document(data_region)
-                            for data_region in data.data_regions
-                        ]
-                    )
-                    if data.data_regions
-                    else None,
+                    data_region_aggregate_document=(
+                        DataRegionAggregateDocument(
+                            data_region_document=[
+                                self._get_data_region_agg_document(data_region)
+                                for data_region in data.data_regions
+                            ]
+                        )
+                        if data.data_regions
+                        else None
+                    ),
                 )
             ]
         )

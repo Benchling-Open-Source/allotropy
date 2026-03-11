@@ -1,4 +1,4 @@
-"""" Reader file for Thermo Fisher Qubit Flex Parser"""
+""" " Reader file for Thermo Fisher Qubit Flex Parser"""
 
 import numpy as np
 import pandas as pd

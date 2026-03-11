@@ -550,21 +550,27 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         well_plate_identifier=data.results.barcode,
         sample_role_type=data.platemap.get_sample_role_type(well_position),
         number_of_averages=data.measurements.number_of_averages,
-        detector_distance_setting=data.measurements.detector_distance_luminiscence
-        if experiment_type is ExperimentType.LUMINESCENCE
-        else data.measurements.detector_distance,
+        detector_distance_setting=(
+            data.measurements.detector_distance_luminiscence
+            if experiment_type is ExperimentType.LUMINESCENCE
+            else data.measurements.detector_distance
+        ),
         scan_position_setting=data.measurements.scan_position,
         detector_wavelength_setting=detector_wavelength_setting,
         excitation_wavelength_setting=data.measurements.excitation_wavelength,
-        fluorescence=measurement_value
-        if experiment_type is ExperimentType.FLUORESCENCE
-        else None,
-        absorbance=measurement_value
-        if experiment_type is ExperimentType.ABSORBANCE
-        else None,
-        luminescence=measurement_value
-        if experiment_type is ExperimentType.LUMINESCENCE
-        else None,
+        fluorescence=(
+            measurement_value
+            if experiment_type is ExperimentType.FLUORESCENCE
+            else None
+        ),
+        absorbance=(
+            measurement_value if experiment_type is ExperimentType.ABSORBANCE else None
+        ),
+        luminescence=(
+            measurement_value
+            if experiment_type is ExperimentType.LUMINESCENCE
+            else None
+        ),
         device_control_custom_info=data.measurements.device_control_custom_info,
         custom_info=data.measurements.custom_info,
     )
@@ -653,11 +659,14 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                     for analysis_result in data.analysis_results
                 ]
             ),
-            images=[
-                ImageSource(identifier=well_value),
-            ]
-            if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING
-            else None,
+            images=(
+                [
+                    ImageSource(identifier=well_value),
+                ]
+                if data.background_info.experiment_type
+                is ExperimentType.OPTICAL_IMAGING
+                else None
+            ),
             custom_info={
                 "protocol owner": protocol_owner,
                 "measurement finished": measurement_finished,

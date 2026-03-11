@@ -90,14 +90,16 @@ def _create_measurement(row_data: SeriesData, run_date_time: str | None) -> Meas
             "fluid type": row_data.get(str, "Fluid Type"),
             "transfer status": row_data.get(str, "Transfer Status", NOT_APPLICABLE),
         },
-        errors=[
-            Error(
-                error=row_data[str, "Transfer Status"],
-                feature=row_data[str, "Transfer Status"].split(": ")[0],
-            )
-        ]
-        if row_data.get(str, "Transfer Status")
-        else [],
+        errors=(
+            [
+                Error(
+                    error=row_data[str, "Transfer Status"],
+                    feature=row_data[str, "Transfer Status"].split(": ")[0],
+                )
+            ]
+            if row_data.get(str, "Transfer Status")
+            else []
+        ),
         custom_info=row_data.get_unread(),
     )
 

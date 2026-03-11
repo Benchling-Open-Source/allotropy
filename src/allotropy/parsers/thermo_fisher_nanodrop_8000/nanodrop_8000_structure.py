@@ -191,19 +191,21 @@ class SpectroscopyRow:
                         str, "plate id", validate=SeriesData.NOT_NAN
                     ),
                     location_identifier=data[str, "well"],
-                    processed_data=ProcessedData(
-                        features=[
-                            ProcessedDataFeature(
-                                result=mass_concentration,
-                                unit=unit,
-                            )
-                        ],
-                        custom_info=processed_data_custom_info or None,
-                    )
-                    if mass_concentration_capture_wavelength == wavelength
-                    and mass_concentration
-                    and unit
-                    else None,
+                    processed_data=(
+                        ProcessedData(
+                            features=[
+                                ProcessedDataFeature(
+                                    result=mass_concentration,
+                                    unit=unit,
+                                )
+                            ],
+                            custom_info=processed_data_custom_info or None,
+                        )
+                        if mass_concentration_capture_wavelength == wavelength
+                        and mass_concentration
+                        and unit
+                        else None
+                    ),
                     cursor_position=data.get(float, "cursor pos."),
                     cursor_absorbance=data.get(float, "cursor abs."),
                     sample_custom_info={
