@@ -28,12 +28,23 @@
                                 "sample identifier": "5K",
                                 "location identifier": "1",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -53,12 +64,29 @@
                                                 "value": 23,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -147,12 +175,23 @@
                                 "sample identifier": "5K",
                                 "location identifier": "1",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,0)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,0)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -172,12 +211,29 @@
                                                 "value": 23,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -283,12 +339,23 @@
                                 "sample identifier": "5K",
                                 "location identifier": "2",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A2",
-                                "custom information document": {
-                                    "well identifier": 2,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 2.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A2"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -308,12 +375,29 @@
                                                 "value": 23,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -402,12 +486,23 @@
                                 "sample identifier": "5K",
                                 "location identifier": "2",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A2",
-                                "custom information document": {
-                                    "well identifier": 2,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,0)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,0)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 2.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A2"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -427,12 +522,29 @@
                                                 "value": 23,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1067,7 +1179,7 @@
             "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_multiple_cal_doc_wells.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

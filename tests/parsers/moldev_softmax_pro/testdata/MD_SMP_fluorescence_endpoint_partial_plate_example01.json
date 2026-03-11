@@ -3541,10 +3541,15 @@
                             "sample document": {
                                 "location identifier": "C3",
                                 "sample identifier": "01",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3601,10 +3606,15 @@
                             "sample document": {
                                 "location identifier": "C3",
                                 "sample identifier": "01",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3661,10 +3671,15 @@
                             "sample document": {
                                 "location identifier": "C3",
                                 "sample identifier": "01",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3733,10 +3748,15 @@
                             "sample document": {
                                 "location identifier": "C4",
                                 "sample identifier": "02",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3793,10 +3813,15 @@
                             "sample document": {
                                 "location identifier": "C4",
                                 "sample identifier": "02",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3853,10 +3878,15 @@
                             "sample document": {
                                 "location identifier": "C4",
                                 "sample identifier": "02",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3925,10 +3955,15 @@
                             "sample document": {
                                 "location identifier": "C5",
                                 "sample identifier": "03",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3985,10 +4020,15 @@
                             "sample document": {
                                 "location identifier": "C5",
                                 "sample identifier": "03",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4045,10 +4085,15 @@
                             "sample document": {
                                 "location identifier": "C5",
                                 "sample identifier": "03",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4117,10 +4162,15 @@
                             "sample document": {
                                 "location identifier": "C6",
                                 "sample identifier": "04",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4177,10 +4227,15 @@
                             "sample document": {
                                 "location identifier": "C6",
                                 "sample identifier": "04",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4237,10 +4292,15 @@
                             "sample document": {
                                 "location identifier": "C6",
                                 "sample identifier": "04",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4309,10 +4369,15 @@
                             "sample document": {
                                 "location identifier": "C7",
                                 "sample identifier": "05",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4369,10 +4434,15 @@
                             "sample document": {
                                 "location identifier": "C7",
                                 "sample identifier": "05",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4429,10 +4499,15 @@
                             "sample document": {
                                 "location identifier": "C7",
                                 "sample identifier": "05",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4501,10 +4576,15 @@
                             "sample document": {
                                 "location identifier": "C8",
                                 "sample identifier": "06",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4561,10 +4641,15 @@
                             "sample document": {
                                 "location identifier": "C8",
                                 "sample identifier": "06",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4621,10 +4706,15 @@
                             "sample document": {
                                 "location identifier": "C8",
                                 "sample identifier": "06",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4693,10 +4783,15 @@
                             "sample document": {
                                 "location identifier": "C9",
                                 "sample identifier": "07",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4753,10 +4848,15 @@
                             "sample document": {
                                 "location identifier": "C9",
                                 "sample identifier": "07",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4813,10 +4913,15 @@
                             "sample document": {
                                 "location identifier": "C9",
                                 "sample identifier": "07",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4885,10 +4990,15 @@
                             "sample document": {
                                 "location identifier": "C10",
                                 "sample identifier": "08",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4945,10 +5055,15 @@
                             "sample document": {
                                 "location identifier": "C10",
                                 "sample identifier": "08",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5005,10 +5120,15 @@
                             "sample document": {
                                 "location identifier": "C10",
                                 "sample identifier": "08",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5617,10 +5737,15 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "01",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5677,10 +5802,15 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "01",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5737,10 +5867,15 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "01",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5809,10 +5944,15 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "02",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5869,10 +6009,15 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "02",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5929,10 +6074,15 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "02",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6001,10 +6151,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "03",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6061,10 +6216,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "03",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6121,10 +6281,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "03",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6193,10 +6358,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "04",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6253,10 +6423,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "04",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6313,10 +6488,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "04",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6385,10 +6565,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "05",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6445,10 +6630,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "05",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6505,10 +6695,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "05",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6577,10 +6772,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "06",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6637,10 +6837,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "06",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6697,10 +6902,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "06",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6769,10 +6979,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "07",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6829,10 +7044,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "07",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6889,10 +7109,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "07",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6961,10 +7186,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "08",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7021,10 +7251,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "08",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7081,10 +7316,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "08",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7693,10 +7933,15 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "09",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7753,10 +7998,15 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "09",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7813,10 +8063,15 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "09",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7885,10 +8140,15 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "10",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7945,10 +8205,15 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "10",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8005,10 +8270,15 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "10",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8077,10 +8347,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "11",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8137,10 +8412,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "11",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8197,10 +8477,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "11",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8269,10 +8554,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "12",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8329,10 +8619,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "12",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8389,10 +8684,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "12",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8461,10 +8761,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "13",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8521,10 +8826,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "13",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8581,10 +8891,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "13",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8653,10 +8968,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "14",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8713,10 +9033,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "14",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8773,10 +9098,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "14",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8845,10 +9175,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "15",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8905,10 +9240,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "15",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8965,10 +9305,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "15",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9037,10 +9382,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "16",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9097,10 +9447,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "16",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9157,10 +9512,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "16",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9769,10 +10129,15 @@
                             "sample document": {
                                 "location identifier": "F3",
                                 "sample identifier": "09",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9829,10 +10194,15 @@
                             "sample document": {
                                 "location identifier": "F3",
                                 "sample identifier": "09",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9889,10 +10259,15 @@
                             "sample document": {
                                 "location identifier": "F3",
                                 "sample identifier": "09",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9961,10 +10336,15 @@
                             "sample document": {
                                 "location identifier": "F4",
                                 "sample identifier": "10",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10021,10 +10401,15 @@
                             "sample document": {
                                 "location identifier": "F4",
                                 "sample identifier": "10",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10081,10 +10466,15 @@
                             "sample document": {
                                 "location identifier": "F4",
                                 "sample identifier": "10",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10153,10 +10543,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "11",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10213,10 +10608,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "11",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10273,10 +10673,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "11",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10345,10 +10750,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "12",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10405,10 +10815,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "12",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10465,10 +10880,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "12",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10537,10 +10957,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "13",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10597,10 +11022,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "13",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10657,10 +11087,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "13",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10729,10 +11164,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "14",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10789,10 +11229,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "14",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10849,10 +11294,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "14",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10921,10 +11371,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "15",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10981,10 +11436,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "15",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11041,10 +11501,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "15",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11113,10 +11578,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "16",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11173,10 +11643,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "16",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11233,10 +11708,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "16",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Unknowns"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Unknowns",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -19325,7 +19805,7 @@
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/MD_SMP_fluorescence_endpoint_partial_plate_example01.txt",
             "file name": "MD_SMP_fluorescence_endpoint_partial_plate_example01.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.92",
+            "ASM converter version": "0.1.110",
             "software name": "SoftMax Pro"
         },
         "device system document": {

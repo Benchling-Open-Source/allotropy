@@ -24,13 +24,27 @@
                                 "location identifier": "A1",
                                 "sample identifier": "SAMPLE_1",
                                 "batch identifier": "GROUP_1",
-                                "well plate identifier": "PLATE_1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "nr of plates": "1",
-                                    "blanks": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
-                                    "plate description": "- Lunatic_test_BE_31JUL2024"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
+                                            "datum label": "blanks"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "nr of plates"
+                                        },
+                                        {
+                                            "scalar string datum": "- Lunatic_test_BE_31JUL2024",
+                                            "datum label": "plate description"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "PLATE_1"
                             },
                             "absorbance": {
                                 "value": 3.65,
@@ -71,13 +85,27 @@
                                 "location identifier": "B1",
                                 "sample identifier": "SAMPLE_2",
                                 "batch identifier": "GROUP_1",
-                                "well plate identifier": "PLATE_1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "nr of plates": "1",
-                                    "blanks": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
-                                    "plate description": "- Lunatic_test_BE_31JUL2024"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
+                                            "datum label": "blanks"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "nr of plates"
+                                        },
+                                        {
+                                            "scalar string datum": "- Lunatic_test_BE_31JUL2024",
+                                            "datum label": "plate description"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "PLATE_1"
                             },
                             "absorbance": {
                                 "value": 3.66,
@@ -203,7 +231,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Example_Lunatic_Plate_Reader_xlsx_with_header.xlsx",
             "file name": "Example_Lunatic_Plate_Reader_xlsx_with_header.xlsx",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.110",
             "software name": "Lunatic and Stunner Analysis",
             "software version": "8.2.0.259"
         },

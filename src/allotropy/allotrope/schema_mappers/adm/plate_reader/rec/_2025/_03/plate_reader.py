@@ -2,10 +2,12 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -243,7 +245,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     equipment_serial_number=data.metadata.equipment_serial_number,
                     product_manufacturer=data.metadata.product_manufacturer,
                 ),
-                data_system_document=add_custom_information_document(
+                data_system_document=add_custom_information_aggregate_document(
+                    data.metadata.metadata_custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
                     DataSystemDocument(
                         ASM_file_identifier=data.metadata.asm_file_identifier,
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
@@ -254,7 +259,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         ASM_converter_name=self.converter_name,
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                     ),
-                    data.metadata.metadata_custom_info,
                 ),
                 plate_reader_document=[
                     self._get_technique_document(measurement_group)
@@ -270,6 +274,13 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_technique_document(
         self, measurement_group: MeasurementGroup
     ) -> PlateReaderDocumentItem:
+        custom_info_doc = {
+            "maximum wavelength signal": quantity_or_none(
+                TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
+            )
+        }
+        custom_info_doc.update(measurement_group.custom_info or {})
+
         plate_reader_doc = PlateReaderDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -285,13 +296,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 ],
             ),
         )
-        custom_info_doc = {
-            "maximum wavelength signal": quantity_or_none(
-                TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
-            )
-        }
-        custom_info_doc.update(measurement_group.custom_info or {})
-        return add_custom_information_document(plate_reader_doc, custom_info_doc)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            custom_info_doc,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            plate_reader_doc,
+        )
 
     def _get_measurement_document(
         self, measurement: Measurement
@@ -374,8 +384,11 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        device_control_document, measurement.device_control_custom_info
+                    add_custom_information_aggregate_document(
+                        measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        device_control_document,
                     )
                 ]
             ),
@@ -408,9 +421,11 @@ class Mapper(SchemaMapper[Data, Model]):
                         ),
                         peak_list=PeakList(
                             peak=[
-                                add_custom_information_document(
-                                    PeakItem(),
+                                add_custom_information_aggregate_document(
                                     self._process_peak_custom_info(peak_custom_info),
+                                    CustomInformationAggregateDocument,
+                                    CustomInformationDocumentItem,
+                                    PeakItem(),
                                 )
                                 for peak_custom_info in (
                                     measurement.processed_data_document.peak_list_custom_info
@@ -425,8 +440,11 @@ class Mapper(SchemaMapper[Data, Model]):
             if measurement.processed_data_document
             else None,
         )
-        return add_custom_information_document(
-            measurement_doc, measurement.measurement_custom_info
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.measurement_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            measurement_doc,
         )
 
     def _get_luminescence_measurement_document(
@@ -483,9 +501,11 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        device_control_document,
+                    add_custom_information_aggregate_document(
                         measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        device_control_document,
                     ),
                 ]
             ),
@@ -502,7 +522,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
-        return add_custom_information_document(doc, measurement.measurement_custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.measurement_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            doc,
+        )
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
@@ -569,8 +594,11 @@ class Mapper(SchemaMapper[Data, Model]):
             analytical_method_identifier=measurement.analytical_method_identifier,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        device_control_document, measurement.device_control_custom_info
+                    add_custom_information_aggregate_document(
+                        measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        device_control_document,
                     )
                 ]
             ),
@@ -588,8 +616,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
-        return add_custom_information_document(
-            measurement_doc, measurement.measurement_custom_info
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.measurement_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            measurement_doc,
         )
 
     def _get_profile_data_cube_measurement_document(
@@ -663,7 +694,14 @@ class Mapper(SchemaMapper[Data, Model]):
             analytical_method_identifier=measurement.analytical_method_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[device_control_document]
+                device_control_document=[
+                    add_custom_information_aggregate_document(
+                        measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        device_control_document,
+                    )
+                ]
             ),
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
@@ -762,8 +800,11 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        device_control_document, measurement.device_control_custom_info
+                    add_custom_information_aggregate_document(
+                        measurement.device_control_custom_info,
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        device_control_document,
                     )
                 ]
             ),
@@ -811,8 +852,11 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             batch_identifier=measurement.batch_identifier,
         )
-        return add_custom_information_document(
-            sample_doc, measurement.sample_custom_info
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.sample_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            sample_doc,
         )
 
     def _get_calculated_data_aggregate_document(

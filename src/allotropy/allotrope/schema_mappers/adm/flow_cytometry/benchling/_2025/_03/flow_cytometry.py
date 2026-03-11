@@ -3,10 +3,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrixAggregateDocument,
     CompensationMatrixDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataProcessingDocument,
     DataRegionAggregateDocument,
     DataRegionDocumentItem,
@@ -171,8 +173,11 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             manifest=self.MANIFEST,
-            flow_cytometry_aggregate_document=add_custom_information_document(
-                FlowCytometryAggregateDocument(
+            flow_cytometry_aggregate_document=add_custom_information_aggregate_document(
+                data.metadata.custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=FlowCytometryAggregateDocument(
                     device_system_document=DeviceSystemDocument(
                         device_identifier=data.metadata.device_identifier,
                         model_number=data.metadata.model_number,
@@ -193,17 +198,22 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement_group in data.measurement_groups
                     ],
                 ),
-                data.metadata.custom_info,
             ),
         )
 
     def _get_technique_document(
         self, measurement_group: MeasurementGroup
     ) -> FlowCytometryDocumentItem:
-        return add_custom_information_document(
-            FlowCytometryDocumentItem(
-                measurement_aggregate_document=add_custom_information_document(
-                    MeasurementAggregateDocument(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement_group.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=FlowCytometryDocumentItem(
+                measurement_aggregate_document=add_custom_information_aggregate_document(
+                    measurement_group.measurement_aggregate_custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=MeasurementAggregateDocument(
                         measurement_document=[
                             self._get_measurement_document(measurement)
                             for measurement in measurement_group.measurements
@@ -217,7 +227,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         experimental_data_identifier=measurement_group.experimental_data_identifier,
                         experiment_identifier=measurement_group.experiment_identifier,
                     ),
-                    measurement_group.measurement_aggregate_custom_info,
                 ),
                 compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
                     compensation_matrix_document=[
@@ -228,32 +237,42 @@ class Mapper(SchemaMapper[Data, Model]):
                     else None,
                 ),
             ),
-            measurement_group.custom_info,
         )
 
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        return add_custom_information_document(
-            MeasurementDocumentItem(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=MeasurementDocumentItem(
                 measurement_identifier=measurement.measurement_identifier,
                 sample_document=self._get_sample_document(measurement),
                 device_control_aggregate_document=DeviceControlAggregateDocument(
                     device_control_document=[
-                        add_custom_information_document(
-                            DeviceControlDocumentItem(
+                        add_custom_information_aggregate_document(
+                            measurement.device_control_custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
+                            aggregate_document=DeviceControlDocumentItem(
                                 device_type=measurement.device_type,
                             ),
-                            measurement.device_control_custom_info,
                         )
                     ],
                 ),
                 processed_data_aggregate_document=ProcessedDataAggregateDocument(
                     processed_data_document=[
-                        add_custom_information_document(
-                            ProcessedDataDocumentItem(
-                                data_processing_document=add_custom_information_document(
-                                    DataProcessingDocument(
+                        add_custom_information_aggregate_document(
+                            measurement.processed_data_custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
+                            aggregate_document=ProcessedDataDocumentItem(
+                                data_processing_document=add_custom_information_aggregate_document(
+                                    measurement.data_processing_custom_info,
+                                    CustomInformationAggregateDocument,
+                                    CustomInformationDocumentItem,
+                                    aggregate_document=DataProcessingDocument(
                                         method_version=measurement.method_version,
                                         data_processing_time=self.get_date_time(
                                             measurement.data_processing_time
@@ -261,7 +280,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                         if measurement.data_processing_time
                                         else None,
                                     ),
-                                    measurement.data_processing_custom_info,
                                 ),
                                 processed_data_identifier=measurement.processed_data_identifier,
                                 population_aggregate_document=[
@@ -283,19 +301,20 @@ class Mapper(SchemaMapper[Data, Model]):
                                     else None
                                 ),
                             ),
-                            measurement.processed_data_custom_info,
                         )
                     ]
                 ),
             ),
-            measurement.custom_info,
         )
 
     def _get_data_region_document(
         self, data_region: DataRegion
     ) -> DataRegionDocumentItem:
-        return add_custom_information_document(
-            DataRegionDocumentItem(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            data_region.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=DataRegionDocumentItem(
                 data_region_identifier=data_region.region_data_identifier,
                 region_type=data_region.region_data_type,
                 parent_data_region_identifier=data_region.parent_data_region_identifier,
@@ -305,7 +324,6 @@ class Mapper(SchemaMapper[Data, Model]):
                     data_region.vertices
                 ),
             ),
-            data_region.custom_info,
         )
 
     def _get_vertex_aggregate_document(
@@ -315,13 +333,15 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return VertexAggregateDocument(
             vertex_document=[
-                add_custom_information_document(
-                    VertexDocumentItem(
+                add_custom_information_aggregate_document(
+                    vertex.custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=VertexDocumentItem(
                         x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
                         y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
                         vertex_role=vertex.vertex_role,
                     ),
-                    vertex.custom_info,
                 )
                 for vertex in vertices
             ]
@@ -330,8 +350,11 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_population_document(
         self, population: Population
     ) -> PopulationDocumentItem:
-        return add_custom_information_document(
-            PopulationDocumentItem(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            population.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=PopulationDocumentItem(
                 population_identifier=population.population_identifier,
                 written_name=population.written_name,
                 data_region_identifier=population.data_region_identifier,
@@ -351,26 +374,30 @@ class Mapper(SchemaMapper[Data, Model]):
                     population.statistics
                 ),
             ),
-            population.custom_info,
         )
 
     def _get_compensation_matrix_document(
         self, compensation_matrix_group: CompensationMatrixGroup
     ) -> CompensationMatrixDocumentItem:
-        return add_custom_information_document(
-            CompensationMatrixDocumentItem(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            compensation_matrix_group.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=CompensationMatrixDocumentItem(
                 dimension_identifier=compensation_matrix_group.dimension_identifier,
                 matrix_aggregate_document=MatrixAggregateDocument(
                     matrix_document=[
-                        add_custom_information_document(
-                            MatrixDocumentItem(
+                        add_custom_information_aggregate_document(
+                            compensation.custom_info,
+                            CustomInformationAggregateDocument,
+                            CustomInformationDocumentItem,
+                            aggregate_document=MatrixDocumentItem(
                                 dimension_identifier=compensation.dimension_identifier,
                                 compensation_value=quantity_or_none(
                                     TQuantityValueUnitless,
                                     compensation.compensation_value,
                                 ),
                             ),
-                            compensation.custom_info,
                         )
                         for compensation in compensation_matrix_group.compensation_matrices
                     ]
@@ -378,7 +405,6 @@ class Mapper(SchemaMapper[Data, Model]):
                     else None,
                 ),
             ),
-            compensation_matrix_group.custom_info,
         )
 
     def _get_statistics_aggregate_document(
@@ -388,13 +414,19 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return StatisticsAggregateDocument(
             statistics_document=[
-                add_custom_information_document(
-                    StatisticsDocumentItem(
+                add_custom_information_aggregate_document(
+                    statistic.custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=StatisticsDocumentItem(
                         statistical_feature=statistic.statistical_feature,
                         statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
                             statistic_dimension_document=[
-                                add_custom_information_document(
-                                    StatisticDimensionDocumentItem(
+                                add_custom_information_aggregate_document(
+                                    statistic_dimension.custom_info,
+                                    CustomInformationAggregateDocument,
+                                    CustomInformationDocumentItem,
+                                    aggregate_document=StatisticDimensionDocumentItem(
                                         dimension_identifier=statistic_dimension.dimension_identifier,
                                         statistical_value=TQuantityValue(
                                             value=statistic_dimension.value,
@@ -410,26 +442,26 @@ class Mapper(SchemaMapper[Data, Model]):
                                             else None,
                                         ),
                                     ),
-                                    statistic_dimension.custom_info,
                                 )
                                 for statistic_dimension in statistic.statistic_dimension
                             ]
                         ),
                     ),
-                    statistic.custom_info,
                 )
                 for statistic in statistics
             ]
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return add_custom_information_document(
-            SampleDocument(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.sample_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
                 written_name=measurement.written_name,
                 batch_identifier=measurement.batch_identifier,
             ),
-            measurement.sample_custom_info,
         )

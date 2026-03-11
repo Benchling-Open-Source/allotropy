@@ -10,6 +10,14 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Simulation",
+                                                    "datum label": "Reading Type"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
@@ -41,9 +49,6 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11340,7 +11345,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_singleplate_filter_withStepLabel.txt",
             "file name": "endpoint_singleplate_filter_withStepLabel.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.87",
+            "ASM converter version": "0.1.110",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

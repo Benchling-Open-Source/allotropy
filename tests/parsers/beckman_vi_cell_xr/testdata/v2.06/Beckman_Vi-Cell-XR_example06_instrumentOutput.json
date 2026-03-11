@@ -19,6 +19,14 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 204.5,
+                                                    "datum label": "Avg. bg intensity"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Sp Lactic",
                                             "cell density dilution factor": {
@@ -53,9 +61,6 @@
                                         "average total cell circularity": {
                                             "value": 0.709,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. bg intensity": 204.5
                                         }
                                     }
                                 ]
@@ -65,8 +70,13 @@
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "LAC DG 046 T0 M1.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "LAC DG 046 T0 M1.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -88,6 +98,14 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 204.1,
+                                                    "datum label": "Avg. bg intensity"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Sp Lactic",
                                             "cell density dilution factor": {
@@ -122,9 +140,6 @@
                                         "average total cell circularity": {
                                             "value": 0.76,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. bg intensity": 204.1
                                         }
                                     }
                                 ]
@@ -134,8 +149,13 @@
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "LAC DG 046 T0 M2.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "LAC DG 046 T0 M2.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -157,6 +177,14 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 204.0,
+                                                    "datum label": "Avg. bg intensity"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Sp Lactic",
                                             "cell density dilution factor": {
@@ -191,9 +219,6 @@
                                         "average total cell circularity": {
                                             "value": 0.777,
                                             "unit": "(unitless)"
-                                        },
-                                        "custom information document": {
-                                            "Avg. bg intensity": 204.0
                                         }
                                     }
                                 ]
@@ -203,8 +228,13 @@
                             }
                         }
                     ],
-                    "custom information document": {
-                        "experimental data identifier": "LAC DG 046 T0 M3.smp"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "LAC DG 046 T0 M3.smp",
+                                "datum label": "experimental data identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -216,7 +246,7 @@
             "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.110",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },

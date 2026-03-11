@@ -55,10 +55,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -114,10 +125,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -173,10 +195,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -232,10 +265,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -291,10 +335,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -350,10 +405,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -409,10 +475,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -468,10 +545,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -527,10 +615,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -586,10 +685,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -645,10 +755,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -704,10 +825,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -763,10 +895,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -822,10 +965,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -881,10 +1035,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -940,10 +1105,21 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "DF": "1/1.00000",
-                                "QC": "PASS",
-                                "QC Message": "PASS: No QC issues found"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "1/1.00000",
+                                        "datum label": "DF"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS",
+                                        "datum label": "QC"
+                                    },
+                                    {
+                                        "scalar string datum": "PASS: No QC issues found",
+                                        "datum label": "QC Message"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -957,7 +1133,7 @@
             "UNC path": "tests/parsers/appbio_absolute_q/testdata/Appbio_AbsoluteQ_singe2_summary.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
-            "ASM converter version": "0.1.80"
+            "ASM converter version": "0.1.110"
         },
         "calculated data aggregate document": {
             "calculated data document": [

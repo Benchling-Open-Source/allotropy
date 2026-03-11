@@ -10,6 +10,14 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Manual",
+                                                    "datum label": "Reading Type"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
@@ -33,9 +41,6 @@
                                         "excitation bandwidth setting": {
                                             "value": 30.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -744,10 +749,15 @@
                             "sample document": {
                                 "location identifier": "B1",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -804,10 +814,15 @@
                             "sample document": {
                                 "location identifier": "B2",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -1434,10 +1449,15 @@
                             "sample document": {
                                 "location identifier": "C1",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -1494,10 +1514,15 @@
                             "sample document": {
                                 "location identifier": "C2",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -2124,10 +2149,15 @@
                             "sample document": {
                                 "location identifier": "D1",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 200.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 200.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -2184,10 +2214,15 @@
                             "sample document": {
                                 "location identifier": "D2",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 200.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 200.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -2814,10 +2849,15 @@
                             "sample document": {
                                 "location identifier": "E1",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 300.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 300.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -2874,10 +2914,15 @@
                             "sample document": {
                                 "location identifier": "E2",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 300.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 300.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -3504,10 +3549,15 @@
                             "sample document": {
                                 "location identifier": "F1",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 400.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 400.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -3564,10 +3614,15 @@
                             "sample document": {
                                 "location identifier": "F2",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 400.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 400.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -4194,10 +4249,15 @@
                             "sample document": {
                                 "location identifier": "G1",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 500.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 500.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -4254,10 +4314,15 @@
                             "sample document": {
                                 "location identifier": "G2",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 500.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 500.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -4884,10 +4949,15 @@
                             "sample document": {
                                 "location identifier": "H1",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 600.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 600.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -4944,10 +5014,15 @@
                             "sample document": {
                                 "location identifier": "H2",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 600.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 600.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempDEC\\Lenore\\Gen5 Samples\\Fluorescence\\Fluorescamine Protein Quantitation.prt",
                             "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Fluorescamine Protein Quantitation with Data.xpt",
@@ -8586,7 +8661,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/Fluorescamine_Protein_Quantitation_no_results_matrix.txt",
             "file name": "Fluorescamine_Protein_Quantitation_no_results_matrix.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.97",
+            "ASM converter version": "0.1.110",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

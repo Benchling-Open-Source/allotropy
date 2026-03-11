@@ -11,11 +11,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
-                                        "custom information document": {
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Sparging O2%": 20.9,
-                                            "Chemistry Flow Time": 6.67,
-                                            "pH / Gas Flow Time": 3.65
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 6.67,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.9,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.65,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -26,10 +40,21 @@
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
                                 "description": "Spent Media",
-                                "custom information document": {
-                                    "Vessel ID": "3L Bioreactor",
-                                    "Chemistry Dilution Ratio": "1:1",
-                                    "Cell Type": "Workhog"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Workhog",
+                                            "datum label": "Cell Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:1",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar string datum": "3L Bioreactor",
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "analyte aggregate document": {
@@ -106,11 +131,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
-                                        "custom information document": {
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Sparging O2%": 20.9,
-                                            "Chemistry Flow Time": 6.67,
-                                            "pH / Gas Flow Time": 3.65
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 6.67,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.9,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.65,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -121,10 +160,21 @@
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
                                 "description": "Spent Media",
-                                "custom information document": {
-                                    "Vessel ID": "3L Bioreactor",
-                                    "Chemistry Dilution Ratio": "1:1",
-                                    "Cell Type": "Workhog"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Workhog",
+                                            "datum label": "Cell Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:1",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar string datum": "3L Bioreactor",
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "pO2": {
@@ -150,11 +200,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
-                                        "custom information document": {
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Sparging O2%": 20.9,
-                                            "Chemistry Flow Time": 6.67,
-                                            "pH / Gas Flow Time": 3.65
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 6.67,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.9,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.65,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -165,10 +229,21 @@
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
                                 "description": "Spent Media",
-                                "custom information document": {
-                                    "Vessel ID": "3L Bioreactor",
-                                    "Chemistry Dilution Ratio": "1:1",
-                                    "Cell Type": "Workhog"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Workhog",
+                                            "datum label": "Cell Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:1",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar string datum": "3L Bioreactor",
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "pH": {
@@ -192,7 +267,7 @@
             "file name": "SampleResults2022-06-28_142558.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "NovaBio Flex"
         },
         "device system document": {

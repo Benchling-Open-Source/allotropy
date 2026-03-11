@@ -20,11 +20,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -46,11 +49,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 0.812,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.812,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -67,11 +73,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -93,11 +102,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 0.812,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.812,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -122,11 +134,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -148,11 +163,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 0.956,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.956,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -169,11 +187,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -195,11 +216,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 0.956,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.956,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -364,11 +388,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -390,11 +417,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 0.943,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.943,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -411,11 +441,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -437,11 +470,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 0.943,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 0.943,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -466,11 +502,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -492,11 +531,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 1.286,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 1.286,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -513,11 +555,14 @@
                                             "value": 340.0,
                                             "unit": "nm"
                                         },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 50.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "nucleic acid factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -539,11 +584,14 @@
                                     }
                                 ]
                             },
-                            "custom information document": {
-                                "baseline absorbance": {
-                                    "value": 1.286,
-                                    "unit": "mAU"
-                                }
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar double datum": 1.286,
+                                        "unit": "mAU",
+                                        "datum label": "baseline absorbance"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -562,7 +610,7 @@
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_one/testdata/example1.xlsx",
             "software name": "NanoDrop One software",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_one",
-            "ASM converter version": "0.1.106"
+            "ASM converter version": "0.1.110"
         },
         "calculated data aggregate document": {
             "calculated data document": [

@@ -27,15 +27,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "243",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "K3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -51,15 +67,41 @@
                                                 "value": 26,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -133,9 +175,6 @@
                                                         -0.005821397079937748, 0.0006622194380000814, 0.013073517878850286, 0.011562840230222951, 0.026951748305472794, 0.052467127900192624, 0.08560832574747616, 0.13777580304422235, 0.23018058788949172, 0.38833871345589127, 0.6122116751428962, 0.8810190288053042, 1.1577876556610716, 1.4312475094760675, 1.6707615644171618, 1.8355342558328658, 1.9492386412793312]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -218,15 +257,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "243",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "K3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -242,15 +297,41 @@
                                                 "value": 26,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -324,9 +405,6 @@
                                                         -0.0006488332238749964, 0.0018155531693195767, 0.005435554415419479, 0.008991093238194796, 0.014062825212444112, 0.021036183773607435, 0.030353971827721253, 0.05099455622659215, 0.08774973317764806, 0.14107059063254923, 0.21907087046599044, 0.32107853030812916, 0.4228070019941399, 0.5097784961220146, 0.5924655487787897, 0.6546040193585382, 0.688631747369317, 0.7134139605104058]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -395,14 +473,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -432,15 +521,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "244",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "K4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -456,15 +561,41 @@
                                                 "value": 24,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -537,9 +668,6 @@
                                                         -0.007932883746741231, 0.0005117934144599993, 0.008924641695351171, 0.006618905915573176, 0.007691799820243423, 0.02534801720361262, 0.036330660139349984, 0.053560227475416715, 0.08157215584206207, 0.1540514141876505, 0.2656886591741691, 0.46073425987357813, 0.7103758078386121, 0.9939431275169032, 1.2690391966611367, 1.5092100434085194, 1.6926654017220641, 1.8267862339735974, 1.9204429033985926, 2.0011253105860383]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -622,15 +750,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "244",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "K4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -646,15 +790,41 @@
                                                 "value": 26,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -725,9 +895,6 @@
                                                         1.6478671543844025e-05, 0.0013873211931491418, 0.003302950168001454, 0.001120163768097963, 0.005441227589828383, 0.007351015309492763, 0.01258367256841795, 0.019710356822048396, 0.030894627268763557, 0.050176784754663285, 0.08144609195598655, 0.1359629093520883, 0.20596817250700963, 0.2783712709166002, 0.3361271239190862, 0.38160948649264764, 0.41957165024418763, 0.45472583918035897, 0.4847427037833394, 0.5049822012712989]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -796,14 +963,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -833,15 +1011,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "267",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "L3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -857,15 +1051,41 @@
                                                 "value": 27,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -940,9 +1160,6 @@
                                                         -0.0015140779201801456, 0.003935397038093047, 0.007527352846585744, 0.015723648254688038, 0.004678968282846263, 0.01643282651901252, 0.03488052478203403, 0.05991394024628867, 0.11877215715555041, 0.20466370307482212, 0.3567653997127826, 0.5733291620474597, 0.8261332636613112, 1.1253467337901777, 1.4083455947729258, 1.659587101019346, 1.852347629253681, 1.9759000123464145]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -1025,15 +1242,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "267",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "L3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -1049,15 +1282,41 @@
                                                 "value": 27,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1131,9 +1390,6 @@
                                                         -0.0013215491175651438, 0.004429311156272888, 0.009964432418346394, 0.013358137607574441, 0.0202546885609627, 0.03417177259922029, 0.05024621695280075, 0.08258611321449279, 0.13472670227289196, 0.21492769777774812, 0.31418876856565475, 0.42000801920890807, 0.5174528172612191, 0.5945063894987107, 0.6527332386374475, 0.693450984954834, 0.7178241840004921]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -1202,14 +1458,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -1239,15 +1506,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "268",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "L4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -1263,15 +1546,41 @@
                                                 "value": 25,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1345,9 +1654,6 @@
                                                         6.5370746280932375e-06, 0.006474136363847454, 0.02296890583434123, 0.040827548786585496, 0.08276468008874431, 0.16623063238241922, 0.2961563787205888, 0.500944486013043, 0.7617338988856364, 1.0227877179624534, 1.2523123488831425, 1.4552654675815415, 1.6226091025610685, 1.7394616429513623, 1.8279814730755426, 1.8891799645461584]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -1430,15 +1736,31 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "268",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "L4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -1454,15 +1776,41 @@
                                                 "value": 27,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1535,9 +1883,6 @@
                                                         -0.0006103626581338473, 0.0027983297751499967, 0.0049111874286945165, 0.006123985143808195, 0.010403054402424736, 0.015666375160217304, 0.024804385258601246, 0.04748272290596595, 0.08621500537945677, 0.135613717849438, 0.1980031434389261, 0.25674965234903185, 0.30726315049024727, 0.35152400218523466, 0.3875930895255162, 0.41384839131281925, 0.43971513042083155, 0.4549609774809617]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "Amp"
                                         }
                                     }
                                 ]
@@ -1606,14 +1951,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -1643,16 +1999,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "291",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "M3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "M3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -1668,15 +2043,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1756,9 +2157,6 @@
                                                         2.2312316242900057e-06, 0.00026505433761319746]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -1841,16 +2239,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "291",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "M3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "M3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -1866,15 +2283,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1951,9 +2394,6 @@
                                                         -0.0002327780903883435, 0.000214960632758341, 0.0011205524347471332, 0.001104775637798048, 0.0008761208520335441, 0.00042129624166887603, 0.00023177190519947167, 0.00031335929549093156, 0.0009818140182408877]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -2022,14 +2462,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -2059,16 +2510,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "292",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "M4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "M4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -2084,15 +2554,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2165,9 +2661,6 @@
                                                         -0.002206372672090523, 0.0030949440484026427, 0.006674282581334773, 0.012327981961740047]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -2250,16 +2743,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "292",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "M4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "M4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -2275,15 +2787,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2360,9 +2898,6 @@
                                                         -0.0001645095402620742, 0.00047150649918144684, 0.001383730462514239, 0.0017984344559068457, 0.0010250986696363664]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -2431,14 +2966,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -2468,16 +3014,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "315",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "N3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "N3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -2493,15 +3058,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2582,9 +3173,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -2667,16 +3255,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "315",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "N3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "N3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -2692,15 +3299,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2780,9 +3413,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -2851,14 +3481,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -2888,16 +3529,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "316",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "N4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "N4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -2913,15 +3573,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3000,9 +3686,6 @@
                                                         -0.002045202390906847, 0.0002198047466105803]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -3085,16 +3768,35 @@
                                 "sample identifier": "Std 10",
                                 "location identifier": "316",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "N4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "quantity": 2.5,
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 2.5,
+                                            "datum label": "quantity"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "N4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -3110,15 +3812,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3196,9 +3924,6 @@
                                                         2.658484444451948e-05, 0.0009303008311729678, 0.00044734455952434094, 0.0002450665601230285, 0.0007246060923074095, 0.0012196726344557798, 0.0005303054779499196]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -3267,14 +3992,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -3304,15 +4040,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "339",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "O3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -3328,15 +4080,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3413,9 +4191,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -3498,15 +4273,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "339",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "O3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -3522,15 +4313,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3609,9 +4426,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -3680,14 +4494,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -3717,15 +4542,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "340",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "O4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -3741,15 +4582,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3823,9 +4690,6 @@
                                                         -0.0007694742022785149, 0.00019855632664406609, 0.0029454278742436267, 0.004964169081267016]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -3908,15 +4772,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "340",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "O4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -3932,15 +4812,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4021,9 +4927,6 @@
                                                         7.889885764470416e-06, 0.001452766856970903, 0.002958023333334695]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -4092,14 +4995,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -4129,15 +5043,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "363",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "P3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -4153,15 +5083,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4236,9 +5192,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -4321,15 +5274,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "363",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P3",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "P3"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -4345,15 +5314,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4431,9 +5426,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -4502,14 +5494,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -4539,15 +5542,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "364",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "P4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -4563,15 +5582,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4645,9 +5690,6 @@
                                                         -0.004192517797434788, 0.001634927765912789, 0.0017954021225953273, 0.0006365872718191476]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -4730,15 +5772,31 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "364",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P4",
-                                "custom information document": {
-                                    "Omit": "False",
-                                    "sample volume setting": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "Omit"
+                                        },
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "sample volume setting"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "P4"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "No Amp",
+                                                    "datum label": "Amp Status"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": false,
                                             "cycle threshold value setting (qPCR)": {
@@ -4754,15 +5812,41 @@
                                                 "value": 39,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "data processing time": "2024-12-07 04:56:35 PM EST",
-                                                "Exported On": "2024-12-07 04:59:25 PM EST",
-                                                "prfdrop": "N",
-                                                "BADROX": "N",
-                                                "CQCONF": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "Omit": "False"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:59:25 PM EST",
+                                                        "datum label": "Exported On"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "False",
+                                                        "datum label": "Omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "2024-12-07 04:56:35 PM EST",
+                                                        "datum label": "data processing time"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "prfdrop"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4840,9 +5924,6 @@
                                                         -0.0002034437520744416, 0.0009136346277889705]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Amp Status": "No Amp"
                                         }
                                     }
                                 ]
@@ -4911,14 +5992,25 @@
                         "value": 40,
                         "unit": "μL"
                     },
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar double datum": 105.0,
+                                "datum label": "Cover Temperature"
+                            },
+                            {
+                                "scalar string datum": "2024-05-13 10:37:44 AM EDT",
+                                "datum label": "Run Start Date/Time"
+                            },
+                            {
+                                "scalar string datum": "69 minutes 15 seconds",
+                                "datum label": "total measurement duration setting"
+                            }
+                        ]
+                    },
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "total measurement duration setting": "69 minutes 15 seconds",
-                        "Cover Temperature": 105.0,
-                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -5840,13 +6932,21 @@
                 }
             ]
         },
+        "custom information aggregate document": {
+            "custom information document": [
+                {
+                    "scalar string datum": "user",
+                    "datum label": "Exported By"
+                }
+            ]
+        },
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_design_quantity_test.json",
             "data system instance identifier": "localhost",
             "file name": "appbio_quantstudio_design_quantity_test.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_design_quantity_test.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Design & Analysis Software",
             "software version": "2.6.0"
         },
@@ -5855,9 +6955,6 @@
             "equipment serial number": "123456789",
             "model number": "QuantStudio™ 7 Pro System",
             "product manufacturer": "ThermoFisher Scientific"
-        },
-        "custom information document": {
-            "Exported By": "user"
         }
     }
 }

@@ -27,12 +27,23 @@
                             "sample document": {
                                 "sample identifier": "NAC",
                                 "location identifier": "1",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(0,0,255)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -56,14 +67,37 @@
                                                 "value": 0.0,
                                                 "unit": "(unitless)"
                                             },
-                                            "custom information document": {
-                                                "noamp": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "expfail": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "expfail"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "noamp"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter result": {
@@ -209,12 +243,23 @@
                                 "sample identifier": "NAC",
                                 "location identifier": "1",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -238,14 +283,37 @@
                                                 "value": 0.0,
                                                 "unit": "(unitless)"
                                             },
-                                            "custom information document": {
-                                                "noamp": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N",
-                                                "expfail": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "expfail"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "noamp"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "normalized reporter result": {
@@ -457,7 +525,7 @@
             "file name": "appbio_quantstudio_minimal_test01.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

@@ -54,11 +54,14 @@
                             },
                             "sample document": {
                                 "sample identifier": "cellsABCD",
-                                "custom information document": {
-                                    "dilution volume": {
-                                        "value": 0.0,
-                                        "unit": "μL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "μL",
+                                            "datum label": "dilution volume"
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -109,7 +112,7 @@
             "file name": "chemometec_nucleoview_example03.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example03.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.75",
+            "ASM converter version": "0.1.110",
             "software name": "NucleoView"
         },
         "device system document": {

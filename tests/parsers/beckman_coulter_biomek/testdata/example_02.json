@@ -10,13 +10,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "1",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -46,13 +66,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "2",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "2",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -82,13 +122,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "3",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "3",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -118,13 +178,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "4",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -154,13 +234,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "5",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "5",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -190,13 +290,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "6",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "6",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -226,13 +346,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "7",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "7",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -262,13 +402,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "8",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "8",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -298,13 +458,33 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "probe": "9",
-                                            "pod": "Pod1",
-                                            "source labware name": "Inducer",
-                                            "destination labware name": "GRP1",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "GRP1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "9",
+                                                    "datum label": "probe"
+                                                },
+                                                {
+                                                    "scalar string datum": "Inducer",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "Custom",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -341,7 +521,7 @@
             "file name": "example_02.log",
             "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/example_02.log",
             "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.110",
             "software name": "BioMek Software"
         },
         "device system document": {

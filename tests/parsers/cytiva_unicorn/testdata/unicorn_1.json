@@ -11,9 +11,17 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -83,54 +91,76 @@
                                                         "value": 3.616266,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "max peak retention": {
-                                                            "value": -12.21977,
-                                                            "unit": "mL"
-                                                        },
-                                                        "percent of total area": {
-                                                            "value": 71.98083,
-                                                            "unit": "%"
-                                                        },
-                                                        "start peak end point height": {
-                                                            "value": 0.001034731,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "end peak end point height": {
-                                                            "value": 0.03208642,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "sigma": {
-                                                            "value": 0.9344465,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak start": {
-                                                            "value": -12.82906,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak end": {
-                                                            "value": -10.01644,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "start conductivity height": {
-                                                            "value": 1.691198,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "max conductivity height": {
-                                                            "value": 1.6824660000000002,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "end conductivity height": {
-                                                            "value": 1.7007280000000002,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "average conductivity": {
-                                                            "value": 1.691657,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "StartPeakLimitType": "BaseLine"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "EndPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "false",
+                                                                "datum label": "IsStandardPeak"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BaseLine",
+                                                                "datum label": "StartPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -10.01644,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak end"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -12.82906,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak start"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.691657,
+                                                                "unit": "S/m",
+                                                                "datum label": "average conductivity"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.7007280000000002,
+                                                                "unit": "S/m",
+                                                                "datum label": "end conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.03208642,
+                                                                "unit": "mAU",
+                                                                "datum label": "end peak end point height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.6824660000000002,
+                                                                "unit": "S/m",
+                                                                "datum label": "max conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -12.21977,
+                                                                "unit": "mL",
+                                                                "datum label": "max peak retention"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 71.98083,
+                                                                "unit": "%",
+                                                                "datum label": "percent of total area"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.9344465,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "sigma"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.691198,
+                                                                "unit": "S/m",
+                                                                "datum label": "start conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.001034731,
+                                                                "unit": "mAU",
+                                                                "datum label": "start peak end point height"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -172,54 +202,76 @@
                                                         "value": 0.8020833,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "max peak retention": {
-                                                            "value": -8.543133,
-                                                            "unit": "mL"
-                                                        },
-                                                        "percent of total area": {
-                                                            "value": 0.08367967,
-                                                            "unit": "%"
-                                                        },
-                                                        "start peak end point height": {
-                                                            "value": 0.03208642,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "end peak end point height": {
-                                                            "value": 0.03160653,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "sigma": {
-                                                            "value": 0.03527583,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak start": {
-                                                            "value": -8.610134,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak end": {
-                                                            "value": -8.489393,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "start conductivity height": {
-                                                            "value": 1.7007280000000002,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "max conductivity height": {
-                                                            "value": 1.700863,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "end conductivity height": {
-                                                            "value": 1.700955,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "average conductivity": {
-                                                            "value": 1.700847,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "StartPeakLimitType": "DropLine"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "EndPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "false",
+                                                                "datum label": "IsStandardPeak"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "StartPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.489393,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak end"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.610134,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak start"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.700847,
+                                                                "unit": "S/m",
+                                                                "datum label": "average conductivity"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.700955,
+                                                                "unit": "S/m",
+                                                                "datum label": "end conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.03160653,
+                                                                "unit": "mAU",
+                                                                "datum label": "end peak end point height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.700863,
+                                                                "unit": "S/m",
+                                                                "datum label": "max conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.543133,
+                                                                "unit": "mL",
+                                                                "datum label": "max peak retention"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.08367967,
+                                                                "unit": "%",
+                                                                "datum label": "percent of total area"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.03527583,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "sigma"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.7007280000000002,
+                                                                "unit": "S/m",
+                                                                "datum label": "start conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.03208642,
+                                                                "unit": "mAU",
+                                                                "datum label": "start peak end point height"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -261,54 +313,76 @@
                                                         "value": 5.210526,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "max peak retention": {
-                                                            "value": -8.423091,
-                                                            "unit": "mL"
-                                                        },
-                                                        "percent of total area": {
-                                                            "value": 0.2072987,
-                                                            "unit": "%"
-                                                        },
-                                                        "start peak end point height": {
-                                                            "value": 0.03160653,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "end peak end point height": {
-                                                            "value": 0.01245654,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "sigma": {
-                                                            "value": 0.1591143,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak start": {
-                                                            "value": -8.489393,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak end": {
-                                                            "value": -8.077621,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "start conductivity height": {
-                                                            "value": 1.700955,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "max conductivity height": {
-                                                            "value": 1.70105,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "end conductivity height": {
-                                                            "value": 1.701266,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "average conductivity": {
-                                                            "value": 1.701128,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "StartPeakLimitType": "DropLine"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "EndPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "false",
+                                                                "datum label": "IsStandardPeak"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "StartPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.077621,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak end"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.489393,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak start"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.701128,
+                                                                "unit": "S/m",
+                                                                "datum label": "average conductivity"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.701266,
+                                                                "unit": "S/m",
+                                                                "datum label": "end conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.01245654,
+                                                                "unit": "mAU",
+                                                                "datum label": "end peak end point height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.70105,
+                                                                "unit": "S/m",
+                                                                "datum label": "max conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.423091,
+                                                                "unit": "mL",
+                                                                "datum label": "max peak retention"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.2072987,
+                                                                "unit": "%",
+                                                                "datum label": "percent of total area"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.1591143,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "sigma"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.700955,
+                                                                "unit": "S/m",
+                                                                "datum label": "start conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.03160653,
+                                                                "unit": "mAU",
+                                                                "datum label": "start peak end point height"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -350,76 +424,151 @@
                                                         "value": 4.327586,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "custom information document": {
-                                                        "max peak retention": {
-                                                            "value": -8.037142,
-                                                            "unit": "mL"
-                                                        },
-                                                        "percent of total area": {
-                                                            "value": 0.04736046,
-                                                            "unit": "%"
-                                                        },
-                                                        "start peak end point height": {
-                                                            "value": 0.01245654,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "end peak end point height": {
-                                                            "value": 0.006360978,
-                                                            "unit": "mAU"
-                                                        },
-                                                        "sigma": {
-                                                            "value": 0.08057795,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak start": {
-                                                            "value": -8.077621,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "asymmetry peak end": {
-                                                            "value": -7.861964,
-                                                            "unit": "(unitless)"
-                                                        },
-                                                        "start conductivity height": {
-                                                            "value": 1.701266,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "max conductivity height": {
-                                                            "value": 1.701302,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "end conductivity height": {
-                                                            "value": 1.7014880000000001,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "average conductivity": {
-                                                            "value": 1.701361,
-                                                            "unit": "S/m"
-                                                        },
-                                                        "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "StartPeakLimitType": "DropLine"
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "EndPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "false",
+                                                                "datum label": "IsStandardPeak"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "DropLine",
+                                                                "datum label": "StartPeakLimitType"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -7.861964,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak end"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.077621,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "asymmetry peak start"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.701361,
+                                                                "unit": "S/m",
+                                                                "datum label": "average conductivity"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.7014880000000001,
+                                                                "unit": "S/m",
+                                                                "datum label": "end conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.006360978,
+                                                                "unit": "mAU",
+                                                                "datum label": "end peak end point height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.701302,
+                                                                "unit": "S/m",
+                                                                "datum label": "max conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": -8.037142,
+                                                                "unit": "mL",
+                                                                "datum label": "max peak retention"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.04736046,
+                                                                "unit": "%",
+                                                                "datum label": "percent of total area"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.08057795,
+                                                                "unit": "(unitless)",
+                                                                "datum label": "sigma"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.701266,
+                                                                "unit": "S/m",
+                                                                "datum label": "start conductivity height"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.01245654,
+                                                                "unit": "mAU",
+                                                                "datum label": "start peak end point height"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
                                         },
-                                        "custom information document": {
-                                            "AmplitudePrecision": "3",
-                                            "AmplitudeUnit": "mAU",
-                                            "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                            "ColumnVolumeUnitName": "ml",
-                                            "CurveDataType": "UV",
-                                            "CurveNumber": "1",
-                                            "DistanceBetweenPoints": "0.001666667",
-                                            "IsExternal": "false",
-                                            "IsOriginalData": "true",
-                                            "IsReadOnly": "false",
-                                            "IsoChroneType": "Time",
-                                            "MethodStartTime": "2024-01-02T11:00:00.000",
-                                            "MethodStartTimeUtcOffsetMinutes": "-300",
-                                            "TimeUnit": "min",
-                                            "VolumeUnit": "ml",
-                                            "DistanceToStartPoint": "0.06833267"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "3",
+                                                    "datum label": "AmplitudePrecision"
+                                                },
+                                                {
+                                                    "scalar string datum": "mAU",
+                                                    "datum label": "AmplitudeUnit"
+                                                },
+                                                {
+                                                    "scalar string datum": "2024-01-02T11:00:00.000",
+                                                    "datum label": "ChromatogramStartTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "-300",
+                                                    "datum label": "ChromatogramStartTimeUtcOffsetMinutes"
+                                                },
+                                                {
+                                                    "scalar string datum": "ml",
+                                                    "datum label": "ColumnVolumeUnitName"
+                                                },
+                                                {
+                                                    "scalar string datum": "UV",
+                                                    "datum label": "CurveDataType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "CurveNumber"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.001666667",
+                                                    "datum label": "DistanceBetweenPoints"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.06833267",
+                                                    "datum label": "DistanceToStartPoint"
+                                                },
+                                                {
+                                                    "scalar string datum": "false",
+                                                    "datum label": "IsExternal"
+                                                },
+                                                {
+                                                    "scalar string datum": "true",
+                                                    "datum label": "IsOriginalData"
+                                                },
+                                                {
+                                                    "scalar string datum": "false",
+                                                    "datum label": "IsReadOnly"
+                                                },
+                                                {
+                                                    "scalar string datum": "Time",
+                                                    "datum label": "IsoChroneType"
+                                                },
+                                                {
+                                                    "scalar string datum": "2024-01-02T11:00:00.000",
+                                                    "datum label": "MethodStartTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "-300",
+                                                    "datum label": "MethodStartTimeUtcOffsetMinutes"
+                                                },
+                                                {
+                                                    "scalar string datum": "min",
+                                                    "datum label": "TimeUnit"
+                                                },
+                                                {
+                                                    "scalar string datum": "ml",
+                                                    "datum label": "VolumeUnit"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -466,9 +615,17 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -540,9 +697,17 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -614,9 +779,17 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -676,24 +849,77 @@
                                                 ]
                                             }
                                         },
-                                        "custom information document": {
-                                            "AmplitudePrecision": "2",
-                                            "AmplitudeUnit": "mS/cm",
-                                            "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                            "ColumnVolumeUnitName": "ml",
-                                            "CurveDataType": "Conduction",
-                                            "CurveNumber": "4",
-                                            "DistanceBetweenPoints": "0.003333333",
-                                            "IsExternal": "false",
-                                            "IsOriginalData": "true",
-                                            "IsReadOnly": "false",
-                                            "IsoChroneType": "Time",
-                                            "MethodStartTime": "2024-01-02T11:00:00.000",
-                                            "MethodStartTimeUtcOffsetMinutes": "-300",
-                                            "TimeUnit": "min",
-                                            "VolumeUnit": "ml",
-                                            "DistanceToStartPoint": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "2",
+                                                    "datum label": "AmplitudePrecision"
+                                                },
+                                                {
+                                                    "scalar string datum": "mS/cm",
+                                                    "datum label": "AmplitudeUnit"
+                                                },
+                                                {
+                                                    "scalar string datum": "2024-01-02T11:00:00.000",
+                                                    "datum label": "ChromatogramStartTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "-300",
+                                                    "datum label": "ChromatogramStartTimeUtcOffsetMinutes"
+                                                },
+                                                {
+                                                    "scalar string datum": "ml",
+                                                    "datum label": "ColumnVolumeUnitName"
+                                                },
+                                                {
+                                                    "scalar string datum": "Conduction",
+                                                    "datum label": "CurveDataType"
+                                                },
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "CurveNumber"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.003333333",
+                                                    "datum label": "DistanceBetweenPoints"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "DistanceToStartPoint"
+                                                },
+                                                {
+                                                    "scalar string datum": "false",
+                                                    "datum label": "IsExternal"
+                                                },
+                                                {
+                                                    "scalar string datum": "true",
+                                                    "datum label": "IsOriginalData"
+                                                },
+                                                {
+                                                    "scalar string datum": "false",
+                                                    "datum label": "IsReadOnly"
+                                                },
+                                                {
+                                                    "scalar string datum": "Time",
+                                                    "datum label": "IsoChroneType"
+                                                },
+                                                {
+                                                    "scalar string datum": "2024-01-02T11:00:00.000",
+                                                    "datum label": "MethodStartTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "-300",
+                                                    "datum label": "MethodStartTimeUtcOffsetMinutes"
+                                                },
+                                                {
+                                                    "scalar string datum": "min",
+                                                    "datum label": "TimeUnit"
+                                                },
+                                                {
+                                                    "scalar string datum": "ml",
+                                                    "datum label": "VolumeUnit"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -740,9 +966,17 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -841,9 +1075,17 @@
                                                 ]
                                             }
                                         },
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -996,9 +1238,17 @@
                                                 ]
                                             }
                                         },
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1058,24 +1308,77 @@
                                                 ]
                                             }
                                         },
-                                        "custom information document": {
-                                            "AmplitudePrecision": "3",
-                                            "AmplitudeUnit": "MPa",
-                                            "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                            "ColumnVolumeUnitName": "ml",
-                                            "CurveDataType": "Pressure",
-                                            "CurveNumber": "27",
-                                            "DistanceBetweenPoints": "0.01666667",
-                                            "IsExternal": "false",
-                                            "IsOriginalData": "true",
-                                            "IsReadOnly": "false",
-                                            "IsoChroneType": "Time",
-                                            "MethodStartTime": "2024-01-02T11:00:00.000",
-                                            "MethodStartTimeUtcOffsetMinutes": "-300",
-                                            "TimeUnit": "min",
-                                            "VolumeUnit": "ml",
-                                            "DistanceToStartPoint": "0.08499908"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "3",
+                                                    "datum label": "AmplitudePrecision"
+                                                },
+                                                {
+                                                    "scalar string datum": "MPa",
+                                                    "datum label": "AmplitudeUnit"
+                                                },
+                                                {
+                                                    "scalar string datum": "2024-01-02T11:00:00.000",
+                                                    "datum label": "ChromatogramStartTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "-300",
+                                                    "datum label": "ChromatogramStartTimeUtcOffsetMinutes"
+                                                },
+                                                {
+                                                    "scalar string datum": "ml",
+                                                    "datum label": "ColumnVolumeUnitName"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pressure",
+                                                    "datum label": "CurveDataType"
+                                                },
+                                                {
+                                                    "scalar string datum": "27",
+                                                    "datum label": "CurveNumber"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.01666667",
+                                                    "datum label": "DistanceBetweenPoints"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.08499908",
+                                                    "datum label": "DistanceToStartPoint"
+                                                },
+                                                {
+                                                    "scalar string datum": "false",
+                                                    "datum label": "IsExternal"
+                                                },
+                                                {
+                                                    "scalar string datum": "true",
+                                                    "datum label": "IsOriginalData"
+                                                },
+                                                {
+                                                    "scalar string datum": "false",
+                                                    "datum label": "IsReadOnly"
+                                                },
+                                                {
+                                                    "scalar string datum": "Time",
+                                                    "datum label": "IsoChroneType"
+                                                },
+                                                {
+                                                    "scalar string datum": "2024-01-02T11:00:00.000",
+                                                    "datum label": "MethodStartTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "-300",
+                                                    "datum label": "MethodStartTimeUtcOffsetMinutes"
+                                                },
+                                                {
+                                                    "scalar string datum": "min",
+                                                    "datum label": "TimeUnit"
+                                                },
+                                                {
+                                                    "scalar string datum": "ml",
+                                                    "datum label": "VolumeUnit"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1308,9 +1611,17 @@
                                                 ]
                                             }
                                         },
-                                        "custom information document": {
-                                            "ColumnVolume": "4",
-                                            "ScanInterval": "0"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "4",
+                                                    "datum label": "ColumnVolume"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "ScanInterval"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1364,9 +1675,17 @@
                                 },
                                 "fraction role": "Out-Waste",
                                 "@type": "Fraction",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1380,9 +1699,17 @@
                                     "unit": "mL"
                                 },
                                 "@type": "Method",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1396,9 +1723,17 @@
                                     "unit": "mL"
                                 },
                                 "@type": "Method",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1412,9 +1747,17 @@
                                     "unit": "mL"
                                 },
                                 "@type": "Method",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1428,9 +1771,17 @@
                                     "unit": "mL"
                                 },
                                 "@type": "Method",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1444,9 +1795,17 @@
                                     "unit": "mL"
                                 },
                                 "@type": "Method",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1461,9 +1820,17 @@
                                 },
                                 "fraction role": "Frac",
                                 "@type": "Fraction",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1478,9 +1845,17 @@
                                 },
                                 "fraction role": "Out-Waste",
                                 "@type": "Fraction",
-                                "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Undefined",
+                                            "datum label": "EventSubType"
+                                        },
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             }
                         ]
@@ -1498,8 +1873,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Batch ID: ",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1513,8 +1893,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": ")",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1528,8 +1913,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Alarm air sensors Enabled Enabled Disabled (Completed) (Manual)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262144"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262144",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1543,8 +1933,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Continue 2(Issued) (Manual)",
-                                "custom information document": {
-                                    "InstructionFeedback": "65536"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "65536",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1558,8 +1953,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Continue  (Processing) (Manual)",
-                                "custom information document": {
-                                    "InstructionFeedback": "131072"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "131072",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1573,8 +1973,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Continue 0 (Completed) (Manual)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262144"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262144",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1588,8 +1993,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Peak start (System)",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1603,8 +2013,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1618,8 +2033,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Block Finalize sample injection (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1633,8 +2053,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Base Volume, ColumnSameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1648,8 +2073,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Sample inlet Buffer (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1663,8 +2093,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Sample inlet Buffer (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1678,8 +2113,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1693,8 +2133,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Sample flow 0.00 {ml/min} Off (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1708,8 +2153,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Sample flow 0.00 {ml/min} Off (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1723,8 +2173,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Injection valve Manual load (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1738,8 +2193,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "The method flow is now calculated based on the system flow. (System)",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1753,8 +2213,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Injection valve Manual load (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1768,8 +2233,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Block Stop frac (Sample Appl) (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1783,8 +2253,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1798,8 +2273,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Stop peak frac in outlet valve (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1813,8 +2293,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "Stop peak frac in outlet valve (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1828,8 +2313,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1843,8 +2333,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "End Phase (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1859,8 +2354,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Phase Column Wash (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1875,8 +2375,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1891,8 +2396,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Inlet A A2 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1907,8 +2417,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Inlet A A2 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1923,8 +2438,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Inlet B B1 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1939,8 +2459,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Inlet B B1 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1955,8 +2480,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1971,8 +2501,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -1987,8 +2522,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "System flow 10.00 {ml/min} Off (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2003,8 +2543,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "System flow 10.00 {ml/min} Off (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2019,8 +2564,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Block Start frac (Column Wash) (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2035,8 +2585,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2051,8 +2606,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak fractionation parameters Level 0.125 {min} 50.000 {mAU} 100.000 {mAU/min} 75.000 {mAU} 75.000 {mAU/min} (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2067,8 +2627,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak fractionation is performed using the UV1 signal. (System)",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2083,8 +2648,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak fractionation parameters Level 0.125 {min} 50.000 {mAU} 100.000 {mAU/min} 75.000 {mAU} 75.000 {mAU/min} (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2099,8 +2669,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak frac in outlet valve Out 1 9 700.00 {ml} (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2115,8 +2690,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak frac in outlet valve Out 1 9 700.00 {ml} (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2131,8 +2711,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2147,8 +2732,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Block Wash (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2163,8 +2753,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2179,8 +2774,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak start (System)",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2195,8 +2795,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Peak end (System)",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2211,8 +2816,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2227,8 +2837,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Block Stop frac (Column Wash) (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2243,8 +2858,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2259,8 +2879,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Stop peak frac in outlet valve (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2275,8 +2900,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "Stop peak frac in outlet valve (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2291,8 +2921,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2307,8 +2942,13 @@
                                 },
                                 "method identifier": "Column Wash",
                                 "log entry": "End Phase (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2323,8 +2963,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Phase CIP & Storage (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2339,8 +2984,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2355,8 +3005,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "pH valve Off-line Off-line (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2371,8 +3026,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "The instruction 'pH valve' will be executed after the delay volume has been collected. (System)",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2387,8 +3047,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "pH valve Off-line Off-line (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2403,8 +3068,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Block Column maintenance step_(1) (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2419,8 +3089,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2435,8 +3110,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Message \"Maintenance solution: \" (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2451,8 +3131,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet A A4 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2467,8 +3152,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet A A4 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2483,8 +3173,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet B B1 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2499,8 +3194,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet B B1 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2515,8 +3215,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2531,8 +3236,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2547,8 +3257,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Out-Waste (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2563,8 +3278,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Out-Waste (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2579,8 +3299,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "System flow 15.00 {ml/min} Off (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2595,8 +3320,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "System flow 15.00 {ml/min} Off (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2611,8 +3341,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2627,8 +3362,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2643,8 +3383,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2659,8 +3404,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Block Column maintenance step_(2) (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2675,8 +3425,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2691,8 +3446,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Message \"Maintenance solution: RODI\" (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2707,8 +3467,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet A A6 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2723,8 +3488,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet A A6 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2739,8 +3509,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet B B1 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2755,8 +3530,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet B B1 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2771,8 +3551,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2787,8 +3572,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2803,8 +3593,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Out-Waste (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2819,8 +3614,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Out-Waste (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2835,8 +3635,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "System flow 15.00 {ml/min} Off (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2851,8 +3656,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "System flow 15.00 {ml/min} Off (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2867,8 +3677,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2883,8 +3698,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2899,8 +3719,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2915,8 +3740,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Block Column maintenance step_(3) (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2931,8 +3761,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Base SameAsMain",
-                                "custom information document": {
-                                    "InstructionFeedback": "0"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "0",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2947,8 +3782,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Message \"Maintenance solution: 20% EtOH\" (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2963,8 +3803,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet A A5 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2979,8 +3824,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet A A5 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -2995,8 +3845,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet B B1 (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3011,8 +3866,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Inlet B B1 (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3027,8 +3887,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3043,8 +3908,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3059,8 +3929,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Fraction collector (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3075,8 +3950,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Fraction collector (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3091,8 +3971,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "System flow 8.00 {ml/min} Off (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3107,8 +3992,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "System flow 8.00 {ml/min} Off (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3123,8 +4013,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3139,8 +4034,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3155,8 +4055,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "End_Block (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3171,8 +4076,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3187,8 +4097,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Column position Position 3 Down flow (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3203,8 +4118,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Out-Waste (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3219,8 +4139,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "Outlet valve Out-Waste (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3235,8 +4160,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "pH valve In-line Off-line (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3247,8 +4177,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "pH valve In-line Off-line (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3263,8 +4198,13 @@
                                 },
                                 "method identifier": "CIP & Storage",
                                 "log entry": "End Phase (Issued) (Processing) (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "458753"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "458753",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3278,8 +4218,13 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "End  (Issued) (Processing)",
-                                "custom information document": {
-                                    "InstructionFeedback": "196609"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "196609",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -3293,21 +4238,52 @@
                                     "unit": "mL"
                                 },
                                 "log entry": "End (Completed)",
-                                "custom information document": {
-                                    "InstructionFeedback": "262145"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "262145",
+                                            "datum label": "InstructionFeedback"
+                                        }
+                                    ]
                                 }
                             }
                         ]
                     },
-                    "custom information document": {
-                        "ChromatogramID": "100",
-                        "ChromatogramName": "Chrom.1",
-                        "Created": "2024-01-01T10:00:00.000",
-                        "CreatedUtcOffsetMinutes": "-300",
-                        "FormatVersion": "9",
-                        "Name": "Capto Adhere Polishing 100ppm Sample",
-                        "RunIndex": "100",
-                        "RunType": "Method"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "100",
+                                "datum label": "ChromatogramID"
+                            },
+                            {
+                                "scalar string datum": "Chrom.1",
+                                "datum label": "ChromatogramName"
+                            },
+                            {
+                                "scalar string datum": "2024-01-01T10:00:00.000",
+                                "datum label": "Created"
+                            },
+                            {
+                                "scalar string datum": "-300",
+                                "datum label": "CreatedUtcOffsetMinutes"
+                            },
+                            {
+                                "scalar string datum": "9",
+                                "datum label": "FormatVersion"
+                            },
+                            {
+                                "scalar string datum": "Capto Adhere Polishing 100ppm Sample",
+                                "datum label": "Name"
+                            },
+                            {
+                                "scalar string datum": "100",
+                                "datum label": "RunIndex"
+                            },
+                            {
+                                "scalar string datum": "Method",
+                                "datum label": "RunType"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Default"
@@ -3315,18 +4291,41 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.110",
             "file name": "unicorn_1.zip",
             "software version": "100.100.100.100",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip",
-            "custom information document": {
-                "FolderPath": "/DefaultHome",
-                "FormatVersion": "100",
-                "IsArchived": "false",
-                "IsReadOnly": "false",
-                "ResultFormatVersion": "100",
-                "ResultPurpose": "100",
-                "ResultState": "Evaluated"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "/DefaultHome",
+                        "datum label": "FolderPath"
+                    },
+                    {
+                        "scalar string datum": "100",
+                        "datum label": "FormatVersion"
+                    },
+                    {
+                        "scalar string datum": "false",
+                        "datum label": "IsArchived"
+                    },
+                    {
+                        "scalar string datum": "false",
+                        "datum label": "IsReadOnly"
+                    },
+                    {
+                        "scalar string datum": "100",
+                        "datum label": "ResultFormatVersion"
+                    },
+                    {
+                        "scalar string datum": "100",
+                        "datum label": "ResultPurpose"
+                    },
+                    {
+                        "scalar string datum": "Evaluated",
+                        "datum label": "ResultState"
+                    }
+                ]
             }
         },
         "device system document": {
@@ -3334,8 +4333,13 @@
             "product manufacturer": "Cytiva Life Sciences",
             "device identifier": "Avant1",
             "firmware version": "100.100.100.100",
-            "custom information document": {
-                "SystemTypeName": "NEXTAKTAchromatography"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "NEXTAKTAchromatography",
+                        "datum label": "SystemTypeName"
+                    }
+                ]
             }
         }
     }

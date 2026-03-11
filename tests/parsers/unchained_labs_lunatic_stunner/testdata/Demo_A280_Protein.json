@@ -10,14 +10,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -27,10 +35,15 @@
                                 "location identifier": "A1",
                                 "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": -0.0,
@@ -67,14 +80,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -84,11 +105,19 @@
                                 "location identifier": "B1",
                                 "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.84,
@@ -113,14 +142,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -130,11 +167,19 @@
                                 "location identifier": "C1",
                                 "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.04,
@@ -159,14 +204,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -176,11 +229,19 @@
                                 "location identifier": "D1",
                                 "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.18,
@@ -205,14 +266,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -222,11 +291,19 @@
                                 "location identifier": "E1",
                                 "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 2.07,
@@ -251,14 +328,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -268,11 +353,19 @@
                                 "location identifier": "F1",
                                 "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.39,
@@ -297,14 +390,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -314,11 +415,19 @@
                                 "location identifier": "G1",
                                 "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 4.22,
@@ -343,14 +452,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -360,11 +477,19 @@
                                 "location identifier": "H1",
                                 "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.61,
@@ -389,14 +514,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -406,11 +539,19 @@
                                 "location identifier": "A2",
                                 "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 4.22,
@@ -435,14 +576,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -452,11 +601,19 @@
                                 "location identifier": "B2",
                                 "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.61,
@@ -481,14 +638,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -498,10 +663,15 @@
                                 "location identifier": "C2",
                                 "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0,
@@ -538,14 +708,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -555,11 +733,19 @@
                                 "location identifier": "D2",
                                 "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.82,
@@ -584,14 +770,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -601,11 +795,19 @@
                                 "location identifier": "E2",
                                 "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.03,
@@ -630,14 +832,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -647,11 +857,19 @@
                                 "location identifier": "F2",
                                 "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.18,
@@ -676,14 +894,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -693,11 +919,19 @@
                                 "location identifier": "G2",
                                 "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 2.05,
@@ -722,14 +956,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -739,11 +981,19 @@
                                 "location identifier": "H2",
                                 "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4,
@@ -768,14 +1018,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -785,11 +1043,19 @@
                                 "location identifier": "A3",
                                 "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 2.08,
@@ -814,14 +1080,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -831,11 +1105,19 @@
                                 "location identifier": "B3",
                                 "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4,
@@ -860,14 +1142,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -877,11 +1167,19 @@
                                 "location identifier": "C3",
                                 "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 4.23,
@@ -906,14 +1204,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -923,11 +1229,19 @@
                                 "location identifier": "D3",
                                 "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.6,
@@ -952,14 +1266,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -969,10 +1291,15 @@
                                 "location identifier": "E3",
                                 "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": -0.0,
@@ -1009,14 +1336,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1026,11 +1361,19 @@
                                 "location identifier": "F3",
                                 "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.83,
@@ -1055,14 +1398,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1072,11 +1423,19 @@
                                 "location identifier": "G3",
                                 "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.03,
@@ -1101,14 +1460,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1118,11 +1485,19 @@
                                 "location identifier": "H3",
                                 "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.19,
@@ -1147,14 +1522,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1164,11 +1547,19 @@
                                 "location identifier": "A4",
                                 "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.04,
@@ -1193,14 +1584,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1210,11 +1609,19 @@
                                 "location identifier": "B4",
                                 "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.18,
@@ -1239,14 +1646,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1256,11 +1671,19 @@
                                 "location identifier": "C4",
                                 "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 2.07,
@@ -1285,14 +1708,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1302,11 +1733,19 @@
                                 "location identifier": "D4",
                                 "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.38,
@@ -1331,14 +1770,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1348,11 +1795,19 @@
                                 "location identifier": "E4",
                                 "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 4.22,
@@ -1377,14 +1832,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1394,11 +1857,19 @@
                                 "location identifier": "F4",
                                 "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.62,
@@ -1423,14 +1894,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1440,10 +1919,15 @@
                                 "location identifier": "G4",
                                 "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": -0.01,
@@ -1480,14 +1964,22 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "column"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "pump"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 280.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1497,11 +1989,19 @@
                                 "location identifier": "H4",
                                 "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 10.0,
+                                            "datum label": "molar attenuation coefficient setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Lunatic Plate",
+                                            "datum label": "plate type"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.83,
@@ -3065,7 +3565,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Demo_A280_Protein.csv",
             "file name": "Demo_A280_Protein.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.110",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {

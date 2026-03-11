@@ -23,6 +23,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 8.836589813,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 113.3732758,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.270699382,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 52.36649704,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 475.6500549,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 118113.8516,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 4529.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -61,36 +100,6 @@
                                         "dead cell count": {
                                             "value": 212.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.270699382,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 113.3732758,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 52.36649704,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 475.6500549,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 4529.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 118113.8516,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 8.836589813,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -98,15 +107,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F01",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -132,6 +154,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 9.692784309,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 108.0105515,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.325070262,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 52.06482315,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 471.4387817,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 243764.2344,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 4201.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -170,36 +231,6 @@
                                         "dead cell count": {
                                             "value": 188.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.325070262,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 108.0105515,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 52.06482315,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 471.4387817,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 4201.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 243764.2344,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 9.692784309,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -207,15 +238,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F02",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -241,6 +285,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 30.82720184,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 108.4419479,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.235189319,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 50.64849091,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 448.8540344,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 291642.1875,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 4765.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -279,36 +362,6 @@
                                         "dead cell count": {
                                             "value": 236.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.235189319,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 108.4419479,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 50.64849091,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 448.8540344,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 4765.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 291642.1875,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 30.82720184,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -316,15 +369,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F03",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -350,6 +416,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 32.83224106,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 108.1891937,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.235963702,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 50.55105972,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 447.7957458,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 298250.4063,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 5278.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -388,36 +493,6 @@
                                         "dead cell count": {
                                             "value": 270.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.235963702,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 108.1891937,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 50.55105972,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 447.7957458,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 5278.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 298250.4063,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 32.83224106,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -425,15 +500,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F04",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -459,6 +547,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.27874565,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 112.1095505,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.261754513,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 51.99099731,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 469.8835144,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 237037.2656,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 4045.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -497,36 +624,6 @@
                                         "dead cell count": {
                                             "value": 241.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.261754513,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 112.1095505,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 51.99099731,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 469.8835144,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 4045.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 237037.2656,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 10.27874565,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -534,15 +631,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F05",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -568,6 +678,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 10.76614952,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 110.7801285,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.266411543,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 51.6265564,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 464.9411621,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 273303.9063,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 3928.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -606,36 +755,6 @@
                                         "dead cell count": {
                                             "value": 221.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.266411543,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 110.7801285,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 51.6265564,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 464.9411621,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 3928.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 273303.9063,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 10.76614952,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -643,15 +762,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F06",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -677,6 +809,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 32.0012207,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 107.5048447,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.211935163,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 49.97198868,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 438.7392883,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 242550.4375,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 5507.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -715,36 +886,6 @@
                                         "dead cell count": {
                                             "value": 273.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.211935163,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 107.5048447,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 49.97198868,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 438.7392883,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 5507.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 242550.4375,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 32.0012207,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -752,15 +893,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F07",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -786,6 +940,45 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 32.16242218,
+                                                    "unit": "%",
+                                                    "datum label": "aggregate rate"
+                                                },
+                                                {
+                                                    "scalar double datum": 105.5984573,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average area"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.210420251,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average compactness"
+                                                },
+                                                {
+                                                    "scalar double datum": 49.55705261,
+                                                    "unit": "µm",
+                                                    "datum label": "average perimeter"
+                                                },
+                                                {
+                                                    "scalar double datum": 432.0295105,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "average segment area"
+                                                },
+                                                {
+                                                    "scalar double datum": 257867.3438,
+                                                    "unit": "cell",
+                                                    "datum label": "standard deviation"
+                                                },
+                                                {
+                                                    "scalar double datum": 5220.0,
+                                                    "unit": "cell",
+                                                    "datum label": "total object count"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
@@ -824,36 +1017,6 @@
                                         "dead cell count": {
                                             "value": 273.0,
                                             "unit": "cell"
-                                        },
-                                        "custom information document": {
-                                            "average compactness": {
-                                                "value": 1.210420251,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average area": {
-                                                "value": 105.5984573,
-                                                "unit": "(unitless)"
-                                            },
-                                            "average perimeter": {
-                                                "value": 49.55705261,
-                                                "unit": "µm"
-                                            },
-                                            "average segment area": {
-                                                "value": 432.0295105,
-                                                "unit": "(unitless)"
-                                            },
-                                            "total object count": {
-                                                "value": 5220.0,
-                                                "unit": "cell"
-                                            },
-                                            "standard deviation": {
-                                                "value": 257867.3438,
-                                                "unit": "cell"
-                                            },
-                                            "aggregate rate": {
-                                                "value": 32.16242218,
-                                                "unit": "%"
-                                            }
                                         }
                                     }
                                 ]
@@ -861,15 +1024,28 @@
                             "sample document": {
                                 "sample identifier": "0618_F08",
                                 "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Original",
+                                            "datum label": "group identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "2019-06-17T08:34:01+00:00",
+                                            "datum label": "sample draw time"
+                                        }
+                                    ]
                                 }
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Workarea name": "standard"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "standard",
+                                "datum label": "Workarea name"
+                            }
+                        ]
                     }
                 },
                 "analyst": "SuperUser"
@@ -881,7 +1057,7 @@
             "file name": "roche_cedex_hires_example_2.xlsx",
             "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_2.xlsx",
             "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.110",
             "software name": "Cedex software"
         },
         "device system document": {
@@ -891,10 +1067,21 @@
             "device identifier": "3714019",
             "model number": "Cedex HiRes",
             "product manufacturer": "Roche",
-            "custom information document": {
-                "System description (processed)": "my system",
-                "Default system (processed)": 1.0,
-                "Default system": 1.0
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar double datum": 1.0,
+                        "datum label": "Default system"
+                    },
+                    {
+                        "scalar double datum": 1.0,
+                        "datum label": "Default system (processed)"
+                    },
+                    {
+                        "scalar string datum": "my system",
+                        "datum label": "System description (processed)"
+                    }
+                ]
             }
         }
     }
