@@ -35,13 +35,26 @@ def determine_encoding(
             f"Unable to detect text encoding for file with content: {actual_contents!r}"
         )
         raise AllotropeParsingError(msg)
-    # chardet can report the wrong encoding when there are strange characters in the contents (e.g. emojis)
-    # To address this, we take the following approach - if the confidence of the detection is < 70%, report
-    # DEFAULT_ENCODING first, and the detected encoding second. If we return multiple encodings, the caller
-    # should try all.
-    if detect_result["confidence"] < 0.7:
-        return [DEFAULT_ENCODING, detect_result["encoding"]]
-    return [detect_result["encoding"]]
+
+    detected_encoding = detect_result["encoding"]
+    confidence = detect_result["confidence"]
+
+    # chardet 7.x has different behavior for Windows-1252 detection
+    # For very low confidence detections, try Windows-1252 as a fallback
+    # This handles cases like single byte \x96 (en dash) which chardet 7.x
+    # may misdetect as iso-8859-16 or other encodings
+    if confidence < 0.3:
+        # For very low confidence, try multiple encodings
+        encodings = [DEFAULT_ENCODING, "windows-1252"]
+        if detected_encoding and detected_encoding not in encodings:
+            encodings.append(detected_encoding)
+        return encodings
+    elif confidence < 0.7:
+        # For medium confidence, try UTF-8 first, then the detected encoding
+        return [DEFAULT_ENCODING, detected_encoding]
+    else:
+        # High confidence, use the detected encoding
+        return [detected_encoding]
 
 
 def decode(contents: IO[bytes] | IO[str], encoding: str | None) -> str:
@@ -56,7 +69,13 @@ def decode(contents: IO[bytes] | IO[str], encoding: str | None) -> str:
             msg = f"Could not determine encoding of contents: {actual_contents!r}"
             raise AssertionError(msg)
         try:
-            return actual_contents.decode(encoding)
+            decoded = actual_contents.decode(encoding)
+            # Strip BOM (Byte Order Mark) if present
+            # UTF-16 and UTF-8 files may include BOM character U+FEFF
+            # which should be removed from the content
+            if decoded and decoded[0] == '\ufeff':
+                decoded = decoded[1:]
+            return decoded
         except UnicodeDecodeError as e:
             if encoding != possible_encodings[-1]:
                 continue
