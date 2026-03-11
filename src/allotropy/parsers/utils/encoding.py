@@ -39,21 +39,36 @@ def determine_encoding(
     detected_encoding = detect_result["encoding"]
     confidence = detect_result["confidence"]
 
-    # chardet 7.x has different behavior for Windows-1252 detection
-    # For very low confidence detections, try Windows-1252 as a fallback
-    # This handles cases like single byte \x96 (en dash) which chardet 7.x
-    # may misdetect as iso-8859-16 or other encodings
+    # chardet can misdetect UTF-8 multi-byte sequences as ISO-8859-1 or similar
+    # Latin-1 encodings, especially in older versions (5.x). Always try UTF-8
+    # first when Latin-1 family encodings are detected to avoid mojibake.
+    latin1_encodings = {
+        "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5",
+        "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-10",
+        "ISO-8859-13", "ISO-8859-14", "ISO-8859-15", "ISO-8859-16",
+        "cp1250", "cp1251", "cp1252", "cp1253", "cp1254", "cp1255",
+        "cp1256", "cp1257", "cp1258", "windows-1250", "windows-1251",
+        "windows-1252", "windows-1253", "windows-1254", "windows-1255",
+        "windows-1256", "windows-1257", "windows-1258"
+    }
+
+    # Normalize encoding name for comparison
+    normalized_encoding = detected_encoding.upper() if detected_encoding else ""
+
     if confidence < 0.3:
-        # For very low confidence, try multiple encodings
+        # Very low confidence, try multiple encodings
         encodings = [DEFAULT_ENCODING, "windows-1252"]
         if detected_encoding and detected_encoding not in encodings:
             encodings.append(detected_encoding)
         return encodings
-    elif confidence < 0.7:
-        # For medium confidence, try UTF-8 first, then the detected encoding
-        return [DEFAULT_ENCODING, detected_encoding]
+    elif normalized_encoding in latin1_encodings or confidence < 0.7:
+        # For Latin-1 family or medium confidence, try UTF-8 first
+        # This handles chardet 5.x incorrectly detecting UTF-8 as ISO-8859-1
+        if detected_encoding != DEFAULT_ENCODING:
+            return [DEFAULT_ENCODING, detected_encoding]
+        return [DEFAULT_ENCODING]
     else:
-        # High confidence, use the detected encoding
+        # High confidence non-Latin encoding, use as detected
         return [detected_encoding]
 
 
