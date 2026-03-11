@@ -42,7 +42,7 @@ INFO_HEADER = [
     "analyst",
 ]
 
-DATA_HEADER_V6 = [
+DATA_HEADER_V6_V7 = [
     "row type",
     "measurement time",
     "sample identifier",

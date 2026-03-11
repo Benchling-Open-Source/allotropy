@@ -1,0 +1,1920 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest",
+    "dPCR aggregate document": {
+        "device system document": {
+            "device identifier": "Qiacuity dPCR",
+            "brand name": "Qiacuity Digital PCR System",
+            "product manufacturer": "Qiagen"
+        },
+        "dPCR document": [
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 0,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_0",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "1_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "A1",
+                                "well plate identifier": "2186f026-541d-438c-8195-2a1da8a81e56"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8261,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 7782.4,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7644,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 617,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.9,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Plate name": "250227 AAV MA 6",
+                                "Conc. [cp/mL] (undiluted sample)": 1686182594111.7195,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.837,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 7782381.203592551,
+                                "Plate type": "Nanoplate 8.5K 96-well",
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1686182594.1
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_1",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "1_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "A2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8220,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 8243.3,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7693,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 527,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 3.0,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1786050964138.843,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.836,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 8243312.142179277,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1786050964.1
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_2",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "1_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "A3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8251,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4331.8,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6314,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 1937,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1877114325134.616,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.847,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4331802.288772191,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1877114325.1
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_3",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "1_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "A4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8258,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4131.6,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6179,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2079,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1790349080821.224,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.841,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4131574.801895133,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1790349080.8
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_4",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "GFP+_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "A5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8258,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4273.2,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6262,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 1996,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 10000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 185170581000.04825,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.828,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4273167.253847267,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 185170581.0
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_5",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "2_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "B1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8268,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 7293.9,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7545,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 723,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.9,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1580351754196.643,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.843,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 7293931.173215276,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1580351754.2
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_6",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "2_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "B2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8256,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 7501.9,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7539,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 717,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.9,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1625406695292.6665,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.772,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 7501877.055196923,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1625406695.3
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_7",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "2_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "B3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8265,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3881.2,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5922,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2343,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1681860942624.3003,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.764,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3881217.559902232,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1681860942.6
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_8",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "2_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "B4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8263,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3841.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5840,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2423,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1664444598370.3672,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.718,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3841025.99623931,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1664444598.4
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_9",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "GFP+_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "B5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8263,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4308.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6181,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2082,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 10000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 186679999068.2229,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.723,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4307999.978497452,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 186679999.1
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_10",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "3_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "C1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8257,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 8421.5,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7738,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 519,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 3.0,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1824651611540.6409,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.796,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 8421468.976341419,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1824651611.5
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_11",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "3_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "C2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8268,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 8345.5,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7686,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 582,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 3.0,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1808181441523.5188,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.706,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 8345452.807031626,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1808181441.5
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_12",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "3_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "C3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8281,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4496.9,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6296,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 1985,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1948671691045.873,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.703,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4496934.671644322,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1948671691.0
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_13",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "3_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "C4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8280,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4286.8,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6114,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2166,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1857632049793.4663,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.662,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4286843.191831076,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1857632049.8
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_14",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "GFP+_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "C5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8257,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4460.6,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6193,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2064,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 10000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 193294447776.66205,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.645,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4460641.102538355,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 193294447.8
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_15",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "4_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "D1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8285,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 7045.4,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7476,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 809,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1526512249740.832,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.81,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 7045441.152649994,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1526512249.7
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_16",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "4_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "D2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8278,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 7069.1,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7418,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 860,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1531629117357.8635,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.726,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 7069057.464728602,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1531629117.4
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_17",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "4_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "D3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8257,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3853.2,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5821,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2436,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1669714154540.81,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.696,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3853186.510478793,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1669714154.5
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_18",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "4_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "D4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8276,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3657.5,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5640,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2636,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1584916941610.0308,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.662,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3657500.634484687,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1584916941.6
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_19",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "GFP+_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "D5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8269,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4623.5,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 6251,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2018,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.7,
+                                "Concentration factor": 10000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 200350910227.60248,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.596,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 4623482.543713903,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 200350910.2
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_20",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "5_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "E1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8274,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 6629.6,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7345,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 929,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1436419478719.8535,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.807,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 6629628.363322401,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1436419478.7
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_21",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "5_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "E2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8275,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 6718.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7313,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 962,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1455572998874.9473,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.726,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 6718029.225576681,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1455572998.9
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_22",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "5_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "E3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8263,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3537.6,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5510,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2753,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1532943076917.869,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.644,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3537560.946733544,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1532943076.9
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_23",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "5_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "E4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8264,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3386.7,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5398,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2866,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1467571324674.5393,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.661,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3386703.056941245,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1467571324.7
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_24",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "NTC_1",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "E5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8263,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 8263,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": "-",
+                                "Concentration factor": 1.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 0.0,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.621,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 0.0,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 0.0
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_25",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "6_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "F1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8259,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 6685.3,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7350,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 909,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1448491376471.0164,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.809,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 6685344.814481614,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1448491376.5
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_26",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "6_5000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "F2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8247,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 6638.5,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 7287,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 960,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 50000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1438331442395.4546,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.757,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 6638452.811055944,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1438331442.4
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_27",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "6_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "F3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8249,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3545.9,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5601,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2648,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1536578275692.3123,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.727,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3545949.866982259,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1536578275.7
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_28",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "6_10000",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "F4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8212,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3456.3,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 5382,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 2830,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 2.8,
+                                "Concentration factor": 100000.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1497729420400.2473,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.623,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 3456298.662462109,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1497729420.4
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_29",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "NTC_1",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "F5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 6287,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 6287,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": "-",
+                                "Concentration factor": 1.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 0.0,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.639,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 0.0,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 0.0
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_30",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "NTC_1",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "G5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8249,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.386,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 1,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 8248,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": 147.5,
+                                "Concentration factor": 1.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 1670.669600924,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.676,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 385.539138675,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 1.671
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_31",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "target DNA description": "eGFP",
+                            "sample document": {
+                                "sample identifier": "NTC_1",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "H5"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 8211,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "fluorescence intensity threshold setting": {
+                                                "value": 19.45,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 8211,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "CI (95%) (dPCR reaction)": "-",
+                                "Concentration factor": 1.0,
+                                "Template volume [μl]": 3.6,
+                                "Conc. [cp/mL] (undiluted sample)": 0.0,
+                                "Reaction Mix": "eGFP",
+                                "Volume per well [μl]": 2.734,
+                                "Conversion unit": "cp/mL",
+                                "Total volume [μl]": 15.6,
+                                "Conc. [cp/mL] (dPCR reaction)": 0.0,
+                                "Conversion factor": 1000.0,
+                                "Conc. [cp/μL] (undiluted sample)": 0.0
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "data system document": {
+            "file name": "qiacuity_dpcr_example04.csv",
+            "UNC path": "tests/parsers/qiacuity_dpcr/testdata/qiacuity_dpcr_example04.csv",
+            "software name": "Qiacuity Software Suite",
+            "ASM converter name": "allotropy_qiacuity_dpcr",
+            "ASM converter version": "0.1.111"
+        }
+    }
+}

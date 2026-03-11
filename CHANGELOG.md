@@ -5,6 +5,32 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.113] - 2026-01-28
+
+### Added
+
+- Mass spectrometry mapper (#1122)
+- Qiacuity dPCR - add handle for first column containing the well (#1129)
+
+## [0.1.112] - 2025-12-15
+
+### Added
+
+- Update Roche BioHT Adapter for v7.0 support (#1132)
+- Agilent Gen5 - handle multiple different read types in one file (#1130)
+- BMG Mars - Updated parser to support BMG Labtech format (#1126)
+
+## [0.1.111] - 2025-11-19
+
+### Added
+
+- JSON-to-CSV - improve list parsing to better support datacubes (#1124)
+- Cytiva Biacore T200 control - add unread data (#1120)
+- Qiacuity dPCR - Added unread data (#1103)
+- Migrate biorad_bioplex_manager to use SeriesData.get_unread (#1100)
+- Mass spectrometer ASM schema (#1121)
+- Roche Cedex BioHT - Add support for mM unit (mmol/L) (#1119)
+
 ## [0.1.110] - 2025-11-03
 
 ### Added

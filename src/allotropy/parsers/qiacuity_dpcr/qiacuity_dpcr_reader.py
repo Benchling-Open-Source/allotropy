@@ -19,8 +19,14 @@ class QiacuitydPCRReader:
         qiacuity_dpcr_data.columns = qiacuity_dpcr_data.columns.str.replace("�", "μ")
         qiacuity_dpcr_data.columns = qiacuity_dpcr_data.columns.str.replace("Âμ", "μ")
         column_names = qiacuity_dpcr_data.columns.tolist()
-        # Rename the blank column to specify that it's the Well Name column
-        column_names[0] = "Well Name"
+        if "Well" in column_names:
+            # Rename "Well" to "Well Name" for consistency
+            column_names = [
+                "Well Name" if col == "Well" else col for col in column_names
+            ]
+        else:
+            # Rename the blank first column to specify that it's the Well Name column
+            column_names[0] = "Well Name"
         column_index = pd.Index(column_names)
         qiacuity_dpcr_data.columns = column_index
         self.well_data = qiacuity_dpcr_data

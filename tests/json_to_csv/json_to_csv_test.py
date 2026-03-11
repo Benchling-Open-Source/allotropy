@@ -629,3 +629,156 @@ def test_map_dataset_metadata_to_json() -> None:
         "Dict Key": "dict_value",
     }
     assert expected == actual
+
+
+def test_map_dataset_parallel_arrays_same_length_are_zipped() -> None:
+    """Test that parallel arrays of same length are zipped together, not crossed."""
+    data = {
+        "data": {
+            "dimensions": [[0.0, 0.01, 0.02]],
+            "measures": [[1.0, 2.0, 3.0]],
+        },
+        "label": "test_label",
+    }
+
+    dataset_config = DatasetConfig.create(
+        config_json={
+            "name": "Dataset",
+            "columns": [
+                {"name": "time", "path": "data/dimensions/[0]"},
+                {"name": "value", "path": "data/measures/[0]"},
+                {"name": "label", "path": "label"},
+            ],
+        },
+        transforms=[],
+    )
+
+    actual = map_dataset(data, dataset_config)
+    # Should have 3 rows (zipped), not 9 rows (crossed)
+    expected = pd.DataFrame(
+        {
+            "time": [0.0, 0.01, 0.02],
+            "value": [1.0, 2.0, 3.0],
+            "label": ["test_label", "test_label", "test_label"],
+        }
+    )
+    assert expected.equals(actual)
+
+
+def test_map_dataset_different_length_arrays_are_crossed() -> None:
+    """Test that arrays of different lengths are still crossed (Cartesian product)."""
+    data = {
+        "list1": [{"key1": "A"}, {"key1": "B"}],
+        "list2": [{"key2": "X"}, {"key2": "Y"}, {"key2": "Z"}],
+    }
+
+    dataset_config = DatasetConfig.create(
+        config_json={
+            "name": "Dataset",
+            "columns": [
+                {"name": "Key1", "path": "list1/key1"},
+                {"name": "Key2", "path": "list2/key2"},
+            ],
+        },
+        transforms=[],
+    )
+
+    actual = map_dataset(data, dataset_config)
+    # Should have 6 rows (2 x 3 crossed)
+    expected = pd.DataFrame(
+        {
+            "Key1": ["A", "A", "A", "B", "B", "B"],
+            "Key2": ["X", "Y", "Z", "X", "Y", "Z"],
+        }
+    )
+    assert expected.equals(actual)
+
+
+def test_map_dataset_datacube_structure() -> None:
+    """Test datacube-like structure with multiple parallel array pairs."""
+    data = {
+        "measurements": [
+            {
+                "location": "A1",
+                "datacube": {
+                    "label": "UV_VIS",
+                    "data": {
+                        "dimensions": [[0.0, 0.1, 0.2]],
+                        "measures": [[1.5, 2.5, 3.5]],
+                    },
+                },
+            },
+            {
+                "location": "A2",
+                "datacube": {
+                    "label": "UV_VIS",
+                    "data": {
+                        "dimensions": [[0.0, 0.1]],
+                        "measures": [[4.0, 5.0]],
+                    },
+                },
+            },
+        ]
+    }
+
+    dataset_config = DatasetConfig.create(
+        config_json={
+            "name": "Dataset",
+            "columns": [
+                {"name": "location", "path": "measurements/location"},
+                {"name": "label", "path": "measurements/datacube/label"},
+                {"name": "time", "path": "measurements/datacube/data/dimensions/[0]"},
+                {
+                    "name": "absorbance",
+                    "path": "measurements/datacube/data/measures/[0]",
+                },
+            ],
+        },
+        transforms=[],
+    )
+
+    actual = map_dataset(data, dataset_config)
+    # Should have 5 rows total (3 for A1 + 2 for A2), not 15 rows (3X3 + 2X2 crossed)
+    expected = pd.DataFrame(
+        {
+            "location": ["A1", "A1", "A1", "A2", "A2"],
+            "label": ["UV_VIS", "UV_VIS", "UV_VIS", "UV_VIS", "UV_VIS"],
+            "time": [0.0, 0.1, 0.2, 0.0, 0.1],
+            "absorbance": [1.5, 2.5, 3.5, 4.0, 5.0],
+        }
+    )
+    assert expected.equals(actual)
+
+
+def test_map_dataset_mixed_single_and_parallel_arrays() -> None:
+    """Test that single values are crossed with parallel arrays correctly."""
+    data = {
+        "constant": "fixed_value",
+        "arrays": {
+            "x": [1, 2, 3],
+            "y": [10, 20, 30],
+        },
+    }
+
+    dataset_config = DatasetConfig.create(
+        config_json={
+            "name": "Dataset",
+            "columns": [
+                {"name": "constant", "path": "constant"},
+                {"name": "x", "path": "arrays/x"},
+                {"name": "y", "path": "arrays/y"},
+            ],
+        },
+        transforms=[],
+    )
+
+    actual = map_dataset(data, dataset_config)
+    # x and y should be zipped (3 rows), then crossed with constant
+    expected = pd.DataFrame(
+        {
+            "constant": ["fixed_value", "fixed_value", "fixed_value"],
+            "x": [1, 2, 3],
+            "y": [10, 20, 30],
+        }
+    )
+    assert expected.equals(actual)

@@ -141,11 +141,22 @@ def _map_dataset(
                 msg = f"Invalid transform type in dataset config: {transform.type_}"
                 raise ValueError(msg)
 
-        df = (
-            df
-            if path_df.empty
-            else (path_df if df.empty else df.merge(path_df, how="cross"))
-        )
+        # Combine the current dataframe with the path dataframe
+        if path_df.empty:
+            # No new data to add
+            pass
+        elif df.empty:
+            # First data, use it as the base
+            df = path_df
+        elif len(df) == len(path_df):
+            # Same length: concatenate side-by-side (zip parallel arrays)
+            # This handles datacube dimensions/measures that should be paired element-wise
+            df = pd.concat(
+                [df.reset_index(drop=True), path_df.reset_index(drop=True)], axis=1
+            )
+        else:
+            # Different lengths: cross product (Cartesian product)
+            df = df.merge(path_df, how="cross")
 
     return df
 
