@@ -41,11 +41,25 @@ from allotropy.types import DictType
 
 def _clean_custom_info(custom_info: dict[str, Any]) -> dict[str, Any]:
     """Remove None and NaN values from custom_info dictionaries."""
-    return {
-        key: value
-        for key, value in custom_info.items()
-        if value is not None and (not isinstance(value, float) or not np.isnan(value))
-    }
+
+    def is_valid_value(value: Any) -> bool:
+        if value is None:
+            return False
+        # Check for NaN in plain float values
+        if isinstance(value, float) and np.isnan(value):
+            return False
+        # Check for NaN in quantity objects (objects with 'value' attribute or dicts with 'value' key)
+        if hasattr(value, "value"):
+            val = value.value
+            if isinstance(val, float) and np.isnan(val):
+                return False
+        elif isinstance(value, dict) and "value" in value:
+            val = value["value"]
+            if isinstance(val, float) and np.isnan(val):
+                return False
+        return True
+
+    return {key: value for key, value in custom_info.items() if is_valid_value(value)}
 
 
 def _get_capture_custom_info(
@@ -271,9 +285,15 @@ class KineticsData:
     kinetics_chi_squared: float | None = None
     tc: float | None = None
     offset: float | None = None  # Affinity-specific field
+    is_affinity_measurement: bool = False  # Track if this is from Affinity analysis
 
     @staticmethod
     def create(kinetics_data: SeriesData) -> KineticsData:
+        # Detect if this is affinity data by checking which chi-squared column is present
+        kinetics_chi = kinetics_data.get(float, "Kinetics Chi² (RU²)")
+        affinity_chi = kinetics_data.get(float, "Affinity Chi² (RU²)")
+        is_affinity = kinetics_chi is None and affinity_chi is not None
+
         return KineticsData(
             acceptance_state=kinetics_data.get(str, "Acceptance state"),
             curve_markers=kinetics_data.get(str, "Curve markers"),
@@ -287,12 +307,10 @@ class KineticsData:
             equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)"),
             maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)"),
             # Try "Kinetics Chi²" first, fall back to "Affinity Chi²"
-            kinetics_chi_squared=(
-                kinetics_data.get(float, "Kinetics Chi² (RU²)")
-                or kinetics_data.get(float, "Affinity Chi² (RU²)")
-            ),
+            kinetics_chi_squared=kinetics_chi or affinity_chi,
             tc=kinetics_data.get(float, "tc"),
             offset=kinetics_data.get(float, "offset (RU)"),  # Affinity-specific
+            is_affinity_measurement=is_affinity,
         )
 
 

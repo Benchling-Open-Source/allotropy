@@ -41,11 +41,25 @@ from allotropy.parsers.utils.values import quantity_or_none
 
 def _clean_custom_info(custom_info: dict[str, Any]) -> dict[str, Any]:
     """Remove None and NaN values from custom_info dictionaries."""
-    return {
-        key: value
-        for key, value in custom_info.items()
-        if value is not None and (not isinstance(value, float) or not np.isnan(value))
-    }
+
+    def is_valid_value(value: Any) -> bool:
+        if value is None:
+            return False
+        # Check for NaN in plain float values
+        if isinstance(value, float) and np.isnan(value):
+            return False
+        # Check for NaN in quantity objects (objects with 'value' attribute or dicts with 'value' key)
+        if hasattr(value, "value"):
+            val = value.value
+            if isinstance(val, float) and np.isnan(val):
+                return False
+        elif isinstance(value, dict) and "value" in value:
+            val = value["value"]
+            if isinstance(val, float) and np.isnan(val):
+                return False
+        return True
+
+    return {key: value for key, value in custom_info.items() if is_valid_value(value)}
 
 
 def create_metadata(metadata: BiacoreInsightMetadata, file_path: str) -> Metadata:
@@ -122,7 +136,11 @@ def _get_measurements(
             ),
             processed_data_custom_info=_clean_custom_info(
                 {
-                    "Kinetics Chi squared": quantity_or_none(
+                    (
+                        "Affinity Chi squared"
+                        if measurement.kinetics.is_affinity_measurement
+                        else "Kinetics Chi squared"
+                    ): quantity_or_none(
                         TQuantityValueSquareResponseUnit,
                         measurement.kinetics.kinetics_chi_squared,
                     ),
@@ -144,7 +162,6 @@ def _get_measurements(
                     relative_resonance=rp.relative_resonance,
                     custom_info=_clean_custom_info(
                         {
-                            "Step name": rp.step_name,
                             "Step purpose": rp.step_purpose,
                             "Window": quantity_or_none(
                                 TQuantityValueSecondTime, rp.window
