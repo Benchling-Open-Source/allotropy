@@ -5,16 +5,15 @@ to reduce test execution time.
 """
 
 import json
-import os
 from pathlib import Path
-import shutil
-from typing import List, Dict, Any
+
 
 def get_file_size_mb(filepath: Path) -> float:
     """Get file size in MB."""
     return filepath.stat().st_size / (1024 * 1024)
 
-def find_large_test_files(test_dir: Path, min_size_kb: int = 500) -> List[Path]:
+
+def find_large_test_files(test_dir: Path, min_size_kb: int = 500) -> list[Path]:
     """Find all test files larger than min_size_kb."""
     large_files = []
     for filepath in test_dir.rglob("*"):
@@ -24,10 +23,11 @@ def find_large_test_files(test_dir: Path, min_size_kb: int = 500) -> List[Path]:
                 large_files.append(filepath)
     return sorted(large_files, key=lambda x: x.stat().st_size, reverse=True)
 
+
 def create_minimal_json(filepath: Path, max_items: int = 8) -> bool:
     """Create a minimal version of a JSON test file."""
     try:
-        with open(filepath, 'r') as f:
+        with open(filepath) as f:
             data = json.load(f)
 
         modified = False
@@ -35,16 +35,19 @@ def create_minimal_json(filepath: Path, max_items: int = 8) -> bool:
         # Common patterns in allotropy JSON files
         patterns = [
             # Plate reader patterns
-            ('plate reader aggregate document', 'plate reader document'),
+            ("plate reader aggregate document", "plate reader document"),
             # qPCR patterns
-            ('qpcr aggregate document', 'qpcr document'),
-            ('qPCR raw data aggregate document', 'qPCR raw data document'),
+            ("qpcr aggregate document", "qpcr document"),
+            ("qPCR raw data aggregate document", "qPCR raw data document"),
             # Multi-analyte patterns
-            ('multi analyte profiling aggregate document', 'multi analyte profiling document'),
+            (
+                "multi analyte profiling aggregate document",
+                "multi analyte profiling document",
+            ),
             # ELISA patterns
-            ('ELISA aggregate document', 'ELISA document'),
+            ("ELISA aggregate document", "ELISA document"),
             # Imaging patterns
-            ('imaging aggregate document', 'imaging document'),
+            ("imaging aggregate document", "imaging document"),
         ]
 
         for outer_key, inner_key in patterns:
@@ -58,25 +61,40 @@ def create_minimal_json(filepath: Path, max_items: int = 8) -> bool:
 
                 # Also check for nested measurement documents
                 for doc in data[outer_key][inner_key][:max_items]:
-                    if isinstance(doc, dict) and 'measurement aggregate document' in doc:
-                        measurements = doc['measurement aggregate document'].get('measurement document', [])
+                    if (
+                        isinstance(doc, dict)
+                        and "measurement aggregate document" in doc
+                    ):
+                        measurements = doc["measurement aggregate document"].get(
+                            "measurement document", []
+                        )
                         if len(measurements) > max_items:
-                            doc['measurement aggregate document']['measurement document'] = measurements[:max_items]
+                            doc["measurement aggregate document"][
+                                "measurement document"
+                            ] = measurements[:max_items]
                             modified = True
-                            print(f"  Reduced measurements from {len(measurements)} to {max_items}")
+                            print(
+                                f"  Reduced measurements from {len(measurements)} to {max_items}"
+                            )
 
                     # Check for analyte documents
-                    if isinstance(doc, dict) and 'analyte aggregate document' in doc:
-                        analytes = doc['analyte aggregate document'].get('analyte document', [])
+                    if isinstance(doc, dict) and "analyte aggregate document" in doc:
+                        analytes = doc["analyte aggregate document"].get(
+                            "analyte document", []
+                        )
                         if len(analytes) > max_items:
-                            doc['analyte aggregate document']['analyte document'] = analytes[:max_items]
+                            doc["analyte aggregate document"][
+                                "analyte document"
+                            ] = analytes[:max_items]
                             modified = True
-                            print(f"  Reduced analytes from {len(analytes)} to {max_items}")
+                            print(
+                                f"  Reduced analytes from {len(analytes)} to {max_items}"
+                            )
 
         if modified:
             # Save minimal version
             minimal_path = filepath.parent / f"{filepath.stem}_minimal{filepath.suffix}"
-            with open(minimal_path, 'w') as f:
+            with open(minimal_path, "w") as f:
                 json.dump(data, f, indent=2)
             return True
 
@@ -85,10 +103,11 @@ def create_minimal_json(filepath: Path, max_items: int = 8) -> bool:
 
     return False
 
+
 def create_minimal_txt(filepath: Path, max_wells: int = 8, max_cycles: int = 3) -> bool:
     """Create a minimal version of a TXT test file (for AppBio QuantStudio)."""
     try:
-        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+        with open(filepath, encoding="utf-8", errors="ignore") as f:
             lines = f.readlines()
 
         # Find section boundaries
@@ -97,7 +116,7 @@ def create_minimal_txt(filepath: Path, max_wells: int = 8, max_cycles: int = 3) 
         section_start = 0
 
         for i, line in enumerate(lines):
-            if line.startswith('['):
+            if line.startswith("["):
                 if current_section:
                     sections[current_section] = (section_start, i)
                 current_section = line.strip()
@@ -120,40 +139,48 @@ def create_minimal_txt(filepath: Path, max_wells: int = 8, max_cycles: int = 3) 
         for section_name, (start, end) in sections.items():
             minimal_lines.append(lines[start])  # Section header
 
-            if section_name == '[Sample Setup]':
+            if section_name == "[Sample Setup]":
                 # Keep header and first max_wells*2 lines (2 targets per well)
                 if start + 1 < end:
                     minimal_lines.append(lines[start + 1])  # Column headers
-                    well_lines = lines[start + 2:min(start + 2 + max_wells * 2, end)]
+                    well_lines = lines[start + 2 : min(start + 2 + max_wells * 2, end)]
                     minimal_lines.extend(well_lines)
 
-            elif section_name in ['[Raw Data]', '[Amplification Data]', '[Multicomponent Data]']:
+            elif section_name in [
+                "[Raw Data]",
+                "[Amplification Data]",
+                "[Multicomponent Data]",
+            ]:
                 # Keep header and first max_cycles for first max_wells
                 if start + 1 < end:
                     minimal_lines.append(lines[start + 1])  # Column headers
-                    for line in lines[start + 2:end]:
-                        parts = line.split('\t')
-                        if len(parts) >= 2 and parts[0].isdigit() and parts[1].isdigit():
+                    for line in lines[start + 2 : end]:
+                        parts = line.split("\t")
+                        if (
+                            len(parts) >= 2
+                            and parts[0].isdigit()
+                            and parts[1].isdigit()
+                        ):
                             cycle = int(parts[0])
                             well = int(parts[1])
                             if cycle <= max_cycles and well <= max_wells:
                                 minimal_lines.append(line)
 
-            elif section_name == '[Results]':
+            elif section_name == "[Results]":
                 # Keep header and first max_wells lines
                 if start + 1 < end:
                     minimal_lines.append(lines[start + 1])  # Column headers
-                    result_lines = lines[start + 2:min(start + 2 + max_wells, end)]
+                    result_lines = lines[start + 2 : min(start + 2 + max_wells, end)]
                     minimal_lines.extend(result_lines)
 
             else:
                 # For unknown sections, keep first few lines
-                section_lines = lines[start + 1:min(start + 11, end)]
+                section_lines = lines[start + 1 : min(start + 11, end)]
                 minimal_lines.extend(section_lines)
 
         # Save minimal version
         minimal_path = filepath.parent / f"{filepath.stem}_minimal{filepath.suffix}"
-        with open(minimal_path, 'w') as f:
+        with open(minimal_path, "w") as f:
             f.writelines(minimal_lines)
 
         return True
@@ -162,6 +189,7 @@ def create_minimal_txt(filepath: Path, max_wells: int = 8, max_cycles: int = 3) 
         print(f"  Error processing TXT: {e}")
 
     return False
+
 
 def main():
     """Main function to optimize test files."""
@@ -183,14 +211,14 @@ def main():
         size_mb = get_file_size_mb(filepath)
         print(f"\n{filepath.name} ({size_mb:.1f} MB)")
 
-        if filepath.suffix == '.json':
+        if filepath.suffix == ".json":
             if create_minimal_json(filepath):
                 success_count += 1
-                print(f"  ✓ Created minimal JSON")
-        elif filepath.suffix == '.txt':
+                print("  ✓ Created minimal JSON")
+        elif filepath.suffix == ".txt":
             if create_minimal_txt(filepath):
                 success_count += 1
-                print(f"  ✓ Created minimal TXT")
+                print("  ✓ Created minimal TXT")
         else:
             print(f"  ⚠ Unsupported file type: {filepath.suffix}")
 
@@ -199,6 +227,7 @@ def main():
     print("1. Update test files to use minimal versions where appropriate")
     print("2. Verify all tests still pass with minimal files")
     print("3. Remove or archive original large files if no longer needed")
+
 
 if __name__ == "__main__":
     main()

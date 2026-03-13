@@ -4,11 +4,8 @@ Script to optimize large test files by creating minimal versions.
 This replaces the original files directly.
 """
 
-import json
-import os
-import shutil
 from pathlib import Path
-import sys
+import shutil
 import xml.etree.ElementTree as ET
 
 
@@ -20,8 +17,8 @@ def create_minimal_biorad_xml(filepath: Path) -> bool:
         root = tree.getroot()
 
         # Find all well elements and keep only first 8
-        namespaces = {'ns': 'http://www.bio-rad.com/schemas/SRBXExtended/v1.0'}
-        wells = root.findall('.//ns:Well', namespaces)
+        namespaces = {"ns": "http://www.bio-rad.com/schemas/SRBXExtended/v1.0"}
+        wells = root.findall(".//ns:Well", namespaces)
 
         if len(wells) > 8:
             # Remove excess wells
@@ -32,7 +29,7 @@ def create_minimal_biorad_xml(filepath: Path) -> bool:
                     parent.remove(well)
 
         # Save back to original location
-        tree.write(filepath, encoding='utf-8', xml_declaration=True)
+        tree.write(filepath, encoding="utf-8", xml_declaration=True)
         print(f"  ✓ Optimized XML: {len(wells)} → 8 wells")
         return True
     except Exception as e:
@@ -40,10 +37,12 @@ def create_minimal_biorad_xml(filepath: Path) -> bool:
         return False
 
 
-def create_minimal_quantstudio_txt(filepath: Path, max_wells: int = 8, max_cycles: int = 3) -> bool:
+def create_minimal_quantstudio_txt(
+    filepath: Path, max_wells: int = 8, max_cycles: int = 3
+) -> bool:
     """Create minimal version of AppBio QuantStudio TXT file."""
     try:
-        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+        with open(filepath, encoding="utf-8", errors="ignore") as f:
             lines = f.readlines()
 
         # Find section boundaries
@@ -52,7 +51,7 @@ def create_minimal_quantstudio_txt(filepath: Path, max_wells: int = 8, max_cycle
         section_start = 0
 
         for i, line in enumerate(lines):
-            if line.startswith('['):
+            if line.startswith("["):
                 if current_section:
                     sections[current_section] = (section_start, i)
                 current_section = line.strip()
@@ -65,29 +64,35 @@ def create_minimal_quantstudio_txt(filepath: Path, max_wells: int = 8, max_cycle
         minimal_lines = []
 
         # Keep header (everything before first section)
-        first_section_start = min(start for start, _ in sections.values()) if sections else len(lines)
+        first_section_start = (
+            min(start for start, _ in sections.values()) if sections else len(lines)
+        )
         minimal_lines.extend(lines[:first_section_start])
 
         # Process each section
         for section_name, (start, end) in sections.items():
             minimal_lines.append(lines[start])  # Section header
 
-            if section_name == '[Sample Setup]' and start + 1 < end:
+            if section_name == "[Sample Setup]" and start + 1 < end:
                 # Keep header and first max_wells*2 lines (2 targets per well)
                 minimal_lines.append(lines[start + 1])  # Column headers
                 well_count = 0
-                for line in lines[start + 2:end]:
+                for line in lines[start + 2 : end]:
                     if well_count < max_wells * 2:
                         minimal_lines.append(line)
                         well_count += 1
 
-            elif section_name in ['[Raw Data]', '[Amplification Data]', '[Multicomponent Data]']:
+            elif section_name in [
+                "[Raw Data]",
+                "[Amplification Data]",
+                "[Multicomponent Data]",
+            ]:
                 if start + 1 < end:
                     minimal_lines.append(lines[start + 1])  # Column headers
                     # Keep first few cycles for first few wells
                     data_count = 0
-                    for line in lines[start + 2:end]:
-                        parts = line.split('\t')
+                    for line in lines[start + 2 : end]:
+                        parts = line.split("\t")
                         if len(parts) >= 2:
                             try:
                                 cycle = int(parts[0])
@@ -98,22 +103,24 @@ def create_minimal_quantstudio_txt(filepath: Path, max_wells: int = 8, max_cycle
                             except (ValueError, IndexError):
                                 pass
 
-            elif section_name == '[Results]' and start + 1 < end:
+            elif section_name == "[Results]" and start + 1 < end:
                 # Keep header and first max_wells results
                 minimal_lines.append(lines[start + 1])  # Column headers
                 result_count = 0
-                for line in lines[start + 2:end]:
+                for line in lines[start + 2 : end]:
                     if result_count < max_wells * 2:  # 2 targets per well
                         minimal_lines.append(line)
                         result_count += 1
 
         # Save back to original location
-        with open(filepath, 'w', encoding='utf-8') as f:
+        with open(filepath, "w", encoding="utf-8") as f:
             f.writelines(minimal_lines)
 
         original_lines = len(lines)
         new_lines = len(minimal_lines)
-        print(f"  ✓ Optimized TXT: {original_lines} → {new_lines} lines ({100*(1-new_lines/original_lines):.1f}% reduction)")
+        print(
+            f"  ✓ Optimized TXT: {original_lines} → {new_lines} lines ({100*(1-new_lines/original_lines):.1f}% reduction)"
+        )
         return True
 
     except Exception as e:
@@ -133,8 +140,14 @@ def main():
 
     # Files to optimize in this batch
     files_to_optimize = [
-        ("tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_example_01.xml", "xml"),
-        ("tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example01.txt", "txt"),
+        (
+            "tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_example_01.xml",
+            "xml",
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example01.txt",
+            "txt",
+        ),
     ]
 
     print("=" * 60)
@@ -154,7 +167,7 @@ def main():
         print(f"\n{full_path.name} ({size_mb:.1f}MB)")
 
         # Create backup
-        backup_path = full_path.with_suffix(full_path.suffix + '.backup')
+        backup_path = full_path.with_suffix(full_path.suffix + ".backup")
         shutil.copy2(full_path, backup_path)
 
         # Optimize based on file type
@@ -172,7 +185,9 @@ def main():
             new_size_mb = full_path.stat().st_size / (1024 * 1024)
             if new_size_mb < size_mb:
                 reduction = 100 * (1 - new_size_mb / size_mb)
-                print(f"  Size: {size_mb:.1f}MB → {new_size_mb:.1f}MB ({reduction:.1f}% reduction)")
+                print(
+                    f"  Size: {size_mb:.1f}MB → {new_size_mb:.1f}MB ({reduction:.1f}% reduction)"
+                )
 
     print(f"\n✅ Successfully optimized {success_count} files")
 
