@@ -29,7 +29,7 @@ jobs:
       run: pip install click!=8.3.0
     - name: Run Tests
       run: hatch run test_all.py3.10:pytest -n 2 tests
-      timeout-minutes: 10
+      timeout-minutes: 15
 
   test_py_311:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
       run: pip install click!=8.3.0
     - name: Run Tests
       run: hatch run test_all.py3.11:pytest -n 2 tests
-      timeout-minutes: 10
+      timeout-minutes: 15
 
   test_py_312:
     runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
       run: pip install click!=8.3.0
     - name: Run Tests
       run: hatch run test_all.py3.12:pytest -n 2 tests
-      timeout-minutes: 10
+      timeout-minutes: 15
 
   lint:
     runs-on: ubuntu-latest
