@@ -1,0 +1,2333 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/electrophoresis/BENCHLING/2024/09/electrophoresis.manifest",
+    "electrophoresis aggregate document": {
+        "electrophoresis document": [
+            {
+                "analyst": "TapeStation User",
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "electrophoresis device",
+                                        "detection type": "fluorescence",
+                                        "device identifier": "32768"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "01-S027-150626-02-000035_L1",
+                                "description": "Ladder Ladder",
+                                "location identifier": "L1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_0",
+                            "measurement time": "2015-07-21T08:14:29-05:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 38.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 25.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                                    "peak height": {
+                                                        "value": 3730.08,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 17.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 268.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 200.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                                    "peak height": {
+                                                        "value": 1792.736,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.197,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 9.06,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 10.77,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 141.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 646.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 500.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                                    "peak height": {
+                                                        "value": 3419.682,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.401,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 18.48,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 21.98,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 350.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 1252.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 1000.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "3",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                                    "peak height": {
+                                                        "value": 3823.579,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.333,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 15.34,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 18.24,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 819.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 2607.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 2000.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "4",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                                    "peak height": {
+                                                        "value": 3642.857,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.337,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 15.54,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 18.48,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 1643.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 5219.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 4000.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "5",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                                    "peak height": {
+                                                        "value": 3698.553,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.323,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 14.87,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 17.68,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 3504.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 8341.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 6000.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "6",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                                    "peak height": {
+                                                        "value": 3024.454,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.235,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 10.81,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 12.86,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 5219.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 25.5,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "RNA",
+                    "method version": "5.1.0.47235",
+                    "experimental data identifier": "\\\\Mac\\Home\\Documents\\Agilent\\TapeStation Data\\Demo Files\\Eukaryotic RNA-Plate-64.RNA"
+                }
+            },
+            {
+                "analyst": "TapeStation User",
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "electrophoresis device",
+                                        "detection type": "fluorescence",
+                                        "device identifier": "32768"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "01-S027-150626-02-000035_A1",
+                                "description": "Rat Kidney 400 ng/µl",
+                                "location identifier": "A1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                            "measurement time": "2015-07-21T08:14:29-05:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 38.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 25.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                                    "peak height": {
+                                                        "value": 25.0,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 17.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 2376.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 1730.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_59",
+                                                    "peak height": {
+                                                        "value": 5194.973,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.682,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 18.56,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 25.16,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "18S",
+                                                    "peak start": {
+                                                        "value": 1558.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 8260.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 4405.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_65",
+                                                    "peak height": {
+                                                        "value": 10985.712,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 5.004,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 55.2,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 74.84,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "28S",
+                                                    "peak start": {
+                                                        "value": 3075.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 25.5,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "RNA",
+                    "method version": "5.1.0.47235",
+                    "experimental data identifier": "\\\\Mac\\Home\\Documents\\Agilent\\TapeStation Data\\Demo Files\\Eukaryotic RNA-Plate-64.RNA"
+                }
+            },
+            {
+                "analyst": "TapeStation User",
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "electrophoresis device",
+                                        "detection type": "fluorescence",
+                                        "device identifier": "32768"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "01-S027-150626-02-000035_B1",
+                                "description": "Rat Kidney 400 ng/µl",
+                                "location identifier": "B1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                            "measurement time": "2015-07-21T08:14:29-05:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 38.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 25.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                                    "peak height": {
+                                                        "value": 1537.717,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 17.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 2436.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 1752.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                                    "peak height": {
+                                                        "value": 5289.333,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.726,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 19.1,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 25.42,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "18S",
+                                                    "peak start": {
+                                                        "value": 1564.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 8209.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 4547.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                                    "peak height": {
+                                                        "value": 10676.371,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 5.064,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 56.06,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 74.58,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "28S",
+                                                    "peak start": {
+                                                        "value": 3057.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 25.5,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "RNA",
+                    "method version": "5.1.0.47235",
+                    "experimental data identifier": "\\\\Mac\\Home\\Documents\\Agilent\\TapeStation Data\\Demo Files\\Eukaryotic RNA-Plate-64.RNA"
+                }
+            },
+            {
+                "analyst": "TapeStation User",
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "electrophoresis device",
+                                        "detection type": "fluorescence",
+                                        "device identifier": "32768"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "01-S027-150626-02-000035_C1",
+                                "description": "Rat Kidney 200 ng/µl",
+                                "location identifier": "C1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                            "measurement time": "2015-07-21T08:14:29-05:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 39.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 25.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                                    "peak height": {
+                                                        "value": 2736.667,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 17.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 2324.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 1738.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_111",
+                                                    "peak height": {
+                                                        "value": 5922.603,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.883,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 19.49,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 26.91,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "18S",
+                                                    "peak start": {
+                                                        "value": 1534.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 7864.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 4617.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_117",
+                                                    "peak height": {
+                                                        "value": 10700.53,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 2.399,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 52.94,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 73.09,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "28S",
+                                                    "peak start": {
+                                                        "value": 3082.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 25.5,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "RNA",
+                    "method version": "5.1.0.47235",
+                    "experimental data identifier": "\\\\Mac\\Home\\Documents\\Agilent\\TapeStation Data\\Demo Files\\Eukaryotic RNA-Plate-64.RNA"
+                }
+            }
+        ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 86.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_1",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_0",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "AssignedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_3",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_4",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 80.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_5",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 4710.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_6",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 83.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_7",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 86.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_8",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 7.86,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_10",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 65.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_11",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 116.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_12",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 68.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_13",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 70.6,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_14",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 16.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_16",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 58.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_17",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 94.4,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_18",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 61.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_19",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 64.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_20",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 13.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_22",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 52.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_23",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 39.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_24",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 54.5,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_25",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 56.5,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_26",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 13.5,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_28",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 45.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_29",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 19.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_30",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 47.6,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_31",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 49.5,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_32",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 12.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_34",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 39.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_35",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 9.49,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_36",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 41.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_37",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 42.4,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_38",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 9.39,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_40",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 35.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_41",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 4.6,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_42",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 38.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_43",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 39.2,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_44",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 363.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_46",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RINe",
+                    "calculated result": {
+                        "value": 8.6,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_47",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "TotalRNAArea",
+                    "calculated result": {
+                        "value": 17.71,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_48",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RNAArea",
+                    "calculated result": {
+                        "value": 6.69,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Ratio28S18SHeight",
+                    "calculated result": {
+                        "value": 2.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_50",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Ratio28S18SArea",
+                    "calculated result": {
+                        "value": 3.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_51",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "AssignedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_53",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_54",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 79.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_55",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 4710.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_56",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 82.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_57",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 84.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_58",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_52",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 67.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_59",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 45.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_61",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_59",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 114.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_62",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_59",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 48.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_63",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_59",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 49.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_64",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_59",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 200.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_65",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 35.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_65",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 134.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_65",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 39.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_65",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 43.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_65",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 361.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_72",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RINe",
+                    "calculated result": {
+                        "value": 8.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_73",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "TotalRNAArea",
+                    "calculated result": {
+                        "value": 17.65,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_74",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RNAArea",
+                    "calculated result": {
+                        "value": 6.79,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_75",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Ratio28S18SHeight",
+                    "calculated result": {
+                        "value": 2.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_76",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Ratio28S18SArea",
+                    "calculated result": {
+                        "value": 2.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_77",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_71",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "AssignedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_79",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_80",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 78.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_81",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 4710.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_82",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 82.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_83",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 84.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_84",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 69.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_86",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 45.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_87",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 116.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_88",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 48.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_89",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 49.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_90",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 203.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_92",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 35.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_93",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 131.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_94",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 39.6,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_95",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 43.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_96",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 181.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_98",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RINe",
+                    "calculated result": {
+                        "value": 9.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_99",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "TotalRNAArea",
+                    "calculated result": {
+                        "value": 8.85,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_100",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RNAArea",
+                    "calculated result": {
+                        "value": 3.28,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_101",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Ratio28S18SHeight",
+                    "calculated result": {
+                        "value": 1.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_102",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Ratio28S18SArea",
+                    "calculated result": {
+                        "value": 2.7,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_103",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                "data source feature": "sample"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "AssignedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_105",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 40.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_106",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 77.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_107",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 4710.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_108",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 81.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_109",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 83.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_110",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_104",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 35.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_112",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_111",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 44.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_113",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_111",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 59.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_114",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_111",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 47.6,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_115",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_111",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 48.8,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_116",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_111",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CalibratedQuantity",
+                    "calculated result": {
+                        "value": 96.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_118",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_117",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "FromPercent",
+                    "calculated result": {
+                        "value": 35.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_119",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_117",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Molarity",
+                    "calculated result": {
+                        "value": 61.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_120",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_117",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "RunDistance",
+                    "calculated result": {
+                        "value": 39.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_121",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_117",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ToPercent",
+                    "calculated result": {
+                        "value": 42.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_122",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_117",
+                                "data source feature": "peak"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "agilent_tapestation_analysis_example_01.json",
+            "data system instance identifier": "TapeStation PC",
+            "file name": "agilent_tapestation_analysis_example_01.xml",
+            "UNC path": "tests/parsers/agilent_tapestation_analysis/testdata/agilent_tapestation_analysis_example_01.xml",
+            "ASM converter name": "allotropy_agilent_tapestation_analysis",
+            "ASM converter version": "0.1.113",
+            "software name": "TapeStation Analysis Software",
+            "software version": "2.1.17.8091"
+        },
+        "device system document": {
+            "brand name": "TapeStation",
+            "device identifier": "32768",
+            "equipment serial number": "DEDAA00054",
+            "product manufacturer": "Agilent"
+        }
+    }
+}

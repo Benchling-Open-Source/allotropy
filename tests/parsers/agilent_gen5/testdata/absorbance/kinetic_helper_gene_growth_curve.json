@@ -1,0 +1,3146 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
+                            "sample document": {
+                                "location identifier": "A1",
+                                "sample identifier": "Plate 2 A1",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.066,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.067,
+                                            -0.067,
+                                            -0.066,
+                                            -0.067,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066,
+                                            -0.066
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
+                            "sample document": {
+                                "location identifier": "A2",
+                                "sample identifier": "Plate 2 A2",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.068,
+                                            -0.068,
+                                            -0.069,
+                                            -0.07,
+                                            -0.07,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.068,
+                                            -0.067,
+                                            -0.068,
+                                            -0.068,
+                                            -0.067,
+                                            -0.068,
+                                            -0.067,
+                                            -0.067
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
+                            "sample document": {
+                                "location identifier": "A3",
+                                "sample identifier": "Plate 2 A3",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.054,
+                                            -0.053,
+                                            -0.054,
+                                            -0.055,
+                                            -0.055,
+                                            -0.054,
+                                            -0.054,
+                                            -0.055,
+                                            -0.055,
+                                            -0.054,
+                                            -0.055,
+                                            -0.055,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.053,
+                                            -0.053
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
+                            "sample document": {
+                                "location identifier": "A4",
+                                "sample identifier": "Plate 2 A4",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.055,
+                                            -0.055,
+                                            -0.056,
+                                            -0.056,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.054,
+                                            -0.053
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
+                            "sample document": {
+                                "location identifier": "A5",
+                                "sample identifier": "Plate 2 A5",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.063,
+                                            -0.064,
+                                            -0.066,
+                                            -0.067,
+                                            -0.066,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.065,
+                                            -0.064
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
+                            "sample document": {
+                                "location identifier": "A6",
+                                "sample identifier": "Plate 2 A6",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.06,
+                                            -0.062,
+                                            -0.062,
+                                            -0.064,
+                                            -0.063,
+                                            -0.063,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.063,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_6",
+                            "sample document": {
+                                "location identifier": "B1",
+                                "sample identifier": "Plate 2 B1",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.056,
+                                            -0.056,
+                                            -0.056,
+                                            -0.056,
+                                            -0.056
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
+                            "sample document": {
+                                "location identifier": "B2",
+                                "sample identifier": "Plate 2 B2",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.06,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.056,
+                                            -0.055,
+                                            -0.056,
+                                            -0.056,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.056,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.055,
+                                            -0.054,
+                                            -0.054
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
+                            "sample document": {
+                                "location identifier": "B3",
+                                "sample identifier": "Plate 2 B3",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.063,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.063,
+                                            -0.064,
+                                            -0.064,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
+                            "sample document": {
+                                "location identifier": "B4",
+                                "sample identifier": "Plate 2 B4",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.064,
+                                            -0.061,
+                                            -0.062,
+                                            -0.065,
+                                            -0.064,
+                                            -0.064,
+                                            -0.063,
+                                            -0.064,
+                                            -0.064,
+                                            -0.063,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.063,
+                                            -0.064
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
+                            "sample document": {
+                                "location identifier": "B5",
+                                "sample identifier": "Plate 2 B5",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.054,
+                                            -0.054,
+                                            -0.056,
+                                            -0.056,
+                                            -0.055,
+                                            -0.054,
+                                            -0.054,
+                                            -0.053,
+                                            -0.053,
+                                            -0.053,
+                                            -0.053,
+                                            -0.052,
+                                            -0.052,
+                                            -0.052,
+                                            -0.052,
+                                            -0.051,
+                                            -0.052,
+                                            -0.052,
+                                            -0.051,
+                                            -0.051
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
+                            "sample document": {
+                                "location identifier": "B6",
+                                "sample identifier": "Plate 2 B6",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.059,
+                                            -0.058,
+                                            -0.057,
+                                            -0.056,
+                                            -0.055,
+                                            -0.054,
+                                            -0.053,
+                                            -0.053,
+                                            -0.053,
+                                            -0.053,
+                                            -0.052,
+                                            -0.052,
+                                            -0.052,
+                                            -0.052,
+                                            -0.051,
+                                            -0.051,
+                                            -0.051,
+                                            -0.051,
+                                            -0.051,
+                                            -0.05
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_12",
+                            "sample document": {
+                                "location identifier": "C1",
+                                "sample identifier": "Plate 2 C1",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.063,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.059,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.059,
+                                            -0.059,
+                                            -0.059,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_13",
+                            "sample document": {
+                                "location identifier": "C2",
+                                "sample identifier": "Plate 2 C2",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.059,
+                                            -0.059,
+                                            -0.059,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.057
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_14",
+                            "sample document": {
+                                "location identifier": "C3",
+                                "sample identifier": "Plate 2 C3",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.063,
+                                            -0.064,
+                                            -0.065,
+                                            -0.066,
+                                            -0.065,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.063,
+                                            -0.062,
+                                            -0.063,
+                                            -0.063,
+                                            -0.062
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_15",
+                            "sample document": {
+                                "location identifier": "C4",
+                                "sample identifier": "Plate 2 C4",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.062,
+                                            -0.064,
+                                            -0.065,
+                                            -0.066,
+                                            -0.065,
+                                            -0.065,
+                                            -0.064,
+                                            -0.064,
+                                            -0.065,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064,
+                                            -0.064
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_16",
+                            "sample document": {
+                                "location identifier": "C5",
+                                "sample identifier": "Plate 2 C5",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.059,
+                                            -0.061,
+                                            -0.063,
+                                            -0.064,
+                                            -0.063,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_17",
+                            "sample document": {
+                                "location identifier": "C6",
+                                "sample identifier": "Plate 2 C6",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.06,
+                                            -0.06,
+                                            -0.061,
+                                            -0.062,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_18",
+                            "sample document": {
+                                "location identifier": "D1",
+                                "sample identifier": "Plate 2 D1",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.063,
+                                            -0.063,
+                                            -0.064,
+                                            -0.064,
+                                            -0.062,
+                                            -0.06,
+                                            -0.059,
+                                            -0.059,
+                                            -0.059,
+                                            -0.059,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.057,
+                                            -0.057,
+                                            -0.056,
+                                            -0.056,
+                                            -0.056,
+                                            -0.056,
+                                            -0.051
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_19",
+                            "sample document": {
+                                "location identifier": "D2",
+                                "sample identifier": "Plate 2 D2",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.063,
+                                            -0.063,
+                                            -0.064,
+                                            -0.064,
+                                            -0.063,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.059,
+                                            -0.06,
+                                            -0.06,
+                                            -0.059,
+                                            -0.059,
+                                            -0.059,
+                                            -0.058
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_20",
+                            "sample document": {
+                                "location identifier": "D3",
+                                "sample identifier": "Plate 2 D3",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.062,
+                                            -0.061,
+                                            -0.062,
+                                            -0.062,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.061,
+                                            -0.06,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06,
+                                            -0.061,
+                                            -0.061
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_21",
+                            "sample document": {
+                                "location identifier": "D4",
+                                "sample identifier": "Plate 2 D4",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.064,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06,
+                                            -0.06
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_22",
+                            "sample document": {
+                                "location identifier": "D5",
+                                "sample identifier": "Plate 2 D5",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.063,
+                                            -0.062,
+                                            -0.063,
+                                            -0.064,
+                                            -0.063,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.062,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.06
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector carriage speed setting": "Normal",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 600.0,
+                                            "unit": "nm"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 999,
+                                            "unit": "#"
+                                        },
+                                        "read interval setting": {
+                                            "value": 240.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 239700.0,
+                                            "unit": "s"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_23",
+                            "sample document": {
+                                "location identifier": "D6",
+                                "sample identifier": "Plate 2 D6",
+                                "well plate identifier": "Plate 2"
+                            },
+                            "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
+                            "absorption profile data cube": {
+                                "label": "600.0",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.06,
+                                            -0.059,
+                                            -0.06,
+                                            -0.061,
+                                            -0.061,
+                                            -0.06,
+                                            -0.059,
+                                            -0.059,
+                                            -0.059,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.058,
+                                            -0.057,
+                                            -0.057,
+                                            -0.057,
+                                            -0.056
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:01+00:00",
+                    "plate well count": {
+                        "value": 24,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.75
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_24",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_25",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.5
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_26",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_27",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.825
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_28",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_29",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.15
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_30",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_31",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 5.3
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_32",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_33",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.7
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_34",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_35",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -3.9
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_36",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_37",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.65
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_38",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_39",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 4.9
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_40",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_41",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -4.55
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_42",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_43",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 4.875
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_44",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_45",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 4.375
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_46",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_47",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -3.5
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_48",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.1
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_50",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_51",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -5.225
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_52",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_53",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 7.25
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_54",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_55",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.85
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_56",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_57",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.375
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_58",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_59",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -4.025
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_61",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 4.95
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_62",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_63",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.25
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_64",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_65",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.1
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.475
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.9
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.0
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_71",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "kinetic_helper_gene_growth_curve.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
+            "file name": "kinetic_helper_gene_growth_curve.txt",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.113",
+            "software name": "Gen5",
+            "software version": "3.0.1"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Generic Reader",
+            "equipment serial number": "123456"
+        }
+    }
+}
