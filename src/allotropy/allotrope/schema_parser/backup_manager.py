@@ -3,8 +3,7 @@ from contextlib import contextmanager
 from itertools import zip_longest
 from pathlib import Path
 import shutil
-
-from allotropy.parsers.utils.uuids import random_uuid_str
+import uuid
 
 PathType = Path | str
 
@@ -19,7 +18,7 @@ def _files_equal(path1: PathType, path2: PathType) -> bool:
 
 def _get_backup_path(path: PathType) -> Path:
     _path = Path(path)
-    return Path(_path.parent, f".{_path.stem}.{random_uuid_str()}.bak{_path.suffix}")
+    return Path(_path.parent, f".{_path.stem}.{uuid.uuid4()!s}.bak{_path.suffix}")
 
 
 def get_original_path(path: PathType) -> Path:
