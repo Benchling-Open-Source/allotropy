@@ -27,7 +27,14 @@ jobs:
             - 'src/allotropy/allotrope/schemas/**'
             - 'src/allotropy/allotrope/schema_parser/**'
             - 'src/allotropy/allotrope/models/**'
-            - 'tests/allotrope/schema_parser/generate_schemas_test.py'
+            - 'src/allotropy/allotrope/schemas.py'
+            - 'src/allotropy/constants.py'
+            - 'src/allotropy/exceptions.py'
+            - 'src/allotropy/parsers/utils/uuids.py'
+            - 'src/allotropy/parsers/utils/values.py'
+            - 'scripts/generate_schemas.py'
+            - 'scripts/download_schema.py'
+            - 'tests/allotrope/schema_parser/**'
             - 'pyproject.toml'
   test_py_310:
     runs-on: ubuntu-latest
