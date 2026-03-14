@@ -32,6 +32,16 @@ from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schema_parser.update_units import update_unit_files
 from allotropy.allotrope.schemas import get_schema
 
+# Optimized version for better performance
+try:
+    from allotropy.allotrope.schema_parser.generate_schemas_optimized import (
+        generate_schemas_optimized,
+    )
+
+    HAS_OPTIMIZED_VERSION = True
+except ImportError:
+    HAS_OPTIMIZED_VERSION = False
+
 
 def lint_file(model_path: Path) -> None:
     # The first run of ruff changes typing annotations and causes unused imports. We catch failure
@@ -143,12 +153,20 @@ def generate_schemas(
     *,
     dry_run: bool | None = False,
     schema_regex: str | None = None,
+    use_optimized: bool = True,
 ) -> list[str]:
     """Generate schemas from JSON schema files.
     :dry_run: If true, does not save changes to any models, but still returns the list of models that would change.
     :schema_regex: If set, filters schemas to generate using regex.
+    :use_optimized: If true and available, use the optimized parallel version
     :return: A list of model files that were changed.
     """
+    # Use optimized version if available and requested
+    if use_optimized and HAS_OPTIMIZED_VERSION:
+        return generate_schemas_optimized(
+            dry_run=bool(dry_run),
+            schema_regex=schema_regex,
+        )
     unit_to_iri: dict[str, str] = {}
     schema_paths = list(Path(SCHEMA_DIR_PATH).rglob("*.json"))
     models_changed = []
