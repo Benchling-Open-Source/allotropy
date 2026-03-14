@@ -12,7 +12,68 @@ permissions:
   contents: read
 
 jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      single-parser: ${{ steps.detect-parser.outputs.parser }}
+      run-all-tests: ${{ steps.detect-parser.outputs.run-all }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        list-files: json
+        filters: |
+          parsers:
+            - 'src/allotropy/parsers/**'
+          non-parser:
+            - 'src/allotropy/!(parsers)/**'
+            - 'tests/!(parsers)/**'
+            - 'pyproject.toml'
+            - 'scripts/**'
+            - '.github/**'
+    - name: Detect single parser changes
+      id: detect-parser
+      run: |
+        if [[ "${{ steps.filter.outputs.non-parser }}" == "true" ]]; then
+          echo "Changes detected outside parsers, running all tests"
+          echo "run-all=true" >> $GITHUB_OUTPUT
+          echo "parser=" >> $GITHUB_OUTPUT
+        elif [[ "${{ steps.filter.outputs.parsers }}" == "true" ]]; then
+          # Get list of changed files in parsers directory
+          FILES=$(echo '${{ steps.filter.outputs.parsers_files }}' | jq -r '.[]')
+
+          # Extract unique parser directories
+          PARSERS=$(echo "$FILES" | grep '^src/allotropy/parsers/' | cut -d'/' -f4 | sort -u)
+
+          # Count unique parsers
+          PARSER_COUNT=$(echo "$PARSERS" | grep -v '^$' | wc -l)
+
+          if [[ $PARSER_COUNT -eq 1 ]]; then
+            PARSER=$(echo "$PARSERS" | head -n1)
+            # Check if it's actually a parser directory (not utils, shared, etc)
+            if [[ "$PARSER" != "utils" && "$PARSER" != "__pycache__" && -d "tests/parsers/$PARSER" ]]; then
+              echo "Single parser detected: $PARSER"
+              echo "run-all=false" >> $GITHUB_OUTPUT
+              echo "parser=$PARSER" >> $GITHUB_OUTPUT
+            else
+              echo "Changes in shared parser utilities, running all tests"
+              echo "run-all=true" >> $GITHUB_OUTPUT
+              echo "parser=" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "Multiple parsers changed, running all tests"
+            echo "run-all=true" >> $GITHUB_OUTPUT
+            echo "parser=" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "No parser changes detected, running all tests"
+          echo "run-all=true" >> $GITHUB_OUTPUT
+          echo "parser=" >> $GITHUB_OUTPUT
+        fi
+
   test_py_310:
+    needs: detect-changes
     runs-on: ubuntu-latest
     name: Tests (python 3.10)
 
@@ -28,10 +89,18 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests
-      run: hatch run test_all.py3.10:pytest -n 2 tests
+      run: |
+        if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
+          echo "Running all tests"
+          hatch run test_all.py3.10:pytest -n 2 tests
+        else
+          echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
+          hatch run test_all.py3.10:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }}
+        fi
       timeout-minutes: 15
 
   test_py_311:
+    needs: detect-changes
     runs-on: ubuntu-latest
     name: Tests (python 3.11)
 
@@ -48,10 +117,18 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests
-      run: hatch run test_all.py3.11:pytest -n 2 tests
+      run: |
+        if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
+          echo "Running all tests"
+          hatch run test_all.py3.11:pytest -n 2 tests
+        else
+          echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
+          hatch run test_all.py3.11:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }}
+        fi
       timeout-minutes: 15
 
   test_py_312:
+    needs: detect-changes
     runs-on: ubuntu-latest
     name: Tests (python 3.12)
 
@@ -67,7 +144,14 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests
-      run: hatch run test_all.py3.12:pytest -n 2 tests
+      run: |
+        if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
+          echo "Running all tests"
+          hatch run test_all.py3.12:pytest -n 2 tests
+        else
+          echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
+          hatch run test_all.py3.12:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }}
+        fi
       timeout-minutes: 15
 
   lint:
