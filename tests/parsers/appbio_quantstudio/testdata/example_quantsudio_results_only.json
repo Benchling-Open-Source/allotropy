@@ -29,24 +29,24 @@
                                     "well identifier": 1,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 100000000.0,
-                                    "Amp Score": 1.238,
-                                    "Efficiency": 105.533,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.97,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.021,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 16.461,
-                                    "CT": 16.484,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 100000000.0,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.021,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "STANDARD",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.238,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 16.484,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 16.461
                                 }
                             },
                             "processed data aggregate document": {
@@ -68,11 +68,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -80,10 +80,10 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
-                                            "Sample Color": "RGB(176,23,31)",
                                             "Task.1": "STANDARD",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Sample Color": "RGB(176,23,31)",
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -139,24 +139,24 @@
                                     "well identifier": 2,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 100000000.0,
-                                    "Amp Score": 1.239,
-                                    "Efficiency": 105.533,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.972,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.021,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 16.461,
-                                    "CT": 16.442,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 100000000.0,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.021,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "STANDARD",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.239,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 16.442,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 16.461
                                 }
                             },
                             "processed data aggregate document": {
@@ -178,11 +178,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -190,10 +190,10 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
-                                            "Sample Color": "RGB(176,23,31)",
                                             "Task.1": "STANDARD",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Sample Color": "RGB(176,23,31)",
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -249,24 +249,24 @@
                                     "well identifier": 3,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 100000000.0,
-                                    "Amp Score": 1.241,
-                                    "Efficiency": 105.533,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.971,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.021,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 16.461,
-                                    "CT": 16.458,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 100000000.0,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.021,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "STANDARD",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.241,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 16.458,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 16.461
                                 }
                             },
                             "processed data aggregate document": {
@@ -288,11 +288,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -300,10 +300,10 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
-                                            "Sample Color": "RGB(176,23,31)",
                                             "Task.1": "STANDARD",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Sample Color": "RGB(176,23,31)",
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -358,26 +358,26 @@
                                 "custom information document": {
                                     "well identifier": 4,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 118248.2,
-                                    "Amp Score": 1.227,
                                     "Quantity Mean": 127155.96,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 8114.291,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.976,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.09,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.612,
-                                    "CT": 25.711,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 118248.2,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.09,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.227,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.711,
+                                    "Quantity SD": 8114.291,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.612
                                 }
                             },
                             "processed data aggregate document": {
@@ -399,11 +399,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -411,9 +411,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -468,26 +468,26 @@
                                 "custom information document": {
                                     "well identifier": 5,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 134125.92,
-                                    "Amp Score": 1.229,
                                     "Quantity Mean": 127155.96,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 8114.291,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.969,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.09,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.612,
-                                    "CT": 25.536,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 134125.92,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.09,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.229,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.536,
+                                    "Quantity SD": 8114.291,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.612
                                 }
                             },
                             "processed data aggregate document": {
@@ -509,11 +509,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -521,9 +521,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -578,26 +578,26 @@
                                 "custom information document": {
                                     "well identifier": 6,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 129093.73,
-                                    "Amp Score": 1.235,
                                     "Quantity Mean": 127155.96,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 8114.291,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.978,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.09,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.612,
-                                    "CT": 25.589,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 129093.73,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.09,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.235,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.589,
+                                    "Quantity SD": 8114.291,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.612
                                 }
                             },
                             "processed data aggregate document": {
@@ -619,11 +619,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -631,9 +631,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -688,26 +688,26 @@
                                 "custom information document": {
                                     "well identifier": 7,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 146919.3,
-                                    "Amp Score": 1.242,
                                     "Quantity Mean": 150986.0,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 7416.039,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.979,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.067,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.373,
-                                    "CT": 25.41,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 146919.3,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.067,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.242,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.41,
+                                    "Quantity SD": 7416.039,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.373
                                 }
                             },
                             "processed data aggregate document": {
@@ -729,11 +729,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -741,9 +741,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -798,26 +798,26 @@
                                 "custom information document": {
                                     "well identifier": 8,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 159545.77,
-                                    "Amp Score": 1.254,
                                     "Quantity Mean": 150986.0,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 7416.039,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.977,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.067,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.373,
-                                    "CT": 25.295,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 159545.77,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.067,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.254,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.295,
+                                    "Quantity SD": 7416.039,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.373
                                 }
                             },
                             "processed data aggregate document": {
@@ -839,11 +839,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -851,9 +851,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -908,26 +908,26 @@
                                 "custom information document": {
                                     "well identifier": 9,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 146492.94,
-                                    "Amp Score": 1.243,
                                     "Quantity Mean": 150986.0,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 7416.039,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.977,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.067,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.373,
-                                    "CT": 25.414,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 146492.94,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.067,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.243,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.414,
+                                    "Quantity SD": 7416.039,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.373
                                 }
                             },
                             "processed data aggregate document": {
@@ -949,11 +949,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -961,9 +961,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1018,26 +1018,26 @@
                                 "custom information document": {
                                     "well identifier": 10,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 69138.76,
-                                    "Amp Score": 1.238,
                                     "Quantity Mean": 70227.5,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 8806.251,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.977,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.173,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 26.441,
-                                    "CT": 26.456,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 69138.76,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.173,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.238,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 26.456,
+                                    "Quantity SD": 8806.251,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 26.441
                                 }
                             },
                             "processed data aggregate document": {
@@ -1059,11 +1059,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1071,9 +1071,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1128,26 +1128,26 @@
                                 "custom information document": {
                                     "well identifier": 11,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 79527.5,
-                                    "Amp Score": 1.25,
                                     "Quantity Mean": 70227.5,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 8806.251,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.972,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.173,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 26.441,
-                                    "CT": 26.262,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 79527.5,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.173,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.25,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 26.262,
+                                    "Quantity SD": 8806.251,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 26.441
                                 }
                             },
                             "processed data aggregate document": {
@@ -1169,11 +1169,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1181,9 +1181,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1238,26 +1238,26 @@
                                 "custom information document": {
                                     "well identifier": 12,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 62016.242,
-                                    "Amp Score": 1.231,
                                     "Quantity Mean": 70227.5,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 8806.251,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.979,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.173,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 26.441,
-                                    "CT": 26.607,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 62016.242,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.173,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.231,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 26.607,
+                                    "Quantity SD": 8806.251,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 26.441
                                 }
                             },
                             "processed data aggregate document": {
@@ -1279,11 +1279,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1291,9 +1291,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1349,24 +1349,24 @@
                                     "well identifier": 13,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 10000000.0,
-                                    "Amp Score": 1.228,
-                                    "Efficiency": 105.533,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.974,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.095,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 19.597,
-                                    "CT": 19.525,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 10000000.0,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.095,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "STANDARD",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.228,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 19.525,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 19.597
                                 }
                             },
                             "processed data aggregate document": {
@@ -1388,11 +1388,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1400,10 +1400,10 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
-                                            "Sample Color": "RGB(0,0,255)",
                                             "Task.1": "STANDARD",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Sample Color": "RGB(0,0,255)",
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1459,24 +1459,24 @@
                                     "well identifier": 14,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 10000000.0,
-                                    "Amp Score": 1.215,
-                                    "Efficiency": 105.533,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.972,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.095,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 19.597,
-                                    "CT": 19.704,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 10000000.0,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.095,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "STANDARD",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.215,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 19.704,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 19.597
                                 }
                             },
                             "processed data aggregate document": {
@@ -1498,11 +1498,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1510,10 +1510,10 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
-                                            "Sample Color": "RGB(0,0,255)",
                                             "Task.1": "STANDARD",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Sample Color": "RGB(0,0,255)",
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1569,24 +1569,24 @@
                                     "well identifier": 15,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 10000000.0,
-                                    "Amp Score": 1.235,
-                                    "Efficiency": 105.533,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.976,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.095,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 19.597,
-                                    "CT": 19.561,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 10000000.0,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.095,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "STANDARD",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.235,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 19.561,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 19.597
                                 }
                             },
                             "processed data aggregate document": {
@@ -1608,11 +1608,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1620,10 +1620,10 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
-                                            "Sample Color": "RGB(0,0,255)",
                                             "Task.1": "STANDARD",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Sample Color": "RGB(0,0,255)",
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1678,26 +1678,26 @@
                                 "custom information document": {
                                     "well identifier": 16,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 147943.78,
-                                    "Amp Score": 1.239,
                                     "Quantity Mean": 138438.23,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 9880.973,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.976,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.1,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.495,
-                                    "CT": 25.4,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 147943.78,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.1,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.239,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.4,
+                                    "Quantity SD": 9880.973,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.495
                                 }
                             },
                             "processed data aggregate document": {
@@ -1719,11 +1719,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1731,9 +1731,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1788,26 +1788,26 @@
                                 "custom information document": {
                                     "well identifier": 17,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 139150.52,
-                                    "Amp Score": 1.237,
                                     "Quantity Mean": 138438.23,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 9880.973,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.977,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.1,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.495,
-                                    "CT": 25.485,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 139150.52,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.1,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.237,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.485,
+                                    "Quantity SD": 9880.973,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.495
                                 }
                             },
                             "processed data aggregate document": {
@@ -1829,11 +1829,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1841,9 +1841,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -1898,26 +1898,26 @@
                                 "custom information document": {
                                     "well identifier": 18,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 128220.38,
-                                    "Amp Score": 1.223,
                                     "Quantity Mean": 138438.23,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 9880.973,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.978,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.1,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 25.495,
-                                    "CT": 25.599,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 128220.38,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.1,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.223,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 25.599,
+                                    "Quantity SD": 9880.973,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 25.495
                                 }
                             },
                             "processed data aggregate document": {
@@ -1939,11 +1939,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1951,9 +1951,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -2008,26 +2008,26 @@
                                 "custom information document": {
                                     "well identifier": 19,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 11091.27,
-                                    "Amp Score": 1.214,
                                     "Quantity Mean": 10248.948,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 826.66,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.977,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.112,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 29.109,
-                                    "CT": 28.996,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 11091.27,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.112,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.214,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 28.996,
+                                    "Quantity SD": 826.66,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 29.109
                                 }
                             },
                             "processed data aggregate document": {
@@ -2049,11 +2049,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2061,9 +2061,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -2118,26 +2118,26 @@
                                 "custom information document": {
                                     "well identifier": 20,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 9438.896,
-                                    "Amp Score": 1.207,
                                     "Quantity Mean": 10248.948,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 826.66,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.973,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.112,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 29.109,
-                                    "CT": 29.22,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 9438.896,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.112,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.207,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 29.22,
+                                    "Quantity SD": 826.66,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 29.109
                                 }
                             },
                             "processed data aggregate document": {
@@ -2159,11 +2159,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2171,9 +2171,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -2228,26 +2228,26 @@
                                 "custom information document": {
                                     "well identifier": 21,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 10216.678,
-                                    "Amp Score": 1.214,
                                     "Quantity Mean": 10248.948,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 826.66,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.972,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.112,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 29.109,
-                                    "CT": 29.11,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 10216.678,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.112,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.214,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 29.11,
+                                    "Quantity SD": 826.66,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 29.109
                                 }
                             },
                             "processed data aggregate document": {
@@ -2269,11 +2269,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2281,9 +2281,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -2338,26 +2338,26 @@
                                 "custom information document": {
                                     "well identifier": 22,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 58334.375,
-                                    "Amp Score": 1.224,
                                     "Quantity Mean": 60557.844,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 2183.959,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.978,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.05,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 26.64,
-                                    "CT": 26.692,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 58334.375,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.05,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.224,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 26.692,
+                                    "Quantity SD": 2183.959,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 26.64
                                 }
                             },
                             "processed data aggregate document": {
@@ -2379,11 +2379,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2391,9 +2391,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -2448,26 +2448,26 @@
                                 "custom information document": {
                                     "well identifier": 23,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 60639.13,
-                                    "Amp Score": 1.238,
                                     "Quantity Mean": 60557.844,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 2183.959,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.978,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.05,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 26.64,
-                                    "CT": 26.638,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 60639.13,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.05,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.238,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 26.638,
+                                    "Quantity SD": 2183.959,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 26.64
                                 }
                             },
                             "processed data aggregate document": {
@@ -2489,11 +2489,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2501,9 +2501,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
@@ -2558,26 +2558,26 @@
                                 "custom information document": {
                                     "well identifier": 24,
                                     "target color": "RGB(176,23,31)",
-                                    "Baseline End": 40.0,
-                                    "Automatic Baseline": "True",
-                                    "Quantity": 62700.023,
-                                    "Amp Score": 1.236,
                                     "Quantity Mean": 60557.844,
-                                    "Efficiency": 105.533,
-                                    "Quantity SD": 2183.959,
-                                    "Slope": -3.196,
+                                    "Y-Intercept": 41.924,
                                     "Cq Conf": 0.977,
-                                    "Omit": "False",
-                                    "Automatic Ct Threshold": "True",
-                                    "Ct SD": 0.05,
-                                    "R(superscript 2)": 0.999,
-                                    "Ct Mean": 26.64,
-                                    "CT": 26.592,
-                                    "Ct Threshold": 0.137,
                                     "Baseline Start": 1.0,
                                     "Target Name.1": "3'UTR",
+                                    "Quantity": 62700.023,
+                                    "Efficiency": 105.533,
+                                    "Ct SD": 0.05,
+                                    "Ct Threshold": 0.137,
                                     "Task.1": "UNKNOWN",
-                                    "Y-Intercept": 41.924
+                                    "Baseline End": 40.0,
+                                    "Amp Score": 1.236,
+                                    "Omit": "False",
+                                    "Automatic Baseline": "True",
+                                    "Automatic Ct Threshold": "True",
+                                    "CT": 26.592,
+                                    "Quantity SD": 2183.959,
+                                    "Slope": -3.196,
+                                    "R(superscript 2)": 0.999,
+                                    "Ct Mean": 26.64
                                 }
                             },
                             "processed data aggregate document": {
@@ -2599,11 +2599,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N",
                                                 "NOISE": "N",
                                                 "omit": false,
-                                                "CQCONF": "N"
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2611,9 +2611,9 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Target Name.1": "3'UTR",
                                             "Task.1": "UNKNOWN",
-                                            "Target Color": "RGB(176,23,31)"
+                                            "Target Color": "RGB(176,23,31)",
+                                            "Target Name.1": "3'UTR"
                                         }
                                     }
                                 ]
