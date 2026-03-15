@@ -26,12 +26,14 @@ jobs:
         filters: |
           parsers:
             - 'src/allotropy/parsers/**'
+            - 'tests/parsers/**'
           non-parser:
             - 'src/allotropy/!(parsers)/**'
             - 'tests/!(parsers)/**'
             - 'pyproject.toml'
             - 'scripts/**'
             - '.github/**'
+            - 'SUPPORTED_INSTRUMENT_SOFTWARE.adoc'
     - name: Detect single parser changes
       id: detect-parser
       run: |
@@ -43,14 +45,18 @@ jobs:
           # Get list of changed files in parsers directory
           FILES=$(echo '${{ steps.filter.outputs.parsers_files }}' | jq -r '.[]')
 
-          # Extract unique parser directories
-          PARSERS=$(echo "$FILES" | grep '^src/allotropy/parsers/' | cut -d'/' -f4 | sort -u)
+          # Extract unique parser directories from both src and tests
+          SRC_PARSERS=$(echo "$FILES" | grep '^src/allotropy/parsers/' | cut -d'/' -f4 | grep -v '^utils$' | grep -v '^__pycache__$')
+          TEST_PARSERS=$(echo "$FILES" | grep '^tests/parsers/' | cut -d'/' -f3 | grep -v '^__pycache__$')
+
+          # Combine and get unique parsers
+          ALL_PARSERS=$(echo -e "$SRC_PARSERS\n$TEST_PARSERS" | sort -u | grep -v '^$')
 
           # Count unique parsers
-          PARSER_COUNT=$(echo "$PARSERS" | grep -v '^$' | wc -l)
+          PARSER_COUNT=$(echo "$ALL_PARSERS" | grep -v '^$' | wc -l)
 
           if [[ $PARSER_COUNT -eq 1 ]]; then
-            PARSER=$(echo "$PARSERS" | head -n1)
+            PARSER=$(echo "$ALL_PARSERS" | head -n1)
             # Check if it's actually a parser directory (not utils, shared, etc)
             if [[ "$PARSER" != "utils" && "$PARSER" != "__pycache__" && -d "tests/parsers/$PARSER" ]]; then
               echo "Single parser detected: $PARSER"
