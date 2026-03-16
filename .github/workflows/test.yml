@@ -57,8 +57,8 @@ jobs:
           FILES=$(echo '${{ steps.filter.outputs.parsers_files }}' | jq -r '.[]')
 
           # Extract unique parser directories from both src and tests
-          SRC_PARSERS=$(echo "$FILES" | grep '^src/allotropy/parsers/' | cut -d'/' -f4 | grep -v '^utils$' | grep -v '^__pycache__$')
-          TEST_PARSERS=$(echo "$FILES" | grep '^tests/parsers/' | cut -d'/' -f3 | grep -v '^__pycache__$')
+          SRC_PARSERS=$(echo "$FILES" | grep '^src/allotropy/parsers/' | cut -d'/' -f4 | grep -v '^utils$' | grep -v '^__pycache__$' || true)
+          TEST_PARSERS=$(echo "$FILES" | grep '^tests/parsers/' | cut -d'/' -f3 | grep -v '^__pycache__$' || true)
 
           # Combine and get unique parsers
           ALL_PARSERS=$(echo -e "$SRC_PARSERS\n$TEST_PARSERS" | sort -u | grep -v '^$')
