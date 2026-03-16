@@ -13,16 +13,28 @@ permissions:
 
 jobs:
   # Determine which tests to run based on changed files
-  changes:
+  detect-changes:
     runs-on: ubuntu-latest
     outputs:
+      single-parser: ${{ steps.detect-parser.outputs.parser }}
+      run-all-tests: ${{ steps.detect-parser.outputs.run-all }}
       schema-generation: ${{ steps.filter.outputs.schema-generation }}
     steps:
     - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v3
       id: filter
       with:
+        list-files: json
         filters: |
+          parsers:
+            - 'src/allotropy/parsers/**'
+            - 'tests/parsers/**'
+          non-parser:
+            - 'src/allotropy/!(parsers)/**'
+            - 'tests/!(parsers)/**'
+            - 'pyproject.toml'
+            - 'scripts/**'
+            - '.github/**'
           schema-generation:
             - 'src/allotropy/allotrope/schemas/**'
             - 'src/allotropy/allotrope/schema_parser/**'
@@ -33,7 +45,52 @@ jobs:
             - 'scripts/download_schema.py'
             - 'tests/allotrope/schema_parser/**'
             - 'pyproject.toml'
+    - name: Detect single parser changes
+      id: detect-parser
+      run: |
+        if [[ "${{ steps.filter.outputs.non-parser }}" == "true" ]]; then
+          echo "Changes detected outside parsers, running all tests"
+          echo "run-all=true" >> $GITHUB_OUTPUT
+          echo "parser=" >> $GITHUB_OUTPUT
+        elif [[ "${{ steps.filter.outputs.parsers }}" == "true" ]]; then
+          # Get list of changed files in parsers directory
+          FILES=$(echo '${{ steps.filter.outputs.parsers_files }}' | jq -r '.[]')
+
+          # Extract unique parser directories from both src and tests
+          SRC_PARSERS=$(echo "$FILES" | grep '^src/allotropy/parsers/' | cut -d'/' -f4 | grep -v '^utils$' | grep -v '^__pycache__$')
+          TEST_PARSERS=$(echo "$FILES" | grep '^tests/parsers/' | cut -d'/' -f3 | grep -v '^__pycache__$')
+
+          # Combine and get unique parsers
+          ALL_PARSERS=$(echo -e "$SRC_PARSERS\n$TEST_PARSERS" | sort -u | grep -v '^$')
+
+          # Count unique parsers
+          PARSER_COUNT=$(echo "$ALL_PARSERS" | grep -v '^$' | wc -l)
+
+          if [[ $PARSER_COUNT -eq 1 ]]; then
+            PARSER=$(echo "$ALL_PARSERS" | head -n1)
+            # Check if it's actually a parser directory (not utils, shared, etc)
+            if [[ "$PARSER" != "utils" && "$PARSER" != "__pycache__" && -d "tests/parsers/$PARSER" ]]; then
+              echo "Single parser detected: $PARSER"
+              echo "run-all=false" >> $GITHUB_OUTPUT
+              echo "parser=$PARSER" >> $GITHUB_OUTPUT
+            else
+              echo "Changes in shared parser utilities, running all tests"
+              echo "run-all=true" >> $GITHUB_OUTPUT
+              echo "parser=" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "Multiple parsers changed, running all tests"
+            echo "run-all=true" >> $GITHUB_OUTPUT
+            echo "parser=" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "No parser changes detected, running all tests"
+          echo "run-all=true" >> $GITHUB_OUTPUT
+          echo "parser=" >> $GITHUB_OUTPUT
+        fi
+
   test_py_310:
+    needs: detect-changes
     runs-on: ubuntu-latest
     name: Tests (python 3.10)
 
@@ -49,10 +106,18 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests (excluding schema generation)
-      run: hatch run test_all.py3.10:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
-      timeout-minutes: 10
+      run: |
+        if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
+          echo "Running all tests"
+          hatch run test_all.py3.10:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
+        else
+          echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
+          hatch run test_all.py3.10:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
+        fi
+      timeout-minutes: 15
 
   test_py_311:
+    needs: detect-changes
     runs-on: ubuntu-latest
     name: Tests (python 3.11)
 
@@ -69,10 +134,18 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests (excluding schema generation)
-      run: hatch run test_all.py3.11:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
-      timeout-minutes: 10
+      run: |
+        if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
+          echo "Running all tests"
+          hatch run test_all.py3.11:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
+        else
+          echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
+          hatch run test_all.py3.11:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
+        fi
+      timeout-minutes: 15
 
   test_py_312:
+    needs: detect-changes
     runs-on: ubuntu-latest
     name: Tests (python 3.12)
 
@@ -88,14 +161,21 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests (excluding schema generation)
-      run: hatch run test_all.py3.12:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
-      timeout-minutes: 10
+      run: |
+        if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
+          echo "Running all tests"
+          hatch run test_all.py3.12:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
+        else
+          echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
+          hatch run test_all.py3.12:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
+        fi
+      timeout-minutes: 15
 
   # Schema generation test - only runs when relevant files change or on main branch
   schema_generation_test:
-    needs: changes
+    needs: detect-changes
     # Always run on main branch, otherwise only when schema files change
-    if: ${{ github.ref == 'refs/heads/main' || needs.changes.outputs.schema-generation == 'true' }}
+    if: ${{ github.ref == 'refs/heads/main' || needs.detect-changes.outputs.schema-generation == 'true' }}
     runs-on: ubuntu-latest
     name: Schema Generation Test
     strategy:
