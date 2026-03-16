@@ -663,6 +663,8 @@ class Labels:
         return self.emission_filters.get(id_val)
 
     def get_read_type(self) -> ReadType:
+        import re
+
         patterns = {
             "ABS": ReadType.ABSORBANCE,
             "Absorbance": ReadType.ABSORBANCE,
@@ -673,6 +675,10 @@ class Labels:
         read_types = {
             read_type for key, read_type in patterns.items() if key in self.label
         }
+
+        # Check for absorbance wavelength patterns like A450, A562, etc.
+        if not read_types and re.match(r"^A\d{3}", self.label):
+            read_types.add(ReadType.ABSORBANCE)
 
         if len(read_types) > 1:
             msg = f"Unable to determine unique read type from label: '{self.label}'"
