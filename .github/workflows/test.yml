@@ -12,11 +12,13 @@ permissions:
   contents: read
 
 jobs:
+  # Determine which tests to run based on changed files
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
       single-parser: ${{ steps.detect-parser.outputs.parser }}
       run-all-tests: ${{ steps.detect-parser.outputs.run-all }}
+      schema-generation: ${{ steps.filter.outputs.schema-generation }}
     steps:
     - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v3
@@ -33,6 +35,16 @@ jobs:
             - 'pyproject.toml'
             - 'scripts/**'
             - '.github/**'
+          schema-generation:
+            - 'src/allotropy/allotrope/schemas/**'
+            - 'src/allotropy/allotrope/schema_parser/**'
+            - 'src/allotropy/allotrope/models/**'
+            - 'src/allotropy/allotrope/schemas.py'
+            - 'src/allotropy/exceptions.py'
+            - 'scripts/generate_schemas.py'
+            - 'scripts/download_schema.py'
+            - 'tests/allotrope/schema_parser/**'
+            - 'pyproject.toml'
     - name: Detect single parser changes
       id: detect-parser
       run: |
@@ -93,11 +105,11 @@ jobs:
       run: pip install "hatch>=1.13.0"
     - name: Install click
       run: pip install click!=8.3.0
-    - name: Run Tests
+    - name: Run Tests (excluding schema generation)
       run: |
         if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
           echo "Running all tests"
-          hatch run test_all.py3.10:pytest -n 2 tests
+          hatch run test_all.py3.10:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
         else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
           hatch run test_all.py3.10:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
@@ -121,11 +133,11 @@ jobs:
     # NOTE: due to bug: https://github.com/pallets/click/issues/3066
     - name: Install click
       run: pip install click!=8.3.0
-    - name: Run Tests
+    - name: Run Tests (excluding schema generation)
       run: |
         if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
           echo "Running all tests"
-          hatch run test_all.py3.11:pytest -n 2 tests
+          hatch run test_all.py3.11:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
         else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
           hatch run test_all.py3.11:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
@@ -148,16 +160,42 @@ jobs:
       run: pip install "hatch>=1.13.0"
     - name: Install click
       run: pip install click!=8.3.0
-    - name: Run Tests
+    - name: Run Tests (excluding schema generation)
       run: |
         if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
           echo "Running all tests"
-          hatch run test_all.py3.12:pytest -n 2 tests
+          hatch run test_all.py3.12:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
         else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
           hatch run test_all.py3.12:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
         fi
       timeout-minutes: 15
+
+  # Schema generation test - only runs when relevant files change or on main branch
+  schema_generation_test:
+    needs: detect-changes
+    # Always run on main branch, otherwise only when schema files change
+    if: ${{ github.ref == 'refs/heads/main' || needs.detect-changes.outputs.schema-generation == 'true' }}
+    runs-on: ubuntu-latest
+    name: Schema Generation Test
+    strategy:
+      matrix:
+        python-version: ["3.10"]  # Only run on one Python version since output is the same
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        lfs: true
+    - uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install hatch
+      run: pip install "hatch>=1.13.0"
+    - name: Install click
+      run: pip install click!=8.3.0
+    - name: Run Schema Generation Test
+      run: hatch run test_all.py${{ matrix.python-version }}:pytest tests/allotrope/schema_parser/generate_schemas_test.py -v
+      timeout-minutes: 5
 
   lint:
     runs-on: ubuntu-latest

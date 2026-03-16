@@ -17,7 +17,6 @@ from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
 )
-from allotropy.parsers.utils.values import assert_not_none
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
@@ -196,7 +195,10 @@ class DataclassField:
         type_string, default_value = (
             content.split("=") if "=" in content else (content, None)
         )
-        types = _parse_field_types(assert_not_none(type_string))
+        if type_string is None:
+            msg = f"Expected non-null type string for field {name}."
+            raise ValueError(msg)
+        types = _parse_field_types(type_string)
 
         return DataclassField(name, default_value, types)
 
