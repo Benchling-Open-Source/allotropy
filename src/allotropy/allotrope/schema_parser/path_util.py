@@ -4,8 +4,6 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from typing import Any
 
-from allotropy.exceptions import AllotropeValidationError
-
 ALLOTROPE_DIR: Path = Path(__file__).parent.parent
 ALLOTROPY_DIR: Path = ALLOTROPE_DIR.parent
 ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
@@ -74,10 +72,10 @@ def get_schema_path_from_manifest(manifest: str) -> Path:
 def get_schema_path_from_asm(asm_dict: Mapping[str, Any]) -> Path:
     if "$asm.manifest" not in asm_dict:
         msg = "File is not valid ASM - missing $asm.manifest field"
-        raise AllotropeValidationError(msg)
+        raise ValueError(msg)
     if not isinstance(asm_dict["$asm.manifest"], str):
         msg = f"File is not valid ASM - $asm.manifest is not a string: {asm_dict['$asm.manifest']}"
-        raise AllotropeValidationError(msg)
+        raise ValueError(msg)
     return get_schema_path_from_manifest(asm_dict["$asm.manifest"])
 
 

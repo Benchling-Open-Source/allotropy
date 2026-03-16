@@ -12,8 +12,9 @@ from allotropy.allotrope.schema_parser.path_util import (
     get_schema_path_from_manifest,
     SHARED_SCHEMAS_DEFINITIONS_PATH,
 )
-from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeSerializationError, AllotropeValidationError
+
+DEFAULT_ENCODING = "UTF-8"
 
 # Override format checker to remove "uri-reference" check, which ASM schemas fail against.
 FORMAT_CHECKER = copy.deepcopy(
