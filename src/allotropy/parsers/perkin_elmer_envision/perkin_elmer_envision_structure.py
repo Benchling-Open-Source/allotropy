@@ -21,7 +21,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from re import search
+from re import match, search
 from typing import Any
 
 import numpy as np
@@ -291,7 +291,7 @@ class Result:
     uuid: str
     col: str
     row: str
-    value: int
+    value: float
 
 
 def create_results(reader: CsvReader) -> list[Result]:
@@ -316,7 +316,7 @@ def create_results(reader: CsvReader) -> list[Result]:
             uuid=random_uuid_str(),
             col=col,
             row=row,
-            value=int(series.loc[col, row]),
+            value=float(series.loc[col, row]),
         )
         for col, row in series.stack().index
     ]
@@ -663,8 +663,6 @@ class Labels:
         return self.emission_filters.get(id_val)
 
     def get_read_type(self) -> ReadType:
-        import re
-
         patterns = {
             "ABS": ReadType.ABSORBANCE,
             "Absorbance": ReadType.ABSORBANCE,
@@ -677,7 +675,7 @@ class Labels:
         }
 
         # Check for absorbance wavelength patterns like A450, A562, etc.
-        if not read_types and re.match(r"^A\d{3}", self.label):
+        if not read_types and match(r"^A\d{3}", self.label):
             read_types.add(ReadType.ABSORBANCE)
 
         if len(read_types) > 1:
