@@ -30,6 +30,9 @@ from allotropy.parsers.bd_biosciences_facsdiva.bd_biosciences_facsdiva_parser im
 from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser import (
     BeckmanCoulterBiomekParser,
 )
+from allotropy.parsers.beckman_echo_cherry_pick.beckman_echo_cherry_pick_parser import (
+    BeckmanEchoCherryPickParser,
+)
 from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_parser import (
     BeckmanEchoPlateReformatParser,
 )
@@ -142,6 +145,7 @@ class Vendor(Enum):
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
     BENCHLING_EMPOWER = "BENCHLING_EMPOWER"
     BECKMAN_COULTER_BIOMEK = "BECKMAN_COULTER_BIOMEK"
+    BECKMAN_ECHO_CHERRY_PICK = "BECKMAN_ECHO_CHERRY_PICK"
     BECKMAN_ECHO_PLATE_REFORMAT = "BECKMAN_ECHO_PLATE_REFORMAT"
     BMG_LABTECH_SMART_CONTROL = "BMG_LABTECH_SMART_CONTROL"
     BMG_MARS = "BMG_MARS"
@@ -244,6 +248,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
     Vendor.BECKMAN_COULTER_BIOMEK: BeckmanCoulterBiomekParser,
+    Vendor.BECKMAN_ECHO_CHERRY_PICK: BeckmanEchoCherryPickParser,
     Vendor.BECKMAN_ECHO_PLATE_REFORMAT: BeckmanEchoPlateReformatParser,
     Vendor.BECKMAN_PHARMSPEC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
