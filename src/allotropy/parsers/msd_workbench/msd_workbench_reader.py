@@ -6,12 +6,20 @@ from allotropy.parsers.utils.pandas import read_csv
 
 
 class MSDWorkbenchReader:
-    SUPPORTED_EXTENSIONS = "csv, txt"
+    SUPPORTED_EXTENSIONS = "csv, txt, xlsx"
     plate_data: pd.DataFrame
     well_plate_id: str
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        data = read_csv(named_file_contents.contents)
+        if named_file_contents.extension == "xlsx":
+            # Read the Workbench data sheet from Excel file
+            data = pd.read_excel(
+                named_file_contents.contents,
+                sheet_name="Workbench data",
+                engine="openpyxl",
+            )
+        else:
+            data = read_csv(named_file_contents.contents)
         data = data.where(pd.notna(data), None)
         data.index = pd.Index(data.index.to_series().ffill())
         data.index = data.index.astype(str).str.strip()
