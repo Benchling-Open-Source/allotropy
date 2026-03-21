@@ -41,6 +41,7 @@ class MSDWorkbenchParser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         if named_file_contents.extension == "txt":
             return self._process_methodical_mind(named_file_contents)
+        # CSV and XLSX files use MSD Workbench format
         return self._process_msd_workbench(named_file_contents)
 
     def _process_methodical_mind(self, named_file_contents: NamedFileContents) -> Data:
