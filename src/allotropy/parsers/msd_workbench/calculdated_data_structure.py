@@ -17,3 +17,4 @@ class CalculatedDataMeasurementStructure:
     percent_recovery_mean: float | None
     calc_concentration: float | None
     calc_conc_mean: float | None
+    calc_conc_cv: float | None
