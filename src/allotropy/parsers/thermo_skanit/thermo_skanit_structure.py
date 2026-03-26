@@ -321,6 +321,7 @@ class ThermoSkanItMeasurementGroups:
         plate_well_counts: dict[str, int] = {}
 
         for plate in plates:
+            plate_well_count = 0  # Initialize to 0 in case no valid data is found
             for wavelength, data_df in plate.wavelength_data.items():
                 if data_df.empty:
                     continue
