@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.115] - 2026-03-26
+
+### Added
+
+- MSD Workbench - Update support for CSV format and Calc Conc CV handling (#1157)
+- Add XLSX support to MSD Workbench parser (#1154)
+
+### Fixed
+
+- Thermo Skanit - Initialize plate_well_count to prevent UnboundLocalError (#1156)
+- AppBio QuantStudio Design & Analysis - Check for valid rq values before setting r_sample and r_target (#1138)
+
 ## [0.1.114] - 2026-03-16
 
 ### Added
