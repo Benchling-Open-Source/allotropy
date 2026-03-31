@@ -3,15 +3,15 @@
 Creates a new Allotropy parser with complete file structure.
 Usage: python create_parser.py <parser_name> <display_name> [--schema SCHEMA_PATH] [--example EXAMPLE_FILE]
 """
-import sys
-import os
 from pathlib import Path
-from typing import Optional
+import sys
 
 
 def create_parser_init(parser_name: str) -> str:
     """Generate __init__.py content."""
-    class_name = ''.join(word.capitalize() for word in parser_name.split('_')) + 'Parser'
+    class_name = (
+        "".join(word.capitalize() for word in parser_name.split("_")) + "Parser"
+    )
     return f'''"""Allotropy parser for {parser_name.replace('_', ' ').title()}."""
 
 from allotropy.parsers.{parser_name}.{parser_name}_parser import {class_name}
@@ -20,14 +20,18 @@ __all__ = ["{class_name}"]
 '''
 
 
-def create_parser_file(parser_name: str, display_name: str, schema_path: str, extension: str) -> str:
+def create_parser_file(
+    parser_name: str, display_name: str, schema_path: str, extension: str
+) -> str:
     """Generate parser.py content."""
-    class_name = ''.join(word.capitalize() for word in parser_name.split('_')) + 'Parser'
+    class_name = (
+        "".join(word.capitalize() for word in parser_name.split("_")) + "Parser"
+    )
 
     # Extract schema details from path
     # Expected format: adm/technique/ORG/YEAR/MONTH/technique
-    path_parts = schema_path.split('/')
-    technique = path_parts[1] if len(path_parts) > 1 else "plate_reader"
+    path_parts = schema_path.split("/")
+    path_parts[1] if len(path_parts) > 1 else "plate_reader"
 
     return f'''"""Parser for {display_name}."""
 
@@ -68,7 +72,9 @@ class {class_name}(VendorParser[Data, Model]):
 
 def create_reader_file(parser_name: str, extension: str) -> str:
     """Generate reader.py content."""
-    class_name = ''.join(word.capitalize() for word in parser_name.split('_')) + 'Reader'
+    class_name = (
+        "".join(word.capitalize() for word in parser_name.split("_")) + "Reader"
+    )
 
     if extension == "xlsx":
         reader_content = '''"""Reader for {display_name} Excel files."""
@@ -172,8 +178,7 @@ class {class_name}:
 '''
 
     return reader_content.format(
-        display_name=parser_name.replace('_', ' ').title(),
-        class_name=class_name
+        display_name=parser_name.replace("_", " ").title(), class_name=class_name
     )
 
 
@@ -249,12 +254,16 @@ def test_to_allotrope_{parser_name}() -> None:
 def main():
     """Main function to create parser structure."""
     if len(sys.argv) < 3:
-        print("Usage: python create_parser.py <parser_name> <display_name> [--schema SCHEMA_PATH] [--example EXAMPLE_FILE]")
+        print(
+            "Usage: python create_parser.py <parser_name> <display_name> [--schema SCHEMA_PATH] [--example EXAMPLE_FILE]"
+        )
         print("\nExample:")
-        print('  python create_parser.py beckman_pharmspec "Beckman Coulter PharmSpec" --schema adm/plate_reader/BENCHLING/2024/06/plate_reader')
+        print(
+            '  python create_parser.py beckman_pharmspec "Beckman Coulter PharmSpec" --schema adm/plate_reader/BENCHLING/2024/06/plate_reader'
+        )
         sys.exit(1)
 
-    parser_name = sys.argv[1].lower().replace(' ', '_').replace('-', '_')
+    parser_name = sys.argv[1].lower().replace(" ", "_").replace("-", "_")
     display_name = sys.argv[2]
 
     # Parse optional arguments
@@ -277,7 +286,7 @@ def main():
     # Find repository root
     current = Path.cwd()
     repo_root = None
-    for parent in [current] + list(current.parents):
+    for parent in [current, *list(current.parents)]:
         if (parent / "src" / "allotropy").exists():
             repo_root = parent
             break
@@ -311,7 +320,9 @@ def main():
 
     # parser.py
     parser_file = parser_dir / f"{parser_name}_parser.py"
-    parser_file.write_text(create_parser_file(parser_name, display_name, schema_path, extension))
+    parser_file.write_text(
+        create_parser_file(parser_name, display_name, schema_path, extension)
+    )
     files_created.append(parser_file)
 
     # reader.py
@@ -337,6 +348,7 @@ def main():
     # Copy example file if provided
     if example_file and example_file.exists():
         import shutil
+
         dest_file = testdata_dir / f"example.{extension}"
         shutil.copy(example_file, dest_file)
         files_created.append(dest_file)
@@ -356,8 +368,8 @@ def main():
     print(f"2. Edit {parser_name}_structure.py to map data to schema")
     print(f"3. Add test data to {testdata_dir}")
     print(f"4. Run tests: hatch run test:pytest tests/parsers/{parser_name}/")
-    print(f"5. Register parser in src/allotropy/parser_factory.py")
-    print(f"6. Update README.md with parser information")
+    print("5. Register parser in src/allotropy/parser_factory.py")
+    print("6. Update README.md with parser information")
 
 
 if __name__ == "__main__":

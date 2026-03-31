@@ -3,12 +3,10 @@
 Lists available Allotrope schemas by scanning the local allotropy repository.
 Usage: python list_schemas.py [filter] [--verbose]
 """
-import json
-import os
-import sys
 from collections import defaultdict
+import os
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+import sys
 
 # Fallback descriptions for common schema types
 SCHEMA_DESCRIPTIONS = {
@@ -37,11 +35,11 @@ SCHEMA_DESCRIPTIONS = {
 }
 
 
-def find_allotropy_repo() -> Optional[Path]:
+def find_allotropy_repo() -> Path | None:
     """Find the allotropy repository in the environment."""
     # Check if we're in the allotropy repo
     current = Path.cwd()
-    for parent in [current] + list(current.parents):
+    for parent in [current, *list(current.parents)]:
         if (parent / "src" / "allotropy" / "allotrope" / "schemas").exists():
             return parent
 
@@ -54,7 +52,7 @@ def find_allotropy_repo() -> Optional[Path]:
     return None
 
 
-def scan_schemas(allotropy_path: Path) -> Dict[str, List[Dict[str, str]]]:
+def scan_schemas(allotropy_path: Path) -> dict[str, list[dict[str, str]]]:
     """Scan the allotropy repository for available schemas."""
     schemas_dir = allotropy_path / "src" / "allotropy" / "allotrope" / "schemas" / "adm"
 
@@ -63,7 +61,7 @@ def scan_schemas(allotropy_path: Path) -> Dict[str, List[Dict[str, str]]]:
         sys.exit(1)
 
     # Group schemas by technique
-    schemas: Dict[str, List[Dict[str, str]]] = defaultdict(list)
+    schemas: dict[str, list[dict[str, str]]] = defaultdict(list)
 
     for technique_dir in sorted(schemas_dir.iterdir()):
         if not technique_dir.is_dir():
@@ -85,16 +83,18 @@ def scan_schemas(allotropy_path: Path) -> Dict[str, List[Dict[str, str]]]:
                 # Format: technique/ORG/YEAR/MONTH
                 version_info = f"{path_parts[1]}/{path_parts[2]}/{path_parts[3]}"
 
-            schemas[technique_name].append({
-                "path": f"adm/{schema_path}",
-                "version": version_info,
-                "file": str(schema_file)
-            })
+            schemas[technique_name].append(
+                {
+                    "path": f"adm/{schema_path}",
+                    "version": version_info,
+                    "file": str(schema_file),
+                }
+            )
 
     return dict(schemas)
 
 
-def find_parsers_using_schema(allotropy_path: Path, technique_name: str) -> List[str]:
+def find_parsers_using_schema(allotropy_path: Path, technique_name: str) -> list[str]:
     """Find parsers that might use a specific schema technique."""
     parsers_dir = allotropy_path / "src" / "allotropy" / "parsers"
     matching_parsers = []
@@ -111,19 +111,22 @@ def find_parsers_using_schema(allotropy_path: Path, technique_name: str) -> List
         parser_file = parser_dir / f"{parser_dir.name}_parser.py"
         if parser_file.exists():
             try:
-                with open(parser_file, 'r') as f:
+                with open(parser_file) as f:
                     content = f.read()
                     # Check for imports from the schema
-                    if f"adm.{technique_name}" in content or f"adm/{technique_name}" in content:
+                    if (
+                        f"adm.{technique_name}" in content
+                        or f"adm/{technique_name}" in content
+                    ):
                         matching_parsers.append(parser_dir.name)
-            except:
-                pass
+            except Exception:
+                pass  # noqa: S110
 
     return matching_parsers
 
 
 def list_schemas(
-    allotropy_path: Path, filter_term: Optional[str] = None, verbose: bool = False
+    allotropy_path: Path, filter_term: str | None = None, verbose: bool = False
 ) -> None:
     """List all available schemas from the local repository."""
     print("\n" + "=" * 80)
@@ -163,7 +166,7 @@ def list_schemas(
         # Find example parsers
         matching_parsers = find_parsers_using_schema(allotropy_path, technique_name)
         if matching_parsers:
-            print(f"\n   📁 Example parsers using this schema:")
+            print("\n   📁 Example parsers using this schema:")
             for parser in matching_parsers[:5]:  # Limit to 5
                 print(f"     - {parser}")
 
