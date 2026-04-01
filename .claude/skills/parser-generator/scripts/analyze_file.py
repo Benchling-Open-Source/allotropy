@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# type: ignore
 """
 Analyzes an input file to infer structure and suggest appropriate Allotrope schema.
 Usage: python analyze_file.py <file_path>
@@ -239,7 +240,8 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python analyze_file.py <file_path>")
         print(
-            "\nThis script analyzes an input file to suggest the appropriate Allotrope schema."
+            "\nThis script analyzes an input file to suggest the appropriate "
+            "Allotrope schema."
         )
         sys.exit(1)
 

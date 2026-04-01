@@ -1,7 +1,7 @@
 # Ruff configuration for Claude skills
 # These are CLI scripts, so print statements are allowed
 
-ignore = ["T201", "T203"]  # Allow print and pprint statements in skills
+extend-ignore = ["T201", "T203", "E501"]  # Allow print, pprint, and long lines in skills
 
 [per-file-ignores]
 "skills/*/scripts/*.py" = ["T201", "T203", "FBT001", "FBT002"]  # Allow print and boolean args in skill scripts

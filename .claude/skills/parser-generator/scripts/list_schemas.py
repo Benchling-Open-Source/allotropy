@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# type: ignore
 """
 Lists available Allotrope schemas by scanning the local allotropy repository.
 Usage: python list_schemas.py [filter] [--verbose]

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# type: ignore
 """
 Creates a new Allotropy parser with complete file structure.
 Usage: python create_parser.py <parser_name> <display_name> [--schema SCHEMA_PATH] [--example EXAMPLE_FILE]
