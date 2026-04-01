@@ -39,5 +39,6 @@ class MsdWorkbenchExtractor(Extractor[CalculatedDataMeasurementStructure]):
                 "percent_recovery_mean": calc_data_structure.percent_recovery_mean,
                 "calc_concentration": calc_data_structure.calc_concentration,
                 "calc_conc_mean": calc_data_structure.calc_conc_mean,
+                "calc_conc_cv": calc_data_structure.calc_conc_cv,
             },
         )
