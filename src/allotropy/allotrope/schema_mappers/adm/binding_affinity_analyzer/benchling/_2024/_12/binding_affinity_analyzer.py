@@ -1,3 +1,4 @@
+from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 
@@ -151,7 +152,7 @@ class MeasurementGroup:
 @dataclass(frozen=True)
 class Data:
     metadata: Metadata
-    measurement_groups: list[MeasurementGroup]
+    measurement_groups: list[MeasurementGroup] | Iterator[MeasurementGroup]
     calculated_data: list[CalculatedDocument] | None = None
 
 

@@ -21,5 +21,8 @@ class CytivaBiacoreT200EvaluationParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        metadata, groups = _create_data(named_file_contents)
+        metadata, groups_iter = _create_data(named_file_contents)
+        # Materialize iterator to list to prevent generator scope staying alive during mapping
+        # TODO: True streaming would require modifying the mapper and Model serialization
+        groups = list(groups_iter)
         return Data(metadata=metadata, measurement_groups=groups)

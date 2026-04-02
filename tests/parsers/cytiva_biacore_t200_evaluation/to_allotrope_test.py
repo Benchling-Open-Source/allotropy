@@ -11,6 +11,7 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evalua
 )
 from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_decoder import (
     decode_data as _original_decode_data,
+    decode_data_streaming as _original_decode_data_streaming,
 )
 from tests.to_allotrope_test import ParserTest
 
@@ -76,6 +77,57 @@ def _mask_sensitive_data_in_decoder(named_file_contents: Any) -> Any:
     return decoded_data
 
 
+def _mask_and_limit_streaming(named_file_contents: Any) -> Any:
+    """
+    Patched version of decode_data_streaming that masks sensitive data and limits cycles for testing.
+    """
+    # Call the original streaming decoder
+    cycle_gen = _original_decode_data_streaming(named_file_contents)
+
+    # Limit to first 4 cycles
+    max_cycles = 4
+    cycle_count = 0
+
+    for cycle_batch in cycle_gen:
+        if cycle_count >= max_cycles:
+            break
+
+        # Mask sensitive data in metadata (will be in first batch)
+        if cycle_count == 0:
+            if "chip" in cycle_batch:
+                chip = cycle_batch["chip"]
+
+                # Mask chip identifier and lot number
+                for chip_id_field in ["Id", "ChipId", "SensorChipId"]:
+                    if chip_id_field in chip:
+                        chip[chip_id_field] = "MASKED_CHIP_ID"
+
+                for lot_field in ["LotNo", "LotNumber", "Lot"]:
+                    if lot_field in chip:
+                        chip[lot_field] = "MASKED_LOT_NUMBER"
+
+                # Mask ligand identifiers and immobilization file paths
+                for key in list(chip.keys()):
+                    if key.startswith("Ligand") and ",1" in key:
+                        chip[key] = "MASKED_LIGAND_ID"
+                    elif key.startswith("ImmobFile") and ",1" in key:
+                        chip[key] = "MASKED_EXPERIMENTAL_DATA_ID"
+
+            # Mask system information
+            if "system_information" in cycle_batch:
+                sys_info = cycle_batch["system_information"]
+                for sys_id_field in [
+                    "SystemControllerId",
+                    "SystemControllerIdentifier",
+                    "SystemId",
+                ]:
+                    if sys_id_field in sys_info:
+                        sys_info[sys_id_field] = "MASKED_SYSTEM_ID"
+
+        cycle_count += 1
+        yield cycle_batch
+
+
 def _reduce_cycles_for_testing(data: Any) -> Any:
     """
     Patched version of create_measurement_groups that reduces cycles for testing.
@@ -110,8 +162,8 @@ class TestParser(ParserTest):
     VENDOR = Vendor.CYTIVA_BIACORE_T200_EVALUATION
 
     @patch(
-        "allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_data_creator.decode_data",
-        side_effect=_mask_sensitive_data_in_decoder,
+        "allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_data_creator.decode_data_streaming",
+        side_effect=_mask_and_limit_streaming,
     )
     @patch(
         "allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_data_creator.create_measurement_groups",

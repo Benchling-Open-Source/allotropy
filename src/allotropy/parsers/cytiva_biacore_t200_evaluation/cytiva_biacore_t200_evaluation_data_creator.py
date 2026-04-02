@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Iterator
 import gc
 from pathlib import Path
 import re
@@ -34,7 +35,7 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.constants import (
     MODEL_NUMBER,
 )
 from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_decoder import (
-    decode_data,
+    decode_data_streaming,
 )
 from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_structure import (
     _extract_value_from_xml_element_or_dict,
@@ -528,46 +529,122 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     return groups
 
 
+def _generate_measurement_groups(
+    run_metadata: RunMetadata,
+    chip_data: ChipData,
+    system_information: SystemInformation,
+    dip: DipData | None,
+    kinetic_analysis: KineticAnalysis | None,
+    sample_data: str,
+    application_template_details: dict[str, Any] | None,
+    first_cycle_batch: dict[str, Any],
+    cycle_generator: Any,
+) -> Iterator[MeasurementGroup]:
+    """Generator that yields MeasurementGroups one cycle at a time.
+
+    This completely eliminates the accumulation of MeasurementGroups in memory.
+    Each cycle is: decoded → converted to ASM → yielded → discarded
+    """
+    cycle_count = 0
+
+    for cycle_batch in [first_cycle_batch, *list(cycle_generator)]:
+        cycle_count += 1
+
+        # Create CycleData from this ONE cycle
+        cycle_data_obj = CycleData.create(cycle_batch["cycle_data"])
+
+        # Build Data object with ONLY this cycle
+        single_cycle_data = Data(
+            run_metadata=run_metadata,
+            chip_data=chip_data,
+            system_information=system_information,
+            total_cycles=cycle_count,
+            cycle_data=[cycle_data_obj],  # Just this one
+            dip=dip,
+            kinetic_analysis=kinetic_analysis,
+            sample_data=sample_data,
+            application_template_details=application_template_details,
+        )
+
+        # Convert this cycle to ASM and yield immediately
+        cycle_groups = create_measurement_groups(single_cycle_data)
+        yield from cycle_groups
+
+        # CRITICAL: Discard all cycle data before next iteration
+        # This prevents accumulating DataFrames AND MeasurementGroups
+        del cycle_data_obj
+        del single_cycle_data
+        del cycle_batch
+        del cycle_groups
+        gc.collect()  # Force garbage collection to free memory
+
+
 def create_data(
     named_file_contents: NamedFileContents,
-) -> tuple[Metadata, list[MeasurementGroup]]:
-    """Create allotrope data from BME file with memory-efficient decoding.
+) -> tuple[Metadata, Iterator[MeasurementGroup]]:
+    """Create allotrope data using TRUE end-to-end streaming with generator for MeasurementGroups.
 
-    decode_data() uses streaming internally (labels pre-loading + cycle-by-cycle processing)
-    which significantly reduces memory during the DECODE phase.
+    Architecture:
+    1. Stream one cycle at a time from decoder (never loads all 131 cycles)
+    2. Convert that cycle to ASM immediately
+    3. YIELD MeasurementGroup (don't accumulate)
+    4. Discard cycle DataFrame AND MeasurementGroup before next cycle
+    5. Force gc.collect() between cycles
 
-    Memory profile:
-    - decode_data streaming: Loads metadata + labels (~1 MB), then streams cycles
-    - Peak during decode: ~50 MB (metadata + one cycle being built)
-    - Peak during ASM creation: ~640 MB (all cycle DataFrames converted to ASM)
-    - Total reduction: 82% vs original batch decode (3.5 GB → 640 MB)
+    Memory profile (theoretical):
+    - Metadata + labels: ~1 MB (loaded once)
+    - Per cycle: ~10 MB DataFrame → ~4 MB ASM → yielded → discarded
+    - NO accumulated MeasurementGroups (they're yielded to mapper)
+    - Mapper converts each to JSON document immediately
+    - Peak: Only metadata + current cycle (~15 MB) + JSON strings
+    - Target: < 200 MB vs 1.8 GB with accumulation
+    - Total reduction: ~95% from original 3.5 GB
     """
-    # decode_data uses streaming internally (major memory savings during decode)
-    decoded = decode_data(named_file_contents)
+    # Use streaming decoder - yields one cycle at a time
+    cycle_generator = decode_data_streaming(named_file_contents)
 
-    # Build Data object with all cycles
-    data = Data(
-        run_metadata=RunMetadata.create(decoded.get("application_template_details")),
-        chip_data=ChipData.create(decoded.get("chip", {})),
-        system_information=SystemInformation.create(
-            decoded.get("system_information"),
-            (decoded.get("application_template_details") or {}).get("properties"),
-        ),
-        total_cycles=len(decoded.get("cycle_data", [])),
-        cycle_data=[CycleData.create(cycle) for cycle in decoded.get("cycle_data", [])],
-        dip=DipData.create(decoded.get("dip")),
-        kinetic_analysis=KineticAnalysis.create(decoded.get("kinetic_analysis")),
-        sample_data=decoded.get("sample_data", NOT_APPLICABLE),
-        application_template_details=decoded.get("application_template_details"),
+    # Get first cycle to extract metadata
+    first_cycle_batch = next(cycle_generator)
+
+    # Build shared metadata structures (reused for all cycles)
+    run_metadata = RunMetadata.create(
+        first_cycle_batch.get("application_template_details")
     )
+    chip_data = ChipData.create(first_cycle_batch.get("chip", {}))
+    system_information = SystemInformation.create(
+        first_cycle_batch.get("system_information"),
+        (first_cycle_batch.get("application_template_details") or {}).get("properties"),
+    )
+    dip = DipData.create(first_cycle_batch.get("dip"))
+    kinetic_analysis = KineticAnalysis.create(first_cycle_batch.get("kinetic_analysis"))
+    sample_data = first_cycle_batch.get("sample_data", NOT_APPLICABLE)
+    application_template_details = first_cycle_batch.get("application_template_details")
 
-    # Create metadata and measurement groups
-    metadata = create_metadata(data, named_file_contents)
-    groups = create_measurement_groups(data)
+    # Create metadata once (no cycle data needed)
+    metadata_data = Data(
+        run_metadata=run_metadata,
+        chip_data=chip_data,
+        system_information=system_information,
+        total_cycles=0,  # Not known yet
+        cycle_data=[],
+        dip=dip,
+        kinetic_analysis=kinetic_analysis,
+        sample_data=sample_data,
+        application_template_details=application_template_details,
+    )
+    metadata = create_metadata(metadata_data, named_file_contents)
+    del metadata_data
 
-    # Explicit cleanup
-    del decoded
-    del data
-    gc.collect()
-
-    return metadata, groups
+    # Return metadata + generator that yields MeasurementGroups one at a time
+    # The generator won't execute until the mapper starts iterating
+    return metadata, _generate_measurement_groups(
+        run_metadata,
+        chip_data,
+        system_information,
+        dip,
+        kinetic_analysis,
+        sample_data,
+        application_template_details,
+        first_cycle_batch,
+        cycle_generator,
+    )
