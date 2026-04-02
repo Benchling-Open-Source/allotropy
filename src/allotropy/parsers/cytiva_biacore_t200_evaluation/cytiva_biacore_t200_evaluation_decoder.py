@@ -1159,7 +1159,9 @@ def _decode_data_old_implementation(
                     ),
                     "sensorgram_data": df,
                 }
-                for cycle, df in sensorgram_by_cycle.items()
+                for cycle, df in sorted(
+                    sensorgram_by_cycle.items(), key=lambda x: int(x[0])
+                )
             ]
             intermediate["total_cycles"] = int(max(sensorgram_by_cycle.keys(), key=int))
         else:
