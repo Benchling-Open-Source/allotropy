@@ -2,6 +2,8 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Protocol, TypeVar
 
+import numpy as np
+
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TDatacubeComponent,
@@ -55,6 +57,27 @@ def _is_type(type_: type[T], value: float | str | int) -> bool:
 def _get_typed_dimension(
     type_: type[T], values: Sequence[float | str | bool]
 ) -> list[T] | None:
+    # Optimize for numpy arrays: use efficient .tolist() instead of iterating
+    # This reduces memory usage and is much faster for large arrays
+    if isinstance(values, np.ndarray):
+        # For float arrays, numpy's tolist() efficiently converts to Python floats
+        if type_ is float and values.dtype in (
+            np.float32,
+            np.float64,
+            np.int32,
+            np.int64,
+        ):
+            return values.tolist()
+        elif type_ is str and values.dtype.kind in (
+            "U",
+            "S",
+            "O",
+        ):  # Unicode, bytes, object
+            return values.tolist()
+        elif type_ is bool and values.dtype == np.bool_:
+            return values.tolist()
+
+    # Fallback to original logic for non-numpy sequences
     # Allow ints or floats for float list.
     result: list[T] = [
         # Typing is not smart enough to tell that calling type_(value) results in a value of type: type_,
@@ -87,6 +110,22 @@ def _get_dimensions(
 def _get_typed_measure(
     type_: type[T], values: Sequence[float | str | bool | None]
 ) -> list[T | None] | None:
+    # Optimize for numpy arrays: use efficient .tolist() instead of iterating
+    if isinstance(values, np.ndarray):
+        # For float arrays, numpy's tolist() efficiently converts to Python floats
+        if type_ is float and values.dtype in (
+            np.float32,
+            np.float64,
+            np.int32,
+            np.int64,
+        ):
+            return values.tolist()
+        elif type_ is str and values.dtype.kind in ("U", "S", "O"):
+            return values.tolist()
+        elif type_ is bool and values.dtype == np.bool_:
+            return values.tolist()
+
+    # Fallback to original logic for non-numpy sequences
     result: list[T | None] = [
         # Typing is not smart enough to tell that calling type_(value) results in a value of type: type_,
         # which I just can't deal with.
