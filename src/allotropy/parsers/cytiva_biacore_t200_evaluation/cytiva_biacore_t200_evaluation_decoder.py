@@ -491,7 +491,8 @@ def stream_cycle_data(
 
         # Group streams by cycle number
         cycle_streams: dict[int, list[tuple[Any, str, Any, Any]]] = defaultdict(list)
-        flow_cell_by_cycle: dict[int, Any] = {}
+        # Store flow cell per (cycle, curve) to handle multiple flow cells per cycle
+        labels_by_cycle_curve: dict[tuple[int, int], str] = {}
 
         # First pass: organize streams by cycle
         for stream in streams:
@@ -516,7 +517,11 @@ def stream_cycle_data(
                             raw.decode("utf-8", errors="ignore").strip().split("\n")
                         ):
                             if "Fc" in line:
-                                flow_cell_by_cycle[cycle_number] = line.split("=")[1]
+                                # Store per (cycle, curve) to handle multiple flow cells per cycle
+                                curve_num = int(curve_number)
+                                labels_by_cycle_curve[
+                                    (cycle_number, curve_num)
+                                ] = line.split("=")[1]
                     continue
 
                 cycle_streams[cycle_number].append(
@@ -543,11 +548,13 @@ def stream_cycle_data(
             curve_list: list[NDArray[np.object_]] = []
             window_list: list[NDArray[np.object_]] = []
 
-            flow_cell = flow_cell_by_cycle.get(cycle_num, 1)
-
             for stream, path_str, curve_number, window_number in cycle_streams[
                 cycle_num
             ]:
+                # Look up flow cell for this specific (cycle, curve)
+                curve_num = int(curve_number)
+                flow_cell = labels_by_cycle_curve.get((cycle_num, curve_num), 1)
+
                 if "XYData" in path_str:
                     raw = content.openstream(stream).read()
                     arr = np.frombuffer(raw, dtype="<f4")
@@ -658,7 +665,8 @@ def decode_data_streaming(named_file_contents: NamedFileContents) -> Any:
         kinetic_analysis: dict[str, Any] = {}
         sample_data: Any = None
         cycle_streams: dict[int, list[tuple[Any, str, Any, Any]]] = defaultdict(list)
-        flow_cell_by_cycle: dict[int, Any] = {}
+        # Store flow cell per (cycle, curve) to handle multiple flow cells per cycle
+        labels_by_cycle_curve: dict[tuple[int, int], str] = {}
 
         for stream in streams:
             path_str = "/".join(stream)
@@ -757,9 +765,11 @@ def decode_data_streaming(named_file_contents: NamedFileContents) -> Any:
                                 raw.decode("utf-8", errors="ignore").strip().split("\n")
                             ):
                                 if "Fc" in line:
-                                    flow_cell_by_cycle[cycle_number] = line.split("=")[
-                                        1
-                                    ]
+                                    # Store per (cycle, curve) to handle multiple flow cells per cycle
+                                    curve_num = int(curve_number)
+                                    labels_by_cycle_curve[
+                                        (cycle_number, curve_num)
+                                    ] = line.split("=")[1]
                         continue
 
                     cycle_streams[cycle_number].append(
@@ -791,11 +801,13 @@ def decode_data_streaming(named_file_contents: NamedFileContents) -> Any:
             curve_list: list[NDArray[np.object_]] = []
             window_list: list[NDArray[np.object_]] = []
 
-            flow_cell = flow_cell_by_cycle.get(cycle_num, 1)
-
             for stream, path_str, curve_number, window_number in cycle_streams[
                 cycle_num
             ]:
+                # Look up flow cell for this specific (cycle, curve)
+                curve_num = int(curve_number)
+                flow_cell = labels_by_cycle_curve.get((cycle_num, curve_num), 1)
+
                 if "XYData" in path_str:
                     raw = content.openstream(stream).read()
                     arr = np.frombuffer(raw, dtype="<f4")
