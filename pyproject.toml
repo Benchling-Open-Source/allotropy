@@ -47,6 +47,7 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = [
+  "babel >= 2.9.0",
   "cattrs >= 23.2.0",
   "chardet >= 5.2.0",
   "defusedxml >= 0.7.1",

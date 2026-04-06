@@ -522,7 +522,9 @@ class PlateRawData(RawData):
         data = get_plate_dataframe(reader, header, columns=columns)
 
         # get temperature and elapsed time (kinetic) from the first column of the first row with value
-        first_row_idx = int(pd.to_numeric(data.first_valid_index()))
+        first_row_idx = int(
+            try_float(str(data.first_valid_index()), "first_valid_index")
+        )
         temperature = try_non_nan_float_or_none(str(data.iloc[first_row_idx, 1]))
         elapsed_time = None
         if pd.notna(elapsed := data.iloc[first_row_idx, 0]):
@@ -592,7 +594,9 @@ class SpectrumPlateRawData(RawData):
         wavelength_data: list[PlateWavelengthData] = []
         for wavelength in header.wavelengths:
             data = get_plate_dataframe(reader, header, columns=columns)
-            first_row_idx = int(pd.to_numeric(data.first_valid_index()))
+            first_row_idx = int(
+                try_float(str(data.first_valid_index()), "first_valid_index")
+            )
             temperature = try_non_nan_float_or_none(str(data.iloc[first_row_idx, 1]))
             wavelength_data.append(
                 PlateWavelengthData.create(

@@ -23,6 +23,7 @@ from allotropy.parsers.utils.values import (
     assert_is_type,
     assert_not_none,
     str_to_bool,
+    try_float,
     try_float_or_none,
 )
 from allotropy.types import IOType
@@ -38,6 +39,26 @@ def map_rows(
 
     # pandas can't find a matching overload for this, but it works and returns the correct type...
     return list(data_frame.apply(run_with_data, axis="columns"))  # type: ignore[call-overload]
+
+
+def series_to_float_list(series: pd.Series[Any], value_name: str) -> list[float]:
+    """Convert pandas Series to list of floats using locale-aware parsing.
+
+    This is a convenience helper for the common pattern of converting a pandas Series
+    to a list of floats. It uses try_float for locale-aware number parsing.
+
+    Args:
+        series: The pandas Series to convert
+        value_name: A descriptive name for the values (used in error messages)
+
+    Returns:
+        A list of floats parsed from the series values
+
+    Example:
+        >>> series_to_float_list(df["Temperature"], "temperature")
+        [25.5, 26.0, 27.3]
+    """
+    return [try_float(str(v), value_name) for v in series]
 
 
 def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:

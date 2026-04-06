@@ -42,7 +42,7 @@ from allotropy.parsers.constants import (
     NEGATIVE_ZERO,
     NOT_APPLICABLE,
 )
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import map_rows, series_to_float_list, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -233,7 +233,7 @@ class WellItem:
         cycle_count = DataCubeComponent(
             FieldComponentDatatype.integer, "cycle count", "#"
         )
-        index_column = well_data["Index"].astype(float).tolist()
+        index_column = series_to_float_list(well_data["Index"], "index")
 
         data = SeriesData(well_data.iloc[0])
         well_items: list[WellItem] = []
@@ -291,7 +291,9 @@ class WellItem:
                             )
                         ],
                         dimensions=[index_column],
-                        measures=[well_data[dye_setting].astype(float).tolist()],
+                        measures=[
+                            series_to_float_list(well_data[dye_setting], "fluorescence")
+                        ],
                     ),
                     passive_reference_dye_data_cube=DataCube(
                         label="passive reference dye",
@@ -305,7 +307,10 @@ class WellItem:
                         ],
                         dimensions=[index_column],
                         measures=[
-                            well_data[passive_dye_settings[0]].astype(float).tolist()
+                            series_to_float_list(
+                                well_data[passive_dye_settings[0]],
+                                "passive_fluorescence",
+                            )
                         ],
                     ),
                     errors=errors,
