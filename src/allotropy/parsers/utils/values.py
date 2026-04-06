@@ -14,6 +14,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO
+from allotropy.parsers.utils.locale_number_parser import parse_number_with_locale
 from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
@@ -57,10 +58,6 @@ def _try_float(value: str | float | None) -> float:
     # Check if locale-aware parsing is enabled
     locale = _current_locale.get()
     if locale:
-        from allotropy.parsers.utils.locale_number_parser import (
-            parse_number_with_locale,
-        )
-
         try:
             return float(parse_number_with_locale(str(value), locale))
         except AllotropeConversionError:

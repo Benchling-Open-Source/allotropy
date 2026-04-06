@@ -7,6 +7,7 @@ from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import Vendor
+from allotropy.parsers.utils.locale_context import set_locale_context
 from allotropy.types import IOType
 
 VendorType = Vendor | str
@@ -47,8 +48,6 @@ def allotrope_model_from_io(
 
     # Set locale context for parsing
     if locale:
-        from allotropy.parsers.utils.locale_context import set_locale_context
-
         with set_locale_context(locale):
             return parser.to_allotrope(named_file_contents)
     else:

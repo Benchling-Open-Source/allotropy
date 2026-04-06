@@ -4,6 +4,7 @@ from io import BytesIO
 
 import pytest
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.to_allotrope import allotrope_from_io
 
 
@@ -14,10 +15,8 @@ def test_locale_parameter_is_optional() -> None:
     csv_content = b"A,B\n1,2\n3,4"
     # We expect this to fail because we don't have a real parser for raw CSV,
     # but it should fail at parser creation, not at locale handling
-    with pytest.raises(Exception):
-        allotrope_from_io(
-            BytesIO(csv_content), "test.csv", "UNKNOWN_VENDOR"
-        )
+    with pytest.raises(AllotropeConversionError):
+        allotrope_from_io(BytesIO(csv_content), "test.csv", "UNKNOWN_VENDOR")
 
 
 def test_locale_parameter_accepts_string() -> None:
@@ -25,7 +24,7 @@ def test_locale_parameter_accepts_string() -> None:
     csv_content = b"A,B\n1,2\n3,4"
     # We expect this to fail because we don't have a real parser for raw CSV,
     # but it should fail at parser creation, not at locale handling
-    with pytest.raises(Exception):
+    with pytest.raises(AllotropeConversionError):
         allotrope_from_io(
             BytesIO(csv_content),
             "test.csv",
@@ -39,7 +38,7 @@ def test_locale_parameter_accepts_none() -> None:
     csv_content = b"A,B\n1,2\n3,4"
     # We expect this to fail because we don't have a real parser for raw CSV,
     # but it should fail at parser creation, not at locale handling
-    with pytest.raises(Exception):
+    with pytest.raises(AllotropeConversionError):
         allotrope_from_io(
             BytesIO(csv_content),
             "test.csv",

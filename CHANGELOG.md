@@ -5,12 +5,6 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
-
-- Global locale support for number parsing - Add `locale` parameter to top-level API functions to support locale-specific number formats (e.g., German "1.234,56" vs US "1,234.56")
-
 ## [0.1.116] - 2026-04-01
 
 ### Added
