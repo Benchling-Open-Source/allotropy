@@ -143,10 +143,13 @@ class SingleDatasetParser:
 
         if metric_token == "COUNT":  # noqa: S105
             analyte_cols = analyte_labels
-            # Convert each analyte column to numeric, coercing errors to NaN then filling with 0.0
+            # Convert each analyte column to numeric, coercing errors to 0.0
+            # Use try_float_or_none for locale support, then fill None with 0.0
             converted = cast(
                 pd.DataFrame,
-                out[analyte_cols].apply(pd.to_numeric, errors="coerce").fillna(0.0),
+                out[analyte_cols]
+                .apply(lambda col: col.apply(try_float_or_none))
+                .fillna(0.0),
             )
             out["Total Events"] = converted.sum(axis=1)
         else:

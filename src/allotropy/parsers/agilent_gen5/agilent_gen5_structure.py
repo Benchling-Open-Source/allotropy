@@ -1246,7 +1246,8 @@ def create_spectrum_results(
     data = read_csv(StringIO("\n".join(wavelengths_sections)), sep="\t")
 
     try:
-        wavelengths = data["Wavelength"].astype(float).tolist()
+        # Use try_float for locale support
+        wavelengths = [try_float(str(w), "wavelength") for w in data["Wavelength"]]
     except (ValueError, KeyError):
         return [], []
 

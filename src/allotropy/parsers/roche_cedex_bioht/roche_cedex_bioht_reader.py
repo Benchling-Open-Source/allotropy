@@ -15,11 +15,14 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
     SAMPLE_ROLE_TYPES,
 )
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.types import IOType
 
 
 def to_num(data: pd.Series[Any]) -> pd.Series[Any]:
-    return pd.to_numeric(data, errors="coerce").replace(np.nan, None)
+    # try_float_or_none returns None for invalid values, but pandas converts None to np.nan
+    # So we need to explicitly replace np.nan with None, just like the original pd.to_numeric did
+    return data.apply(try_float_or_none).replace(np.nan, None)
 
 
 class RocheCedexBiohtReader:

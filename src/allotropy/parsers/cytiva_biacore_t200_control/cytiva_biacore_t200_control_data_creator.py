@@ -47,7 +47,11 @@ from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_s
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
-from allotropy.parsers.utils.values import quantity_or_none, try_float_or_none
+from allotropy.parsers.utils.values import (
+    quantity_or_none,
+    try_float,
+    try_float_or_none,
+)
 from allotropy.types import DictType
 
 
@@ -62,8 +66,13 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
         structure_measures=[
             DataCubeComponent(FieldComponentDatatype.double, "resonance", "RU")
         ],
-        dimensions=[sensorgram_data["Time (s)"].astype(float).to_list()],
-        measures=[sensorgram_data["Sensorgram (RU)"].astype(float).to_list()],
+        dimensions=[[try_float(str(v), "time") for v in sensorgram_data["Time (s)"]]],
+        measures=[
+            [
+                try_float(str(v), "sensorgram")
+                for v in sensorgram_data["Sensorgram (RU)"]
+            ]
+        ],
     )
 
 

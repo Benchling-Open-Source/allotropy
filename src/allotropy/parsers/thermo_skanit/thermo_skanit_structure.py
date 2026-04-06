@@ -26,7 +26,7 @@ from allotropy.parsers.thermo_skanit.constants import (
 )
 from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none
+from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 MEASUREMENT_TYPES = {
     MeasurementType.ULTRAVIOLET_ABSORBANCE: "Absorbance",
@@ -402,7 +402,10 @@ class ThermoSkanItMeasurementGroups:
         )
         df = df[df.columns[valid_columns]]
         # Cast row numbers to int (float first to handle decimals, e.g. 1.0)
-        df.columns = df.columns.astype(float).astype(int)
+        # Use try_float for locale support
+        df.columns = pd.Index(  # type: ignore[assignment]
+            [int(try_float(str(col), "column_name")) for col in df.columns]
+        )
         return df
 
     @staticmethod
@@ -442,7 +445,9 @@ class ThermoSkanItMeasurementGroups:
                         ]
                         wavelength_data[current_wavelength] = data_df
 
-                    current_wavelength = float(wavelength_match.group(1))
+                    current_wavelength = try_float(
+                        wavelength_match.group(1), "wavelength"
+                    )
                     current_data_section = []
                     reading_data = False
                     reading_samples = False
