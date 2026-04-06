@@ -22,9 +22,8 @@ from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeCompo
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_genesys30 import constants
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import series_to_float_list, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float
 
 
 def create_metadata(header: SeriesData, file_path: str) -> Metadata:
@@ -73,9 +72,7 @@ def create_measurement_groups(
                             )
                         ],
                         dimensions=[data["wavelength(nm)"].tolist()],
-                        measures=[
-                            [try_float(str(v), "absorbance") for v in data["ABS"]]
-                        ],
+                        measures=[series_to_float_list(data["ABS"], "absorbance")],
                     ),
                     device_control_custom_info={
                         "operating minimum": {
