@@ -132,6 +132,10 @@ class WellItem(Referenceable):
     def result(self) -> Result:
         return assert_not_none(self._result)
 
+    def set_result(self, result: Result) -> None:
+        """Set the result for this well item. Used to attach result data after well item creation."""
+        self._result = result
+
     @staticmethod
     def create_genotyping(data: SeriesData) -> tuple[WellItem, WellItem]:
         identifier = data[int, "Well"]

@@ -241,8 +241,8 @@ def _create_measurement(
 ) -> Measurement | None:
     if not result:
         return None
-    # TODO: temp workaround for cal doc result
-    well_item._result = result
+    # Attach result to well_item so calculated documents can access it
+    well_item.set_result(result)
 
     (
         reporter_dye_data_cube,
