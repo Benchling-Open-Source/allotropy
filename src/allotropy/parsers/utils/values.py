@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
+from contextvars import ContextVar
 import math
 import re
 from typing import Any, TypeVar
@@ -13,9 +14,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO
+from allotropy.parsers.utils.locale_number_parser import parse_number_with_locale
 from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
+
+# Context variable to store the current locale for number parsing
+_current_locale: ContextVar[str | None] = ContextVar("current_locale", default=None)
 
 
 def str_to_bool(value: str) -> bool:
@@ -49,6 +54,17 @@ def try_int_or_none(value: str | None) -> int | None:
 def _try_float(value: str | float | None) -> float:
     if isinstance(value, float):
         return value
+
+    # Check if locale-aware parsing is enabled
+    locale = _current_locale.get()
+    if locale:
+        try:
+            return float(parse_number_with_locale(str(value), locale))
+        except AllotropeConversionError:
+            # Fall back to default parsing if locale parsing fails
+            pass
+
+    # Default parsing: treat comma as decimal separator (European format)
     # NOTE: this will convert a string with commas for thousands into a decimal, potentially introducing
     # an unexpected error, e.g. one thousand represented as 1,000 would get converted to 1.0
     # However, numbers are not usually represented like this in scientific output (we have no example of it)
