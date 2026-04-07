@@ -8,6 +8,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import
     create_calculated_data,
     create_measurement_groups,
     create_metadata,
+    enrich_wells_with_results,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
     AppBioQuantStudioReader,
@@ -41,8 +42,11 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
         results_data, result_metadata = Result.create(reader, header.experiment_type)
         melt_data = MeltCurveRawData.create(reader)
 
+        # Create immutable copies of wells with results attached
+        enriched_wells = enrich_wells_with_results(wells, results_data)
+
         calculated_data_documents = iter_calculated_data_documents(
-            [well_item for well in wells for well_item in well.items],
+            [well_item for well in enriched_wells for well_item in well.items],
             header.experiment_type,
             result_metadata.reference_sample_description,
             result_metadata.reference_dna_description,
@@ -52,7 +56,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
             metadata=create_metadata(header, original_file_path),
             measurement_groups=create_measurement_groups(
                 header,
-                wells,
+                enriched_wells,
                 amp_data,
                 multi_data,
                 results_data,
