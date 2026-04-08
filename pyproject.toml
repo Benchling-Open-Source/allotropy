@@ -69,6 +69,11 @@ dependencies = [
   "xmltodict >= 0.13.0",
 ]
 
+[project.optional-dependencies]
+testdata = [
+  "allotropy-testdata == 0.1.116",
+]
+
 [project.urls]
 Documentation = "https://github.com/Benchling-Open-Source/allotropy#readme"
 Issues = "https://github.com/Benchling-Open-Source/allotropy/issues"

@@ -9,6 +9,12 @@ This package contains real-world instrument file examples and their expected ASM
 
 ## Installation
 
+### As optional extra (recommended)
+```bash
+pip install allotropy[testdata]
+```
+
+### Standalone
 ```bash
 pip install allotropy-testdata
 ```
