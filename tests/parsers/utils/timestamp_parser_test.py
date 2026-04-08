@@ -42,9 +42,11 @@ class TestShouldUseDayFirst:
         assert _should_use_day_first("01/15/2023", None) is False
         assert _should_use_day_first("15/01/2023", None) is False
 
-    def test_invalid_locale_returns_false(self) -> None:
-        # Invalid locales default to False
-        assert _should_use_day_first("01/15/2023", "invalid_LOCALE") is False
+    def test_invalid_locale_returns_true(self) -> None:
+        # Invalid/unknown locales default to day-first since most of world uses it
+        assert _should_use_day_first("01/15/2023", "invalid_LOCALE") is True
+        assert _should_use_day_first("15/01/2023", "xyz_ABC") is True
+        assert _should_use_day_first("01/02/2023", "not_a_real_locale") is True
 
 
 class TestTimestampParser:
@@ -141,6 +143,21 @@ class TestTimestampParser:
             AllotropeConversionError, match="Could not parse time 'not a date'"
         ):
             parser.parse("not a date")
+
+    def test_invalid_locale_defaults_to_day_first(self) -> None:
+        """Invalid/unknown locales should default to day-first (most common globally)."""
+        parser = TimestampParser()
+
+        # With an invalid locale, ambiguous dates should parse as day-first
+        # 01/02/2023 should be February 1st (day-first), not January 2nd
+        with set_locale_context("invalid_LOCALE"):
+            result = parser.parse("01/02/2023")
+        assert "2023-02-01" in result, "Invalid locale should default to day-first"
+
+        # Another invalid locale - should still use day-first
+        with set_locale_context("xyz_ABC"):
+            result = parser.parse("15/01/2023")
+        assert "2023-01-15" in result, "Unknown locale should default to day-first"
 
     def test_real_world_examples(self) -> None:
         """Test real-world date formats from various instruments."""

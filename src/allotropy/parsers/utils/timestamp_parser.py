@@ -42,7 +42,7 @@ def _should_use_day_first(time_str: str, locale_str: str | None) -> bool:
     if re.match(r"^\d{4}[-/.]", time_str):
         return False
 
-    # Use locale data for non-ISO formats
+    # No locale specified: default to American format for backward compatibility
     if not locale_str:
         return False
 
@@ -60,7 +60,9 @@ def _should_use_day_first(time_str: str, locale_str: str | None) -> bool:
 
         return False
     except Exception:
-        return False
+        # Invalid/unknown locale: default to day-first since most of the world uses it
+        # Only en_US and a few other locales use month-first (MM/DD/YYYY)
+        return True
 
 
 class TimestampParser:
