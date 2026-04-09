@@ -137,7 +137,7 @@ def _get_analyte_custom_info(
                 analyte_info[col_name] = first_row_data.get(str, col_name)
 
         # Add Concentration field (can be in nM, µM, or µg/ml)
-        concentration = None
+        concentration: TQuantityValueNanomolar | TQuantityValueMicrogramPerMilliliter | None = None
         for unit_suffix in ["(nM)", "(µM)", "(µg/ml)"]:
             conc_col = f"Analyte {analyte_num} Concentration {unit_suffix}"
             if conc_col in columns_set:
@@ -537,7 +537,7 @@ class MeasurementData:
             flow_cell_info = SeriesData(flow_cell_data.iloc[0])
 
             # Build device control custom info with dynamic analyte and regeneration fields
-            device_control_custom_info_dict = {}
+            device_control_custom_info_dict: dict[str, Any | None] = {}
             columns_set = set(flow_cell_data.columns)
 
             # Dynamically add Analyte 1-N fields
