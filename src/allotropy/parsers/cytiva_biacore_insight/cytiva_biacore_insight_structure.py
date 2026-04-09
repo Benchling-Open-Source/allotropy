@@ -546,17 +546,27 @@ class MeasurementData:
                 if contact_time_col not in columns_set:
                     continue
 
-                device_control_custom_info_dict[f"Analyte {analyte_num} Contact time"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Contact time"
+                ] = quantity_or_none(
                     TQuantityValueSecondTime,
                     flow_cell_info.get(float, contact_time_col),
                 )
-                device_control_custom_info_dict[f"Analyte {analyte_num} Dissociation time"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Dissociation time"
+                ] = quantity_or_none(
                     TQuantityValueSecondTime,
-                    flow_cell_info.get(float, f"Analyte {analyte_num} Dissociation time (s)"),
+                    flow_cell_info.get(
+                        float, f"Analyte {analyte_num} Dissociation time (s)"
+                    ),
                 )
-                device_control_custom_info_dict[f"Analyte {analyte_num} Flow rate"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Flow rate"
+                ] = quantity_or_none(
                     TQuantityValueMicroliterPerMinute,
-                    flow_cell_info.get(float, f"Analyte {analyte_num} Flow rate (µl/min)"),
+                    flow_cell_info.get(
+                        float, f"Analyte {analyte_num} Flow rate (µl/min)"
+                    ),
                 )
 
             # Dynamically add Regeneration 1-N fields
@@ -565,13 +575,19 @@ class MeasurementData:
                 if contact_time_col not in columns_set:
                     continue
 
-                device_control_custom_info_dict[f"Regeneration {regen_num} Contact time"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Regeneration {regen_num} Contact time"
+                ] = quantity_or_none(
                     TQuantityValueSecondTime,
                     flow_cell_info.get(float, contact_time_col),
                 )
-                device_control_custom_info_dict[f"Regeneration {regen_num} Flow rate"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Regeneration {regen_num} Flow rate"
+                ] = quantity_or_none(
                     TQuantityValueMicroliterPerMinute,
-                    flow_cell_info.get(float, f"Regeneration {regen_num} Flow rate (µl/min)"),
+                    flow_cell_info.get(
+                        float, f"Regeneration {regen_num} Flow rate (µl/min)"
+                    ),
                 )
 
             # Dynamically add Capture 1-N fields
@@ -580,28 +596,36 @@ class MeasurementData:
                 if contact_time_col not in columns_set:
                     continue
 
-                device_control_custom_info_dict[f"Capture {capture_num} Contact time"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Capture {capture_num} Contact time"
+                ] = quantity_or_none(
                     TQuantityValueSecondTime,
                     flow_cell_info.get(float, contact_time_col),
                 )
-                device_control_custom_info_dict[f"Capture {capture_num} Flow rate"] = quantity_or_none(
+                device_control_custom_info_dict[
+                    f"Capture {capture_num} Flow rate"
+                ] = quantity_or_none(
                     TQuantityValueMicroliterPerMinute,
-                    flow_cell_info.get(float, f"Capture {capture_num} Flow rate (µl/min)"),
+                    flow_cell_info.get(
+                        float, f"Capture {capture_num} Flow rate (µl/min)"
+                    ),
                 )
 
             # Add other standard fields
-            device_control_custom_info_dict.update({
-                "Included": run_info.get(str, "Included"),
-                "Sensorgram type": flow_cell_info.get(
-                    str,
-                    "Sensorgram type",
-                    run_info.get(str, "Sensorgram type"),
-                ),
-                "Level": quantity_or_none(
-                    TQuantityValueResponseUnit,
-                    run_info.get(float, "Level (RU)"),
-                ),
-            })
+            device_control_custom_info_dict.update(
+                {
+                    "Included": run_info.get(str, "Included"),
+                    "Sensorgram type": flow_cell_info.get(
+                        str,
+                        "Sensorgram type",
+                        run_info.get(str, "Sensorgram type"),
+                    ),
+                    "Level": quantity_or_none(
+                        TQuantityValueResponseUnit,
+                        run_info.get(float, "Level (RU)"),
+                    ),
+                }
+            )
 
             device_control_document.append(
                 DeviceControlDocument(
