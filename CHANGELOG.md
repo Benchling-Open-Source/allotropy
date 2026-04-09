@@ -5,6 +5,20 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.117] - 2026-04-08
+
+### Added
+
+- Add locale-aware timestamp parsing using Babel CLDR data (#1167)
+- Add global locale support for number parsing (#1165)
+- Reduce Cytiva Biacore T200 Control memory usage with cycle streaming (#1164)
+- Cytiva T200 - Implement streaming decoder to reduce memory usage by 55% (#1163)
+
+### Fixed
+
+- Default to day-first format for invalid/unknown locales (#1168)
+- Use immutable copy pattern for WellItem result attachment (#1166)
+
 ## [0.1.116] - 2026-04-01
 
 ### Added
