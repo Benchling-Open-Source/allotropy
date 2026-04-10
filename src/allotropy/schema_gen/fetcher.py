@@ -65,7 +65,8 @@ class SchemaFetcher:
         # Check cache first
         if cache_path.exists():
             with open(cache_path, encoding="utf-8") as f:
-                return json.load(f)
+                result: dict[str, Any] = json.load(f)
+                return result
 
         # Download from GitLab
         download_url = allotrope_url_to_gitlab_raw(canonical_url)
@@ -73,7 +74,7 @@ class SchemaFetcher:
         with urlopen(download_url) as response:  # noqa: S310
             data = response.read().decode("utf-8")
 
-        schema = json.loads(data)
+        schema: dict[str, Any] = json.loads(data)
 
         # Cache locally
         cache_path.parent.mkdir(parents=True, exist_ok=True)

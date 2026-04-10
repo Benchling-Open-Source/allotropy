@@ -65,7 +65,7 @@ def from_dict(data: dict[str, Any] | Any, cls: type[T]) -> T:
         return data  # type: ignore[return-value]
 
     if not isinstance(data, dict):
-        return data  # type: ignore[return-value]
+        return data  # type: ignore[no-any-return]
 
     # Build reverse mapping: json_name → (python_field_name, field_type)
     json_to_field: dict[str, tuple[str, Any]] = {}
@@ -80,7 +80,7 @@ def from_dict(data: dict[str, Any] | Any, cls: type[T]) -> T:
         field_name, field_type = json_to_field[json_key]
         kwargs[field_name] = _structure_value(value, field_type, cls)
 
-    return cls(**kwargs)
+    return cls(**kwargs)  # type: ignore[return-value]
 
 
 def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:

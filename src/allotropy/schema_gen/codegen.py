@@ -109,8 +109,8 @@ class ModuleCode:
             external_imports[module].add(imp.name)
 
         # Write stdlib imports
-        for imp in sorted(stdlib_imports):
-            lines.append(imp)
+        for stdlib_imp in sorted(stdlib_imports):
+            lines.append(stdlib_imp)
         if stdlib_imports:
             lines.append("")
 
@@ -300,7 +300,8 @@ class SchemaCodeGenerator:
         """Extract the const unit value from a unit definition."""
         props = schema.get("properties", {})
         unit_prop = props.get("unit", {})
-        return unit_prop.get("const")
+        const: str | None = unit_prop.get("const")
+        return const
 
     def _unit_class_name(self, _def_name: str, const_value: str) -> str:
         """Generate a class name for a unit definition."""
