@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import re
 import subprocess
 import sys
 import tempfile
@@ -136,9 +135,7 @@ def _generate_with_datamodel_codegen(
     processed = strip_external_whole_schema_refs(processed)
 
     # Write to temp file and generate
-    with tempfile.NamedTemporaryFile(
-        "w", suffix=".json", delete=False
-    ) as fp:
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fp:
         json.dump(processed, fp, ensure_ascii=False)
         fp.flush()
         tmp_path = Path(fp.name)
@@ -221,13 +218,15 @@ def _generate_units_module(schema: dict[str, Any]) -> str:
 
         # Use repr for the default value, ensure double quotes
         quoted = _dquote(const_value)
-        lines.extend([
-            "@dataclass(frozen=True, kw_only=True)",
-            f"class {class_name}(HasUnit):",
-            f"    unit: str = {quoted}",
-            "",
-            "",
-        ])
+        lines.extend(
+            [
+                "@dataclass(frozen=True, kw_only=True)",
+                f"class {class_name}(HasUnit):",
+                f"    unit: str = {quoted}",
+                "",
+                "",
+            ]
+        )
 
     # Remove trailing blank lines, add single newline
     while lines and lines[-1] == "":

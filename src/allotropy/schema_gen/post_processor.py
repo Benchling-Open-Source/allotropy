@@ -122,7 +122,6 @@ def dedup_with_imports(
     import_lines: list[str] = []
     for module_path, names in sorted(new_imports.items()):
         sorted_names = sorted(names)
-        names_str = ", ".join(sorted_names)
         import_lines.append(
             f"from {models_package}.{module_path} import (\n"
             + "".join(f"    {n},\n" for n in sorted_names)
@@ -195,20 +194,22 @@ def add_json_name_metadata(source: str, schema: dict[str, Any]) -> str:
                 # Escape any double quotes in the json_name
                 escaped = json_name.replace('"', '\\"')
                 if default_value is not None and default_value.strip() != "None":
-                    line = (
+                    new_line = (
                         f"{indent}{field_name}{type_annotation} = "
                         f'field(default={default_value.strip()}, metadata={{"json_name": "{escaped}"}})'
                     )
                 elif default_value is not None:
-                    line = (
+                    new_line = (
                         f"{indent}{field_name}{type_annotation} = "
                         f'field(default=None, metadata={{"json_name": "{escaped}"}})'
                     )
                 else:
-                    line = (
+                    new_line = (
                         f"{indent}{field_name}{type_annotation} = "
                         f'field(metadata={{"json_name": "{escaped}"}})'
                     )
+                result.append(new_line)
+                continue
 
         result.append(line)
 
