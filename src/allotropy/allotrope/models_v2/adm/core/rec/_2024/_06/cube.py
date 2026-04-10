@@ -39,7 +39,9 @@ TStringOrNullArray = list[Any]
 
 @dataclass(frozen=True, kw_only=True)
 class TFunction:
-    type: Literal["linear", "logarithmic"] | None = field(default=None, metadata={"json_name": "type"})
+    type: Literal["linear", "logarithmic"] | None = field(
+        default=None, metadata={"json_name": "type"}
+    )
     start: float | None = field(default=None, metadata={"json_name": "start"})
     length: float | None = field(default=None, metadata={"json_name": "length"})
     incr: float | None = field(default=None, metadata={"json_name": "incr"})
@@ -47,10 +49,24 @@ class TFunction:
 
 @dataclass(frozen=True, kw_only=True)
 class TDatacubeComponent:
-    componentdatatype: Literal["double", "float", "decimal", "integer", "byte", "int", "short", "long", "string", "boolean", "dateTime"] = field(metadata={"json_name": "@componentDatatype"})
+    componentdatatype: Literal[
+        "double",
+        "float",
+        "decimal",
+        "integer",
+        "byte",
+        "int",
+        "short",
+        "long",
+        "string",
+        "boolean",
+        "dateTime",
+    ] = field(metadata={"json_name": "@componentDatatype"})
     concept: TClass = field(metadata={"json_name": "concept"})
     unit: TUnit | None = field(default=None, metadata={"json_name": "unit"})
-    scale: Literal["nominal", "ordinal", "cardinal", "interval", "range"] | None = field(default=None, metadata={"json_name": "scale"})
+    scale: Literal[
+        "nominal", "ordinal", "cardinal", "interval", "range"
+    ] | None = field(default=None, metadata={"json_name": "scale"})
 
 
 TDimensionArray = TNumberArray | TBooleanArray | TStringArray
@@ -67,8 +83,12 @@ class TDatacubeStructure:
 
 @dataclass(frozen=True, kw_only=True)
 class TMeasureData:
-    measures: list[TMeasureArray] | None = field(default=None, metadata={"json_name": "measures"})
-    points: list[TTupleData] | None = field(default=None, metadata={"json_name": "points"})
+    measures: list[TMeasureArray] | None = field(
+        default=None, metadata={"json_name": "measures"}
+    )
+    points: list[TTupleData] | None = field(
+        default=None, metadata={"json_name": "points"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -79,5 +99,7 @@ class TDatacubeData(TDimensionData, TMeasureData):
 @dataclass(frozen=True, kw_only=True)
 class TDatacube:
     label: str | None = field(default=None, metadata={"json_name": "label"})
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
     data: TDatacubeData | None = field(default=None, metadata={"json_name": "data"})

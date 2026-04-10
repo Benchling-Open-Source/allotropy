@@ -39,57 +39,125 @@ class TQuantityValueMAU(MAU, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "detector wavelength setting"})
-    detector_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "detector bandwidth setting"})
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance wavelength setting"})
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance bandwidth setting"})
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance reference bandwidth setting"})
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance reference wavelength setting"})
+    detector_wavelength_setting: TQuantityValueNm | None = field(
+        default=None, metadata={"json_name": "detector wavelength setting"}
+    )
+    detector_bandwidth_setting: TQuantityValueNm | None = field(
+        default=None, metadata={"json_name": "detector bandwidth setting"}
+    )
+    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = field(
+        default=None, metadata={"json_name": "electronic absorbance wavelength setting"}
+    )
+    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = field(
+        default=None, metadata={"json_name": "electronic absorbance bandwidth setting"}
+    )
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = field(
+        default=None,
+        metadata={"json_name": "electronic absorbance reference bandwidth setting"},
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = field(
+        default=None,
+        metadata={"json_name": "electronic absorbance reference wavelength setting"},
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class SampleDocument:
-    well_location_identifier: TStringValue | None = field(default=None, metadata={"json_name": "well location identifier"})
-    vial_location_identifier: TStringValue | None = field(default=None, metadata={"json_name": "vial location identifier"})
-    location_identifier: TStringValue | None = field(default=None, metadata={"json_name": "location identifier"})
-    well_plate_identifier: TStringValue | None = field(default=None, metadata={"json_name": "well plate identifier"})
-    mass_concentration: TQuantityValuePgPermL | None = field(default=None, metadata={"json_name": "mass concentration"})
+    well_location_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "well location identifier"}
+    )
+    vial_location_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "vial location identifier"}
+    )
+    location_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "location identifier"}
+    )
+    well_plate_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "well plate identifier"}
+    )
+    mass_concentration: TQuantityValuePgPermL | None = field(
+        default=None, metadata={"json_name": "mass concentration"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem] | None = field(default=None, metadata={"json_name": "device control document"})
+    device_control_document: list[DeviceControlDocumentItem] | None = field(
+        default=None, metadata={"json_name": "device control document"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItem:
     absorbance: TQuantityValueMAU = field(metadata={"json_name": "absorbance"})
-    device_control_aggregate_document: DeviceControlAggregateDocument | None = field(default=None, metadata={"json_name": "device control aggregate document"})
-    sample_document: SampleDocument | None = field(default=None, metadata={"json_name": "sample document"})
-    mass_concentration: TQuantityValuePgPermL | None = field(default=None, metadata={"json_name": "mass concentration"})
+    device_control_aggregate_document: DeviceControlAggregateDocument | None = field(
+        default=None, metadata={"json_name": "device control aggregate document"}
+    )
+    sample_document: SampleDocument | None = field(
+        default=None, metadata={"json_name": "sample document"}
+    )
+    mass_concentration: TQuantityValuePgPermL | None = field(
+        default=None, metadata={"json_name": "mass concentration"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
-    measurement_time: TDateTimeStampValue = field(metadata={"json_name": "measurement time"})
-    experimental_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": "experimental data identifier"})
-    experiment_type: TStringValue | None = field(default=None, metadata={"json_name": "experiment type"})
-    container_type: Literal["reactor", "controlled lab reactor", "tube", "well plate", "differential scanning calorimetry pan", "qPCR reaction block", "vial rack", "pan", "reservoir", "array card block", "capillary", "disintegration apparatus basket", "jar", "container", "tray", "basket", "cell holder"] | None = field(default=None, metadata={"json_name": "container type"})
-    measurement_document: list[MeasurementDocumentItem] | None = field(default=None, metadata={"json_name": "measurement document"})
+    measurement_time: TDateTimeStampValue = field(
+        metadata={"json_name": "measurement time"}
+    )
+    experimental_data_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "experimental data identifier"}
+    )
+    experiment_type: TStringValue | None = field(
+        default=None, metadata={"json_name": "experiment type"}
+    )
+    container_type: Literal[
+        "reactor",
+        "controlled lab reactor",
+        "tube",
+        "well plate",
+        "differential scanning calorimetry pan",
+        "qPCR reaction block",
+        "vial rack",
+        "pan",
+        "reservoir",
+        "array card block",
+        "capillary",
+        "disintegration apparatus basket",
+        "jar",
+        "container",
+        "tray",
+        "basket",
+        "cell holder",
+    ] | None = field(default=None, metadata={"json_name": "container type"})
+    measurement_document: list[MeasurementDocumentItem] | None = field(
+        default=None, metadata={"json_name": "measurement document"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class SpectrophotometryDocumentItem(TechniqueDocument):
-    measurement_aggregate_document: MeasurementAggregateDocument | None = field(default=None, metadata={"json_name": "measurement aggregate document"})
+    measurement_aggregate_document: MeasurementAggregateDocument | None = field(
+        default=None, metadata={"json_name": "measurement aggregate document"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class SpectrophotometryAggregateDocument(TechniqueAggregateDocument):
-    spectrophotometry_document: list[SpectrophotometryDocumentItem] = field(metadata={"json_name": "spectrophotometry document"})
-    device_system_document: dict[str, Any] | None = field(default=None, metadata={"json_name": "device system document"})
+    spectrophotometry_document: list[SpectrophotometryDocumentItem] = field(
+        metadata={"json_name": "spectrophotometry document"}
+    )
+    device_system_document: dict[str, Any] | None = field(
+        default=None, metadata={"json_name": "device system document"}
+    )
 
 
 @dataclass(kw_only=True)
 class Model:
     asm_manifest: str = field(metadata={"json_name": "$asm.manifest"})
-    spectrophotometry_aggregate_document: SpectrophotometryAggregateDocument | None = field(default=None, metadata={"json_name": "spectrophotometry aggregate document"})
+    spectrophotometry_aggregate_document: SpectrophotometryAggregateDocument | None = (
+        field(
+            default=None, metadata={"json_name": "spectrophotometry aggregate document"}
+        )
+    )

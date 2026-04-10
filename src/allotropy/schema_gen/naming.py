@@ -15,9 +15,7 @@ import re
 ALLOTROPE_URL_PREFIX = "http://purl.allotrope.org/json-schemas/"
 
 # GitLab raw content base URL
-GITLAB_RAW_BASE = (
-    "https://gitlab.com/allotrope-public/asm/-/raw/main/json-schemas/"
-)
+GITLAB_RAW_BASE = "https://gitlab.com/allotrope-public/asm/-/raw/main/json-schemas/"
 
 # Default output directories (relative to project root)
 DEFAULT_SCHEMA_CACHE_DIR = Path("src/allotropy/allotrope/schemas_v2")
@@ -122,7 +120,9 @@ def parse_ref(ref: str) -> tuple[str | None, str | None]:
     return normalize_schema_url(ref), None
 
 
-def schema_url_to_cache_path(url: str, cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR) -> Path:
+def schema_url_to_cache_path(
+    url: str, cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR
+) -> Path:
     """Map a canonical schema URL to a local cache file path.
 
     Example:
@@ -151,7 +151,9 @@ def schema_url_to_module_path(url: str) -> str:
     return ".".join(python_parts)
 
 
-def schema_url_to_model_file(url: str, output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR) -> Path:
+def schema_url_to_model_file(
+    url: str, output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR
+) -> Path:
     """Map a canonical schema URL to the output Python file path.
 
     Example:
@@ -286,9 +288,18 @@ def unit_symbol_to_class_name(symbol: str) -> str:
     cleaned = re.sub(r"[^a-zA-Z0-9]", "", cleaned)
     # Ensure starts with a letter
     if cleaned and cleaned[0].isdigit():
-        digit_names = {"0": "Zero", "1": "One", "2": "Two", "3": "Three",
-                       "4": "Four", "5": "Five", "6": "Six", "7": "Seven",
-                       "8": "Eight", "9": "Nine"}
+        digit_names = {
+            "0": "Zero",
+            "1": "One",
+            "2": "Two",
+            "3": "Three",
+            "4": "Four",
+            "5": "Five",
+            "6": "Six",
+            "7": "Seven",
+            "8": "Eight",
+            "9": "Nine",
+        }
         cleaned = digit_names.get(cleaned[0], "N") + cleaned[1:]
     # Capitalize first letter
     if cleaned and cleaned[0].islower():

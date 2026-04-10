@@ -124,6 +124,7 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
 def _is_union(origin: Any, _field_type: Any) -> bool:
     """Check if a type is a Union / X | Y type."""
     import types
+
     return origin is types.UnionType
 
 
@@ -137,7 +138,7 @@ def _resolve_string_annotation(annotation: str, cls: type) -> Any | None:
     # Strip Optional wrapper patterns like "X | None"
     annotation = annotation.strip()
     if annotation.endswith("| None"):
-        inner = annotation[:-len("| None")].strip()
+        inner = annotation[: -len("| None")].strip()
         resolved = _resolve_string_annotation(inner, cls)
         if resolved is not None:
             return resolved | None

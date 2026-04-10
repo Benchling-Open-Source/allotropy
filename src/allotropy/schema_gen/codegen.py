@@ -256,14 +256,16 @@ class SchemaCodeGenerator:
     def _generate_units_module(self, module: ModuleCode, defs: dict[str, Any]) -> None:
         """Generate the units module with a HasUnit base class and unit subclasses."""
         # Base class
-        module.classes.append(GeneratedClass(
-            name="HasUnit",
-            code=(
-                "@dataclass(frozen=True, kw_only=True)\n"
-                "class HasUnit:\n"
-                "    unit: str"
-            ),
-        ))
+        module.classes.append(
+            GeneratedClass(
+                name="HasUnit",
+                code=(
+                    "@dataclass(frozen=True, kw_only=True)\n"
+                    "class HasUnit:\n"
+                    "    unit: str"
+                ),
+            )
+        )
         module.exported_names["HasUnit"] = "HasUnit"
 
         used_class_names: set[str] = {"HasUnit"}
@@ -282,14 +284,16 @@ class SchemaCodeGenerator:
                 counter += 1
             used_class_names.add(class_name)
 
-            module.classes.append(GeneratedClass(
-                name=class_name,
-                code=(
-                    f"@dataclass(frozen=True, kw_only=True)\n"
-                    f"class {class_name}(HasUnit):\n"
-                    f"    unit: str = {_dquote(const_value)}"
-                ),
-            ))
+            module.classes.append(
+                GeneratedClass(
+                    name=class_name,
+                    code=(
+                        f"@dataclass(frozen=True, kw_only=True)\n"
+                        f"class {class_name}(HasUnit):\n"
+                        f"    unit: str = {_dquote(const_value)}"
+                    ),
+                )
+            )
             module.exported_names[def_name] = class_name
 
     def _extract_unit_const(self, schema: dict[str, Any]) -> str | None:
@@ -301,6 +305,7 @@ class SchemaCodeGenerator:
     def _unit_class_name(self, _def_name: str, const_value: str) -> str:
         """Generate a class name for a unit definition."""
         from allotropy.schema_gen.naming import unit_symbol_to_class_name
+
         return unit_symbol_to_class_name(const_value)
 
     # -------------------------------------------------------------------------
@@ -317,11 +322,13 @@ class SchemaCodeGenerator:
             class_name = def_name_to_class_name(def_name)
             code = self._generate_type(module, schema_url, class_name, def_schema)
             if code:
-                module.classes.append(GeneratedClass(
-                    name=class_name,
-                    code=code,
-                    is_type_alias="class " not in code,
-                ))
+                module.classes.append(
+                    GeneratedClass(
+                        name=class_name,
+                        code=code,
+                        is_type_alias="class " not in code,
+                    )
+                )
                 module.exported_names[def_name] = class_name
 
     def _generate_type(
@@ -410,7 +417,9 @@ class SchemaCodeGenerator:
                 primitive_types.append(python_type)
             elif "format" in variant:
                 primitive_types.append("str")
-            elif "required" in variant and not any(k not in ("required",) for k in variant):
+            elif "required" in variant and not any(
+                k not in ("required",) for k in variant
+            ):
                 pass  # Skip constraint-only variants (e.g., oneOf[{required: [a]}, {required: [b]}])
 
         parts: list[str] = []
@@ -422,7 +431,9 @@ class SchemaCodeGenerator:
                 module, schema_url, item_class_name, object_schemas[0]
             )
             if item_code:
-                module.classes.append(GeneratedClass(name=item_class_name, code=item_code))
+                module.classes.append(
+                    GeneratedClass(name=item_class_name, code=item_code)
+                )
                 module.exported_names[f"{class_name}_item"] = item_class_name
             parts.extend(primitive_types)
             parts.append(item_class_name)
@@ -431,7 +442,9 @@ class SchemaCodeGenerator:
         elif object_schemas:
             if len(object_schemas) == 1:
                 # Single object variant - generate as dataclass
-                return self._generate_dataclass(module, schema_url, class_name, object_schemas[0])
+                return self._generate_dataclass(
+                    module, schema_url, class_name, object_schemas[0]
+                )
             # Multiple object variants (e.g., tMeasureData) - merge all properties
             merged_props: dict[str, Any] = {}
             for obj_schema in object_schemas:
@@ -567,7 +580,9 @@ class SchemaCodeGenerator:
                 module, schema_url, prop_name, prop_schema
             )
             is_required = prop_name in required
-            field_line = _field_declaration(python_name, type_str, prop_name, is_required=is_required)
+            field_line = _field_declaration(
+                python_name, type_str, prop_name, is_required=is_required
+            )
 
             if is_required:
                 required_fields.append(field_line)
@@ -596,7 +611,8 @@ class SchemaCodeGenerator:
         """Determine the Python type for a property schema."""
         # Strip $asm metadata from the schema copy
         prop_schema = {
-            k: v for k, v in prop_schema.items()
+            k: v
+            for k, v in prop_schema.items()
             if not any(k.startswith(p) for p in ASM_METADATA_PREFIXES)
         }
 
@@ -610,23 +626,31 @@ class SchemaCodeGenerator:
 
         # allOf pattern - check for quantity value + unit
         if "allOf" in prop_schema:
-            return self._resolve_all_of_property(module, schema_url, prop_name, prop_schema)
+            return self._resolve_all_of_property(
+                module, schema_url, prop_name, prop_schema
+            )
 
         # anyOf - check for detector measurement items pattern
         if "anyOf" in prop_schema:
-            return self._resolve_any_of_property(module, schema_url, prop_name, prop_schema)
+            return self._resolve_any_of_property(
+                module, schema_url, prop_name, prop_schema
+            )
 
         # oneOf with properties: oneOf is just validation constraints, generate from properties
         if "oneOf" in prop_schema and "properties" in prop_schema:
             inline_class_name = property_name_to_class_name(prop_name)
-            code = self._generate_dataclass(module, schema_url, inline_class_name, prop_schema)
+            code = self._generate_dataclass(
+                module, schema_url, inline_class_name, prop_schema
+            )
             if code:
                 module.classes.append(GeneratedClass(name=inline_class_name, code=code))
             return inline_class_name
 
         # oneOf
         if "oneOf" in prop_schema:
-            return self._resolve_one_of_property(module, schema_url, prop_name, prop_schema)
+            return self._resolve_one_of_property(
+                module, schema_url, prop_name, prop_schema
+            )
 
         # Array type
         if prop_schema.get("type") == "array":
@@ -635,7 +659,9 @@ class SchemaCodeGenerator:
         # Inline object (with or without explicit type: "object")
         if "properties" in prop_schema:
             inline_class_name = property_name_to_class_name(prop_name)
-            code = self._generate_dataclass(module, schema_url, inline_class_name, prop_schema)
+            code = self._generate_dataclass(
+                module, schema_url, inline_class_name, prop_schema
+            )
             if code:
                 module.classes.append(GeneratedClass(name=inline_class_name, code=code))
             return inline_class_name
@@ -697,14 +723,18 @@ class SchemaCodeGenerator:
             elif def_name:
                 ref_schema_url = ref.split("#")[0]
                 try:
-                    canonical = normalize_schema_url(ref_schema_url) if ref_schema_url else None
+                    canonical = (
+                        normalize_schema_url(ref_schema_url) if ref_schema_url else None
+                    )
                 except ValueError:
                     canonical = None
                 if canonical and "units.schema" in canonical:
                     unit_ref = ref
 
         if quantity_ref and unit_ref:
-            return self._generate_quantity_value_type(module, schema_url, quantity_ref, unit_ref)
+            return self._generate_quantity_value_type(
+                module, schema_url, quantity_ref, unit_ref
+            )
 
         # Pattern 2: tClass + enum constraint
         class_ref = None
@@ -811,7 +841,9 @@ class SchemaCodeGenerator:
 
         # Items with allOf (e.g., array of merged objects)
         if "allOf" in items:
-            item_type = self._resolve_all_of_array_items(module, schema_url, prop_name, items)
+            item_type = self._resolve_all_of_array_items(
+                module, schema_url, prop_name, items
+            )
             return f"list[{item_type}]"
 
         # Items with $ref
@@ -824,9 +856,13 @@ class SchemaCodeGenerator:
             if items["type"] == "object" and "properties" in items:
                 # Inline item class
                 item_class_name = property_name_to_class_name(prop_name) + "Item"
-                code = self._generate_dataclass(module, schema_url, item_class_name, items)
+                code = self._generate_dataclass(
+                    module, schema_url, item_class_name, items
+                )
                 if code:
-                    module.classes.append(GeneratedClass(name=item_class_name, code=code))
+                    module.classes.append(
+                        GeneratedClass(name=item_class_name, code=code)
+                    )
                 return f"list[{item_class_name}]"
             return f"list[{self._json_type_to_python(items['type'])}]"
 
@@ -862,7 +898,9 @@ class SchemaCodeGenerator:
                             ref_schema_url, ref_def = parse_ref(variant["$ref"])
                             if ref_schema_url and ref_def:
                                 ref_schema = self.schemas.get(ref_schema_url, {})
-                                ref_def_schema = ref_schema.get("$defs", {}).get(ref_def, {})
+                                ref_def_schema = ref_schema.get("$defs", {}).get(
+                                    ref_def, {}
+                                )
                                 if "properties" in ref_def_schema:
                                     merged_props.update(ref_def_schema["properties"])
                                 if "required" in ref_def_schema:
@@ -939,10 +977,12 @@ class SchemaCodeGenerator:
         if unit_module and unit_def_name in unit_module.exported_names:
             unit_class_name = unit_module.exported_names[unit_def_name]
             unit_module_path = schema_url_to_module_path(canonical_unit_url)
-            module.imports.append(ImportEntry(
-                module=unit_module_path,
-                name=unit_class_name,
-            ))
+            module.imports.append(
+                ImportEntry(
+                    module=unit_module_path,
+                    name=unit_class_name,
+                )
+            )
 
         # Generate the combined class
         if unit_class_name:
@@ -1009,7 +1049,9 @@ class SchemaCodeGenerator:
             if any(prop_name.startswith(p) for p in ASM_METADATA_PREFIXES):
                 continue
             python_name = property_name_to_python(prop_name)
-            type_str = self._resolve_property_type(module, schema_url, prop_name, prop_schema)
+            type_str = self._resolve_property_type(
+                module, schema_url, prop_name, prop_schema
+            )
             is_required = prop_name in all_required
             model_fields.append((python_name, type_str, prop_name, is_required))
 
@@ -1018,7 +1060,9 @@ class SchemaCodeGenerator:
         required_lines = []
         optional_lines = []
         for python_name, type_str, json_name, is_required in model_fields:
-            field_line = _field_declaration(python_name, type_str, json_name, is_required=is_required)
+            field_line = _field_declaration(
+                python_name, type_str, json_name, is_required=is_required
+            )
             if is_required:
                 required_lines.append(field_line)
             else:

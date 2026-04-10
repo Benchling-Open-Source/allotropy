@@ -11,7 +11,18 @@ class Asm:
     pass
 
 
-TStatisticDatumRole = Literal["arithmetic mean role", "median role", "relative standard deviation role", "skewness role", "standard deviation role", "variance role", "maximum value role", "minimum value role", "initial value role", "final value role"]
+TStatisticDatumRole = Literal[
+    "arithmetic mean role",
+    "median role",
+    "relative standard deviation role",
+    "skewness role",
+    "standard deviation role",
+    "variance role",
+    "maximum value role",
+    "minimum value role",
+    "initial value role",
+    "final value role",
+]
 
 
 TUnit = str
@@ -46,7 +57,9 @@ class OrderedItem:
 class TQuantityValue:
     value: float = field(metadata={"json_name": "value"})
     unit: TUnit = field(metadata={"json_name": "unit"})
-    has_statistic_datum_role: TStatisticDatumRole | None = field(default=None, metadata={"json_name": "has statistic datum role"})
+    has_statistic_datum_role: TStatisticDatumRole | None = field(
+        default=None, metadata={"json_name": "has statistic datum role"}
+    )
     field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
@@ -235,16 +248,44 @@ TTimeValue = str | TTimeValueItem
 TDurationValue = str | TDurationValueItem
 
 
-TNumericValue = TByteValue | TShortValue | TIntValue | TLongValue | TUnsignedByteValue | TUnsignedShortValue | TUnsignedIntValue | TUnsignedLongValue | TFloatValue | TDoubleValue | TDecimalValue | TIntegerValue
+TNumericValue = (
+    TByteValue
+    | TShortValue
+    | TIntValue
+    | TLongValue
+    | TUnsignedByteValue
+    | TUnsignedShortValue
+    | TUnsignedIntValue
+    | TUnsignedLongValue
+    | TFloatValue
+    | TDoubleValue
+    | TDecimalValue
+    | TIntegerValue
+)
 
 
-TOrderedValue = TNumericValue | TStringValue | TDateTimeValue | TDateTimeStampValue | TDateValue | TTimeValue
+TOrderedValue = (
+    TNumericValue
+    | TStringValue
+    | TDateTimeValue
+    | TDateTimeStampValue
+    | TDateValue
+    | TTimeValue
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class TRangeValue:
-    mininclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minInclusive"})
-    minexclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minExclusive"})
-    maxinclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxInclusive"})
-    maxexclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxExclusive"})
+    mininclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minInclusive"}
+    )
+    minexclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minExclusive"}
+    )
+    maxinclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxInclusive"}
+    )
+    maxexclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxExclusive"}
+    )
     unit: TUnit | None = field(default=None, metadata={"json_name": "unit"})

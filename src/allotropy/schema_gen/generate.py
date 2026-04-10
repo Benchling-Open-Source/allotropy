@@ -95,7 +95,9 @@ def _ensure_package_dirs(directory: Path) -> None:
 def main() -> None:
     """CLI entry point."""
     if len(sys.argv) < 2:
-        print("Usage: python -m allotropy.schema_gen.generate <schema_url>")  # noqa: T201
+        print(
+            "Usage: python -m allotropy.schema_gen.generate <schema_url>"
+        )  # noqa: T201
         print()  # noqa: T201
         print("Example:")  # noqa: T201
         print(  # noqa: T201
