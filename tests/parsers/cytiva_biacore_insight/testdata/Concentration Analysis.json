@@ -10097,6 +10097,10 @@
                                         "value": 0.215,
                                         "unit": "ug/mL"
                                     },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.2221081,
+                                        "unit": "ug/mL"
+                                    },
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
@@ -10340,6 +10344,10 @@
                                     "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
+                                        "unit": "ug/mL"
+                                    },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.223146185,
                                         "unit": "ug/mL"
                                     },
                                     "Regeneration 1 Solution": "3M MgCl2",
@@ -11850,6 +11858,10 @@
                                         "value": 0.215,
                                         "unit": "ug/mL"
                                     },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.22221145,
+                                        "unit": "ug/mL"
+                                    },
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
@@ -12093,6 +12105,10 @@
                                     "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
+                                        "unit": "ug/mL"
+                                    },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.223151684,
                                         "unit": "ug/mL"
                                     },
                                     "Regeneration 1 Solution": "3M MgCl2",
@@ -13603,6 +13619,10 @@
                                         "value": 0.322,
                                         "unit": "ug/mL"
                                     },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.328146726,
+                                        "unit": "ug/mL"
+                                    },
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
@@ -13846,6 +13866,10 @@
                                     "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
+                                        "unit": "ug/mL"
+                                    },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.329638571,
                                         "unit": "ug/mL"
                                     },
                                     "Regeneration 1 Solution": "3M MgCl2",
@@ -15356,6 +15380,10 @@
                                         "value": 0.322,
                                         "unit": "ug/mL"
                                     },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.327615142,
+                                        "unit": "ug/mL"
+                                    },
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
@@ -15599,6 +15627,10 @@
                                     "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
+                                        "unit": "ug/mL"
+                                    },
+                                    "Analyte 1 Calculated Concentration": {
+                                        "value": 0.330206424,
                                         "unit": "ug/mL"
                                     },
                                     "Regeneration 1 Solution": "3M MgCl2",
@@ -38991,7 +39023,7 @@
             "file name": "Name",
             "UNC path": "Root/",
             "ASM converter name": "allotropy_cytiva_biacore_insight",
-            "ASM converter version": "0.1.116",
+            "ASM converter version": "0.1.117",
             "software name": "Biacore Insight Evaluation",
             "software version": "6.0.7.1750"
         },
