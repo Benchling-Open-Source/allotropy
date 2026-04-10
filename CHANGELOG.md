@@ -5,6 +5,13 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.118] - 2026-04-10
+
+### Added
+
+- Cytiva Biacore Insight - Dynamically extract Analyte, Capture, Regeneration 1-N columns (#1171)
+- Cytiva Biacore Insight - Add support for calculated concentrations (#1172)
+
 ## [0.1.117] - 2026-04-08
 
 ### Added
