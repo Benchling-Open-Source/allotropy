@@ -391,6 +391,18 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 11.90239373089,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
                             "sensorgram data cube": {
                                 "label": "Cycle1_FlowCell3",
                                 "cube-structure": {
@@ -1139,6 +1151,18 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 11.90239373089,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
                             "sensorgram data cube": {
                                 "label": "Cycle2_FlowCell3",
                                 "cube-structure": {
@@ -1887,6 +1911,18 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 11.90239373089,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
                             "sensorgram data cube": {
                                 "label": "Cycle3_FlowCell3",
                                 "cube-structure": {
@@ -2635,6 +2671,18 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 11.90239373089,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
                             "sensorgram data cube": {
                                 "label": "Cycle4_FlowCell3",
                                 "cube-structure": {
@@ -3001,7 +3049,7 @@
             "file name": "biacore_evaluation_module_example.bme",
             "UNC path": "tests/parsers/cytiva_biacore_t200_evaluation/testdata/biacore_evaluation_module_example.bme",
             "ASM converter name": "allotropy_cytiva_biacore_t200_evaluation",
-            "ASM converter version": "0.1.106",
+            "ASM converter version": "0.1.117",
             "software name": "Biacore T200 Evaluation Software",
             "software version": "3.2.1",
             "custom information document": {
