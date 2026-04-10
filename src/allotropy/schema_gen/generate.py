@@ -95,14 +95,16 @@ def _ensure_package_dirs(directory: Path) -> None:
 def main() -> None:
     """CLI entry point."""
     if len(sys.argv) < 2:
-        print(
-            "Usage: python -m allotropy.schema_gen.generate <schema_url>"
-        )  # noqa: T201
-        print()  # noqa: T201
-        print("Example:")  # noqa: T201
-        print(  # noqa: T201
-            '  python -m allotropy.schema_gen.generate "https://gitlab.com/allotrope-public/asm/-/blob/main/json-schemas/adm/spectrophotometry/REC/2024/06/spectrophotometry.schema.json"'
+        msg = (
+            "Usage: python -m allotropy.schema_gen.generate <schema_url>\n"
+            "\n"
+            "Example:\n"
+            "  python -m allotropy.schema_gen.generate"
+            ' "https://gitlab.com/allotrope-public/asm/-/blob/main/'
+            "json-schemas/adm/spectrophotometry/REC/2024/06/"
+            'spectrophotometry.schema.json"'
         )
+        print(msg)  # noqa: T201
         sys.exit(1)
 
     schema_url = sys.argv[1]
