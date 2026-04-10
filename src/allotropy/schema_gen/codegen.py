@@ -364,6 +364,13 @@ class SchemaCodeGenerator:
                 f"    pass"
             )
 
+        # Handle array type aliases with typed items (e.g., tNumberArray)
+        if schema.get("type") == "array" and "items" in schema:
+            item_type = self._resolve_array_item_type(
+                module, schema_url, schema["items"]
+            )
+            return f"{class_name} = list[{item_type}]"
+
         # Handle simple type aliases
         if "type" in schema:
             python_type = self._json_type_to_python(schema["type"])
@@ -580,6 +587,9 @@ class SchemaCodeGenerator:
             type_str = self._resolve_property_type(
                 module, schema_url, prop_name, prop_schema
             )
+            # None means constraint-only overlay — skip (base class already defines this field)
+            if type_str is None:
+                continue
             is_required = prop_name in required
             field_line = _field_declaration(
                 python_name, type_str, prop_name, is_required=is_required
@@ -608,7 +618,7 @@ class SchemaCodeGenerator:
         schema_url: str,
         prop_name: str,
         prop_schema: dict[str, Any],
-    ) -> str:
+    ) -> str | None:
         """Determine the Python type for a property schema."""
         # Strip $asm metadata from the schema copy
         prop_schema = {
@@ -653,8 +663,10 @@ class SchemaCodeGenerator:
                 module, schema_url, prop_name, prop_schema
             )
 
-        # Array type
-        if prop_schema.get("type") == "array":
+        # Array type (explicit or implicit via items key)
+        if prop_schema.get("type") == "array" or (
+            "items" in prop_schema and "properties" not in prop_schema
+        ):
             return self._resolve_array_type(module, schema_url, prop_name, prop_schema)
 
         # Inline object (with or without explicit type: "object")
@@ -663,6 +675,10 @@ class SchemaCodeGenerator:
             code = self._generate_dataclass(
                 module, schema_url, inline_class_name, prop_schema
             )
+            # If all inner properties were constraint-only, the class is empty —
+            # this means the whole property is a constraint overlay, skip it.
+            if code and code.endswith("    pass"):
+                return None
             if code:
                 module.classes.append(GeneratedClass(name=inline_class_name, code=code))
             return inline_class_name
@@ -683,9 +699,27 @@ class SchemaCodeGenerator:
         if "format" in prop_schema:
             return "str"
 
-        # Schema with only `required` constraint (constraint overlay, no new type info)
-        if set(prop_schema.keys()) <= {"required", "type"}:
-            return "dict[str, Any]"
+        # Constraint-only overlays: schemas with only validation keywords
+        # (e.g., required, minItems, maxItems, prefixItems, contains) but no
+        # structural type info.  These refine a base-class field, not define new types.
+        constraint_only_keys = {
+            "required",
+            "type",
+            "minItems",
+            "maxItems",
+            "prefixItems",
+            "contains",
+            "minProperties",
+            "maxProperties",
+            "minimum",
+            "maximum",
+            "minLength",
+            "maxLength",
+            "pattern",
+            "uniqueItems",
+        }
+        if prop_schema.keys() <= constraint_only_keys:
+            return None
 
         return "Any"
 
@@ -828,6 +862,45 @@ class SchemaCodeGenerator:
             return parts[0]
         return " | ".join(parts)
 
+    def _resolve_array_item_type(
+        self,
+        module: ModuleCode,
+        schema_url: str,
+        items_schema: dict[str, Any],
+    ) -> str:
+        """Resolve the element type of an array from its items schema.
+
+        Used both for type alias generation (e.g., tNumberArray = list[float])
+        and for inline array properties.
+        """
+        if "type" in items_schema:
+            return self._json_type_to_python(items_schema["type"])
+        if "$ref" in items_schema:
+            return self._resolve_ref_type(module, schema_url, items_schema["$ref"])
+        if "anyOf" in items_schema:
+            parts = []
+            for variant in items_schema["anyOf"]:
+                if "type" in variant:
+                    parts.append(self._json_type_to_python(variant["type"]))
+                elif "$ref" in variant:
+                    parts.append(
+                        self._resolve_ref_type(module, schema_url, variant["$ref"])
+                    )
+            if parts:
+                return " | ".join(parts)
+        if "oneOf" in items_schema:
+            parts = []
+            for variant in items_schema["oneOf"]:
+                if "type" in variant:
+                    parts.append(self._json_type_to_python(variant["type"]))
+                elif "$ref" in variant:
+                    parts.append(
+                        self._resolve_ref_type(module, schema_url, variant["$ref"])
+                    )
+            if parts:
+                return " | ".join(parts)
+        return "Any"
+
     def _resolve_array_type(
         self,
         module: ModuleCode,
@@ -866,6 +939,11 @@ class SchemaCodeGenerator:
                     )
                 return f"list[{item_class_name}]"
             return f"list[{self._json_type_to_python(items['type'])}]"
+
+        # Items with anyOf/oneOf (resolve element type)
+        if "anyOf" in items or "oneOf" in items:
+            item_type = self._resolve_array_item_type(module, schema_url, items)
+            return f"list[{item_type}]"
 
         return "list[Any]"
 
@@ -1053,6 +1131,9 @@ class SchemaCodeGenerator:
             type_str = self._resolve_property_type(
                 module, schema_url, prop_name, prop_schema
             )
+            # None means constraint-only overlay — skip
+            if type_str is None:
+                continue
             is_required = prop_name in all_required
             model_fields.append((python_name, type_str, prop_name, is_required))
 

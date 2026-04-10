@@ -3,38 +3,32 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from typing import Literal
 
 from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
     TClass,
     TUnit,
 )
 
-
-@dataclass(frozen=True, kw_only=True)
-class TDimensionData:
-    dimensions: list[Any] = field(metadata={"json_name": "dimensions"})
+TTupleData = list[float | bool | str | None]
 
 
-TTupleData = list[Any]
+TNumberArray = list[float]
 
 
-TNumberArray = list[Any]
+TNumberOrNullArray = list[float | None]
 
 
-TNumberOrNullArray = list[Any]
+TBooleanArray = list[bool]
 
 
-TBooleanArray = list[Any]
+TBooleanOrNullArray = list[bool | None]
 
 
-TBooleanOrNullArray = list[Any]
+TStringArray = list[str]
 
 
-TStringArray = list[Any]
-
-
-TStringOrNullArray = list[Any]
+TStringOrNullArray = list[str | None]
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -79,6 +73,13 @@ TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
 class TDatacubeStructure:
     dimensions: list[TDatacubeComponent] = field(metadata={"json_name": "dimensions"})
     measures: list[TDatacubeComponent] = field(metadata={"json_name": "measures"})
+
+
+@dataclass(frozen=True, kw_only=True)
+class TDimensionData:
+    dimensions: list[TDimensionArray | TFunction] = field(
+        metadata={"json_name": "dimensions"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)

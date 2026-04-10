@@ -3,22 +3,230 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from typing import Literal
 
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+    OrderedItem,
+    TBooleanValue,
     TQuantityValue,
     TStringValue,
 )
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import TDatacube
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     TechniqueAggregateDocument,
     TechniqueDocument,
 )
-from allotropy.allotrope.models_v2.qudt.rec._2024._09.units import MicroL
+from allotropy.allotrope.models_v2.qudt.rec._2024._09.units import (
+    DegC,
+    MicroL,
+    PgPermL,
+    S2,
+    Unitless,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueMicroL(MicroL, TQuantityValue):
     pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueUnitless(Unitless, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueDegC(DegC, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueS(S2, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePgPermL(PgPermL, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class NormalizedReporterDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class BaselineCorrectedReporterDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class ReporterDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class PassiveReferenceDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeltingCurveDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class DataProcessingDocument:
+    automatic_cycle_threshold_enabled_setting: TBooleanValue | None = field(
+        default=None,
+        metadata={"json_name": "automatic cycle threshold enabled setting"},
+    )
+    cycle_threshold_value_setting_qpcr: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "cycle threshold value setting (qPCR)"}
+    )
+    automatic_baseline_determination_enabled_setting: TBooleanValue | None = field(
+        default=None,
+        metadata={"json_name": "automatic baseline determination enabled setting"},
+    )
+    baseline_determination_start_cycle_setting: TQuantityValue | None = field(
+        default=None,
+        metadata={"json_name": "baseline determination start cycle setting"},
+    )
+    baseline_determination_end_cycle_setting: TQuantityValue | None = field(
+        default=None, metadata={"json_name": "baseline determination end cycle setting"}
+    )
+    genotyping_qpcr_method_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR method identifier"}
+    )
+    genotyping_qpcr_method_setting_qpcr: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR method setting (qPCR)"}
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceControlDocumentItem(OrderedItem):
+    measurement_method_identifier: TStringValue = field(
+        metadata={"json_name": "measurement method identifier"}
+    )
+    total_cycle_number_setting: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "total cycle number setting"}
+    )
+    denaturing_temperature_setting: TQuantityValueDegC | None = field(
+        default=None, metadata={"json_name": "denaturing temperature setting"}
+    )
+    denaturing_duration_setting: TQuantityValueS | None = field(
+        default=None, metadata={"json_name": "denaturing duration setting"}
+    )
+    annealing_temperature_setting: TQuantityValueDegC | None = field(
+        default=None, metadata={"json_name": "annealing temperature setting"}
+    )
+    annealing_duration_setting: TQuantityValueS | None = field(
+        default=None, metadata={"json_name": "annealing duration setting"}
+    )
+    primer_extension_temperature_setting: TQuantityValueDegC | None = field(
+        default=None, metadata={"json_name": "primer extension temperature setting"}
+    )
+    primer_extension_duration_setting: TQuantityValueS | None = field(
+        default=None, metadata={"json_name": "primer extension duration setting"}
+    )
+    qpcr_detection_chemistry: TStringValue | None = field(
+        default=None, metadata={"json_name": "qPCR detection chemistry"}
+    )
+    quencher_dye_setting: TStringValue | None = field(
+        default=None, metadata={"json_name": "quencher dye setting"}
+    )
+    reporter_dye_setting: TStringValue | None = field(
+        default=None, metadata={"json_name": "reporter dye setting"}
+    )
+    passive_reference_dye_setting: TStringValue | None = field(
+        default=None, metadata={"json_name": "passive reference dye setting"}
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    location_identifier: TStringValue = field(
+        metadata={"json_name": "location identifier"}
+    )
+    well_location_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "well location identifier"}
+    )
+    vial_location_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "vial location identifier"}
+    )
+    well_plate_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "well plate identifier"}
+    )
+    mass_concentration: TQuantityValuePgPermL | None = field(
+        default=None, metadata={"json_name": "mass concentration"}
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class ProcessedDataDocumentItem(OrderedItem):
+    data_processing_document: DataProcessingDocument | None = field(
+        default=None, metadata={"json_name": "data processing document"}
+    )
+    cycle_threshold_result_qpcr: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "cycle threshold result (qPCR)"}
+    )
+    normalized_reporter_result: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "normalized reporter result"}
+    )
+    normalized_reporter_data_cube: NormalizedReporterDataCube | None = field(
+        default=None, metadata={"json_name": "normalized reporter data cube"}
+    )
+    baseline_corrected_reporter_result: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "baseline corrected reporter result"}
+    )
+    baseline_corrected_reporter_data_cube: BaselineCorrectedReporterDataCube | None = (
+        field(
+            default=None,
+            metadata={"json_name": "baseline corrected reporter data cube"},
+        )
+    )
+    genotyping_qpcr_result: TStringValue | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR result"}
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceControlAggregateDocument:
+    device_control_document: list[DeviceControlDocumentItem] | None = field(
+        default=None, metadata={"json_name": "device control document"}
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class ProcessedDataAggregateDocument:
+    processed_data_document: list[ProcessedDataDocumentItem] | None = field(
+        default=None, metadata={"json_name": "processed data document"}
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeasurementDocumentItem:
+    target_dna_description: TStringValue | None = field(
+        default=None, metadata={"json_name": "target DNA description"}
+    )
+    device_control_aggregate_document: DeviceControlAggregateDocument | None = field(
+        default=None, metadata={"json_name": "device control aggregate document"}
+    )
+    sample_document: SampleDocument | None = field(
+        default=None, metadata={"json_name": "sample document"}
+    )
+    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(
+        default=None, metadata={"json_name": "processed data aggregate document"}
+    )
+    reporter_data_cube: ReporterDataCube | None = field(
+        default=None, metadata={"json_name": "reporter data cube"}
+    )
+    passive_reference_data_cube: PassiveReferenceDataCube | None = field(
+        default=None, metadata={"json_name": "passive reference data cube"}
+    )
+    melting_curve_data_cube: MeltingCurveDataCube | None = field(
+        default=None, metadata={"json_name": "melting curve data cube"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -53,7 +261,7 @@ class MeasurementAggregateDocument:
     plate_well_count: TQuantityValue | None = field(
         default=None, metadata={"json_name": "plate well count"}
     )
-    measurement_document: Any | None = field(
+    measurement_document: list[MeasurementDocumentItem] | None = field(
         default=None, metadata={"json_name": "measurement document"}
     )
 
@@ -69,9 +277,6 @@ class QpcrDocumentItem(TechniqueDocument):
 class QpcrAggregateDocument(TechniqueAggregateDocument):
     qpcr_document: list[QpcrDocumentItem] = field(
         metadata={"json_name": "qpcr document"}
-    )
-    device_system_document: dict[str, Any] | None = field(
-        default=None, metadata={"json_name": "device system document"}
     )
 
 

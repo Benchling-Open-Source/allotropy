@@ -33,9 +33,6 @@ class DataSourceDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class ElectronicProjectRecord:
     written_name: TStringValue = field(metadata={"json_name": "written name"})
-    description: dict[str, Any] | None = field(
-        default=None, metadata={"json_name": "description"}
-    )
     start_time: TDateTimeValue | None = field(
         default=None, metadata={"json_name": "start time"}
     )
@@ -433,7 +430,6 @@ class DeviceDocumentItem(OrderedItem):
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
-    description: dict[str, Any] = field(metadata={"json_name": "description"})
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         field(
             default=None,
@@ -479,9 +475,6 @@ class SampleDocument:
     sample_identifier: TStringValue = field(metadata={"json_name": "sample identifier"})
     batch_identifier: TStringValue | None = field(
         default=None, metadata={"json_name": "batch identifier"}
-    )
-    description: dict[str, Any] | None = field(
-        default=None, metadata={"json_name": "description"}
     )
     sample_role_type: Literal[
         "control sample role",
@@ -560,9 +553,6 @@ class DeviceSystemDocument:
     )
     brand_name: TStringValue | None = field(
         default=None, metadata={"json_name": "brand name"}
-    )
-    description: dict[str, Any] | None = field(
-        default=None, metadata={"json_name": "description"}
     )
     device_document: list[DeviceDocumentItem] | None = field(
         default=None, metadata={"json_name": "device document"}

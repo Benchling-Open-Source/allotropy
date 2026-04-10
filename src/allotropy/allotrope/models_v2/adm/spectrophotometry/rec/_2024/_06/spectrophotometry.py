@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from typing import Literal
 
 from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
     OrderedItem,
@@ -147,9 +147,6 @@ class SpectrophotometryDocumentItem(TechniqueDocument):
 class SpectrophotometryAggregateDocument(TechniqueAggregateDocument):
     spectrophotometry_document: list[SpectrophotometryDocumentItem] = field(
         metadata={"json_name": "spectrophotometry document"}
-    )
-    device_system_document: dict[str, Any] | None = field(
-        default=None, metadata={"json_name": "device system document"}
     )
 
 
