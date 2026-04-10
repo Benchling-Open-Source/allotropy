@@ -140,18 +140,14 @@ def _get_measurements(
                     equilibrium_dissociation_constant__kd_=(
                         kinetics.equilibrium_dissociation_constant
                     ),
-                    maximum_binding_capacity__rmax_=(
-                        kinetics.maximum_binding_capacity
-                    ),
+                    maximum_binding_capacity__rmax_=(kinetics.maximum_binding_capacity),
                     processed_data_custom_info=_clean_custom_info(
                         {
                             chi_squared_label: quantity_or_none(
                                 TQuantityValueSquareResponseUnit,
                                 kinetics.kinetics_chi_squared,
                             ),
-                            "tc": quantity_or_none(
-                                TQuantityValueUnitless, kinetics.tc
-                            ),
+                            "tc": quantity_or_none(TQuantityValueUnitless, kinetics.tc),
                             "U-value": quantity_or_none(
                                 TQuantityValueUnitless, kinetics.u_value
                             ),
@@ -176,7 +172,11 @@ def _get_measurements(
             processed_data_list.append(
                 ProcessedData(
                     model_name="N/A",  # No model when there's no kinetics data
-                    data_processing_document=_clean_custom_info(data_processing_document) if data_processing_document else None,
+                    data_processing_document=_clean_custom_info(
+                        data_processing_document
+                    )
+                    if data_processing_document
+                    else None,
                 )
             )
 

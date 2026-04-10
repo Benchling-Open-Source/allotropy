@@ -170,9 +170,7 @@ def create_measurements(
 
         # Wrap report points in a ProcessedData object (required by new schema)
         processed_data = (
-            [ProcessedData(model_name="N/A")]
-            if report_points is not None
-            else None
+            [ProcessedData(model_name="N/A")] if report_points is not None else None
         )
 
         measurements.append(
@@ -211,7 +209,9 @@ def create_measurements(
                     ),
                     **measurement.sample_custom_info,
                 },
-                sensorgram_data_cube=_get_sensorgram_datacube(measurement.sensorgram_data),
+                sensorgram_data_cube=_get_sensorgram_datacube(
+                    measurement.sensorgram_data
+                ),
                 report_point_data=report_points,
                 processed_data=processed_data,
                 # for Mobilization experiments

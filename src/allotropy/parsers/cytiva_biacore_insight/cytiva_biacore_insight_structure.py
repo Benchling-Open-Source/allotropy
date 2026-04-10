@@ -408,8 +408,12 @@ class KineticsData:
             curve_markers=kinetics_data.get(str, "Curve markers"),
             binding_on_rate_measurement_datum=kinetics_data.get(float, "ka (1/Ms)"),
             binding_off_rate_measurement_datum=kinetics_data.get(float, "kd (1/s)"),
-            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)", duplicate_strategy="first"),
-            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)", duplicate_strategy="first"),
+            equilibrium_dissociation_constant=kinetics_data.get(
+                float, "KD (M)", duplicate_strategy="first"
+            ),
+            maximum_binding_capacity=kinetics_data.get(
+                float, "Rmax (RU)", duplicate_strategy="first"
+            ),
             kinetics_chi_squared=kinetics_data.get(float, "Kinetics Chi² (RU²)"),
             u_value=kinetics_data.get(float, "U-value"),
             tc=kinetics_data.get(float, "tc"),
@@ -428,8 +432,12 @@ class KineticsData:
             model_name=model,
             acceptance_state=kinetics_data.get(str, "Acceptance state"),
             curve_markers=kinetics_data.get(str, "Curve markers"),
-            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)", duplicate_strategy="last"),
-            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)", duplicate_strategy="last"),
+            equilibrium_dissociation_constant=kinetics_data.get(
+                float, "KD (M)", duplicate_strategy="last"
+            ),
+            maximum_binding_capacity=kinetics_data.get(
+                float, "Rmax (RU)", duplicate_strategy="last"
+            ),
             kinetics_chi_squared=kinetics_data.get(float, "Affinity Chi² (RU²)"),
             offset=kinetics_data.get(float, "offset (RU)"),
             tc=kinetics_data.get(float, "tc"),
@@ -447,7 +455,9 @@ class EvaluationKinetics:
             # Build key with all available capture solutions
             capture_solution = row.get("Capture 1 Solution", "")
             # Handle None, NaN, or pd.NA values for capture_solution
-            if capture_solution is None or (isinstance(capture_solution, float) and np.isnan(capture_solution)):
+            if capture_solution is None or (
+                isinstance(capture_solution, float) and np.isnan(capture_solution)
+            ):
                 capture_solution = ""
             analyte_solution = row.get("Analyte 1 Solution", "")
             return f"{channel_or_flowcell} {capture_solution} {analyte_solution}"
@@ -460,9 +470,13 @@ class EvaluationKinetics:
 
                 # Try to create both kinetics and affinity models
                 models = []
-                if kinetics_model := KineticsData.create_from_kinetics_model(series_data):
+                if kinetics_model := KineticsData.create_from_kinetics_model(
+                    series_data
+                ):
                     models.append(kinetics_model)
-                if affinity_model := KineticsData.create_from_affinity_model(series_data):
+                if affinity_model := KineticsData.create_from_affinity_model(
+                    series_data
+                ):
                     models.append(affinity_model)
 
                 if models:

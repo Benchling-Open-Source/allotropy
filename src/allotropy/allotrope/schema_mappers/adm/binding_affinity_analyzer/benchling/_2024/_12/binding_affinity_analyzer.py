@@ -109,6 +109,7 @@ class DeviceControlDocument:
 @dataclass(frozen=True)
 class ProcessedData:
     """Represents a single processed data document (one analysis model)."""
+
     model_name: str
     binding_on_rate_measurement_datum__kon_: float | None = None
     binding_off_rate_measurement_datum__koff_: float | None = None
@@ -310,7 +311,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         proc_data.maximum_binding_capacity__rmax_,
                     ),
                     # Only include report points in the first processed data document
-                    report_point_aggregate_document=report_point_aggregate if idx == 0 else None,
+                    report_point_aggregate_document=report_point_aggregate
+                    if idx == 0
+                    else None,
                 )
                 processed_data_documents.append(
                     add_custom_information_document(
