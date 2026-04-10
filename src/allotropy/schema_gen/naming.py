@@ -8,8 +8,8 @@ Handles mapping between:
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
+import re
 
 # Base URL prefix for all Allotrope JSON schemas
 ALLOTROPE_URL_PREFIX = "http://purl.allotrope.org/json-schemas/"
@@ -276,7 +276,7 @@ def unit_symbol_to_class_name(symbol: str) -> str:
     cleaned = cleaned.replace("°", "Deg")
     cleaned = cleaned.replace("θ", "Theta")
     cleaned = cleaned.replace("μ", "Micro")
-    cleaned = cleaned.replace("−", "")
+    cleaned = cleaned.replace("\u2212", "")  # MINUS SIGN (U+2212)
     cleaned = cleaned.replace(".", "Dot")
     cleaned = cleaned.replace(" ", "")
     cleaned = cleaned.replace("%", "Percent")

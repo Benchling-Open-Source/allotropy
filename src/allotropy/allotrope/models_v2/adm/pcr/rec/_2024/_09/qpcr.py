@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from dataclasses import field
-from typing import Any
-from typing import Literal
+from dataclasses import dataclass, field
+from typing import Any, Literal
 
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValue,
@@ -25,27 +23,27 @@ class TQuantityValueMicroL(MicroL, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
-    experimental_data_identifier: TStringValue = field(metadata={"json_name": 'experimental data identifier'})
-    experiment_type: TStringValue = field(metadata={"json_name": 'experiment type'})
-    container_type: Literal['reactor', 'controlled lab reactor', 'tube', 'well plate', 'differential scanning calorimetry pan', 'PCR reaction block', 'vial rack', 'pan', 'reservoir', 'array card block', 'capillary', 'disintegration apparatus basket', 'jar', 'container', 'tray', 'basket', 'cell holder'] = field(metadata={"json_name": 'container type'})
-    well_volume: TQuantityValueMicroL = field(metadata={"json_name": 'well volume'})
-    analytical_method_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'analytical method identifier'})
-    plate_well_count: TQuantityValue | None = field(default=None, metadata={"json_name": 'plate well count'})
-    measurement_document: Any | None = field(default=None, metadata={"json_name": 'measurement document'})
+    experimental_data_identifier: TStringValue = field(metadata={"json_name": "experimental data identifier"})
+    experiment_type: TStringValue = field(metadata={"json_name": "experiment type"})
+    container_type: Literal["reactor", "controlled lab reactor", "tube", "well plate", "differential scanning calorimetry pan", "PCR reaction block", "vial rack", "pan", "reservoir", "array card block", "capillary", "disintegration apparatus basket", "jar", "container", "tray", "basket", "cell holder"] = field(metadata={"json_name": "container type"})
+    well_volume: TQuantityValueMicroL = field(metadata={"json_name": "well volume"})
+    analytical_method_identifier: TStringValue | None = field(default=None, metadata={"json_name": "analytical method identifier"})
+    plate_well_count: TQuantityValue | None = field(default=None, metadata={"json_name": "plate well count"})
+    measurement_document: Any | None = field(default=None, metadata={"json_name": "measurement document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class QpcrDocumentItem(TechniqueDocument):
-    measurement_aggregate_document: MeasurementAggregateDocument | None = field(default=None, metadata={"json_name": 'measurement aggregate document'})
+    measurement_aggregate_document: MeasurementAggregateDocument | None = field(default=None, metadata={"json_name": "measurement aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class QpcrAggregateDocument(TechniqueAggregateDocument):
-    qpcr_document: list[QpcrDocumentItem] = field(metadata={"json_name": 'qpcr document'})
-    device_system_document: dict[str, Any] | None = field(default=None, metadata={"json_name": 'device system document'})
+    qpcr_document: list[QpcrDocumentItem] = field(metadata={"json_name": "qpcr document"})
+    device_system_document: dict[str, Any] | None = field(default=None, metadata={"json_name": "device system document"})
 
 
 @dataclass(kw_only=True)
 class Model:
-    asm_manifest: str = field(metadata={"json_name": '$asm.manifest'})
-    qpcr_aggregate_document: QpcrAggregateDocument | None = field(default=None, metadata={"json_name": 'qpcr aggregate document'})
+    asm_manifest: str = field(metadata={"json_name": "$asm.manifest"})
+    qpcr_aggregate_document: QpcrAggregateDocument | None = field(default=None, metadata={"json_name": "qpcr aggregate document"})

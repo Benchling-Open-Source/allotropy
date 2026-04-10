@@ -6,9 +6,9 @@ imports based on $ref relationships.
 
 from __future__ import annotations
 
-import re
 from collections import defaultdict
 from dataclasses import dataclass, field
+import re
 from typing import Any
 
 from allotropy.schema_gen.naming import (
@@ -20,6 +20,23 @@ from allotropy.schema_gen.naming import (
     quantity_value_class_name,
     schema_url_to_module_path,
 )
+
+
+def _dquote(value: Any) -> str:
+    """Format a value as a properly quoted Python literal string.
+
+    Uses double quotes by default (ruff Q000). Falls back to single quotes
+    when the value contains double quotes (ruff Q003).
+    Non-string values fall back to repr().
+    """
+    if isinstance(value, str):
+        if '"' in value:
+            # Use single quotes to avoid escaping (Q003)
+            escaped = value.replace("\\", "\\\\").replace("'", "\\'")
+            return f"'{escaped}'"
+        escaped = value.replace("\\", "\\\\")
+        return f'"{escaped}"'
+    return repr(value)
 
 
 # Properties starting with these prefixes are schema metadata, not data fields
@@ -72,13 +89,17 @@ class ModuleCode:
         all_code = "\n".join(c.code for c in self.classes)
         has_dataclasses = any(not c.is_type_alias for c in self.classes)
         if has_dataclasses:
-            stdlib_imports.add("from dataclasses import dataclass")
+            dc_names = ["dataclass"]
             if "field(" in all_code:
-                stdlib_imports.add("from dataclasses import field")
-        if "Literal[" in all_code:
-            stdlib_imports.add("from typing import Literal")
+                dc_names.append("field")
+            stdlib_imports.add(f"from dataclasses import {', '.join(dc_names)}")
+        typing_names: list[str] = []
         if "Any" in all_code:
-            stdlib_imports.add("from typing import Any")
+            typing_names.append("Any")
+        if "Literal[" in all_code:
+            typing_names.append("Literal")
+        if typing_names:
+            stdlib_imports.add(f"from typing import {', '.join(typing_names)}")
 
         for imp in self.imports:
             module = imp.module
@@ -141,7 +162,7 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
                 continue
             # Check if this class references the other by name
             # Use word boundary to avoid false matches (e.g., "T" matching "TStringValue")
-            if re.search(rf'\b{re.escape(name)}\b', code):
+            if re.search(rf"\b{re.escape(name)}\b", code):
                 deps[i].add(j)
 
     # Topological sort (Kahn's algorithm)
@@ -167,14 +188,14 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
 
 
 def _field_declaration(
-    python_name: str, type_str: str, json_name: str, is_required: bool
+    python_name: str, type_str: str, json_name: str, *, is_required: bool
 ) -> str:
     """Generate a dataclass field declaration with JSON name metadata.
 
     Stores the original JSON property name in field metadata so serialization
     can map back to schema property names.
     """
-    metadata = f'{{"json_name": {json_name!r}}}'
+    metadata = f'{{"json_name": {_dquote(json_name)}}}'
     if is_required:
         return f"    {python_name}: {type_str} = field(metadata={metadata})"
     return f"    {python_name}: {type_str} | None = field(default=None, metadata={metadata})"
@@ -224,7 +245,7 @@ class SchemaCodeGenerator:
     def _is_units_schema(self, url: str) -> bool:
         return "units.schema" in url
 
-    def _is_adm_schema(self, url: str, schema: dict[str, Any]) -> bool:
+    def _is_adm_schema(self, _url: str, schema: dict[str, Any]) -> bool:
         """Check if this is a top-level ADM schema (has allOf at root, not just $defs)."""
         return "allOf" in schema and "$defs" not in schema
 
@@ -253,11 +274,12 @@ class SchemaCodeGenerator:
             class_name = self._unit_class_name(def_name, const_value)
             self._unit_symbols[def_name] = const_value
 
-            # Deduplicate class names
-            if class_name in used_class_names:
-                # Append a suffix from the def name to disambiguate
-                suffix = re.sub(r"[^a-zA-Z0-9]", "", def_name)
-                class_name = f"{class_name}_{suffix}"
+            # Deduplicate class names with a numeric suffix
+            base_name = class_name
+            counter = 2
+            while class_name in used_class_names:
+                class_name = f"{base_name}{counter}"
+                counter += 1
             used_class_names.add(class_name)
 
             module.classes.append(GeneratedClass(
@@ -265,7 +287,7 @@ class SchemaCodeGenerator:
                 code=(
                     f"@dataclass(frozen=True, kw_only=True)\n"
                     f"class {class_name}(HasUnit):\n"
-                    f"    unit: str = {const_value!r}"
+                    f"    unit: str = {_dquote(const_value)}"
                 ),
             ))
             module.exported_names[def_name] = class_name
@@ -276,7 +298,7 @@ class SchemaCodeGenerator:
         unit_prop = props.get("unit", {})
         return unit_prop.get("const")
 
-    def _unit_class_name(self, def_name: str, const_value: str) -> str:
+    def _unit_class_name(self, _def_name: str, const_value: str) -> str:
         """Generate a class name for a unit definition."""
         from allotropy.schema_gen.naming import unit_symbol_to_class_name
         return unit_symbol_to_class_name(const_value)
@@ -459,10 +481,10 @@ class SchemaCodeGenerator:
         """Generate a Literal type for an enum schema."""
         values = schema["enum"]
         if all(isinstance(v, str) for v in values):
-            literals = ", ".join(repr(v) for v in values)
+            literals = ", ".join(_dquote(v) for v in values)
             return f"{class_name} = Literal[{literals}]"
         # Fallback for non-string enums
-        literals = ", ".join(repr(v) for v in values)
+        literals = ", ".join(_dquote(v) for v in values)
         return f"{class_name} = Literal[{literals}]"
 
     # -------------------------------------------------------------------------
@@ -545,7 +567,7 @@ class SchemaCodeGenerator:
                 module, schema_url, prop_name, prop_schema
             )
             is_required = prop_name in required
-            field_line = _field_declaration(python_name, type_str, prop_name, is_required)
+            field_line = _field_declaration(python_name, type_str, prop_name, is_required=is_required)
 
             if is_required:
                 required_fields.append(field_line)
@@ -621,10 +643,10 @@ class SchemaCodeGenerator:
         # Enum/const
         if "enum" in prop_schema:
             values = prop_schema["enum"]
-            literals = ", ".join(repr(v) for v in values)
+            literals = ", ".join(_dquote(v) for v in values)
             return f"Literal[{literals}]"
         if "const" in prop_schema:
-            return f"Literal[{prop_schema['const']!r}]"
+            return f"Literal[{_dquote(prop_schema['const'])}]"
 
         # Simple types
         if "type" in prop_schema:
@@ -696,7 +718,7 @@ class SchemaCodeGenerator:
                 enum_values = s["enum"]
 
         if class_ref and enum_values:
-            literals = ", ".join(repr(v) for v in enum_values)
+            literals = ", ".join(_dquote(v) for v in enum_values)
             return f"Literal[{literals}]"
 
         # Pattern 3/4: Merge allOf into an inline class
@@ -739,7 +761,7 @@ class SchemaCodeGenerator:
         self,
         module: ModuleCode,
         schema_url: str,
-        prop_name: str,
+        _prop_name: str,
         prop_schema: dict[str, Any],
     ) -> str:
         """Resolve an anyOf property type."""
@@ -758,7 +780,7 @@ class SchemaCodeGenerator:
         self,
         module: ModuleCode,
         schema_url: str,
-        prop_name: str,
+        _prop_name: str,
         prop_schema: dict[str, Any],
     ) -> str:
         """Resolve a oneOf property type."""
@@ -933,7 +955,7 @@ class SchemaCodeGenerator:
             code = (
                 f"@dataclass(frozen=True, kw_only=True)\n"
                 f"class {class_name}({base_type}):\n"
-                f"    unit: str = {const_value!r}"
+                f"    unit: str = {_dquote(const_value)}"
             )
 
         module.classes.append(GeneratedClass(name=class_name, code=code))
@@ -996,7 +1018,7 @@ class SchemaCodeGenerator:
         required_lines = []
         optional_lines = []
         for python_name, type_str, json_name, is_required in model_fields:
-            field_line = _field_declaration(python_name, type_str, json_name, is_required)
+            field_line = _field_declaration(python_name, type_str, json_name, is_required=is_required)
             if is_required:
                 required_lines.append(field_line)
             else:
@@ -1015,7 +1037,7 @@ class SchemaCodeGenerator:
     # -------------------------------------------------------------------------
 
     def _resolve_ref_type(
-        self, module: ModuleCode, current_schema_url: str, ref: str
+        self, module: ModuleCode, _current_schema_url: str, ref: str
     ) -> str:
         """Resolve a $ref to a Python type name, adding imports as needed."""
         ref_schema_url, def_name = parse_ref(ref)

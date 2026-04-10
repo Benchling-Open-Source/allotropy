@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from dataclasses import field
-from typing import Any
-from typing import Literal
+from dataclasses import dataclass, field
+from typing import Any, Literal
 
 from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
     OrderedItem,
@@ -19,250 +17,250 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
 
 @dataclass(frozen=True, kw_only=True)
 class CustomInformationDocumentItem(OrderedItem):
-    datum_label: TStringValue = field(metadata={"json_name": 'datum label'})
+    datum_label: TStringValue = field(metadata={"json_name": "datum label"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DataSourceDocumentItem(OrderedItem):
-    data_source_identifier: TStringValue = field(metadata={"json_name": 'data source identifier'})
-    data_source_feature: TStringValue | None = field(default=None, metadata={"json_name": 'data source feature'})
+    data_source_identifier: TStringValue = field(metadata={"json_name": "data source identifier"})
+    data_source_feature: TStringValue | None = field(default=None, metadata={"json_name": "data source feature"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ElectronicProjectRecord:
-    written_name: TStringValue = field(metadata={"json_name": 'written name'})
-    description: dict[str, Any] | None = field(default=None, metadata={"json_name": 'description'})
-    start_time: TDateTimeValue | None = field(default=None, metadata={"json_name": 'start time'})
+    written_name: TStringValue = field(metadata={"json_name": "written name"})
+    description: dict[str, Any] | None = field(default=None, metadata={"json_name": "description"})
+    start_time: TDateTimeValue | None = field(default=None, metadata={"json_name": "start time"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ElectronicSignatureDocumentItem(OrderedItem):
-    account_identifier: TStringValue = field(metadata={"json_name": 'account identifier'})
-    personal_name: TStringValue = field(metadata={"json_name": 'personal name'})
-    signature_role_type: TStringValue = field(metadata={"json_name": 'signature role type'})
-    time: TStringValue = field(metadata={"json_name": 'time'})
-    identifier: TStringValue | None = field(default=None, metadata={"json_name": 'identifier'})
-    measurement_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'measurement identifier'})
-    method_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'method identifier'})
-    processed_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'processed data identifier'})
+    account_identifier: TStringValue = field(metadata={"json_name": "account identifier"})
+    personal_name: TStringValue = field(metadata={"json_name": "personal name"})
+    signature_role_type: TStringValue = field(metadata={"json_name": "signature role type"})
+    time: TStringValue = field(metadata={"json_name": "time"})
+    identifier: TStringValue | None = field(default=None, metadata={"json_name": "identifier"})
+    measurement_identifier: TStringValue | None = field(default=None, metadata={"json_name": "measurement identifier"})
+    method_identifier: TStringValue | None = field(default=None, metadata={"json_name": "method identifier"})
+    processed_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": "processed data identifier"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ErrorDocumentItem:
-    error: TStringValue = field(metadata={"json_name": 'error'})
-    error_feature: TStringValue | None = field(default=None, metadata={"json_name": 'error feature'})
+    error: TStringValue = field(metadata={"json_name": "error"})
+    error_feature: TStringValue | None = field(default=None, metadata={"json_name": "error feature"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ImageDocumentItem:
-    experimental_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'experimental data identifier'})
-    index: TIntegerValue | None = field(default=None, metadata={"json_name": 'index'})
+    experimental_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": "experimental data identifier"})
+    index: TIntegerValue | None = field(default=None, metadata={"json_name": "index"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class StatisticsDocumentItem:
-    statistical_feature: Literal['BET C constant', 'Raman intensity', 'Raman interferogram intensity', 'Raman wavenumber shift', 'Young modulus', 'abrasion weight', 'absolute intensity', 'absolute water content', 'absorbance', 'acquisition volume', 'actual P/P0 result', 'adsorbed volume at STP', 'ambient humidity', 'ambient pressure', 'ambient temperature', 'amount of substance', 'angle', 'angle of optical rotation', 'angular velocity', 'area', 'attenuation coefficient', 'average dead cell diameter (cell counter)', 'average particle size', 'average total cell circularity', 'average total cell diameter', 'average viable cell circularity', 'background corrected turbidity', 'birefringence', 'break strain', 'break stress', 'cell path length', 'chemical shift', 'chromatography column film thickness', 'chromatography column length', 'chromatography column particle size', 'circularity', 'coating gap height', 'collision energy', 'column inner diameter', 'compartment temperature', 'concentration', 'container diameter', 'container height', 'degassed sample weight', 'detector view volume', 'diameter', 'dielectric polarization', 'dilution factor', 'dilution volume', 'dispensed volume', 'dry gas flow rate', 'dry sample weight', 'eccentricity', 'electric charge', 'electric conductance', 'electric conductivity', 'electric current', 'electric impedance', 'electric resistance', 'electric resistivity', 'electron beam working distance', 'end height', 'energy (datum)', 'enthalpy', 'enthalpy of fusion', 'enthalpy of sublimation', 'enthalpy of vaporization', 'exhaust gas flow rate', 'extrapolated moisture content', 'fill depth', 'flow rate', 'flow ratio', 'fluorescence', 'foam height', 'force', 'fracture energy', 'glass transition temperature', 'gloss', 'gross weight', 'hardness', 'heat capacity', 'heat capacity (dsc)', 'heat flow', 'heat seal length', 'heat transfer coefficient', 'height', 'hold-up volume', 'humidity', 'image height', 'image width', 'incident radiation angle', 'inlet gas pressure', 'inner diameter', 'intensity', 'isocyanate reservoir temperature', 'length', 'linear velocity', 'liquid height', 'luminescence', 'm/z', 'mass', 'mass attenuation coefficient', 'mass change', 'mass concentration', 'mass fraction', 'measurement chamber free space volume', 'molar attenuation coefficient', 'molar concentration', 'molar enthalpy of fusion', 'molar enthalpy of sublimation', 'molar enthalpy of vaporization', 'molar mass', 'molecular mass', 'monolayer quantity', 'normalized foam height', 'number concentration', 'osmolality', 'pCO2', 'pCO2 (bga)', 'pH', 'pO2', 'pO2 (bga)', 'partial pressure', 'particle size', 'peak analyte amount', 'peak load force', 'peak onset temperature', 'peak temperature', 'plate heater temperature', 'plate temperature', 'plate well count', 'polarity', 'polyol reservoir temperature', 'position count', 'power', 'pressure', 'probe volume', 'protein attenuation coefficient', 'purity', 'qNMR purity result', 'reference material weight', 'reflectance', 'refractive index', 'relative humidity', 'relative intensity', 'relative permittivity', 'relative pressure (BET)', 'relative response', 'relative weight loss on drying', 'reservoir temperature', 'rotational speed', 'sample temperature', 'sample thickness', 'sample weight', 'sample weight before drying', 'sample width', 'saturated gas flow rate', 'saturation vapor pressure', 'seal initiation temperature', 'size (datum)', 'solvent reservoir temperature', 'specific enthalpy of fusion', 'specific enthalpy of sublimation', 'specific enthalpy of vaporization', 'specific heat capacity', 'specific rotation', 'specific surface area', 'start height', 'stirring rate', 'strain', 'stress', 'tablet thickness', 'tare weight', 'temperature', 'temperature rate', 'thermal conductance', 'thermal conductivity', 'thickness', 'titer', 'torque', 'total cell diameter', 'total foam height', 'total gas flow rate', 'total material height', 'transition enthalpy', 'transmittance', 'turbidity', 'velocity', 'viscosity', 'void volume', 'voltage', 'voltage range', 'volume', 'volume concentration', 'volume fraction', 'water mass concentration', 'water mass fraction', 'wavelength', 'wavenumber', 'weight loss', 'well volume', 'width', 'yield strain', 'yield stress'] = field(metadata={"json_name": 'statistical feature'})
+    statistical_feature: Literal["BET C constant", "Raman intensity", "Raman interferogram intensity", "Raman wavenumber shift", "Young modulus", "abrasion weight", "absolute intensity", "absolute water content", "absorbance", "acquisition volume", "actual P/P0 result", "adsorbed volume at STP", "ambient humidity", "ambient pressure", "ambient temperature", "amount of substance", "angle", "angle of optical rotation", "angular velocity", "area", "attenuation coefficient", "average dead cell diameter (cell counter)", "average particle size", "average total cell circularity", "average total cell diameter", "average viable cell circularity", "background corrected turbidity", "birefringence", "break strain", "break stress", "cell path length", "chemical shift", "chromatography column film thickness", "chromatography column length", "chromatography column particle size", "circularity", "coating gap height", "collision energy", "column inner diameter", "compartment temperature", "concentration", "container diameter", "container height", "degassed sample weight", "detector view volume", "diameter", "dielectric polarization", "dilution factor", "dilution volume", "dispensed volume", "dry gas flow rate", "dry sample weight", "eccentricity", "electric charge", "electric conductance", "electric conductivity", "electric current", "electric impedance", "electric resistance", "electric resistivity", "electron beam working distance", "end height", "energy (datum)", "enthalpy", "enthalpy of fusion", "enthalpy of sublimation", "enthalpy of vaporization", "exhaust gas flow rate", "extrapolated moisture content", "fill depth", "flow rate", "flow ratio", "fluorescence", "foam height", "force", "fracture energy", "glass transition temperature", "gloss", "gross weight", "hardness", "heat capacity", "heat capacity (dsc)", "heat flow", "heat seal length", "heat transfer coefficient", "height", "hold-up volume", "humidity", "image height", "image width", "incident radiation angle", "inlet gas pressure", "inner diameter", "intensity", "isocyanate reservoir temperature", "length", "linear velocity", "liquid height", "luminescence", "m/z", "mass", "mass attenuation coefficient", "mass change", "mass concentration", "mass fraction", "measurement chamber free space volume", "molar attenuation coefficient", "molar concentration", "molar enthalpy of fusion", "molar enthalpy of sublimation", "molar enthalpy of vaporization", "molar mass", "molecular mass", "monolayer quantity", "normalized foam height", "number concentration", "osmolality", "pCO2", "pCO2 (bga)", "pH", "pO2", "pO2 (bga)", "partial pressure", "particle size", "peak analyte amount", "peak load force", "peak onset temperature", "peak temperature", "plate heater temperature", "plate temperature", "plate well count", "polarity", "polyol reservoir temperature", "position count", "power", "pressure", "probe volume", "protein attenuation coefficient", "purity", "qNMR purity result", "reference material weight", "reflectance", "refractive index", "relative humidity", "relative intensity", "relative permittivity", "relative pressure (BET)", "relative response", "relative weight loss on drying", "reservoir temperature", "rotational speed", "sample temperature", "sample thickness", "sample weight", "sample weight before drying", "sample width", "saturated gas flow rate", "saturation vapor pressure", "seal initiation temperature", "size (datum)", "solvent reservoir temperature", "specific enthalpy of fusion", "specific enthalpy of sublimation", "specific enthalpy of vaporization", "specific heat capacity", "specific rotation", "specific surface area", "start height", "stirring rate", "strain", "stress", "tablet thickness", "tare weight", "temperature", "temperature rate", "thermal conductance", "thermal conductivity", "thickness", "titer", "torque", "total cell diameter", "total foam height", "total gas flow rate", "total material height", "transition enthalpy", "transmittance", "turbidity", "velocity", "viscosity", "void volume", "voltage", "voltage range", "volume", "volume concentration", "volume fraction", "water mass concentration", "water mass fraction", "wavelength", "wavenumber", "weight loss", "well volume", "width", "yield strain", "yield stress"] = field(metadata={"json_name": "statistical feature"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class AnalysisSequenceDocument:
-    written_name: TStringValue = field(metadata={"json_name": 'written name'})
-    end_time: TDateTimeValue | None = field(default=None, metadata={"json_name": 'end time'})
-    file_name: TStringValue | None = field(default=None, metadata={"json_name": 'file name'})
-    identifier: TStringValue | None = field(default=None, metadata={"json_name": 'identifier'})
-    method_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'method identifier'})
-    method_name: TStringValue | None = field(default=None, metadata={"json_name": 'method name'})
-    start_time: TDateTimeValue | None = field(default=None, metadata={"json_name": 'start time'})
-    unc_path: TStringValue | None = field(default=None, metadata={"json_name": 'UNC path'})
-    version_number: TStringValue | None = field(default=None, metadata={"json_name": 'version number'})
+    written_name: TStringValue = field(metadata={"json_name": "written name"})
+    end_time: TDateTimeValue | None = field(default=None, metadata={"json_name": "end time"})
+    file_name: TStringValue | None = field(default=None, metadata={"json_name": "file name"})
+    identifier: TStringValue | None = field(default=None, metadata={"json_name": "identifier"})
+    method_identifier: TStringValue | None = field(default=None, metadata={"json_name": "method identifier"})
+    method_name: TStringValue | None = field(default=None, metadata={"json_name": "method name"})
+    start_time: TDateTimeValue | None = field(default=None, metadata={"json_name": "start time"})
+    unc_path: TStringValue | None = field(default=None, metadata={"json_name": "UNC path"})
+    version_number: TStringValue | None = field(default=None, metadata={"json_name": "version number"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class CustomInformationAggregateDocument:
-    custom_information_document: list[CustomInformationDocumentItem] = field(metadata={"json_name": 'custom information document'})
+    custom_information_document: list[CustomInformationDocumentItem] = field(metadata={"json_name": "custom information document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DataSourceAggregateDocument:
-    data_source_document: list[DataSourceDocumentItem] = field(metadata={"json_name": 'data source document'})
+    data_source_document: list[DataSourceDocumentItem] = field(metadata={"json_name": "data source document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ElectronicSignatureAggregateDocument:
-    electronic_signature_document: list[ElectronicSignatureDocumentItem] | None = field(default=None, metadata={"json_name": 'electronic signature document'})
+    electronic_signature_document: list[ElectronicSignatureDocumentItem] | None = field(default=None, metadata={"json_name": "electronic signature document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ErrorAggregateDocument:
-    error_document: list[ErrorDocumentItem] | None = field(default=None, metadata={"json_name": 'error document'})
+    error_document: list[ErrorDocumentItem] | None = field(default=None, metadata={"json_name": "error document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ImageAggregateDocument:
-    image_document: list[ImageDocumentItem] | None = field(default=None, metadata={"json_name": 'image document'})
+    image_document: list[ImageDocumentItem] | None = field(default=None, metadata={"json_name": "image document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class StatisticsAggregateDocument:
-    statistics_document: list[StatisticsDocumentItem] | None = field(default=None, metadata={"json_name": 'statistics document'})
+    statistics_document: list[StatisticsDocumentItem] | None = field(default=None, metadata={"json_name": "statistics document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DataSystemDocument:
-    asm_file_identifier: TStringValue = field(metadata={"json_name": 'ASM file identifier'})
-    data_system_instance_identifier: TStringValue = field(metadata={"json_name": 'data system instance identifier'})
-    asm_converter_name: TStringValue | None = field(default=None, metadata={"json_name": 'ASM converter name'})
-    asm_converter_version: TStringValue | None = field(default=None, metadata={"json_name": 'ASM converter version'})
-    database_primary_key: TStringValue | None = field(default=None, metadata={"json_name": 'database primary key'})
-    file_name: TStringValue | None = field(default=None, metadata={"json_name": 'file name'})
-    software_name: TStringValue | None = field(default=None, metadata={"json_name": 'software name'})
-    software_version: TStringValue | None = field(default=None, metadata={"json_name": 'software version'})
-    unc_path: TStringValue | None = field(default=None, metadata={"json_name": 'UNC path'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    asm_file_identifier: TStringValue = field(metadata={"json_name": "ASM file identifier"})
+    data_system_instance_identifier: TStringValue = field(metadata={"json_name": "data system instance identifier"})
+    asm_converter_name: TStringValue | None = field(default=None, metadata={"json_name": "ASM converter name"})
+    asm_converter_version: TStringValue | None = field(default=None, metadata={"json_name": "ASM converter version"})
+    database_primary_key: TStringValue | None = field(default=None, metadata={"json_name": "database primary key"})
+    file_name: TStringValue | None = field(default=None, metadata={"json_name": "file name"})
+    software_name: TStringValue | None = field(default=None, metadata={"json_name": "software name"})
+    software_version: TStringValue | None = field(default=None, metadata={"json_name": "software version"})
+    unc_path: TStringValue | None = field(default=None, metadata={"json_name": "UNC path"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceDocumentItem(OrderedItem):
-    device_type: TStringValue = field(metadata={"json_name": 'device type'})
-    brand_name: TStringValue | None = field(default=None, metadata={"json_name": 'brand name'})
-    device_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'device identifier'})
-    equipment_serial_number: TStringValue | None = field(default=None, metadata={"json_name": 'equipment serial number'})
-    firmware_version: TStringValue | None = field(default=None, metadata={"json_name": 'firmware version'})
-    model_number: TStringValue | None = field(default=None, metadata={"json_name": 'model number'})
-    product_manufacturer: TStringValue | None = field(default=None, metadata={"json_name": 'product manufacturer'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    device_type: TStringValue = field(metadata={"json_name": "device type"})
+    brand_name: TStringValue | None = field(default=None, metadata={"json_name": "brand name"})
+    device_identifier: TStringValue | None = field(default=None, metadata={"json_name": "device identifier"})
+    equipment_serial_number: TStringValue | None = field(default=None, metadata={"json_name": "equipment serial number"})
+    firmware_version: TStringValue | None = field(default=None, metadata={"json_name": "firmware version"})
+    model_number: TStringValue | None = field(default=None, metadata={"json_name": "model number"})
+    product_manufacturer: TStringValue | None = field(default=None, metadata={"json_name": "product manufacturer"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
-    description: dict[str, Any] = field(metadata={"json_name": 'description'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    description: dict[str, Any] = field(metadata={"json_name": "description"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    device_type: TStringValue = field(metadata={"json_name": 'device type'})
-    brand_name: TStringValue | None = field(default=None, metadata={"json_name": 'brand name'})
-    detection_type: TStringValue | None = field(default=None, metadata={"json_name": 'detection type'})
-    device_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'device identifier'})
-    equipment_serial_number: TStringValue | None = field(default=None, metadata={"json_name": 'equipment serial number'})
-    firmware_version: TStringValue | None = field(default=None, metadata={"json_name": 'firmware version'})
-    model_number: TStringValue | None = field(default=None, metadata={"json_name": 'model number'})
-    product_manufacturer: TStringValue | None = field(default=None, metadata={"json_name": 'product manufacturer'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    device_type: TStringValue = field(metadata={"json_name": "device type"})
+    brand_name: TStringValue | None = field(default=None, metadata={"json_name": "brand name"})
+    detection_type: TStringValue | None = field(default=None, metadata={"json_name": "detection type"})
+    device_identifier: TStringValue | None = field(default=None, metadata={"json_name": "device identifier"})
+    equipment_serial_number: TStringValue | None = field(default=None, metadata={"json_name": "equipment serial number"})
+    firmware_version: TStringValue | None = field(default=None, metadata={"json_name": "firmware version"})
+    model_number: TStringValue | None = field(default=None, metadata={"json_name": "model number"})
+    product_manufacturer: TStringValue | None = field(default=None, metadata={"json_name": "product manufacturer"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class SampleDocument:
-    sample_identifier: TStringValue = field(metadata={"json_name": 'sample identifier'})
-    batch_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'batch identifier'})
-    description: dict[str, Any] | None = field(default=None, metadata={"json_name": 'description'})
-    sample_role_type: Literal['control sample role', 'standard sample role', 'validation sample role', 'experiment sample role', 'sample role', 'spiked sample role', 'blank role', 'unknown sample role', 'calibration sample role', 'unspiked sample role', 'specimen role', 'quality control sample role', 'reference sample role'] | None = field(default=None, metadata={"json_name": 'sample role type'})
-    written_name: TStringValue | None = field(default=None, metadata={"json_name": 'written name'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    sample_identifier: TStringValue = field(metadata={"json_name": "sample identifier"})
+    batch_identifier: TStringValue | None = field(default=None, metadata={"json_name": "batch identifier"})
+    description: dict[str, Any] | None = field(default=None, metadata={"json_name": "description"})
+    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = field(default=None, metadata={"json_name": "sample role type"})
+    written_name: TStringValue | None = field(default=None, metadata={"json_name": "written name"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class CalculatedDataDocumentItem(OrderedItem):
-    calculated_data_name: TStringValue = field(metadata={"json_name": 'calculated data name'})
-    calculated_result: TQuantityValue = field(metadata={"json_name": 'calculated result'})
-    calculated_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'calculated data identifier'})
-    calculation_description: TStringValue | None = field(default=None, metadata={"json_name": 'calculation description'})
-    data_source_aggregate_document: DataSourceAggregateDocument | None = field(default=None, metadata={"json_name": 'data source aggregate document'})
-    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": 'electronic project record'})
+    calculated_data_name: TStringValue = field(metadata={"json_name": "calculated data name"})
+    calculated_result: TQuantityValue = field(metadata={"json_name": "calculated result"})
+    calculated_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": "calculated data identifier"})
+    calculation_description: TStringValue | None = field(default=None, metadata={"json_name": "calculation description"})
+    data_source_aggregate_document: DataSourceAggregateDocument | None = field(default=None, metadata={"json_name": "data source aggregate document"})
+    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": "electronic project record"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
-    data_processing_document: dict[str, Any] | None = field(default=None, metadata={"json_name": 'data processing document'})
-    data_source_aggregate_document: DataSourceAggregateDocument | None = field(default=None, metadata={"json_name": 'data source aggregate document'})
-    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": 'electronic project record'})
-    processed_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'processed data identifier'})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
+    data_processing_document: dict[str, Any] | None = field(default=None, metadata={"json_name": "data processing document"})
+    data_source_aggregate_document: DataSourceAggregateDocument | None = field(default=None, metadata={"json_name": "data source aggregate document"})
+    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": "electronic project record"})
+    processed_data_identifier: TStringValue | None = field(default=None, metadata={"json_name": "processed data identifier"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceSystemDocument:
-    asset_management_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'asset management identifier'})
-    brand_name: TStringValue | None = field(default=None, metadata={"json_name": 'brand name'})
-    description: dict[str, Any] | None = field(default=None, metadata={"json_name": 'description'})
-    device_document: list[DeviceDocumentItem] | None = field(default=None, metadata={"json_name": 'device document'})
-    device_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'device identifier'})
-    equipment_serial_number: TStringValue | None = field(default=None, metadata={"json_name": 'equipment serial number'})
-    firmware_version: TStringValue | None = field(default=None, metadata={"json_name": 'firmware version'})
-    model_number: TStringValue | None = field(default=None, metadata={"json_name": 'model number'})
-    product_manufacturer: TStringValue | None = field(default=None, metadata={"json_name": 'product manufacturer'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    asset_management_identifier: TStringValue | None = field(default=None, metadata={"json_name": "asset management identifier"})
+    brand_name: TStringValue | None = field(default=None, metadata={"json_name": "brand name"})
+    description: dict[str, Any] | None = field(default=None, metadata={"json_name": "description"})
+    device_document: list[DeviceDocumentItem] | None = field(default=None, metadata={"json_name": "device document"})
+    device_identifier: TStringValue | None = field(default=None, metadata={"json_name": "device identifier"})
+    equipment_serial_number: TStringValue | None = field(default=None, metadata={"json_name": "equipment serial number"})
+    firmware_version: TStringValue | None = field(default=None, metadata={"json_name": "firmware version"})
+    model_number: TStringValue | None = field(default=None, metadata={"json_name": "model number"})
+    product_manufacturer: TStringValue | None = field(default=None, metadata={"json_name": "product manufacturer"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
-    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = field(default=None, metadata={"json_name": 'diagnostic trace document'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = field(default=None, metadata={"json_name": "diagnostic trace document"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem] = field(metadata={"json_name": 'device control document'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
+    device_control_document: list[DeviceControlDocumentItem] = field(metadata={"json_name": "device control document"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class CalculatedDataAggregateDocument:
-    calculated_data_document: list[CalculatedDataDocumentItem] = field(metadata={"json_name": 'calculated data document'})
+    calculated_data_document: list[CalculatedDataDocumentItem] = field(metadata={"json_name": "calculated data document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
-    processed_data_document: list[ProcessedDataDocumentItem] = field(metadata={"json_name": 'processed data document'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
-    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": 'electronic project record'})
+    processed_data_document: list[ProcessedDataDocumentItem] = field(metadata={"json_name": "processed data document"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
+    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": "electronic project record"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TechniqueAggregateDocument:
-    analysis_sequence_document: AnalysisSequenceDocument | None = field(default=None, metadata={"json_name": 'analysis sequence document'})
-    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = field(default=None, metadata={"json_name": 'calculated data aggregate document'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
-    data_system_document: DataSystemDocument | None = field(default=None, metadata={"json_name": 'data system document'})
-    device_system_document: DeviceSystemDocument | None = field(default=None, metadata={"json_name": 'device system document'})
-    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": 'electronic project record'})
-    electronic_signature_aggregate_document: ElectronicSignatureAggregateDocument | None = field(default=None, metadata={"json_name": 'electronic signature aggregate document'})
-    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(default=None, metadata={"json_name": 'processed data aggregate document'})
-    statistics_aggregate_document: StatisticsAggregateDocument | None = field(default=None, metadata={"json_name": 'statistics aggregate document'})
+    analysis_sequence_document: AnalysisSequenceDocument | None = field(default=None, metadata={"json_name": "analysis sequence document"})
+    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = field(default=None, metadata={"json_name": "calculated data aggregate document"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
+    data_system_document: DataSystemDocument | None = field(default=None, metadata={"json_name": "data system document"})
+    device_system_document: DeviceSystemDocument | None = field(default=None, metadata={"json_name": "device system document"})
+    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": "electronic project record"})
+    electronic_signature_aggregate_document: ElectronicSignatureAggregateDocument | None = field(default=None, metadata={"json_name": "electronic signature aggregate document"})
+    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(default=None, metadata={"json_name": "processed data aggregate document"})
+    statistics_aggregate_document: StatisticsAggregateDocument | None = field(default=None, metadata={"json_name": "statistics aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItem:
-    device_control_aggregate_document: DeviceControlAggregateDocument = field(metadata={"json_name": 'device control aggregate document'})
-    sample_document: SampleDocument = field(metadata={"json_name": 'sample document'})
-    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = field(default=None, metadata={"json_name": 'calculated data aggregate document'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
-    detection_type: TStringValue | None = field(default=None, metadata={"json_name": 'detection type'})
-    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": 'electronic project record'})
-    error_aggregate_document: ErrorAggregateDocument | None = field(default=None, metadata={"json_name": 'error aggregate document'})
-    image_aggregate_document: ImageAggregateDocument | None = field(default=None, metadata={"json_name": 'image aggregate document'})
-    measurement_identifier: TStringValue | None = field(default=None, metadata={"json_name": 'measurement identifier'})
-    measurement_time: TDateTimeStampValue | None = field(default=None, metadata={"json_name": 'measurement time'})
-    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(default=None, metadata={"json_name": 'processed data aggregate document'})
-    statistics_aggregate_document: StatisticsAggregateDocument | None = field(default=None, metadata={"json_name": 'statistics aggregate document'})
+    device_control_aggregate_document: DeviceControlAggregateDocument = field(metadata={"json_name": "device control aggregate document"})
+    sample_document: SampleDocument = field(metadata={"json_name": "sample document"})
+    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = field(default=None, metadata={"json_name": "calculated data aggregate document"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
+    detection_type: TStringValue | None = field(default=None, metadata={"json_name": "detection type"})
+    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": "electronic project record"})
+    error_aggregate_document: ErrorAggregateDocument | None = field(default=None, metadata={"json_name": "error aggregate document"})
+    image_aggregate_document: ImageAggregateDocument | None = field(default=None, metadata={"json_name": "image aggregate document"})
+    measurement_identifier: TStringValue | None = field(default=None, metadata={"json_name": "measurement identifier"})
+    measurement_time: TDateTimeStampValue | None = field(default=None, metadata={"json_name": "measurement time"})
+    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(default=None, metadata={"json_name": "processed data aggregate document"})
+    statistics_aggregate_document: StatisticsAggregateDocument | None = field(default=None, metadata={"json_name": "statistics aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
-    measurement_document: list[MeasurementDocumentItem] = field(metadata={"json_name": 'measurement document'})
-    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = field(default=None, metadata={"json_name": 'calculated data aggregate document'})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": 'custom information aggregate document'})
-    diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = field(default=None, metadata={"json_name": 'diagnostic trace aggregate document'})
-    error_aggregate_document: ErrorAggregateDocument | None = field(default=None, metadata={"json_name": 'error aggregate document'})
-    image_aggregate_document: ImageAggregateDocument | None = field(default=None, metadata={"json_name": 'image aggregate document'})
-    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(default=None, metadata={"json_name": 'processed data aggregate document'})
-    statistics_aggregate_document: StatisticsAggregateDocument | None = field(default=None, metadata={"json_name": 'statistics aggregate document'})
+    measurement_document: list[MeasurementDocumentItem] = field(metadata={"json_name": "measurement document"})
+    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = field(default=None, metadata={"json_name": "calculated data aggregate document"})
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = field(default=None, metadata={"json_name": "custom information aggregate document"})
+    diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = field(default=None, metadata={"json_name": "diagnostic trace aggregate document"})
+    error_aggregate_document: ErrorAggregateDocument | None = field(default=None, metadata={"json_name": "error aggregate document"})
+    image_aggregate_document: ImageAggregateDocument | None = field(default=None, metadata={"json_name": "image aggregate document"})
+    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = field(default=None, metadata={"json_name": "processed data aggregate document"})
+    statistics_aggregate_document: StatisticsAggregateDocument | None = field(default=None, metadata={"json_name": "statistics aggregate document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TechniqueDocument:
-    measurement_aggregate_document: MeasurementAggregateDocument = field(metadata={"json_name": 'measurement aggregate document'})
-    analyst: TStringValue | None = field(default=None, metadata={"json_name": 'analyst'})
-    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": 'electronic project record'})
-    submitter: TStringValue | None = field(default=None, metadata={"json_name": 'submitter'})
+    measurement_aggregate_document: MeasurementAggregateDocument = field(metadata={"json_name": "measurement aggregate document"})
+    analyst: TStringValue | None = field(default=None, metadata={"json_name": "analyst"})
+    electronic_project_record: ElectronicProjectRecord | None = field(default=None, metadata={"json_name": "electronic project record"})
+    submitter: TStringValue | None = field(default=None, metadata={"json_name": "submitter"})

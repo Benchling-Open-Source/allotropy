@@ -7,17 +7,16 @@ and downloads them all to a local cache directory.
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 from typing import Any
 from urllib.request import urlopen
 
 from allotropy.schema_gen.naming import (
     allotrope_url_to_gitlab_raw,
+    DEFAULT_SCHEMA_CACHE_DIR,
     gitlab_blob_to_raw,
     normalize_schema_url,
     schema_url_to_cache_path,
-    DEFAULT_SCHEMA_CACHE_DIR,
 )
 
 
@@ -134,12 +133,6 @@ def build_dependency_order(schemas: dict[str, dict[str, Any]]) -> list[str]:
         deps[url] = refs & set(schemas.keys())
 
     # Topological sort (Kahn's algorithm)
-    in_degree: dict[str, int] = {url: 0 for url in schemas}
-    for url, dep_set in deps.items():
-        for dep in dep_set:
-            in_degree[url] += 1  # noqa: this is intentionally url not dep
-
-    # Wait, that's wrong. in_degree[url] should be len(dep_set)
     in_degree = {url: len(dep_set) for url, dep_set in deps.items()}
 
     queue = [url for url, deg in in_degree.items() if deg == 0]

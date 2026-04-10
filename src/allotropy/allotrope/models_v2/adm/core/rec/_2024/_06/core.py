@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from dataclasses import field
-from typing import Any
-from typing import Literal
+from dataclasses import dataclass, field
+from typing import Any, Literal
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -13,7 +11,7 @@ class Asm:
     pass
 
 
-TStatisticDatumRole = Literal['arithmetic mean role', 'median role', 'relative standard deviation role', 'skewness role', 'standard deviation role', 'variance role', 'maximum value role', 'minimum value role', 'initial value role', 'final value role']
+TStatisticDatumRole = Literal["arithmetic mean role", "median role", "relative standard deviation role", "skewness role", "standard deviation role", "variance role", "maximum value role", "minimum value role", "initial value role", "final value role"]
 
 
 TUnit = str
@@ -41,140 +39,140 @@ TReference = str
 
 @dataclass(frozen=True, kw_only=True)
 class OrderedItem:
-    field_index: int | None = field(default=None, metadata={"json_name": '@index'})
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValue:
-    value: float = field(metadata={"json_name": 'value'})
-    unit: TUnit = field(metadata={"json_name": 'unit'})
-    has_statistic_datum_role: TStatisticDatumRole | None = field(default=None, metadata={"json_name": 'has statistic datum role'})
-    field_type: TClass | None = field(default=None, metadata={"json_name": '@type'})
+    value: float = field(metadata={"json_name": "value"})
+    unit: TUnit = field(metadata={"json_name": "unit"})
+    has_statistic_datum_role: TStatisticDatumRole | None = field(default=None, metadata={"json_name": "has statistic datum role"})
+    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TBooleanValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: bool = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: bool = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDecimalValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: float = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: float = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDoubleValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: float = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: float = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TFloatValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: float = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: float = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TStringValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TByteValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TShortValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TIntValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TLongValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TUnsignedByteValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TUnsignedShortValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TUnsignedIntValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TUnsignedLongValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TIntegerValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: int = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TIRIValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDateTimeValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDateTimeStampValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDateValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TTimeValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDurationValueItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
-    value: str = field(metadata={"json_name": 'value'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str = field(metadata={"json_name": "value"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class MixedItem:
-    field_type: TClass = field(metadata={"json_name": '@type'})
+    field_type: TClass = field(metadata={"json_name": "@type"})
 
 
 TBooleanValue = bool | TBooleanValueItem
@@ -245,8 +243,8 @@ TOrderedValue = TNumericValue | TStringValue | TDateTimeValue | TDateTimeStampVa
 
 @dataclass(frozen=True, kw_only=True)
 class TRangeValue:
-    mininclusive: TOrderedValue | None = field(default=None, metadata={"json_name": 'minInclusive'})
-    minexclusive: TOrderedValue | None = field(default=None, metadata={"json_name": 'minExclusive'})
-    maxinclusive: TOrderedValue | None = field(default=None, metadata={"json_name": 'maxInclusive'})
-    maxexclusive: TOrderedValue | None = field(default=None, metadata={"json_name": 'maxExclusive'})
-    unit: TUnit | None = field(default=None, metadata={"json_name": 'unit'})
+    mininclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minInclusive"})
+    minexclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minExclusive"})
+    maxinclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxInclusive"})
+    maxexclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxExclusive"})
+    unit: TUnit | None = field(default=None, metadata={"json_name": "unit"})

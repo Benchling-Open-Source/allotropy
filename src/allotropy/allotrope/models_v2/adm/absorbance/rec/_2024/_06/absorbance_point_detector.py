@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import dataclass, field
 
 from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
     OrderedItem,
@@ -11,13 +10,13 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
 )
 from allotropy.allotrope.models_v2.qudt.rec._2024._06.units import (
     MAU,
-    Nm_nm,
+    Nm2,
     PgPermL,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueNm(Nm_nm, TQuantityValue):
+class TQuantityValueNm(Nm2, TQuantityValue):
     pass
 
 
@@ -33,21 +32,21 @@ class TQuantityValuePgPermL(PgPermL, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": 'detector wavelength setting'})
-    detector_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": 'detector bandwidth setting'})
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": 'electronic absorbance wavelength setting'})
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": 'electronic absorbance bandwidth setting'})
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": 'electronic absorbance reference bandwidth setting'})
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": 'electronic absorbance reference wavelength setting'})
+    detector_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "detector wavelength setting"})
+    detector_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "detector bandwidth setting"})
+    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance wavelength setting"})
+    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance bandwidth setting"})
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance reference bandwidth setting"})
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = field(default=None, metadata={"json_name": "electronic absorbance reference wavelength setting"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem] | None = field(default=None, metadata={"json_name": 'device control document'})
+    device_control_document: list[DeviceControlDocumentItem] | None = field(default=None, metadata={"json_name": "device control document"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    absorbance: TQuantityValueMAU = field(metadata={"json_name": 'absorbance'})
-    device_control_aggregate_document: DeviceControlAggregateDocument | None = field(default=None, metadata={"json_name": 'device control aggregate document'})
-    mass_concentration: TQuantityValuePgPermL | None = field(default=None, metadata={"json_name": 'mass concentration'})
+    absorbance: TQuantityValueMAU = field(metadata={"json_name": "absorbance"})
+    device_control_aggregate_document: DeviceControlAggregateDocument | None = field(default=None, metadata={"json_name": "device control aggregate document"})
+    mass_concentration: TQuantityValuePgPermL | None = field(default=None, metadata={"json_name": "mass concentration"})

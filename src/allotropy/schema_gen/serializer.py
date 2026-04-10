@@ -17,7 +17,7 @@ Usage::
 from __future__ import annotations
 
 from dataclasses import fields, is_dataclass
-from typing import Any, TypeVar, get_args, get_origin
+from typing import Any, get_args, get_origin, TypeVar
 
 T = TypeVar("T")
 
@@ -121,7 +121,7 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
     return value
 
 
-def _is_union(origin: Any, field_type: Any) -> bool:
+def _is_union(origin: Any, _field_type: Any) -> bool:
     """Check if a type is a Union / X | Y type."""
     import types
     return origin is types.UnionType

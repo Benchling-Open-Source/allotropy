@@ -10,8 +10,8 @@ Example:
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
+import sys
 
 from allotropy.schema_gen.codegen import SchemaCodeGenerator
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
