@@ -24,6 +24,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Reference"
                                         }
@@ -40,7 +56,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -226,6 +250,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -246,7 +286,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -432,6 +480,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -447,7 +511,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -632,6 +704,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -652,7 +740,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -838,6 +934,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -853,7 +965,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -1038,6 +1158,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -1058,7 +1194,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -1244,6 +1388,22 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Regeneration 2 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 2 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
+                                            "Regeneration 3 Contact time": {
+                                                "value": 60.0,
+                                                "unit": "s"
+                                            },
+                                            "Regeneration 3 Flow rate": {
+                                                "value": 30.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -1259,7 +1419,15 @@
                                     "Regeneration 1 Solution": "3M MgCl2",
                                     "Regeneration 1 Plate id": "Rack 1",
                                     "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control"
+                                    "Regeneration 1 Control type": "Not a control",
+                                    "Regeneration 2 Solution": "3M MgCl2",
+                                    "Regeneration 2 Plate id": "Rack 1",
+                                    "Regeneration 2 Position": "D1",
+                                    "Regeneration 2 Control type": "Not a control",
+                                    "Regeneration 3 Solution": "3M MgCl2",
+                                    "Regeneration 3 Plate id": "Rack 1",
+                                    "Regeneration 3 Position": "D1",
+                                    "Regeneration 3 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -6169,14 +6337,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -6419,14 +6587,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -6664,14 +6832,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -6913,14 +7081,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -7158,14 +7326,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -7407,14 +7575,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -7652,14 +7820,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -7922,14 +8090,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -8172,14 +8340,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -8417,14 +8585,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -8666,14 +8834,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -8911,14 +9079,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -9160,14 +9328,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -9405,14 +9573,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A10",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -9675,14 +9843,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -9925,10 +10093,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
@@ -9936,7 +10100,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.2221081,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -10174,10 +10342,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
@@ -10185,7 +10349,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.223146185,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -10427,14 +10595,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -10672,14 +10840,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -10921,14 +11089,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -11166,14 +11334,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -11436,14 +11604,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -11686,10 +11854,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
@@ -11697,7 +11861,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.22221145,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -11935,10 +12103,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
@@ -11946,7 +12110,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.223151684,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -12188,14 +12356,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -12433,14 +12601,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -12682,14 +12850,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -12927,14 +13095,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A9",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.215,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -13197,14 +13365,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -13447,10 +13615,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
@@ -13458,7 +13622,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.328146726,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -13696,10 +13864,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
@@ -13707,7 +13871,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.329638571,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -13949,14 +14117,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -14194,14 +14362,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -14443,14 +14611,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -14688,14 +14856,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -14958,14 +15126,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -15208,10 +15376,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
@@ -15219,7 +15383,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.327615142,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -15457,10 +15625,6 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
@@ -15468,7 +15632,11 @@
                                     "Analyte 1 Calculated Concentration": {
                                         "value": 0.330206424,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -15710,14 +15878,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -15955,14 +16123,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -16204,14 +16372,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -16449,14 +16617,14 @@
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A8",
                                     "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "3M MgCl2",
-                                    "Regeneration 1 Plate id": "Rack 1",
-                                    "Regeneration 1 Position": "D1",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.322,
                                         "unit": "ug/mL"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "3M MgCl2",
+                                    "Regeneration 1 Plate id": "Rack 1",
+                                    "Regeneration 1 Position": "D1",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",

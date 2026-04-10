@@ -72,6 +72,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -108,6 +116,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -120,6 +136,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 1,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "A6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "A7",
@@ -127,11 +147,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "A12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "A6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -955,6 +971,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -991,6 +1015,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -1003,6 +1035,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 2,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "B6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "B7",
@@ -1010,11 +1046,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "B12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "B6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -1838,6 +1870,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -1874,6 +1914,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -1886,6 +1934,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 3,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "C6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "C7",
@@ -1893,11 +1945,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "C12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "C6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -2721,6 +2769,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -2757,6 +2813,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -2769,6 +2833,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 4,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "D6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "D7",
@@ -2776,11 +2844,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "D12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "D6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -3604,6 +3668,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -3640,6 +3712,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -3652,6 +3732,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 5,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "E6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "E7",
@@ -3659,11 +3743,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "E12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "E6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -4487,6 +4567,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -4523,6 +4611,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -4535,6 +4631,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 6,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "F6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "F7",
@@ -4542,11 +4642,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "F12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "F6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -5370,6 +5466,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -5406,6 +5510,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -5418,6 +5530,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 7,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "G6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "G7",
@@ -5425,11 +5541,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "G12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "G6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -6253,6 +6365,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -6289,6 +6409,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -6301,6 +6429,10 @@
                                     "Run": 1,
                                     "Cycle": 1,
                                     "Channel": 8,
+                                    "Capture 1 Solution": "Buffer",
+                                    "Capture 1 Plate id": "Plate 1",
+                                    "Capture 1 Position": "H6",
+                                    "Capture 1 Control type": "Blank control",
                                     "Analyte 1 Solution": "Buffer",
                                     "Analyte 1 Plate id": "Plate 1",
                                     "Analyte 1 Position": "H7",
@@ -6308,11 +6440,7 @@
                                     "Regeneration 1 Solution": "Regeneration_Buffer",
                                     "Regeneration 1 Plate id": "Plate 1",
                                     "Regeneration 1 Position": "H12",
-                                    "Regeneration 1 Control type": "Not a control",
-                                    "Capture 1 Solution": "Buffer",
-                                    "Capture 1 Plate id": "Plate 1",
-                                    "Capture 1 Position": "H6",
-                                    "Capture 1 Control type": "Blank control"
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -7161,6 +7289,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -7197,6 +7333,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -7209,18 +7353,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 1,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "A4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "A12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture1",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "A1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "A4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -7228,7 +7368,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "A12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -8079,6 +8223,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -8115,6 +8267,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -8127,18 +8287,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 2,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "B4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "B12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture2",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "B1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "B4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -8146,7 +8302,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "B12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -8997,6 +9157,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -9033,6 +9201,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -9045,18 +9221,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 3,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "C4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "C12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture3",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "C1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "C4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -9064,7 +9236,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "C12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -9915,6 +10091,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -9951,6 +10135,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -9963,18 +10155,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 4,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "D4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "D12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture5",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "D1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "D4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -9982,7 +10170,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "D12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -10833,6 +11025,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -10869,6 +11069,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -10881,18 +11089,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 5,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "E4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "E12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture6",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "E1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "E4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -10900,7 +11104,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "E12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -11751,6 +11959,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -11787,6 +12003,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -11799,18 +12023,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 6,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "F4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "F12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture7",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "F1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "F4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -11818,7 +12038,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "F12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -12643,6 +12867,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -12679,6 +12911,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -12691,18 +12931,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 7,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "G4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "G12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture9",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "G1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "G4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -12710,7 +12946,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "G12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -13561,6 +13801,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Included": "Yes",
                                             "Sensorgram type": "Active",
                                             "Level": {
@@ -13597,6 +13845,14 @@
                                                 "value": 30.0,
                                                 "unit": "µL/min"
                                             },
+                                            "Capture 1 Contact time": {
+                                                "value": 200.0,
+                                                "unit": "s"
+                                            },
+                                            "Capture 1 Flow rate": {
+                                                "value": 5.0,
+                                                "unit": "µL/min"
+                                            },
                                             "Sensorgram type": "Reference subtracted"
                                         }
                                     }
@@ -13609,18 +13865,14 @@
                                     "Run": 1,
                                     "Cycle": 2,
                                     "Channel": 8,
-                                    "Analyte 1 Solution": "analyte2",
-                                    "Analyte 1 Plate id": "Plate 1",
-                                    "Analyte 1 Position": "H4",
-                                    "Analyte 1 Control type": "Not a control",
-                                    "Regeneration 1 Solution": "Regeneration_Buffer",
-                                    "Regeneration 1 Plate id": "Plate 1",
-                                    "Regeneration 1 Position": "H12",
-                                    "Regeneration 1 Control type": "Not a control",
                                     "Capture 1 Solution": "capture11",
                                     "Capture 1 Plate id": "Plate 2",
                                     "Capture 1 Position": "H1",
                                     "Capture 1 Control type": "Not a control",
+                                    "Analyte 1 Solution": "analyte2",
+                                    "Analyte 1 Plate id": "Plate 1",
+                                    "Analyte 1 Position": "H4",
+                                    "Analyte 1 Control type": "Not a control",
                                     "Analyte 1 Concentration": {
                                         "value": 0.0,
                                         "unit": "nM"
@@ -13628,7 +13880,11 @@
                                     "Analyte 1 Molecular weight": {
                                         "value": 44000.0,
                                         "unit": "Da"
-                                    }
+                                    },
+                                    "Regeneration 1 Solution": "Regeneration_Buffer",
+                                    "Regeneration 1 Plate id": "Plate 1",
+                                    "Regeneration 1 Position": "H12",
+                                    "Regeneration 1 Control type": "Not a control"
                                 }
                             },
                             "detection type": "Surface Plasmon Resonance",
@@ -38253,7 +38509,7 @@
             "file name": "evaluation_name",
             "UNC path": "my_evaluation_path",
             "ASM converter name": "allotropy_cytiva_biacore_insight",
-            "ASM converter version": "0.1.113",
+            "ASM converter version": "0.1.116",
             "software name": "Biacore Insight Evaluation",
             "software version": "6.0.0.0000"
         },

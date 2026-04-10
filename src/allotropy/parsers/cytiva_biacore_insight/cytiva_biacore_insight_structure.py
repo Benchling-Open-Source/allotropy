@@ -101,6 +101,112 @@ def _get_capture_custom_info(
     return capture_info
 
 
+def _get_analyte_custom_info(
+    first_row_data: SeriesData, channel_data: pd.DataFrame
+) -> dict[str, Any | None]:
+    """
+    Dynamically extract all Analyte columns (Analyte 1-N) that exist in the data.
+
+    Args:
+        first_row_data: SeriesData from first row of channel data
+        channel_data: DataFrame with channel data
+
+    Returns:
+        Dictionary with all available Analyte fields
+    """
+    analyte_info: dict[str, Any | None] = {}
+
+    # OPTIMIZATION: Get column set once for fast lookups
+    columns_set = set(channel_data.columns)
+
+    # Check for Analyte 1-10 (scan up to 10, typical max)
+    for analyte_num in range(1, 11):
+        solution_col = f"Analyte {analyte_num} Solution"
+
+        # Only process if this analyte's solution column exists
+        if solution_col not in columns_set:
+            continue
+
+        # Add Solution field
+        analyte_info[solution_col] = first_row_data.get(str, solution_col)
+
+        # Add other Analyte fields if they exist
+        for field in ["Plate id", "Position", "Control type"]:
+            col_name = f"Analyte {analyte_num} {field}"
+            if col_name in columns_set:
+                analyte_info[col_name] = first_row_data.get(str, col_name)
+
+        # Add Concentration field (can be in nM, µM, or µg/ml)
+        concentration: TQuantityValueNanomolar | TQuantityValueMicrogramPerMilliliter | None = (
+            None
+        )
+        for unit_suffix in ["(nM)", "(µM)", "(µg/ml)"]:
+            conc_col = f"Analyte {analyte_num} Concentration {unit_suffix}"
+            if conc_col in columns_set:
+                if unit_suffix == "(nM)":
+                    concentration = quantity_or_none(
+                        TQuantityValueNanomolar,
+                        first_row_data.get(float, conc_col),
+                    )
+                elif unit_suffix == "(µg/ml)":
+                    concentration = quantity_or_none(
+                        TQuantityValueMicrogramPerMilliliter,
+                        first_row_data.get(float, conc_col),
+                    )
+                # For µM, we don't have a TQuantityValue type, skip for now
+                if concentration:
+                    analyte_info[f"Analyte {analyte_num} Concentration"] = concentration
+                    break
+
+        # Add Molecular weight field
+        mw_col = f"Analyte {analyte_num} Molecular weight (Da)"
+        if mw_col in columns_set:
+            analyte_info[f"Analyte {analyte_num} Molecular weight"] = quantity_or_none(
+                TQuantityValueDalton,
+                first_row_data.get(float, mw_col),
+            )
+
+    return analyte_info
+
+
+def _get_regeneration_custom_info(
+    first_row_data: SeriesData, channel_data: pd.DataFrame
+) -> dict[str, Any | None]:
+    """
+    Dynamically extract all Regeneration columns (Regeneration 1-N) that exist in the data.
+
+    Args:
+        first_row_data: SeriesData from first row of channel data
+        channel_data: DataFrame with channel data
+
+    Returns:
+        Dictionary with all available Regeneration fields
+    """
+    regen_info: dict[str, Any | None] = {}
+
+    # OPTIMIZATION: Get column set once for fast lookups
+    columns_set = set(channel_data.columns)
+
+    # Check for Regeneration 1-10 (scan up to 10, typical max)
+    for regen_num in range(1, 11):
+        solution_col = f"Regeneration {regen_num} Solution"
+
+        # Only process if this regeneration's solution column exists
+        if solution_col not in columns_set:
+            continue
+
+        # Add Solution field
+        regen_info[solution_col] = first_row_data.get(str, solution_col)
+
+        # Add other Regeneration fields if they exist
+        for field in ["Plate id", "Position", "Control type"]:
+            col_name = f"Regeneration {regen_num} {field}"
+            if col_name in columns_set:
+                regen_info[col_name] = first_row_data.get(str, col_name)
+
+    return regen_info
+
+
 def _get_table_from_dataframe(df: pd.DataFrame, split_on: str) -> pd.DataFrame:
     data_table = drop_df_rows_while(df, lambda row: row[0] != split_on)
     return parse_header_row(
@@ -341,9 +447,11 @@ class EvaluationKinetics:
         analyte_solution: str | None,
     ) -> KineticsData:
         empty = KineticsData()
-        if capture_solution is None or analyte_solution is None:
+        if analyte_solution is None:
             return empty
-        return self._data.get(f"{channel} {capture_solution} {analyte_solution}", empty)
+        # Handle cases where capture_solution might be None (treat as empty string)
+        capture_key = capture_solution if capture_solution is not None else ""
+        return self._data.get(f"{channel} {capture_key} {analyte_solution}", empty)
 
 
 class EvaluationConcentration:
@@ -502,6 +610,98 @@ class MeasurementData:
             run_info = SeriesData() if run_data.empty else df_to_series_data(run_data)
             # All the info needed in the device control document is the same for all flow cell data
             flow_cell_info = SeriesData(flow_cell_data.iloc[0])
+
+            # Build device control custom info with dynamic analyte and regeneration fields
+            device_control_custom_info_dict: dict[str, Any | None] = {}
+            columns_set = set(flow_cell_data.columns)
+
+            # Dynamically add Analyte 1-N fields
+            for analyte_num in range(1, 11):
+                contact_time_col = f"Analyte {analyte_num} Contact time (s)"
+                if contact_time_col not in columns_set:
+                    continue
+
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Contact time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(float, contact_time_col),
+                )
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Dissociation time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(
+                        float, f"Analyte {analyte_num} Dissociation time (s)"
+                    ),
+                )
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Flow rate"
+                ] = quantity_or_none(
+                    TQuantityValueMicroliterPerMinute,
+                    flow_cell_info.get(
+                        float, f"Analyte {analyte_num} Flow rate (µl/min)"
+                    ),
+                )
+
+            # Dynamically add Regeneration 1-N fields
+            for regen_num in range(1, 11):
+                contact_time_col = f"Regeneration {regen_num} Contact time (s)"
+                if contact_time_col not in columns_set:
+                    continue
+
+                device_control_custom_info_dict[
+                    f"Regeneration {regen_num} Contact time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(float, contact_time_col),
+                )
+                device_control_custom_info_dict[
+                    f"Regeneration {regen_num} Flow rate"
+                ] = quantity_or_none(
+                    TQuantityValueMicroliterPerMinute,
+                    flow_cell_info.get(
+                        float, f"Regeneration {regen_num} Flow rate (µl/min)"
+                    ),
+                )
+
+            # Dynamically add Capture 1-N fields
+            for capture_num in range(1, 6):
+                contact_time_col = f"Capture {capture_num} Contact time (s)"
+                if contact_time_col not in columns_set:
+                    continue
+
+                device_control_custom_info_dict[
+                    f"Capture {capture_num} Contact time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(float, contact_time_col),
+                )
+                device_control_custom_info_dict[
+                    f"Capture {capture_num} Flow rate"
+                ] = quantity_or_none(
+                    TQuantityValueMicroliterPerMinute,
+                    flow_cell_info.get(
+                        float, f"Capture {capture_num} Flow rate (µl/min)"
+                    ),
+                )
+
+            # Add other standard fields
+            device_control_custom_info_dict.update(
+                {
+                    "Included": run_info.get(str, "Included"),
+                    "Sensorgram type": flow_cell_info.get(
+                        str,
+                        "Sensorgram type",
+                        run_info.get(str, "Sensorgram type"),
+                    ),
+                    "Level": quantity_or_none(
+                        TQuantityValueResponseUnit,
+                        run_info.get(float, "Level (RU)"),
+                    ),
+                }
+            )
+
             device_control_document.append(
                 DeviceControlDocument(
                     device_type=constants.DEVICE_TYPE,
@@ -510,46 +710,7 @@ class MeasurementData:
                         float, "Temperature (°C)"
                     ),
                     device_control_custom_info=_clean_custom_info(
-                        {
-                            "Analyte 1 Contact time": quantity_or_none(
-                                TQuantityValueSecondTime,
-                                flow_cell_info.get(float, "Analyte 1 Contact time (s)"),
-                            ),
-                            "Analyte 1 Dissociation time": quantity_or_none(
-                                TQuantityValueSecondTime,
-                                flow_cell_info.get(
-                                    float, "Analyte 1 Dissociation time (s)"
-                                ),
-                            ),
-                            "Analyte 1 Flow rate": quantity_or_none(
-                                TQuantityValueMicroliterPerMinute,
-                                flow_cell_info.get(
-                                    float, "Analyte 1 Flow rate (µl/min)"
-                                ),
-                            ),
-                            "Regeneration 1 Contact time": quantity_or_none(
-                                TQuantityValueSecondTime,
-                                flow_cell_info.get(
-                                    float, "Regeneration 1 Contact time (s)"
-                                ),
-                            ),
-                            "Regeneration 1 Flow rate": quantity_or_none(
-                                TQuantityValueMicroliterPerMinute,
-                                flow_cell_info.get(
-                                    float, "Regeneration 1 Flow rate (µl/min)"
-                                ),
-                            ),
-                            "Included": run_info.get(str, "Included"),
-                            "Sensorgram type": flow_cell_info.get(
-                                str,
-                                "Sensorgram type",
-                                run_info.get(str, "Sensorgram type"),
-                            ),
-                            "Level": quantity_or_none(
-                                TQuantityValueResponseUnit,
-                                run_info.get(float, "Level (RU)"),
-                            ),
-                        }
+                        device_control_custom_info_dict
                     ),
                 )
             )
@@ -584,48 +745,17 @@ class MeasurementData:
                     "Run": run,
                     "Cycle": cycle_number,
                     "Channel": channel,
-                    "Analyte 1 Solution": analyte_solution,
-                    "Analyte 1 Plate id": first_row_data.get(str, "Analyte 1 Plate id"),
-                    "Analyte 1 Position": first_row_data.get(str, "Analyte 1 Position"),
-                    "Analyte 1 Control type": first_row_data.get(
-                        str, "Analyte 1 Control type"
-                    ),
-                    "Regeneration 1 Solution": first_row_data.get(
-                        str, "Regeneration 1 Solution"
-                    ),
-                    "Regeneration 1 Plate id": first_row_data.get(
-                        str, "Regeneration 1 Plate id"
-                    ),
-                    "Regeneration 1 Position": first_row_data.get(
-                        str, "Regeneration 1 Position"
-                    ),
-                    "Regeneration 1 Control type": first_row_data.get(
-                        str, "Regeneration 1 Control type"
-                    ),
                     # Capture data may not be present in all file formats
                     # Dynamically add all Capture columns that exist (Capture 1-5)
                     **_get_capture_custom_info(channel_data, capture_solution),
-                    "Analyte 1 Concentration": (
-                        # Try nM first, then µg/ml
-                        quantity_or_none(
-                            TQuantityValueNanomolar,
-                            first_row_data.get(float, "Analyte 1 Concentration (nM)"),
-                        )
-                        or quantity_or_none(
-                            TQuantityValueMicrogramPerMilliliter,
-                            first_row_data.get(
-                                float, "Analyte 1 Concentration (µg/ml)"
-                            ),
-                        )
-                    ),
+                    # Dynamically add all Analyte columns that exist (Analyte 1-N)
+                    **_get_analyte_custom_info(first_row_data, channel_data),
                     "Analyte 1 Calculated Concentration": quantity_or_none(
                         TQuantityValueMicrogramPerMilliliter,
                         calculated_concentration,
                     ),
-                    "Analyte 1 Molecular weight": quantity_or_none(
-                        TQuantityValueDalton,
-                        first_row_data.get(float, "Analyte 1 Molecular weight (Da)"),
-                    ),
+                    # Dynamically add all Regeneration columns that exist (Regeneration 1-N)
+                    **_get_regeneration_custom_info(first_row_data, channel_data),
                 }
             ),
             kinetics=evaluation_kinetics.get_data(
