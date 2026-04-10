@@ -473,13 +473,12 @@ class EvaluationKinetics:
         channel: int | str,
         capture_solution: str | None,
         analyte_solution: str | None,
-    ) -> KineticsData:
-        empty = KineticsData()
+    ) -> list[KineticsData]:
         if analyte_solution is None:
-            return empty
+            return []
         # Handle cases where capture_solution might be None (treat as empty string)
         capture_key = capture_solution if capture_solution is not None else ""
-        return self._data.get(f"{channel} {capture_key} {analyte_solution}", empty)
+        return self._data.get(f"{channel} {capture_key} {analyte_solution}", [])
 
 
 class EvaluationConcentration:
