@@ -190,6 +190,8 @@ def property_name_to_python(name: str) -> str:
         "$asm.manifest" → "asm_manifest"
         "@index" → "field_index"
         "@type" → "field_type"
+        "minInclusive" → "min_inclusive"
+        "fieldComponentDatatype" → "field_component_datatype"
     """
     if name == "@index":
         return "field_index"
@@ -198,13 +200,21 @@ def property_name_to_python(name: str) -> str:
     if name == "@id":
         return "field_id"
 
+    # @-prefixed properties get "field_" prefix (datamodel-codegen convention)
+    at_prefix = name.startswith("@")
+
     # Strip leading $ or @
     name = name.lstrip("$@")
+
+    if at_prefix:
+        name = "field_" + name
 
     # Replace dots, spaces, hyphens with underscores
     result = re.sub(r"[\s.\-/~^]+", "_", name)
     # Remove any remaining non-alphanumeric chars (except underscore)
     result = re.sub(r"[^a-zA-Z0-9_]", "", result)
+    # Insert underscores at camelCase boundaries (e.g. minInclusive → min_Inclusive)
+    result = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", result)
     # Ensure snake_case
     result = result.lower()
     # Don't start with a digit
