@@ -381,47 +381,63 @@ class BiacoreInsightMetadata:
 
 @dataclass(frozen=True)
 class KineticsData:
+    model_name: str  # "1:1 binding", "Steady state affinity", etc.
     acceptance_state: str | None = None
     curve_markers: str | None = None
-    kinetics_model: str | None = None
     binding_on_rate_measurement_datum: float | None = None
     binding_off_rate_measurement_datum: float | None = None
     equilibrium_dissociation_constant: float | None = None
     maximum_binding_capacity: float | None = None
     kinetics_chi_squared: float | None = None
     tc: float | None = None
+    u_value: float | None = None  # U-value for kinetics analysis
     offset: float | None = None  # Affinity-specific field
-    is_affinity_measurement: bool = False  # Track if this is from Affinity analysis
 
     @staticmethod
-    def create(kinetics_data: SeriesData) -> KineticsData:
-        # Detect if this is affinity data by checking which chi-squared column is present
-        kinetics_chi = kinetics_data.get(float, "Kinetics Chi² (RU²)")
-        affinity_chi = kinetics_data.get(float, "Affinity Chi² (RU²)")
-        is_affinity = kinetics_chi is None and affinity_chi is not None
+    def create_from_kinetics_model(kinetics_data: SeriesData) -> KineticsData | None:
+        """Create KineticsData from 1:1 binding model columns."""
+        model = kinetics_data.get(str, "Kinetics model")
+        if model is None:
+            return None
 
+        # For kinetics model, use the first set of columns (ka, kd, Rmax, KD, U-value)
+        # When duplicate columns exist, SeriesData.get with duplicate_strategy="first" returns first value
         return KineticsData(
+            model_name=model,
             acceptance_state=kinetics_data.get(str, "Acceptance state"),
             curve_markers=kinetics_data.get(str, "Curve markers"),
-            # Try "Kinetics model" first, fall back to "Affinity model"
-            kinetics_model=(
-                kinetics_data.get(str, "Kinetics model")
-                or kinetics_data.get(str, "Affinity model")
-            ),
             binding_on_rate_measurement_datum=kinetics_data.get(float, "ka (1/Ms)"),
             binding_off_rate_measurement_datum=kinetics_data.get(float, "kd (1/s)"),
-            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)"),
-            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)"),
-            # Try "Kinetics Chi²" first, fall back to "Affinity Chi²"
-            kinetics_chi_squared=kinetics_chi or affinity_chi,
+            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)", duplicate_strategy="first"),
+            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)", duplicate_strategy="first"),
+            kinetics_chi_squared=kinetics_data.get(float, "Kinetics Chi² (RU²)"),
+            u_value=kinetics_data.get(float, "U-value"),
             tc=kinetics_data.get(float, "tc"),
-            offset=kinetics_data.get(float, "offset (RU)"),  # Affinity-specific
-            is_affinity_measurement=is_affinity,
+        )
+
+    @staticmethod
+    def create_from_affinity_model(kinetics_data: SeriesData) -> KineticsData | None:
+        """Create KineticsData from Steady state affinity model columns."""
+        model = kinetics_data.get(str, "Affinity model")
+        if model is None:
+            return None
+
+        # For affinity model, use the second set of columns (KD, Rmax, offset)
+        # When duplicate columns exist, SeriesData.get with duplicate_strategy="last" returns last value
+        return KineticsData(
+            model_name=model,
+            acceptance_state=kinetics_data.get(str, "Acceptance state"),
+            curve_markers=kinetics_data.get(str, "Curve markers"),
+            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)", duplicate_strategy="last"),
+            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)", duplicate_strategy="last"),
+            kinetics_chi_squared=kinetics_data.get(float, "Affinity Chi² (RU²)"),
+            offset=kinetics_data.get(float, "offset (RU)"),
+            tc=kinetics_data.get(float, "tc"),
         )
 
 
 class EvaluationKinetics:
-    _data: dict[str, KineticsData]
+    _data: dict[str, list[KineticsData]]
 
     def __init__(self, kinetics_table: pd.DataFrame) -> None:
         def _get_key(row: pd.Series[Any]) -> str:
@@ -430,15 +446,27 @@ class EvaluationKinetics:
             # For affinity data, we might have multiple capture solutions
             # Build key with all available capture solutions
             capture_solution = row.get("Capture 1 Solution", "")
+            # Handle None, NaN, or pd.NA values for capture_solution
+            if capture_solution is None or (isinstance(capture_solution, float) and np.isnan(capture_solution)):
+                capture_solution = ""
             analyte_solution = row.get("Analyte 1 Solution", "")
             return f"{channel_or_flowcell} {capture_solution} {analyte_solution}"
 
         self._data = {}
         if not kinetics_table.empty and len(kinetics_table.columns) > 0:
-            self._data = {
-                _get_key(row): KineticsData.create(SeriesData(row))
-                for _, row in kinetics_table.iterrows()
-            }
+            for _, row in kinetics_table.iterrows():
+                series_data = SeriesData(row)
+                key = _get_key(row)
+
+                # Try to create both kinetics and affinity models
+                models = []
+                if kinetics_model := KineticsData.create_from_kinetics_model(series_data):
+                    models.append(kinetics_model)
+                if affinity_model := KineticsData.create_from_affinity_model(series_data):
+                    models.append(affinity_model)
+
+                if models:
+                    self._data[key] = models
 
     def get_data(
         self,
@@ -567,7 +595,7 @@ class MeasurementData:
     ligand_identifier: str | None
     device_control_document: list[DeviceControlDocument]
     sample_custom_info: dict[str, Any | None]
-    kinetics: KineticsData
+    kinetics: list[KineticsData]
     report_point_data: list[ReportPointData]
 
     @staticmethod

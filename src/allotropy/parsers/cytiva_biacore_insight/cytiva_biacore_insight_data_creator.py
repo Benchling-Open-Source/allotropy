@@ -20,6 +20,7 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ProcessedData,
     ReportPoint,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -113,76 +114,105 @@ def _get_measurements(
 ) -> list[Measurement]:
     data_processing_document = dict(metadata.data_processing_document or {})
 
-    return [
-        Measurement(
-            identifier=measurement.identifier,
-            sample_identifier=measurement.sample_identifier,
-            type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-            method_name=measurement.method_name,
-            ligand_identifier=measurement.ligand_identifier,
-            device_control_document=measurement.device_control_document,
-            sample_custom_info=measurement.sample_custom_info,
-            binding_on_rate_measurement_datum__kon_=(
-                measurement.kinetics.binding_on_rate_measurement_datum
-            ),
-            binding_off_rate_measurement_datum__koff_=(
-                measurement.kinetics.binding_off_rate_measurement_datum
-            ),
-            equilibrium_dissociation_constant__kd_=(
-                measurement.kinetics.equilibrium_dissociation_constant
-            ),
-            maximum_binding_capacity__rmax_=(
-                measurement.kinetics.maximum_binding_capacity
-            ),
-            processed_data_custom_info=_clean_custom_info(
-                {
-                    (
-                        "Affinity Chi squared"
-                        if measurement.kinetics.is_affinity_measurement
-                        else "Kinetics Chi squared"
-                    ): quantity_or_none(
-                        TQuantityValueSquareResponseUnit,
-                        measurement.kinetics.kinetics_chi_squared,
+    measurements = []
+    for measurement in measurement_data:
+        # Create ProcessedData for each kinetics model
+        processed_data_list = []
+
+        if measurement.kinetics:
+            # If we have kinetics data, create one ProcessedData per model
+            for kinetics in measurement.kinetics:
+                # Determine chi-squared label based on model type
+                chi_squared_label = (
+                    "Affinity Chi squared"
+                    if "affinity" in kinetics.model_name.lower()
+                    else "Kinetics Chi squared"
+                )
+
+                processed_data = ProcessedData(
+                    model_name=kinetics.model_name,
+                    binding_on_rate_measurement_datum__kon_=(
+                        kinetics.binding_on_rate_measurement_datum
                     ),
-                    "tc": quantity_or_none(
-                        TQuantityValueUnitless, measurement.kinetics.tc
+                    binding_off_rate_measurement_datum__koff_=(
+                        kinetics.binding_off_rate_measurement_datum
                     ),
-                    "offset": quantity_or_none(
-                        TQuantityValueResponseUnit,
-                        measurement.kinetics.offset,
+                    equilibrium_dissociation_constant__kd_=(
+                        kinetics.equilibrium_dissociation_constant
                     ),
-                }
-            ),
-            report_point_data=[
-                ReportPoint(
-                    identifier=rp.identifier,
-                    identifier_role=rp.identifier_role,
-                    absolute_resonance=rp.absolute_resonance,
-                    time_setting=rp.time_setting,
-                    relative_resonance=rp.relative_resonance,
-                    custom_info=_clean_custom_info(
+                    maximum_binding_capacity__rmax_=(
+                        kinetics.maximum_binding_capacity
+                    ),
+                    processed_data_custom_info=_clean_custom_info(
                         {
-                            "Step purpose": rp.step_purpose,
-                            "Window": quantity_or_none(
-                                TQuantityValueSecondTime, rp.window
+                            chi_squared_label: quantity_or_none(
+                                TQuantityValueSquareResponseUnit,
+                                kinetics.kinetics_chi_squared,
                             ),
-                            "Baseline": rp.baseline,
+                            "tc": quantity_or_none(
+                                TQuantityValueUnitless, kinetics.tc
+                            ),
+                            "U-value": quantity_or_none(
+                                TQuantityValueUnitless, kinetics.u_value
+                            ),
+                            "offset": quantity_or_none(
+                                TQuantityValueResponseUnit,
+                                kinetics.offset,
+                            ),
+                        }
+                    ),
+                    data_processing_document=_clean_custom_info(
+                        {
+                            **data_processing_document,
+                            "Acceptance State": kinetics.acceptance_state,
+                            "Curve Markers": kinetics.curve_markers,
+                            "Kinetics Model": kinetics.model_name,
                         }
                     ),
                 )
-                for rp in measurement.report_point_data
-            ],
-            data_processing_document=_clean_custom_info(
-                {
-                    **data_processing_document,
-                    "Acceptance State": measurement.kinetics.acceptance_state,
-                    "Curve Markers": measurement.kinetics.curve_markers,
-                    "Kinetics Model": measurement.kinetics.kinetics_model,
-                }
-            ),
+                processed_data_list.append(processed_data)
+        else:
+            # If no kinetics data, create a single ProcessedData with just data processing info
+            processed_data_list.append(
+                ProcessedData(
+                    model_name="N/A",  # No model when there's no kinetics data
+                    data_processing_document=_clean_custom_info(data_processing_document) if data_processing_document else None,
+                )
+            )
+
+        measurements.append(
+            Measurement(
+                identifier=measurement.identifier,
+                sample_identifier=measurement.sample_identifier,
+                type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
+                method_name=measurement.method_name,
+                ligand_identifier=measurement.ligand_identifier,
+                device_control_document=measurement.device_control_document,
+                sample_custom_info=measurement.sample_custom_info,
+                processed_data=processed_data_list,
+                report_point_data=[
+                    ReportPoint(
+                        identifier=rp.identifier,
+                        identifier_role=rp.identifier_role,
+                        absolute_resonance=rp.absolute_resonance,
+                        time_setting=rp.time_setting,
+                        relative_resonance=rp.relative_resonance,
+                        custom_info=_clean_custom_info(
+                            {
+                                "Step purpose": rp.step_purpose,
+                                "Window": quantity_or_none(
+                                    TQuantityValueSecondTime, rp.window
+                                ),
+                                "Baseline": rp.baseline,
+                            }
+                        ),
+                    )
+                    for rp in measurement.report_point_data
+                ],
+            )
         )
-        for measurement in measurement_data
-    ]
+
+    return measurements
 
 
 def create_calculated_data(data: Data) -> list[CalculatedDocument]:
