@@ -209,8 +209,10 @@ def property_name_to_python(name: str) -> str:
     if at_prefix:
         name = "field_" + name
 
-    # Replace dots, spaces, hyphens with underscores
+    # Replace dots, spaces, hyphens with underscores (collapse consecutive)
     result = re.sub(r"[\s.\-/~^]+", "_", name)
+    # Replace parentheses with individual underscores (not collapsed with whitespace)
+    result = result.replace("(", "_").replace(")", "_")
     # Remove any remaining non-alphanumeric chars (except underscore)
     result = re.sub(r"[^a-zA-Z0-9_]", "", result)
     # Insert underscores at camelCase boundaries (e.g. minInclusive → min_Inclusive)

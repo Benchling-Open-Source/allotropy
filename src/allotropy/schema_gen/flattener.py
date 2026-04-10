@@ -62,7 +62,8 @@ def flatten_external_defs(
 
 def strip_asm_keys(schema: dict[str, Any]) -> dict[str, Any]:
     """Remove $asm.* metadata keys that datamodel-codegen doesn't understand."""
-    return _strip_keys_recursive(copy.deepcopy(schema))
+    result: dict[str, Any] = _strip_keys_recursive(copy.deepcopy(schema))
+    return result
 
 
 def needs_flattening(schema: dict[str, Any]) -> bool:

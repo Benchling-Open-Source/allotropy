@@ -240,7 +240,8 @@ def _extract_unit_const(schema: dict[str, Any]) -> str | None:
     """Extract the const unit value from a unit $defs entry."""
     props = schema.get("properties", {})
     unit_prop = props.get("unit", {})
-    return unit_prop.get("const")
+    const: str | None = unit_prop.get("const")
+    return const
 
 
 def _dquote(s: str) -> str:
