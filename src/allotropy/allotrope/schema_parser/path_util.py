@@ -120,9 +120,22 @@ def get_import_path_from_path(model_path: Path) -> str:
     )
 
 
+def get_v2_import_path_from_path(model_path: Path) -> str:
+    """Same as get_import_path_from_path but for models_v2 package."""
+    return f"allotropy.allotrope.models_v2.{'.'.join(PureWindowsPath(model_path).parts)[:-3]}"
+
+
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_asm(asm)
     model_path = get_model_path_from_schema_path(Path(schema_path))
     import_path = get_import_path_from_path(model_path)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
+    return importlib.import_module(import_path).Model
+
+
+def get_v2_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
+    """Same as get_model_class_from_schema but for v2 generated models."""
+    schema_path = get_schema_path_from_asm(asm)
+    model_path = get_model_path_from_schema_path(Path(schema_path))
+    import_path = get_v2_import_path_from_path(model_path)
     return importlib.import_module(import_path).Model

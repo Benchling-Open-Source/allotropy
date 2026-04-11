@@ -60,9 +60,21 @@ def dedup_with_imports(
     class_registry: dict[str, str],
     models_package: str,
 ) -> str:
-    """Remove classes already defined in dependency modules, add imports."""
+    """Remove classes already defined in dependency modules, add imports.
+
+    Only deduplicates against classes from core/shared schemas (core, hierarchy,
+    cube, units), not technique-specific ADM schemas, since those may share
+    class names but differ in fields.
+    """
     if not class_registry:
         return source
+
+    # Only dedup against core/shared schemas, not other ADM schemas
+    safe_registry = {
+        name: module
+        for name, module in class_registry.items()
+        if _is_core_module(module)
+    }
 
     lines = source.split("\n")
     new_imports: dict[str, set[str]] = {}  # module_path -> {class_names}
@@ -72,13 +84,21 @@ def dedup_with_imports(
     while i < len(lines):
         line = lines[i]
 
-        # Check for type alias: ClassName = ...
+        # Check for type alias: ClassName = ... (single or multi-line)
         alias_match = re.match(r"^(\w+)\s*=\s*", line)
         if alias_match and not line.startswith("    "):
             name = alias_match.group(1)
-            if name in class_registry:
+            if name in safe_registry:
                 lines_to_remove.add(i)
-                module_path = class_registry[name]
+                # Handle multi-line alias: Name = (\n    ...\n)
+                if line.rstrip().endswith("("):
+                    j = i + 1
+                    while j < len(lines):
+                        lines_to_remove.add(j)
+                        if lines[j].strip() == ")":
+                            break
+                        j += 1
+                module_path = safe_registry[name]
                 new_imports.setdefault(module_path, set()).add(name)
                 i += 1
                 continue
@@ -90,13 +110,25 @@ def dedup_with_imports(
                 class_match = re.match(r"class (\w+)", lines[class_line_idx])
                 if class_match:
                     name = class_match.group(1)
-                    if name in class_registry:
-                        # Remove decorator + class + body
-                        module_path = class_registry[name]
+                    if name in safe_registry:
+                        # Remove decorator + class header + body
+                        module_path = safe_registry[name]
                         new_imports.setdefault(module_path, set()).add(name)
                         lines_to_remove.add(i)  # decorator
                         lines_to_remove.add(class_line_idx)  # class line
                         j = class_line_idx + 1
+                        # Handle multi-line class definition:
+                        # class Foo(
+                        #     Base1, Base2
+                        # ):
+                        if lines[class_line_idx].rstrip().endswith("("):
+                            while j < len(lines):
+                                lines_to_remove.add(j)
+                                if lines[j].strip().startswith("):"):
+                                    j += 1
+                                    break
+                                j += 1
+                        # Remove class body (indented lines + trailing blanks)
                         while j < len(lines) and (
                             lines[j].startswith("    ") or lines[j] == ""
                         ):
@@ -118,12 +150,12 @@ def dedup_with_imports(
     # Build filtered source
     filtered = [line for idx, line in enumerate(lines) if idx not in lines_to_remove]
 
-    # Build import lines
+    # Build import lines (noqa: F401 prevents ruff from removing re-exports)
     import_lines: list[str] = []
     for module_path, names in sorted(new_imports.items()):
         sorted_names = sorted(names)
         import_lines.append(
-            f"from {models_package}.{module_path} import (\n"
+            f"from {models_package}.{module_path} import (  # noqa: F401\n"
             + "".join(f"    {n},\n" for n in sorted_names)
             + ")"
         )
@@ -138,6 +170,18 @@ def dedup_with_imports(
         result_lines.insert(insert_idx, imp_line)
 
     return "\n".join(result_lines)
+
+
+def _is_core_module(module_path: str) -> bool:
+    """Check if a module path is a core/shared schema (safe for dedup).
+
+    Core schemas (core, hierarchy, cube, units) produce identical classes
+    across ADM schemas. Technique-specific ADM schemas (spectrophotometry,
+    qpcr, etc.) may share class names but differ in fields.
+    """
+    # Core sub-schemas live under adm.core.* or qudt.*
+    core_prefixes = ("adm.core.", "qudt.")
+    return any(module_path.startswith(p) for p in core_prefixes)
 
 
 def _find_import_insert_point(lines: list[str]) -> int:
@@ -217,26 +261,29 @@ def add_json_name_metadata(source: str, schema: dict[str, Any]) -> str:
 
 
 def _join_multiline_defaults(source: str) -> str:
-    """Join multi-line field default values into single lines.
+    """Join multi-line field definitions into single lines.
 
-    datamodel-codegen produces patterns like::
+    datamodel-codegen produces two multi-line patterns::
 
+        # Pattern 1: multi-line default value
         field_name: Type | None = (
             None
         )
 
-    This normalizes them to ``field_name: Type | None = None``.
+        # Pattern 2: multi-line type annotation
+        field_name: (
+            LongType | None
+        ) = None
+
+    Both are normalized to single-line form.
     """
-    # Pattern: "    name: Type = (" followed by indented lines until "    )"
     lines = source.split("\n")
     result: list[str] = []
     i = 0
     while i < len(lines):
         line = lines[i]
-        # Check for field with opening paren default
+        # Pattern 1: field with opening paren default "field: Type = ("
         if re.match(r"^    \w+:.*=\s*\(\s*$", line):
-            # Collect lines until closing paren
-            # Strip trailing "= (" to get "    name: Type"
             prefix = re.sub(r"\s*=\s*\(\s*$", "", line)
             i += 1
             default_parts: list[str] = []
@@ -245,9 +292,27 @@ def _join_multiline_defaults(source: str) -> str:
                 i += 1
             if i < len(lines):
                 i += 1  # skip the closing "    )"
-            # Join: "    name: Type = value"
             default_value = " ".join(default_parts) if default_parts else "None"
             result.append(f"{prefix} = {default_value}")
+        # Pattern 2: multi-line type annotation "field: ("
+        elif re.match(r"^    \w+:\s*\(\s*$", line):
+            field_prefix = re.sub(r"\s*\(\s*$", "", line)  # "    field:"
+            i += 1
+            type_parts: list[str] = []
+            while i < len(lines) and not re.match(r"^    \)\s*=", lines[i]):
+                type_parts.append(lines[i].strip())
+                i += 1
+            type_annotation = " ".join(type_parts) if type_parts else "Any"
+            # Extract default value from closing line "    ) = None"
+            if i < len(lines):
+                closing_match = re.match(r"^    \)\s*=\s*(.+)$", lines[i])
+                default_value = (
+                    closing_match.group(1).strip() if closing_match else "None"
+                )
+                i += 1
+            else:
+                default_value = "None"
+            result.append(f"{field_prefix} {type_annotation} = {default_value}")
         else:
             result.append(line)
             i += 1
@@ -325,10 +390,12 @@ def extract_class_names(source: str) -> list[str]:
     """Extract all class and type alias names from Python source."""
     names: list[str] = []
     for line in source.split("\n"):
-        # Class definition
+        # Class definition (skip Model — each ADM schema has its own)
         m = re.match(r"^class (\w+)", line)
         if m:
-            names.append(m.group(1))
+            name = m.group(1)
+            if name != "Model":
+                names.append(name)
             continue
         # Type alias at module level
         m = re.match(r"^(\w+)\s*=\s*", line)

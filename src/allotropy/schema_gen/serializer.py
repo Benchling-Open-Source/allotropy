@@ -17,6 +17,7 @@ Usage::
 from __future__ import annotations
 
 from dataclasses import fields, is_dataclass
+from enum import Enum
 from typing import Any, get_args, get_origin, TypeVar
 
 T = TypeVar("T")
@@ -42,6 +43,19 @@ def to_dict(obj: Any) -> Any:
                 continue
             json_key = f.metadata.get("json_name", f.name)
             result[json_key] = to_dict(value)
+        # Handle dynamically-added custom_information_document (not in fields())
+        if (
+            hasattr(obj, "custom_information_document")
+            and "custom_information_document" not in {f.name for f in fields(obj)}
+            and not isinstance(obj.custom_information_document, list)
+        ):
+            from allotropy.allotrope.converter import (
+                unstructure_custom_information_document,
+            )
+
+            result[
+                "custom information document"
+            ] = unstructure_custom_information_document(obj.custom_information_document)
         return result
 
     if isinstance(obj, list):
@@ -49,6 +63,10 @@ def to_dict(obj: Any) -> Any:
 
     if isinstance(obj, dict):
         return {k: to_dict(v) for k, v in obj.items()}
+
+    # Enum values: serialize as their value
+    if isinstance(obj, Enum):
+        return obj.value
 
     # Primitives: str, int, float, bool
     return obj

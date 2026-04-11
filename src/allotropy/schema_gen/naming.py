@@ -187,7 +187,7 @@ def property_name_to_python(name: str) -> str:
 
     Examples:
         "device system document" → "device_system_document"
-        "$asm.manifest" → "asm_manifest"
+        "$asm.manifest" → "field_asm_manifest"
         "@index" → "field_index"
         "@type" → "field_type"
         "minInclusive" → "min_inclusive"
@@ -200,13 +200,13 @@ def property_name_to_python(name: str) -> str:
     if name == "@id":
         return "field_id"
 
-    # @-prefixed properties get "field_" prefix (datamodel-codegen convention)
-    at_prefix = name.startswith("@")
+    # $- and @-prefixed properties get "field_" prefix (datamodel-codegen convention)
+    special_prefix = name.startswith("@") or name.startswith("$")
 
     # Strip leading $ or @
     name = name.lstrip("$@")
 
-    if at_prefix:
+    if special_prefix:
         name = "field_" + name
 
     # Replace dots, spaces, hyphens with underscores (collapse consecutive)

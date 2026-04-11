@@ -30,7 +30,11 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TMeasureArray,
 )
 from allotropy.allotrope.models.shared.definitions.units import HasUnit
-from allotropy.allotrope.schema_parser.path_util import get_model_class_from_schema
+from allotropy.allotrope.schema_parser.path_util import (
+    get_model_class_from_schema,
+    get_v2_model_class_from_schema,
+)
+from allotropy.schema_gen.serializer import from_dict, to_dict
 
 SPECIAL_KEYS = {
     "manifest": "$asm.manifest",
@@ -166,7 +170,11 @@ def add_custom_information_document(
         cleaned_dict, "custom information document"
     )
 
-    model.custom_information_document = custom_info_doc  # type: ignore
+    try:
+        model.custom_information_document = custom_info_doc  # type: ignore
+    except AttributeError:
+        # Frozen dataclasses block __setattr__; bypass with object.__setattr__
+        object.__setattr__(model, "custom_information_document", custom_info_doc)
     return model
 
 
@@ -419,12 +427,16 @@ def register_dataclass_hooks(converter: Converter) -> None:
                 and "custom information document" in val
                 and not isinstance(val["custom information document"], list)
             ):
-                structured.custom_information_document = (
-                    structure_custom_information_document(
-                        val["custom information document"],
-                        "custom information document",
-                    )
+                custom_info = structure_custom_information_document(
+                    val["custom information document"],
+                    "custom information document",
                 )
+                try:
+                    structured.custom_information_document = custom_info
+                except AttributeError:
+                    object.__setattr__(
+                        structured, "custom_information_document", custom_info
+                    )
             return structured
 
         return structure_item
@@ -514,3 +526,35 @@ def unstructure(model: Any) -> dict[str, Any]:
 def structure(asm: Mapping[str, Any], model_class: Any | None = None) -> Any:
     model_class = model_class or get_model_class_from_schema(asm)
     return CONVERTER.structure(asm, model_class)
+
+
+# ---------------------------------------------------------------------------
+# V2 model serialization entrypoints
+# ---------------------------------------------------------------------------
+# V2 models use json_name metadata on dataclass fields for serialization
+# instead of the cattrs-based CONVERTER used by v1 models.
+
+
+def is_v2_model(model: Any) -> bool:
+    """Check if a model instance is a v2 generated model."""
+    return getattr(model, "__module__", "").startswith("allotropy.allotrope.models_v2")
+
+
+def unstructure_v2(model: Any) -> dict[str, Any]:
+    """Convert a v2 model instance to a JSON-compatible dict.
+
+    Same signature as ``unstructure`` but uses json_name metadata
+    on v2 dataclass fields instead of the cattrs CONVERTER.
+    """
+    return cast(dict[str, Any], to_dict(model))
+
+
+def structure_v2(asm: Mapping[str, Any], model_class: Any | None = None) -> Any:
+    """Construct a v2 model instance from a JSON-compatible dict.
+
+    Same signature as ``structure`` but uses json_name metadata
+    on v2 dataclass fields instead of the cattrs CONVERTER.
+    """
+    if model_class is None:
+        model_class = get_v2_model_class_from_schema(asm)
+    return from_dict(asm, model_class)

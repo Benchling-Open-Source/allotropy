@@ -1,0 +1,167 @@
+"""Validation test: v2 generated models produce correct ASM JSON.
+
+This test:
+1. Runs the AppBio QuantStudio parser (now using v2 models) through the real pipeline
+2. Serializes with the v2 to_dict() serializer (auto-detected)
+3. Also serializes with to_dict() directly to confirm parity
+4. Validates json_name metadata coverage on all v2 model fields
+
+This validates that the v2 model swap is producing correct output.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+import pytest
+
+from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
+    AppBioQuantStudioParser,
+)
+from allotropy.schema_gen.serializer import to_dict
+
+TESTDATA_DIR = (
+    Path(__file__).parent.parent / "parsers" / "appbio_quantstudio" / "testdata"
+)
+GOLDEN_FILE = TESTDATA_DIR / "appbio_quantstudio_example01.json"
+INPUT_FILE = TESTDATA_DIR / "appbio_quantstudio_example01.txt"
+
+
+def _deep_diff(expected: Any, actual: Any, path: str = "") -> list[str]:
+    """Deep comparison returning list of difference descriptions."""
+    diffs = []
+
+    if isinstance(expected, dict) and isinstance(actual, dict):
+        all_keys = set(expected.keys()) | set(actual.keys())
+        for k in sorted(all_keys):
+            child_path = f"{path}.{k}" if path else k
+            if k not in expected:
+                diffs.append(f"EXTRA key in actual: {child_path}")
+            elif k not in actual:
+                diffs.append(f"MISSING key in actual: {child_path}")
+            else:
+                diffs.extend(_deep_diff(expected[k], actual[k], child_path))
+    elif isinstance(expected, list) and isinstance(actual, list):
+        if len(expected) != len(actual):
+            diffs.append(
+                f"LIST length mismatch at {path}: expected {len(expected)}, got {len(actual)}"
+            )
+        for i in range(min(len(expected), len(actual))):
+            diffs.extend(_deep_diff(expected[i], actual[i], f"{path}[{i}]"))
+    elif type(expected) != type(actual):
+        # Allow int/float equivalence
+        if isinstance(expected, int | float) and isinstance(actual, int | float):
+            if float(expected) != float(actual):
+                diffs.append(
+                    f"VALUE mismatch at {path}: expected {expected!r}, got {actual!r}"
+                )
+        else:
+            diffs.append(
+                f"TYPE mismatch at {path}: expected {type(expected).__name__}({expected!r}), "
+                f"got {type(actual).__name__}({actual!r})"
+            )
+    elif expected != actual:
+        diffs.append(f"VALUE mismatch at {path}: expected {expected!r}, got {actual!r}")
+
+    return diffs
+
+
+@pytest.mark.long
+def test_v2_model_produces_same_output():
+    """Validate v2 model pipeline produces correct ASM output for qPCR parser."""
+    if not INPUT_FILE.exists():
+        pytest.skip(f"Test data not found: {INPUT_FILE}")
+
+    # Run parser through the real pipeline (now using v2 models)
+    parser = AppBioQuantStudioParser()
+    named_file = NamedFileContents(INPUT_FILE.open("rb"), INPUT_FILE.name)
+    data = parser.create_data(named_file)
+
+    # Map and serialize through the real pipeline
+    mapper = parser._get_mapper()
+    model = mapper.map_model(data)
+
+    # serialize_and_validate_allotrope auto-detects v2 and uses to_dict
+    pipeline_dict = serialize_and_validate_allotrope(model)
+
+    # Also serialize directly with to_dict to confirm they match
+    direct_dict = to_dict(model)
+
+    # Pipeline and direct serialization must be identical
+    pipeline_json = json.dumps(pipeline_dict, indent=4, sort_keys=True)
+    direct_json = json.dumps(direct_dict, indent=4, sort_keys=True)
+    assert pipeline_json == direct_json, (
+        "Pipeline (serialize_and_validate_allotrope) and direct (to_dict) "
+        "serialization produce different output"
+    )
+
+    # Compare structure against golden file (values like UUIDs may differ)
+    golden = json.loads(GOLDEN_FILE.read_text())
+
+    # Strip volatile fields for structural comparison
+    def _strip_volatile(obj: Any) -> Any:
+        """Remove fields that change between runs (UUIDs, versions, paths)."""
+        volatile_keys = {
+            "measurement identifier",
+            "calculated data identifier",
+            "data source identifier",
+            "ASM converter version",
+            "UNC path",
+        }
+        if isinstance(obj, dict):
+            return {
+                k: _strip_volatile(v) for k, v in obj.items() if k not in volatile_keys
+            }
+        if isinstance(obj, list):
+            return [_strip_volatile(item) for item in obj]
+        return obj
+
+    golden_stable = _strip_volatile(golden)
+    actual_stable = _strip_volatile(pipeline_dict)
+
+    diffs = _deep_diff(golden_stable, actual_stable)
+    if diffs:
+        print(f"\n{'='*80}")  # noqa: T201
+        print(f"Found {len(diffs)} differences vs golden file:")  # noqa: T201
+        print(f"{'='*80}")  # noqa: T201
+        for d in diffs[:50]:
+            print(f"  {d}")  # noqa: T201
+        if len(diffs) > 50:
+            print(f"  ... and {len(diffs) - 50} more")  # noqa: T201
+        print(f"{'='*80}")  # noqa: T201
+
+    assert len(diffs) == 0, f"Golden file comparison: {len(diffs)} differences found"
+
+
+@pytest.mark.long
+def test_v2_json_name_metadata_coverage():
+    """Verify all v2 model fields have json_name metadata."""
+    import dataclasses
+
+    from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09 import qpcr as v2_module
+
+    missing_metadata = []
+
+    for name in dir(v2_module):
+        obj = getattr(v2_module, name)
+        if dataclasses.is_dataclass(obj) and isinstance(obj, type):
+            for f in dataclasses.fields(obj):
+                if "json_name" not in f.metadata:
+                    missing_metadata.append(f"{name}.{f.name}")
+
+    if missing_metadata:
+        print("\nFields missing json_name metadata:")  # noqa: T201
+        for m in missing_metadata:
+            print(f"  {m}")  # noqa: T201
+
+    assert (
+        len(missing_metadata) == 0
+    ), f"{len(missing_metadata)} fields missing json_name metadata"
+
+
+if __name__ == "__main__":
+    test_v2_model_produces_same_output()

@@ -13,6 +13,12 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TFunction,
     TMeasureArray,
 )
+from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import (
+    CubeStructure,
+    FieldComponentDatatype as FieldComponentDatatypeV2,
+    TDatacubeComponent as TDatacubeComponentV2,
+    TDatacubeData1,
+)
 from allotropy.exceptions import AllotropeConversionError
 
 
@@ -183,6 +189,48 @@ def get_data_cube(
             ],
         ),
         data=TDatacubeData(
+            dimensions=_get_dimensions(data_cube.dimensions),
+            measures=_get_measures(data_cube.measures),
+        ),
+    )
+
+
+def get_data_cube_v2(
+    data_cube: DataCube | None, data_cube_class: type[DataCubeType]
+) -> DataCubeType | None:
+    """Construct a v2 datacube model instance from a DataCube intermediate.
+
+    Same as get_data_cube but uses v2 model types (CubeStructure,
+    TDatacubeComponent with field_component_datatype, TDatacubeData1).
+    """
+    if data_cube is None:
+        return None
+
+    return data_cube_class(
+        label=data_cube.label,
+        cube_structure=CubeStructure(
+            dimensions=[
+                TDatacubeComponentV2(
+                    field_component_datatype=FieldComponentDatatypeV2(
+                        structure_dim.type_.value
+                    ),
+                    concept=structure_dim.concept,
+                    unit=structure_dim.unit,
+                )
+                for structure_dim in data_cube.structure_dimensions
+            ],
+            measures=[
+                TDatacubeComponentV2(
+                    field_component_datatype=FieldComponentDatatypeV2(
+                        structure_dim.type_.value
+                    ),
+                    concept=structure_dim.concept,
+                    unit=structure_dim.unit,
+                )
+                for structure_dim in data_cube.structure_measures
+            ],
+        ),
+        data=TDatacubeData1(
             dimensions=_get_dimensions(data_cube.dimensions),
             measures=_get_measures(data_cube.measures),
         ),

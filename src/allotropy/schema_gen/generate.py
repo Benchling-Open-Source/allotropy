@@ -28,7 +28,9 @@ from datamodel_code_generator import (
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
 from allotropy.schema_gen.flattener import (
     flatten_external_defs,
+    merge_allof_overlays,
     needs_flattening,
+    remove_unreferenced_defs,
     strip_asm_keys,
     strip_external_whole_schema_refs,
 )
@@ -129,6 +131,12 @@ def _generate_with_datamodel_codegen(
     processed = schema
     if needs_flattening(processed):
         processed = flatten_external_defs(processed, all_schemas)
+
+    # Merge allOf compositions (base $ref + technique overlay properties)
+    processed = merge_allof_overlays(processed)
+
+    # Remove $defs that are no longer referenced after the merge
+    processed = remove_unreferenced_defs(processed)
 
     # Strip $asm.* metadata keys and neutralize remaining external refs
     processed = strip_asm_keys(processed)
