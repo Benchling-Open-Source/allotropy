@@ -41,7 +41,19 @@ class TFunction:
 
 @dataclass(frozen=True, kw_only=True)
 class TDatacubeComponent:
-    field_component_datatype: Literal["double", "float", "decimal", "integer", "byte", "int", "short", "long", "string", "boolean", "dateTime"] = field(metadata={"json_name": "@componentDatatype"})
+    field_component_datatype: Literal[
+        "double",
+        "float",
+        "decimal",
+        "integer",
+        "byte",
+        "int",
+        "short",
+        "long",
+        "string",
+        "boolean",
+        "dateTime",
+    ] = field(metadata={"json_name": "@componentDatatype"})
     concept: TClass
     unit: TUnit | None = None
     scale: Literal["nominal", "ordinal", "cardinal", "interval", "range"] | None = None
@@ -78,5 +90,7 @@ class TDatacubeData(TDimensionData, TMeasureData):
 @dataclass(frozen=True, kw_only=True)
 class TDatacube:
     label: str | None = None
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
     data: TDatacubeData | None = None

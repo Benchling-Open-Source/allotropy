@@ -351,16 +351,44 @@ TTimeValue = str | TTimeValueItem
 TDurationValue = str | TDurationValueItem
 
 
-TNumericValue = TByteValue | TShortValue | TIntValue | TLongValue | TUnsignedByteValue | TUnsignedShortValue | TUnsignedIntValue | TUnsignedLongValue | TFloatValue | TDoubleValue | TDecimalValue | TIntegerValue
+TNumericValue = (
+    TByteValue
+    | TShortValue
+    | TIntValue
+    | TLongValue
+    | TUnsignedByteValue
+    | TUnsignedShortValue
+    | TUnsignedIntValue
+    | TUnsignedLongValue
+    | TFloatValue
+    | TDoubleValue
+    | TDecimalValue
+    | TIntegerValue
+)
 
 
-TOrderedValue = TNumericValue | TStringValue | TDateTimeValue | TDateTimeStampValue | TDateValue | TTimeValue
+TOrderedValue = (
+    TNumericValue
+    | TStringValue
+    | TDateTimeValue
+    | TDateTimeStampValue
+    | TDateValue
+    | TTimeValue
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class TRangeValue:
-    min_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minInclusive"})
-    min_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minExclusive"})
-    max_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxInclusive"})
-    max_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxExclusive"})
+    min_inclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minInclusive"}
+    )
+    min_exclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minExclusive"}
+    )
+    max_inclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxInclusive"}
+    )
+    max_exclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxExclusive"}
+    )
     unit: TUnit | None = None

@@ -34,7 +34,9 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -48,7 +50,9 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     total_cycle_number_setting: TQuantityValueUnitless | None = None
     denaturing_temperature_setting: TQuantityValueDegC | None = None
     denaturing_duration_setting: TQuantityValueS | None = None
@@ -56,7 +60,9 @@ class DeviceControlDocumentItem(OrderedItem):
     annealing_duration_setting: TQuantityValueS | None = None
     primer_extension_temperature_setting: TQuantityValueDegC | None = None
     primer_extension_duration_setting: TQuantityValueS | None = None
-    q_pcr_detection_chemistry: TStringValue | None = field(default=None, metadata={"json_name": "qPCR detection chemistry"})
+    q_pcr_detection_chemistry: TStringValue | None = field(
+        default=None, metadata={"json_name": "qPCR detection chemistry"}
+    )
     quencher_dye_setting: TStringValue | None = None
     reporter_dye_setting: TStringValue | None = None
     passive_reference_dye_setting: TStringValue | None = None
@@ -65,12 +71,18 @@ class DeviceControlDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DataProcessingDocument:
     automatic_cycle_threshold_enabled_setting: TBooleanValue | None = None
-    cycle_threshold_value_setting__q_pcr_: TQuantityValueUnitless | None = field(default=None, metadata={"json_name": "cycle threshold value setting (qPCR)"})
+    cycle_threshold_value_setting__q_pcr_: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "cycle threshold value setting (qPCR)"}
+    )
     automatic_baseline_determination_enabled_setting: TBooleanValue | None = None
     baseline_determination_start_cycle_setting: TQuantityValueNumberSign | None = None
     baseline_determination_end_cycle_setting: TQuantityValueNumberSign | None = None
-    genotyping_q_pcr_method_identifier: TStringValue | None = field(default=None, metadata={"json_name": "genotyping qPCR method identifier"})
-    genotyping_q_pcr_method_setting__q_pcr_: TQuantityValueUnitless | None = field(default=None, metadata={"json_name": "genotyping qPCR method setting (qPCR)"})
+    genotyping_q_pcr_method_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR method identifier"}
+    )
+    genotyping_q_pcr_method_setting__q_pcr_: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR method setting (qPCR)"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -89,9 +101,25 @@ class SampleDocument:
     location_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     well_location_identifier: TStringValue | None = None
     vial_location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
@@ -116,34 +144,48 @@ class MeltingCurveDataCube(TDatacube):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
     diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_processing_document: DataProcessingDocument | None = None
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     processed_data_identifier: TStringValue | None = None
-    cycle_threshold_result__q_pcr_: TQuantityValueUnitless | None = field(default=None, metadata={"json_name": "cycle threshold result (qPCR)"})
+    cycle_threshold_result__q_pcr_: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "cycle threshold result (qPCR)"}
+    )
     normalized_reporter_result: TQuantityValueUnitless | None = None
     normalized_reporter_data_cube: NormalizedReporterDataCube | None = None
     baseline_corrected_reporter_result: TQuantityValueUnitless | None = None
-    baseline_corrected_reporter_data_cube: BaselineCorrectedReporterDataCube | None = None
-    genotyping_q_pcr_result: TStringValue | None = field(default=None, metadata={"json_name": "genotyping qPCR result"})
+    baseline_corrected_reporter_data_cube: BaselineCorrectedReporterDataCube | None = (
+        None
+    )
+    genotyping_q_pcr_result: TStringValue | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR result"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
     processed_data_document: list[ProcessedDataDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
@@ -154,14 +196,18 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue
     sample_document: SampleDocument
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    target_dna_description: TStringValue | None = field(default=None, metadata={"json_name": "target DNA description"})
+    target_dna_description: TStringValue | None = field(
+        default=None, metadata={"json_name": "target DNA description"}
+    )
     reporter_data_cube: ReporterDataCube | None = None
     passive_reference_data_cube: PassiveReferenceDataCube | None = None
     melting_curve_data_cube: MeltingCurveDataCube | None = None
@@ -172,10 +218,30 @@ class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     experimental_data_identifier: TStringValue
     experiment_type: TStringValue
-    container_type: Literal["reactor", "controlled lab reactor", "tube", "well plate", "differential scanning calorimetry pan", "PCR reaction block", "vial rack", "pan", "reservoir", "array card block", "capillary", "disintegration apparatus basket", "jar", "container", "tray", "basket", "cell holder"]
+    container_type: Literal[
+        "reactor",
+        "controlled lab reactor",
+        "tube",
+        "well plate",
+        "differential scanning calorimetry pan",
+        "PCR reaction block",
+        "vial rack",
+        "pan",
+        "reservoir",
+        "array card block",
+        "capillary",
+        "disintegration apparatus basket",
+        "jar",
+        "container",
+        "tray",
+        "basket",
+        "cell holder",
+    ]
     well_volume: TQuantityValueMicroL
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
