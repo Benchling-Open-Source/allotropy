@@ -52,12 +52,22 @@ def flatten_external_defs(
             if schema_url is None or def_name is None:
                 continue
 
-            # Copy the definition if we haven't already
-            if def_name not in local_defs:
-                source_schema = all_schemas.get(schema_url, {})
-                source_defs = source_schema.get("$defs", {})
-                if def_name in source_defs:
+            # Copy or merge the definition
+            source_schema = all_schemas.get(schema_url, {})
+            source_defs = source_schema.get("$defs", {})
+            if def_name in source_defs:
+                if def_name not in local_defs:
                     local_defs[def_name] = copy.deepcopy(source_defs[def_name])
+                else:
+                    # Merge when different source schemas define the same $defs name
+                    # (e.g., anyOf branches referencing detector vs fluorescence variants).
+                    # Use intersect semantics for "required": only keep fields required
+                    # in ALL source variants (anyOf means any branch may apply).
+                    _anyof_merge_def(
+                        local_defs[def_name],
+                        source_defs[def_name],
+                        local_defs,
+                    )
 
             # Rewrite the ref to be local
             obj["$ref"] = f"#/$defs/{def_name}"
@@ -296,7 +306,27 @@ def merge_allof_overlays(schema: dict[str, Any]) -> dict[str, Any]:
     _unwrap_single_allof(result)
     local_defs = result.get("$defs", {})
     _merge_allofs_recursive(result, local_defs)
+    _resolve_degenerate_anyof(result, local_defs)
+    # Run unwrap again: earlier passes may leave single-branch allOfs behind
+    # (e.g., Case 3 merges property overlays, leaving allOf:[{anyOf resolved}]).
+    _unwrap_single_allof(result)
     return result
+
+
+def _deep_update(base: dict[str, Any], overlay: dict[str, Any]) -> None:
+    """Recursively merge overlay dict into base dict, preserving nested structure.
+
+    Unlike ``dict.update()``, when both base and overlay have the same key
+    pointing to dicts, the dicts are merged recursively rather than replaced.
+    ``required`` arrays are merged (deduplicated union).
+    """
+    for k, v in overlay.items():
+        if k in base and isinstance(base[k], dict) and isinstance(v, dict):
+            _deep_update(base[k], v)
+        elif k == "required" and isinstance(base.get(k), list) and isinstance(v, list):
+            base[k] = list(dict.fromkeys(base[k] + v))
+        else:
+            base[k] = v
 
 
 def _unwrap_single_allof(obj: Any) -> None:
@@ -317,7 +347,7 @@ def _unwrap_single_allof(obj: Any) -> None:
             if k not in obj:
                 obj[k] = v
             elif k == "properties" and isinstance(obj.get(k), dict):
-                obj[k].update(v)
+                _deep_update(obj[k], v)
             elif k == "required":
                 obj[k] = list(dict.fromkeys(obj.get(k, []) + v))
 
@@ -328,6 +358,44 @@ def _unwrap_single_allof(obj: Any) -> None:
             for item in value:
                 if isinstance(item, dict):
                     _unwrap_single_allof(item)
+
+
+def _resolve_degenerate_anyof(obj: Any, local_defs: dict[str, Any]) -> None:
+    """Resolve anyOf where all branches point to the same $ref.
+
+    When anyOf has multiple items but they all resolve to the same local $ref,
+    the anyOf is degenerate — just resolve the ref and merge into the parent.
+    This happens after flatten_external_defs merges detector + fluorescence
+    variants into a single measurementDocumentItems def.
+    """
+    if not isinstance(obj, dict):
+        return
+
+    if "anyOf" in obj and isinstance(obj["anyOf"], list):
+        anyof = obj["anyOf"]
+        refs = set()
+        for branch in anyof:
+            if isinstance(branch, dict) and "$ref" in branch and len(branch) == 1:
+                refs.add(branch["$ref"])
+            else:
+                refs = set()  # Not all pure refs
+                break
+        if len(refs) == 1:
+            ref = refs.pop()
+            if isinstance(ref, str) and ref.startswith("#/$defs/"):
+                def_name = ref[len("#/$defs/"):]
+                if def_name in local_defs:
+                    resolved = copy.deepcopy(local_defs[def_name])
+                    del obj["anyOf"]
+                    _deep_merge_schema(obj, resolved, local_defs)
+
+    for value in list(obj.values()):
+        if isinstance(value, dict):
+            _resolve_degenerate_anyof(value, local_defs)
+        elif isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict):
+                    _resolve_degenerate_anyof(item, local_defs)
 
 
 def _merge_allofs_recursive(obj: Any, local_defs: dict[str, Any]) -> None:
@@ -427,6 +495,21 @@ def _merge_allofs_recursive(obj: Any, local_defs: dict[str, Any]) -> None:
                 if remaining:
                     obj["allOf"] = remaining
 
+        # Case 3: Property overlays only (no $ref) with non-property branches
+        # e.g., allOf: [{properties: {...}, required: [...]}, {anyOf: [...]}]
+        # Merge property overlays into parent, keep other branches.
+        if not merged and not ref_indices and prop_indices:
+            for pi in prop_indices:
+                _deep_merge_schema(obj, allof[pi], local_defs)
+
+            remaining = [
+                allof[i] for i in range(len(allof)) if i not in prop_indices
+            ]
+
+            del obj["allOf"]
+            if remaining:
+                obj["allOf"] = remaining
+
     # Recurse into all values
     for value in list(obj.values()):
         if isinstance(value, dict):
@@ -476,6 +559,71 @@ def _deep_merge_schema(
                 base["allOf"] = copy.deepcopy(value)
         elif key not in base:
             base[key] = copy.deepcopy(value)
+
+
+def _anyof_merge_def(
+    base: dict[str, Any], overlay: dict[str, Any], local_defs: dict[str, Any]
+) -> None:
+    """Merge an anyOf variant def into base, intersecting required arrays.
+
+    Like _deep_merge_schema but handles 'required' with intersection semantics:
+    only fields required in ALL variants stay required. This is correct for
+    anyOf where each branch independently specifies its own requirements.
+    """
+    # Snapshot all required arrays in the base before merging
+    base_required_map: dict[str, set[str]] = {}
+    _collect_required_by_path(base, "", base_required_map)
+
+    # Snapshot overlay required arrays
+    overlay_required_map: dict[str, set[str]] = {}
+    _collect_required_by_path(overlay, "", overlay_required_map)
+
+    # Merge properties/structure as normal
+    _deep_merge_schema(base, overlay, local_defs)
+
+    # Now fix up required arrays: intersect at every path
+    _intersect_required_by_path(base, "", base_required_map, overlay_required_map)
+
+
+def _collect_required_by_path(
+    obj: Any, path: str, result: dict[str, set[str]]
+) -> None:
+    """Walk a schema and collect required arrays keyed by dotted path."""
+    if not isinstance(obj, dict):
+        return
+    if "required" in obj and isinstance(obj["required"], list):
+        result[path] = set(obj["required"])
+    for key, value in obj.items():
+        if key == "required":
+            continue
+        child_path = f"{path}.{key}" if path else key
+        if isinstance(value, dict):
+            _collect_required_by_path(value, child_path, result)
+
+
+def _intersect_required_by_path(
+    obj: Any,
+    path: str,
+    base_map: dict[str, set[str]],
+    overlay_map: dict[str, set[str]],
+) -> None:
+    """Walk merged schema and intersect required arrays at paths seen in both maps."""
+    if not isinstance(obj, dict):
+        return
+    if "required" in obj and isinstance(obj["required"], list):
+        base_req = base_map.get(path, set())
+        overlay_req = overlay_map.get(path, set())
+        if base_req and overlay_req:
+            obj["required"] = list(base_req & overlay_req)
+        elif path in base_map or path in overlay_map:
+            # One branch had required, the other didn't → nothing is universally required
+            obj.pop("required", None)
+    for key, value in obj.items():
+        if key == "required":
+            continue
+        child_path = f"{path}.{key}" if path else key
+        if isinstance(value, dict):
+            _intersect_required_by_path(value, child_path, base_map, overlay_map)
 
 
 def _deep_merge_props(

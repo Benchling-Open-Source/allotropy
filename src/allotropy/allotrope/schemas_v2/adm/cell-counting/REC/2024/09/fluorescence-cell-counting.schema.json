@@ -1,0 +1,127 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/fluorescence-cell-counting.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "measurementDocumentItems": {
+        "properties": {
+          "device control aggregate document": {
+            "properties": {
+              "device control document": {
+                "items": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "detector wavelength setting": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                          "$asm.pattern": "quantity datum",
+                          "allOf": [
+                            {
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                            },
+                            {
+                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                            }
+                          ]
+                        },
+                        "detector bandwidth setting": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                          "$asm.pattern": "quantity datum",
+                          "allOf": [
+                            {
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                            },
+                            {
+                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                            }
+                          ]
+                        },
+                        "wavelength filter cutoff setting" : {
+                          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002478",
+                          "$asm.pattern" : "quantity datum",
+                          "allOf" : [ {
+                            "$ref" : "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          }, {
+                            "$ref" : "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          } ]
+                        },
+                        "excitation bandwidth setting" : {
+                          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002548",
+                          "$asm.pattern" : "quantity datum",
+                          "allOf" : [ {
+                            "$ref" : "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          }, {
+                            "$ref" : "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          } ]
+                        },
+                        "excitation wavelength setting" : {
+                          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+                          "$asm.pattern" : "quantity datum",
+                          "allOf" : [ {
+                            "$ref" : "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          }, {
+                            "$ref" : "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          } ]
+                        },
+                        "fluorescent tag setting": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002870",
+                          "$asm.pattern": "value datum",
+                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/orderedItem"
+                    }
+                  ]
+                },
+                "minItems": 1
+              }
+            }
+          },
+          "processed data aggregate document": {
+            "properties": {
+              "processed data document": {
+                "items": {
+                  "properties": {
+                    "fluorescent tag positive cell count" : {
+                      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002871",
+                      "$asm.pattern" : "quantity datum",
+                      "allOf" : [ {
+                        "$ref" : "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                      }, {
+                        "$ref" : "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/cell"
+                      } ]
+                    },
+                    "fluorescent tag positive cell density" : {
+                      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002872",
+                      "$asm.pattern" : "quantity datum",
+                      "allOf" : [ {
+                        "$ref" : "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                      }, {
+                        "$ref" : "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/10%5E6%20cells~1mL"
+                      } ]
+                    },
+                    "fluorescent tag positive percentage" : {
+                      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002873",
+                      "$asm.pattern" : "quantity datum",
+                      "allOf" : [ {
+                        "$ref" : "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                      }, {
+                        "$ref" : "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/%25"
+                      } ]
+                    }
+                  },
+                  "required": ["fluorescent tag positive cell count"]
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "processed data document"
+            ]
+          }
+        }
+    }
+  }
+}

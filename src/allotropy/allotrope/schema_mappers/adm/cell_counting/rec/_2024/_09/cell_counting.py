@@ -2,15 +2,33 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueCell,
+    TQuantityValueMicroliter,
+    TQuantityValueMicrometer,
+    TQuantityValuePercent,
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+)
+from allotropy.allotrope.models_v2.adm.cell_counting.rec._2024._09.cell_counting import (
+    AverageDeadCellDiameterCellCounter,
+    AverageLiveCellDiameterCellCounter,
+    AverageTotalCellCircularity,
+    AverageTotalCellDiameter,
+    AverageViableCellCircularity,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     CellCountingAggregateDocument,
     CellCountingDocumentItem,
+    CellDensityDilutionFactor,
     DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
+    DeadCellCount,
+    DeadCellDensityCellCounter,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
@@ -18,24 +36,21 @@ from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting im
     ErrorDocumentItem,
     ImageAggregateDocument,
     ImageDocumentItem,
+    MaximumCellDiameterSetting,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
+    MinimumCellDiameterSetting,
     Model,
-    ProcessedDataAggregateDocument,
+    ProcessedDataAggregateDocument1,
     ProcessedDataDocumentItem,
     SampleDocument,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueCell,
-    TQuantityValueMicroliter,
-    TQuantityValueMicrometer,
-    TQuantityValueMillionCellsPerMilliliter,
-    TQuantityValuePercent,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
+    SampleVolumeSetting,
+    TotalCellCount,
+    TotalCellDensityCellCounter,
     TQuantityValue,
+    ViabilityCellCounter,
+    ViableCellCount,
+    ViableCellDensityCellCounter,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -186,12 +201,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     DataSystemDocument(
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                     ),
                     data.metadata.data_system_custom_info or {},
                 ),
@@ -228,19 +243,20 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_doc = DeviceControlDocumentItem(
             device_type=metadata.device_type,
             detection_type=metadata.detection_type,
-            sample_volume_setting=quantity_or_none(
-                TQuantityValueMicroliter,
-                measurement.sample_volume_setting,
+            sample_volume_setting=(
+                SampleVolumeSetting(value=measurement.sample_volume_setting)
+                if measurement.sample_volume_setting is not None
+                else None
             ),
         )
         device_control_doc = add_custom_information_document(
             device_control_doc, measurement.device_control_custom_info or {}
         )
-        measurement_document = MeasurementDocument(
+        measurement_document = MeasurementDocumentItem(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
@@ -296,7 +312,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_processed_data_aggregate_document(
         self, measurement: Measurement
-    ) -> ProcessedDataAggregateDocument:
+    ) -> ProcessedDataAggregateDocument1:
         # TODO(ASM gaps): we believe average values and stddev should be added to the processed data document.
         # TODO(ASM gaps): we believe "total object count" and "aggregate rate" should be introduced to ASM.
         custom_document = {
@@ -337,17 +353,26 @@ class Mapper(SchemaMapper[Data, Model]):
         data_processing_document = add_custom_information_document(
             DataProcessingDocument(
                 cell_type_processing_method=measurement.cell_type_processing_method,
-                minimum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.minimum_cell_diameter_setting,
+                minimum_cell_diameter_setting=(
+                    MinimumCellDiameterSetting(
+                        value=measurement.minimum_cell_diameter_setting,
+                    )
+                    if measurement.minimum_cell_diameter_setting is not None
+                    else None
                 ),
-                maximum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.maximum_cell_diameter_setting,
+                maximum_cell_diameter_setting=(
+                    MaximumCellDiameterSetting(
+                        value=measurement.maximum_cell_diameter_setting,
+                    )
+                    if measurement.maximum_cell_diameter_setting is not None
+                    else None
                 ),
-                cell_density_dilution_factor=quantity_or_none(
-                    TQuantityValueUnitless,
-                    measurement.cell_density_dilution_factor,
+                cell_density_dilution_factor=(
+                    CellDensityDilutionFactor(
+                        value=measurement.cell_density_dilution_factor,
+                    )
+                    if measurement.cell_density_dilution_factor is not None
+                    else None
                 ),
             ),
             measurement.data_processing_custom_info or {},
@@ -359,49 +384,72 @@ class Mapper(SchemaMapper[Data, Model]):
                 if has_value(data_processing_document)
                 else None
             ),
-            viability__cell_counter_=TQuantityValuePercent(value=measurement.viability),
-            viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
-                value=measurement.viable_cell_density
+            viability__cell_counter_=ViabilityCellCounter(
+                value=measurement.viability,
             ),
-            dead_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter,
-                measurement.dead_cell_density,
+            viable_cell_density__cell_counter_=ViableCellDensityCellCounter(
+                value=measurement.viable_cell_density,
             ),
-            total_cell_count=quantity_or_none(
-                TQuantityValueCell, measurement.total_cell_count
+            dead_cell_density__cell_counter_=(
+                DeadCellDensityCellCounter(value=measurement.dead_cell_density)
+                if measurement.dead_cell_density is not None
+                else None
             ),
-            total_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter,
-                measurement.total_cell_density,
+            total_cell_count=(
+                TotalCellCount(value=measurement.total_cell_count)
+                if measurement.total_cell_count is not None
+                else None
             ),
-            average_total_cell_diameter=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.average_total_cell_diameter,
+            total_cell_density__cell_counter_=(
+                TotalCellDensityCellCounter(value=measurement.total_cell_density)
+                if measurement.total_cell_density is not None
+                else None
             ),
-            average_live_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.average_live_cell_diameter,
+            average_total_cell_diameter=(
+                AverageTotalCellDiameter(value=measurement.average_total_cell_diameter)
+                if measurement.average_total_cell_diameter is not None
+                else None
             ),
-            average_dead_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.average_dead_cell_diameter,
+            average_live_cell_diameter__cell_counter_=(
+                AverageLiveCellDiameterCellCounter(
+                    value=measurement.average_live_cell_diameter,
+                )
+                if measurement.average_live_cell_diameter is not None
+                else None
             ),
-            viable_cell_count=quantity_or_none(
-                TQuantityValueCell, measurement.viable_cell_count
+            average_dead_cell_diameter__cell_counter_=(
+                AverageDeadCellDiameterCellCounter(
+                    value=measurement.average_dead_cell_diameter,
+                )
+                if measurement.average_dead_cell_diameter is not None
+                else None
             ),
-            dead_cell_count=quantity_or_none(
-                TQuantityValueCell, measurement.dead_cell_count
+            viable_cell_count=(
+                ViableCellCount(value=measurement.viable_cell_count)
+                if measurement.viable_cell_count is not None
+                else None
             ),
-            average_total_cell_circularity=quantity_or_none(
-                TQuantityValueUnitless,
-                measurement.average_total_cell_circularity,
+            dead_cell_count=(
+                DeadCellCount(value=measurement.dead_cell_count)
+                if measurement.dead_cell_count is not None
+                else None
             ),
-            average_viable_cell_circularity=quantity_or_none(
-                TQuantityValueUnitless,
-                measurement.average_viable_cell_circularity,
+            average_total_cell_circularity=(
+                AverageTotalCellCircularity(
+                    value=measurement.average_total_cell_circularity,
+                )
+                if measurement.average_total_cell_circularity is not None
+                else None
+            ),
+            average_viable_cell_circularity=(
+                AverageViableCellCircularity(
+                    value=measurement.average_viable_cell_circularity,
+                )
+                if measurement.average_viable_cell_circularity is not None
+                else None
             ),
         )
-        return ProcessedDataAggregateDocument(
+        return ProcessedDataAggregateDocument1(
             processed_data_document=[
                 add_custom_information_document(
                     processed_data_document,
@@ -434,7 +482,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 CalculatedDataDocumentItem(
                     calculated_data_identifier=calculated_data_item.identifier,
                     calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValue(  # type:ignore[arg-type]
+                    calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),

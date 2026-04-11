@@ -313,6 +313,17 @@ def _join_multiline_defaults(source: str) -> str:
             else:
                 default_value = "None"
             result.append(f"{field_prefix} {type_annotation} = {default_value}")
+        # Pattern 3: multi-line bracket type "field: list[" or "field: list[\n"
+        elif re.match(r"^    \w+:\s*\w+\[\s*$", line):
+            collected = line.rstrip()
+            i += 1
+            while i < len(lines):
+                stripped = lines[i].strip()
+                collected += " " + stripped
+                i += 1
+                if "]" in stripped:
+                    break
+            result.append(collected)
         else:
             result.append(line)
             i += 1
