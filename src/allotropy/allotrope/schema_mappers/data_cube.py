@@ -13,11 +13,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TFunction,
     TMeasureArray,
 )
-from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import (
-    CubeStructure,
-    FieldComponentDatatype as FieldComponentDatatypeV2,
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
     TDatacubeComponent as TDatacubeComponentV2,
-    TDatacubeData1,
+    TDatacubeData as TDatacubeDataV2,
+    TDatacubeStructure as TDatacubeStructureV2,
 )
 from allotropy.exceptions import AllotropeConversionError
 
@@ -208,12 +207,10 @@ def get_data_cube_v2(
 
     return data_cube_class(
         label=data_cube.label,
-        cube_structure=CubeStructure(
+        cube_structure=TDatacubeStructureV2(
             dimensions=[
                 TDatacubeComponentV2(
-                    field_component_datatype=FieldComponentDatatypeV2(
-                        structure_dim.type_.value
-                    ),
+                    field_component_datatype=structure_dim.type_.value,
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
@@ -221,16 +218,14 @@ def get_data_cube_v2(
             ],
             measures=[
                 TDatacubeComponentV2(
-                    field_component_datatype=FieldComponentDatatypeV2(
-                        structure_dim.type_.value
-                    ),
+                    field_component_datatype=structure_dim.type_.value,
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
                 for structure_dim in data_cube.structure_measures
             ],
         ),
-        data=TDatacubeData1(
+        data=TDatacubeDataV2(
             dimensions=_get_dimensions(data_cube.dimensions),
             measures=_get_measures(data_cube.measures),
         ),

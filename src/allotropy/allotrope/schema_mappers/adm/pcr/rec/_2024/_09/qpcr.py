@@ -3,42 +3,39 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import (
-    BaselineCorrectedReporterDataCube,
-    BaselineCorrectedReporterResult,
-    BaselineDeterminationEndCycleSetting,
-    BaselineDeterminationStartCycleSetting,
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+    TQuantityValue,
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    CycleThresholdResultQPcr,
-    CycleThresholdValueSettingQPcr,
-    DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
-    GenotypingQPcrMethodSettingQPcr,
+)
+from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import (
+    BaselineCorrectedReporterDataCube,
+    DataProcessingDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     MeltingCurveDataCube,
     Model,
     NormalizedReporterDataCube,
-    NormalizedReporterResult,
     PassiveReferenceDataCube,
-    PlateWellCount,
-    ProcessedDataAggregateDocument1,
+    ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     QpcrAggregateDocument,
     QpcrDocumentItem,
     ReporterDataCube,
     SampleDocument,
-    TotalCycleNumberSetting,
-    TQuantityValue,
-    WellVolume,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -261,11 +258,11 @@ class Mapper(SchemaMapper[Data, Model]):
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
                     container_type=metadata.container_type.value,
-                    well_volume=WellVolume(
+                    well_volume=TQuantityValueMicroL(
                         value=measurement_group.well_volume,
                     ),
                     plate_well_count=(
-                        PlateWellCount(
+                        TQuantityValueNumberSign(
                             value=measurement_group.plate_well_count,
                         )
                         if measurement_group.plate_well_count is not None
@@ -316,7 +313,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         device_type=metadata.device_type,
                         measurement_method_identifier=metadata.measurement_method_identifier,
                         total_cycle_number_setting=(
-                            TotalCycleNumberSetting(
+                            TQuantityValueUnitless(
                                 value=measurement.total_cycle_number_setting,
                             )
                             if measurement.total_cycle_number_setting is not None
@@ -349,7 +346,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
-    ) -> ProcessedDataAggregateDocument1 | None:
+    ) -> ProcessedDataAggregateDocument | None:
         if not data:
             return None
         doc = ProcessedDataDocumentItem(
@@ -357,7 +354,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 DataProcessingDocument(
                     automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
                     cycle_threshold_value_setting__q_pcr_=(
-                        CycleThresholdValueSettingQPcr(
+                        TQuantityValueUnitless(
                             value=data.cycle_threshold_value_setting,
                         )
                         if data.cycle_threshold_value_setting is not None
@@ -365,21 +362,21 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                     automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
                     genotyping_q_pcr_method_setting__q_pcr_=(
-                        GenotypingQPcrMethodSettingQPcr(
+                        TQuantityValueUnitless(
                             value=data.genotyping_determination_method_setting,
                         )
                         if data.genotyping_determination_method_setting is not None
                         else None
                     ),
                     baseline_determination_start_cycle_setting=(
-                        BaselineDeterminationStartCycleSetting(
+                        TQuantityValueNumberSign(
                             value=data.baseline_determination_start_cycle_setting,
                         )
                         if data.baseline_determination_start_cycle_setting is not None
                         else None
                     ),
                     baseline_determination_end_cycle_setting=(
-                        BaselineDeterminationEndCycleSetting(
+                        TQuantityValueNumberSign(
                             value=data.baseline_determination_end_cycle_setting,
                         )
                         if data.baseline_determination_end_cycle_setting is not None
@@ -389,21 +386,21 @@ class Mapper(SchemaMapper[Data, Model]):
                 data.data_processing_custom_info,
             ),
             cycle_threshold_result__q_pcr_=(
-                CycleThresholdResultQPcr(
+                TQuantityValueUnitless(
                     value=data.cycle_threshold_result,
                 )
                 if data.cycle_threshold_result is not None
                 else None
             ),
             normalized_reporter_result=(
-                NormalizedReporterResult(
+                TQuantityValueUnitless(
                     value=data.normalized_reporter_result,
                 )
                 if data.normalized_reporter_result is not None
                 else None
             ),
             baseline_corrected_reporter_result=(
-                BaselineCorrectedReporterResult(
+                TQuantityValueUnitless(
                     value=data.baseline_corrected_reporter_result,
                 )
                 if data.baseline_corrected_reporter_result is not None
@@ -418,7 +415,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 BaselineCorrectedReporterDataCube,
             ),
         )
-        return ProcessedDataAggregateDocument1(
+        return ProcessedDataAggregateDocument(
             processed_data_document=[
                 add_custom_information_document(doc, data.custom_info)
             ]

@@ -19,6 +19,7 @@ from allotropy.schema_gen.naming import (
     property_name_to_python,
     quantity_value_class_name,
     schema_url_to_module_path,
+    unit_symbol_to_class_name,
 )
 
 
@@ -93,6 +94,8 @@ class ModuleCode:
             if "field(" in all_code:
                 dc_names.append("field")
             stdlib_imports.add(f"from dataclasses import {', '.join(dc_names)}")
+        if "(Enum)" in all_code:
+            stdlib_imports.add("from enum import Enum")
         typing_names: list[str] = []
         if "Any" in all_code:
             typing_names.append("Any")
@@ -101,7 +104,13 @@ class ModuleCode:
         if typing_names:
             stdlib_imports.add(f"from typing import {', '.join(typing_names)}")
 
+        # Names defined as local classes — imports of these would shadow or
+        # be shadowed, producing F811 lint errors.
+        local_class_names = {c.name for c in self.classes}
+
         for imp in self.imports:
+            if imp.name in local_class_names:
+                continue
             module = imp.module
             # Convert relative module path to full package path
             if not module.startswith("allotropy"):
@@ -190,15 +199,93 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
 def _field_declaration(
     python_name: str, type_str: str, json_name: str, *, is_required: bool
 ) -> str:
-    """Generate a dataclass field declaration with JSON name metadata.
+    """Generate a dataclass field declaration, with JSON name metadata when needed.
 
-    Stores the original JSON property name in field metadata so serialization
-    can map back to schema property names.
+    Omits json_name when the mapping is a straightforward space-to-underscore
+    conversion. Only emits metadata for non-trivial name transformations.
     """
-    metadata = f'{{"json_name": {_dquote(json_name)}}}'
+    needs_json_name = json_name != python_name.replace("_", " ")
+    if needs_json_name:
+        metadata = f'{{"json_name": {_dquote(json_name)}}}'
+        if is_required:
+            return f"    {python_name}: {type_str} = field(metadata={metadata})"
+        return f"    {python_name}: {type_str} | None = field(default=None, metadata={metadata})"
     if is_required:
-        return f"    {python_name}: {type_str} = field(metadata={metadata})"
-    return f"    {python_name}: {type_str} | None = field(default=None, metadata={metadata})"
+        return f"    {python_name}: {type_str}"
+    return f"    {python_name}: {type_str} | None = None"
+
+
+def _absolutize_refs(schema: Any, base_url: str) -> Any:
+    """Rewrite local ``#/$defs/...`` refs to absolute URLs.
+
+    When properties from one schema file are deep-merged into a different
+    schema's context, local refs become dangling.  This function rewrites
+    them to ``{base_url}#/$defs/...`` so they resolve correctly.
+    """
+    if isinstance(schema, dict):
+        result: dict[str, Any] = {}
+        for key, value in schema.items():
+            if key == "$ref" and isinstance(value, str) and value.startswith("#/"):
+                result[key] = f"{base_url}{value}"
+            else:
+                result[key] = _absolutize_refs(value, base_url)
+        return result
+    if isinstance(schema, list):
+        return [_absolutize_refs(item, base_url) for item in schema]
+    return schema
+
+
+def _deep_merge_schemas(
+    base: dict[str, Any],
+    overlay: dict[str, Any],
+    *,
+    any_of: bool = False,
+) -> dict[str, Any]:
+    """Deep-merge two JSON schemas, with *overlay* taking precedence.
+
+    Recursively merges ``properties`` dicts and ``items`` sub-schemas so that
+    a technique schema overlay inherits all nested structure from the base
+    hierarchy schema while adding or replacing its own fields.
+
+    When *any_of* is True (merging anyOf variants), ``required`` arrays are
+    intersected rather than unioned — a field is only required in the merged
+    result if both variants require it.
+    """
+    result = dict(base)
+
+    for key, value in overlay.items():
+        if key == "properties" and "properties" in result:
+            merged = dict(result["properties"])
+            for pname, pschema in value.items():
+                if (
+                    pname in merged
+                    and isinstance(merged[pname], dict)
+                    and isinstance(pschema, dict)
+                ):
+                    merged[pname] = _deep_merge_schemas(
+                        merged[pname], pschema, any_of=any_of
+                    )
+                else:
+                    merged[pname] = pschema
+            result["properties"] = merged
+        elif key == "required" and "required" in result:
+            if any_of:
+                result["required"] = list(set(result["required"]) & set(value))
+            else:
+                result["required"] = list(set(result["required"]) | set(value))
+        elif key == "items" and "items" in result:
+            if isinstance(result["items"], dict) and isinstance(value, dict):
+                result["items"] = _deep_merge_schemas(
+                    result["items"], value, any_of=any_of
+                )
+            else:
+                result[key] = value
+        elif key == "allOf" and "allOf" in result:
+            result["allOf"] = result["allOf"] + value
+        else:
+            result[key] = value
+
+    return result
 
 
 class SchemaCodeGenerator:
@@ -305,8 +392,6 @@ class SchemaCodeGenerator:
 
     def _unit_class_name(self, _def_name: str, const_value: str) -> str:
         """Generate a class name for a unit definition."""
-        from allotropy.schema_gen.naming import unit_symbol_to_class_name
-
         return unit_symbol_to_class_name(const_value)
 
     # -------------------------------------------------------------------------
@@ -499,14 +584,13 @@ class SchemaCodeGenerator:
     # -------------------------------------------------------------------------
 
     def _generate_enum(self, class_name: str, schema: dict[str, Any]) -> str:
-        """Generate a Literal type for an enum schema."""
+        """Generate an Enum class for an enum schema."""
         values = schema["enum"]
-        if all(isinstance(v, str) for v in values):
-            literals = ", ".join(_dquote(v) for v in values)
-            return f"{class_name} = Literal[{literals}]"
-        # Fallback for non-string enums
-        literals = ", ".join(_dquote(v) for v in values)
-        return f"{class_name} = Literal[{literals}]"
+        lines = [f"class {class_name}(Enum):"]
+        for v in values:
+            member_name = property_name_to_python(str(v))
+            lines.append(f"    {member_name} = {_dquote(v)}")
+        return "\n".join(lines)
 
     # -------------------------------------------------------------------------
     # allOf at definition level
@@ -702,6 +786,7 @@ class SchemaCodeGenerator:
         # Constraint-only overlays: schemas with only validation keywords
         # (e.g., required, minItems, maxItems, prefixItems, contains) but no
         # structural type info.  These refine a base-class field, not define new types.
+        # An empty schema (all keys were $asm metadata) is a real field typed as Any.
         constraint_only_keys = {
             "required",
             "type",
@@ -718,7 +803,7 @@ class SchemaCodeGenerator:
             "pattern",
             "uniqueItems",
         }
-        if prop_schema.keys() <= constraint_only_keys:
+        if prop_schema and prop_schema.keys() <= constraint_only_keys:
             return None
 
         return "Any"
@@ -791,24 +876,63 @@ class SchemaCodeGenerator:
         merged_required: list[str] = []
         base_refs: list[str] = []
 
+        # Include properties from the schema itself (may exist after deep-merge
+        # places both "allOf" and "properties" at the same level).
+        if "properties" in prop_schema:
+            for pk, pv in prop_schema["properties"].items():
+                if pk in merged_props:
+                    merged_props[pk] = _deep_merge_schemas(merged_props[pk], pv)
+                else:
+                    merged_props[pk] = pv
+        if "required" in prop_schema:
+            merged_required.extend(prop_schema["required"])
+
         for item in all_of:
             if "$ref" in item:
                 base_refs.append(item["$ref"])
             if isinstance(item, dict):
                 if "properties" in item:
-                    merged_props.update(item["properties"])
+                    for pk, pv in item["properties"].items():
+                        if pk in merged_props:
+                            merged_props[pk] = _deep_merge_schemas(merged_props[pk], pv)
+                        else:
+                            merged_props[pk] = pv
                 if "required" in item:
                     merged_required.extend(item["required"])
 
         # If we have properties, generate an inline class
         if merged_props:
             inline_class_name = property_name_to_class_name(prop_name)
-            base_classes = [
-                self._resolve_ref_type(module, schema_url, ref) for ref in base_refs
-            ]
+            # Resolve base refs.  If a ref resolves to the same class name as
+            # the inline class (e.g., both are "ProcessedDataAggregateDocument"),
+            # merge its properties instead of inheriting to avoid self-reference.
+            base_classes: list[str] = []
+            for ref in base_refs:
+                ref_type = self._resolve_ref_type(module, schema_url, ref)
+                if ref_type == inline_class_name:
+                    ref_base_url = ref.split("#")[0]
+                    ref_schema = self._resolve_ref_to_schema(schema_url, ref)
+                    if ref_schema and "properties" in ref_schema:
+                        ref_props = ref_schema["properties"]
+                        if ref_base_url:
+                            ref_props = {
+                                k: _absolutize_refs(v, ref_base_url)
+                                for k, v in ref_props.items()
+                            }
+                        for pk, pv in ref_props.items():
+                            if pk in merged_props:
+                                merged_props[pk] = _deep_merge_schemas(
+                                    pv, merged_props[pk]
+                                )
+                            else:
+                                merged_props[pk] = pv
+                    if ref_schema and "required" in ref_schema:
+                        merged_required.extend(ref_schema["required"])
+                else:
+                    base_classes.append(ref_type)
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
-                merged["required"] = merged_required
+                merged["required"] = list(set(merged_required))
             code = self._generate_dataclass(
                 module, schema_url, inline_class_name, merged, base_classes=base_classes
             )
@@ -945,6 +1069,14 @@ class SchemaCodeGenerator:
             item_type = self._resolve_array_item_type(module, schema_url, items)
             return f"list[{item_type}]"
 
+        # Items with properties but no explicit "type": "object" (implied object)
+        if "properties" in items:
+            item_class_name = property_name_to_class_name(prop_name) + "Item"
+            code = self._generate_dataclass(module, schema_url, item_class_name, items)
+            if code:
+                module.classes.append(GeneratedClass(name=item_class_name, code=code))
+            return f"list[{item_class_name}]"
+
         return "list[Any]"
 
     def _resolve_all_of_array_items(
@@ -954,47 +1086,119 @@ class SchemaCodeGenerator:
         prop_name: str,
         items_schema: dict[str, Any],
     ) -> str:
-        """Resolve array items that use allOf (e.g., technique documents merged with custom props)."""
+        """Resolve array items that use allOf (e.g., technique documents merged with custom props).
+
+        When an allOf combines a $ref (e.g., techniqueDocument) with local property
+        overrides, the base ref's properties are deep-merged into overlapping local
+        properties.  This ensures that inline types like MeasurementDocumentItem
+        include both the hierarchy-level fields (measurement_identifier, sample_document,
+        etc.) and the technique-specific fields (detector measurements, data cubes, etc.).
+        """
         all_of = items_schema["allOf"]
 
         merged_props: dict[str, Any] = {}
         merged_required: list[str] = []
         base_refs: list[str] = []
 
+        # Include properties from items schema itself.  After a deep-merge at an
+        # outer level the items dict may carry both "properties" (from the base)
+        # and "allOf" (from the overlay).
+        if "properties" in items_schema:
+            for pk, pv in items_schema["properties"].items():
+                if pk in merged_props:
+                    merged_props[pk] = _deep_merge_schemas(merged_props[pk], pv)
+                else:
+                    merged_props[pk] = pv
+        if "required" in items_schema:
+            merged_required.extend(items_schema["required"])
+
         for item in all_of:
             if "$ref" in item:
                 base_refs.append(item["$ref"])
             if isinstance(item, dict):
                 if "properties" in item:
-                    merged_props.update(item["properties"])
+                    for pk, pv in item["properties"].items():
+                        if pk in merged_props:
+                            merged_props[pk] = _deep_merge_schemas(merged_props[pk], pv)
+                        else:
+                            merged_props[pk] = pv
                 if "required" in item:
                     merged_required.extend(item["required"])
-                # Handle anyOf inside allOf (e.g., detector measurement items)
+                # Handle anyOf inside allOf (e.g., detector measurement items).
+                # Deep-merge rather than replace so that inner structures
+                # (e.g., device_control_aggregate_document) accumulate fields
+                # from both the hierarchy and each detector schema.
+                # For required fields: only keep fields required in ALL variants
+                # (intersection), since anyOf means only one variant applies.
                 if "anyOf" in item:
+                    # Merge all anyOf variants' properties together.
+                    # Use any_of=True so that nested required arrays are
+                    # intersected (a field is only required if ALL variants
+                    # require it, since anyOf means only one applies).
+                    any_of_merged: dict[str, Any] | None = None
                     for variant in item["anyOf"]:
                         if "$ref" in variant:
-                            # Resolve the ref and merge its properties
                             ref_schema_url, ref_def = parse_ref(variant["$ref"])
                             if ref_schema_url and ref_def:
                                 ref_schema = self.schemas.get(ref_schema_url, {})
                                 ref_def_schema = ref_schema.get("$defs", {}).get(
                                     ref_def, {}
                                 )
-                                if "properties" in ref_def_schema:
-                                    merged_props.update(ref_def_schema["properties"])
-                                if "required" in ref_def_schema:
-                                    merged_required.extend(ref_def_schema["required"])
+                                if any_of_merged is None:
+                                    any_of_merged = dict(ref_def_schema)
+                                else:
+                                    any_of_merged = _deep_merge_schemas(
+                                        any_of_merged, ref_def_schema, any_of=True
+                                    )
+                    if any_of_merged:
+                        if "properties" in any_of_merged:
+                            for pk, pv in any_of_merged["properties"].items():
+                                if pk in merged_props:
+                                    merged_props[pk] = _deep_merge_schemas(
+                                        merged_props[pk], pv, any_of=True
+                                    )
+                                else:
+                                    merged_props[pk] = pv
+                        if "required" in any_of_merged:
+                            merged_required.extend(any_of_merged["required"])
+
+        # Deep-merge overlapping properties from base $ref schemas.
+        # When a technique schema references a base (e.g., techniqueDocument) and
+        # overrides nested properties (e.g., "measurement aggregate document"),
+        # the base's nested definition must be merged in so that inline types
+        # include all hierarchy-level fields.
+        for ref in base_refs:
+            ref_base_url = ref.split("#")[0]
+            base_schema = self._resolve_ref_to_schema(schema_url, ref)
+            if base_schema and "properties" in base_schema:
+                base_props = base_schema["properties"]
+                if ref_base_url:
+                    base_props = {
+                        k: _absolutize_refs(v, ref_base_url)
+                        for k, v in base_props.items()
+                    }
+                for prop_key in list(merged_props.keys()):
+                    if prop_key in base_props:
+                        merged_props[prop_key] = _deep_merge_schemas(
+                            base_props[prop_key], merged_props[prop_key]
+                        )
 
         # Generate an item class
         item_class_name = property_name_to_class_name(prop_name) + "Item"
-        base_classes = [
-            self._resolve_ref_type(module, schema_url, ref) for ref in base_refs
-        ]
+        # Deduplicate base classes (deep-merge may concatenate allOf arrays,
+        # producing repeated $ref: orderedItem entries).
+        seen: set[str] = set()
+        base_classes: list[str] = []
+        for ref in base_refs:
+            cls = self._resolve_ref_type(module, schema_url, ref)
+            if cls not in seen:
+                seen.add(cls)
+                base_classes.append(cls)
 
         if merged_props:
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
-                merged["required"] = merged_required
+                merged["required"] = list(set(merged_required))
             code = self._generate_dataclass(
                 module, schema_url, item_class_name, merged, base_classes=base_classes
             )
@@ -1012,6 +1216,25 @@ class SchemaCodeGenerator:
             module.classes.append(GeneratedClass(name=item_class_name, code=code))
         return item_class_name
 
+    def _resolve_ref_to_schema(
+        self, current_schema_url: str, ref: str
+    ) -> dict[str, Any] | None:
+        """Resolve a $ref string to its actual JSON Schema definition dict."""
+        ref_schema_url, def_name = parse_ref(ref)
+
+        if ref_schema_url is None:
+            # Local reference within the current schema
+            schema = self.schemas.get(current_schema_url, {})
+            if def_name:
+                return schema.get("$defs", {}).get(def_name)
+            return None
+
+        # External reference
+        schema = self.schemas.get(ref_schema_url, {})
+        if def_name:
+            return schema.get("$defs", {}).get(def_name)
+        return schema
+
     # -------------------------------------------------------------------------
     # Quantity value + unit generation
     # -------------------------------------------------------------------------
@@ -1023,9 +1246,19 @@ class SchemaCodeGenerator:
         quantity_ref: str,
         unit_ref: str,
     ) -> str:
-        """Generate a TQuantityValue{Unit} type combining a quantity value with a unit."""
-        # Resolve the base quantity value type
-        base_type = self._resolve_ref_type(module, schema_url, quantity_ref)
+        """Generate a TQuantityValue{Unit} thin subclass in the core module.
+
+        Each unique TQuantityValue+unit combination produces one subclass that
+        lives in core.py alongside TQuantityValue itself. Technique modules
+        import these subclasses rather than generating their own copies.
+        """
+        # Extract core schema URL and base type name (without adding import to technique module)
+        core_schema_url, quantity_def_name = parse_ref(quantity_ref)
+        base_type = (
+            def_name_to_class_name(quantity_def_name)
+            if quantity_def_name
+            else "TQuantityValue"
+        )
 
         # Get the unit's const value
         _, unit_def_name = parse_ref(unit_ref)
@@ -1033,51 +1266,45 @@ class SchemaCodeGenerator:
         try:
             canonical_unit_url = normalize_schema_url(unit_schema_url)
         except ValueError:
-            return base_type
+            return self._resolve_ref_type(module, schema_url, quantity_ref)
 
         unit_schema = self.schemas.get(canonical_unit_url, {})
         unit_def = unit_schema.get("$defs", {}).get(unit_def_name, {})
         const_value = self._extract_unit_const(unit_def)
 
         if const_value is None:
-            return base_type
+            return self._resolve_ref_type(module, schema_url, quantity_ref)
 
-        # Generate the combined class name
         class_name = quantity_value_class_name(const_value)
 
-        # Check if we already generated this class
-        for cls in module.classes:
+        # Find the core module where TQuantityValue is defined
+        core_module = self._modules.get(core_schema_url) if core_schema_url else None
+        target_module = core_module if core_module is not None else module
+
+        # Check if already generated in the target module
+        for cls in target_module.classes:
             if cls.name == class_name:
+                if target_module is not module and core_schema_url:
+                    core_module_path = schema_url_to_module_path(core_schema_url)
+                    module.imports.append(
+                        ImportEntry(module=core_module_path, name=class_name)
+                    )
                 return class_name
 
-        # Also get the unit class for import
-        unit_module = self._modules.get(canonical_unit_url)
-        unit_class_name = None
-        if unit_module and unit_def_name in unit_module.exported_names:
-            unit_class_name = unit_module.exported_names[unit_def_name]
-            unit_module_path = schema_url_to_module_path(canonical_unit_url)
-            module.imports.append(
-                ImportEntry(
-                    module=unit_module_path,
-                    name=unit_class_name,
-                )
-            )
+        # Generate thin subclass (only overrides unit default)
+        code = (
+            f"@dataclass(frozen=True, kw_only=True)\n"
+            f"class {class_name}({base_type}):\n"
+            f"    unit: str = {_dquote(const_value)}"
+        )
+        target_module.classes.append(GeneratedClass(name=class_name, code=code))
+        target_module.exported_names[class_name] = class_name
 
-        # Generate the combined class
-        if unit_class_name:
-            code = (
-                f"@dataclass(frozen=True, kw_only=True)\n"
-                f"class {class_name}({unit_class_name}, {base_type}):\n"
-                f"    pass"
-            )
-        else:
-            code = (
-                f"@dataclass(frozen=True, kw_only=True)\n"
-                f"class {class_name}({base_type}):\n"
-                f"    unit: str = {_dquote(const_value)}"
-            )
+        # Add import to technique module if generated in core
+        if target_module is not module and core_schema_url:
+            core_module_path = schema_url_to_module_path(core_schema_url)
+            module.imports.append(ImportEntry(module=core_module_path, name=class_name))
 
-        module.classes.append(GeneratedClass(name=class_name, code=code))
         return class_name
 
     # -------------------------------------------------------------------------
@@ -1122,7 +1349,9 @@ class SchemaCodeGenerator:
 
         # Add manifest field if present
         if manifest_ref or "$asm.manifest" in all_required:
-            model_fields.append(("asm_manifest", "str", "$asm.manifest", True))
+            model_fields.append(
+                (property_name_to_python("$asm.manifest"), "str", "$asm.manifest", True)
+            )
 
         for prop_name, prop_schema in all_props.items():
             if any(prop_name.startswith(p) for p in ASM_METADATA_PREFIXES):

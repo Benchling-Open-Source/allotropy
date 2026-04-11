@@ -41,7 +41,7 @@ def to_dict(obj: Any) -> Any:
             value = getattr(obj, f.name)
             if value is None:
                 continue
-            json_key = f.metadata.get("json_name", f.name)
+            json_key = f.metadata.get("json_name", f.name.replace("_", " "))
             result[json_key] = to_dict(value)
         # Handle dynamically-added custom_information_document (not in fields())
         if (
@@ -88,7 +88,7 @@ def from_dict(data: dict[str, Any] | Any, cls: type[T]) -> T:
     # Build reverse mapping: json_name → (python_field_name, field_type)
     json_to_field: dict[str, tuple[str, Any]] = {}
     for f in fields(cls):
-        json_key = f.metadata.get("json_name", f.name)
+        json_key = f.metadata.get("json_name", f.name.replace("_", " "))
         json_to_field[json_key] = (f.name, f.type)
 
     kwargs: dict[str, Any] = {}

@@ -2,11 +2,13 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     DeviceSystemDocument,
+)
+from allotropy.allotrope.models_v2.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     DistributionAggregateDocument,
     DistributionDocumentItem,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     ProcessedDataAggregateDocument,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
@@ -48,7 +50,7 @@ def test_get_model() -> None:
         model.solution_analyzer_aggregate_document.solution_analyzer_document[
             0
         ].measurement_aggregate_document.measurement_document[0],
-        MeasurementDocument,
+        MeasurementDocumentItem,
     )
 
     assert isinstance(
@@ -76,7 +78,7 @@ def test_get_model() -> None:
     for elem in model.solution_analyzer_aggregate_document.solution_analyzer_document[
         0
     ].measurement_aggregate_document.measurement_document:
-        assert isinstance(elem, MeasurementDocument)
+        assert isinstance(elem, MeasurementDocumentItem)
         assert isinstance(elem.measurement_identifier, str)
         assert isinstance(
             elem.processed_data_aggregate_document, ProcessedDataAggregateDocument

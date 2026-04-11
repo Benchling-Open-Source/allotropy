@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+from urllib.parse import unquote
 
 # Base URL prefix for all Allotrope JSON schemas
 ALLOTROPE_URL_PREFIX = "http://purl.allotrope.org/json-schemas/"
@@ -111,6 +112,8 @@ def parse_ref(ref: str) -> tuple[str | None, str | None]:
     """
     if "#" in ref:
         schema_part, fragment = ref.split("#", 1)
+        # URL-decode the fragment first (RFC 3986), then apply JSON Pointer decoding
+        fragment = unquote(fragment)
         # Extract definition name from fragment like /$defs/tStringValue
         def_match = re.match(r"/?\$defs/(.+)$", fragment)
         def_name = _decode_json_pointer(def_match.group(1)) if def_match else None
@@ -290,6 +293,7 @@ def unit_symbol_to_class_name(symbol: str) -> str:
     cleaned = cleaned.replace("°", "Deg")
     cleaned = cleaned.replace("θ", "Theta")
     cleaned = cleaned.replace("μ", "Micro")
+    cleaned = cleaned.replace("µ", "Micro")  # U+00B5 MICRO SIGN
     cleaned = cleaned.replace("\u2212", "")  # MINUS SIGN (U+2212)
     cleaned = cleaned.replace(".", "Dot")
     cleaned = cleaned.replace(" ", "")

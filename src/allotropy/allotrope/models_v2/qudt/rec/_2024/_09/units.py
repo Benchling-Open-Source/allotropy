@@ -2021,7 +2021,7 @@ class KeV(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class KeVPerm(HasUnit):
+class KeVPerMicrom(HasUnit):
     unit: str = "keV/µm"
 
 
@@ -3676,62 +3676,62 @@ class DegRPers(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class G3(HasUnit):
+class MicroG(HasUnit):
     unit: str = "µG"
 
 
 @dataclass(frozen=True, kw_only=True)
-class H3(HasUnit):
+class MicroH(HasUnit):
     unit: str = "µH"
 
 
 @dataclass(frozen=True, kw_only=True)
-class LPermin2(HasUnit):
+class MicroLPermin(HasUnit):
     unit: str = "µL/min"
 
 
 @dataclass(frozen=True, kw_only=True)
-class LPers2(HasUnit):
+class MicroLPers(HasUnit):
     unit: str = "µL/s"
 
 
 @dataclass(frozen=True, kw_only=True)
-class V2(HasUnit):
+class MicroV(HasUnit):
     unit: str = "µV"
 
 
 @dataclass(frozen=True, kw_only=True)
-class W2(HasUnit):
+class MicroW(HasUnit):
     unit: str = "µW"
 
 
 @dataclass(frozen=True, kw_only=True)
-class WPerg2(HasUnit):
+class MicroWPerg(HasUnit):
     unit: str = "µW/g"
 
 
 @dataclass(frozen=True, kw_only=True)
-class CalPerDegC(HasUnit):
+class MicrocalPerDegC(HasUnit):
     unit: str = "µcal/°C"
 
 
 @dataclass(frozen=True, kw_only=True)
-class In2(HasUnit):
+class Microin(HasUnit):
     unit: str = "µin"
 
 
 @dataclass(frozen=True, kw_only=True)
-class M4(HasUnit):
+class Microm(HasUnit):
     unit: str = "µm"
 
 
 @dataclass(frozen=True, kw_only=True)
-class S3(HasUnit):
+class Micros(HasUnit):
     unit: str = "µs"
 
 
 @dataclass(frozen=True, kw_only=True)
-class Torr2(HasUnit):
+class Microtorr(HasUnit):
     unit: str = "µtorr"
 
 
@@ -3756,7 +3756,7 @@ class Unknown2(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class M5(HasUnit):
+class M4(HasUnit):
     unit: str = "Ω m"
 
 

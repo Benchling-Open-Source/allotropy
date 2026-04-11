@@ -1,0 +1,100 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/solution-analyzer/REC/2024/09/solution-analyzer.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "properties": {
+        "solution analyzer aggregate document": {
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema#/$defs/techniqueAggregateDocument"
+            },
+            {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002919",
+              "properties": {
+                "solution analyzer document": {
+                  "$asm.array-mixed": false,
+                  "$asm.array-ordered": true,
+                  "$asm.pattern": "indexed datum",
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema#/$defs/techniqueDocument"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002920",
+                        "properties": {
+                          "measurement aggregate document": {
+                            "properties": {
+                              "measurement document": {
+                                "items": {
+                                  "allOf": [
+                                    {
+                                      "required": [
+                                        "measurement identifier",
+                                        "measurement time"
+                                      ]
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/osmolality/REC/2024/09/osmolality-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/absorbance/REC/2024/09/absorbance-point-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/ph/REC/2024/09/ph-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/bga/REC/2024/09/blood-gas-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/cell-counting-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/metabolite-analyzer/REC/2024/09/metabolite-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/light-obscuration/REC/2024/09/light-obscuration-detector.schema#/$defs/measurementDocumentItems"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/orderedItem"
+                                    }
+                                  ]
+                                }
+                              },
+                              "data processing time": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002095",
+                                "$asm.pattern": "value datum",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tDateTimeStampValue"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "solution analyzer document"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/asm"
+    }
+  ],
+  "required": [
+    "$asm.manifest"
+  ]
+}

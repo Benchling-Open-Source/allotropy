@@ -1,8 +1,8 @@
 """Main orchestrator: fetch schemas, generate modular Python models.
 
-Uses datamodel-codegen as the core engine with pre-processing (flattening
-external refs) and post-processing (frozen decorators, dedup imports,
-json_name metadata).
+Uses a custom code generator (codegen.py) to produce modular Python
+dataclass modules from Allotrope JSON schemas. Core types are defined
+once in shared modules; technique schemas import from them.
 
 Usage:
     python -m allotropy.schema_gen.generate <schema_url>
@@ -10,54 +10,36 @@ Usage:
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 import subprocess
 import sys
-import tempfile
 from typing import Any
-import warnings
 
-from datamodel_code_generator import (
-    DataModelType,
-    generate,
-    InputFileType,
-    PythonVersion,
-)
-
+from allotropy.schema_gen.codegen import SchemaCodeGenerator
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
-from allotropy.schema_gen.flattener import (
-    flatten_external_defs,
-    merge_allof_overlays,
-    needs_flattening,
-    remove_unreferenced_defs,
-    strip_asm_keys,
-    strip_external_whole_schema_refs,
-)
 from allotropy.schema_gen.naming import (
     DEFAULT_MODEL_OUTPUT_DIR,
     DEFAULT_SCHEMA_CACHE_DIR,
     schema_url_to_model_file,
-    schema_url_to_module_path,
     unit_symbol_to_class_name,
-)
-from allotropy.schema_gen.post_processor import (
-    extract_class_names,
-    post_process,
 )
 
 
 def generate_models(
-    schema_url: str,
+    schema_urls: str | list[str],
     *,
     output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR,
     cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR,
     models_package: str = "allotropy.allotrope.models_v2",
 ) -> list[Path]:
-    """Generate modular Python models from an Allotrope schema URL.
+    """Generate modular Python models from one or more Allotrope schema URLs.
+
+    When multiple URLs are provided, schemas are fetched and merged so that
+    shared modules (core.py, hierarchy.py, etc.) accumulate types from all
+    technique schemas in a single pass.
 
     Args:
-        schema_url: URL to an ADM schema (GitLab blob/raw or Allotrope URL).
+        schema_urls: One or more URLs to ADM schemas.
         output_dir: Where to write generated Python files.
         cache_dir: Where to cache downloaded schema JSON files.
         models_package: Python package path for the models root.
@@ -65,49 +47,54 @@ def generate_models(
     Returns:
         List of generated Python file paths.
     """
-    # Phase 1: Fetch schemas
-    print(f"Fetching schemas from: {schema_url}")  # noqa: T201
-    fetcher = SchemaFetcher(cache_dir=cache_dir)
-    schemas = fetcher.fetch_with_dependencies(schema_url)
-    print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
+    if isinstance(schema_urls, str):
+        schema_urls = [schema_urls]
 
-    # Phase 2: Determine generation order
-    order = build_dependency_order(schemas)
+    # Phase 1: Fetch all schemas and merge
+    fetcher = SchemaFetcher(cache_dir=cache_dir)
+    all_schemas: dict[str, Any] = {}
+    for url in schema_urls:
+        print(f"Fetching schemas from: {url}")  # noqa: T201
+        schemas = fetcher.fetch_with_dependencies(url)
+        print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
+        all_schemas.update(schemas)
+
+    # Phase 2: Determine generation order across all schemas
+    order = build_dependency_order(all_schemas)
     print("Generation order:")  # noqa: T201
     for i, url in enumerate(order):
         print(f"  {i + 1}. {url}")  # noqa: T201
 
-    # Phase 3: Generate each schema in dependency order
+    # Phase 3: Separate units schemas (custom generation) from the rest
+    units_urls = [u for u in order if _is_units_schema(u)]
+    other_urls = [u for u in order if not _is_units_schema(u)]
+
     print("\nGenerating Python modules...")  # noqa: T201
-    class_registry: dict[str, str] = {}  # class_name -> module_path
     generated_files: list[Path] = []
 
-    for url in order:
-        schema = schemas[url]
-        module_path = schema_url_to_module_path(url)
+    # Generate units modules (custom generation, not codegen)
+    for url in units_urls:
+        schema = all_schemas[url]
         output_path = schema_url_to_model_file(url, output_dir)
-
-        if _is_units_schema(url):
-            source = _generate_units_module(schema)
-        else:
-            source, processed_schema = _generate_with_datamodel_codegen(
-                schema, schemas, output_path
-            )
-            source = post_process(
-                source, processed_schema, class_registry, models_package
-            )
-
-        # Update class registry with newly defined classes
-        for name in extract_class_names(source):
-            if name not in class_registry:
-                class_registry[name] = module_path
-
-        # Format with black/ruff
+        source = _generate_units_module(schema)
         _write_module(output_path, source)
         _lint_file(output_path)
-
         generated_files.append(output_path)
         print(f"  Generated: {output_path}")  # noqa: T201
+
+    # Generate all other modules via the custom code generator
+    if other_urls:
+        generator = SchemaCodeGenerator(all_schemas, order, models_package)
+        modules = generator.generate_all()
+
+        for url in other_urls:
+            module = modules[url]
+            output_path = schema_url_to_model_file(url, output_dir)
+            source = module.render(models_package)
+            _write_module(output_path, source)
+            _lint_file(output_path)
+            generated_files.append(output_path)
+            print(f"  Generated: {output_path}")  # noqa: T201
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
     return generated_files
@@ -117,77 +104,16 @@ def _is_units_schema(url: str) -> bool:
     return "units.schema" in url
 
 
-def _generate_with_datamodel_codegen(
-    schema: dict[str, Any],
-    all_schemas: dict[str, dict[str, Any]],
-    output_path: Path,
-) -> tuple[str, dict[str, Any]]:
-    """Run datamodel-codegen on a schema and return (source, processed_schema).
-
-    Returns the processed (flattened) schema so post_process can build a
-    complete property name map including definitions from external schemas.
-    """
-    # Pre-process: flatten external $defs refs if needed
-    processed = schema
-    if needs_flattening(processed):
-        processed = flatten_external_defs(processed, all_schemas)
-
-    # Merge allOf compositions (base $ref + technique overlay properties)
-    processed = merge_allof_overlays(processed)
-
-    # Remove $defs that are no longer referenced after the merge
-    processed = remove_unreferenced_defs(processed)
-
-    # Strip $asm.* metadata keys and neutralize remaining external refs
-    processed = strip_asm_keys(processed)
-    processed = strip_external_whole_schema_refs(processed)
-
-    # Write to temp file and generate
-    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fp:
-        json.dump(processed, fp, ensure_ascii=False)
-        fp.flush()
-        tmp_path = Path(fp.name)
-
-    try:
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        with warnings.catch_warnings():
-            warnings.filterwarnings(
-                "ignore",
-                category=UserWarning,
-                message="format of .* not understood",
-            )
-            generate(
-                input_=tmp_path,
-                output=output_path,
-                output_model_type=DataModelType.DataclassesDataclass,
-                input_file_type=InputFileType.JsonSchema,
-                base_class="",
-                target_python_version=PythonVersion.PY_310,
-                use_union_operator=True,
-                use_double_quotes=True,
-                use_standard_collections=True,
-                snake_case_field=True,
-                disable_timestamp=True,
-            )
-
-        source = output_path.read_text(encoding="utf-8")
-    finally:
-        tmp_path.unlink(missing_ok=True)
-
-    return source, processed
-
-
 # ---------------------------------------------------------------------------
-# Units module generation (custom, not datamodel-codegen)
+# Units module generation (custom, not codegen)
 # ---------------------------------------------------------------------------
 
 
 def _generate_units_module(schema: dict[str, Any]) -> str:
     """Generate the units module with HasUnit base class and unit subclasses.
 
-    Units schemas have a unique structure that datamodel-codegen can't handle
-    well (def keys are symbols like ``pg/mL``, ``#``, etc.).
+    Units schemas have a unique structure that needs special handling
+    (def keys are symbols like ``pg/mL``, ``#``, etc.).
     """
     lines: list[str] = [
         "# generated by allotropy.schema_gen",
@@ -309,7 +235,10 @@ def main() -> None:
     """CLI entry point."""
     if len(sys.argv) < 2:
         msg = (
-            "Usage: python -m allotropy.schema_gen.generate <schema_url>\n"
+            "Usage: python -m allotropy.schema_gen.generate <schema_url> [schema_url ...]\n"
+            "\n"
+            "Multiple URLs can be provided to generate all schemas in a single pass,\n"
+            "ensuring shared modules (core.py) accumulate types from all schemas.\n"
             "\n"
             "Example:\n"
             "  python -m allotropy.schema_gen.generate"
@@ -320,9 +249,8 @@ def main() -> None:
         print(msg)  # noqa: T201
         sys.exit(1)
 
-    schema_url = sys.argv[1]
-    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_MODEL_OUTPUT_DIR
-    generate_models(schema_url, output_dir=output_dir)
+    schema_urls = sys.argv[1:]
+    generate_models(schema_urls)
 
 
 if __name__ == "__main__":
