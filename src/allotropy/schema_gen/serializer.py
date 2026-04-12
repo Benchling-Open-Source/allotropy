@@ -7,7 +7,7 @@ defined in the Allotrope schemas.
 Usage::
 
     from allotropy.schema_gen.serializer import to_dict, from_dict
-    from allotropy.allotrope.models_v2.adm.spectrophotometry.rec._2024._06.spectrophotometry import Model
+    from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import Model
 
     model = Model(asm_manifest="http://...", ...)
     json_dict = to_dict(model)          # Python → JSON dict (schema property names)
