@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET  # noqa: N817
 
-from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
+from allotropy.allotrope.models_v2.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (

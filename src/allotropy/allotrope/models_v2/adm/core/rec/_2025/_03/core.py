@@ -54,9 +54,17 @@ class TStatisticDatumRole(Enum):
     minimum_value_role = "minimum value role"
     initial_value_role = "initial value role"
     final_value_role = "final value role"
-    geometric_mean_role = "geometric mean role"
     coefficient_of_variation_role = "coefficient of variation role"
+    robust_coefficient_of_variation_role = "robust coefficient of variation role"
+    geometric_mean_role = "geometric mean role"
+    percentile_role = "percentile role"
+    median_absolute_deviation_percentile_role = "median absolute deviation percentile role"
+    robust_standard_deviation_role = "robust standard deviation role"
     median_absolute_deviation_role = "median absolute deviation role"
+    frequency_of_parent_role = "frequency of parent role"
+    frequency_of_grandparent_role = "frequency of grandparent role"
+    frequency_of_total_role = "frequency of total role"
+    sum_of_squares_role = "sum of squares role"
 
 
 TUnit = str
@@ -256,6 +264,11 @@ TUnsignedShortValue = int | TUnsignedShortValueItem
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueCounts(TQuantityValue):
+    unit: str = "Counts"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueCountsPers(TQuantityValue):
     unit: str = "Counts/s"
 
@@ -335,44 +348,16 @@ class TQuantityValueUnitless(TQuantityValue):
     unit: str = "(unitless)"
 
 
-TNumericValue = (
-    TByteValue
-    | TShortValue
-    | TIntValue
-    | TLongValue
-    | TUnsignedByteValue
-    | TUnsignedShortValue
-    | TUnsignedIntValue
-    | TUnsignedLongValue
-    | TFloatValue
-    | TDoubleValue
-    | TDecimalValue
-    | TIntegerValue
-)
+TNumericValue = TByteValue | TShortValue | TIntValue | TLongValue | TUnsignedByteValue | TUnsignedShortValue | TUnsignedIntValue | TUnsignedLongValue | TFloatValue | TDoubleValue | TDecimalValue | TIntegerValue
 
 
-TOrderedValue = (
-    TNumericValue
-    | TStringValue
-    | TDateTimeValue
-    | TDateTimeStampValue
-    | TDateValue
-    | TTimeValue
-)
+TOrderedValue = TNumericValue | TStringValue | TDateTimeValue | TDateTimeStampValue | TDateValue | TTimeValue
 
 
 @dataclass(frozen=True, kw_only=True)
 class TRangeValue:
-    max_exclusive: TOrderedValue | None = field(
-        default=None, metadata={"json_name": "maxExclusive"}
-    )
-    max_inclusive: TOrderedValue | None = field(
-        default=None, metadata={"json_name": "maxInclusive"}
-    )
-    min_exclusive: TOrderedValue | None = field(
-        default=None, metadata={"json_name": "minExclusive"}
-    )
-    min_inclusive: TOrderedValue | None = field(
-        default=None, metadata={"json_name": "minInclusive"}
-    )
+    max_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxExclusive"})
+    max_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxInclusive"})
+    min_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minExclusive"})
+    min_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minInclusive"})
     unit: TUnit | None = None

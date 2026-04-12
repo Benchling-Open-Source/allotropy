@@ -4,16 +4,24 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.core import (
+    TQuantityValue,
+    TQuantityValueCounts,
+    TQuantityValueUnitless,
+    TStatisticDatumRole,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.hierarchy import (
+    DataSystemDocument,
+    DeviceSystemDocument,
+)
+from allotropy.allotrope.models_v2.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrixAggregateDocument,
     CompensationMatrixDocumentItem,
     DataProcessingDocument,
     DataRegionAggregateDocument,
     DataRegionDocumentItem,
-    DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
-    DeviceSystemDocument,
     FlowCytometryAggregateDocument,
     FlowCytometryDocumentItem,
     MatrixAggregateDocument,
@@ -32,14 +40,6 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
     StatisticsDocumentItem,
     VertexAggregateDocument,
     VertexDocumentItem,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueCounts,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TQuantityValue,
-    TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -170,7 +170,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            manifest=self.MANIFEST,
+            field_asm_manifest=self.MANIFEST,
             flow_cytometry_aggregate_document=add_custom_information_document(
                 FlowCytometryAggregateDocument(
                     device_system_document=DeviceSystemDocument(
@@ -181,12 +181,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     data_system_document=DataSystemDocument(
                         data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                     ),
                     flow_cytometry_document=[
                         self._get_technique_document(measurement_group)
