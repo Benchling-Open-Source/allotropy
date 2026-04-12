@@ -58,7 +58,9 @@ class TStatisticDatumRole(Enum):
     robust_coefficient_of_variation_role = "robust coefficient of variation role"
     geometric_mean_role = "geometric mean role"
     percentile_role = "percentile role"
-    median_absolute_deviation_percentile_role = "median absolute deviation percentile role"
+    median_absolute_deviation_percentile_role = (
+        "median absolute deviation percentile role"
+    )
     robust_standard_deviation_role = "robust standard deviation role"
     median_absolute_deviation_role = "median absolute deviation role"
     frequency_of_parent_role = "frequency of parent role"
@@ -348,16 +350,44 @@ class TQuantityValueUnitless(TQuantityValue):
     unit: str = "(unitless)"
 
 
-TNumericValue = TByteValue | TShortValue | TIntValue | TLongValue | TUnsignedByteValue | TUnsignedShortValue | TUnsignedIntValue | TUnsignedLongValue | TFloatValue | TDoubleValue | TDecimalValue | TIntegerValue
+TNumericValue = (
+    TByteValue
+    | TShortValue
+    | TIntValue
+    | TLongValue
+    | TUnsignedByteValue
+    | TUnsignedShortValue
+    | TUnsignedIntValue
+    | TUnsignedLongValue
+    | TFloatValue
+    | TDoubleValue
+    | TDecimalValue
+    | TIntegerValue
+)
 
 
-TOrderedValue = TNumericValue | TStringValue | TDateTimeValue | TDateTimeStampValue | TDateValue | TTimeValue
+TOrderedValue = (
+    TNumericValue
+    | TStringValue
+    | TDateTimeValue
+    | TDateTimeStampValue
+    | TDateValue
+    | TTimeValue
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class TRangeValue:
-    max_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxExclusive"})
-    max_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxInclusive"})
-    min_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minExclusive"})
-    min_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minInclusive"})
+    max_exclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxExclusive"}
+    )
+    max_inclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxInclusive"}
+    )
+    min_exclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minExclusive"}
+    )
+    min_inclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minInclusive"}
+    )
     unit: TUnit | None = None

@@ -14,6 +14,8 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
     p_o2: TQuantityValueMmHg | TQuantityValueKPa = field(metadata={"json_name": "pO2"})
-    p_co2: TQuantityValueMmHg | TQuantityValueKPa = field(metadata={"json_name": "pCO2"})
+    p_co2: TQuantityValueMmHg | TQuantityValueKPa = field(
+        metadata={"json_name": "pCO2"}
+    )
     carbon_dioxide_saturation: TQuantityValuePercent | None = None
     oxygen_saturation: TQuantityValuePercent | None = None

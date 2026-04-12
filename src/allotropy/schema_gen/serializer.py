@@ -16,7 +16,7 @@ Usage::
 
 from __future__ import annotations
 
-from dataclasses import fields, is_dataclass
+from dataclasses import fields, is_dataclass, MISSING
 from enum import Enum
 from typing import Any, get_args, get_origin, TypeVar
 
@@ -40,7 +40,11 @@ def to_dict(obj: Any) -> Any:
         for f in fields(obj):
             value = getattr(obj, f.name)
             if value is None:
-                continue
+                # Keep None for required fields (no default) to preserve
+                # explicitly set null values like cycle_threshold_result.
+                is_required = f.default is MISSING and f.default_factory is MISSING
+                if not is_required:
+                    continue
             json_key = f.metadata.get("json_name", f.name.replace("_", " "))
             result[json_key] = to_dict(value)
         # Handle dynamically-added custom_information_document (not in fields())

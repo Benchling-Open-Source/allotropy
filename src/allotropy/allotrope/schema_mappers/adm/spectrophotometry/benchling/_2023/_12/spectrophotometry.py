@@ -3,12 +3,26 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    CalculatedDataAggregateDocument,
-    CalculatedDataDocumentItem,
-    ContainerType,
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+    TQuantityValue,
+    TQuantityValueMAU,
+    TQuantityValueMicroL,
+    TQuantityValueNm,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2023._09.hierarchy import (
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
+)
+from allotropy.allotrope.models_v2.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    AbsorptionSpectrumDataCube,
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -28,23 +42,25 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueKiloDalton,
-    TQuantityValueMicroliter,
-    TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanometer,
-    TQuantityValuePerMolarPerCentimeter,
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-    TDatacube,
-    TQuantityValue,
-)
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+
+
+# Quantity value types not in V2 core — defined here for use in custom info documents.
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueKiloDalton(TQuantityValue):
+    unit: str = "kDa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueNanogramPerMicroliter(TQuantityValue):
+    unit: str = "ng/µL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePerMolarPerCentimeter(TQuantityValue):
+    unit: str = "M-1cm-1"
+
+
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -148,7 +164,7 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     brand_name: str | None = None
-    container_type: ContainerType | None = None
+    container_type: str | None = None
 
     file_name: str | None = None
     data_system_instance_id: str | None = None
@@ -179,9 +195,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    unc_path=data.metadata.unc_path,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                 ),
@@ -251,11 +267,11 @@ class Mapper(SchemaMapper[Data, Model]):
                             device_type=metadata.device_type,
                             detection_type=metadata.detection_type,
                             detector_wavelength_setting=quantity_or_none(
-                                TQuantityValueNanometer,
+                                TQuantityValueNm,
                                 measurement.detector_wavelength_setting,
                             ),
                             electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
-                                TQuantityValueNanometer,
+                                TQuantityValueNm,
                                 measurement.electronic_absorbance_reference_wavelength_setting,
                             ),
                         ),
@@ -263,7 +279,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorbance=TQuantityValueMilliAbsorbanceUnit(
+            absorbance=TQuantityValueMAU(
                 value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
             ),
             calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
@@ -272,15 +288,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         custom_info_doc = (measurement.custom_info or {}) | {
             "baseline absorbance": quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit,
+                TQuantityValueMAU,
                 measurement.baseline_absorbance,
             ),
             "340 raw": quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit,
+                TQuantityValueMAU,
                 (measurement.custom_info or {}).get("340 raw"),
             ),
             "Cursor Abs.": quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit,
+                TQuantityValueMAU,
                 measurement.cursor_absorbance,
             ),
         }
@@ -307,7 +323,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
             absorption_spectrum_data_cube=assert_not_none(
-                get_data_cube(measurement.data_cube, TDatacube),
+                get_data_cube_v2(measurement.data_cube, AbsorptionSpectrumDataCube),
                 msg="Parser must provide absorption spectrum data cube",
             ),
         )
@@ -328,7 +344,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detector_wavelength_setting=quantity_or_none(
-                                TQuantityValueNanometer,
+                                TQuantityValueNm,
                                 measurement.detector_wavelength_setting,
                             ),
                         ),
@@ -336,7 +352,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+            fluorescence=TQuantityValueRFU(
                 value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
             ),
         )
@@ -348,7 +364,7 @@ class Mapper(SchemaMapper[Data, Model]):
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
         custom_info = {
             "sample volume setting": quantity_or_none(
-                TQuantityValueMicroliter, measurement.sample_volume_setting
+                TQuantityValueMicroL, measurement.sample_volume_setting
             ),
             "excitation setting": measurement.excitation_wavelength_setting,
             "emission setting": measurement.emission_wavelength_setting,
@@ -356,7 +372,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
             "Cursor Pos.": quantity_or_none(
-                TQuantityValueNanometer, measurement.cursor_position
+                TQuantityValueNm, measurement.cursor_position
             ),
         }
         return (measurement.device_control_custom_info or {}) | custom_info

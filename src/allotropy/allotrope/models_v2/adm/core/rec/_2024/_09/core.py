@@ -46,11 +46,17 @@ TResource = str
 class TStatisticDatumRole(Enum):
     arithmetic_mean_role = "arithmetic mean role"
     median_role = "median role"
+    coefficient_of_variation_role = "coefficient of variation role"
     relative_standard_deviation_role = "relative standard deviation role"
     skewness_role = "skewness role"
     standard_deviation_role = "standard deviation role"
     variance_role = "variance role"
+    mode_value_role = "mode value role"
     maximum_value_role = "maximum value role"
+    trimmed_mode_value_role = "trimmed mode value role"
+    trimmed_count_role = "trimmed count role"
+    trimmed_standard_deviation_role = "trimmed standard deviation role"
+    trimmed_arithmetic_mean_role = "trimmed arithmetic mean role"
     minimum_value_role = "minimum value role"
     initial_value_role = "initial value role"
     final_value_role = "final value role"
@@ -278,6 +284,16 @@ class TQuantityValueKPa(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueM(TQuantityValue):
+    unit: str = "M"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueM1s1(TQuantityValue):
+    unit: str = "M-1s-1"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueMAU(TQuantityValue):
     unit: str = "mAU"
 
@@ -308,6 +324,11 @@ class TQuantityValueMicroL(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueMicroLPermin(TQuantityValue):
+    unit: str = "µL/min"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueMicrom(TQuantityValue):
     unit: str = "µm"
 
@@ -330,6 +351,11 @@ class TQuantityValueMosmPerkg(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueMs(TQuantityValue):
     unit: str = "ms"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueNM(TQuantityValue):
+    unit: str = "nM"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -378,8 +404,18 @@ class TQuantityValueRFUDots(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueRU(TQuantityValue):
+    unit: str = "RU"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueS(TQuantityValue):
     unit: str = "s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueS1(TQuantityValue):
+    unit: str = "s^-1"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -387,16 +423,44 @@ class TQuantityValueUnitless(TQuantityValue):
     unit: str = "(unitless)"
 
 
-TNumericValue = TByteValue | TShortValue | TIntValue | TLongValue | TUnsignedByteValue | TUnsignedShortValue | TUnsignedIntValue | TUnsignedLongValue | TFloatValue | TDoubleValue | TDecimalValue | TIntegerValue
+TNumericValue = (
+    TByteValue
+    | TShortValue
+    | TIntValue
+    | TLongValue
+    | TUnsignedByteValue
+    | TUnsignedShortValue
+    | TUnsignedIntValue
+    | TUnsignedLongValue
+    | TFloatValue
+    | TDoubleValue
+    | TDecimalValue
+    | TIntegerValue
+)
 
 
-TOrderedValue = TNumericValue | TStringValue | TDateTimeValue | TDateTimeStampValue | TDateValue | TTimeValue
+TOrderedValue = (
+    TNumericValue
+    | TStringValue
+    | TDateTimeValue
+    | TDateTimeStampValue
+    | TDateValue
+    | TTimeValue
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class TRangeValue:
-    min_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minInclusive"})
-    min_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "minExclusive"})
-    max_inclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxInclusive"})
-    max_exclusive: TOrderedValue | None = field(default=None, metadata={"json_name": "maxExclusive"})
+    min_inclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minInclusive"}
+    )
+    min_exclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "minExclusive"}
+    )
+    max_inclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxInclusive"}
+    )
+    max_exclusive: TOrderedValue | None = field(
+        default=None, metadata={"json_name": "maxExclusive"}
+    )
     unit: TUnit | None = None

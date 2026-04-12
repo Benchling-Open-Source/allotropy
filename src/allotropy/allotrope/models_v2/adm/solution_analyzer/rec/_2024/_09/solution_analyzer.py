@@ -74,7 +74,9 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detector_wavelength_setting: TQuantityValueNm | None = None
     detector_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
@@ -91,7 +93,9 @@ class DeviceControlDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -109,15 +113,33 @@ class SampleDocument:
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class TotalCellDiameterDistribution(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -128,13 +150,17 @@ class AnalyteAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
     diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -145,20 +171,36 @@ class DistributionAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
     data_processing_document: DataProcessingDocument | None = None
-    viability__cell_counter_: TQuantityValuePercent | None = field(default=None, metadata={"json_name": "viability (cell counter)"})
-    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "total cell density (cell counter)"})
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "viable cell density (cell counter)"})
-    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "dead cell density (cell counter)"})
+    viability__cell_counter_: TQuantityValuePercent | None = field(
+        default=None, metadata={"json_name": "viability (cell counter)"}
+    )
+    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "total cell density (cell counter)"}
+    )
+    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "viable cell density (cell counter)"}
+    )
+    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "dead cell density (cell counter)"}
+    )
     average_total_cell_diameter: TQuantityValueMicrom | None = None
-    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(default=None, metadata={"json_name": "average live cell diameter (cell counter)"})
-    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(default=None, metadata={"json_name": "average dead cell diameter (cell counter)"})
+    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+        default=None,
+        metadata={"json_name": "average live cell diameter (cell counter)"},
+    )
+    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+        default=None,
+        metadata={"json_name": "average dead cell diameter (cell counter)"},
+    )
     total_cell_diameter_distribution: TotalCellDiameterDistribution | None = None
     total_cell_count: TQuantityValueCell | None = None
     viable_cell_count: TQuantityValueCell | None = None
     dead_cell_count: TQuantityValueCell | None = None
     average_total_cell_circularity: TQuantityValueUnitless | None = None
     average_viable_cell_circularity: TQuantityValueUnitless | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     processed_data_identifier: TStringValue | None = None
@@ -168,7 +210,9 @@ class ProcessedDataDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
     processed_data_document: list[ProcessedDataDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
@@ -179,7 +223,9 @@ class MeasurementDocumentItem(OrderedItem):
     measurement_time: TDateTimeStampValue
     sample_document: SampleDocument
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
@@ -192,7 +238,9 @@ class MeasurementDocumentItem(OrderedItem):
     p_h: TQuantityValuePH | None = field(default=None, metadata={"json_name": "pH"})
     temperature: TQuantityValueDegC | None = None
     p_o2: TQuantityValueMmHg | None = field(default=None, metadata={"json_name": "pO2"})
-    p_co2: TQuantityValueMmHg | None = field(default=None, metadata={"json_name": "pCO2"})
+    p_co2: TQuantityValueMmHg | None = field(
+        default=None, metadata={"json_name": "pCO2"}
+    )
     carbon_dioxide_saturation: TQuantityValuePercent | None = None
     oxygen_saturation: TQuantityValuePercent | None = None
     analyte_aggregate_document: AnalyteAggregateDocument | None = None
@@ -202,7 +250,9 @@ class MeasurementDocumentItem(OrderedItem):
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
@@ -227,4 +277,6 @@ class SolutionAnalyzerAggregateDocument(TechniqueAggregateDocument):
 @dataclass(kw_only=True)
 class Model:
     field_asm_manifest: str = field(metadata={"json_name": "$asm.manifest"})
-    solution_analyzer_aggregate_document: SolutionAnalyzerAggregateDocument | None = None
+    solution_analyzer_aggregate_document: SolutionAnalyzerAggregateDocument | None = (
+        None
+    )

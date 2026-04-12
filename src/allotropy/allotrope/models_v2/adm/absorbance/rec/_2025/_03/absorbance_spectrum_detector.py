@@ -12,21 +12,30 @@ from allotropy.allotrope.models_v2.adm.core.rec._2025._03.cube import (
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class TransmittanceSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(default=None, metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"})
+    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(
+        default=None,
+        metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"},
+    )
     absorption_spectrum_data_cube: AbsorptionSpectrumDataCube | None = None
     transmittance_spectrum_data_cube: TransmittanceSpectrumDataCube | None = None

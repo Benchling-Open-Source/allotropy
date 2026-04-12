@@ -36,7 +36,9 @@ class DeviceControlDocumentItem(OrderedItem):
 
 @dataclass(frozen=True, kw_only=True)
 class TotalCellDiameterDistribution(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -46,14 +48,28 @@ class DeviceControlAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem:
-    viability__cell_counter_: TQuantityValuePercent = field(metadata={"json_name": "viability (cell counter)"})
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL = field(metadata={"json_name": "viable cell density (cell counter)"})
+    viability__cell_counter_: TQuantityValuePercent = field(
+        metadata={"json_name": "viability (cell counter)"}
+    )
+    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL = field(
+        metadata={"json_name": "viable cell density (cell counter)"}
+    )
     data_processing_document: DataProcessingDocument | None = None
-    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "total cell density (cell counter)"})
-    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "dead cell density (cell counter)"})
+    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "total cell density (cell counter)"}
+    )
+    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "dead cell density (cell counter)"}
+    )
     average_total_cell_diameter: TQuantityValueMicrom | None = None
-    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(default=None, metadata={"json_name": "average live cell diameter (cell counter)"})
-    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(default=None, metadata={"json_name": "average dead cell diameter (cell counter)"})
+    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+        default=None,
+        metadata={"json_name": "average live cell diameter (cell counter)"},
+    )
+    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+        default=None,
+        metadata={"json_name": "average dead cell diameter (cell counter)"},
+    )
     total_cell_diameter_distribution: TotalCellDiameterDistribution | None = None
     total_cell_count: TQuantityValueCell | None = None
     viable_cell_count: TQuantityValueCell | None = None

@@ -3016,6 +3016,11 @@ class NgPerMicroL(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class NM(HasUnit):
+    unit: str = "nM"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Nm2(HasUnit):
     unit: str = "nm"
 

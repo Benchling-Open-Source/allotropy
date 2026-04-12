@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+from allotropy.allotrope.models_v2.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (

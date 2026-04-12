@@ -46,23 +46,31 @@ from allotropy.allotrope.models_v2.adm.core.rec._2025._03.hierarchy import (
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ChromatogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
     brand_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     device_identifier: TStringValue | None = None
     device_type: TStringValue | None = None
@@ -71,11 +79,19 @@ class DeviceControlDocumentItem(OrderedItem):
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
     detector_carriage_speed_setting: TStringValue | None = None
-    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(default=None, metadata={"json_name": "detector distance setting (plate reader)"})
+    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
+        default=None, metadata={"json_name": "detector distance setting (plate reader)"}
+    )
     detector_gain_setting: TStringValue | None = None
     integration_time: TQuantityValueS | None = None
     number_of_averages: TQuantityValueNumberSign | None = None
-    scan_position_setting__plate_reader_: Literal["bottom scan position (plate reader)", "scan position configuration (plate reader)", "top scan position (plate reader)"] | None = field(default=None, metadata={"json_name": "scan position setting (plate reader)"})
+    scan_position_setting__plate_reader_: Literal[
+        "bottom scan position (plate reader)",
+        "scan position configuration (plate reader)",
+        "top scan position (plate reader)",
+    ] | None = field(
+        default=None, metadata={"json_name": "scan position setting (plate reader)"}
+    )
     shaking_configuration_description: TStringValue | None = None
     detector_bandwidth_setting: TQuantityValueNm | None = None
     detector_wavelength_setting: TQuantityValueNm | None = None
@@ -102,7 +118,9 @@ class DeviceControlDocumentItem(OrderedItem):
 class DeviceDocumentItem(OrderedItem):
     device_type: TStringValue
     brand_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     device_identifier: TStringValue | None = None
     equipment_serial_number: TStringValue | None = None
     firmware_version: TStringValue | None = None
@@ -114,32 +132,44 @@ class DeviceDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ElectropherogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceEmissionProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceEmissionSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceExcitationSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class LuminescenceProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -153,9 +183,25 @@ class SampleDocument:
     location_identifier: TStringValue
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     description: Any | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
     mass_concentration: TQuantityValuePgPermL | None = None
     vial_location_identifier: TStringValue | None = None
@@ -165,17 +211,23 @@ class SampleDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class TransmittanceSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     device_control_document: list[DeviceControlDocumentItem] | None = None
 
 
@@ -185,7 +237,9 @@ class DeviceSystemDocument:
     model_number: TStringValue
     asset_management_identifier: TStringValue | None = None
     brand_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     description: Any | None = None
     device_document: list[DeviceDocumentItem] | None = None
     equipment_serial_number: TStringValue | None = None
@@ -195,7 +249,9 @@ class DeviceSystemDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
 
 
@@ -206,7 +262,9 @@ class PeakList:
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_processing_document: dict[str, Any] | None = None
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
@@ -217,7 +275,9 @@ class ProcessedDataDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
     processed_data_document: list[ProcessedDataDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
@@ -228,7 +288,9 @@ class MeasurementDocumentItem:
     sample_document: SampleDocument
     analytical_method_identifier: TStringValue | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
@@ -247,12 +309,21 @@ class MeasurementDocumentItem:
     electropherogram_data_cube: ElectropherogramDataCube | None = None
     absorption_profile_data_cube: AbsorptionProfileDataCube | None = None
     chromatogram_data_cube: ChromatogramDataCube | None = None
-    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(default=None, metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"})
+    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(
+        default=None,
+        metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"},
+    )
     absorption_spectrum_data_cube: AbsorptionSpectrumDataCube | None = None
     transmittance_spectrum_data_cube: TransmittanceSpectrumDataCube | None = None
-    fluorescence_emission_profile_data_cube: FluorescenceEmissionProfileDataCube | None = None
-    fluorescence_emission_spectrum_data_cube: FluorescenceEmissionSpectrumDataCube | None = None
-    fluorescence_excitation_spectrum_data_cube: FluorescenceExcitationSpectrumDataCube | None = None
+    fluorescence_emission_profile_data_cube: FluorescenceEmissionProfileDataCube | None = (
+        None
+    )
+    fluorescence_emission_spectrum_data_cube: FluorescenceEmissionSpectrumDataCube | None = (
+        None
+    )
+    fluorescence_excitation_spectrum_data_cube: FluorescenceExcitationSpectrumDataCube | None = (
+        None
+    )
     luminescence_profile_data_cube: LuminescenceProfileDataCube | None = None
 
 
@@ -262,13 +333,33 @@ class MeasurementAggregateDocument:
     measurement_time: TDateTimeStampValue
     plate_well_count: TQuantityValueNumberSign
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    container_type: Literal["reactor", "controlled lab reactor", "tube", "well plate", "differential scanning calorimetry pan", "qPCR reaction block", "vial rack", "pan", "reservoir", "array card block", "capillary", "disintegration apparatus basket", "jar", "container", "tray", "basket", "cell holder"] | None = None
+    container_type: Literal[
+        "reactor",
+        "controlled lab reactor",
+        "tube",
+        "well plate",
+        "differential scanning calorimetry pan",
+        "qPCR reaction block",
+        "vial rack",
+        "pan",
+        "reservoir",
+        "array card block",
+        "capillary",
+        "disintegration apparatus basket",
+        "jar",
+        "container",
+        "tray",
+        "basket",
+        "cell holder",
+    ] | None = None
     experiment_type: TStringValue | None = None
     well_volume: TQuantityValueMicroL | None = None
 

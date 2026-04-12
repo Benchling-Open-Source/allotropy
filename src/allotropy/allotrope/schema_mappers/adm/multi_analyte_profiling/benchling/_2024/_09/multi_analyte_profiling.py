@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValue,
     TQuantityValueMicroL,
@@ -95,7 +94,7 @@ class Measurement:
 
     # Optional metadata
     description: str | None = None
-    sample_role_type: SampleRoleType | None = None
+    sample_role_type: str | None = None
     well_plate_identifier: str | None = None
 
     # Optional settings
@@ -251,7 +250,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            assay_bead_count=TQuantityValueNumberSign(value=measurement.assay_bead_count),
+            assay_bead_count=TQuantityValueNumberSign(
+                value=measurement.assay_bead_count
+            ),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     add_custom_information_document(
@@ -312,11 +313,7 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             description=measurement.description,
-            sample_role_type=(
-                measurement.sample_role_type.value
-                if measurement.sample_role_type
-                else None
-            ),
+            sample_role_type=measurement.sample_role_type,
             well_plate_identifier=measurement.well_plate_identifier,
         )
 

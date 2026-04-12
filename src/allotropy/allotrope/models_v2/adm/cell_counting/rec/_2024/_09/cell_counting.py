@@ -53,7 +53,9 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     sample_volume_setting: TQuantityValueMicroL | None = None
     illumination_setting: TQuantityValuePercent | None = None
     exposure_duration_setting: TQuantityValueMs | None = None
@@ -69,7 +71,9 @@ class DeviceControlDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -77,27 +81,49 @@ class SampleDocument:
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class TotalCellDiameterDistribution(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
     diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -106,20 +132,36 @@ class ProcessedDataDocumentItem(OrderedItem):
     fluorescent_tag_positive_cell_count: TQuantityValueCell | None = None
     fluorescent_tag_positive_cell_density: TQuantityValueOne06cellsPermL | None = None
     fluorescent_tag_positive_percentage: TQuantityValuePercent | None = None
-    viability__cell_counter_: TQuantityValuePercent | None = field(default=None, metadata={"json_name": "viability (cell counter)"})
-    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "total cell density (cell counter)"})
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "viable cell density (cell counter)"})
-    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(default=None, metadata={"json_name": "dead cell density (cell counter)"})
+    viability__cell_counter_: TQuantityValuePercent | None = field(
+        default=None, metadata={"json_name": "viability (cell counter)"}
+    )
+    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "total cell density (cell counter)"}
+    )
+    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "viable cell density (cell counter)"}
+    )
+    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "dead cell density (cell counter)"}
+    )
     average_total_cell_diameter: TQuantityValueMicrom | None = None
-    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(default=None, metadata={"json_name": "average live cell diameter (cell counter)"})
-    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(default=None, metadata={"json_name": "average dead cell diameter (cell counter)"})
+    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+        default=None,
+        metadata={"json_name": "average live cell diameter (cell counter)"},
+    )
+    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+        default=None,
+        metadata={"json_name": "average dead cell diameter (cell counter)"},
+    )
     total_cell_diameter_distribution: TotalCellDiameterDistribution | None = None
     total_cell_count: TQuantityValueCell | None = None
     viable_cell_count: TQuantityValueCell | None = None
     dead_cell_count: TQuantityValueCell | None = None
     average_total_cell_circularity: TQuantityValueUnitless | None = None
     average_viable_cell_circularity: TQuantityValueUnitless | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     processed_data_identifier: TStringValue | None = None
@@ -128,7 +170,9 @@ class ProcessedDataDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
     processed_data_document: list[ProcessedDataDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
@@ -140,7 +184,9 @@ class MeasurementDocumentItem:
     processed_data_aggregate_document: ProcessedDataAggregateDocument
     sample_document: SampleDocument
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
@@ -152,7 +198,9 @@ class MeasurementDocumentItem:
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None

@@ -266,6 +266,11 @@ class TQuantityValueCountsDots(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueDegC(TQuantityValue):
+    unit: str = "degC"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueHz(TQuantityValue):
     unit: str = "Hz"
 
@@ -326,6 +331,11 @@ class TQuantityValueMmCu(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueMs(TQuantityValue):
+    unit: str = "ms"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueNC(TQuantityValue):
     unit: str = "nC"
 
@@ -358,6 +368,21 @@ class TQuantityValuePADots(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValuePercent(TQuantityValue):
     unit: str = "%"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePgPermL(TQuantityValue):
+    unit: str = "pg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRFU(TQuantityValue):
+    unit: str = "RFU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRLU(TQuantityValue):
+    unit: str = "RLU"
 
 
 @dataclass(frozen=True, kw_only=True)

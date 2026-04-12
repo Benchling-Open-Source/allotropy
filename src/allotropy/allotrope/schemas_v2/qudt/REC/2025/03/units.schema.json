@@ -7213,6 +7213,18 @@
         "unit"
       ]
     },
+    "nM": {
+      "properties": {
+        "unit": {
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanomolar",
+          "const": "nM",
+          "type": "string"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
     "nm": {
       "properties": {
         "unit": {

@@ -2,9 +2,13 @@ from dataclasses import dataclass
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
+from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+    TQuantityValue,
+    TQuantityValueNumberSign,
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models_v2.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
-    ContainerType,
     DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
@@ -26,16 +30,15 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueNumber,
-    TQuantityValueNumberPerMicroliter,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueNumberPerMicroliter(TQuantityValue):
+    unit: str = "#/μL"
 
 
 @dataclass(frozen=True)
@@ -119,7 +122,7 @@ class Metadata:
     analyst: str | None = None
     measurement_time: str | None = None
     brand_name: str | None = None
-    container_type: ContainerType | None = None
+    container_type: str | None = None
 
 
 @dataclass(frozen=True)
@@ -137,7 +140,8 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            dPCR_aggregate_document=DPCRAggregateDocument(
+            field_asm_manifest=self.MANIFEST,
+            d_pcr_aggregate_document=DPCRAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
                     brand_name=data.metadata.brand_name,
@@ -145,19 +149,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
+                    unc_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
                 ),
-                dPCR_document=[
+                d_pcr_document=[
                     self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
                     data.calculated_data
                 ),
-            )
+            ),
         )
 
     def _get_technique_document(
@@ -166,7 +170,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return DPCRDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
-                plate_well_count=TQuantityValueNumber(
+                plate_well_count=TQuantityValueNumberSign(
                     value=measurement_group.plate_well_count
                 ),
                 error_aggregate_document=self._get_error_aggregate_document(
@@ -195,14 +199,14 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
-            target_DNA_description=measurement.target_identifier,
-            total_partition_count=TQuantityValueNumber(
+            target_dna_description=measurement.target_identifier,
+            total_partition_count=TQuantityValueNumberSign(
                 value=measurement.total_partition_count
             ),
-            reporter_dye_data_cube=get_data_cube(
+            reporter_dye_data_cube=get_data_cube_v2(
                 measurement.reporter_dye_data_cube, ReporterDyeDataCube
             ),
-            passive_reference_dye_data_cube=get_data_cube(
+            passive_reference_dye_data_cube=get_data_cube_v2(
                 measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube
             ),
             error_aggregate_document=self._get_error_aggregate_document(
@@ -229,14 +233,16 @@ class Mapper(SchemaMapper[Data, Model]):
                         number_concentration=TQuantityValueNumberPerMicroliter(
                             value=measurement.concentration
                         ),
-                        positive_partition_count=TQuantityValueNumber(
+                        positive_partition_count=TQuantityValueNumberSign(
                             value=measurement.positive_partition_count
                         ),
                         negative_partition_count=quantity_or_none(
-                            TQuantityValueNumber, measurement.negative_partition_count
+                            TQuantityValueNumberSign,
+                            measurement.negative_partition_count,
                         ),
-                        confidence_interval__95__=quantity_or_none(
-                            TQuantityValueNumber, measurement.confidence_interval__95__
+                        confidence_interval__95_=quantity_or_none(
+                            TQuantityValueNumberSign,
+                            measurement.confidence_interval__95__,
                         ),
                         data_processing_document=DataProcessingDocument(
                             fluorescence_intensity_threshold_setting=TQuantityValueUnitless(

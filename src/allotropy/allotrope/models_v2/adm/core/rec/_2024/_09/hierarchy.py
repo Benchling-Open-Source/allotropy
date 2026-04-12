@@ -11,6 +11,7 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TDateTimeValue,
     TIntegerValue,
     TQuantityValue,
+    TQuantityValueUnitless,
     TStringValue,
 )
 
@@ -24,8 +25,16 @@ class AnalysisSequenceDocument:
     method_identifier: TStringValue | None = None
     method_name: TStringValue | None = None
     start_time: TDateTimeValue | None = None
-    unc_path: TStringValue | None = field(default=None, metadata={"json_name": "UNC path"})
+    unc_path: TStringValue | None = field(
+        default=None, metadata={"json_name": "UNC path"}
+    )
     version_number: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalibrationResultDocumentItem:
+    calibration_result_name: TStringValue | None = None
+    calibration_result: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -71,8 +80,21 @@ class ImageDocumentItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class StatisticsDocumentItem:
-    statistical_feature: Literal["BET C constant", "Raman intensity", "Raman interferogram intensity", "Raman wavenumber shift", "Young modulus", "abrasion weight", "absolute intensity", "absolute water content", "absorbance", "acquisition volume", "actual P/P0 result", "adsorbed volume at STP", "ambient humidity", "ambient pressure", "ambient temperature", "amount of substance", "angle", "angle of optical rotation", "angular velocity", "area", "attenuation coefficient", "average dead cell diameter (cell counter)", "average particle size", "average total cell circularity", "average total cell diameter", "average viable cell circularity", "background corrected turbidity", "birefringence", "break strain", "break stress", "cell path length", "chemical shift", "chromatography column film thickness", "chromatography column length", "chromatography column particle size", "circularity", "coating gap height", "collision energy", "column inner diameter", "compartment temperature", "concentration", "container diameter", "container height", "degassed sample weight", "detector view volume", "diameter", "dielectric polarization", "dilution factor", "dilution volume", "dispensed volume", "dry gas flow rate", "dry sample weight", "eccentricity", "electric charge", "electric conductance", "electric conductivity", "electric current", "electric impedance", "electric resistance", "electric resistivity", "electron beam working distance", "end height", "energy (datum)", "enthalpy", "enthalpy of fusion", "enthalpy of sublimation", "enthalpy of vaporization", "exhaust gas flow rate", "extrapolated moisture content", "fill depth", "flow rate", "flow ratio", "fluorescence", "foam height", "force", "fracture energy", "glass transition temperature", "gloss", "gross weight", "hardness", "heat capacity", "heat capacity (dsc)", "heat flow", "heat seal length", "heat transfer coefficient", "height", "hold-up volume", "humidity", "image height", "image width", "incident radiation angle", "inlet gas pressure", "inner diameter", "intensity", "isocyanate reservoir temperature", "length", "linear velocity", "liquid height", "luminescence", "m/z", "mass", "mass attenuation coefficient", "mass change", "mass concentration", "mass fraction", "measurement chamber free space volume", "molar attenuation coefficient", "molar concentration", "molar enthalpy of fusion", "molar enthalpy of sublimation", "molar enthalpy of vaporization", "molar mass", "molecular mass", "monolayer quantity", "normalized foam height", "number concentration", "osmolality", "pCO2", "pCO2 (bga)", "pH", "pO2", "pO2 (bga)", "partial pressure", "particle size", "peak analyte amount", "peak load force", "peak onset temperature", "peak temperature", "plate heater temperature", "plate temperature", "plate well count", "polarity", "polyol reservoir temperature", "position count", "power", "pressure", "probe volume", "protein attenuation coefficient", "purity", "qNMR purity result", "reference material weight", "reflectance", "refractive index", "relative humidity", "relative intensity", "relative permittivity", "relative pressure (BET)", "relative response", "relative weight loss on drying", "reservoir temperature", "rotational speed", "sample temperature", "sample thickness", "sample weight", "sample weight before drying", "sample width", "saturated gas flow rate", "saturation vapor pressure", "seal initiation temperature", "size (datum)", "solvent reservoir temperature", "specific enthalpy of fusion", "specific enthalpy of sublimation", "specific enthalpy of vaporization", "specific heat capacity", "specific rotation", "specific surface area", "start height", "stirring rate", "strain", "stress", "tablet thickness", "tare weight", "temperature", "temperature rate", "thermal conductance", "thermal conductivity", "thickness", "titer", "torque", "total cell diameter", "total foam height", "total gas flow rate", "total material height", "transition enthalpy", "transmittance", "turbidity", "velocity", "viscosity", "void volume", "voltage", "voltage range", "volume", "volume concentration", "volume fraction", "water mass concentration", "water mass fraction", "wavelength", "wavenumber", "weight loss", "well volume", "width", "yield strain", "yield stress"]
+class ReferenceMaterialDocument:
+    reference_material_identifier: TStringValue | None = None
+    batch_identifier: TStringValue | None = None
+    expiry_time_prescription: TDateTimeStampValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatisticDimensionDocumentItem:
+    dimension_identifier: TStringValue | None = None
+    statistical_value: TQuantityValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalibrationResultAggregateDocument:
+    calibration_result_document: list[CalibrationResultDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -101,22 +123,45 @@ class ImageAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class StatisticsAggregateDocument:
-    statistics_document: list[StatisticsDocumentItem] | None = None
+class StatisticDimensionAggregateDocument:
+    statistic_dimension_document: list[StatisticDimensionDocumentItem] | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalibrationDocumentItem:
+    calibration_name: TStringValue | None = None
+    calibration_description: TStringValue | None = None
+    calibration_time: TDateTimeStampValue | None = None
+    expiry_time_prescription: TDateTimeStampValue | None = None
+    calibration_report: TStringValue | None = None
+    reference_material_document: ReferenceMaterialDocument | None = None
+    calibration_result_aggregate_document: CalibrationResultAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DataSystemDocument:
-    asm_file_identifier: TStringValue = field(metadata={"json_name": "ASM file identifier"})
+    asm_file_identifier: TStringValue = field(
+        metadata={"json_name": "ASM file identifier"}
+    )
     data_system_instance_identifier: TStringValue
-    asm_converter_name: TStringValue | None = field(default=None, metadata={"json_name": "ASM converter name"})
-    asm_converter_version: TStringValue | None = field(default=None, metadata={"json_name": "ASM converter version"})
+    asm_converter_name: TStringValue | None = field(
+        default=None, metadata={"json_name": "ASM converter name"}
+    )
+    asm_converter_version: TStringValue | None = field(
+        default=None, metadata={"json_name": "ASM converter version"}
+    )
     database_primary_key: TStringValue | None = None
     file_name: TStringValue | None = None
     software_name: TStringValue | None = None
     software_version: TStringValue | None = None
-    unc_path: TStringValue | None = field(default=None, metadata={"json_name": "UNC path"})
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    unc_path: TStringValue | None = field(
+        default=None, metadata={"json_name": "UNC path"}
+    )
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -129,7 +174,9 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -142,13 +189,17 @@ class DeviceDocumentItem(OrderedItem):
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -156,9 +207,25 @@ class SampleDocument:
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     location_identifier: TStringValue | None = None
 
 
@@ -174,7 +241,9 @@ class CalculatedDataDocumentItem(OrderedItem):
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_processing_document: dict[str, Any] | None = None
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
@@ -182,9 +251,257 @@ class ProcessedDataDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
+class StatisticsDocumentItem:
+    statistical_feature: Literal[
+        "BET C constant",
+        "Raman intensity",
+        "Raman interferogram intensity",
+        "Raman wavenumber shift",
+        "Young modulus",
+        "abrasion weight",
+        "absolute intensity",
+        "absolute water content",
+        "absorbance",
+        "acquisition volume",
+        "actual P/P0 result",
+        "adsorbed volume at STP",
+        "ambient humidity",
+        "ambient pressure",
+        "ambient temperature",
+        "amount of substance",
+        "angle",
+        "angle of optical rotation",
+        "angular velocity",
+        "area",
+        "attenuation coefficient",
+        "average dead cell diameter (cell counter)",
+        "average particle size",
+        "average total cell circularity",
+        "average total cell diameter",
+        "average viable cell circularity",
+        "background corrected turbidity",
+        "birefringence",
+        "break strain",
+        "break stress",
+        "cell path length",
+        "chemical shift",
+        "chromatography column film thickness",
+        "chromatography column length",
+        "chromatography column particle size",
+        "circularity",
+        "coating gap height",
+        "collision energy",
+        "column inner diameter",
+        "compartment temperature",
+        "concentration",
+        "container diameter",
+        "container height",
+        "count",
+        "degassed sample weight",
+        "detector view volume",
+        "diameter",
+        "dielectric polarization",
+        "dilution factor",
+        "dilution volume",
+        "dispensed volume",
+        "dry gas flow rate",
+        "dry sample weight",
+        "eccentricity",
+        "electric charge",
+        "electric conductance",
+        "electric conductivity",
+        "electric current",
+        "electric impedance",
+        "electric resistance",
+        "electric resistivity",
+        "electron beam working distance",
+        "end height",
+        "energy (datum)",
+        "enthalpy",
+        "enthalpy of fusion",
+        "enthalpy of sublimation",
+        "enthalpy of vaporization",
+        "exhaust gas flow rate",
+        "extrapolated moisture content",
+        "fill depth",
+        "flow rate",
+        "flow ratio",
+        "fluorescence",
+        "foam height",
+        "force",
+        "fracture energy",
+        "glass transition temperature",
+        "gloss",
+        "gross weight",
+        "hardness",
+        "heat capacity",
+        "heat capacity (dsc)",
+        "heat flow",
+        "heat seal length",
+        "heat transfer coefficient",
+        "height",
+        "hold-up volume",
+        "humidity",
+        "image height",
+        "image width",
+        "incident radiation angle",
+        "inlet gas pressure",
+        "inner diameter",
+        "intensity",
+        "isocyanate reservoir temperature",
+        "length",
+        "linear velocity",
+        "liquid height",
+        "luminescence",
+        "m/z",
+        "mass",
+        "mass attenuation coefficient",
+        "mass change",
+        "mass concentration",
+        "mass fraction",
+        "measurement chamber free space volume",
+        "molar attenuation coefficient",
+        "molar concentration",
+        "molar enthalpy of fusion",
+        "molar enthalpy of sublimation",
+        "molar enthalpy of vaporization",
+        "molar mass",
+        "molecular mass",
+        "monolayer quantity",
+        "normalized foam height",
+        "number concentration",
+        "osmolality",
+        "pCO2",
+        "pCO2 (bga)",
+        "pH",
+        "pO2",
+        "pO2 (bga)",
+        "partial pressure",
+        "particle size",
+        "peak analyte amount",
+        "peak load force",
+        "peak onset temperature",
+        "peak temperature",
+        "plate heater temperature",
+        "plate temperature",
+        "plate well count",
+        "polarity",
+        "polyol reservoir temperature",
+        "position count",
+        "power",
+        "pressure",
+        "probe volume",
+        "protein attenuation coefficient",
+        "purity",
+        "qNMR purity result",
+        "reference material weight",
+        "reflectance",
+        "refractive index",
+        "relative humidity",
+        "relative intensity",
+        "relative permittivity",
+        "relative pressure (BET)",
+        "relative response",
+        "relative weight loss on drying",
+        "reservoir temperature",
+        "rotational speed",
+        "sample temperature",
+        "sample thickness",
+        "sample weight",
+        "sample weight before drying",
+        "sample width",
+        "saturated gas flow rate",
+        "saturation vapor pressure",
+        "seal initiation temperature",
+        "size (datum)",
+        "solvent reservoir temperature",
+        "specific enthalpy of fusion",
+        "specific enthalpy of sublimation",
+        "specific enthalpy of vaporization",
+        "specific heat capacity",
+        "specific rotation",
+        "specific surface area",
+        "start height",
+        "stirring rate",
+        "strain",
+        "stress",
+        "tablet thickness",
+        "tare weight",
+        "temperature",
+        "temperature rate",
+        "thermal conductance",
+        "thermal conductivity",
+        "thickness",
+        "titer",
+        "torque",
+        "total cell diameter",
+        "total foam height",
+        "total gas flow rate",
+        "total material height",
+        "transition enthalpy",
+        "transmittance",
+        "turbidity",
+        "velocity",
+        "viscosity",
+        "void volume",
+        "voltage",
+        "voltage range",
+        "volume",
+        "volume concentration",
+        "volume fraction",
+        "water mass concentration",
+        "water mass fraction",
+        "wavelength",
+        "wavenumber",
+        "weight loss",
+        "well volume",
+        "width",
+        "yield strain",
+        "yield stress",
+    ]
+    statistic_dimension_aggregate_document: StatisticDimensionAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalibrationAggregateDocument:
+    calibration_document: list[CalibrationDocumentItem] | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class DiagnosticTraceAggregateDocument:
+    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalculatedDataAggregateDocument:
+    calculated_data_document: list[CalculatedDataDocumentItem]
+
+
+@dataclass(frozen=True, kw_only=True)
+class ProcessedDataAggregateDocument:
+    processed_data_document: list[ProcessedDataDocumentItem]
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    electronic_project_record: ElectronicProjectRecord | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatisticsAggregateDocument:
+    statistics_document: list[StatisticsDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -198,25 +515,10 @@ class DeviceSystemDocument:
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class DiagnosticTraceAggregateDocument:
-    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class CalculatedDataAggregateDocument:
-    calculated_data_document: list[CalculatedDataDocumentItem]
-
-
-@dataclass(frozen=True, kw_only=True)
-class ProcessedDataAggregateDocument:
-    processed_data_document: list[ProcessedDataDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
-    electronic_project_record: ElectronicProjectRecord | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    calibration_aggregate_document: CalibrationAggregateDocument | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -224,7 +526,9 @@ class MeasurementDocumentItem:
     device_control_aggregate_document: DeviceControlAggregateDocument
     sample_document: SampleDocument
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
@@ -239,11 +543,15 @@ class MeasurementDocumentItem:
 class TechniqueAggregateDocument:
     analysis_sequence_document: AnalysisSequenceDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_system_document: DataSystemDocument | None = None
     device_system_document: DeviceSystemDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
-    electronic_signature_aggregate_document: ElectronicSignatureAggregateDocument | None = None
+    electronic_signature_aggregate_document: ElectronicSignatureAggregateDocument | None = (
+        None
+    )
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
 
@@ -252,7 +560,9 @@ class TechniqueAggregateDocument:
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None

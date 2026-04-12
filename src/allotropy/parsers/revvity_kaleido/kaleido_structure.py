@@ -10,10 +10,6 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
-    ScanPositionSettingPlateReader,
-    TransmittedLightSetting,
-)
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     DataSource,
@@ -24,6 +20,8 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     MeasurementType,
     Metadata,
     ProcessedData,
+    ScanPositionSettingPlateReader,
+    TransmittedLightSetting,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.lines_reader import CsvReader, EMPTY_STR_OR_CSV_LINE

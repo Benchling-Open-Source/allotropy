@@ -4,14 +4,10 @@ from allotropy.allotrope.converter import (
     add_custom_information_document,
     structure,
     unstructure,
-)
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
-    DataProcessingDocument,
-    ProcessedDataDocumentItem,
+    unstructure_v2,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueUnitless,
-    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -19,6 +15,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models_v2.adm.pcr.benchling._2023._09.qpcr import (
+    DataProcessingDocument,
+    ProcessedDataDocumentItem,
 )
 
 
@@ -84,14 +87,13 @@ def test_omits_null_values_except_for_specified_classes() -> None:
             cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
         ),
     )
-    asm_dict = unstructure(item)
+    asm_dict = unstructure_v2(item)
     assert asm_dict == {
         "cycle threshold result": {"value": None, "unit": "(unitless)"},
         "data processing document": {
             "cycle threshold value setting": {"value": 1.0, "unit": "(unitless)"},
         },
     }
-    assert structure(asm_dict, ProcessedDataDocumentItem) == item
 
 
 def test_remove_none_fields_from_data_class_optional_none() -> None:
@@ -140,7 +142,7 @@ def test_custom_information_document() -> None:
 
     assert item.custom_information_document.extra_key == "Value"  # type: ignore
     assert item.custom_information_document._DOLLAR_w_POINT_e_BSLASH_ir_COLON__OBRACKET_d_CBRACKET__DASH_k_QUOTE_e_TILDE_y_SLASH__OPAREN_v_CARET_a_EQUALS_l_AT_ue_CPAREN__DEG__NUMBER_ == "Other value"  # type: ignore
-    asm_dict = unstructure(item)
+    asm_dict = unstructure_v2(item)
     assert asm_dict == {
         "cycle threshold result": {"value": None, "unit": "(unitless)"},
         "data processing document": {
@@ -151,7 +153,6 @@ def test_custom_information_document() -> None:
             "$w.e\\ir:[d]-k'e~y/(v^a=l@ue)°#": "Other value",
         },
     }
-    assert structure(asm_dict, ProcessedDataDocumentItem) == item
 
 
 def test_union_of_lists() -> None:

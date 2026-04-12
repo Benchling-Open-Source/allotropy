@@ -12,21 +12,29 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
 
 @dataclass(frozen=True, kw_only=True)
 class ChromatogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ElectropherogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceEmissionProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
     electropherogram_data_cube: ElectropherogramDataCube | None = None
-    fluorescence_emission_profile_data_cube: FluorescenceEmissionProfileDataCube | None = None
+    fluorescence_emission_profile_data_cube: FluorescenceEmissionProfileDataCube | None = (
+        None
+    )
     chromatogram_data_cube: ChromatogramDataCube | None = None

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import Model
+from allotropy.allotrope.models_v2.adm.pcr.benchling._2023._09.dpcr import Model
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     Data,
     Mapper,

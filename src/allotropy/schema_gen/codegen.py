@@ -441,11 +441,13 @@ class SchemaCodeGenerator:
 
         if self._is_units_schema(schema_url):
             self._generate_units_module(module, defs)
-        elif self._is_adm_schema(schema_url, schema):
-            self._generate_adm_module(module, schema_url, schema)
         else:
-            # Regular schema (core, cube, hierarchy, manifest, detector)
-            self._generate_defs_module(module, schema_url, defs)
+            # Generate $defs classes if present (core, hierarchy, detector types, etc.)
+            if defs:
+                self._generate_defs_module(module, schema_url, defs)
+            # Generate ADM top-level Model class if this is a technique schema
+            if self._is_adm_schema(schema_url, schema):
+                self._generate_adm_module(module, schema_url, schema)
 
         return module
 
@@ -453,8 +455,8 @@ class SchemaCodeGenerator:
         return "units.schema" in url
 
     def _is_adm_schema(self, _url: str, schema: dict[str, Any]) -> bool:
-        """Check if this is a top-level ADM schema (has allOf at root, not just $defs)."""
-        return "allOf" in schema and "$defs" not in schema
+        """Check if this is a top-level ADM schema (has allOf at root)."""
+        return "allOf" in schema
 
     # -------------------------------------------------------------------------
     # Units schema generation
@@ -571,9 +573,15 @@ class SchemaCodeGenerator:
 
         # Handle array type aliases with typed items (e.g., tNumberArray)
         if schema.get("type") == "array" and "items" in schema:
-            item_type = self._resolve_array_item_type(
-                module, schema_url, schema["items"]
-            )
+            items = schema["items"]
+            # Array of composed objects (e.g., detector device control documents
+            # where items.allOf merges base + detector-specific properties)
+            if "allOf" in items:
+                item_type = self._resolve_all_of_array_items(
+                    module, schema_url, class_name, items
+                )
+                return f"{class_name} = list[{item_type}]"
+            item_type = self._resolve_array_item_type(module, schema_url, items)
             return f"{class_name} = list[{item_type}]"
 
         # Handle simple type aliases
@@ -1417,16 +1425,22 @@ class SchemaCodeGenerator:
                     for variant in item["anyOf"]:
                         if "$ref" in variant:
                             ref_schema_url, ref_def = parse_ref(variant["$ref"])
-                            if ref_schema_url and ref_def:
-                                ref_schema = self.schemas.get(ref_schema_url, {})
+                            if ref_def:
+                                # Look up the definition in the appropriate schema
+                                if ref_schema_url:
+                                    ref_schema = self.schemas.get(ref_schema_url, {})
+                                else:
+                                    # Local ref — look in the current schema
+                                    ref_schema = self.schemas.get(schema_url, {})
                                 ref_def_schema = ref_schema.get("$defs", {}).get(
                                     ref_def, {}
                                 )
                                 # Collect oneOf variants before deep-merge
+                                abs_base = ref_schema_url or schema_url
                                 if "oneOf" in ref_def_schema:
                                     for one_of_v in ref_def_schema["oneOf"]:
                                         all_one_of_variants.append(
-                                            _absolutize_refs(one_of_v, ref_schema_url)
+                                            _absolutize_refs(one_of_v, abs_base)
                                         )
                                 if any_of_merged is None:
                                     any_of_merged = dict(ref_def_schema)

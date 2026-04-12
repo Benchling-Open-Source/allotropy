@@ -38,7 +38,9 @@ class DataProcessingDocument:
 class DeviceControlDocumentItem(OrderedItem):
     device_type: TStringValue
     brand_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     device_identifier: TStringValue | None = None
     equipment_serial_number: TStringValue | None = None
@@ -50,7 +52,9 @@ class DeviceControlDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -63,10 +67,26 @@ class MatrixDocumentItem:
 class SampleDocument:
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     description: Any | None = None
     location_identifier: TStringValue | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
 
@@ -80,19 +100,27 @@ class StatisticDimensionDocumentItem:
 @dataclass(frozen=True, kw_only=True)
 class VertexDocumentItem:
     vertex_role: TStringValue | None = None
-    x_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(default=None, metadata={"json_name": "x-coordinate"})
-    y_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(default=None, metadata={"json_name": "y-coordinate"})
+    x_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(
+        default=None, metadata={"json_name": "x-coordinate"}
+    )
+    y_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(
+        default=None, metadata={"json_name": "y-coordinate"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
 
 
@@ -119,8 +147,216 @@ class CompensationMatrixDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class StatisticsDocumentItem:
-    statistical_feature: Literal["BET C constant", "Raman intensity", "Raman interferogram intensity", "Raman wavenumber shift", "Young modulus", "abrasion weight", "absolute intensity", "absolute water content", "absorbance", "acquisition volume", "actual P/P0 result", "adsorbed volume at STP", "ambient humidity", "ambient pressure", "ambient temperature", "amount of substance", "angle", "angle of optical rotation", "angular velocity", "area", "attenuation coefficient", "average dead cell diameter (cell counter)", "average particle size", "average total cell circularity", "average total cell diameter", "average viable cell circularity", "background corrected turbidity", "birefringence", "break strain", "break stress", "cell path length", "chemical shift", "chromatography column film thickness", "chromatography column length", "chromatography column particle size", "circularity", "coating gap height", "collision energy", "column inner diameter", "compartment temperature", "concentration", "container diameter", "container height", "count", "degassed sample weight", "detector view volume", "diameter", "dielectric polarization", "dilution factor", "dilution volume", "dispensed volume", "dry gas flow rate", "dry sample weight", "eccentricity", "electric charge", "electric conductance", "electric conductivity", "electric current", "electric impedance", "electric resistance", "electric resistivity", "electron beam working distance", "end height", "energy (datum)", "enthalpy", "enthalpy of fusion", "enthalpy of sublimation", "enthalpy of vaporization", "exhaust gas flow rate", "extrapolated moisture content", "fill depth", "flow rate", "flow ratio", "fluorescence", "foam height", "force", "fracture energy", "glass transition temperature", "gloss", "gross weight", "hardness", "heat capacity", "heat capacity (dsc)", "heat flow", "heat seal length", "heat transfer coefficient", "height", "hold-up volume", "humidity", "image height", "image width", "incident radiation angle", "inlet gas pressure", "inner diameter", "intensity", "isocyanate reservoir temperature", "length", "linear velocity", "liquid height", "luminescence", "m/z", "mass", "mass attenuation coefficient", "mass change", "mass concentration", "mass fraction", "measurement chamber free space volume", "molar attenuation coefficient", "molar concentration", "molar enthalpy of fusion", "molar enthalpy of sublimation", "molar enthalpy of vaporization", "molar mass", "molecular mass", "monolayer quantity", "normalized foam height", "number concentration", "osmolality", "pCO2", "pCO2 (bga)", "pH", "pO2", "pO2 (bga)", "partial pressure", "particle size", "peak analyte amount", "peak load force", "peak onset temperature", "peak temperature", "plate heater temperature", "plate temperature", "plate well count", "polarity", "polyol reservoir temperature", "position count", "power", "pressure", "probe volume", "protein attenuation coefficient", "purity", "qNMR purity result", "reference material weight", "reflectance", "refractive index", "relative humidity", "relative intensity", "relative permittivity", "relative pressure (BET)", "relative response", "relative weight loss on drying", "reservoir temperature", "rotational speed", "sample temperature", "sample thickness", "sample weight", "sample weight before drying", "sample width", "saturated gas flow rate", "saturation vapor pressure", "seal initiation temperature", "size (datum)", "solvent reservoir temperature", "specific enthalpy of fusion", "specific enthalpy of sublimation", "specific enthalpy of vaporization", "specific heat capacity", "specific rotation", "specific surface area", "start height", "stirring rate", "strain", "stress", "tablet thickness", "tare weight", "temperature", "temperature rate", "thermal conductance", "thermal conductivity", "thickness", "titer", "torque", "total cell diameter", "total foam height", "total gas flow rate", "total material height", "transition enthalpy", "transmittance", "turbidity", "velocity", "viscosity", "void volume", "voltage", "voltage range", "volume", "volume concentration", "volume fraction", "water mass concentration", "water mass fraction", "wavelength", "wavenumber", "weight loss", "well volume", "width", "yield strain", "yield stress"]
-    statistic_dimension_aggregate_document: StatisticDimensionAggregateDocument | None = None
+    statistical_feature: Literal[
+        "BET C constant",
+        "Raman intensity",
+        "Raman interferogram intensity",
+        "Raman wavenumber shift",
+        "Young modulus",
+        "abrasion weight",
+        "absolute intensity",
+        "absolute water content",
+        "absorbance",
+        "acquisition volume",
+        "actual P/P0 result",
+        "adsorbed volume at STP",
+        "ambient humidity",
+        "ambient pressure",
+        "ambient temperature",
+        "amount of substance",
+        "angle",
+        "angle of optical rotation",
+        "angular velocity",
+        "area",
+        "attenuation coefficient",
+        "average dead cell diameter (cell counter)",
+        "average particle size",
+        "average total cell circularity",
+        "average total cell diameter",
+        "average viable cell circularity",
+        "background corrected turbidity",
+        "birefringence",
+        "break strain",
+        "break stress",
+        "cell path length",
+        "chemical shift",
+        "chromatography column film thickness",
+        "chromatography column length",
+        "chromatography column particle size",
+        "circularity",
+        "coating gap height",
+        "collision energy",
+        "column inner diameter",
+        "compartment temperature",
+        "concentration",
+        "container diameter",
+        "container height",
+        "count",
+        "degassed sample weight",
+        "detector view volume",
+        "diameter",
+        "dielectric polarization",
+        "dilution factor",
+        "dilution volume",
+        "dispensed volume",
+        "dry gas flow rate",
+        "dry sample weight",
+        "eccentricity",
+        "electric charge",
+        "electric conductance",
+        "electric conductivity",
+        "electric current",
+        "electric impedance",
+        "electric resistance",
+        "electric resistivity",
+        "electron beam working distance",
+        "end height",
+        "energy (datum)",
+        "enthalpy",
+        "enthalpy of fusion",
+        "enthalpy of sublimation",
+        "enthalpy of vaporization",
+        "exhaust gas flow rate",
+        "extrapolated moisture content",
+        "fill depth",
+        "flow rate",
+        "flow ratio",
+        "fluorescence",
+        "foam height",
+        "force",
+        "fracture energy",
+        "glass transition temperature",
+        "gloss",
+        "gross weight",
+        "hardness",
+        "heat capacity",
+        "heat capacity (dsc)",
+        "heat flow",
+        "heat seal length",
+        "heat transfer coefficient",
+        "height",
+        "hold-up volume",
+        "humidity",
+        "image height",
+        "image width",
+        "incident radiation angle",
+        "inlet gas pressure",
+        "inner diameter",
+        "intensity",
+        "isocyanate reservoir temperature",
+        "length",
+        "linear velocity",
+        "liquid height",
+        "luminescence",
+        "m/z",
+        "mass",
+        "mass attenuation coefficient",
+        "mass change",
+        "mass concentration",
+        "mass fraction",
+        "measurement chamber free space volume",
+        "molar attenuation coefficient",
+        "molar concentration",
+        "molar enthalpy of fusion",
+        "molar enthalpy of sublimation",
+        "molar enthalpy of vaporization",
+        "molar mass",
+        "molecular mass",
+        "monolayer quantity",
+        "normalized foam height",
+        "number concentration",
+        "osmolality",
+        "pCO2",
+        "pCO2 (bga)",
+        "pH",
+        "pO2",
+        "pO2 (bga)",
+        "partial pressure",
+        "particle size",
+        "peak analyte amount",
+        "peak load force",
+        "peak onset temperature",
+        "peak temperature",
+        "plate heater temperature",
+        "plate temperature",
+        "plate well count",
+        "polarity",
+        "polyol reservoir temperature",
+        "position count",
+        "power",
+        "pressure",
+        "probe volume",
+        "protein attenuation coefficient",
+        "purity",
+        "qNMR purity result",
+        "reference material weight",
+        "reflectance",
+        "refractive index",
+        "relative humidity",
+        "relative intensity",
+        "relative permittivity",
+        "relative pressure (BET)",
+        "relative response",
+        "relative weight loss on drying",
+        "reservoir temperature",
+        "rotational speed",
+        "sample temperature",
+        "sample thickness",
+        "sample weight",
+        "sample weight before drying",
+        "sample width",
+        "saturated gas flow rate",
+        "saturation vapor pressure",
+        "seal initiation temperature",
+        "size (datum)",
+        "solvent reservoir temperature",
+        "specific enthalpy of fusion",
+        "specific enthalpy of sublimation",
+        "specific enthalpy of vaporization",
+        "specific heat capacity",
+        "specific rotation",
+        "specific surface area",
+        "start height",
+        "stirring rate",
+        "strain",
+        "stress",
+        "tablet thickness",
+        "tare weight",
+        "temperature",
+        "temperature rate",
+        "thermal conductance",
+        "thermal conductivity",
+        "thickness",
+        "titer",
+        "torque",
+        "total cell diameter",
+        "total foam height",
+        "total gas flow rate",
+        "total material height",
+        "transition enthalpy",
+        "transmittance",
+        "turbidity",
+        "velocity",
+        "viscosity",
+        "void volume",
+        "voltage",
+        "voltage range",
+        "volume",
+        "volume concentration",
+        "volume fraction",
+        "water mass concentration",
+        "water mass fraction",
+        "wavelength",
+        "wavenumber",
+        "weight loss",
+        "well volume",
+        "width",
+        "yield strain",
+        "yield stress",
+    ]
+    statistic_dimension_aggregate_document: StatisticDimensionAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -128,8 +364,12 @@ class DataRegionDocumentItem:
     data_region_identifier: TStringValue | None = None
     region_type: TStringValue | None = None
     parent_data_region_identifier: TStringValue | None = None
-    x_coordinate_dimension_identifier: TStringValue | None = field(default=None, metadata={"json_name": "x-coordinate dimension identifier"})
-    y_coordinate_dimension_identifier: TStringValue | None = field(default=None, metadata={"json_name": "y-coordinate dimension identifier"})
+    x_coordinate_dimension_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "x-coordinate dimension identifier"}
+    )
+    y_coordinate_dimension_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "y-coordinate dimension identifier"}
+    )
     vertex_aggregate_document: VertexAggregateDocument | None = None
 
 
@@ -169,7 +409,9 @@ class ProcessedDataDocumentItem(OrderedItem):
     data_processing_document: DataProcessingDocument | None = None
     data_region_aggregate_document: DataRegionAggregateDocument | None = None
     population_aggregate_document: list[PopulationAggregateDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     processed_data_identifier: TStringValue | None = None
@@ -178,7 +420,9 @@ class ProcessedDataDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
     processed_data_document: list[ProcessedDataDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
@@ -189,7 +433,9 @@ class MeasurementDocumentItem:
     sample_document: SampleDocument
     analytical_method_identifier: TStringValue | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
@@ -205,7 +451,9 @@ class MeasurementDocumentItem:
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
@@ -222,7 +470,9 @@ class MeasurementAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class FlowCytometryDocumentItem(TechniqueDocument):
-    compensation_matrix_aggregate_document: CompensationMatrixAggregateDocument | None = None
+    compensation_matrix_aggregate_document: CompensationMatrixAggregateDocument | None = (
+        None
+    )
     measurement_aggregate_document: MeasurementAggregateDocument | None = None
 
 

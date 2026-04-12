@@ -6,9 +6,6 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    ContainerType,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -37,7 +34,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
         detection_type=header.get(str, "Mode"),
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         brand_name=constants.BRAND_NAME,
-        container_type=ContainerType.tube,
+        container_type="tube",
     )
 
 

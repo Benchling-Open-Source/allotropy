@@ -245,7 +245,7 @@ class PeakItem(OrderedItem):
     identifier: TStringValue | None = None
     relative_peak_height: TQuantityValuePercent | None = None
     written_name: TStringValue | None = None
-    peak_height: TQuantityValueMAU | TQuantityValueCounts | TQuantityValueMV | TQuantityValueNC | TQuantityValuePA | None = (
+    peak_height: TQuantityValueNC | TQuantityValueMV | TQuantityValueCounts | TQuantityValuePA | TQuantityValueMAU | None = (
         None
     )
     capacity_factor__chromatography_: TQuantityValueUnitless | None = field(
@@ -256,7 +256,7 @@ class PeakItem(OrderedItem):
     peak_group: TQuantityValueMAUDots | None = None
     relative_peak_analyte_amount: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
-    peak_area: TQuantityValueNCDots | TQuantityValueMVDots | TQuantityValuePADots | TQuantityValueCountsDots | None = (
+    peak_area: TQuantityValueCountsDots | TQuantityValuePADots | TQuantityValueNCDots | TQuantityValueMVDots | None = (
         None
     )
     relative_peak_area: TQuantityValuePercent | None = None

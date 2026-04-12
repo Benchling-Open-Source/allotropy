@@ -20,9 +20,6 @@ from cattrs.errors import ClassValidationError
 from cattrs.gen import make_dict_structure_fn, make_dict_unstructure_fn, override
 import numpy as np
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
-    ProcessedDataDocumentItem,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     TDimensionArray,
@@ -30,6 +27,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TMeasureArray,
 )
 from allotropy.allotrope.models.shared.definitions.units import HasUnit
+from allotropy.allotrope.models_v2.adm.pcr.benchling._2023._09.qpcr import (
+    ProcessedDataDocumentItem,
+)
 from allotropy.allotrope.schema_parser.path_util import (
     get_model_class_from_schema,
     get_v2_model_class_from_schema,

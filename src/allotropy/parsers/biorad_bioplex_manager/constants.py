@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.definitions import (
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TStatisticDatumRole,
 )
 
@@ -19,10 +18,10 @@ ERROR_MAPPING = {
 }
 
 SAMPLE_ROLE_TYPE_MAPPING = {
-    "Blank": SampleRoleType.blank_role,
-    "Control": SampleRoleType.control_sample_role,
-    "Standard": SampleRoleType.standard_sample_role,
-    "Unknown": SampleRoleType.unknown_sample_role,
+    "Blank": "blank role",
+    "Control": "control sample role",
+    "Standard": "standard sample role",
+    "Unknown": "unknown sample role",
 }
 
 EXPECTED_TAGS = [

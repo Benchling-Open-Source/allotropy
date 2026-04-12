@@ -47,7 +47,9 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detector_gain_setting: TStringValue | None = None
     sample_volume_setting: TQuantityValueMicroL | None = None
     dilution_factor_setting: TQuantityValueUnitless | None = None
@@ -57,7 +59,9 @@ class DeviceControlDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -65,9 +69,25 @@ class SampleDocument:
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
-    sample_role_type: Literal["control sample role", "standard sample role", "validation sample role", "experiment sample role", "sample role", "spiked sample role", "blank role", "unknown sample role", "calibration sample role", "unspiked sample role", "specimen role", "quality control sample role", "reference sample role"] | None = None
+    sample_role_type: Literal[
+        "control sample role",
+        "standard sample role",
+        "validation sample role",
+        "experiment sample role",
+        "sample role",
+        "spiked sample role",
+        "blank role",
+        "unknown sample role",
+        "calibration sample role",
+        "unspiked sample role",
+        "specimen role",
+        "quality control sample role",
+        "reference sample role",
+    ] | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
 
@@ -80,13 +100,17 @@ class AnalyteAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
     diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -96,7 +120,9 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue
     sample_document: SampleDocument
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
@@ -111,7 +137,9 @@ class MeasurementDocumentItem:
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
@@ -122,7 +150,25 @@ class MeasurementAggregateDocument:
     experimental_data_identifier: TStringValue | None = None
     measurement_time: TDateTimeStampValue | None = None
     experiment_type: TStringValue | None = None
-    container_type: Literal["reactor", "controlled lab reactor", "tube", "well plate", "differential scanning calorimetry pan", "qPCR reaction block", "vial rack", "pan", "reservoir", "array card block", "capillary", "disintegration apparatus basket", "jar", "container", "tray", "basket", "cell holder"] | None = None
+    container_type: Literal[
+        "reactor",
+        "controlled lab reactor",
+        "tube",
+        "well plate",
+        "differential scanning calorimetry pan",
+        "qPCR reaction block",
+        "vial rack",
+        "pan",
+        "reservoir",
+        "array card block",
+        "capillary",
+        "disintegration apparatus basket",
+        "jar",
+        "container",
+        "tray",
+        "basket",
+        "cell holder",
+    ] | None = None
     plate_well_count: TQuantityValueNumberSign | None = None
 
 
@@ -139,4 +185,6 @@ class MultiAnalyteProfilingAggregateDocument(TechniqueAggregateDocument):
 @dataclass(kw_only=True)
 class Model:
     field_asm_manifest: str = field(metadata={"json_name": "$asm.manifest"})
-    multi_analyte_profiling_aggregate_document: MultiAnalyteProfilingAggregateDocument | None = None
+    multi_analyte_profiling_aggregate_document: MultiAnalyteProfilingAggregateDocument | None = (
+        None
+    )
