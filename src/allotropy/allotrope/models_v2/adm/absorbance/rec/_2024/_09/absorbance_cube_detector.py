@@ -12,23 +12,17 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
+    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ChromatogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
+    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class ElectropherogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
+    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
 
 
 @dataclass(frozen=True, kw_only=True)

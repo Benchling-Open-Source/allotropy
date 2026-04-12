@@ -36,9 +36,7 @@ class PeakItem(OrderedItem):
 
 @dataclass(frozen=True, kw_only=True)
 class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
+    cube_structure: TDatacubeStructure | None = field(default=None, metadata={"json_name": "cube-structure"})
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -64,9 +62,6 @@ class ProcessedDataAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
     device_control_aggregate_document: DeviceControlAggregateDocument | None = None
-    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(
-        default=None,
-        metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"},
-    )
+    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(default=None, metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"})
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     compartment_temperature: TQuantityValueDegC | None = None

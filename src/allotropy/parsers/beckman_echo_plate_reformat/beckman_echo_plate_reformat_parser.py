@@ -1,6 +1,6 @@
 import pandas as pd
 
-from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_handler import (
+from allotropy.allotrope.models_v2.adm.liquid_handler.benchling._2024._11.liquid_handler import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_handler.benchling._2024._11.liquid_handler import (
