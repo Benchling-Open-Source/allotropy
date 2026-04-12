@@ -4,22 +4,31 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from allotropy.allotrope.models_v2.adm.core.rec._2025._03.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class TransmittanceSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)

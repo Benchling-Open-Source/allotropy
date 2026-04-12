@@ -73,6 +73,17 @@ class ModuleCode:
 
     def render(self, models_package: str = "allotropy.allotrope.models_v2") -> str:
         """Render the complete Python module source code."""
+        # Deduplicate classes by name (keep first occurrence).
+        # Multiple detector schemas can generate identical inline types
+        # (e.g., ChromatogramDataCube from different detection modes).
+        seen_names: set[str] = set()
+        unique: list[GeneratedClass] = []
+        for cls in self.classes:
+            if cls.name not in seen_names:
+                seen_names.add(cls.name)
+                unique.append(cls)
+        self.classes = unique
+
         # Reorder classes so that dependencies come before uses
         self.classes = _topological_sort_classes(self.classes)
 
@@ -1015,6 +1026,26 @@ class SchemaCodeGenerator:
                         merged_required.extend(ref_schema["required"])
                 else:
                     base_classes.append(ref_type)
+            # Deep-merge overlapping properties from base $ref schemas.
+            # When a technique schema extends a base (e.g., techniqueAggregateDocument)
+            # and redefines a nested property (e.g., "device system document"), the
+            # base's full schema must be merged into the overlay so that inline types
+            # include all hierarchy-level fields plus technique-specific additions.
+            for ref in base_refs:
+                ref_base_url = ref.split("#")[0]
+                base_schema = self._resolve_ref_to_schema(schema_url, ref)
+                if base_schema and "properties" in base_schema:
+                    base_props = base_schema["properties"]
+                    if ref_base_url:
+                        base_props = {
+                            k: _absolutize_refs(v, ref_base_url)
+                            for k, v in base_props.items()
+                        }
+                    for prop_key in list(merged_props.keys()):
+                        if prop_key in base_props:
+                            merged_props[prop_key] = _deep_merge_schemas(
+                                base_props[prop_key], merged_props[prop_key]
+                            )
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
                 merged["required"] = list(set(merged_required))
@@ -1244,6 +1275,17 @@ class SchemaCodeGenerator:
                                     any_of_merged = _deep_merge_schemas(
                                         any_of_merged, ref_def_schema, any_of=True
                                     )
+                        elif isinstance(variant, dict) and "properties" in variant:
+                            # Inline anyOf variant with properties (e.g., peak
+                            # metrics like "peak width at half height").  Each
+                            # variant contributes optional fields to the merged
+                            # type.
+                            if any_of_merged is None:
+                                any_of_merged = dict(variant)
+                            else:
+                                any_of_merged = _deep_merge_schemas(
+                                    any_of_merged, variant, any_of=True
+                                )
                     if any_of_merged:
                         # Strip all required arrays recursively from the
                         # anyOf-merged result.  In a union, no variant's

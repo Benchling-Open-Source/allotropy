@@ -27,7 +27,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2025._03.core import (
     TQuantityValueUnitless,
     TStringValue,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2025._03.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 from allotropy.allotrope.models_v2.adm.core.rec._2025._03.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
@@ -43,17 +46,23 @@ from allotropy.allotrope.models_v2.adm.core.rec._2025._03.hierarchy import (
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionProfileDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class AbsorptionSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ChromatogramDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -106,6 +115,21 @@ class DeviceControlDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
+class DeviceDocumentItem(OrderedItem):
+    device_type: TStringValue
+    brand_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    device_identifier: TStringValue | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    model_number: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
+    written_name: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
@@ -115,27 +139,37 @@ class DiagnosticTraceDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class ElectropherogramDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceEmissionProfileDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceEmissionSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescenceExcitationSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class LuminescenceProfileDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -177,12 +211,16 @@ class SampleDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class TransmittanceSpectrumDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -191,6 +229,22 @@ class DeviceControlAggregateDocument:
         None
     )
     device_control_document: list[DeviceControlDocumentItem] | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceSystemDocument:
+    device_identifier: TStringValue
+    model_number: TStringValue
+    asset_management_identifier: TStringValue | None = None
+    brand_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    description: Any | None = None
+    device_document: list[DeviceDocumentItem] | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -318,6 +372,7 @@ class PlateReaderDocumentItem(TechniqueDocument):
 @dataclass(frozen=True, kw_only=True)
 class PlateReaderAggregateDocument(TechniqueAggregateDocument):
     plate_reader_document: list[PlateReaderDocumentItem]
+    device_system_document: DeviceSystemDocument | None = None
 
 
 @dataclass(kw_only=True)
