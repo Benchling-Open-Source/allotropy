@@ -688,6 +688,13 @@ class SchemaCodeGenerator:
                 merged_props.update(item["properties"])
             if "required" in item:
                 merged_required.extend(item["required"])
+            # Handle anyOf/oneOf inside allOf at the definition level
+            if isinstance(item, dict):
+                for variant_key in ("anyOf", "oneOf"):
+                    if variant_key in item:
+                        self._merge_variant_properties(
+                            module, schema_url, item[variant_key], merged_props
+                        )
 
         if not merged_props and base_classes:
             # Pure allOf of refs → multiple inheritance
@@ -1011,6 +1018,16 @@ class SchemaCodeGenerator:
                             merged_props[pk] = pv
                 if "required" in item:
                     merged_required.extend(item["required"])
+                # Handle anyOf/oneOf inside allOf: merge properties from all
+                # variant sub-schemas.  This covers the BENCHLING pattern where
+                # detector sub-schemas contribute fields via anyOf composition.
+                # Properties from variants are always optional (not required),
+                # since only one variant is valid at a time.
+                for variant_key in ("anyOf", "oneOf"):
+                    if variant_key in item:
+                        self._merge_variant_properties(
+                            module, schema_url, item[variant_key], merged_props
+                        )
 
         # If we have properties, generate an inline class
         if merged_props:
@@ -1077,6 +1094,75 @@ class SchemaCodeGenerator:
             return self._resolve_ref_type(module, schema_url, refs[0])
 
         return "Any"
+
+    def _merge_variant_properties(
+        self,
+        _module: ModuleCode,
+        schema_url: str,
+        variants: list[dict[str, Any]],
+        merged_props: dict[str, Any],
+    ) -> None:
+        """Merge properties from anyOf/oneOf variant sub-schemas.
+
+        Resolves each variant's ``$ref`` to its schema definition and
+        deep-merges its properties into *merged_props*.  Also recurses
+        one level into nested anyOf/oneOf within each variant (e.g.,
+        detector sub-schemas that have oneOf for data cube types).
+        """
+        for variant in variants:
+            variant_schema: dict[str, Any] | None = None
+            variant_base_url = ""
+            if "$ref" in variant:
+                variant_base_url = variant["$ref"].split("#")[0]
+                variant_schema = self._resolve_ref_to_schema(
+                    schema_url, variant["$ref"]
+                )
+            elif isinstance(variant, dict):
+                variant_schema = variant
+            if not variant_schema:
+                continue
+            if "properties" in variant_schema:
+                vprops = variant_schema["properties"]
+                if variant_base_url:
+                    vprops = {
+                        k: _absolutize_refs(v, variant_base_url)
+                        for k, v in vprops.items()
+                    }
+                for pk, pv in vprops.items():
+                    if pk in merged_props:
+                        merged_props[pk] = _deep_merge_schemas(merged_props[pk], pv)
+                    else:
+                        merged_props[pk] = pv
+            # Recurse one level into nested anyOf/oneOf within the variant
+            # (e.g., a detector sub-schema has oneOf for different data cubes).
+            for nested_key in ("anyOf", "oneOf"):
+                if nested_key in variant_schema:
+                    for nested in variant_schema[nested_key]:
+                        nested_schema: dict[str, Any] | None = None
+                        nested_base_url = variant_base_url
+                        if "$ref" in nested:
+                            nested_base_url = (
+                                nested["$ref"].split("#")[0] or variant_base_url
+                            )
+                            nested_schema = self._resolve_ref_to_schema(
+                                schema_url, nested["$ref"]
+                            )
+                        elif isinstance(nested, dict) and "properties" in nested:
+                            nested_schema = nested
+                        if nested_schema and "properties" in nested_schema:
+                            nprops = nested_schema["properties"]
+                            if nested_base_url:
+                                nprops = {
+                                    k: _absolutize_refs(v, nested_base_url)
+                                    for k, v in nprops.items()
+                                }
+                            for pk, pv in nprops.items():
+                                if pk in merged_props:
+                                    merged_props[pk] = _deep_merge_schemas(
+                                        merged_props[pk], pv
+                                    )
+                                else:
+                                    merged_props[pk] = pv
 
     def _resolve_any_of_property(
         self,

@@ -132,6 +132,10 @@ def validate_v2_asm_schema(asm_dict: dict[str, Any]) -> None:
     try:
         schema_path = get_schema_path_from_asm(asm_dict)
         schema = _get_v2_schema(schema_path)
+        # BENCHLING schemas may reference $custom definitions (e.g.,
+        # tQuantityValueKiloDalton) via #/$custom/... JSON pointers.
+        # Inject shared custom definitions so these refs resolve.
+        add_definitions(schema)
     except Exception as e:
         msg = f"Failed to retrieve V2 schema for model: {e}"
         raise AllotropeSerializationError(msg) from e

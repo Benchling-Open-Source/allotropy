@@ -20,6 +20,7 @@ from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
 from allotropy.schema_gen.naming import (
     DEFAULT_MODEL_OUTPUT_DIR,
     DEFAULT_SCHEMA_CACHE_DIR,
+    normalize_schema_url,
     schema_url_to_model_file,
     unit_symbol_to_class_name,
 )
@@ -59,9 +60,12 @@ def generate_models(
         print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
         all_schemas.update(schemas)
 
-    # Phase 1b: Strip embedded $defs with URL keys (BENCHLING schemas bundle
-    # copies of dependency schemas as URL-keyed $defs entries). The codegen
-    # expects short $defs keys; the full schemas are already fetched separately.
+    # Phase 1b: BENCHLING schemas embed modified copies of dependency schemas
+    # as URL-keyed $defs entries.  Before stripping them, merge any additions
+    # (e.g., extra properties like "compartment temperature") back into the
+    # separately-fetched standalone schemas so those additions aren't lost.
+    for schema in all_schemas.values():
+        _merge_embedded_defs_into_standalone(schema, all_schemas)
     for schema in all_schemas.values():
         _strip_embedded_defs(schema)
 
@@ -108,6 +112,47 @@ def generate_models(
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
     return generated_files
+
+
+def _deep_merge(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]:
+    """Deep-merge *overlay* into *base*, returning a new dict.
+
+    For dict values, recurse.  For everything else, overlay wins.
+    """
+    result = dict(base)
+    for key, value in overlay.items():
+        if key in result and isinstance(result[key], dict) and isinstance(value, dict):
+            result[key] = _deep_merge(result[key], value)
+        else:
+            result[key] = value
+    return result
+
+
+def _merge_embedded_defs_into_standalone(
+    schema: dict[str, Any], all_schemas: dict[str, Any]
+) -> None:
+    """Merge BENCHLING-embedded schema additions into standalone schemas.
+
+    BENCHLING schemas embed modified copies of dependency schemas (e.g.,
+    detector sub-schemas) as URL-keyed ``$defs`` entries.  These copies may
+    add extra properties not present in the original REC schemas (e.g.,
+    ``compartment temperature``).  This function deep-merges the embedded
+    version into the standalone schema in *all_schemas* so those additions
+    survive the subsequent ``_strip_embedded_defs`` step.
+    """
+    defs = schema.get("$defs", {})
+    for key, embedded_schema in defs.items():
+        if not (key.startswith("http://") or key.startswith("https://")):
+            continue
+        # Normalize to canonical URL
+        canonical = normalize_schema_url(key)
+        if canonical not in all_schemas:
+            continue
+        # Deep-merge the embedded schema into the standalone copy.
+        # The embedded version takes precedence for additions, but the
+        # standalone version keeps anything the embedded version doesn't
+        # override.
+        all_schemas[canonical] = _deep_merge(all_schemas[canonical], embedded_schema)
 
 
 def _strip_embedded_defs(schema: dict[str, Any]) -> None:
