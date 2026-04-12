@@ -2,9 +2,16 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
-    AnalyteAggregateDocument,
-    AnalyteDocumentItem,
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+    TQuantityValue,
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
+    TStatisticDatumRole,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     CalibrationAggregateDocument,
@@ -12,34 +19,27 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+    StatisticDimensionAggregateDocument,
+    StatisticDimensionDocumentItem,
+    StatisticsAggregateDocument,
+    StatisticsDocumentItem,
+)
+from allotropy.allotrope.models_v2.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
+    AnalyteAggregateDocument,
+    AnalyteDocumentItem,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
     MultiAnalyteProfilingAggregateDocument,
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
-    StatisticDimensionAggregateDocument,
-    StatisticDimensionDocumentItem,
-    StatisticsAggregateDocument,
-    StatisticsDocumentItem,
-    TQuantityValueModel,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMicroliter,
-    TQuantityValueNumber,
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TStatisticDatumRole,
-)
-from allotropy.allotrope.models.shared.definitions.units import Unitless
+from allotropy.allotrope.models_v2.qudt.rec._2024._09.units import Unitless
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -176,12 +176,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
+                    unc_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    asm_file_identifier=data.metadata.asm_file_identifier,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 multi_analyte_profiling_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -207,7 +207,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     container_type=measurement_group.container_type,
                     plate_well_count=quantity_or_none(
-                        TQuantityValueNumber, measurement_group.plate_well_count
+                        TQuantityValueNumberSign, measurement_group.plate_well_count
                     ),
                     measurement_document=[
                         self._get_measurement_document(measurement, metadata)
@@ -234,7 +234,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         DeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             sample_volume_setting=quantity_or_none(
-                                TQuantityValueMicroliter,
+                                TQuantityValueMicroL,
                                 measurement.sample_volume_setting,
                             ),
                             dilution_factor_setting=quantity_or_none(
@@ -243,7 +243,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             ),
                             detector_gain_setting=measurement.detector_gain_setting,
                             minimum_assay_bead_count_threshold_setting=quantity_or_none(
-                                TQuantityValueNumber,
+                                TQuantityValueNumberSign,
                                 measurement.minimum_assay_bead_count_setting,
                             ),
                         ),
@@ -251,7 +251,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            assay_bead_count=TQuantityValueNumber(value=measurement.assay_bead_count),
+            assay_bead_count=TQuantityValueNumberSign(value=measurement.assay_bead_count),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     add_custom_information_document(
@@ -259,11 +259,11 @@ class Mapper(SchemaMapper[Data, Model]):
                             analyte_identifier=analyte.identifier,
                             analyte_name=analyte.name,
                             assay_bead_identifier=analyte.assay_bead_identifier,
-                            assay_bead_count=TQuantityValueNumber(
+                            assay_bead_count=TQuantityValueNumberSign(
                                 value=analyte.assay_bead_count
                             ),
                             fluorescence=quantity_or_none(
-                                TQuantityValueRelativeFluorescenceUnit,
+                                TQuantityValueRFU,
                                 analyte.fluorescence,
                                 has_statistic_datum_role=analyte.statistic_datum_role,
                             ),
@@ -275,7 +275,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                             statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
                                                 statistic_dimension_document=[
                                                     StatisticDimensionDocumentItem(
-                                                        statistical_value=TQuantityValueModel(
+                                                        statistical_value=TQuantityValue(
                                                             value=dimension.value,
                                                             unit=dimension.unit,
                                                             has_statistic_datum_role=dimension.statistic_datum_role,
@@ -361,7 +361,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     calculated_data_identifier=calculated_data_item.uuid,
                     calculated_data_name=calculated_data_item.name,
                     calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValueModel(
+                    calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit or Unitless.unit,
                     ),
