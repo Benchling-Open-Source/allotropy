@@ -398,6 +398,7 @@ class SampleDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -514,6 +515,9 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
+    analytical_method_identifier: TStringValue | None = None
+    method_version: TStringValue | None = None
+    experimental_data_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

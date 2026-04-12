@@ -29,7 +29,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValueUnitless,
     TStringValue,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
@@ -44,11 +47,21 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
 
 
 @dataclass(frozen=True, kw_only=True)
-class DiagnosticTraceDocumentItem:
-    description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
+class AnalyteDocumentItem:
+    analyte_name: TStringValue | None = None
+    volume_concentration: TQuantityValueMLPerL | None = None
+    molar_concentration: TQuantityValueMmolPerL | None = None
+    mass_concentration: TQuantityValueGPerL | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class DataProcessingDocument:
+    cell_type_processing_method: TStringValue | None = None
+    cell_density_dilution_factor: TQuantityValueUnitless | None = None
+    minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
+    maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
+    dilution_factor_setting: TQuantityValueUnitless | None = None
+    data_processing_omission_setting: TBooleanValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -78,18 +91,11 @@ class DeviceControlDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
-class DataProcessingDocument:
-    cell_type_processing_method: TStringValue | None = None
-    cell_density_dilution_factor: TQuantityValueUnitless | None = None
-    minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
-    maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
-    dilution_factor_setting: TQuantityValueUnitless | None = None
-    data_processing_omission_setting: TBooleanValue | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class TotalCellDiameterDistribution(TDatacube):
-    pass
+class DiagnosticTraceDocumentItem:
+    description: Any
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -126,22 +132,19 @@ class SampleDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
-class AnalyteDocumentItem:
-    analyte_name: TStringValue | None = None
-    volume_concentration: TQuantityValueMLPerL | None = None
-    molar_concentration: TQuantityValueMmolPerL | None = None
-    mass_concentration: TQuantityValueGPerL | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class DiagnosticTraceAggregateDocument:
-    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
+class TotalCellDiameterDistribution(TDatacube):
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
     )
+
+
+@dataclass(frozen=True, kw_only=True)
+class AnalyteAggregateDocument:
+    analyte_document: list[AnalyteDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -153,13 +156,16 @@ class DeviceControlAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class DistributionAggregateDocument:
-    distribution_document: list[DistributionDocumentItem] | None = None
+class DiagnosticTraceAggregateDocument:
+    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
-class AnalyteAggregateDocument:
-    analyte_document: list[AnalyteDocumentItem] | None = None
+class DistributionAggregateDocument:
+    distribution_document: list[DistributionDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -252,6 +258,9 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
+    analytical_method_identifier: TStringValue | None = None
+    method_version: TStringValue | None = None
+    experimental_data_identifier: TStringValue | None = None
     data_processing_time: TDateTimeStampValue | None = None
 
 

@@ -18,7 +18,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValueUnitless,
     TStringValue,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
@@ -97,11 +100,14 @@ class SampleDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class TotalCellDiameterDistribution(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -200,6 +206,9 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
+    analytical_method_identifier: TStringValue | None = None
+    method_version: TStringValue | None = None
+    experimental_data_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

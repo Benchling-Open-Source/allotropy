@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as ET  # noqa: N817
 
-from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
+from allotropy.allotrope.models_v2.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (

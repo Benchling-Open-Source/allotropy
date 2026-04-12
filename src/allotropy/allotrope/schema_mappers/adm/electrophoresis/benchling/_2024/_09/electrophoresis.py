@@ -1,45 +1,44 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+    TQuantityValue,
+    TQuantityValueDegC,
+    TQuantityValuePercent,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    DataRegionAggregateDocument,
-    DataRegionDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
-    ElectrophoresisAggregateDocument,
-    ElectrophoresisDocumentItem,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models_v2.adm.electrophoresis.benchling._2024._09.electrophoresis import (
+    DataRegionAggregateDocument,
+    DataRegionDocumentItem,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
+    ElectrophoresisAggregateDocument,
+    ElectrophoresisDocumentItem,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
-    Peak,
+    PeakItem,
     PeakList,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValuePercent,
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-    TQuantityValue,
-)
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.values import (
-    quantity_or_none,
-    quantity_or_none_from_unit,
-)
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
@@ -160,14 +159,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     equipment_serial_number=data.metadata.equipment_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
-                    UNC_path=data.metadata.unc_path,
+                    unc_path=data.metadata.unc_path,
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     file_name=data.metadata.file_name,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ASM_file_identifier=data.metadata.file_identifier,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
+                    asm_file_identifier=data.metadata.file_identifier,
                 ),
                 electrophoresis_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -198,13 +197,14 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
-        return MeasurementDocument(
+    ) -> MeasurementDocumentItem:
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
-            compartment_temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius,
-                measurement.compartment_temperature,
+            compartment_temperature=(
+                TQuantityValueDegC(value=measurement.compartment_temperature)
+                if measurement.compartment_temperature is not None
+                else None
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -255,20 +255,20 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def _get_peak(self, peak: ProcessedDataFeature) -> Peak:
-        return Peak(
+    def _get_peak(self, peak: ProcessedDataFeature) -> PeakItem:
+        return PeakItem(
             identifier=peak.identifier,
             peak_name=peak.name,
             comment=peak.comment,
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
             peak_height=(
-                quantity_or_none(TQuantityValueRelativeFluorescenceUnit, peak.height)
+                quantity_or_none(TQuantityValueRFU, peak.height)
                 if peak.height
                 else None
             ),
             peak_position=(
-                quantity_or_none_from_unit(peak.position_unit, peak.position)  # type: ignore[arg-type]
-                if peak.position
+                TQuantityValue(value=peak.position, unit=peak.position_unit)  # type: ignore[arg-type]
+                if peak.position and peak.position_unit
                 else None
             ),
             relative_corrected_peak_area=(
@@ -277,13 +277,13 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             peak_start=(
-                quantity_or_none_from_unit(peak.start_unit, peak.start)  # type: ignore[arg-type]
-                if peak.start
+                TQuantityValue(value=peak.start, unit=peak.start_unit)  # type: ignore[arg-type]
+                if peak.start and peak.start_unit
                 else None
             ),
             peak_end=(
-                quantity_or_none_from_unit(peak.end_unit, peak.end)  # type: ignore[arg-type]
-                if peak.end
+                TQuantityValue(value=peak.end, unit=peak.end_unit)  # type: ignore[arg-type]
+                if peak.end and peak.end_unit
                 else None
             ),
             peak_area=(
@@ -305,15 +305,14 @@ class Mapper(SchemaMapper[Data, Model]):
             data_region_identifier=data_region.identifier,
             data_region_name=data_region.name,
             comment=data_region.comment,
-            # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
             data_region_start=(
-                quantity_or_none_from_unit(data_region.start_unit, data_region.start)  # type: ignore[arg-type]
-                if data_region.start
+                TQuantityValue(value=data_region.start, unit=data_region.start_unit)  # type: ignore[arg-type]
+                if data_region.start and data_region.start_unit
                 else None
             ),
             data_region_end=(
-                quantity_or_none_from_unit(data_region.end_unit, data_region.end)  # type: ignore[arg-type]
-                if data_region.end
+                TQuantityValue(value=data_region.end, unit=data_region.end_unit)  # type: ignore[arg-type]
+                if data_region.end and data_region.end_unit
                 else None
             ),
             data_region_area=(

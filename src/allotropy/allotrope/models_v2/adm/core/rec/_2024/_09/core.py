@@ -283,6 +283,16 @@ class TQuantityValueMAU(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueMAUDotmL(TQuantityValue):
+    unit: str = "mAU.mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMAUDots(TQuantityValue):
+    unit: str = "mAU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueML(TQuantityValue):
     unit: str = "mL"
 
@@ -350,6 +360,21 @@ class TQuantityValuePercent(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValuePgPermL(TQuantityValue):
     unit: str = "pg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRFU(TQuantityValue):
+    unit: str = "RFU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRFUDotmL(TQuantityValue):
+    unit: str = "RFU.mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRFUDots(TQuantityValue):
+    unit: str = "RFU.s"
 
 
 @dataclass(frozen=True, kw_only=True)

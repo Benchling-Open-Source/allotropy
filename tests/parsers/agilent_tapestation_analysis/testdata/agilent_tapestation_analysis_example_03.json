@@ -1,788 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/electrophoresis/BENCHLING/2024/09/electrophoresis.manifest",
     "electrophoresis aggregate document": {
-        "electrophoresis document": [
-            {
-                "analyst": "TapeStation User",
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "electrophoresis device",
-                                        "detection type": "fluorescence",
-                                        "device identifier": "65536"
-                                    }
-                                ]
-                            },
-                            "sample document": {
-                                "sample identifier": "036190228000049_A1",
-                                "description": "Ladder Ladder",
-                                "location identifier": "A1"
-                            },
-                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_0",
-                            "measurement time": "2019-06-28T03:39:18-04:00",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "peak end": {
-                                                        "value": 43.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 35.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "-",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
-                                                    "peak height": {
-                                                        "value": 60.282,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.0,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "comment": "Lower Marker",
-                                                    "peak start": {
-                                                        "value": 30.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 65.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 50.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "1",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
-                                                    "peak height": {
-                                                        "value": 48.805,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.829,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 7.68,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 7.74,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 43.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 87.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 75.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "2",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
-                                                    "peak height": {
-                                                        "value": 57.036,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.889,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 8.23,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 8.3,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 65.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 129.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 100.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "3",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
-                                                    "peak height": {
-                                                        "value": 60.966,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.971,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 8.99,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 9.06,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 87.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 178.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 150.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "4",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
-                                                    "peak height": {
-                                                        "value": 60.895,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.883,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 8.17,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 8.24,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 129.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 251.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 200.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "5",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
-                                                    "peak height": {
-                                                        "value": 64.166,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.886,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 8.21,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 8.27,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 178.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 362.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 300.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "6",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
-                                                    "peak height": {
-                                                        "value": 70.9,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.082,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 10.02,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 10.1,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 251.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 450.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 400.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "7",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
-                                                    "peak height": {
-                                                        "value": 72.792,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.877,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 8.12,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 8.18,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 362.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 563.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 500.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "8",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_51",
-                                                    "peak height": {
-                                                        "value": 73.799,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.131,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 10.47,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 10.55,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 450.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 653.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 600.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "9",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_57",
-                                                    "peak height": {
-                                                        "value": 90.767,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.003,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 9.29,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 9.36,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 563.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 885.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 700.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "10",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_63",
-                                                    "peak height": {
-                                                        "value": 72.53,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.154,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 10.68,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 10.76,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 653.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 1305.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 1000.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "11",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_69",
-                                                    "peak height": {
-                                                        "value": 91.902,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.013,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 9.38,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 9.45,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 885.0,
-                                                        "unit": "#"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
-                            "compartment temperature": {
-                                "value": 24.0,
-                                "unit": "degC"
-                            }
-                        }
-                    ],
-                    "analytical method identifier": "cfDNA",
-                    "experimental data identifier": "C:\\Users\\JoeNegri\\Downloads\\cfDNA-Tubes-16.cfDNA"
-                }
-            },
-            {
-                "analyst": "TapeStation User",
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "electrophoresis device",
-                                        "detection type": "fluorescence",
-                                        "device identifier": "65536"
-                                    }
-                                ]
-                            },
-                            "sample document": {
-                                "sample identifier": "036190228000049_B1",
-                                "description": "Bovine Plasma Tube B Extraction Kit A",
-                                "location identifier": "B1"
-                            },
-                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_75",
-                            "measurement time": "2019-06-28T03:39:18-04:00",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "peak end": {
-                                                        "value": 47.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 35.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "-",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
-                                                    "peak height": {
-                                                        "value": 146.242,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.0,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "comment": "Lower Marker",
-                                                    "peak start": {
-                                                        "value": 29.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 309.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 194.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "1",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
-                                                    "peak height": {
-                                                        "value": 20.174,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.452,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 19.26,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 24.77,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 125.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 523.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 422.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "2",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
-                                                    "peak height": {
-                                                        "value": 19.298,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.408,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 17.36,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 22.33,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 309.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 635.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 625.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "3",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
-                                                    "peak height": {
-                                                        "value": 14.391,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.168,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 7.15,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 9.19,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 523.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak name": "4",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_103",
-                                                    "peak height": {
-                                                        "value": 68.711,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.798,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 33.98,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 43.71,
-                                                        "unit": "%"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "data region aggregate document": {
-                                            "data region document": [
-                                                {
-                                                    "data region end": {
-                                                        "value": 700.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "data region identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_108",
-                                                    "data region name": "1",
-                                                    "data region area": {
-                                                        "value": 1.15,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative data region area": {
-                                                        "value": 48.96,
-                                                        "unit": "%"
-                                                    },
-                                                    "comment": "%cfDNA",
-                                                    "data region start": {
-                                                        "value": 50.0,
-                                                        "unit": "#"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
-                            "compartment temperature": {
-                                "value": 24.0,
-                                "unit": "degC"
-                            }
-                        }
-                    ],
-                    "analytical method identifier": "cfDNA",
-                    "experimental data identifier": "C:\\Users\\JoeNegri\\Downloads\\cfDNA-Tubes-16.cfDNA"
-                }
-            },
-            {
-                "analyst": "TapeStation User",
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "electrophoresis device",
-                                        "detection type": "fluorescence",
-                                        "device identifier": "65536"
-                                    }
-                                ]
-                            },
-                            "sample document": {
-                                "sample identifier": "036190228000049_C1",
-                                "description": "FCS Tube B Extraction Kit A",
-                                "location identifier": "C1"
-                            },
-                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_112",
-                            "measurement time": "2019-06-28T03:39:18-04:00",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "peak end": {
-                                                        "value": 44.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 35.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "-",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_115",
-                                                    "peak height": {
-                                                        "value": 36.203,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 1.0,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "comment": "Lower Marker",
-                                                    "peak start": {
-                                                        "value": 29.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 309.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 176.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "1",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_122",
-                                                    "peak height": {
-                                                        "value": 51.869,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 3.48,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 74.46,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 90.04,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 109.0,
-                                                        "unit": "#"
-                                                    }
-                                                },
-                                                {
-                                                    "peak end": {
-                                                        "value": 470.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak position": {
-                                                        "value": 356.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "peak name": "2",
-                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_128",
-                                                    "peak height": {
-                                                        "value": 7.866,
-                                                        "unit": "RFU"
-                                                    },
-                                                    "peak area": {
-                                                        "value": 0.385,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative peak area": {
-                                                        "value": 8.23,
-                                                        "unit": "%"
-                                                    },
-                                                    "relative corrected peak area": {
-                                                        "value": 9.96,
-                                                        "unit": "%"
-                                                    },
-                                                    "peak start": {
-                                                        "value": 346.0,
-                                                        "unit": "#"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "data region aggregate document": {
-                                            "data region document": [
-                                                {
-                                                    "data region end": {
-                                                        "value": 700.0,
-                                                        "unit": "#"
-                                                    },
-                                                    "data region identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_134",
-                                                    "data region name": "1",
-                                                    "data region area": {
-                                                        "value": 4.359,
-                                                        "unit": "(unitless)"
-                                                    },
-                                                    "relative data region area": {
-                                                        "value": 93.27,
-                                                        "unit": "%"
-                                                    },
-                                                    "comment": "%cfDNA",
-                                                    "data region start": {
-                                                        "value": 50.0,
-                                                        "unit": "#"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
-                            "compartment temperature": {
-                                "value": 24.0,
-                                "unit": "degC"
-                            }
-                        }
-                    ],
-                    "analytical method identifier": "cfDNA",
-                    "experimental data identifier": "C:\\Users\\JoeNegri\\Downloads\\cfDNA-Tubes-16.cfDNA"
-                }
-            }
-        ],
         "calculated data aggregate document": {
             "calculated data document": [
                 {
@@ -2598,18 +1816,800 @@
         "data system document": {
             "ASM file identifier": "agilent_tapestation_analysis_example_03.json",
             "data system instance identifier": "TAPESTATIONPC",
-            "file name": "agilent_tapestation_analysis_example_03.xml",
-            "UNC path": "tests/parsers/agilent_tapestation_analysis/testdata/agilent_tapestation_analysis_example_03.xml",
             "ASM converter name": "allotropy_agilent_tapestation_analysis",
-            "ASM converter version": "0.1.113",
+            "ASM converter version": "0.1.117",
+            "file name": "agilent_tapestation_analysis_example_03.xml",
             "software name": "TapeStation Analysis Software",
-            "software version": "3.2.0.22472"
+            "software version": "3.2.0.22472",
+            "UNC path": "tests/parsers/agilent_tapestation_analysis/testdata/agilent_tapestation_analysis_example_03.xml"
         },
         "device system document": {
             "brand name": "TapeStation",
             "device identifier": "65536",
             "equipment serial number": "DEDAB00201",
             "product manufacturer": "Agilent"
-        }
+        },
+        "electrophoresis document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "fluorescence",
+                                        "device identifier": "65536",
+                                        "device type": "electrophoresis device"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "036190228000049_A1",
+                                "description": "Ladder Ladder",
+                                "location identifier": "A1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_0",
+                            "measurement time": "2019-06-28T03:39:18-04:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 43.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 35.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_2",
+                                                    "peak height": {
+                                                        "value": 60.282,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 30.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 65.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 50.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_9",
+                                                    "peak height": {
+                                                        "value": 48.805,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.829,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 7.68,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 7.74,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 43.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 87.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 75.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_15",
+                                                    "peak height": {
+                                                        "value": 57.036,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.889,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 8.23,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 8.3,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 65.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 129.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 100.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "3",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_21",
+                                                    "peak height": {
+                                                        "value": 60.966,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.971,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 8.99,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 9.06,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 87.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 178.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 150.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "4",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_27",
+                                                    "peak height": {
+                                                        "value": 60.895,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.883,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 8.17,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 8.24,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 129.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 251.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 200.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "5",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_33",
+                                                    "peak height": {
+                                                        "value": 64.166,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.886,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 8.21,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 8.27,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 178.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 362.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 300.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "6",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_39",
+                                                    "peak height": {
+                                                        "value": 70.9,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.082,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 10.02,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 10.1,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 251.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 450.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 400.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "7",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_45",
+                                                    "peak height": {
+                                                        "value": 72.792,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.877,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 8.12,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 8.18,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 362.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 563.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 500.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "8",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_51",
+                                                    "peak height": {
+                                                        "value": 73.799,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.131,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 10.47,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 10.55,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 450.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 653.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 600.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "9",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_57",
+                                                    "peak height": {
+                                                        "value": 90.767,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.003,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 9.29,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 9.36,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 563.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 885.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 700.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "10",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_63",
+                                                    "peak height": {
+                                                        "value": 72.53,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.154,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 10.68,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 10.76,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 653.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 1305.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 1000.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "11",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_69",
+                                                    "peak height": {
+                                                        "value": 91.902,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.013,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 9.38,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 9.45,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 885.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 24.0,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "cfDNA",
+                    "experimental data identifier": "C:\\Users\\JoeNegri\\Downloads\\cfDNA-Tubes-16.cfDNA"
+                },
+                "analyst": "TapeStation User"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "fluorescence",
+                                        "device identifier": "65536",
+                                        "device type": "electrophoresis device"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "036190228000049_B1",
+                                "description": "Bovine Plasma Tube B Extraction Kit A",
+                                "location identifier": "B1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_75",
+                            "measurement time": "2019-06-28T03:39:18-04:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 47.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 35.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_78",
+                                                    "peak height": {
+                                                        "value": 146.242,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 29.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 309.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 194.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_85",
+                                                    "peak height": {
+                                                        "value": 20.174,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.452,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 19.26,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 24.77,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 125.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 523.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 422.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_91",
+                                                    "peak height": {
+                                                        "value": 19.298,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.408,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 17.36,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 22.33,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 309.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 635.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 625.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "3",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_97",
+                                                    "peak height": {
+                                                        "value": 14.391,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.168,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 7.15,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 9.19,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 523.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak name": "4",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_103",
+                                                    "peak height": {
+                                                        "value": 68.711,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.798,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 33.98,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 43.71,
+                                                        "unit": "%"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "data region aggregate document": {
+                                            "data region document": [
+                                                {
+                                                    "data region end": {
+                                                        "value": 700.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "data region identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_108",
+                                                    "data region name": "1",
+                                                    "data region area": {
+                                                        "value": 1.15,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative data region area": {
+                                                        "value": 48.96,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "%cfDNA",
+                                                    "data region start": {
+                                                        "value": 50.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 24.0,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "cfDNA",
+                    "experimental data identifier": "C:\\Users\\JoeNegri\\Downloads\\cfDNA-Tubes-16.cfDNA"
+                },
+                "analyst": "TapeStation User"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "fluorescence",
+                                        "device identifier": "65536",
+                                        "device type": "electrophoresis device"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "036190228000049_C1",
+                                "description": "FCS Tube B Extraction Kit A",
+                                "location identifier": "C1"
+                            },
+                            "measurement identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_112",
+                            "measurement time": "2019-06-28T03:39:18-04:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 44.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 35.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "-",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_115",
+                                                    "peak height": {
+                                                        "value": 36.203,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "comment": "Lower Marker",
+                                                    "peak start": {
+                                                        "value": 29.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 309.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 176.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "1",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_122",
+                                                    "peak height": {
+                                                        "value": 51.869,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 3.48,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 74.46,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 90.04,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 109.0,
+                                                        "unit": "#"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 470.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak position": {
+                                                        "value": 356.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "peak name": "2",
+                                                    "identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_128",
+                                                    "peak height": {
+                                                        "value": 7.866,
+                                                        "unit": "RFU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.385,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 8.23,
+                                                        "unit": "%"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 9.96,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 346.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "data region aggregate document": {
+                                            "data region document": [
+                                                {
+                                                    "data region end": {
+                                                        "value": 700.0,
+                                                        "unit": "#"
+                                                    },
+                                                    "data region identifier": "AGILENT_TAPESTATION_ANALYSIS_TEST_ID_134",
+                                                    "data region name": "1",
+                                                    "data region area": {
+                                                        "value": 4.359,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "relative data region area": {
+                                                        "value": 93.27,
+                                                        "unit": "%"
+                                                    },
+                                                    "comment": "%cfDNA",
+                                                    "data region start": {
+                                                        "value": 50.0,
+                                                        "unit": "#"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 24.0,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "cfDNA",
+                    "experimental data identifier": "C:\\Users\\JoeNegri\\Downloads\\cfDNA-Tubes-16.cfDNA"
+                },
+                "analyst": "TapeStation User"
+            }
+        ]
     }
 }

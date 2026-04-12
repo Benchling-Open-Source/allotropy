@@ -846,16 +846,6 @@ class RFU(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class RFUDotmL(HasUnit):
-    unit: str = "RFU.mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class RFUDots(HasUnit):
-    unit: str = "RFU.s"
-
-
-@dataclass(frozen=True, kw_only=True)
 class RIU(HasUnit):
     unit: str = "RIU"
 
@@ -863,16 +853,6 @@ class RIU(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class RLU(HasUnit):
     unit: str = "RLU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class RLUDotmL(HasUnit):
-    unit: str = "RLU.mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class RLUDots(HasUnit):
-    unit: str = "RLU.s"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -1128,11 +1108,6 @@ class Amu(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class ArbU(HasUnit):
     unit: str = "arb'U"
-
-
-@dataclass(frozen=True, kw_only=True)
-class ArbUDotHz(HasUnit):
-    unit: str = "arb'U.Hz"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -2901,11 +2876,6 @@ class MDeg(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class MDegDots(HasUnit):
-    unit: str = "m°.s"
-
-
-@dataclass(frozen=True, kw_only=True)
 class Nmile(HasUnit):
     unit: str = "n mile"
 
@@ -2938,11 +2908,6 @@ class NF(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class NL(HasUnit):
     unit: str = "nL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class NanoRIUDots(HasUnit):
-    unit: str = "nano RIU.s"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -3233,11 +3198,6 @@ class Ppb(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class Ppm(HasUnit):
     unit: str = "ppm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class PpmDotarbU(HasUnit):
-    unit: str = "ppm.arb'U"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -3848,8 +3808,3 @@ class Micror(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class Unknown3(HasUnit):
     unit: str = "€"
-
-
-@dataclass(frozen=True, kw_only=True)
-class NM(HasUnit):
-    unit: str = "nM"

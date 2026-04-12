@@ -17,7 +17,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValueUnitless,
     TStringValue,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
@@ -33,7 +36,9 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
 
 @dataclass(frozen=True, kw_only=True)
 class BaselineCorrectedReporterDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -83,6 +88,21 @@ class DeviceControlDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
+class DeviceDocumentItem(OrderedItem):
+    device_type: TStringValue
+    brand_name: TStringValue | None = None
+    device_identifier: TStringValue | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    model_number: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
+    written_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
@@ -92,22 +112,30 @@ class DiagnosticTraceDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class MeltingCurveDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class NormalizedReporterDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class PassiveReferenceDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class ReporterDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -144,6 +172,22 @@ class SampleDocument:
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem]
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceSystemDocument:
+    device_identifier: TStringValue
+    equipment_serial_number: TStringValue
+    model_number: TStringValue
+    asset_management_identifier: TStringValue | None = None
+    brand_name: TStringValue | None = None
+    description: Any | None = None
+    device_document: list[DeviceDocumentItem] | None = None
+    firmware_version: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
@@ -248,6 +292,7 @@ class MeasurementAggregateDocument:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
     analytical_method_identifier: TStringValue | None = None
+    method_version: TStringValue | None = None
     plate_well_count: TQuantityValueNumberSign | None = None
 
 
@@ -259,6 +304,7 @@ class QpcrDocumentItem(TechniqueDocument):
 @dataclass(frozen=True, kw_only=True)
 class QpcrAggregateDocument(TechniqueAggregateDocument):
     qpcr_document: list[QpcrDocumentItem]
+    device_system_document: DeviceSystemDocument | None = None
 
 
 @dataclass(kw_only=True)

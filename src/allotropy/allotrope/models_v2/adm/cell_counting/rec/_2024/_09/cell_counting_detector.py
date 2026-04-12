@@ -14,7 +14,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValueUnitless,
     TStringValue,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -33,7 +36,9 @@ class DeviceControlDocumentItem(OrderedItem):
 
 @dataclass(frozen=True, kw_only=True)
 class TotalCellDiameterDistribution(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
