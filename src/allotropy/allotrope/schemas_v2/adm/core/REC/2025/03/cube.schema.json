@@ -1,0 +1,378 @@
+{
+  "$defs": {
+    "cFillValueBoolean": {
+      "$comment": "constraint on fill values if component data type is boolean",
+      "if": {
+        "properties": {
+          "@componentDatatype": {
+            "const": "boolean"
+          }
+        }
+      },
+      "then": {
+        "$asm.fill-value": {
+          "default": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cFillValueDecimal": {
+      "$comment": "constraint on fill values if component data type is any numeric type",
+      "if": {
+        "properties": {
+          "@componentDatatype": {
+            "pattern": "integer|decimal|long|int|short|byte"
+          }
+        }
+      },
+      "then": {
+        "$asm.fill-value": {
+          "default": 0,
+          "type": "number"
+        }
+      }
+    },
+    "cFillValueIEEE": {
+      "$comment": "constraint on fill values if component data type is any numeric type",
+      "if": {
+        "properties": {
+          "@componentDatatype": {
+            "pattern": "double|float"
+          }
+        }
+      },
+      "then": {
+        "$asm.fill-value": {
+          "default": 0.0,
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "const": "NaN"
+            },
+            {
+              "const": "+Infinity"
+            },
+            {
+              "const": "-Infinity"
+            }
+          ]
+        }
+      }
+    },
+    "cFillValueString": {
+      "$comment": "constraint on fill values if component data type is string",
+      "if": {
+        "properties": {
+          "@componentDatatype": {
+            "pattern": "string|dateTime|date"
+          }
+        }
+      },
+      "then": {
+        "$asm.fill-value": {
+          "default": "",
+          "type": "string"
+        }
+      }
+    },
+    "tBooleanArray": {
+      "$comment": "homogenous array of booleans",
+      "items": {
+        "type": "boolean"
+      },
+      "type": "array"
+    },
+    "tBooleanOrNullArray": {
+      "$comment": "homogenous array of booleans, may contain null values",
+      "items": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "tDatacube": {
+      "properties": {
+        "cube-structure": {
+          "$ref": "#/$defs/tDatacubeStructure"
+        },
+        "data": {
+          "$ref": "#/$defs/tDatacubeData"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "tDatacubeComponent": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/cFillValueIEEE"
+        },
+        {
+          "$ref": "#/$defs/cFillValueDecimal"
+        },
+        {
+          "$ref": "#/$defs/cFillValueBoolean"
+        },
+        {
+          "$ref": "#/$defs/cFillValueString"
+        }
+      ],
+      "properties": {
+        "$asm.fill-value": {
+          "type": [
+            "string",
+            "number",
+            "integer",
+            "boolean"
+          ]
+        },
+        "@componentDatatype": {
+          "default": "double",
+          "description": "Subset of XSD datatypes supported in simple models",
+          "enum": [
+            "double",
+            "float",
+            "decimal",
+            "integer",
+            "byte",
+            "int",
+            "short",
+            "long",
+            "string",
+            "boolean",
+            "dateTime"
+          ]
+        },
+        "concept": {
+          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tClass"
+        },
+        "scale": {
+          "enum": [
+            "nominal",
+            "ordinal",
+            "cardinal",
+            "interval",
+            "range"
+          ]
+        },
+        "unit": {
+          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tUnit"
+        }
+      },
+      "required": [
+        "@componentDatatype",
+        "concept"
+      ],
+      "type": "object"
+    },
+    "tDatacubeData": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tDimensionData"
+        },
+        {
+          "$ref": "#/$defs/tMeasureData"
+        }
+      ]
+    },
+    "tDatacubeStructure": {
+      "properties": {
+        "dimensions": {
+          "items": {
+            "$ref": "#/$defs/tDatacubeComponent"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "measures": {
+          "items": {
+            "$ref": "#/$defs/tDatacubeComponent"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "dimensions",
+        "measures"
+      ],
+      "type": "object"
+    },
+    "tDimensionArray": {
+      "$comment": "homogenous array of data used in explicit dimension arrays",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/tNumberArray"
+        },
+        {
+          "$ref": "#/$defs/tBooleanArray"
+        },
+        {
+          "$ref": "#/$defs/tStringArray"
+        }
+      ]
+    },
+    "tDimensionData": {
+      "properties": {
+        "dimensions": {
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/tDimensionArray"
+              },
+              {
+                "$ref": "#/$defs/tFunction"
+              }
+            ]
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "dimensions"
+      ]
+    },
+    "tFunction": {
+      "properties": {
+        "incr": {
+          "default": 1,
+          "type": "number"
+        },
+        "length": {
+          "type": "number"
+        },
+        "start": {
+          "default": 1,
+          "type": "number"
+        },
+        "type": {
+          "default": "linear",
+          "enum": [
+            "linear",
+            "logarithmic"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "tMeasureArray": {
+      "$comment": "homogenous array of data used in explicit measure arrays, may contain null values",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/tNumberOrNullArray"
+        },
+        {
+          "$ref": "#/$defs/tBooleanOrNullArray"
+        },
+        {
+          "$ref": "#/$defs/tStringOrNullArray"
+        }
+      ]
+    },
+    "tMeasureData": {
+      "oneOf": [
+        {
+          "properties": {
+            "measures": {
+              "items": {
+                "$ref": "#/$defs/tMeasureArray"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "measures"
+          ]
+        },
+        {
+          "properties": {
+            "points": {
+              "items": {
+                "$ref": "#/$defs/tTupleData"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "points"
+          ]
+        }
+      ]
+    },
+    "tNumberArray": {
+      "$comment": "homogenous array of numbers",
+      "items": {
+        "type": "number"
+      },
+      "type": "array"
+    },
+    "tNumberOrNullArray": {
+      "$comment": "homogenous array of numbers, may contain null values",
+      "items": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "tStringArray": {
+      "$comment": "homogenous array of strings",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "tStringOrNullArray": {
+      "$comment": "homogenous array of strings, may contain null values",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "tTupleData": {
+      "$comment": "heterogenous array of data used in point arrays",
+      "items": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "type": "array"
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/cube.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

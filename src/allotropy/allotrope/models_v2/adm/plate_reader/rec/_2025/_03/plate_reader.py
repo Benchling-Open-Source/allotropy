@@ -5,32 +5,36 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
-from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.core import (
     OrderedItem,
+    TBooleanValue,
     TDateTimeStampValue,
     TQuantityValueCountsPers,
     TQuantityValueDegC,
     TQuantityValueMAU,
+    TQuantityValueMAUDotmL,
+    TQuantityValueMAUDots,
     TQuantityValueMicroL,
     TQuantityValueMm,
+    TQuantityValueMs,
     TQuantityValueNm,
     TQuantityValueNumberSign,
+    TQuantityValuePercent,
     TQuantityValuePgPermL,
     TQuantityValueRFU,
     TQuantityValueRLU,
-    TQuantityValueRLUDotmL,
-    TQuantityValueRLUDots,
     TQuantityValueS,
+    TQuantityValueUnitless,
     TStringValue,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._06.cube import TDatacube
-from allotropy.allotrope.models_v2.adm.core.rec._2024._06.hierarchy import (
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.cube import TDatacube
+from allotropy.allotrope.models_v2.adm.core.rec._2025._03.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
+    DataSourceAggregateDocument,
     ElectronicProjectRecord,
     ErrorAggregateDocument,
     ImageAggregateDocument,
-    ProcessedDataAggregateDocument,
     StatisticsAggregateDocument,
     TechniqueAggregateDocument,
     TechniqueDocument,
@@ -43,18 +47,21 @@ class AbsorptionProfileDataCube(TDatacube):
 
 
 @dataclass(frozen=True, kw_only=True)
-class ChromatogramDataCube(TDatacube):
+class AbsorptionSpectrumDataCube(TDatacube):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class DerivedElectropherogramDataCube(TDatacube):
+class ChromatogramDataCube(TDatacube):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
     brand_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     detection_type: TStringValue | None = None
     device_identifier: TStringValue | None = None
     device_type: TStringValue | None = None
@@ -62,16 +69,13 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    shaking_configuration_description: TStringValue | None = None
+    detector_carriage_speed_setting: TStringValue | None = None
     detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
         default=None, metadata={"json_name": "detector distance setting (plate reader)"}
     )
+    detector_gain_setting: TStringValue | None = None
     integration_time: TQuantityValueS | None = None
     number_of_averages: TQuantityValueNumberSign | None = None
-    detector_gain_setting: TStringValue | None = None
     scan_position_setting__plate_reader_: Literal[
         "bottom scan position (plate reader)",
         "scan position configuration (plate reader)",
@@ -79,19 +83,26 @@ class DeviceControlDocumentItem(OrderedItem):
     ] | None = field(
         default=None, metadata={"json_name": "scan position setting (plate reader)"}
     )
-    detector_carriage_speed_setting: TStringValue | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
+    shaking_configuration_description: TStringValue | None = None
     detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
     electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
-    total_measurement_time_setting: TQuantityValueS | None = None
-    read_interval_setting: TQuantityValueS | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
     number_of_scans_setting: TQuantityValueNumberSign | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    read_interval_setting: TQuantityValueS | None = None
+    total_measurement_time_setting: TQuantityValueS | None = None
     excitation_bandwidth_setting: TQuantityValueNm | None = None
     excitation_wavelength_setting: TQuantityValueNm | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    auto_focus_enabled_setting: TBooleanValue | None = None
+    exposure_duration_setting: TQuantityValueMs | None = None
+    fluorescent_tag_setting: TStringValue | None = None
+    illumination_setting: TQuantityValuePercent | None = None
+    image_count_setting: TQuantityValueUnitless | None = None
+    magnification_setting: TQuantityValueUnitless | None = None
+    illumination_mode_setting: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -113,21 +124,34 @@ class FluorescenceEmissionProfileDataCube(TDatacube):
 
 
 @dataclass(frozen=True, kw_only=True)
+class FluorescenceEmissionSpectrumDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class FluorescenceExcitationSpectrumDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class LuminescenceProfileDataCube(TDatacube):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
+    peak_area: TQuantityValueMAUDots | TQuantityValueMAUDotmL | None = None
     peak_height: TQuantityValueMAU | None = None
-    peak_area: TQuantityValueRLUDots | TQuantityValueRLUDotmL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class SampleDocument:
-    sample_identifier: TStringValue
     location_identifier: TStringValue
+    sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     description: Any | None = None
     sample_role_type: Literal[
         "control sample role",
@@ -145,29 +169,36 @@ class SampleDocument:
         "reference sample role",
     ] | None = None
     written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    well_location_identifier: TStringValue | None = None
-    vial_location_identifier: TStringValue | None = None
-    well_plate_identifier: TStringValue | None = None
     mass_concentration: TQuantityValuePgPermL | None = None
+    vial_location_identifier: TStringValue | None = None
+    well_location_identifier: TStringValue | None = None
+    well_plate_identifier: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TransmittanceSpectrumDataCube(TDatacube):
+    pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem] | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    device_control_document: list[DeviceControlDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceAggregateDocument:
-    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -176,9 +207,24 @@ class PeakList:
 
 
 @dataclass(frozen=True, kw_only=True)
-class ProcessedDataDocument:
+class ProcessedDataDocumentItem(OrderedItem):
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    data_processing_document: dict[str, Any] | None = None
+    data_source_aggregate_document: DataSourceAggregateDocument | None = None
+    electronic_project_record: ElectronicProjectRecord | None = None
+    processed_data_identifier: TStringValue | None = None
     peak_list: PeakList | None = None
-    derived_electropherogram_data_cube: DerivedElectropherogramDataCube | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class ProcessedDataAggregateDocument:
+    processed_data_document: list[ProcessedDataDocumentItem]
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    electronic_project_record: ElectronicProjectRecord | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -186,6 +232,7 @@ class MeasurementDocumentItem:
     device_control_aggregate_document: DeviceControlAggregateDocument
     measurement_identifier: TStringValue
     sample_document: SampleDocument
+    analytical_method_identifier: TStringValue | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
@@ -193,20 +240,34 @@ class MeasurementDocumentItem:
     detection_type: TStringValue | None = None
     electronic_project_record: ElectronicProjectRecord | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
+    experimental_data_identifier: TStringValue | None = None
     image_aggregate_document: ImageAggregateDocument | None = None
     measurement_time: TDateTimeStampValue | None = None
+    method_version: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
     compartment_temperature: TQuantityValueDegC | None = None
     absorbance: TQuantityValueMAU | None = None
     mass_concentration: TQuantityValuePgPermL | None = None
-    processed_data_document: ProcessedDataDocument | None = None
+    transmittance: TQuantityValueUnitless | None = None
     fluorescence: TQuantityValueRFU | None = None
     luminescence: TQuantityValueRLU | TQuantityValueCountsPers | None = None
     electropherogram_data_cube: ElectropherogramDataCube | None = None
     absorption_profile_data_cube: AbsorptionProfileDataCube | None = None
     chromatogram_data_cube: ChromatogramDataCube | None = None
+    three_dimensional_ultraviolet_spectrum_data_cube: ThreeDimensionalUltravioletSpectrumDataCube | None = field(
+        default=None,
+        metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"},
+    )
+    absorption_spectrum_data_cube: AbsorptionSpectrumDataCube | None = None
+    transmittance_spectrum_data_cube: TransmittanceSpectrumDataCube | None = None
     fluorescence_emission_profile_data_cube: FluorescenceEmissionProfileDataCube | None = (
+        None
+    )
+    fluorescence_emission_spectrum_data_cube: FluorescenceEmissionSpectrumDataCube | None = (
+        None
+    )
+    fluorescence_excitation_spectrum_data_cube: FluorescenceExcitationSpectrumDataCube | None = (
         None
     )
     luminescence_profile_data_cube: LuminescenceProfileDataCube | None = None
@@ -226,9 +287,6 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    analytical_method_identifier: TStringValue | None = None
-    experimental_data_identifier: TStringValue | None = None
-    experiment_type: TStringValue | None = None
     container_type: Literal[
         "reactor",
         "controlled lab reactor",
@@ -248,6 +306,7 @@ class MeasurementAggregateDocument:
         "basket",
         "cell holder",
     ] | None = None
+    experiment_type: TStringValue | None = None
     well_volume: TQuantityValueMicroL | None = None
 
 
