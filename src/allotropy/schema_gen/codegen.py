@@ -73,15 +73,20 @@ class ModuleCode:
 
     def render(self, models_package: str = "allotropy.allotrope.models_v2") -> str:
         """Render the complete Python module source code."""
-        # Deduplicate classes by name (keep first occurrence).
-        # Multiple detector schemas can generate identical inline types
-        # (e.g., ChromatogramDataCube from different detection modes).
-        seen_names: set[str] = set()
+        # Deduplicate classes by name, merging fields from duplicates.
+        # Multiple schema locations can generate the same inline type
+        # (e.g., recursive PopulationDocumentItem) with slightly different
+        # field sets — merge all fields so no properties are lost.
+        seen_names: dict[str, int] = {}  # name -> index in unique
         unique: list[GeneratedClass] = []
         for cls in self.classes:
             if cls.name not in seen_names:
-                seen_names.add(cls.name)
+                seen_names[cls.name] = len(unique)
                 unique.append(cls)
+            else:
+                # Merge fields from the duplicate into the existing class
+                existing = unique[seen_names[cls.name]]
+                existing.code = _merge_class_fields(existing.code, cls.code)
         self.classes = unique
 
         # Reorder classes so that dependencies come before uses
@@ -210,6 +215,51 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
         result.extend(remaining)
 
     return [classes[i] for i in result]
+
+
+def _merge_class_fields(existing_code: str, new_code: str) -> str:
+    """Merge field lines from two class code strings with the same class name.
+
+    When the same inline class is generated from multiple schema locations
+    (e.g., recursive structures like PopulationDocumentItem), later occurrences
+    may have additional fields. This merges fields from both, deduplicating by
+    field name and keeping required fields before optional ones.
+    """
+    existing_lines = existing_code.split("\n")
+    new_lines = new_code.split("\n")
+
+    # Extract header (decorator + class line) and field lines
+    header = []
+    existing_fields: dict[str, str] = {}
+    for line in existing_lines:
+        if line.startswith("    ") and ":" in line and not line.strip() == "pass":
+            field_name = line.strip().split(":")[0]
+            existing_fields[field_name] = line
+        else:
+            header.append(line)
+
+    # Extract fields from the new class
+    for line in new_lines:
+        if line.startswith("    ") and ":" in line and not line.strip() == "pass":
+            field_name = line.strip().split(":")[0]
+            if field_name not in existing_fields:
+                existing_fields[field_name] = line
+
+    if not existing_fields:
+        return existing_code
+
+    # Separate required (no " | None" or "= None") from optional fields
+    required = []
+    optional = []
+    for field_line in existing_fields.values():
+        if "| None" in field_line or "= None" in field_line:
+            optional.append(field_line)
+        else:
+            required.append(field_line)
+
+    # Remove "pass" from header if it was there
+    header = [h for h in header if h.strip() != "pass"]
+    return "\n".join(header + required + optional)
 
 
 def _field_declaration(
@@ -1187,7 +1237,7 @@ class SchemaCodeGenerator:
         self,
         module: ModuleCode,
         schema_url: str,
-        _prop_name: str,
+        prop_name: str,
         prop_schema: dict[str, Any],
     ) -> str:
         """Resolve a oneOf property type."""
@@ -1196,6 +1246,13 @@ class SchemaCodeGenerator:
         for item in one_of:
             if "$ref" in item:
                 parts.append(self._resolve_ref_type(module, schema_url, item["$ref"]))
+            elif "allOf" in item:
+                # Delegate to allOf resolver (handles tQuantityValue + unit patterns)
+                resolved = self._resolve_all_of_property(
+                    module, schema_url, prop_name, item
+                )
+                if resolved:
+                    parts.append(resolved)
             elif "type" in item:
                 parts.append(self._json_type_to_python(item["type"]))
             elif "format" in item:
