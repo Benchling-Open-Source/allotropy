@@ -903,9 +903,9 @@ class SchemaCodeGenerator:
             elif isinstance(item, dict):
                 schemas.append(item)
 
-        # Pattern 1: tQuantityValue + unit
+        # Pattern 1: tQuantityValue + unit ref(s)
         quantity_ref = None
-        unit_ref = None
+        unit_refs: list[str] = []
         for ref in refs:
             _, def_name = parse_ref(ref)
             if def_name and def_name.lower() in ("tquantityvalue", "tquantityvalue"):
@@ -919,19 +919,35 @@ class SchemaCodeGenerator:
                 except ValueError:
                     canonical = None
                 if canonical and "units.schema" in canonical:
-                    unit_ref = ref
+                    unit_refs.append(ref)
 
-        if quantity_ref and unit_ref:
+        if quantity_ref and len(unit_refs) == 1:
             return self._generate_quantity_value_type(
-                module, schema_url, quantity_ref, unit_ref
+                module, schema_url, quantity_ref, unit_refs[0]
             )
+
+        if quantity_ref and len(unit_refs) > 1:
+            types = [
+                self._generate_quantity_value_type(
+                    module, schema_url, quantity_ref, uref
+                )
+                for uref in unit_refs
+            ]
+            # Deduplicate while preserving order
+            seen: set[str] = set()
+            unique_types: list[str] = []
+            for t in types:
+                if t not in seen:
+                    seen.add(t)
+                    unique_types.append(t)
+            return " | ".join(unique_types)
 
         # Pattern 1b: tQuantityValue + oneOf[unit1, unit2, ...]
         # e.g. allOf[{$ref: tQuantityValue}, {oneOf: [{$ref: mmHg}, {$ref: kPa}]}]
-        if quantity_ref and not unit_ref:
+        if quantity_ref and not unit_refs:
             for s in schemas:
                 if "oneOf" in s:
-                    unit_refs = []
+                    one_of_unit_refs: list[str] = []
                     for variant in s["oneOf"]:
                         if "$ref" in variant:
                             ref_url = variant["$ref"].split("#")[0]
@@ -942,13 +958,13 @@ class SchemaCodeGenerator:
                             except ValueError:
                                 canonical = None
                             if canonical and "units.schema" in canonical:
-                                unit_refs.append(variant["$ref"])
-                    if unit_refs:
+                                one_of_unit_refs.append(variant["$ref"])
+                    if one_of_unit_refs:
                         types = [
                             self._generate_quantity_value_type(
                                 module, schema_url, quantity_ref, uref
                             )
-                            for uref in unit_refs
+                            for uref in one_of_unit_refs
                         ]
                         return " | ".join(types)
 

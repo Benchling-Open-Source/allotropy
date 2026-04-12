@@ -1,6 +1,31 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
     "liquid chromatography aggregate document": {
+        "data system document": {
+            "ASM converter name": "allotropy_cytiva_unicorn",
+            "ASM converter version": "0.1.117",
+            "file name": "unicorn_1.zip",
+            "software version": "100.100.100.100",
+            "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip",
+            "custom information document": {
+                "FolderPath": "/DefaultHome",
+                "FormatVersion": "100",
+                "IsArchived": "false",
+                "IsReadOnly": "false",
+                "ResultFormatVersion": "100",
+                "ResultPurpose": "100",
+                "ResultState": "Evaluated"
+            }
+        },
+        "device system document": {
+            "asset management identifier": "AKTA avant",
+            "product manufacturer": "Cytiva Life Sciences",
+            "device identifier": "Avant1",
+            "firmware version": "100.100.100.100",
+            "custom information document": {
+                "SystemTypeName": "NEXTAKTAchromatography"
+            }
+        },
         "liquid chromatography document": [
             {
                 "measurement aggregate document": {
@@ -451,11 +476,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.3668365478515625, 0.3670654296875, 0.3673095703125]
-                                    ],
                                     "measures": [
                                         [0.19794297218322754, 0.19794535636901855, 0.19794775545597076]
+                                    ],
+                                    "dimensions": [
+                                        [0.3668365478515625, 0.3670654296875, 0.3673095703125]
                                     ]
                                 }
                             }
@@ -525,11 +550,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
-                                    ],
                                     "measures": [
                                         [0.0, 0.0, 0.0]
+                                    ],
+                                    "dimensions": [
+                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
                                     ]
                                 }
                             }
@@ -599,11 +624,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
-                                    ],
                                     "measures": [
                                         [0.0, 0.0, 0.0]
+                                    ],
+                                    "dimensions": [
+                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
                                     ]
                                 }
                             }
@@ -668,11 +693,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.5423583984375, 0.555511474609375, 0.584014892578125]
-                                                ],
                                                 "measures": [
                                                     [31.154701232910156, 31.13396453857422, 30.91810417175293]
+                                                ],
+                                                "dimensions": [
+                                                    [0.5423583984375, 0.555511474609375, 0.584014892578125]
                                                 ]
                                             }
                                         },
@@ -725,11 +750,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.3687896728515625, 0.3695220947265625, 0.3702545166015625]
-                                    ],
                                     "measures": [
                                         [3.1048166275024416, 3.104812431335449, 3.104808044433594]
+                                    ],
+                                    "dimensions": [
+                                        [0.3687896728515625, 0.3695220947265625, 0.3702545166015625]
                                     ]
                                 }
                             }
@@ -799,11 +824,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.5506744384765625, 0.555511474609375, 0.59234619140625]
-                                    ],
                                     "measures": [
                                         [6.056291580200195, 0.0, 6.056750297546387]
+                                    ],
+                                    "dimensions": [
+                                        [0.5506744384765625, 0.555511474609375, 0.59234619140625]
                                     ]
                                 }
                             }
@@ -833,11 +858,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
-                                                ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
+                                                ],
+                                                "dimensions": [
+                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
                                                 ]
                                             }
                                         },
@@ -888,7 +913,7 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "pre column pressure data cube": {
+                                        "pre-column pressure data cube": {
                                             "label": "PreC pressure",
                                             "cube-structure": {
                                                 "dimensions": [
@@ -907,15 +932,15 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.5173492431640625, 0.555511474609375, 0.5590362548828125]
-                                                ],
                                                 "measures": [
                                                     [0.03866715729236603, 0.19328080117702484, 0.20647241175174713]
+                                                ],
+                                                "dimensions": [
+                                                    [0.5173492431640625, 0.555511474609375, 0.5590362548828125]
                                                 ]
                                             }
                                         },
-                                        "post column pressure data cube": {
+                                        "post-column pressure data cube": {
                                             "label": "PostC pressure",
                                             "cube-structure": {
                                                 "dimensions": [
@@ -934,11 +959,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
-                                                ],
                                                 "measures": [
                                                     [0.13015341758728027, 0.14228571951389313, 0.06806576997041702]
+                                                ],
+                                                "dimensions": [
+                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
                                                 ]
                                             }
                                         },
@@ -961,11 +986,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
-                                                ],
                                                 "measures": [
                                                     [0.05315263196825981, 0.05314874276518822, 0.05314485356211662]
+                                                ],
+                                                "dimensions": [
+                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
                                                 ]
                                             }
                                         },
@@ -988,11 +1013,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
-                                                ],
                                                 "measures": [
                                                     [0.1649095118045807, 0.13285210728645325, 0.10079468786716461]
+                                                ],
+                                                "dimensions": [
+                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
                                                 ]
                                             }
                                         },
@@ -1050,11 +1075,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
-                                                ],
                                                 "measures": [
                                                     [0.06312736868858337, 0.06418673694133759, 0.03745259717106819]
+                                                ],
+                                                "dimensions": [
+                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
                                                 ]
                                             }
                                         },
@@ -1114,11 +1139,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.62567138671875, 0.7874755859375, 0.9541168212890625]
-                                                ],
                                                 "measures": [
                                                     [0.0, 7.460474014282227, 14.920948028564453]
+                                                ],
+                                                "dimensions": [
+                                                    [0.62567138671875, 0.7874755859375, 0.9541168212890625]
                                                 ]
                                             }
                                         },
@@ -1141,11 +1166,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.837493896484375, 1.00408935546875, 1.170684814453125]
-                                                ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
+                                                ],
+                                                "dimensions": [
+                                                    [0.837493896484375, 1.00408935546875, 1.170684814453125]
                                                 ]
                                             }
                                         }
@@ -1172,11 +1197,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
-                                                ],
                                                 "measures": [
                                                     [5.000010013580322, 2.3790595531463623, 0.0]
+                                                ],
+                                                "dimensions": [
+                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
                                                 ]
                                             }
                                         },
@@ -1199,11 +1224,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.52569580078125, 0.555511474609375, 0.567352294921875]
-                                                ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
+                                                ],
+                                                "dimensions": [
+                                                    [0.52569580078125, 0.555511474609375, 0.567352294921875]
                                                 ]
                                             }
                                         }
@@ -1230,11 +1255,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [0.534027099609375, 0.555511474609375, 0.57568359375]
-                                                ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
+                                                ],
+                                                "dimensions": [
+                                                    [0.534027099609375, 0.555511474609375, 0.57568359375]
                                                 ]
                                             }
                                         }
@@ -1300,11 +1325,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [1.1540069580078125, 1.487213134765625, 1.8205108642578125]
-                                                ],
                                                 "measures": [
                                                     [27.713348388671875, 27.648590087890625, 27.536712646484375]
+                                                ],
+                                                "dimensions": [
+                                                    [1.1540069580078125, 1.487213134765625, 1.8205108642578125]
                                                 ]
                                             }
                                         },
@@ -1363,7 +1388,7 @@
                                     "unit": "mL"
                                 },
                                 "fraction role": "Out-Waste",
-                                "@type": "Fraction",
+                                "field type": "Fraction",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1379,7 +1404,7 @@
                                     "value": 73.47809,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1395,7 +1420,7 @@
                                     "value": 385.0173,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1411,7 +1436,7 @@
                                     "value": 385.154,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1427,7 +1452,7 @@
                                     "value": 455.8084,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1443,7 +1468,7 @@
                                     "value": 586.219,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1460,7 +1485,7 @@
                                     "unit": "mL"
                                 },
                                 "fraction role": "Frac",
-                                "@type": "Fraction",
+                                "field type": "Fraction",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1477,7 +1502,7 @@
                                     "unit": "mL"
                                 },
                                 "fraction role": "Out-Waste",
-                                "@type": "Fraction",
+                                "field type": "Fraction",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -3300,43 +3325,18 @@
                         ]
                     },
                     "custom information document": {
+                        "RunIndex": "100",
+                        "RunType": "Method",
+                        "Name": "Capto Adhere Polishing 100ppm Sample",
                         "ChromatogramID": "100",
                         "ChromatogramName": "Chrom.1",
                         "Created": "2024-01-01T10:00:00.000",
                         "CreatedUtcOffsetMinutes": "-300",
-                        "FormatVersion": "9",
-                        "Name": "Capto Adhere Polishing 100ppm Sample",
-                        "RunIndex": "100",
-                        "RunType": "Method"
+                        "FormatVersion": "9"
                     }
                 },
                 "analyst": "Default"
             }
-        ],
-        "data system document": {
-            "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.102",
-            "file name": "unicorn_1.zip",
-            "software version": "100.100.100.100",
-            "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip",
-            "custom information document": {
-                "FolderPath": "/DefaultHome",
-                "FormatVersion": "100",
-                "IsArchived": "false",
-                "IsReadOnly": "false",
-                "ResultFormatVersion": "100",
-                "ResultPurpose": "100",
-                "ResultState": "Evaluated"
-            }
-        },
-        "device system document": {
-            "asset management identifier": "AKTA avant",
-            "product manufacturer": "Cytiva Life Sciences",
-            "device identifier": "Avant1",
-            "firmware version": "100.100.100.100",
-            "custom information document": {
-                "SystemTypeName": "NEXTAKTAchromatography"
-            }
-        }
+        ]
     }
 }

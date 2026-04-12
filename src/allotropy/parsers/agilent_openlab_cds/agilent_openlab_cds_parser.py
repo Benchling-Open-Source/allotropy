@@ -1,5 +1,5 @@
 """Parser file for Agilent OpenLab CDS Adapter"""
-from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+from allotropy.allotrope.models_v2.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (

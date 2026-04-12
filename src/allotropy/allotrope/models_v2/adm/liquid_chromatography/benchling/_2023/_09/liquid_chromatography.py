@@ -11,7 +11,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
     TDateTimeValue,
     TQuantityValue,
     TQuantityValueCm,
+    TQuantityValueCounts,
+    TQuantityValueCountsDots,
     TQuantityValueHz,
+    TQuantityValueMAU,
     TQuantityValueMAUDots,
     TQuantityValueMicroL,
     TQuantityValueMicrom,
@@ -20,9 +23,13 @@ from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
     TQuantityValueMm,
     TQuantityValueMmCu,
     TQuantityValueMV,
+    TQuantityValueMVDots,
+    TQuantityValueNC,
     TQuantityValueNCDots,
     TQuantityValueNm,
     TQuantityValueNumberSign,
+    TQuantityValuePA,
+    TQuantityValuePADots,
     TQuantityValuePercent,
     TQuantityValueS,
     TQuantityValueUnitless,
@@ -238,7 +245,9 @@ class PeakItem(OrderedItem):
     identifier: TStringValue | None = None
     relative_peak_height: TQuantityValuePercent | None = None
     written_name: TStringValue | None = None
-    peak_height: TQuantityValueMV | None = None
+    peak_height: TQuantityValueMAU | TQuantityValueCounts | TQuantityValueMV | TQuantityValueNC | TQuantityValuePA | None = (
+        None
+    )
     capacity_factor__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "capacity factor (chromatography)"}
     )
@@ -247,7 +256,9 @@ class PeakItem(OrderedItem):
     peak_group: TQuantityValueMAUDots | None = None
     relative_peak_analyte_amount: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
-    peak_area: TQuantityValueNCDots | None = None
+    peak_area: TQuantityValueNCDots | TQuantityValueMVDots | TQuantityValuePADots | TQuantityValueCountsDots | None = (
+        None
+    )
     relative_peak_area: TQuantityValuePercent | None = None
     retention_time: TQuantityValueS | None = None
     relative_retention_time: TQuantityValuePercent | None = None

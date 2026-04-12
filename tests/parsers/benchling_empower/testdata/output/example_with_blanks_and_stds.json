@@ -1,6 +1,35 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
     "liquid chromatography aggregate document": {
+        "data system document": {
+            "ASM converter name": "allotropy_benchling_waters_empower_adapter",
+            "ASM converter version": "0.1.117",
+            "data system instance identifier": "237",
+            "file name": "example_with_blanks_and_stds.json",
+            "software name": "Waters Empower",
+            "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+            "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json",
+            "custom information document": {
+                "account identifier": "system",
+                "project": "PROJECT_2",
+                "password": "manager",
+                "SystemCreateDate": "2014-06-19T10:20:59",
+                "SystemComments": "Example comment",
+                "Node": "Node1",
+                "SampleSetName": "example_set_2",
+                "SampleSetType": "Acquired",
+                "SampleSetComments": "1",
+                "SampleSetStartDate": "2017-01-04T08:12:47",
+                "SampleSetMethod": "example_set_2",
+                "SampleSetId": 1148,
+                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                "sample set name": "example_set_2"
+            }
+        },
+        "device system document": {
+            "asset management identifier": "237",
+            "product manufacturer": "Waters Corporation"
+        },
         "liquid chromatography document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +38,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1152",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -84,11 +113,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [0.0023245811500000003, 0.0057816510000000005, 0.009953977000000001, 0.0143051157]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -97,33 +126,33 @@
                                 "DateAcquired": "2017-01-04T08:13:41",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -148,8 +177,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1177",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -222,11 +251,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [0.136494637, 0.136375427, 0.13589858999999999, 0.13542175299999998]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -235,34 +264,34 @@
                                 "DateAcquired": "2017-01-04T08:44:56",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -287,8 +316,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1180",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -361,9 +390,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [
                                             -0.007688998999999999,
@@ -371,6 +397,9 @@
                                             -0.005304814000000001,
                                             -0.0038146972699999995
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -379,34 +408,34 @@
                                 "DateAcquired": "2017-01-04T09:16:10",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -431,8 +460,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1183",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -510,11 +539,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [0.0538826025, 0.0538229979, 0.05334616, 0.0523924864]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -523,35 +552,35 @@
                                 "DateAcquired": "2017-01-04T09:47:28",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
+                                "AnalysisMethod": "Empower HPLC",
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -579,8 +608,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1186",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -658,11 +687,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [0.0267624873, 0.0298619289, 0.033557415, 0.0373721123]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -671,35 +700,35 @@
                                 "DateAcquired": "2017-01-04T10:18:46",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
+                                "AnalysisMethod": "Empower HPLC",
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -727,8 +756,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1189",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -806,11 +835,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [0.0265836734, 0.0256896037, 0.024318696900000002, 0.022470952899999997]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -819,35 +848,35 @@
                                 "DateAcquired": "2017-01-04T10:50:07",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
+                                "AnalysisMethod": "Empower HPLC",
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -875,8 +904,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
                                         "device identifier": "1192",
+                                        "device type": "HPLC",
                                         "detector sampling rate setting": {
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
@@ -954,11 +983,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
-                                    ],
                                     "measures": [
                                         [0.0267624873, 0.024616719999999998, 0.0219941157, 0.019133091]
+                                    ],
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
                                     ]
                                 }
                             },
@@ -967,35 +996,35 @@
                                 "DateAcquired": "2017-01-04T11:21:26",
                                 "RunTime": "30.0",
                                 "measurement end time": "2017-01-04T11:51:45",
-                                "SystemComments": "Example comment",
-                                "Node": "Node1",
-                                "SampleSetAcquiredBy": "USER_1",
-                                "SampleSetType": "Acquired",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-                                "AcquiredBy": "USER_1",
-                                "Factor2Operator": "*",
-                                "Factor3": 1.0,
-                                "UseForPrecision": "No",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "NumOfResultsStored": 0,
-                                "CalculationType": "NG MP Curve RS AdjAreaPct",
-                                "SampleSetId": 1148,
-                                "AnalysisMethod": "Empower HPLC",
-                                "SampleSetComments": "1",
                                 "Factor1Operator": "*",
-                                "Factor2": 1.0,
+                                "ProcessingLocked": false,
+                                "AnalysisMethod": "Empower HPLC",
                                 "NumOfProcessOnlySampleSets": 0,
+                                "Factor2Operator": "*",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetComments": "1",
+                                "SampleSetType": "Acquired",
+                                "DilutionUnits": "mL",
                                 "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "NumOfResultsStored": 0,
+                                "Node": "Node1",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "Factor2": 1.0,
                                 "Factor3Operator": "*",
+                                "UseForPrecision": "No",
+                                "SampleSetName": "example_set_2",
                                 "Factor1": 1.0,
                                 "SystemName": "237",
-                                "ProcessingLocked": false,
-                                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                                "DilutionUnits": "mL",
+                                "AcquiredBy": "USER_1",
+                                "Factor3": 1.0,
                                 "SystemCreateDate": "2014-06-19T10:20:59",
+                                "SampleSetId": 1148,
+                                "SampleSetMethod": "example_set_2",
+                                "SampleSetAcquiredBy": "USER_1",
                                 "PeakRatioReference": false,
-                                "SampleSetName": "example_set_2",
-                                "SampleSetMethod": "example_set_2"
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "SystemComments": "Example comment"
                             }
                         }
                     ],
@@ -1016,35 +1045,6 @@
                 },
                 "analyst": "USER_1"
             }
-        ],
-        "data system document": {
-            "ASM converter name": "allotropy_benchling_waters_empower_adapter",
-            "ASM converter version": "0.1.86",
-            "data system instance identifier": "237",
-            "file name": "example_with_blanks_and_stds.json",
-            "software name": "Waters Empower",
-            "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-            "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json",
-            "custom information document": {
-                "account identifier": "system",
-                "project": "PROJECT_2",
-                "password": "manager",
-                "SystemCreateDate": "2014-06-19T10:20:59",
-                "SystemComments": "Example comment",
-                "Node": "Node1",
-                "SampleSetName": "example_set_2",
-                "SampleSetType": "Acquired",
-                "SampleSetFinishDate": "2017-01-04T11:51:45",
-                "sample set name": "example_set_2",
-                "SampleSetId": 1148,
-                "SampleSetComments": "1",
-                "SampleSetStartDate": "2017-01-04T08:12:47",
-                "SampleSetMethod": "example_set_2"
-            }
-        },
-        "device system document": {
-            "asset management identifier": "237",
-            "product manufacturer": "Waters Corporation"
-        }
+        ]
     }
 }
