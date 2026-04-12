@@ -91,6 +91,10 @@ def generate_models(
             module = modules[url]
             output_path = schema_url_to_model_file(url, output_dir)
             source = module.render(models_package)
+            # Patch TQuantityValue.value to use JsonFloat (float | InvalidJsonFloat)
+            # to support NaN/Infinity serialization, matching V1 behavior.
+            if "class TQuantityValue:" in source:
+                source = _patch_json_float(source)
             _write_module(output_path, source)
             _lint_file(output_path)
             generated_files.append(output_path)
@@ -102,6 +106,33 @@ def generate_models(
 
 def _is_units_schema(url: str) -> bool:
     return "units.schema" in url
+
+
+def _patch_json_float(source: str) -> str:
+    """Patch TQuantityValue.value to use JsonFloat instead of float.
+
+    V1 models use JsonFloat (float | InvalidJsonFloat) to support NaN/Infinity
+    serialization. The JSON schema says "type": "number" which maps to float,
+    but the allotropy pipeline needs JsonFloat for round-trip fidelity.
+    """
+    import_line = (
+        "from allotropy.allotrope.models.shared.definitions.definitions import (\n"
+        "    InvalidJsonFloat,\n"
+        ")\n"
+        "\n"
+        "JsonFloat = float | InvalidJsonFloat\n"
+    )
+    # Insert after the existing imports block
+    source = source.replace(
+        "from typing import Any\n",
+        "from typing import Any\n\n" + import_line,
+    )
+    # Replace the value type in TQuantityValue
+    source = source.replace(
+        "    value: float\n    unit: TUnit",
+        "    value: JsonFloat\n    unit: TUnit",
+    )
+    return source
 
 
 # ---------------------------------------------------------------------------

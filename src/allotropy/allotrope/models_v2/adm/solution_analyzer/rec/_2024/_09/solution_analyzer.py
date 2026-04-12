@@ -53,14 +53,10 @@ class DiagnosticTraceDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    device_type: TStringValue
-    flush_volume_setting: TQuantityValueML
-    detector_view_volume: TQuantityValueML
-    repetition_setting: TIntValue
-    sample_volume_setting: TQuantityValueML
     brand_name: TStringValue | None = None
     detection_type: TStringValue | None = None
     device_identifier: TStringValue | None = None
+    device_type: TStringValue | None = None
     equipment_serial_number: TStringValue | None = None
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
@@ -75,15 +71,19 @@ class DeviceControlDocumentItem(OrderedItem):
     electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
     excitation_wavelength_setting: TQuantityValueNm | None = None
+    flush_volume_setting: TQuantityValueML | None = None
+    detector_view_volume: TQuantityValueML | None = None
+    repetition_setting: TIntValue | None = None
+    sample_volume_setting: TQuantityValueML | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class DataProcessingDocument:
-    dilution_factor_setting: TQuantityValueUnitless
     cell_type_processing_method: TStringValue | None = None
     cell_density_dilution_factor: TQuantityValueUnitless | None = None
     minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
     maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
+    dilution_factor_setting: TQuantityValueUnitless | None = None
     data_processing_omission_setting: TBooleanValue | None = None
 
 
@@ -94,12 +94,12 @@ class TotalCellDiameterDistribution(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class DistributionDocumentItem:
-    particle_size: TQuantityValueMicrom
-    cumulative_count: TQuantityValueUnitless
-    cumulative_particle_density: TQuantityValueCountsPermL
-    differential_particle_density: TQuantityValueCountsPermL
-    differential_count: TQuantityValueUnitless
     distribution_identifier: TStringValue | None = None
+    particle_size: TQuantityValueMicrom | None = None
+    cumulative_count: TQuantityValueUnitless | None = None
+    cumulative_particle_density: TQuantityValueCountsPermL | None = None
+    differential_particle_density: TQuantityValueCountsPermL | None = None
+    differential_count: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -130,7 +130,7 @@ class SampleDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class AnalyteDocumentItem:
-    analyte_name: TStringValue
+    analyte_name: TStringValue | None = None
     volume_concentration: TQuantityValueMLPerL | None = None
     molar_concentration: TQuantityValueMmolPerL | None = None
     mass_concentration: TQuantityValueGPerL | None = None
@@ -146,7 +146,7 @@ class DiagnosticTraceAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem]
+    device_control_document: list[DeviceControlDocumentItem] | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
@@ -154,25 +154,25 @@ class DeviceControlAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class DistributionAggregateDocument:
-    distribution_document: list[DistributionDocumentItem]
+    distribution_document: list[DistributionDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class AnalyteAggregateDocument:
-    analyte_document: list[AnalyteDocumentItem]
+    analyte_document: list[AnalyteDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
-    viability__cell_counter_: TQuantityValuePercent = field(
-        metadata={"json_name": "viability (cell counter)"}
-    )
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL = field(
-        metadata={"json_name": "viable cell density (cell counter)"}
-    )
     data_processing_document: DataProcessingDocument | None = None
+    viability__cell_counter_: TQuantityValuePercent | None = field(
+        default=None, metadata={"json_name": "viability (cell counter)"}
+    )
     total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
         default=None, metadata={"json_name": "total cell density (cell counter)"}
+    )
+    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+        default=None, metadata={"json_name": "viable cell density (cell counter)"}
     )
     dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
         default=None, metadata={"json_name": "dead cell density (cell counter)"}

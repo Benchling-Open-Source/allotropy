@@ -215,6 +215,24 @@ def _field_declaration(
     return f"    {python_name}: {type_str} | None = None"
 
 
+def _strip_required_recursive(schema: Any) -> Any:
+    """Recursively remove all ``required`` arrays from a schema.
+
+    Used after merging anyOf variants: in a union type, no individual
+    variant's fields should be strictly required in the merged result,
+    since only one variant applies at runtime.
+    """
+    if isinstance(schema, dict):
+        return {
+            k: _strip_required_recursive(v)
+            for k, v in schema.items()
+            if k != "required"
+        }
+    if isinstance(schema, list):
+        return [_strip_required_recursive(item) for item in schema]
+    return schema
+
+
 def _absolutize_refs(schema: Any, base_url: str) -> Any:
     """Rewrite local ``#/$defs/...`` refs to absolute URLs.
 
@@ -268,11 +286,18 @@ def _deep_merge_schemas(
                 else:
                     merged[pname] = pschema
             result["properties"] = merged
-        elif key == "required" and "required" in result:
-            if any_of:
-                result["required"] = list(set(result["required"]) & set(value))
+        elif key == "required":
+            if "required" in result:
+                if any_of:
+                    result["required"] = list(set(result["required"]) & set(value))
+                else:
+                    result["required"] = list(set(result["required"]) | set(value))
+            elif any_of:
+                # anyOf: overlay has required but base doesn't →
+                # intersection with ∅ = ∅, so don't add.
+                pass
             else:
-                result["required"] = list(set(result["required"]) | set(value))
+                result[key] = value
         elif key == "items" and "items" in result:
             if isinstance(result["items"], dict) and isinstance(value, dict):
                 result["items"] = _deep_merge_schemas(
@@ -281,9 +306,38 @@ def _deep_merge_schemas(
             else:
                 result[key] = value
         elif key == "allOf" and "allOf" in result:
-            result["allOf"] = result["allOf"] + value
+            if any_of:
+                # In anyOf mode, merge inline allOf items with anyOf semantics
+                # so that nested required fields get intersected rather than
+                # accumulated.  $ref items are deduplicated.
+                refs: set[str] = set()
+                inline_items: list[dict[str, Any]] = []
+                for item in result["allOf"] + value:
+                    if "$ref" in item and len(item) == 1:
+                        refs.add(item["$ref"])
+                    elif isinstance(item, dict):
+                        inline_items.append(item)
+                merged_inline: dict[str, Any] = {}
+                for item in inline_items:
+                    if merged_inline:
+                        merged_inline = _deep_merge_schemas(
+                            merged_inline, item, any_of=True
+                        )
+                    else:
+                        merged_inline = dict(item)
+                result_allof: list[dict[str, Any]] = [{"$ref": r} for r in refs]
+                if merged_inline:
+                    result_allof.append(merged_inline)
+                result["allOf"] = result_allof
+            else:
+                result["allOf"] = result["allOf"] + value
         else:
             result[key] = value
+
+    # In anyOf mode: if the base had "required" but the overlay didn't
+    # define any, the intersection with ∅ is ∅.
+    if any_of and "required" in result and "required" not in overlay:
+        result["required"] = []
 
     return result
 
@@ -1151,16 +1205,22 @@ class SchemaCodeGenerator:
                                         any_of_merged, ref_def_schema, any_of=True
                                     )
                     if any_of_merged:
-                        if "properties" in any_of_merged:
-                            for pk, pv in any_of_merged["properties"].items():
+                        # Strip all required arrays recursively from the
+                        # anyOf-merged result.  In a union, no variant's
+                        # fields should be strictly required — a property
+                        # that only one variant contributes should be
+                        # optional in the merged type.
+                        any_of_stripped: dict[str, Any] = _strip_required_recursive(
+                            any_of_merged
+                        )
+                        if "properties" in any_of_stripped:
+                            for pk, pv in any_of_stripped["properties"].items():
                                 if pk in merged_props:
                                     merged_props[pk] = _deep_merge_schemas(
                                         merged_props[pk], pv, any_of=True
                                     )
                                 else:
                                     merged_props[pk] = pv
-                        if "required" in any_of_merged:
-                            merged_required.extend(any_of_merged["required"])
 
         # Deep-merge overlapping properties from base $ref schemas.
         # When a technique schema references a base (e.g., techniqueDocument) and
@@ -1226,13 +1286,15 @@ class SchemaCodeGenerator:
             # Local reference within the current schema
             schema = self.schemas.get(current_schema_url, {})
             if def_name:
-                return schema.get("$defs", {}).get(def_name)
+                defs: dict[str, Any] = schema.get("$defs", {})
+                return defs.get(def_name)
             return None
 
         # External reference
         schema = self.schemas.get(ref_schema_url, {})
         if def_name:
-            return schema.get("$defs", {}).get(def_name)
+            defs = schema.get("$defs", {})
+            return defs.get(def_name)
         return schema
 
     # -------------------------------------------------------------------------

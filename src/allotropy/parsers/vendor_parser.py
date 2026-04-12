@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from collections.abc import Callable
 from typing import Generic, TypeVar
 
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_NAME
 from allotropy.named_file_contents import NamedFileContents
@@ -45,5 +44,5 @@ class VendorParser(ABC, Generic[Data, Model]):
     def asm_converter_name(self) -> str:
         return f'{ASM_CONVERTER_NAME}_{self.DISPLAY_NAME.replace(" ", "_").replace("-", "_")}'.lower()
 
-    def _get_date_time(self, time: str) -> TDateTimeValue:
+    def _get_date_time(self, time: str) -> str:
         return self.timestamp_parser.parse(time)

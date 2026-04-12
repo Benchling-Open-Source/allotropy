@@ -71,7 +71,7 @@ def _deep_diff(expected: Any, actual: Any, path: str = "") -> list[str]:
 
 
 @pytest.mark.long
-def test_v2_model_produces_same_output():
+def test_v2_model_produces_same_output() -> None:
     """Validate v2 model pipeline produces correct ASM output for qPCR parser."""
     if not INPUT_FILE.exists():
         pytest.skip(f"Test data not found: {INPUT_FILE}")
@@ -138,7 +138,7 @@ def test_v2_model_produces_same_output():
 
 
 @pytest.mark.long
-def test_v2_json_name_metadata_coverage():
+def test_v2_json_name_metadata_coverage() -> None:
     """Verify all v2 model fields have json_name metadata when needed.
 
     Fields whose Python name maps to the JSON name via simple underscore-to-space

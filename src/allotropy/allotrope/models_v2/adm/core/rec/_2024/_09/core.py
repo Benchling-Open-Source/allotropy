@@ -6,6 +6,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+)
+
+JsonFloat = float | InvalidJsonFloat
+
 
 @dataclass(frozen=True, kw_only=True)
 class Asm:
@@ -55,7 +61,7 @@ class OrderedItem:
 
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValue:
-    value: float
+    value: JsonFloat
     unit: TUnit
     has_statistic_datum_role: TStatisticDatumRole | None = None
     field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
@@ -187,26 +193,6 @@ class MixedItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueNm(TQuantityValue):
-    unit: str = "nm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCell(TQuantityValue):
-    unit: str = "cell"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueOne06cellsPermL(TQuantityValue):
-    unit: str = "10^6 cells/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePercent(TQuantityValue):
-    unit: str = "%"
-
-
-@dataclass(frozen=True, kw_only=True)
 class TQuantityValueMosmPerkg(TQuantityValue):
     unit: str = "mosm/kg"
 
@@ -224,6 +210,26 @@ class TQuantityValueMmolPerL(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueGPerL(TQuantityValue):
     unit: str = "g/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMmHg(TQuantityValue):
+    unit: str = "mmHg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePercent(TQuantityValue):
+    unit: str = "%"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePH(TQuantityValue):
+    unit: str = "pH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueDegC(TQuantityValue):
+    unit: str = "degC"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -247,13 +253,8 @@ class TQuantityValueCountsPermL(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValuePH(TQuantityValue):
-    unit: str = "pH"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueDegC(TQuantityValue):
-    unit: str = "degC"
+class TQuantityValueNm(TQuantityValue):
+    unit: str = "nm"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -267,18 +268,13 @@ class TQuantityValuePgPermL(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueMmHg(TQuantityValue):
-    unit: str = "mmHg"
+class TQuantityValueCell(TQuantityValue):
+    unit: str = "cell"
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueMicroL(TQuantityValue):
-    unit: str = "μL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMs(TQuantityValue):
-    unit: str = "ms"
+class TQuantityValueOne06cellsPermL(TQuantityValue):
+    unit: str = "10^6 cells/mL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -289,6 +285,16 @@ class TQuantityValueS(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueNumberSign(TQuantityValue):
     unit: str = "#"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMicroL(TQuantityValue):
+    unit: str = "μL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMs(TQuantityValue):
+    unit: str = "ms"
 
 
 TBooleanValue = bool | TBooleanValueItem

@@ -42,10 +42,10 @@ class DiagnosticTraceDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    device_type: TStringValue
     brand_name: TStringValue | None = None
     detection_type: TStringValue | None = None
     device_identifier: TStringValue | None = None
+    device_type: TStringValue | None = None
     equipment_serial_number: TStringValue | None = None
     firmware_version: TStringValue | None = None
     model_number: TStringValue | None = None
@@ -114,7 +114,7 @@ class DiagnosticTraceAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem]
+    device_control_document: list[DeviceControlDocumentItem] | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
