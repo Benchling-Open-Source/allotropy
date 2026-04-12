@@ -3,43 +3,45 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
+    TQuantityValue,
+    TQuantityValueDegC,
+    TQuantityValueMAU,
+    TQuantityValueMm,
+    TQuantityValueNm,
+    TQuantityValueNumberSign,
+    TQuantityValuePgPermL,
+    TQuantityValueRFU,
+    TQuantityValueRLU,
+    TQuantityValueS,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2024._06.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
+)
+from allotropy.allotrope.models_v2.adm.plate_reader.rec._2024._06.plate_reader import (
+    AbsorptionProfileDataCube,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
+    FluorescenceEmissionProfileDataCube,
+    LuminescenceProfileDataCube,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
     SampleDocument,
-    TQuantityValueModel,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueMillimeter,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanometer,
-    TQuantityValueNumber,
-    TQuantityValuePicogramPerMilliliter,
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueRelativeLightUnit,
-    TQuantityValueSecondTime,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
-from allotropy.allotrope.models.shared.definitions.units import Unitless
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -209,14 +211,14 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=add_custom_information_document(
                     DataSystemDocument(
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
                     ),
                     data.metadata.custom_info_doc,
                 ),
@@ -242,7 +244,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=measurement_group.experiment_type,
                     container_type=ContainerType.well_plate.value,
-                    plate_well_count=TQuantityValueNumber(
+                    plate_well_count=TQuantityValueNumberSign(
                         value=measurement_group.plate_well_count
                     ),
                     measurement_time=self.get_date_time(
@@ -258,14 +260,14 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         custom_info_doc = {
             "maximum wavelength signal": quantity_or_none(
-                TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
+                TQuantityValueNm, measurement_group.maximum_wavelength_signal
             )
         }
         return add_custom_information_document(plate_reader_doc, custom_info_doc)
 
     def _get_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
             return self._get_ultraviolet_absorbance_measurement_document(measurement)
@@ -285,30 +287,30 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = DeviceControlDocumentItem(
             electronic_absorbance_reference_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.electronic_absorbance_reference_wavelength_setting,
             ),
             device_type=measurement.device_type,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.detector_wavelength_setting,
             ),
             number_of_averages=quantity_or_none(
-                TQuantityValueNumber, measurement.number_of_averages
+                TQuantityValueNumberSign, measurement.number_of_averages
             ),
             detector_carriage_speed_setting=measurement.detector_carriage_speed,
             detector_gain_setting=measurement.detector_gain_setting,
             detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMillimeter,
+                TQuantityValueMm,
                 measurement.detector_distance_setting,
             ),
             firmware_version=measurement.firmware_version,
         )
-        measurement_doc = MeasurementDocument(
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -318,14 +320,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorbance=TQuantityValueMilliAbsorbanceUnit(
+            absorbance=TQuantityValueMAU(
                 value=assert_not_none(
                     value=measurement.absorbance,
                     msg="Missing absorbance value in ultraviolet absorbance measurement",
                 )
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+                TQuantityValueDegC, measurement.compartment_temperature
             ),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
@@ -335,10 +337,13 @@ class Mapper(SchemaMapper[Data, Model]):
                     ProcessedDataDocumentItem(
                         processed_data_identifier=measurement.processed_data_document.identifier,
                         data_processing_document={
-                            "concentration factor": quantity_or_none(
-                                TQuantityValueNanogramPerMicroliter,
-                                measurement.processed_data_document.concentration_factor,
+                            "concentration factor": TQuantityValue(
+                                value=measurement.processed_data_document.concentration_factor,
+                                unit="ng/μL",
                             )
+                            if measurement.processed_data_document.concentration_factor
+                            is not None
+                            else None
                         },
                     )
                 ]
@@ -352,20 +357,20 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = DeviceControlDocumentItem(
             device_type=measurement.device_type,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.detector_wavelength_setting,
             ),
             detector_bandwidth_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.detector_bandwidth_setting,
             ),
             detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMillimeter,
+                TQuantityValueMm,
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
@@ -374,12 +379,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             number_of_averages=quantity_or_none(
-                TQuantityValueNumber, measurement.number_of_averages
+                TQuantityValueNumberSign, measurement.number_of_averages
             ),
             detector_gain_setting=measurement.detector_gain_setting,
             detector_carriage_speed_setting=measurement.detector_carriage_speed,
         )
-        doc = MeasurementDocument(
+        doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -390,14 +395,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                 ]
             ),
-            luminescence=TQuantityValueRelativeLightUnit(
+            luminescence=TQuantityValueRLU(
                 value=assert_not_none(
                     measurement.luminescence,
                     msg="Missing luminescence value in luminescence measurement",
                 )
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+                TQuantityValueDegC, measurement.compartment_temperature
             ),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
@@ -407,32 +412,32 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = DeviceControlDocumentItem(
             device_type=measurement.device_type,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.detector_wavelength_setting,
             ),
             detector_bandwidth_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.detector_bandwidth_setting,
             ),
             excitation_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.excitation_wavelength_setting,
             ),
             excitation_bandwidth_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.excitation_bandwidth_setting,
             ),
             wavelength_filter_cutoff_setting=quantity_or_none(
-                TQuantityValueNanometer,
+                TQuantityValueNm,
                 measurement.wavelength_filter_cutoff_setting,
             ),
             detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMillimeter,
+                TQuantityValueMm,
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
@@ -442,11 +447,11 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             detector_gain_setting=measurement.detector_gain_setting,
             number_of_averages=quantity_or_none(
-                TQuantityValueNumber, measurement.number_of_averages
+                TQuantityValueNumberSign, measurement.number_of_averages
             ),
             detector_carriage_speed_setting=measurement.detector_carriage_speed,
         )
-        measurement_doc = MeasurementDocument(
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -455,14 +460,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+            fluorescence=TQuantityValueRFU(
                 value=assert_not_none(
                     measurement.fluorescence,
                     msg="Missing fluorescence value in fluorescence measurement",
                 )
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+                TQuantityValueDegC, measurement.compartment_temperature
             ),
             sample_document=self._get_sample_document(measurement),
             error_aggregate_document=self._get_error_aggregate_document(
@@ -475,14 +480,12 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_profile_data_cube_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         if not measurement.profile_data_cube:
             msg = "Profile data cube is required for cube detector measurements"
             raise AllotropyParserError(msg)
 
-        profile_data_cube = get_data_cube(measurement.profile_data_cube, TDatacube)
-
-        return MeasurementDocument(
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -491,57 +494,57 @@ class Mapper(SchemaMapper[Data, Model]):
                         device_type=measurement.device_type,
                         detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
+                            TQuantityValueNm,
                             measurement.detector_wavelength_setting,
                         ),
                         excitation_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
+                            TQuantityValueNm,
                             measurement.excitation_wavelength_setting,
                         ),
                         wavelength_filter_cutoff_setting=quantity_or_none(
-                            TQuantityValueNanometer,
+                            TQuantityValueNm,
                             measurement.wavelength_filter_cutoff_setting,
                         ),
                         number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
+                            TQuantityValueNumberSign, measurement.number_of_averages
                         ),
                         detector_carriage_speed_setting=measurement.detector_carriage_speed,
                         detector_gain_setting=measurement.detector_gain_setting,
                         detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
+                            TQuantityValueMm,
                             measurement.detector_distance_setting,
                         ),
                         total_measurement_time_setting=quantity_or_none(
-                            TQuantityValueSecondTime,
+                            TQuantityValueS,
                             measurement.total_measurement_time_setting,
                         ),
                         read_interval_setting=quantity_or_none(
-                            TQuantityValueSecondTime,
+                            TQuantityValueS,
                             measurement.read_interval_setting,
                         ),
                         number_of_scans_setting=quantity_or_none(
-                            TQuantityValueNumber,
+                            TQuantityValueNumberSign,
                             measurement.number_of_scans_setting,
                         ),
                     )
                 ]
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+                TQuantityValueDegC, measurement.compartment_temperature
             ),
             absorption_profile_data_cube=(
-                profile_data_cube
+                get_data_cube_v2(measurement.profile_data_cube, AbsorptionProfileDataCube)  # type: ignore[arg-type]
                 if measurement.type_
                 == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
                 else None
             ),
             luminescence_profile_data_cube=(
-                profile_data_cube
+                get_data_cube_v2(measurement.profile_data_cube, LuminescenceProfileDataCube)  # type: ignore[arg-type]
                 if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
                 else None
             ),
             fluorescence_emission_profile_data_cube=(
-                profile_data_cube
+                get_data_cube_v2(measurement.profile_data_cube, FluorescenceEmissionProfileDataCube)  # type: ignore[arg-type]
                 if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
                 else None
             ),
@@ -559,7 +562,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             mass_concentration=quantity_or_none(
-                TQuantityValuePicogramPerMilliliter,
+                TQuantityValuePgPermL,
                 measurement.mass_concentration,
             ),
             batch_identifier=measurement.batch_identifier,
@@ -581,9 +584,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         calculated_data_identifier=calculated_data_item.uuid,
                         calculated_data_name=calculated_data_item.name,
                         calculation_description=calculated_data_item.description,
-                        calculated_result=TQuantityValueModel(
+                        calculated_result=TQuantityValue(
                             value=calculated_data_item.value,
-                            unit=calculated_data_item.unit or Unitless.unit,
+                            unit=calculated_data_item.unit or "(unitless)",
                         ),
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[

@@ -1221,6 +1221,9 @@ class SchemaCodeGenerator:
                     # intersected (a field is only required if ALL variants
                     # require it, since anyOf means only one applies).
                     any_of_merged: dict[str, Any] | None = None
+                    # Collect all oneOf variants from all detector schemas
+                    # before deep-merge (which overwrites oneOf with last value).
+                    all_one_of_variants: list[dict[str, Any]] = []
                     for variant in item["anyOf"]:
                         if "$ref" in variant:
                             ref_schema_url, ref_def = parse_ref(variant["$ref"])
@@ -1229,6 +1232,12 @@ class SchemaCodeGenerator:
                                 ref_def_schema = ref_schema.get("$defs", {}).get(
                                     ref_def, {}
                                 )
+                                # Collect oneOf variants before deep-merge
+                                if "oneOf" in ref_def_schema:
+                                    for one_of_v in ref_def_schema["oneOf"]:
+                                        all_one_of_variants.append(
+                                            _absolutize_refs(one_of_v, ref_schema_url)
+                                        )
                                 if any_of_merged is None:
                                     any_of_merged = dict(ref_def_schema)
                                 else:
@@ -1252,6 +1261,18 @@ class SchemaCodeGenerator:
                                     )
                                 else:
                                     merged_props[pk] = pv
+                    # Extract properties from all oneOf variants as
+                    # optional fields (oneOf means only one variant
+                    # applies, so none are required in the merged type).
+                    for one_of_v in all_one_of_variants:
+                        if isinstance(one_of_v, dict) and "properties" in one_of_v:
+                            for pk, pv in one_of_v["properties"].items():
+                                if pk not in merged_props:
+                                    merged_props[pk] = pv
+                                else:
+                                    merged_props[pk] = _deep_merge_schemas(
+                                        merged_props[pk], pv, any_of=True
+                                    )
 
         # Deep-merge overlapping properties from base $ref schemas.
         # When a technique schema references a base (e.g., techniqueDocument) and
