@@ -3,11 +3,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-)
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValue,
     TQuantityValueMAU,
     TQuantityValueMicroL,
@@ -15,11 +11,11 @@ from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
     TQuantityValueRFU,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
 )
-from allotropy.allotrope.models_v2.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     AbsorptionSpectrumDataCube,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -42,10 +38,14 @@ from allotropy.allotrope.models_v2.adm.spectrophotometry.benchling._2023._12.spe
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 
 
-# Quantity value types not in V2 core — defined here for use in custom info documents.
+# Quantity value types not in generated core — defined here for use in custom info documents.
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueKiloDalton(TQuantityValue):
     unit: str = "kDa"
@@ -323,7 +323,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
             absorption_spectrum_data_cube=assert_not_none(
-                get_data_cube_v2(measurement.data_cube, AbsorptionSpectrumDataCube),
+                get_data_cube(measurement.data_cube, AbsorptionSpectrumDataCube),
                 msg="Parser must provide absorption spectrum data cube",
             ),
         )

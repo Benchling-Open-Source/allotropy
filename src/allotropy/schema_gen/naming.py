@@ -19,8 +19,8 @@ ALLOTROPE_URL_PREFIX = "http://purl.allotrope.org/json-schemas/"
 GITLAB_RAW_BASE = "https://gitlab.com/allotrope-public/asm/-/raw/main/json-schemas/"
 
 # Default output directories (relative to project root)
-DEFAULT_SCHEMA_CACHE_DIR = Path("src/allotropy/allotrope/schemas_v2")
-DEFAULT_MODEL_OUTPUT_DIR = Path("src/allotropy/allotrope/models_v2")
+DEFAULT_SCHEMA_CACHE_DIR = Path("src/allotropy/allotrope/schemas")
+DEFAULT_MODEL_OUTPUT_DIR = Path("src/allotropy/allotrope/models")
 
 
 def allotrope_url_to_relative_path(url: str) -> str:
@@ -139,7 +139,7 @@ def schema_url_to_cache_path(
 
 
 def schema_url_to_module_path(url: str) -> str:
-    """Map a canonical schema URL to a Python module path (relative to models_v2).
+    """Map a canonical schema URL to a Python module path (relative to models).
 
     Example:
         "http://.../adm/core/REC/2024/06/core.schema"

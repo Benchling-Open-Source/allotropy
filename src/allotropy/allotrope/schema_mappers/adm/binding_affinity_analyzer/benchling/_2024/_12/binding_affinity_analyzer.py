@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
+from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     BindingAffinityAnalyzerAggregateDocument,
     BindingAffinityAnalyzerDocumentItem,
     DeviceControlAggregateDocument,
@@ -20,7 +20,7 @@ from allotropy.allotrope.models_v2.adm.binding_affinity_analyzer.wd._2024._12.bi
     SensorChipDocument,
     SensorgramDataCube,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TQuantityValue,
     TQuantityValueDegC,
     TQuantityValueM,
@@ -32,14 +32,14 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValueS,
     TQuantityValueS1,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -320,7 +320,7 @@ class Mapper(SchemaMapper[Data, Model]):
             detection_type=metadata.detection_type,
             method_name=measurement.method_name,
             ligand_identifier=measurement.ligand_identifier,
-            sensorgram_data_cube=get_data_cube_v2(
+            sensorgram_data_cube=get_data_cube(
                 measurement.sensorgram_data_cube, SensorgramDataCube
             ),
             sensor_chip_document=add_custom_information_document(

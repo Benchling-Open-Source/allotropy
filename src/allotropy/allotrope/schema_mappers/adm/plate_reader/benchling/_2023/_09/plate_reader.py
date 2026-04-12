@@ -5,8 +5,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
@@ -20,12 +19,12 @@ from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
     TQuantityValueRLU,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.cube import TDatacube
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.cube import TDatacube
+from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
 )
-from allotropy.allotrope.models_v2.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     CustomInformationAggregateDocument,
@@ -53,7 +52,8 @@ from allotropy.allotrope.models_v2.adm.plate_reader.benchling._2023._09.plate_re
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -371,7 +371,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     CustomInformationDocumentItem(
                         datum_label=data_cube.label,
                         data_cube=assert_not_none(
-                            get_data_cube_v2(data_cube, TDatacube),
+                            get_data_cube(data_cube, TDatacube),
                             f"Unable to create data cube with label: {data_cube.label}",
                         ),
                     )

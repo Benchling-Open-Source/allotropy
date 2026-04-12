@@ -1,16 +1,13 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-)
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TQuantityValue,
     TQuantityValueDegC,
     TQuantityValuePercent,
     TQuantityValueRFU,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
@@ -20,7 +17,7 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     ErrorAggregateDocument,
     ErrorDocumentItem,
 )
-from allotropy.allotrope.models_v2.adm.electrophoresis.benchling._2024._09.electrophoresis import (
+from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     DataRegionAggregateDocument,
     DataRegionDocumentItem,
     DeviceControlAggregateDocument,
@@ -35,6 +32,9 @@ from allotropy.allotrope.models_v2.adm.electrophoresis.benchling._2024._09.elect
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION

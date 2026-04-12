@@ -48,7 +48,6 @@ classifiers = [
 ]
 dependencies = [
   "babel >= 2.9.0",
-  "cattrs >= 23.2.0",
   "chardet >= 5.2.0",
   "defusedxml >= 0.7.1",
   # NOTE: jsonschema 4.18.0 introduces a serious performance regression, seemingly due to use of new
@@ -117,16 +116,11 @@ path = "src/allotropy/__about__.py"
 # 3.11. Use hatch run test_all to tests against 3.10-3.12
 # Note: if your hatch env is not picking up this setting, run hatch env prune.
 python = "3.11.9"
-# We define dependencies for linting and datamodel codegen in the default environment because we lint in
+# We define dependencies for linting and codegen in the default environment because we lint in
 # the generation script, and we test generation in tests, so we need them everywhere except the actual project.
 dependencies = [
   "autoflake == 2.2.0",
-  # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
-  "datamodel-code-generator == 0.25.2",
-  # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
-  "jsonschema-specifications == 2023.7.1",
-  "pydantic == 1.10.17",
   "ruff == 0.0.289",
   "semantic-version",
 ]
@@ -170,8 +164,6 @@ run = "scripts/visualization.py {args:}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
-  # mypy sometimes can't find cattrs even though it's a project dependency, so add explicitly here.
-  "cattrs >= 23.2.0",
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",
   "pandas-stubs == 2.1.4.231227",
@@ -290,8 +282,7 @@ ban-relative-imports = "all"
   "N815",
 ]
 # Generated models can have class fields that shadow python builtins
-"src/allotropy/allotrope/models/**/*" = ["A003"]
-"src/allotropy/allotrope/models_v2/**/*" = ["A003", "N801", "RUF001"]
+"src/allotropy/allotrope/models/**/*" = ["A003", "N801", "RUF001"]
 # Scripts can print
 "scripts/**/*" = ["T201"]
 # update_version can use subprocess

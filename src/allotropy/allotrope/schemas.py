@@ -6,16 +6,19 @@ from typing import Any
 
 import jsonschema
 
-from allotropy.allotrope.schema_parser.path_util import (
+from allotropy.allotrope.path_util import (
     get_full_schema_path,
     get_schema_path_from_asm,
     get_schema_path_from_manifest,
-    SCHEMA_V2_DIR_PATH,
-    SHARED_SCHEMAS_DEFINITIONS_PATH,
+    SCHEMA_DIR_PATH,
 )
 from allotropy.exceptions import AllotropeSerializationError, AllotropeValidationError
 
 DEFAULT_ENCODING = "UTF-8"
+
+# Path to shared V1-style schema definitions (definitions.json, units.json, custom.json)
+SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
+SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
 
 # Override format checker to remove "uri-reference" check, which ASM schemas fail against.
 FORMAT_CHECKER = copy.deepcopy(
@@ -77,71 +80,48 @@ def get_schema_from_model(model: Any) -> dict[str, Any]:
     return get_schema_from_manifest(manifest)
 
 
-def validate_asm_schema(asm_dict: dict[str, Any]) -> None:
-    try:
-        allotrope_schema = get_schema_from_asm(asm_dict)
-    except Exception as e:
-        msg = f"Failed to retrieve schema for model: {e}"
-        raise AllotropeSerializationError(msg) from e
-
-    try:
-        jsonschema.validators.Draft202012Validator.check_schema(
-            allotrope_schema, format_checker=FORMAT_CHECKER
-        )
-        validator = jsonschema.validators.Draft202012Validator(allotrope_schema)
-        validator.validate(asm_dict)
-    except Exception as e:
-        msg = f"Failed to validate allotrope model against schema: {e}"
-        raise AllotropeValidationError(msg) from e
+_schema_store: dict[str, dict[str, Any]] | None = None
 
 
-# ---------------------------------------------------------------------------
-# V2 schema validation (uses RefResolver with pre-loaded schema store)
-# ---------------------------------------------------------------------------
-
-# Cached store of all V2 schemas keyed by $id URI, loaded lazily on first use.
-_v2_schema_store: dict[str, dict[str, Any]] | None = None
-
-
-def _get_v2_schema_store() -> dict[str, dict[str, Any]]:
-    """Load all V2 schemas into a dict keyed by their $id URI."""
-    global _v2_schema_store  # noqa: PLW0603
-    if _v2_schema_store is not None:
-        return _v2_schema_store
+def _get_schema_store() -> dict[str, dict[str, Any]]:
+    """Load all schemas into a dict keyed by their $id URI."""
+    global _schema_store  # noqa: PLW0603
+    if _schema_store is not None:
+        return _schema_store
 
     store: dict[str, dict[str, Any]] = {}
-    for schema_file in SCHEMA_V2_DIR_PATH.rglob("*.schema.json"):
+    for schema_file in SCHEMA_DIR_PATH.rglob("*.schema.json"):
         with open(schema_file, encoding=DEFAULT_ENCODING) as f:
             schema = json.load(f)
         schema_id = schema.get("$id")
         if schema_id:
             store[schema_id] = schema
-    _v2_schema_store = store
+    _schema_store = store
     return store
 
 
-def _get_v2_schema(schema_path: Path) -> dict[str, Any]:
-    """Load a V2 schema from the schemas_v2/ directory."""
-    full_path = SCHEMA_V2_DIR_PATH / schema_path
+def _get_schema_by_path(schema_path: Path) -> dict[str, Any]:
+    """Load a schema from the schemas/ directory."""
+    full_path = SCHEMA_DIR_PATH / schema_path
     with open(full_path, encoding=DEFAULT_ENCODING) as f:
         return json.load(f)  # type: ignore[no-any-return]
 
 
-def validate_v2_asm_schema(asm_dict: dict[str, Any]) -> None:
-    """Validate an ASM dict against V2 schemas with cross-schema $ref resolution."""
+def validate_asm_schema(asm_dict: dict[str, Any]) -> None:
+    """Validate an ASM dict against schemas with cross-schema $ref resolution."""
     try:
         schema_path = get_schema_path_from_asm(asm_dict)
-        schema = _get_v2_schema(schema_path)
+        schema = _get_schema_by_path(schema_path)
         # BENCHLING schemas may reference $custom definitions (e.g.,
         # tQuantityValueKiloDalton) via #/$custom/... JSON pointers.
         # Inject shared custom definitions so these refs resolve.
         add_definitions(schema)
     except Exception as e:
-        msg = f"Failed to retrieve V2 schema for model: {e}"
+        msg = f"Failed to retrieve schema for model: {e}"
         raise AllotropeSerializationError(msg) from e
 
     try:
-        store = _get_v2_schema_store()
+        store = _get_schema_store()
         resolver = jsonschema.RefResolver(
             base_uri=schema.get("$id", ""),
             referrer=schema,
@@ -152,5 +132,5 @@ def validate_v2_asm_schema(asm_dict: dict[str, Any]) -> None:
         )
         validator.validate(asm_dict)
     except Exception as e:
-        msg = f"Failed to validate allotrope model against V2 schema: {e}"
+        msg = f"Failed to validate allotrope model against schema: {e}"
         raise AllotropeValidationError(msg) from e

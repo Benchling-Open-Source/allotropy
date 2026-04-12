@@ -2,10 +2,10 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     DeviceSystemDocument,
 )
-from allotropy.allotrope.models_v2.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     DistributionAggregateDocument,
     DistributionDocumentItem,
     MeasurementDocumentItem,

@@ -3,8 +3,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
+from allotropy.allotrope.models.adm.core.rec._2024._06.core import (
     TQuantityValue,
     TQuantityValueDegC,
     TQuantityValueMAU,
@@ -16,7 +15,7 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._06.core import (
     TQuantityValueRLU,
     TQuantityValueS,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._06.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._06.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
@@ -28,7 +27,7 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._06.hierarchy import (
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
 )
-from allotropy.allotrope.models_v2.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     AbsorptionProfileDataCube,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -41,7 +40,8 @@ from allotropy.allotrope.models_v2.adm.plate_reader.rec._2024._06.plate_reader i
     PlateReaderDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -533,18 +533,18 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegC, measurement.compartment_temperature
             ),
             absorption_profile_data_cube=(
-                get_data_cube_v2(measurement.profile_data_cube, AbsorptionProfileDataCube)  # type: ignore[arg-type]
+                get_data_cube(measurement.profile_data_cube, AbsorptionProfileDataCube)  # type: ignore[arg-type]
                 if measurement.type_
                 == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
                 else None
             ),
             luminescence_profile_data_cube=(
-                get_data_cube_v2(measurement.profile_data_cube, LuminescenceProfileDataCube)  # type: ignore[arg-type]
+                get_data_cube(measurement.profile_data_cube, LuminescenceProfileDataCube)  # type: ignore[arg-type]
                 if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
                 else None
             ),
             fluorescence_emission_profile_data_cube=(
-                get_data_cube_v2(measurement.profile_data_cube, FluorescenceEmissionProfileDataCube)  # type: ignore[arg-type]
+                get_data_cube(measurement.profile_data_cube, FluorescenceEmissionProfileDataCube)  # type: ignore[arg-type]
                 if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
                 else None
             ),

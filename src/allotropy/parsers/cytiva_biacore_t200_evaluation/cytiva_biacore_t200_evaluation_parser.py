@@ -1,4 +1,4 @@
-from allotropy.allotrope.models_v2.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
+from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (

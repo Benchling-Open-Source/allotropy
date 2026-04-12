@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValue,
     TQuantityValueCm,
     TQuantityValueHz,
@@ -18,10 +18,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
     TQuantityValueS,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
     DataSystemDocument,
 )
-from allotropy.allotrope.models_v2.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
     ChromatographyColumnDocument,
     DataProcessingAggregateDocument,
@@ -56,7 +56,7 @@ from allotropy.allotrope.models_v2.adm.liquid_chromatography.benchling._2023._09
 )
 from allotropy.allotrope.schema_mappers.data_cube import (
     DataCube,
-    get_data_cube_v2,
+    get_data_cube,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -365,7 +365,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         for device_control_doc in measurement.device_control_docs
                     ]
                 ),
-                chromatogram_data_cube=get_data_cube_v2(
+                chromatogram_data_cube=get_data_cube(
                     measurement.chromatogram_data_cube,
                     ChromatogramDataCube,  # type: ignore[arg-type]
                 ),
@@ -570,7 +570,7 @@ class Mapper(SchemaMapper[Data, Model]):
             item = add_custom_information_document(
                 ProcessedDataDocumentItem(
                     chromatogram_data_cube=add_custom_information_document(
-                        get_data_cube_v2(
+                        get_data_cube(
                             measurement.processed_data_chromatogram_data_cube, ChromatogramDataCube  # type: ignore[arg-type]
                         ),
                         getattr(
@@ -579,7 +579,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             None,
                         ),
                     ),
-                    derived_column_pressure_data_cube=get_data_cube_v2(
+                    derived_column_pressure_data_cube=get_data_cube(
                         measurement.derived_column_pressure_data_cube,
                         DerivedColumnPressureDataCube,  # type: ignore[arg-type]
                     ),
@@ -635,35 +635,35 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueNm,
                     device_control_doc.detector_bandwidth_setting,
                 ),
-                solvent_concentration_data_cube=get_data_cube_v2(
+                solvent_concentration_data_cube=get_data_cube(
                     device_control_doc.solvent_conc_data_cube,
                     SolventConcentrationDataCube,  # type: ignore[arg-type]
                 ),
-                pre_column_pressure_data_cube=get_data_cube_v2(
+                pre_column_pressure_data_cube=get_data_cube(
                     device_control_doc.pre_column_pressure_data_cube,
                     PreColumnPressureDataCube,  # type: ignore[arg-type]
                 ),
-                sample_pressure_data_cube=get_data_cube_v2(
+                sample_pressure_data_cube=get_data_cube(
                     device_control_doc.sample_pressure_data_cube,
                     SamplePressureDataCube,  # type: ignore[arg-type]
                 ),
-                system_pressure_data_cube=get_data_cube_v2(
+                system_pressure_data_cube=get_data_cube(
                     device_control_doc.system_pressure_data_cube,
                     SystemPressureDataCube,  # type: ignore[arg-type]
                 ),
-                post_column_pressure_data_cube=get_data_cube_v2(
+                post_column_pressure_data_cube=get_data_cube(
                     device_control_doc.post_column_pressure_data_cube,
                     PostColumnPressureDataCube,  # type: ignore[arg-type]
                 ),
-                sample_flow_rate_data_cube=get_data_cube_v2(
+                sample_flow_rate_data_cube=get_data_cube(
                     device_control_doc.sample_flow_data_cube,
                     SampleFlowRateDataCube,  # type: ignore[arg-type]
                 ),
-                system_flow_rate_data_cube=get_data_cube_v2(
+                system_flow_rate_data_cube=get_data_cube(
                     device_control_doc.system_flow_data_cube,
                     SystemFlowRateDataCube,  # type: ignore[arg-type]
                 ),
-                temperature_profile_data_cube=get_data_cube_v2(
+                temperature_profile_data_cube=get_data_cube(
                     device_control_doc.temperature_profile_data_cube,
                     TemperatureProfileDataCube,  # type: ignore[arg-type]
                 ),

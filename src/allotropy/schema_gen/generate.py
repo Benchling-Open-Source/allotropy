@@ -31,7 +31,7 @@ def generate_models(
     *,
     output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR,
     cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR,
-    models_package: str = "allotropy.allotrope.models_v2",
+    models_package: str = "allotropy.allotrope.models",
 ) -> list[Path]:
     """Generate modular Python models from one or more Allotrope schema URLs.
 
@@ -305,7 +305,7 @@ def _ensure_package_dirs(directory: Path) -> None:
         init_file = current / "__init__.py"
         if not init_file.exists():
             init_file.touch()
-        if current.name == "models_v2":
+        if current.name == "models":
             break
         current = current.parent
 

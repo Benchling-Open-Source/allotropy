@@ -48,7 +48,7 @@ ASM_METADATA_PREFIXES = ("$asm.", "$schema", "$id", "$comment")
 class ImportEntry:
     """A Python import to add to a generated module."""
 
-    module: str  # Full module path (e.g., "allotropy.allotrope.models_v2.adm.core...")
+    module: str  # Full module path (e.g., "allotropy.allotrope.models.adm.core...")
     name: str  # Class/type name to import
 
 
@@ -71,7 +71,7 @@ class ModuleCode:
     # Map from definition names in this schema to their Python class names
     exported_names: dict[str, str] = field(default_factory=dict)
 
-    def render(self, models_package: str = "allotropy.allotrope.models_v2") -> str:
+    def render(self, models_package: str = "allotropy.allotrope.models") -> str:
         """Render the complete Python module source code."""
         # Deduplicate classes by name, merging fields from duplicates.
         # Multiple schema locations can generate the same inline type
@@ -415,7 +415,7 @@ class SchemaCodeGenerator:
         self,
         schemas: dict[str, dict[str, Any]],
         generation_order: list[str],
-        models_package: str = "allotropy.allotrope.models_v2",
+        models_package: str = "allotropy.allotrope.models",
     ) -> None:
         self.schemas = schemas
         self.generation_order = generation_order

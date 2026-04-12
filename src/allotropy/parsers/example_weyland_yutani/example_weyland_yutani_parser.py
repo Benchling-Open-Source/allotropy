@@ -1,4 +1,4 @@
-from allotropy.allotrope.models_v2.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (

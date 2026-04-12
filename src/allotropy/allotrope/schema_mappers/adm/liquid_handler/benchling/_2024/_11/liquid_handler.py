@@ -2,17 +2,17 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TQuantityValueMicroL,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     DataSystemDocument,
     DeviceDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
 )
-from allotropy.allotrope.models_v2.adm.liquid_handler.benchling._2024._11.liquid_handler import (
+from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_handler import (
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     LiquidHandlerAggregateDocument,

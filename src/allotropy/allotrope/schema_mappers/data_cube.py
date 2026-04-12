@@ -4,19 +4,16 @@ from typing import Protocol, TypeVar
 
 import numpy as np
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
+from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
     TDimensionArray,
     TFunction,
     TMeasureArray,
-)
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import (
-    TDatacubeComponent as TDatacubeComponentV2,
-    TDatacubeData as TDatacubeDataV2,
-    TDatacubeStructure as TDatacubeStructureV2,
 )
 from allotropy.exceptions import AllotropeConversionError
 
@@ -49,18 +46,7 @@ class DataCubeProtocol(Protocol):
         pass
 
 
-class DataCubeProtocolV2(Protocol):
-    def __init__(
-        self,
-        label: str,
-        cube_structure: TDatacubeStructureV2,
-        data: TDatacubeDataV2,
-    ):
-        pass
-
-
 DataCubeType = TypeVar("DataCubeType", bound=DataCubeProtocol)
-DataCubeTypeV2 = TypeVar("DataCubeTypeV2", bound=DataCubeProtocolV2)
 
 
 T = TypeVar("T", bound=float | str | bool)
@@ -178,12 +164,13 @@ def get_data_cube(
 ) -> DataCubeType | None:
     if data_cube is None:
         return None
+
     return data_cube_class(
         label=data_cube.label,
         cube_structure=TDatacubeStructure(
             dimensions=[
                 TDatacubeComponent(
-                    field_componentDatatype=structure_dim.type_,
+                    field_component_datatype=structure_dim.type_.value,
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
@@ -191,7 +178,7 @@ def get_data_cube(
             ],
             measures=[
                 TDatacubeComponent(
-                    field_componentDatatype=structure_dim.type_,
+                    field_component_datatype=structure_dim.type_.value,
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
@@ -199,44 +186,6 @@ def get_data_cube(
             ],
         ),
         data=TDatacubeData(
-            dimensions=_get_dimensions(data_cube.dimensions),
-            measures=_get_measures(data_cube.measures),
-        ),
-    )
-
-
-def get_data_cube_v2(
-    data_cube: DataCube | None, data_cube_class: type[DataCubeTypeV2]
-) -> DataCubeTypeV2 | None:
-    """Construct a v2 datacube model instance from a DataCube intermediate.
-
-    Same as get_data_cube but uses v2 model types (CubeStructure,
-    TDatacubeComponent with field_component_datatype, TDatacubeData1).
-    """
-    if data_cube is None:
-        return None
-
-    return data_cube_class(
-        label=data_cube.label,
-        cube_structure=TDatacubeStructureV2(
-            dimensions=[
-                TDatacubeComponentV2(
-                    field_component_datatype=structure_dim.type_.value,
-                    concept=structure_dim.concept,
-                    unit=structure_dim.unit,
-                )
-                for structure_dim in data_cube.structure_dimensions
-            ],
-            measures=[
-                TDatacubeComponentV2(
-                    field_component_datatype=structure_dim.type_.value,
-                    concept=structure_dim.concept,
-                    unit=structure_dim.unit,
-                )
-                for structure_dim in data_cube.structure_measures
-            ],
-        ),
-        data=TDatacubeDataV2(
             dimensions=_get_dimensions(data_cube.dimensions),  # type: ignore[arg-type]
             measures=_get_measures(data_cube.measures),
         ),

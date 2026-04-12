@@ -1,6 +1,6 @@
 from functools import partial
 
-from allotropy.allotrope.models_v2.adm.cell_counting.rec._2024._09.cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (

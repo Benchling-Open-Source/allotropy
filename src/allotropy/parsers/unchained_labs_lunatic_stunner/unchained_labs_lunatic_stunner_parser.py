@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from allotropy.allotrope.models_v2.adm.plate_reader.rec._2025._03.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (

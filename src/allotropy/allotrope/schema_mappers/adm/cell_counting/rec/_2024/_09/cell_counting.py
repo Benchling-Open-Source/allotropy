@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.cell_counting.rec._2024._09.cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDocumentItem,
     DataProcessingDocument,
@@ -15,7 +15,7 @@ from allotropy.allotrope.models_v2.adm.cell_counting.rec._2024._09.cell_counting
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     JsonFloat,
     TQuantityValue,
     TQuantityValueCell,
@@ -25,7 +25,7 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,

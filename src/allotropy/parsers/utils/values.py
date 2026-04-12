@@ -6,14 +6,14 @@ import math
 import re
 from typing import Any, TypeVar
 
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+    TQuantityValue as CoreTQuantityValue,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
     TStatisticDatumRole,
-)
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
-    TQuantityValue as TQuantityValueV2,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO
@@ -135,7 +135,7 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
-QuantityType = TypeVar("QuantityType", bound=TQuantityValue | TQuantityValueV2)
+QuantityType = TypeVar("QuantityType", bound=TQuantityValue | CoreTQuantityValue)
 
 
 def quantity_or_none(

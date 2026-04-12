@@ -2,12 +2,12 @@ from dataclasses import dataclass
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValue,
     TQuantityValueNumberSign,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.pcr.benchling._2023._09.dpcr import (
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     DataProcessingDocument,
     DataSourceAggregateDocument,
@@ -30,7 +30,7 @@ from allotropy.allotrope.models_v2.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
@@ -203,10 +203,10 @@ class Mapper(SchemaMapper[Data, Model]):
             total_partition_count=TQuantityValueNumberSign(
                 value=measurement.total_partition_count
             ),
-            reporter_dye_data_cube=get_data_cube_v2(
+            reporter_dye_data_cube=get_data_cube(
                 measurement.reporter_dye_data_cube, ReporterDyeDataCube
             ),
-            passive_reference_dye_data_cube=get_data_cube_v2(
+            passive_reference_dye_data_cube=get_data_cube(
                 measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube
             ),
             error_aggregate_document=self._get_error_aggregate_document(

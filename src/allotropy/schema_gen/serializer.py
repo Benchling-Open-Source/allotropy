@@ -7,7 +7,7 @@ defined in the Allotrope schemas.
 Usage::
 
     from allotropy.schema_gen.serializer import to_dict, from_dict
-    from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import Model
+    from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
 
     model = Model(asm_manifest="http://...", ...)
     json_dict = to_dict(model)          # Python → JSON dict (schema property names)
@@ -136,6 +136,10 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
         if non_none_types:
             return _structure_value(value, non_none_types[0], parent_cls)
 
+    # Handle Enum types
+    if isinstance(field_type, type) and issubclass(field_type, Enum):
+        return field_type(value)
+
     # Handle dataclass types
     if is_dataclass(field_type) and isinstance(value, dict):
         return from_dict(value, field_type)
@@ -146,8 +150,9 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
 def _is_union(origin: Any, _field_type: Any) -> bool:
     """Check if a type is a Union / X | Y type."""
     import types
+    from typing import Union
 
-    return origin is types.UnionType
+    return origin is types.UnionType or origin is Union
 
 
 def _resolve_string_annotation(annotation: str, cls: type) -> Any | None:

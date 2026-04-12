@@ -3,13 +3,13 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TQuantityValue,
     TQuantityValueMicroL,
     TQuantityValueNumberSign,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
@@ -19,7 +19,7 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     ErrorAggregateDocument,
     ErrorDocumentItem,
 )
-from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import (
+from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     DataProcessingDocument,
     DeviceControlAggregateDocument,
@@ -37,7 +37,7 @@ from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import (
     ReporterDataCube,
     SampleDocument,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube_v2
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import assert_not_none
@@ -329,13 +329,13 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=assert_not_none(
                 self._get_processed_data_aggregate_document(measurement.processed_data)
             ),
-            reporter_data_cube=get_data_cube_v2(
+            reporter_data_cube=get_data_cube(
                 measurement.reporter_dye_data_cube, ReporterDataCube
             ),
-            passive_reference_data_cube=get_data_cube_v2(
+            passive_reference_data_cube=get_data_cube(
                 measurement.passive_reference_dye_data_cube, PassiveReferenceDataCube
             ),
-            melting_curve_data_cube=get_data_cube_v2(
+            melting_curve_data_cube=get_data_cube(
                 measurement.melting_curve_data_cube, MeltingCurveDataCube
             ),
             error_aggregate_document=self._get_error_aggregate_document(
@@ -407,10 +407,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             genotyping_q_pcr_result=data.genotyping_determination_result,
-            normalized_reporter_data_cube=get_data_cube_v2(
+            normalized_reporter_data_cube=get_data_cube(
                 data.normalized_reporter_data_cube, NormalizedReporterDataCube
             ),
-            baseline_corrected_reporter_data_cube=get_data_cube_v2(
+            baseline_corrected_reporter_data_cube=get_data_cube(
                 data.baseline_corrected_reporter_data_cube,
                 BaselineCorrectedReporterDataCube,
             ),
