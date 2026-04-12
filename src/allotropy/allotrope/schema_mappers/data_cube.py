@@ -49,7 +49,18 @@ class DataCubeProtocol(Protocol):
         pass
 
 
+class DataCubeProtocolV2(Protocol):
+    def __init__(
+        self,
+        label: str,
+        cube_structure: TDatacubeStructureV2,
+        data: TDatacubeDataV2,
+    ):
+        pass
+
+
 DataCubeType = TypeVar("DataCubeType", bound=DataCubeProtocol)
+DataCubeTypeV2 = TypeVar("DataCubeTypeV2", bound=DataCubeProtocolV2)
 
 
 T = TypeVar("T", bound=float | str | bool)
@@ -195,8 +206,8 @@ def get_data_cube(
 
 
 def get_data_cube_v2(
-    data_cube: DataCube | None, data_cube_class: type[DataCubeType]
-) -> DataCubeType | None:
+    data_cube: DataCube | None, data_cube_class: type[DataCubeTypeV2]
+) -> DataCubeTypeV2 | None:
     """Construct a v2 datacube model instance from a DataCube intermediate.
 
     Same as get_data_cube but uses v2 model types (CubeStructure,
@@ -226,7 +237,7 @@ def get_data_cube_v2(
             ],
         ),
         data=TDatacubeDataV2(
-            dimensions=_get_dimensions(data_cube.dimensions),
+            dimensions=_get_dimensions(data_cube.dimensions),  # type: ignore[arg-type]
             measures=_get_measures(data_cube.measures),
         ),
     )

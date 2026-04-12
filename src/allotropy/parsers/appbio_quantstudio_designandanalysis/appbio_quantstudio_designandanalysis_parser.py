@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
+from allotropy.allotrope.models_v2.adm.pcr.rec._2024._09.qpcr import Model
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
     Data,
     Mapper,
