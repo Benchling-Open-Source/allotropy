@@ -6,14 +6,9 @@ import math
 import re
 from typing import Any, TypeVar
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    TQuantityValue as CoreTQuantityValue,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
-    TQuantityValue,
-    TStatisticDatumRole,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO
@@ -135,27 +130,27 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
-QuantityType = TypeVar("QuantityType", bound=TQuantityValue | CoreTQuantityValue)
+QuantityType = TypeVar("QuantityType")
 
 
 def quantity_or_none(
     value_cls: type[QuantityType],
     value: JsonFloat | list[JsonFloat] | list[int] | None,
     index: int | None = None,
-    has_statistic_datum_role: TStatisticDatumRole | None = None,
+    has_statistic_datum_role: Any = None,
 ) -> QuantityType | None:
     if value is None:
         return None
     if isinstance(value, list):
-        return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg, return-value]
+        return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
     # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
-    return value_cls(value=value, has_statistic_datum_role=has_statistic_datum_role)  # type: ignore[call-arg, return-value, arg-type]
+    return value_cls(value=value, has_statistic_datum_role=has_statistic_datum_role)  # type: ignore[call-arg]
 
 
 def quantity_or_none_from_unit(
     unit: str | None,
     value: JsonFloat | list[JsonFloat] | list[int] | None,
-) -> TQuantityValue | None:
+) -> Any:
     if value is None:
         return None
     value_cls = get_quantity_class(unit)

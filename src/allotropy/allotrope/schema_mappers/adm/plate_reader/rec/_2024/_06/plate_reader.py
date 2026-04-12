@@ -533,18 +533,22 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegC, measurement.compartment_temperature
             ),
             absorption_profile_data_cube=(
-                get_data_cube(measurement.profile_data_cube, AbsorptionProfileDataCube)  # type: ignore[arg-type]
+                get_data_cube(measurement.profile_data_cube, AbsorptionProfileDataCube)
                 if measurement.type_
                 == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
                 else None
             ),
             luminescence_profile_data_cube=(
-                get_data_cube(measurement.profile_data_cube, LuminescenceProfileDataCube)  # type: ignore[arg-type]
+                get_data_cube(
+                    measurement.profile_data_cube, LuminescenceProfileDataCube
+                )
                 if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
                 else None
             ),
             fluorescence_emission_profile_data_cube=(
-                get_data_cube(measurement.profile_data_cube, FluorescenceEmissionProfileDataCube)  # type: ignore[arg-type]
+                get_data_cube(
+                    measurement.profile_data_cube, FluorescenceEmissionProfileDataCube
+                )
                 if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
                 else None
             ),

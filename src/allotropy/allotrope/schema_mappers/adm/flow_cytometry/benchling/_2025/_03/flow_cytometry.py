@@ -317,8 +317,12 @@ class Mapper(SchemaMapper[Data, Model]):
             vertex_document=[
                 add_custom_information_document(
                     VertexDocumentItem(
-                        x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
-                        y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
+                        x_coordinate=quantity_or_none_from_unit(
+                            vertex.x_unit, vertex.x_coordinate
+                        ),
+                        y_coordinate=quantity_or_none_from_unit(
+                            vertex.y_unit, vertex.y_coordinate
+                        ),
                         vertex_role=vertex.vertex_role,
                     ),
                     vertex.custom_info,
@@ -390,7 +394,7 @@ class Mapper(SchemaMapper[Data, Model]):
             statistics_document=[
                 add_custom_information_document(
                     StatisticsDocumentItem(
-                        statistical_feature=statistic.statistical_feature,
+                        statistical_feature=statistic.statistical_feature,  # type: ignore[arg-type]
                         statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
                             statistic_dimension_document=[
                                 add_custom_information_document(

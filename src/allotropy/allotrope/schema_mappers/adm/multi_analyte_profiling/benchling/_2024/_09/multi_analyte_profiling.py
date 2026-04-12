@@ -204,7 +204,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     method_version=measurement_group.method_version,
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
-                    container_type=measurement_group.container_type,
+                    container_type=measurement_group.container_type,  # type: ignore[arg-type]
                     plate_well_count=quantity_or_none(
                         TQuantityValueNumberSign, measurement_group.plate_well_count
                     ),
@@ -272,7 +272,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                 StatisticsAggregateDocument(
                                     statistics_document=[
                                         StatisticsDocumentItem(
-                                            statistical_feature=statistic.statistical_feature,
+                                            statistical_feature=statistic.statistical_feature,  # type: ignore[arg-type]
                                             statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
                                                 statistic_dimension_document=[
                                                     StatisticDimensionDocumentItem(
@@ -313,7 +313,7 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             description=measurement.description,
-            sample_role_type=measurement.sample_role_type,
+            sample_role_type=measurement.sample_role_type,  # type: ignore[arg-type]
             well_plate_identifier=measurement.well_plate_identifier,
         )
 

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TStatisticDatumRole,
 )
 

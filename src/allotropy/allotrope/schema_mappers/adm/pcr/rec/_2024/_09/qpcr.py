@@ -220,7 +220,7 @@ class Mapper(SchemaMapper[Data, Model]):
             field_asm_manifest=self.MANIFEST,
             qpcr_aggregate_document=add_custom_information_document(
                 QpcrAggregateDocument(
-                    device_system_document=DeviceSystemDocument(
+                    device_system_document=DeviceSystemDocument(  # type: ignore[arg-type]
                         device_identifier=data.metadata.device_identifier,
                         model_number=data.metadata.model_number,
                         equipment_serial_number=data.metadata.device_serial_number,

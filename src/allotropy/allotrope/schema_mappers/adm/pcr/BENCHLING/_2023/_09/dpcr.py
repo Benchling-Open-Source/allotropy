@@ -176,7 +176,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 error_aggregate_document=self._get_error_aggregate_document(
                     measurement_group.errors
                 ),
-                container_type=metadata.container_type,
+                container_type=metadata.container_type,  # type: ignore[arg-type]
                 measurement_document=[
                     self._get_measurement_document(measurement, metadata)
                     for measurement in measurement_group.measurements

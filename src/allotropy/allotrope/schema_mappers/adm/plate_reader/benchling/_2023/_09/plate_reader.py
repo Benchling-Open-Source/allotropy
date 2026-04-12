@@ -5,7 +5,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import (  # type: ignore[attr-defined]
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
@@ -320,7 +320,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.exposure_duration_setting,
             ),
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-            illumination_setting=quantity_or_none_from_unit(  # type: ignore[arg-type]
+            illumination_setting=quantity_or_none_from_unit(
                 measurement.illumination_setting_unit,
                 measurement.illumination_setting,
             ),
@@ -355,7 +355,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
+            device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(  # type: ignore[arg-type]
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
@@ -417,7 +417,7 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(  # type: ignore[arg-type]
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
@@ -528,7 +528,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
-            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(  # type: ignore[arg-type]
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,

@@ -43,6 +43,14 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
+from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
+from allotropy.parsers.utils.units import get_quantity_class
+from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
 # Quantity value types not in generated core — defined here for use in custom info documents.
@@ -59,16 +67,6 @@ class TQuantityValueNanogramPerMicroliter(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValuePerMolarPerCentimeter(TQuantityValue):
     unit: str = "M-1cm-1"
-
-
-from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
-from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-)
-from allotropy.parsers.utils.units import get_quantity_class
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
 class MeasurementType(Enum):
@@ -223,7 +221,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         assert_not_none(measurement_group.measurement_time)
                     ),
                     experiment_type=measurement_group.experiment_type,
-                    container_type=metadata.container_type,
+                    container_type=metadata.container_type,  # type: ignore[arg-type]
                     measurement_document=[
                         self._get_measurement_document_item(measurement, metadata)
                         for measurement in measurement_group.measurements

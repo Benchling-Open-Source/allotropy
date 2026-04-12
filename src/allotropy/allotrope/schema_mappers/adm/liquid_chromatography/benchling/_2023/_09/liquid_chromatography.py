@@ -367,7 +367,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 chromatogram_data_cube=get_data_cube(
                     measurement.chromatogram_data_cube,
-                    ChromatogramDataCube,  # type: ignore[arg-type]
+                    ChromatogramDataCube,
                 ),
             ),
             measurement.measurement_custom_info,
@@ -420,7 +420,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
                 description=measurement.description,
-                sample_role_type=measurement.sample_role_type,
+                sample_role_type=measurement.sample_role_type,  # type: ignore[arg-type]
                 written_name=measurement.written_name,
                 flow_rate=quantity_or_none(
                     TQuantityValueMLPermin, measurement.flow_rate
@@ -438,27 +438,27 @@ class Mapper(SchemaMapper[Data, Model]):
                 identifier=peak.identifier,
                 peak_index=peak.index,
                 peak_start=(
-                    TQuantityValue(value=peak.start, unit=peak.start_unit)
+                    TQuantityValue(value=peak.start, unit=peak.start_unit)  # type: ignore[arg-type]
                     if peak.start is not None and peak.start_unit
                     else None
                 ),
                 peak_end=(
-                    TQuantityValue(value=peak.end, unit=peak.end_unit)
+                    TQuantityValue(value=peak.end, unit=peak.end_unit)  # type: ignore[arg-type]
                     if peak.end is not None and peak.end_unit
                     else None
                 ),
                 peak_area=(
-                    TQuantityValue(value=peak.area, unit=peak.area_unit)
+                    TQuantityValue(value=peak.area, unit=peak.area_unit)  # type: ignore[arg-type]
                     if peak.area is not None and peak.area_unit
                     else None
                 ),
                 peak_width=(
-                    TQuantityValue(value=peak.width, unit=peak.width_unit)
+                    TQuantityValue(value=peak.width, unit=peak.width_unit)  # type: ignore[arg-type]
                     if peak.width is not None and peak.width_unit
                     else None
                 ),
                 peak_height=(
-                    TQuantityValue(value=peak.height, unit=peak.height_unit)
+                    TQuantityValue(value=peak.height, unit=peak.height_unit)  # type: ignore[arg-type]
                     if peak.height is not None and peak.height_unit
                     else None
                 ),
@@ -476,7 +476,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueUnitless, peak.chromatographic_asymmetry
                 ),
                 peak_width_at_half_height=(
-                    TQuantityValue(
+                    TQuantityValue(  # type: ignore[arg-type]
                         value=peak.width_at_half_height,
                         unit=peak.width_at_half_height_unit or "s",
                     )
@@ -571,7 +571,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 ProcessedDataDocumentItem(
                     chromatogram_data_cube=add_custom_information_document(
                         get_data_cube(
-                            measurement.processed_data_chromatogram_data_cube, ChromatogramDataCube  # type: ignore[arg-type]
+                            measurement.processed_data_chromatogram_data_cube,
+                            ChromatogramDataCube,
                         ),
                         getattr(
                             measurement.processed_data_chromatogram_data_cube,
@@ -581,7 +582,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                     derived_column_pressure_data_cube=get_data_cube(
                         measurement.derived_column_pressure_data_cube,
-                        DerivedColumnPressureDataCube,  # type: ignore[arg-type]
+                        DerivedColumnPressureDataCube,
                     ),
                     processed_data_identifier=measurement.processed_data_identifier,
                     peak_list=build_peak_list(),
@@ -637,35 +638,35 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 solvent_concentration_data_cube=get_data_cube(
                     device_control_doc.solvent_conc_data_cube,
-                    SolventConcentrationDataCube,  # type: ignore[arg-type]
+                    SolventConcentrationDataCube,
                 ),
                 pre_column_pressure_data_cube=get_data_cube(
                     device_control_doc.pre_column_pressure_data_cube,
-                    PreColumnPressureDataCube,  # type: ignore[arg-type]
+                    PreColumnPressureDataCube,
                 ),
                 sample_pressure_data_cube=get_data_cube(
                     device_control_doc.sample_pressure_data_cube,
-                    SamplePressureDataCube,  # type: ignore[arg-type]
+                    SamplePressureDataCube,
                 ),
                 system_pressure_data_cube=get_data_cube(
                     device_control_doc.system_pressure_data_cube,
-                    SystemPressureDataCube,  # type: ignore[arg-type]
+                    SystemPressureDataCube,
                 ),
                 post_column_pressure_data_cube=get_data_cube(
                     device_control_doc.post_column_pressure_data_cube,
-                    PostColumnPressureDataCube,  # type: ignore[arg-type]
+                    PostColumnPressureDataCube,
                 ),
                 sample_flow_rate_data_cube=get_data_cube(
                     device_control_doc.sample_flow_data_cube,
-                    SampleFlowRateDataCube,  # type: ignore[arg-type]
+                    SampleFlowRateDataCube,
                 ),
                 system_flow_rate_data_cube=get_data_cube(
                     device_control_doc.system_flow_data_cube,
-                    SystemFlowRateDataCube,  # type: ignore[arg-type]
+                    SystemFlowRateDataCube,
                 ),
                 temperature_profile_data_cube=get_data_cube(
                     device_control_doc.temperature_profile_data_cube,
-                    TemperatureProfileDataCube,  # type: ignore[arg-type]
+                    TemperatureProfileDataCube,
                 ),
                 detector_offset_setting=quantity_or_none(
                     TQuantityValueUnitless, device_control_doc.detector_offset_setting

@@ -308,7 +308,7 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=add_custom_information_document(
                 SampleDocument(
                     sample_identifier=measurement.sample_identifier,
-                    sample_role_type=measurement.sample_role_type,
+                    sample_role_type=measurement.sample_role_type,  # type: ignore[arg-type]
                     location_identifier=measurement.location_identifier,
                     well_plate_identifier=measurement.well_plate_identifier,
                     concentration=quantity_or_none(
