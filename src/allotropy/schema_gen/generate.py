@@ -59,6 +59,12 @@ def generate_models(
         print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
         all_schemas.update(schemas)
 
+    # Phase 1b: Strip embedded $defs with URL keys (BENCHLING schemas bundle
+    # copies of dependency schemas as URL-keyed $defs entries). The codegen
+    # expects short $defs keys; the full schemas are already fetched separately.
+    for schema in all_schemas.values():
+        _strip_embedded_defs(schema)
+
     # Phase 2: Determine generation order across all schemas
     order = build_dependency_order(all_schemas)
     print("Generation order:")  # noqa: T201
@@ -102,6 +108,23 @@ def generate_models(
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
     return generated_files
+
+
+def _strip_embedded_defs(schema: dict[str, Any]) -> None:
+    """Remove URL-keyed $defs entries from BENCHLING embedded schemas.
+
+    BENCHLING schemas bundle copies of dependency schemas as $defs entries
+    whose keys are full URLs (e.g. "http://purl.allotrope.org/..."). These
+    are redundant with the separately-fetched dependency schemas and confuse
+    the codegen (which expects short definition names as keys). Stripping
+    them lets the codegen resolve $refs to the external schema files instead.
+    """
+    defs = schema.get("$defs", {})
+    url_keys = [k for k in defs if k.startswith("http://") or k.startswith("https://")]
+    for k in url_keys:
+        del defs[k]
+    if "$defs" in schema and not schema["$defs"]:
+        del schema["$defs"]
 
 
 def _is_units_schema(url: str) -> bool:

@@ -8,6 +8,7 @@ ALLOTROPE_DIR: Path = Path(__file__).parent.parent
 ALLOTROPY_DIR: Path = ALLOTROPE_DIR.parent
 ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
 SCHEMA_DIR_PATH: Path = Path(ALLOTROPE_DIR, "schemas")
+SCHEMA_V2_DIR_PATH: Path = Path(ALLOTROPE_DIR, "schemas_v2")
 SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
 SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
 MODEL_DIR_PATH: Path = Path(ALLOTROPE_DIR, "models")

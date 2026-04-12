@@ -1,6 +1,6 @@
 import numpy as np
 
-from allotropy.allotrope.models.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
+from allotropy.allotrope.models_v2.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (

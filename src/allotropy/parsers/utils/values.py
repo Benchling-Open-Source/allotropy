@@ -12,6 +12,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
     TStatisticDatumRole,
 )
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+    TQuantityValue as TQuantityValueV2,
+)
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.utils.locale_number_parser import parse_number_with_locale
@@ -132,7 +135,7 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
-QuantityType = TypeVar("QuantityType", bound=TQuantityValue)
+QuantityType = TypeVar("QuantityType", bound=TQuantityValue | TQuantityValueV2)
 
 
 def quantity_or_none(
@@ -144,9 +147,9 @@ def quantity_or_none(
     if value is None:
         return None
     if isinstance(value, list):
-        return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
+        return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg, return-value]
     # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
-    return value_cls(value=value, has_statistic_datum_role=has_statistic_datum_role)  # type: ignore[call-arg]
+    return value_cls(value=value, has_statistic_datum_role=has_statistic_datum_role)  # type: ignore[call-arg, return-value, arg-type]
 
 
 def quantity_or_none_from_unit(

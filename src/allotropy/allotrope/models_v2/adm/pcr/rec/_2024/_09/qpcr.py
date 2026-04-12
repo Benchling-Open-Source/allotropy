@@ -32,10 +32,24 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
 
 
 @dataclass(frozen=True, kw_only=True)
-class DiagnosticTraceDocumentItem:
-    description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
+class BaselineCorrectedReporterDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class DataProcessingDocument:
+    automatic_cycle_threshold_enabled_setting: TBooleanValue | None = None
+    cycle_threshold_value_setting__q_pcr_: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "cycle threshold value setting (qPCR)"}
+    )
+    automatic_baseline_determination_enabled_setting: TBooleanValue | None = None
+    baseline_determination_start_cycle_setting: TQuantityValueNumberSign | None = None
+    baseline_determination_end_cycle_setting: TQuantityValueNumberSign | None = None
+    genotyping_q_pcr_method_identifier: TStringValue | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR method identifier"}
+    )
+    genotyping_q_pcr_method_setting__q_pcr_: TQuantityValueUnitless | None = field(
+        default=None, metadata={"json_name": "genotyping qPCR method setting (qPCR)"}
     )
 
 
@@ -69,20 +83,16 @@ class DeviceControlDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
-class DataProcessingDocument:
-    automatic_cycle_threshold_enabled_setting: TBooleanValue | None = None
-    cycle_threshold_value_setting__q_pcr_: TQuantityValueUnitless | None = field(
-        default=None, metadata={"json_name": "cycle threshold value setting (qPCR)"}
+class DiagnosticTraceDocumentItem:
+    description: Any
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
     )
-    automatic_baseline_determination_enabled_setting: TBooleanValue | None = None
-    baseline_determination_start_cycle_setting: TQuantityValueNumberSign | None = None
-    baseline_determination_end_cycle_setting: TQuantityValueNumberSign | None = None
-    genotyping_q_pcr_method_identifier: TStringValue | None = field(
-        default=None, metadata={"json_name": "genotyping qPCR method identifier"}
-    )
-    genotyping_q_pcr_method_setting__q_pcr_: TQuantityValueUnitless | None = field(
-        default=None, metadata={"json_name": "genotyping qPCR method setting (qPCR)"}
-    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeltingCurveDataCube(TDatacube):
+    pass
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -91,7 +101,12 @@ class NormalizedReporterDataCube(TDatacube):
 
 
 @dataclass(frozen=True, kw_only=True)
-class BaselineCorrectedReporterDataCube(TDatacube):
+class PassiveReferenceDataCube(TDatacube):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class ReporterDataCube(TDatacube):
     pass
 
 
@@ -127,31 +142,16 @@ class SampleDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class ReporterDataCube(TDatacube):
-    pass
-
-
-@dataclass(frozen=True, kw_only=True)
-class PassiveReferenceDataCube(TDatacube):
-    pass
-
-
-@dataclass(frozen=True, kw_only=True)
-class MeltingCurveDataCube(TDatacube):
-    pass
-
-
-@dataclass(frozen=True, kw_only=True)
-class DiagnosticTraceAggregateDocument:
-    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
+class DeviceControlAggregateDocument:
+    device_control_document: list[DeviceControlDocumentItem]
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
 
 
 @dataclass(frozen=True, kw_only=True)
-class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem]
+class DiagnosticTraceAggregateDocument:
+    diagnostic_trace_document: list[DiagnosticTraceDocumentItem] | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )

@@ -16,17 +16,17 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
 
 
 @dataclass(frozen=True, kw_only=True)
+class DataProcessingDocument:
+    dilution_factor_setting: TQuantityValueUnitless
+    data_processing_omission_setting: TBooleanValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem:
     flush_volume_setting: TQuantityValueML
     detector_view_volume: TQuantityValueML
     repetition_setting: TIntValue
     sample_volume_setting: TQuantityValueML
-
-
-@dataclass(frozen=True, kw_only=True)
-class DataProcessingDocument:
-    dilution_factor_setting: TQuantityValueUnitless
-    data_processing_omission_setting: TBooleanValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

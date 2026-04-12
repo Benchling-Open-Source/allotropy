@@ -18,17 +18,17 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.cube import TDatacube
 
 
 @dataclass(frozen=True, kw_only=True)
-class DeviceControlDocumentItem(OrderedItem):
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class DataProcessingDocument:
     cell_type_processing_method: TStringValue | None = None
     cell_density_dilution_factor: TQuantityValueUnitless | None = None
     minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
     maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceControlDocumentItem(OrderedItem):
+    excitation_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

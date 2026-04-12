@@ -2,49 +2,51 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
-    AnalyteAggregateDocument,
-    AnalyteDocument,
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
+    TQuantityValue,
+    TQuantityValueCell,
+    TQuantityValueCountsPermL,
+    TQuantityValueDegC,
+    TQuantityValueGPerL,
+    TQuantityValueKPa,
+    TQuantityValueMAU,
+    TQuantityValueMicrom,
+    TQuantityValueML,
+    TQuantityValueMLPerL,
+    TQuantityValueMmHg,
+    TQuantityValueMmolPerL,
+    TQuantityValueMosmPerkg,
+    TQuantityValueOne06cellsPermL,
+    TQuantityValuePercent,
+    TQuantityValuePH,
+    TQuantityValueUnitless,
+)
+from allotropy.allotrope.models_v2.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
-    DistributionAggregateDocument,
-    DistributionDocumentItem,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models_v2.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
+    AnalyteAggregateDocument,
+    AnalyteDocumentItem,
+    DataProcessingDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
+    DistributionAggregateDocument,
+    DistributionDocumentItem,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
     SolutionAnalyzerDocumentItem,
-    TQuantityValueModel,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueCell,
-    TQuantityValueCountsPerMilliliter,
-    TQuantityValueDegreeCelsius,
-    TQuantityValueGramPerLiter,
-    TQuantityValueKiloPascal,
-    TQuantityValueMicrometer,
-    TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueMilliliter,
-    TQuantityValueMilliliterPerLiter,
-    TQuantityValueMillimeterOfMercury,
-    TQuantityValueMillimolePerLiter,
-    TQuantityValueMillionCellsPerMilliliter,
-    TQuantityValueMilliOsmolesPerKilogram,
-    TQuantityValuePercent,
-    TQuantityValuePH,
-    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -188,11 +190,11 @@ class Data:
 
 def get_ml_hg_or_kpa_quantity_value(
     name: str, unit: str | None
-) -> type[TQuantityValueMillimeterOfMercury] | type[TQuantityValueKiloPascal]:
+) -> type[TQuantityValueMmHg] | type[TQuantityValueKPa]:
     if unit is None or unit == "mmHg":
-        return TQuantityValueMillimeterOfMercury
+        return TQuantityValueMmHg
     elif unit == "kPa":
-        return TQuantityValueKiloPascal
+        return TQuantityValueKPa
 
     msg = f"Invalid unit for {name}: {unit}, expected mmHg or kPa"
     raise AllotropeConversionError(msg)
@@ -230,14 +232,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                     data_system_document=add_custom_information_document(
                         DataSystemDocument(
-                            ASM_file_identifier=data.metadata.asm_file_identifier,
+                            asm_file_identifier=data.metadata.asm_file_identifier,
                             data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                             file_name=data.metadata.file_name,
-                            UNC_path=data.metadata.unc_path,
+                            unc_path=data.metadata.unc_path,
                             software_name=data.metadata.software_name,
                             software_version=data.metadata.software_version,
-                            ASM_converter_name=self.converter_name,
-                            ASM_converter_version=ASM_CONVERTER_VERSION,
+                            asm_converter_name=self.converter_name,
+                            asm_converter_version=ASM_CONVERTER_VERSION,
                         ),
                         None,
                     ),
@@ -280,9 +282,9 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         return add_custom_information_document(
-            MeasurementDocument(
+            MeasurementDocumentItem(
                 measurement_identifier=measurement.identifier,
                 measurement_time=self.get_date_time(measurement.measurement_time),
                 sample_document=self._get_sample_document(measurement),
@@ -293,16 +295,16 @@ class Mapper(SchemaMapper[Data, Model]):
                                 device_type=metadata.device_type,
                                 detection_type=measurement.detection_type,
                                 flush_volume_setting=quantity_or_none(
-                                    TQuantityValueMilliliter,
+                                    TQuantityValueML,
                                     metadata.flush_volume_setting,
                                 ),
                                 detector_view_volume=quantity_or_none(
-                                    TQuantityValueMilliliter,
+                                    TQuantityValueML,
                                     metadata.detector_view_volume,
                                 ),
                                 repetition_setting=metadata.repetition_setting,
                                 sample_volume_setting=quantity_or_none(
-                                    TQuantityValueMilliliter,
+                                    TQuantityValueML,
                                     metadata.sample_volume_setting,
                                 ),
                             ),
@@ -324,14 +326,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 error_aggregate_document=self._get_error_aggregate_document(
                     measurement.errors
                 ),
-                absorbance=quantity_or_none(
-                    TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
-                ),
-                pO2=quantity_or_none(
+                absorbance=quantity_or_none(TQuantityValueMAU, measurement.absorbance),
+                p_o2=quantity_or_none(
                     get_ml_hg_or_kpa_quantity_value("pO2", measurement.po2_unit),  # type: ignore[arg-type]
                     measurement.po2,
                 ),
-                pCO2=quantity_or_none(
+                p_co2=quantity_or_none(
                     get_ml_hg_or_kpa_quantity_value("pCO2", measurement.pco2_unit),  # type: ignore[arg-type]
                     measurement.pco2,
                 ),
@@ -341,12 +341,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 oxygen_saturation=quantity_or_none(
                     TQuantityValuePercent, measurement.oxygen_saturation
                 ),
-                pH=quantity_or_none(TQuantityValuePH, measurement.ph),
+                p_h=quantity_or_none(TQuantityValuePH, measurement.ph),
                 temperature=quantity_or_none(
-                    TQuantityValueDegreeCelsius, measurement.temperature
+                    TQuantityValueDegC, measurement.temperature
                 ),
                 osmolality=quantity_or_none(
-                    TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
+                    TQuantityValueMosmPerkg, measurement.osmolality
                 ),
             ),
             None,
@@ -362,31 +362,27 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement.custom_info,
         )
 
-    def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
+    def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocumentItem:
         if analyte.unit == "g/L":
-            return AnalyteDocument(
+            return AnalyteDocumentItem(
                 analyte_name=analyte.name,
-                mass_concentration=TQuantityValueGramPerLiter(value=analyte.value),
+                mass_concentration=TQuantityValueGPerL(value=analyte.value),
             )
         elif analyte.unit == "mL/L":
-            return AnalyteDocument(
+            return AnalyteDocumentItem(
                 analyte_name=analyte.name,
-                volume_concentration=TQuantityValueMilliliterPerLiter(
-                    value=analyte.value
-                ),
+                volume_concentration=TQuantityValueMLPerL(value=analyte.value),
             )
         elif analyte.unit == "mmol/L":
-            return AnalyteDocument(
+            return AnalyteDocumentItem(
                 analyte_name=analyte.name,
-                molar_concentration=TQuantityValueMillimolePerLiter(
-                    value=analyte.value
-                ),
+                molar_concentration=TQuantityValueMmolPerL(value=analyte.value),
             )
         elif analyte.unit == "U/L":
             if analyte.name == "ldh":
-                return AnalyteDocument(
+                return AnalyteDocumentItem(
                     analyte_name=analyte.name,
-                    molar_concentration=TQuantityValueMillimolePerLiter(
+                    molar_concentration=TQuantityValueMmolPerL(
                         value=analyte.value * 0.0167
                         if analyte.value > 0
                         else analyte.value
@@ -408,7 +404,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValuePercent, measurement.viability
                 ),
                 total_cell_density__cell_counter_=quantity_or_none(
-                    TQuantityValueMillionCellsPerMilliliter,
+                    TQuantityValueOne06cellsPermL,
                     get_cell_density_quantity_value(
                         "total cell density",
                         measurement.total_cell_density_unit,
@@ -416,7 +412,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                 ),
                 viable_cell_density__cell_counter_=quantity_or_none(
-                    TQuantityValueMillionCellsPerMilliliter,
+                    TQuantityValueOne06cellsPermL,
                     get_cell_density_quantity_value(
                         "viable cell density",
                         measurement.viable_cell_density_unit,
@@ -424,7 +420,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                 ),
                 average_live_cell_diameter__cell_counter_=quantity_or_none(
-                    TQuantityValueMicrometer, measurement.average_live_cell_diameter
+                    TQuantityValueMicrom, measurement.average_live_cell_diameter
                 ),
                 total_cell_count=quantity_or_none(
                     TQuantityValueCell, measurement.total_cell_count
@@ -450,16 +446,16 @@ class Mapper(SchemaMapper[Data, Model]):
                     distribution_document=[
                         DistributionDocumentItem(
                             distribution_identifier=distribution.distribution_identifier,
-                            particle_size=TQuantityValueMicrometer(
+                            particle_size=TQuantityValueMicrom(
                                 value=distribution.particle_size
                             ),
                             cumulative_count=TQuantityValueUnitless(
                                 value=distribution.cumulative_count
                             ),
-                            cumulative_particle_density=TQuantityValueCountsPerMilliliter(
+                            cumulative_particle_density=TQuantityValueCountsPermL(
                                 value=distribution.cumulative_particle_density
                             ),
-                            differential_particle_density=TQuantityValueCountsPerMilliliter(
+                            differential_particle_density=TQuantityValueCountsPermL(
                                 value=distribution.differential_particle_density
                             ),
                             differential_count=TQuantityValueUnitless(
@@ -506,7 +502,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 CalculatedDataDocumentItem(
                     calculated_data_identifier=calculated_data_item.identifier,
                     calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValueModel(
+                    calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),

@@ -174,23 +174,28 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
             if re.search(rf"\b{re.escape(name)}\b", code):
                 deps[i].add(j)
 
-    # Topological sort (Kahn's algorithm)
+    # Topological sort (Kahn's algorithm) with alphabetical tie-breaking
+    # for deterministic output across runs.
     in_degree = {i: len(d) for i, d in deps.items()}
-    queue = [i for i, d in in_degree.items() if d == 0]
+    queue = sorted(
+        [i for i, d in in_degree.items() if d == 0], key=lambda i: classes[i].name
+    )
     result: list[int] = []
 
     while queue:
         idx = queue.pop(0)
         result.append(idx)
+        newly_ready: list[int] = []
         for other, dep_set in deps.items():
             if idx in dep_set:
                 in_degree[other] -= 1
                 if in_degree[other] == 0:
-                    queue.append(other)
+                    newly_ready.append(other)
+        queue.extend(sorted(newly_ready, key=lambda i: classes[i].name))
 
     # Handle cycles (shouldn't happen but be safe)
     if len(result) != len(classes):
-        remaining = set(range(len(classes))) - set(result)
+        remaining = sorted(set(range(len(classes))) - set(result))
         result.extend(remaining)
 
     return [classes[i] for i in result]
@@ -909,6 +914,32 @@ class SchemaCodeGenerator:
             return self._generate_quantity_value_type(
                 module, schema_url, quantity_ref, unit_ref
             )
+
+        # Pattern 1b: tQuantityValue + oneOf[unit1, unit2, ...]
+        # e.g. allOf[{$ref: tQuantityValue}, {oneOf: [{$ref: mmHg}, {$ref: kPa}]}]
+        if quantity_ref and not unit_ref:
+            for s in schemas:
+                if "oneOf" in s:
+                    unit_refs = []
+                    for variant in s["oneOf"]:
+                        if "$ref" in variant:
+                            ref_url = variant["$ref"].split("#")[0]
+                            try:
+                                canonical = (
+                                    normalize_schema_url(ref_url) if ref_url else None
+                                )
+                            except ValueError:
+                                canonical = None
+                            if canonical and "units.schema" in canonical:
+                                unit_refs.append(variant["$ref"])
+                    if unit_refs:
+                        types = [
+                            self._generate_quantity_value_type(
+                                module, schema_url, quantity_ref, uref
+                            )
+                            for uref in unit_refs
+                        ]
+                        return " | ".join(types)
 
         # Pattern 2: tClass + enum constraint
         class_ref = None

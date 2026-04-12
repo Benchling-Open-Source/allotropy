@@ -10,33 +10,10 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
     TUnit,
 )
 
-TTupleData = list[float | bool | str | None]
-
-
-TNumberArray = list[float]
-
-
-TNumberOrNullArray = list[float | None]
-
-
 TBooleanArray = list[bool]
 
 
 TBooleanOrNullArray = list[bool | None]
-
-
-TStringArray = list[str]
-
-
-TStringOrNullArray = list[str | None]
-
-
-@dataclass(frozen=True, kw_only=True)
-class TFunction:
-    type: Literal["linear", "logarithmic"] | None = None
-    start: float | None = None
-    length: float | None = None
-    incr: float | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -59,16 +36,39 @@ class TDatacubeComponent:
     scale: Literal["nominal", "ordinal", "cardinal", "interval", "range"] | None = None
 
 
-TDimensionArray = TNumberArray | TBooleanArray | TStringArray
+@dataclass(frozen=True, kw_only=True)
+class TFunction:
+    type: Literal["linear", "logarithmic"] | None = None
+    start: float | None = None
+    length: float | None = None
+    incr: float | None = None
 
 
-TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
+TNumberArray = list[float]
+
+
+TNumberOrNullArray = list[float | None]
+
+
+TStringArray = list[str]
+
+
+TStringOrNullArray = list[str | None]
+
+
+TTupleData = list[float | bool | str | None]
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDatacubeStructure:
     dimensions: list[TDatacubeComponent]
     measures: list[TDatacubeComponent]
+
+
+TDimensionArray = TNumberArray | TBooleanArray | TStringArray
+
+
+TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -16,6 +16,21 @@ from allotropy.allotrope.models_v2.adm.core.rec._2024._09.core import (
 
 
 @dataclass(frozen=True, kw_only=True)
+class AnalysisSequenceDocument:
+    written_name: TStringValue
+    end_time: TDateTimeValue | None = None
+    file_name: TStringValue | None = None
+    identifier: TStringValue | None = None
+    method_identifier: TStringValue | None = None
+    method_name: TStringValue | None = None
+    start_time: TDateTimeValue | None = None
+    unc_path: TStringValue | None = field(
+        default=None, metadata={"json_name": "UNC path"}
+    )
+    version_number: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class CustomInformationDocumentItem(OrderedItem):
     datum_label: TStringValue
 
@@ -268,21 +283,6 @@ class StatisticsDocumentItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class AnalysisSequenceDocument:
-    written_name: TStringValue
-    end_time: TDateTimeValue | None = None
-    file_name: TStringValue | None = None
-    identifier: TStringValue | None = None
-    method_identifier: TStringValue | None = None
-    method_name: TStringValue | None = None
-    start_time: TDateTimeValue | None = None
-    unc_path: TStringValue | None = field(
-        default=None, metadata={"json_name": "UNC path"}
-    )
-    version_number: TStringValue | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class CustomInformationAggregateDocument:
     custom_information_document: list[CustomInformationDocumentItem]
 
@@ -337,6 +337,21 @@ class DataSystemDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
+class DeviceControlDocumentItem(OrderedItem):
+    device_type: TStringValue
+    brand_name: TStringValue | None = None
+    detection_type: TStringValue | None = None
+    device_identifier: TStringValue | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    model_number: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
 class DeviceDocumentItem(OrderedItem):
     device_type: TStringValue
     brand_name: TStringValue | None = None
@@ -354,21 +369,6 @@ class DeviceDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class DiagnosticTraceDocumentItem:
     description: Any
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class DeviceControlDocumentItem(OrderedItem):
-    device_type: TStringValue
-    brand_name: TStringValue | None = None
-    detection_type: TStringValue | None = None
-    device_identifier: TStringValue | None = None
-    equipment_serial_number: TStringValue | None = None
-    firmware_version: TStringValue | None = None
-    model_number: TStringValue | None = None
-    product_manufacturer: TStringValue | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
@@ -422,6 +422,14 @@ class ProcessedDataDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
+class DeviceControlAggregateDocument:
+    device_control_document: list[DeviceControlDocumentItem]
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
 class DeviceSystemDocument:
     asset_management_identifier: TStringValue | None = None
     brand_name: TStringValue | None = None
@@ -446,14 +454,6 @@ class DiagnosticTraceAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem]
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
 class CalculatedDataAggregateDocument:
     calculated_data_document: list[CalculatedDataDocumentItem]
 
@@ -465,23 +465,6 @@ class ProcessedDataAggregateDocument:
         None
     )
     electronic_project_record: ElectronicProjectRecord | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class TechniqueAggregateDocument:
-    analysis_sequence_document: AnalysisSequenceDocument | None = None
-    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    data_system_document: DataSystemDocument | None = None
-    device_system_document: DeviceSystemDocument | None = None
-    electronic_project_record: ElectronicProjectRecord | None = None
-    electronic_signature_aggregate_document: ElectronicSignatureAggregateDocument | None = (
-        None
-    )
-    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
-    statistics_aggregate_document: StatisticsAggregateDocument | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -498,6 +481,23 @@ class MeasurementDocumentItem:
     image_aggregate_document: ImageAggregateDocument | None = None
     measurement_identifier: TStringValue | None = None
     measurement_time: TDateTimeStampValue | None = None
+    processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
+    statistics_aggregate_document: StatisticsAggregateDocument | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class TechniqueAggregateDocument:
+    analysis_sequence_document: AnalysisSequenceDocument | None = None
+    calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    data_system_document: DataSystemDocument | None = None
+    device_system_document: DeviceSystemDocument | None = None
+    electronic_project_record: ElectronicProjectRecord | None = None
+    electronic_signature_aggregate_document: ElectronicSignatureAggregateDocument | None = (
+        None
+    )
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
 

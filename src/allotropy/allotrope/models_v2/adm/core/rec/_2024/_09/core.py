@@ -18,6 +18,31 @@ class Asm:
     pass
 
 
+@dataclass(frozen=True, kw_only=True)
+class OrderedItem:
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+TArray = list[Any]
+
+
+TClass = str
+
+
+TNamed = str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TObject:
+    pass
+
+
+TReference = str
+
+
+TResource = str
+
+
 class TStatisticDatumRole(Enum):
     arithmetic_mean_role = "arithmetic mean role"
     median_role = "median role"
@@ -34,43 +59,39 @@ class TStatisticDatumRole(Enum):
 TUnit = str
 
 
-TClass = str
-
-
 @dataclass(frozen=True, kw_only=True)
-class TObject:
-    pass
-
-
-TArray = list[Any]
-
-
-TNamed = str
-
-
-TResource = str
-
-
-TReference = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class OrderedItem:
-    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValue:
-    value: JsonFloat
-    unit: TUnit
-    has_statistic_datum_role: TStatisticDatumRole | None = None
-    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
+class MixedItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class TBooleanValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: bool
+
+
+@dataclass(frozen=True, kw_only=True)
+class TByteValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int
+
+
+@dataclass(frozen=True, kw_only=True)
+class TDateTimeStampValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TDateTimeValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TDateValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -86,31 +107,31 @@ class TDoubleValueItem:
 
 
 @dataclass(frozen=True, kw_only=True)
+class TDurationValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str
+
+
+@dataclass(frozen=True, kw_only=True)
 class TFloatValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: float
 
 
 @dataclass(frozen=True, kw_only=True)
-class TStringValueItem:
+class TIRIValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: str
 
 
 @dataclass(frozen=True, kw_only=True)
-class TByteValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: int
-
-
-@dataclass(frozen=True, kw_only=True)
-class TShortValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: int
-
-
-@dataclass(frozen=True, kw_only=True)
 class TIntValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: int
+
+
+@dataclass(frozen=True, kw_only=True)
+class TIntegerValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
 
@@ -122,13 +143,25 @@ class TLongValueItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class TUnsignedByteValueItem:
+class TShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
 
 
 @dataclass(frozen=True, kw_only=True)
-class TUnsignedShortValueItem:
+class TStringValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TTimeValueItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+    value: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TUnsignedByteValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
 
@@ -146,158 +179,32 @@ class TUnsignedLongValueItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class TIntegerValueItem:
+class TUnsignedShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
 
 
 @dataclass(frozen=True, kw_only=True)
-class TIRIValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TDateTimeValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TDateTimeStampValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TDateValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TTimeValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TDurationValueItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-    value: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class MixedItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMosmPerkg(TQuantityValue):
-    unit: str = "mosm/kg"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMLPerL(TQuantityValue):
-    unit: str = "mL/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMmolPerL(TQuantityValue):
-    unit: str = "mmol/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueGPerL(TQuantityValue):
-    unit: str = "g/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMmHg(TQuantityValue):
-    unit: str = "mmHg"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePercent(TQuantityValue):
-    unit: str = "%"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePH(TQuantityValue):
-    unit: str = "pH"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueDegC(TQuantityValue):
-    unit: str = "degC"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueML(TQuantityValue):
-    unit: str = "mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueUnitless(TQuantityValue):
-    unit: str = "(unitless)"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMicrom(TQuantityValue):
-    unit: str = "µm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCountsPermL(TQuantityValue):
-    unit: str = "Counts/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNm(TQuantityValue):
-    unit: str = "nm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMAU(TQuantityValue):
-    unit: str = "mAU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePgPermL(TQuantityValue):
-    unit: str = "pg/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCell(TQuantityValue):
-    unit: str = "cell"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueOne06cellsPermL(TQuantityValue):
-    unit: str = "10^6 cells/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueS(TQuantityValue):
-    unit: str = "s"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNumberSign(TQuantityValue):
-    unit: str = "#"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMicroL(TQuantityValue):
-    unit: str = "μL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMs(TQuantityValue):
-    unit: str = "ms"
+class TQuantityValue:
+    value: JsonFloat
+    unit: TUnit
+    has_statistic_datum_role: TStatisticDatumRole | None = None
+    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
 TBooleanValue = bool | TBooleanValueItem
+
+
+TByteValue = int | TByteValueItem
+
+
+TDateTimeStampValue = str | TDateTimeStampValueItem
+
+
+TDateTimeValue = str | TDateTimeValueItem
+
+
+TDateValue = str | TDateValueItem
 
 
 TDecimalValue = float | TDecimalValueItem
@@ -306,28 +213,34 @@ TDecimalValue = float | TDecimalValueItem
 TDoubleValue = float | TDoubleValueItem
 
 
+TDurationValue = str | TDurationValueItem
+
+
 TFloatValue = float | TFloatValueItem
 
 
-TStringValue = str | TStringValueItem
-
-
-TByteValue = int | TByteValueItem
-
-
-TShortValue = int | TShortValueItem
+TIRIValue = str | TIRIValueItem
 
 
 TIntValue = int | TIntValueItem
 
 
+TIntegerValue = int | TIntegerValueItem
+
+
 TLongValue = int | TLongValueItem
 
 
+TShortValue = int | TShortValueItem
+
+
+TStringValue = str | TStringValueItem
+
+
+TTimeValue = str | TTimeValueItem
+
+
 TUnsignedByteValue = int | TUnsignedByteValueItem
-
-
-TUnsignedShortValue = int | TUnsignedShortValueItem
 
 
 TUnsignedIntValue = int | TUnsignedIntValueItem
@@ -336,25 +249,117 @@ TUnsignedIntValue = int | TUnsignedIntValueItem
 TUnsignedLongValue = int | TUnsignedLongValueItem
 
 
-TIntegerValue = int | TIntegerValueItem
+TUnsignedShortValue = int | TUnsignedShortValueItem
 
 
-TIRIValue = str | TIRIValueItem
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueCell(TQuantityValue):
+    unit: str = "cell"
 
 
-TDateTimeValue = str | TDateTimeValueItem
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueCountsPermL(TQuantityValue):
+    unit: str = "Counts/mL"
 
 
-TDateTimeStampValue = str | TDateTimeStampValueItem
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueDegC(TQuantityValue):
+    unit: str = "degC"
 
 
-TDateValue = str | TDateValueItem
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueGPerL(TQuantityValue):
+    unit: str = "g/L"
 
 
-TTimeValue = str | TTimeValueItem
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueKPa(TQuantityValue):
+    unit: str = "kPa"
 
 
-TDurationValue = str | TDurationValueItem
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMAU(TQuantityValue):
+    unit: str = "mAU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueML(TQuantityValue):
+    unit: str = "mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMLPerL(TQuantityValue):
+    unit: str = "mL/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMicroL(TQuantityValue):
+    unit: str = "μL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMicrom(TQuantityValue):
+    unit: str = "µm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMmHg(TQuantityValue):
+    unit: str = "mmHg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMmolPerL(TQuantityValue):
+    unit: str = "mmol/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMosmPerkg(TQuantityValue):
+    unit: str = "mosm/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMs(TQuantityValue):
+    unit: str = "ms"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueNm(TQuantityValue):
+    unit: str = "nm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueNumberSign(TQuantityValue):
+    unit: str = "#"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueOne06cellsPermL(TQuantityValue):
+    unit: str = "10^6 cells/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePH(TQuantityValue):
+    unit: str = "pH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePercent(TQuantityValue):
+    unit: str = "%"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePgPermL(TQuantityValue):
+    unit: str = "pg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueS(TQuantityValue):
+    unit: str = "s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueUnitless(TQuantityValue):
+    unit: str = "(unitless)"
 
 
 TNumericValue = (
