@@ -201,10 +201,8 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
-            compartment_temperature=(
-                TQuantityValueDegC(value=measurement.compartment_temperature)
-                if measurement.compartment_temperature is not None
-                else None
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegC, measurement.compartment_temperature
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[

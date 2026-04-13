@@ -9,6 +9,8 @@ from typing import Any, TypeVar
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
+    TQuantityValue,
+    TStatisticDatumRole,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO
@@ -130,14 +132,14 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
-QuantityType = TypeVar("QuantityType")
+QuantityType = TypeVar("QuantityType", bound=TQuantityValue)
 
 
 def quantity_or_none(
     value_cls: type[QuantityType],
     value: JsonFloat | list[JsonFloat] | list[int] | None,
     index: int | None = None,
-    has_statistic_datum_role: Any = None,
+    has_statistic_datum_role: TStatisticDatumRole | None = None,
 ) -> QuantityType | None:
     if value is None:
         return None
@@ -150,7 +152,7 @@ def quantity_or_none(
 def quantity_or_none_from_unit(
     unit: str | None,
     value: JsonFloat | list[JsonFloat] | list[int] | None,
-) -> Any:
+) -> TQuantityValue | None:
     if value is None:
         return None
     value_cls = get_quantity_class(unit)

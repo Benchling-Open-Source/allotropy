@@ -50,6 +50,7 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_ana
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
@@ -266,27 +267,15 @@ class Mapper(SchemaMapper[Data, Model]):
                             DeviceControlDocumentItem(
                                 device_type=metadata.device_type,
                                 detection_type=measurement.detection_type,
-                                flush_volume_setting=(
-                                    TQuantityValueML(
-                                        value=metadata.flush_volume_setting
-                                    )
-                                    if metadata.flush_volume_setting is not None
-                                    else None
+                                flush_volume_setting=quantity_or_none(
+                                    TQuantityValueML, metadata.flush_volume_setting
                                 ),
-                                detector_view_volume=(
-                                    TQuantityValueML(
-                                        value=metadata.detector_view_volume
-                                    )
-                                    if metadata.detector_view_volume is not None
-                                    else None
+                                detector_view_volume=quantity_or_none(
+                                    TQuantityValueML, metadata.detector_view_volume
                                 ),
                                 repetition_setting=metadata.repetition_setting,
-                                sample_volume_setting=(
-                                    TQuantityValueML(
-                                        value=metadata.sample_volume_setting
-                                    )
-                                    if metadata.sample_volume_setting is not None
-                                    else None
+                                sample_volume_setting=quantity_or_none(
+                                    TQuantityValueML, metadata.sample_volume_setting
                                 ),
                             ),
                             measurement.device_control_custom_info,
@@ -307,45 +296,21 @@ class Mapper(SchemaMapper[Data, Model]):
                 error_aggregate_document=self._get_error_aggregate_document(
                     measurement.errors
                 ),
-                absorbance=(
-                    TQuantityValueMAU(value=measurement.absorbance)
-                    if measurement.absorbance is not None
-                    else None
+                absorbance=quantity_or_none(TQuantityValueMAU, measurement.absorbance),
+                p_o2=quantity_or_none(TQuantityValueMmHg, measurement.po2),
+                p_co2=quantity_or_none(TQuantityValueMmHg, measurement.pco2),
+                carbon_dioxide_saturation=quantity_or_none(
+                    TQuantityValuePercent, measurement.carbon_dioxide_saturation
                 ),
-                p_o2=(
-                    TQuantityValueMmHg(value=measurement.po2)
-                    if measurement.po2 is not None
-                    else None
+                oxygen_saturation=quantity_or_none(
+                    TQuantityValuePercent, measurement.oxygen_saturation
                 ),
-                p_co2=(
-                    TQuantityValueMmHg(value=measurement.pco2)
-                    if measurement.pco2 is not None
-                    else None
+                p_h=quantity_or_none(TQuantityValuePH, measurement.ph),
+                temperature=quantity_or_none(
+                    TQuantityValueDegC, measurement.temperature
                 ),
-                carbon_dioxide_saturation=(
-                    TQuantityValuePercent(value=measurement.carbon_dioxide_saturation)
-                    if measurement.carbon_dioxide_saturation is not None
-                    else None
-                ),
-                oxygen_saturation=(
-                    TQuantityValuePercent(value=measurement.oxygen_saturation)
-                    if measurement.oxygen_saturation is not None
-                    else None
-                ),
-                p_h=(
-                    TQuantityValuePH(value=measurement.ph)
-                    if measurement.ph is not None
-                    else None
-                ),
-                temperature=(
-                    TQuantityValueDegC(value=measurement.temperature)
-                    if measurement.temperature is not None
-                    else None
-                ),
-                osmolality=(
-                    TQuantityValueMosmPerkg(value=measurement.osmolality)
-                    if measurement.osmolality is not None
-                    else None
+                osmolality=quantity_or_none(
+                    TQuantityValueMosmPerkg, measurement.osmolality
                 ),
             ),
             measurement.custom_info,
@@ -404,53 +369,33 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> ProcessedDataAggregateDocument | None:
         processed_data_document = add_custom_information_document(
             ProcessedDataDocumentItem(
-                viability__cell_counter_=(
-                    TQuantityValuePercent(value=measurement.viability)
-                    if measurement.viability is not None
-                    else None
+                viability__cell_counter_=quantity_or_none(
+                    TQuantityValuePercent, measurement.viability
                 ),
-                total_cell_density__cell_counter_=(
-                    TQuantityValueOne06cellsPermL(value=measurement.total_cell_density)
-                    if measurement.total_cell_density is not None
-                    else None
+                total_cell_density__cell_counter_=quantity_or_none(
+                    TQuantityValueOne06cellsPermL, measurement.total_cell_density
                 ),
-                viable_cell_density__cell_counter_=(
-                    TQuantityValueOne06cellsPermL(value=measurement.viable_cell_density)
-                    if measurement.viable_cell_density is not None
-                    else None
+                viable_cell_density__cell_counter_=quantity_or_none(
+                    TQuantityValueOne06cellsPermL, measurement.viable_cell_density
                 ),
-                average_live_cell_diameter__cell_counter_=(
-                    TQuantityValueMicrom(value=measurement.average_live_cell_diameter)
-                    if measurement.average_live_cell_diameter is not None
-                    else None
+                average_live_cell_diameter__cell_counter_=quantity_or_none(
+                    TQuantityValueMicrom, measurement.average_live_cell_diameter
                 ),
-                total_cell_count=(
-                    TQuantityValueCell(value=measurement.total_cell_count)
-                    if measurement.total_cell_count is not None
-                    else None
+                total_cell_count=quantity_or_none(
+                    TQuantityValueCell, measurement.total_cell_count
                 ),
-                viable_cell_count=(
-                    TQuantityValueCell(value=measurement.viable_cell_count)
-                    if measurement.viable_cell_count is not None
-                    else None
+                viable_cell_count=quantity_or_none(
+                    TQuantityValueCell, measurement.viable_cell_count
                 ),
                 data_processing_document=DataProcessingDocument(
                     cell_type_processing_method=measurement.data_processing.cell_type_processing_method,
-                    cell_density_dilution_factor=(
-                        TQuantityValueUnitless(
-                            value=measurement.data_processing.cell_density_dilution_factor,
-                        )
-                        if measurement.data_processing.cell_density_dilution_factor
-                        is not None
-                        else None
+                    cell_density_dilution_factor=quantity_or_none(
+                        TQuantityValueUnitless,
+                        measurement.data_processing.cell_density_dilution_factor,
                     ),
-                    dilution_factor_setting=(
-                        TQuantityValueUnitless(
-                            value=measurement.data_processing.dilution_factor_setting,
-                        )
-                        if measurement.data_processing.dilution_factor_setting
-                        is not None
-                        else None
+                    dilution_factor_setting=quantity_or_none(
+                        TQuantityValueUnitless,
+                        measurement.data_processing.dilution_factor_setting,
                     ),
                     data_processing_omission_setting=measurement.data_processing.data_processing_omission_setting,
                 )

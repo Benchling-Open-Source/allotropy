@@ -8,24 +8,14 @@ from typing import Any, Literal
 from allotropy.allotrope.models.adm.core.rec._2024._06.core import (
     OrderedItem,
     TDateTimeStampValue,
-    TQuantityValueCountsPers,
-    TQuantityValueDegC,
+    TQuantityValueCmSqPerg,
+    TQuantityValueCmSqPermol,
     TQuantityValueMAU,
-    TQuantityValueMicroL,
     TQuantityValueMm,
     TQuantityValueNm,
-    TQuantityValueNumberSign,
     TQuantityValuePgPermL,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
-    TQuantityValueRLUDotmL,
-    TQuantityValueRLUDots,
     TQuantityValueS,
     TStringValue,
-)
-from allotropy.allotrope.models.adm.core.rec._2024._06.cube import (
-    TDatacube,
-    TDatacubeStructure,
 )
 from allotropy.allotrope.models.adm.core.rec._2024._06.hierarchy import (
     CalculatedDataAggregateDocument,
@@ -41,27 +31,6 @@ from allotropy.allotrope.models.adm.core.rec._2024._06.hierarchy import (
 
 
 @dataclass(frozen=True, kw_only=True)
-class AbsorptionProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class ChromatogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class DerivedElectropherogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
     brand_name: TStringValue | None = None
     detection_type: TStringValue | None = None
@@ -74,33 +43,17 @@ class DeviceControlDocumentItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    shaking_configuration_description: TStringValue | None = None
-    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
-        default=None, metadata={"json_name": "detector distance setting (plate reader)"}
-    )
-    integration_time: TQuantityValueS | None = None
-    number_of_averages: TQuantityValueNumberSign | None = None
     detector_gain_setting: TStringValue | None = None
-    scan_position_setting__plate_reader_: Literal[
-        "bottom scan position (plate reader)",
-        "scan position configuration (plate reader)",
-        "top scan position (plate reader)",
-    ] | None = field(
-        default=None, metadata={"json_name": "scan position setting (plate reader)"}
-    )
-    detector_carriage_speed_setting: TStringValue | None = None
+    exposure_duration_setting: TQuantityValueS | None = None
+    cell_path_length_setting: TQuantityValueMm | None = None
+    mass_attenuation_coefficient_setting: TQuantityValueCmSqPerg | None = None
+    molar_attenuation_coefficient_setting: TQuantityValueCmSqPermol | None = None
     detector_wavelength_setting: TQuantityValueNm | None = None
     detector_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
     electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
     electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
-    total_measurement_time_setting: TQuantityValueS | None = None
-    read_interval_setting: TQuantityValueS | None = None
-    number_of_scans_setting: TQuantityValueNumberSign | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -126,36 +79,8 @@ class DiagnosticTraceDocumentItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class ElectropherogramDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class FluorescenceEmissionProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class LuminescenceProfileDataCube(TDatacube):
-    cube_structure: TDatacubeStructure | None = field(
-        default=None, metadata={"json_name": "cube-structure"}
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class PeakItem(OrderedItem):
-    peak_height: TQuantityValueRFU | TQuantityValueMAU | TQuantityValueRLU | None = None
-    peak_area: TQuantityValueRLUDots | TQuantityValueRLUDotmL | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class SampleDocument:
     sample_identifier: TStringValue
-    location_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
     sample_role_type: Literal[
@@ -179,6 +104,7 @@ class SampleDocument:
     )
     well_location_identifier: TStringValue | None = None
     vial_location_identifier: TStringValue | None = None
+    location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
     mass_concentration: TQuantityValuePgPermL | None = None
 
@@ -216,17 +142,6 @@ class DiagnosticTraceAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class PeakList:
-    peak: list[PeakItem] | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class ProcessedDataDocument:
-    peak_list: PeakList | None = None
-    derived_electropherogram_data_cube: DerivedElectropherogramDataCube | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItem:
     device_control_aggregate_document: DeviceControlAggregateDocument
     measurement_identifier: TStringValue
@@ -242,26 +157,14 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
     absorbance: TQuantityValueMAU | None = None
     mass_concentration: TQuantityValuePgPermL | None = None
-    processed_data_document: ProcessedDataDocument | None = None
-    fluorescence: TQuantityValueRFU | None = None
-    luminescence: TQuantityValueRLU | TQuantityValueCountsPers | None = None
-    electropherogram_data_cube: ElectropherogramDataCube | None = None
-    absorption_profile_data_cube: AbsorptionProfileDataCube | None = None
-    chromatogram_data_cube: ChromatogramDataCube | None = None
-    fluorescence_emission_profile_data_cube: FluorescenceEmissionProfileDataCube | None = (
-        None
-    )
-    luminescence_profile_data_cube: LuminescenceProfileDataCube | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     measurement_time: TDateTimeStampValue
-    plate_well_count: TQuantityValueNumberSign
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
@@ -271,7 +174,6 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_type: TStringValue | None = None
     container_type: Literal[
@@ -293,21 +195,22 @@ class MeasurementAggregateDocument:
         "basket",
         "cell holder",
     ] | None = None
-    well_volume: TQuantityValueMicroL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
-class PlateReaderDocumentItem(TechniqueDocument):
+class SpectrophotometryDocumentItem(TechniqueDocument):
     measurement_aggregate_document: MeasurementAggregateDocument | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
-class PlateReaderAggregateDocument(TechniqueAggregateDocument):
-    plate_reader_document: list[PlateReaderDocumentItem]
+class SpectrophotometryAggregateDocument(TechniqueAggregateDocument):
+    spectrophotometry_document: list[SpectrophotometryDocumentItem]
     device_system_document: DeviceSystemDocument | None = None
 
 
 @dataclass(kw_only=True)
 class Model:
     field_asm_manifest: str = field(metadata={"json_name": "$asm.manifest"})
-    plate_reader_aggregate_document: PlateReaderAggregateDocument | None = None
+    spectrophotometry_aggregate_document: SpectrophotometryAggregateDocument | None = (
+        None
+    )

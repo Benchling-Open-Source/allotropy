@@ -2,19 +2,26 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from allotropy.allotrope.models.adm.core.rec._2024._06.cube import TDatacube
+from allotropy.allotrope.models.adm.core.rec._2024._06.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
 class ChromatogramDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class LuminescenceProfileDataCube(TDatacube):
-    pass
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)

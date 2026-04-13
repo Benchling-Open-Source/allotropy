@@ -8,7 +8,6 @@ from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
     TQuantityValue,
     TQuantityValueCounts,
     TQuantityValueUnitless,
-    TStatisticDatumRole,
 )
 from allotropy.allotrope.models.adm.core.rec._2025._03.hierarchy import (
     DataSystemDocument,
@@ -40,6 +39,9 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
     StatisticsDocumentItem,
     VertexAggregateDocument,
     VertexDocumentItem,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -317,10 +319,10 @@ class Mapper(SchemaMapper[Data, Model]):
             vertex_document=[
                 add_custom_information_document(
                     VertexDocumentItem(
-                        x_coordinate=quantity_or_none_from_unit(
+                        x_coordinate=quantity_or_none_from_unit(  # type: ignore[arg-type]
                             vertex.x_unit, vertex.x_coordinate
                         ),
-                        y_coordinate=quantity_or_none_from_unit(
+                        y_coordinate=quantity_or_none_from_unit(  # type: ignore[arg-type]
                             vertex.y_unit, vertex.y_coordinate
                         ),
                         vertex_role=vertex.vertex_role,

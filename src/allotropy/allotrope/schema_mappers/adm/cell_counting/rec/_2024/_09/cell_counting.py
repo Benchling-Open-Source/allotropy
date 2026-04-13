@@ -16,7 +16,6 @@ from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting im
     SampleDocument,
 )
 from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    JsonFloat,
     TQuantityValue,
     TQuantityValueCell,
     TQuantityValueMicroL,
@@ -37,6 +36,7 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     ImageAggregateDocument,
     ImageDocumentItem,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.calculated_data_documents.definition import DataSource
