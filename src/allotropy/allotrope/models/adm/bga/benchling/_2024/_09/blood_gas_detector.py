@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueKPa,
     TQuantityValueMmHg,
     TQuantityValuePercent,
@@ -13,8 +13,8 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    p_o2: TQuantityValueMmHg | TQuantityValueKPa = field(metadata={"json_name": "pO2"})
-    p_co2: TQuantityValueMmHg | TQuantityValueKPa = field(
+    p_o2: TQuantityValueKPa | TQuantityValueMmHg = field(metadata={"json_name": "pO2"})
+    p_co2: TQuantityValueKPa | TQuantityValueMmHg = field(
         metadata={"json_name": "pCO2"}
     )
     carbon_dioxide_saturation: TQuantityValuePercent | None = None

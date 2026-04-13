@@ -11,6 +11,81 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole as TStatisticDatumRole,
     TUnit as TUnit,
 )
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCell as TQuantityValueCell,
+    TQuantityValueCm as TQuantityValueCm,
+    TQuantityValueCmSqPerg as TQuantityValueCmSqPerg,
+    TQuantityValueCmSqPermol as TQuantityValueCmSqPermol,
+    TQuantityValueCounts as TQuantityValueCounts,
+    TQuantityValueCountsDots as TQuantityValueCountsDots,
+    TQuantityValueCountsPerMicroL as TQuantityValueCountsPerMicroL,
+    TQuantityValueCountsPermL as TQuantityValueCountsPermL,
+    TQuantityValueCountsPers as TQuantityValueCountsPers,
+    TQuantityValueDa as TQuantityValueDa,
+    TQuantityValueDegC as TQuantityValueDegC,
+    TQuantityValueGPerL as TQuantityValueGPerL,
+    TQuantityValueHz as TQuantityValueHz,
+    TQuantityValueKDa as TQuantityValueKDa,
+    TQuantityValueKPa as TQuantityValueKPa,
+    TQuantityValueM as TQuantityValueM,
+    TQuantityValueM1cm1 as TQuantityValueM1cm1,
+    TQuantityValueM1s1 as TQuantityValueM1s1,
+    TQuantityValueMAU as TQuantityValueMAU,
+    TQuantityValueMAUDotmL as TQuantityValueMAUDotmL,
+    TQuantityValueMAUDots as TQuantityValueMAUDots,
+    TQuantityValueMgPerL as TQuantityValueMgPerL,
+    TQuantityValueMgPermL as TQuantityValueMgPermL,
+    TQuantityValueMicrogPerMicroL as TQuantityValueMicrogPerMicroL,
+    TQuantityValueMicrogPermL as TQuantityValueMicrogPermL,
+    TQuantityValueMicroL as TQuantityValueMicroL,
+    TQuantityValueMicroLPermin as TQuantityValueMicroLPermin,
+    TQuantityValueMicrom as TQuantityValueMicrom,
+    TQuantityValueML as TQuantityValueML,
+    TQuantityValueMLPerL as TQuantityValueMLPerL,
+    TQuantityValueMLPermin as TQuantityValueMLPermin,
+    TQuantityValueMm as TQuantityValueMm,
+    TQuantityValueMmCu as TQuantityValueMmCu,
+    TQuantityValueMmHg as TQuantityValueMmHg,
+    TQuantityValueMmolPerL as TQuantityValueMmolPerL,
+    TQuantityValueMmSq as TQuantityValueMmSq,
+    TQuantityValueMosmPerkg as TQuantityValueMosmPerkg,
+    TQuantityValueMPerz as TQuantityValueMPerz,
+    TQuantityValueMs as TQuantityValueMs,
+    TQuantityValueMV as TQuantityValueMV,
+    TQuantityValueMVDots as TQuantityValueMVDots,
+    TQuantityValueNC as TQuantityValueNC,
+    TQuantityValueNCDots as TQuantityValueNCDots,
+    TQuantityValueNgPerMicroL as TQuantityValueNgPerMicroL,
+    TQuantityValueNgPermL as TQuantityValueNgPermL,
+    TQuantityValueNM as TQuantityValueNM,
+    TQuantityValueNm as TQuantityValueNm,
+    TQuantityValueNumberSign as TQuantityValueNumberSign,
+    TQuantityValueNumPerMicroL as TQuantityValueNumPerMicroL,
+    TQuantityValueOD as TQuantityValueOD,
+    TQuantityValueOne06cellsPermL as TQuantityValueOne06cellsPermL,
+    TQuantityValuePA as TQuantityValuePA,
+    TQuantityValuePADots as TQuantityValuePADots,
+    TQuantityValuePercent as TQuantityValuePercent,
+    TQuantityValuePgPermL as TQuantityValuePgPermL,
+    TQuantityValuePH as TQuantityValuePH,
+    TQuantityValuePpb as TQuantityValuePpb,
+    TQuantityValuePpm as TQuantityValuePpm,
+    TQuantityValueRFU as TQuantityValueRFU,
+    TQuantityValueRFUDotmL as TQuantityValueRFUDotmL,
+    TQuantityValueRFUDots as TQuantityValueRFUDots,
+    TQuantityValueRLU as TQuantityValueRLU,
+    TQuantityValueRLUDotmL as TQuantityValueRLUDotmL,
+    TQuantityValueRLUDots as TQuantityValueRLUDots,
+    TQuantityValueRU as TQuantityValueRU,
+    TQuantityValueRUPers as TQuantityValueRUPers,
+    TQuantityValueRUSq as TQuantityValueRUSq,
+    TQuantityValueS as TQuantityValueS,
+    TQuantityValueS1 as TQuantityValueS1,
+    TQuantityValueSPerm as TQuantityValueSPerm,
+    TQuantityValueTODO as TQuantityValueTODO,
+    TQuantityValueUnitless as TQuantityValueUnitless,
+    TQuantityValueUPerL as TQuantityValueUPerL,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -117,42 +192,6 @@ class TObject:
     pass
 
 
-from allotropy.allotrope.models.shared.definitions.quantity_values import (  # noqa: E402
-    TQuantityValueCell as TQuantityValueCell,
-    TQuantityValueCountsPermL as TQuantityValueCountsPermL,
-    TQuantityValueDegC as TQuantityValueDegC,
-    TQuantityValueGPerL as TQuantityValueGPerL,
-    TQuantityValueKPa as TQuantityValueKPa,
-    TQuantityValueM as TQuantityValueM,
-    TQuantityValueM1s1 as TQuantityValueM1s1,
-    TQuantityValueMAU as TQuantityValueMAU,
-    TQuantityValueMAUDotmL as TQuantityValueMAUDotmL,
-    TQuantityValueMAUDots as TQuantityValueMAUDots,
-    TQuantityValueMicroL as TQuantityValueMicroL,
-    TQuantityValueMicroLPermin as TQuantityValueMicroLPermin,
-    TQuantityValueMicrom as TQuantityValueMicrom,
-    TQuantityValueML as TQuantityValueML,
-    TQuantityValueMLPerL as TQuantityValueMLPerL,
-    TQuantityValueMmHg as TQuantityValueMmHg,
-    TQuantityValueMmolPerL as TQuantityValueMmolPerL,
-    TQuantityValueMosmPerkg as TQuantityValueMosmPerkg,
-    TQuantityValueMs as TQuantityValueMs,
-    TQuantityValueNM as TQuantityValueNM,
-    TQuantityValueNm as TQuantityValueNm,
-    TQuantityValueNumberSign as TQuantityValueNumberSign,
-    TQuantityValueOne06cellsPermL as TQuantityValueOne06cellsPermL,
-    TQuantityValuePercent as TQuantityValuePercent,
-    TQuantityValuePgPermL as TQuantityValuePgPermL,
-    TQuantityValuePH as TQuantityValuePH,
-    TQuantityValueRFU as TQuantityValueRFU,
-    TQuantityValueRFUDotmL as TQuantityValueRFUDotmL,
-    TQuantityValueRFUDots as TQuantityValueRFUDots,
-    TQuantityValueRU as TQuantityValueRU,
-    TQuantityValueS as TQuantityValueS,
-    TQuantityValueS1 as TQuantityValueS1,
-    TQuantityValueUnitless as TQuantityValueUnitless,
-)
-
 TReference = str
 
 
@@ -201,88 +240,88 @@ class TUnsignedShortValueItem:
     value: int
 
 
-TBooleanValue = bool | TBooleanValueItem
+TBooleanValue = TBooleanValueItem | bool
 
 
-TByteValue = int | TByteValueItem
+TByteValue = TByteValueItem | int
 
 
-TDateTimeStampValue = str | TDateTimeStampValueItem
+TDateTimeStampValue = TDateTimeStampValueItem | str
 
 
-TDateTimeValue = str | TDateTimeValueItem
+TDateTimeValue = TDateTimeValueItem | str
 
 
-TDateValue = str | TDateValueItem
+TDateValue = TDateValueItem | str
 
 
-TDecimalValue = float | TDecimalValueItem
+TDecimalValue = TDecimalValueItem | float
 
 
-TDoubleValue = float | TDoubleValueItem
+TDoubleValue = TDoubleValueItem | float
 
 
-TDurationValue = str | TDurationValueItem
+TDurationValue = TDurationValueItem | str
 
 
-TFloatValue = float | TFloatValueItem
+TFloatValue = TFloatValueItem | float
 
 
-TIRIValue = str | TIRIValueItem
+TIRIValue = TIRIValueItem | str
 
 
-TIntValue = int | TIntValueItem
+TIntValue = TIntValueItem | int
 
 
-TIntegerValue = int | TIntegerValueItem
+TIntegerValue = TIntegerValueItem | int
 
 
-TLongValue = int | TLongValueItem
+TLongValue = TLongValueItem | int
 
 
-TShortValue = int | TShortValueItem
+TShortValue = TShortValueItem | int
 
 
-TStringValue = str | TStringValueItem
+TStringValue = TStringValueItem | str
 
 
-TTimeValue = str | TTimeValueItem
+TTimeValue = TTimeValueItem | str
 
 
-TUnsignedByteValue = int | TUnsignedByteValueItem
+TUnsignedByteValue = TUnsignedByteValueItem | int
 
 
-TUnsignedIntValue = int | TUnsignedIntValueItem
+TUnsignedIntValue = TUnsignedIntValueItem | int
 
 
-TUnsignedLongValue = int | TUnsignedLongValueItem
+TUnsignedLongValue = TUnsignedLongValueItem | int
 
 
-TUnsignedShortValue = int | TUnsignedShortValueItem
+TUnsignedShortValue = TUnsignedShortValueItem | int
 
 
 TNumericValue = (
     TByteValue
-    | TShortValue
+    | TDecimalValue
+    | TDoubleValue
+    | TFloatValue
     | TIntValue
+    | TIntegerValue
     | TLongValue
+    | TShortValue
     | TUnsignedByteValue
-    | TUnsignedShortValue
     | TUnsignedIntValue
     | TUnsignedLongValue
-    | TFloatValue
-    | TDoubleValue
-    | TDecimalValue
-    | TIntegerValue
+    | TUnsignedShortValue
 )
 
 
 TOrderedValue = (
-    TNumericValue
-    | TStringValue
+    TDateTimeStampValue
     | TDateTimeValue
-    | TDateTimeStampValue
     | TDateValue
+    | TNumericValue
+    | TStringValue
     | TTimeValue
 )
 

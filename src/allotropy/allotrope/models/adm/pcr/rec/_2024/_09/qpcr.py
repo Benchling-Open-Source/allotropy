@@ -3,17 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     OrderedItem,
     TBooleanValue,
     TDateTimeStampValue,
-    TQuantityValueDegC,
-    TQuantityValueMicroL,
-    TQuantityValueNumberSign,
-    TQuantityValuePgPermL,
-    TQuantityValueS,
     TQuantityValueUnitless,
     TStringValue,
 )
@@ -32,6 +28,13 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     TechniqueAggregateDocument,
     TechniqueDocument,
 )
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValuePgPermL,
+    TQuantityValueS,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -45,6 +48,26 @@ class BaselineCorrectedReporterDataCube(TDatacube):
 class CalibrationResultDocumentItem:
     calibration_result_name: TStringValue | None = None
     calibration_result: TQuantityValueUnitless | None = None
+
+
+class ContainerType(Enum):
+    reactor = "reactor"
+    controlled_lab_reactor = "controlled lab reactor"
+    tube = "tube"
+    well_plate = "well plate"
+    differential_scanning_calorimetry_pan = "differential scanning calorimetry pan"
+    pcr_reaction_block = "PCR reaction block"
+    vial_rack = "vial rack"
+    pan = "pan"
+    reservoir = "reservoir"
+    array_card_block = "array card block"
+    capillary = "capillary"
+    disintegration_apparatus_basket = "disintegration apparatus basket"
+    jar = "jar"
+    container = "container"
+    tray = "tray"
+    basket = "basket"
+    cell_holder = "cell holder"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -151,35 +174,20 @@ class ReporterDataCube(TDatacube):
     )
 
 
-@dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    sample_identifier: TStringValue
-    location_identifier: TStringValue
-    batch_identifier: TStringValue | None = None
-    description: Any | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    well_location_identifier: TStringValue | None = None
-    vial_location_identifier: TStringValue | None = None
-    well_plate_identifier: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -224,6 +232,23 @@ class ProcessedDataDocumentItem(OrderedItem):
     genotyping_q_pcr_result: TStringValue | None = field(
         default=None, metadata={"json_name": "genotyping qPCR result"}
     )
+
+
+@dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    sample_identifier: TStringValue
+    location_identifier: TStringValue
+    batch_identifier: TStringValue | None = None
+    description: Any | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    well_location_identifier: TStringValue | None = None
+    vial_location_identifier: TStringValue | None = None
+    well_plate_identifier: TStringValue | None = None
+    mass_concentration: TQuantityValuePgPermL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -299,25 +324,7 @@ class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     experimental_data_identifier: TStringValue
     experiment_type: TStringValue
-    container_type: Literal[
-        "reactor",
-        "controlled lab reactor",
-        "tube",
-        "well plate",
-        "differential scanning calorimetry pan",
-        "PCR reaction block",
-        "vial rack",
-        "pan",
-        "reservoir",
-        "array card block",
-        "capillary",
-        "disintegration apparatus basket",
-        "jar",
-        "container",
-        "tray",
-        "basket",
-        "cell holder",
-    ]
+    container_type: ContainerType
     well_volume: TQuantityValueMicroL
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (

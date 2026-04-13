@@ -6,17 +6,19 @@ from dataclasses import dataclass, field
 
 from allotropy.allotrope.models.adm.core.rec._2024._03.core import (
     OrderedItem,
+    TStringValue,
+)
+from allotropy.allotrope.models.adm.core.rec._2024._03.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
     TQuantityValueMicrom,
     TQuantityValueNm,
     TQuantityValueOne06cellsPermL,
     TQuantityValuePercent,
     TQuantityValueUnitless,
-    TStringValue,
-)
-from allotropy.allotrope.models.adm.core.rec._2024._03.cube import (
-    TDatacube,
-    TDatacubeStructure,
 )
 
 

@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
-    OrderedItem,
-    TQuantityValueMV,
-    TQuantityValueMVDots,
-    TQuantityValueNm,
-)
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import OrderedItem
 from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
     TDatacube,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueMV,
+    TQuantityValueMVDots,
+    TQuantityValueNm,
 )
 
 

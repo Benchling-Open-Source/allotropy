@@ -3,19 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     OrderedItem,
     TDateTimeStampValue,
     TQuantityValue,
-    TQuantityValueDegC,
-    TQuantityValueML,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValuePercent,
-    TQuantityValueS,
-    TQuantityValueUnitless,
     TStringValue,
 )
 from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
@@ -32,6 +26,15 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     StatisticsAggregateDocument,
     TechniqueAggregateDocument,
     TechniqueDocument,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValueML,
+    TQuantityValueNm,
+    TQuantityValueNumberSign,
+    TQuantityValuePercent,
+    TQuantityValueS,
+    TQuantityValueUnitless,
 )
 
 
@@ -54,7 +57,7 @@ class DataRegionDocumentItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    data_region_end: TQuantityValueS | TQuantityValueML | TQuantityValueNumberSign | None = (
+    data_region_end: TQuantityValueML | TQuantityValueNumberSign | TQuantityValueS | None = (
         None
     )
     data_region_identifier: TStringValue | None = None
@@ -62,7 +65,7 @@ class DataRegionDocumentItem(OrderedItem):
     data_region_area: TQuantityValue | None = None
     relative_data_region_area: TQuantityValuePercent | None = None
     comment: TStringValue | None = None
-    data_region_start: TQuantityValueS | TQuantityValueML | TQuantityValueNumberSign | None = (
+    data_region_start: TQuantityValueML | TQuantityValueNumberSign | TQuantityValueS | None = (
         None
     )
 
@@ -127,15 +130,15 @@ class PeakItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    peak_end: TQuantityValueS | TQuantityValueML | TQuantityValueNumberSign | None = (
+    peak_end: TQuantityValueML | TQuantityValueNumberSign | TQuantityValueS | None = (
         None
     )
-    peak_position: TQuantityValueS | TQuantityValueML | TQuantityValueNumberSign | None = (
+    peak_position: TQuantityValueML | TQuantityValueNumberSign | TQuantityValueS | None = (
         None
     )
     peak_name: TStringValue | None = None
     identifier: TStringValue | None = None
-    relative_peak_height: TQuantityValuePercent | TQuantityValueS | TQuantityValueNumberSign | None = (
+    relative_peak_height: TQuantityValueNumberSign | TQuantityValuePercent | TQuantityValueS | None = (
         None
     )
     written_name: TStringValue | None = None
@@ -149,7 +152,7 @@ class PeakItem(OrderedItem):
     comment: TStringValue | None = None
     retention_time: TQuantityValueS | None = None
     retention_volume: TQuantityValueML | None = None
-    peak_start: TQuantityValueS | TQuantityValueML | TQuantityValueNumberSign | None = (
+    peak_start: TQuantityValueML | TQuantityValueNumberSign | TQuantityValueS | None = (
         None
     )
     peak_selectivity__chromatography_: TQuantityValueUnitless | None = field(
@@ -259,31 +262,20 @@ class PeakItem(OrderedItem):
     chromatographic_peak_asymmetry_factor: TQuantityValueUnitless | None = None
 
 
-@dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    sample_identifier: TStringValue
-    batch_identifier: TStringValue | None = None
-    description: Any | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    location_identifier: TStringValue | None = None
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -315,6 +307,19 @@ class PeakList:
         None
     )
     peak: list[PeakItem] | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    sample_identifier: TStringValue
+    batch_identifier: TStringValue | None = None
+    description: Any | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

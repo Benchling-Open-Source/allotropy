@@ -306,9 +306,17 @@ class ModuleCode:
         # Track which names need explicit re-export (import X as X)
         reexport_names: set[str] = set()
 
+        # Track already-imported names to avoid duplicate imports from
+        # different modules (e.g. TQuantityValueX from both core re-export
+        # and quantity_values).
+        imported_names: set[str] = set()
+
         for imp in self.imports:
             if imp.name in local_class_names:
                 continue
+            if imp.name in imported_names:
+                continue
+            imported_names.add(imp.name)
             module = imp.module
             # Convert relative module path to full package path
             if not module.startswith("allotropy"):
@@ -963,6 +971,7 @@ class SchemaCodeGenerator:
         self, module: ModuleCode, schema_url: str, defs: dict[str, Any]
     ) -> None:
         """Generate classes for all $defs in a schema."""
+        is_core = False
         for def_name, def_schema in defs.items():
             if not isinstance(def_schema, dict):
                 continue
@@ -980,6 +989,7 @@ class SchemaCodeGenerator:
                     )
                 )
                 module.exported_names[def_name] = class_name
+                is_core = True
                 continue
 
             class_name = def_name_to_class_name(def_name)
@@ -987,6 +997,26 @@ class SchemaCodeGenerator:
             if cls:
                 module.classes.append(cls)
                 module.exported_names[def_name] = class_name
+
+        # Core modules re-export ALL existing TQuantityValue{Unit} classes
+        # so that schema mappers can import them from core.py.  This set is
+        # deterministic (every class in quantity_values.py), making core.py
+        # output identical regardless of which technique schemas are processed.
+        if is_core:
+            for qv_class in sorted(self._qv_manager._known):
+                if not any(
+                    imp.name == qv_class
+                    and imp.module == _SHARED_QUANTITY_VALUES_MODULE
+                    for imp in module.imports
+                ):
+                    module.imports.append(
+                        ImportEntry(
+                            module=_SHARED_QUANTITY_VALUES_MODULE,
+                            name=qv_class,
+                            reexport=True,
+                        )
+                    )
+                    module.exported_names[qv_class] = qv_class
 
     def _generate_type(
         self,
@@ -1123,7 +1153,7 @@ class SchemaCodeGenerator:
             return _make_alias(class_name, "Any")
         if len(parts) == 1:
             return _make_alias(class_name, parts[0])
-        return _make_alias(class_name, " | ".join(parts))
+        return _make_alias(class_name, _join_union(parts))
 
     # -------------------------------------------------------------------------
     # anyOf: union types
@@ -1148,7 +1178,7 @@ class SchemaCodeGenerator:
 
         if len(parts) == 1:
             return _make_alias(class_name, parts[0])
-        return _make_alias(class_name, " | ".join(parts))
+        return _make_alias(class_name, _join_union(parts))
 
     # -------------------------------------------------------------------------
     # enum types
@@ -1443,7 +1473,7 @@ class SchemaCodeGenerator:
                 if t not in seen:
                     seen.add(t)
                     unique_types.append(t)
-            return " | ".join(unique_types)
+            return _join_union(unique_types)
 
         # No direct unit refs — check for oneOf[unit1, unit2, ...] in inline schemas
         return self._try_quantity_value_one_of_units(
@@ -1484,7 +1514,7 @@ class SchemaCodeGenerator:
                     if t not in seen:
                         seen.add(t)
                         unique_types.append(t)
-                return " | ".join(unique_types)
+                return _join_union(unique_types)
         return None
 
     def _try_class_enum_pattern(
@@ -1630,7 +1660,7 @@ class SchemaCodeGenerator:
                 parts.append(self._json_type_to_python(item["type"]))
         if len(parts) == 1:
             return parts[0]
-        return " | ".join(parts)
+        return _join_union(parts)
 
     def _resolve_one_of_property(
         self,
@@ -1657,7 +1687,7 @@ class SchemaCodeGenerator:
                 parts.append("str")
         if len(parts) == 1:
             return parts[0]
-        return " | ".join(parts)
+        return _join_union(parts)
 
     def _resolve_array_item_type(
         self,
@@ -1680,7 +1710,7 @@ class SchemaCodeGenerator:
                         self._resolve_ref_type(module, schema_url, variant["$ref"])
                     )
             if parts:
-                return " | ".join(parts)
+                return _join_union(parts)
         if "oneOf" in items_schema:
             parts = []
             for variant in items_schema["oneOf"]:
@@ -1691,7 +1721,7 @@ class SchemaCodeGenerator:
                         self._resolve_ref_type(module, schema_url, variant["$ref"])
                     )
             if parts:
-                return " | ".join(parts)
+                return _join_union(parts)
         return "Any"
 
     def _resolve_array_type(
@@ -1959,7 +1989,7 @@ class SchemaCodeGenerator:
         """Convert a JSON Schema type to a Python type annotation."""
         if isinstance(json_type, list):
             types = [self._json_type_to_python(t) for t in json_type]
-            return " | ".join(types)
+            return _join_union(types)
 
         mapping = {
             "string": "str",
@@ -1976,6 +2006,11 @@ class SchemaCodeGenerator:
 # ---------------------------------------------------------------------------
 # Module-level helpers
 # ---------------------------------------------------------------------------
+
+
+def _join_union(parts: list[str]) -> str:
+    """Join type parts into a union string, sorted for deterministic output."""
+    return " | ".join(sorted(parts))
 
 
 def _make_alias(name: str, target: str) -> GeneratedClass:

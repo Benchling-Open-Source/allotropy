@@ -3,19 +3,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     OrderedItem,
     TDateTimeStampValue,
-    TQuantityValueCell,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueMs,
-    TQuantityValueNm,
-    TQuantityValueOne06cellsPermL,
-    TQuantityValuePercent,
-    TQuantityValueUnitless,
     TStringValue,
 )
 from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
@@ -32,6 +25,16 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     StatisticsAggregateDocument,
     TechniqueAggregateDocument,
     TechniqueDocument,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCell,
+    TQuantityValueMicroL,
+    TQuantityValueMicrom,
+    TQuantityValueMs,
+    TQuantityValueNm,
+    TQuantityValueOne06cellsPermL,
+    TQuantityValuePercent,
+    TQuantityValueUnitless,
 )
 
 
@@ -76,31 +79,20 @@ class DiagnosticTraceDocumentItem:
     )
 
 
-@dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    sample_identifier: TStringValue
-    batch_identifier: TStringValue | None = None
-    description: Any | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    location_identifier: TStringValue | None = None
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -124,6 +116,19 @@ class DiagnosticTraceAggregateDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+
+
+@dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    sample_identifier: TStringValue
+    batch_identifier: TStringValue | None = None
+    description: Any | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

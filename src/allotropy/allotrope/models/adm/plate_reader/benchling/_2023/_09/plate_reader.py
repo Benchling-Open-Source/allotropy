@@ -3,13 +3,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TBooleanValue,
     TDateTimeStampValue,
     TDoubleValue,
     TQuantityValue,
+    TStringValue,
+    TUnit,
+)
+from allotropy.allotrope.models.adm.core.rec._2023._09.cube import TDatacube
+from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
+    DataSourceAggregateDocument,
+    StatisticsAggregateDocument,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
     TQuantityValueMAU,
     TQuantityValueMicroL,
@@ -23,13 +33,6 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValueRLU,
     TQuantityValueS,
     TQuantityValueUnitless,
-    TStringValue,
-    TUnit,
-)
-from allotropy.allotrope.models.adm.core.rec._2023._09.cube import TDatacube
-from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
-    DataSourceAggregateDocument,
-    StatisticsAggregateDocument,
 )
 
 
@@ -41,6 +44,26 @@ class CalculatedDataDocumentItem:
     calculated_data_identifier: TStringValue | None = None
     calculation_description: TStringValue | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+class ContainerType(Enum):
+    reactor = "reactor"
+    controlled_lab_reactor = "controlled lab reactor"
+    tube = "tube"
+    well_plate = "well plate"
+    differential_scanning_calorimetry_pan = "differential scanning calorimetry pan"
+    q_pcr_reaction_block = "qPCR reaction block"
+    vial_rack = "vial rack"
+    pan = "pan"
+    reservoir = "reservoir"
+    array_card_block = "array card block"
+    capillary = "capillary"
+    disintegration_apparatus_basket = "disintegration apparatus basket"
+    jar = "jar"
+    container = "container"
+    tray = "tray"
+    basket = "basket"
+    cell_holder = "cell holder"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -67,33 +90,6 @@ class DataSystemDocument:
     asm_converter_version: TStringValue | None = field(
         default=None, metadata={"json_name": "ASM converter version"}
     )
-
-
-@dataclass(frozen=True, kw_only=True)
-class DeviceControlDocument:
-    device_type: TStringValue
-    device_identifier: TStringValue | None = None
-    detection_type: TStringValue | None = None
-    product_manufacturer: TStringValue | None = None
-    brand_name: TStringValue | None = None
-    equipment_serial_number: TStringValue | None = None
-    model_number: TStringValue | None = None
-    firmware_version: TStringValue | None = None
-    shaking_configuration_description: TStringValue | None = None
-    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
-        default=None, metadata={"json_name": "detector distance setting (plate reader)"}
-    )
-    integration_time: TQuantityValueS | None = None
-    number_of_averages: TQuantityValueNumberSign | None = None
-    detector_gain_setting: TStringValue | None = None
-    scan_position_setting__plate_reader_: Literal[
-        "bottom scan position (plate reader)",
-        "scan position configuration (plate reader)",
-        "top scan position (plate reader)",
-    ] | None = field(
-        default=None, metadata={"json_name": "scan position setting (plate reader)"}
-    )
-    detector_carriage_speed_setting: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -127,32 +123,34 @@ class ImageFeatureDocumentItem:
     image_feature_result: TQuantityValueUnitless | None = None
 
 
-@dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    sample_identifier: TStringValue
-    location_identifier: TStringValue
-    description: Any | None = None
-    batch_identifier: TStringValue | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    well_location_identifier: TStringValue | None = None
-    vial_location_identifier: TStringValue | None = None
-    well_plate_identifier: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
+
+
+class ScanPositionSettingPlateReader(Enum):
+    bottom_scan_position__plate_reader_ = "bottom scan position (plate reader)"
+    scan_position_configuration__plate_reader_ = (
+        "scan position configuration (plate reader)"
+    )
+    top_scan_position__plate_reader_ = "top scan position (plate reader)"
+
+
+class TransmittedLightSetting(Enum):
+    brightfield = "brightfield"
+    darkfield = "darkfield"
+    phase_contrast = "phase contrast"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -163,52 +161,6 @@ class CalculatedDataAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class CustomInformationAggregateDocument:
     custom_information_document: list[CustomInformationDocumentItem]
-
-
-@dataclass(frozen=True, kw_only=True)
-class FluorescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
-
-
-@dataclass(frozen=True, kw_only=True)
-class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
-
-
-@dataclass(frozen=True, kw_only=True)
-class OpticalImagingDeviceControlDocumentItem(DeviceControlDocument):
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    magnification_setting: TQuantityValueUnitless | None = None
-    exposure_duration_setting: TQuantityValueMs | None = None
-    illumination_setting: TQuantityValuePercent | TQuantityValueUnitless | None = None
-    image_count_setting: TQuantityValueUnitless | None = None
-    auto_focus_setting: TBooleanValue | None = None
-    transmitted_light_setting: Literal[
-        "brightfield", "darkfield", "phase contrast"
-    ] | None = None
-    fluorescent_tag_setting: TStringValue | None = None
-    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
-
-
-@dataclass(frozen=True, kw_only=True)
-class UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-    DeviceControlDocument
-):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
-    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -239,6 +191,101 @@ class ImageFeatureAggregateDocument:
     image_feature_document: list[ImageFeatureDocumentItem]
 
 
+@dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    sample_identifier: TStringValue
+    location_identifier: TStringValue
+    description: Any | None = None
+    batch_identifier: TStringValue | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    well_location_identifier: TStringValue | None = None
+    vial_location_identifier: TStringValue | None = None
+    well_plate_identifier: TStringValue | None = None
+    mass_concentration: TQuantityValuePgPermL | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceControlDocument:
+    device_type: TStringValue
+    device_identifier: TStringValue | None = None
+    detection_type: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
+    brand_name: TStringValue | None = None
+    equipment_serial_number: TStringValue | None = None
+    model_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    shaking_configuration_description: TStringValue | None = None
+    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
+        default=None, metadata={"json_name": "detector distance setting (plate reader)"}
+    )
+    integration_time: TQuantityValueS | None = None
+    number_of_averages: TQuantityValueNumberSign | None = None
+    detector_gain_setting: TStringValue | None = None
+    scan_position_setting__plate_reader_: ScanPositionSettingPlateReader | None = field(
+        default=None, metadata={"json_name": "scan position setting (plate reader)"}
+    )
+    detector_carriage_speed_setting: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class ProcessedDataDocumentItem:
+    data_processing_document: dict[str, Any] | None = None
+    data_source_aggregate_document: DataSourceAggregateDocument | None = None
+    processed_data_identifier: TStringValue | None = None
+    image_feature_aggregate_document: ImageFeatureAggregateDocument | None = None
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+@dataclass(frozen=True, kw_only=True)
+class FluorescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    excitation_bandwidth_setting: TQuantityValueNm | None = None
+    excitation_wavelength_setting: TQuantityValueNm | None = None
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+@dataclass(frozen=True, kw_only=True)
+class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+@dataclass(frozen=True, kw_only=True)
+class OpticalImagingDeviceControlDocumentItem(DeviceControlDocument):
+    excitation_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    magnification_setting: TQuantityValueUnitless | None = None
+    exposure_duration_setting: TQuantityValueMs | None = None
+    illumination_setting: TQuantityValuePercent | TQuantityValueUnitless | None = None
+    image_count_setting: TQuantityValueUnitless | None = None
+    auto_focus_setting: TBooleanValue | None = None
+    transmitted_light_setting: TransmittedLightSetting | None = None
+    fluorescent_tag_setting: TStringValue | None = None
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+@dataclass(frozen=True, kw_only=True)
+class UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+    DeviceControlDocument
+):
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
+
+
+@dataclass(frozen=True, kw_only=True)
+class ProcessedDataAggregateDocument:
+    processed_data_document: list[ProcessedDataDocumentItem]
+
+
 FluorescencePointDetectionDeviceControlDocument = list[
     FluorescencePointDetectionDeviceControlDocumentItem
 ]
@@ -255,15 +302,6 @@ OpticalImagingDeviceControlDocument = list[OpticalImagingDeviceControlDocumentIt
 UltravioletAbsorbancePointDetectionDeviceControlDocument = list[
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem
 ]
-
-
-@dataclass(frozen=True, kw_only=True)
-class ProcessedDataDocumentItem:
-    data_processing_document: dict[str, Any] | None = None
-    data_source_aggregate_document: DataSourceAggregateDocument | None = None
-    processed_data_identifier: TStringValue | None = None
-    image_feature_aggregate_document: ImageFeatureAggregateDocument | None = None
-    field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -284,11 +322,6 @@ class OpticalImagingDeviceControlAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument:
     device_control_document: UltravioletAbsorbancePointDetectionDeviceControlDocument
-
-
-@dataclass(frozen=True, kw_only=True)
-class ProcessedDataAggregateDocument:
-    processed_data_document: list[ProcessedDataDocumentItem]
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -382,25 +415,7 @@ class MeasurementAggregateDocument:
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_type: TStringValue | None = None
-    container_type: Literal[
-        "reactor",
-        "controlled lab reactor",
-        "tube",
-        "well plate",
-        "differential scanning calorimetry pan",
-        "qPCR reaction block",
-        "vial rack",
-        "pan",
-        "reservoir",
-        "array card block",
-        "capillary",
-        "disintegration apparatus basket",
-        "jar",
-        "container",
-        "tray",
-        "basket",
-        "cell holder",
-    ] | None = None
+    container_type: ContainerType | None = None
     well_volume: TQuantityValueMicroL | None = None
     image_aggregate_document: OpticalImagingAggregateDocument | None = None
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None

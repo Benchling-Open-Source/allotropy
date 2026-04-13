@@ -3,13 +3,28 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     OrderedItem,
     TDateTimeStampValue,
     TDateTimeValue,
     TQuantityValue,
+    TStringValue,
+)
+from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
+from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
+    CalculatedDataAggregateDocument,
+    DataSourceAggregateDocument,
+    StatisticsAggregateDocument,
+    TechniqueAggregateDocument,
+    TechniqueDocument,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCm,
     TQuantityValueCounts,
     TQuantityValueCountsDots,
@@ -33,18 +48,6 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValuePercent,
     TQuantityValueS,
     TQuantityValueUnitless,
-    TStringValue,
-)
-from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
-    TDatacube,
-    TDatacubeStructure,
-)
-from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
-    CalculatedDataAggregateDocument,
-    DataSourceAggregateDocument,
-    StatisticsAggregateDocument,
-    TechniqueAggregateDocument,
-    TechniqueDocument,
 )
 
 
@@ -115,9 +118,7 @@ class FractionDocumentItem:
     retention_time: TQuantityValueS | None = None
     retention_volume: TQuantityValueML | None = None
     fraction_role: TStringValue | None = None
-    field_type: TStringValue | None = field(
-        default=None, metadata={"json_name": "@type"}
-    )
+    field_type: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -166,33 +167,6 @@ class PreColumnPressureDataCube(TDatacube):
 
 
 @dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    sample_identifier: TStringValue
-    description: Any | None = None
-    batch_identifier: TStringValue | None = None
-    location_identifier: TStringValue | None = None
-    well_location_identifier: TStringValue | None = None
-    observation: TStringValue | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    flow_rate: TQuantityValueMLPermin | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class SampleFlowRateDataCube(TDatacube):
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
@@ -204,6 +178,22 @@ class SamplePressureDataCube(TDatacube):
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
+
+
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -243,11 +233,11 @@ class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
-    peak_end: TQuantityValueS | TQuantityValueML | None = None
+    peak_end: TQuantityValueML | TQuantityValueS | None = None
     identifier: TStringValue | None = None
     relative_peak_height: TQuantityValuePercent | None = None
     written_name: TStringValue | None = None
-    peak_height: TQuantityValueNC | TQuantityValueCounts | TQuantityValuePA | TQuantityValueMAU | TQuantityValueMV | None = (
+    peak_height: TQuantityValueCounts | TQuantityValueMAU | TQuantityValueMV | TQuantityValueNC | TQuantityValuePA | None = (
         None
     )
     capacity_factor__chromatography_: TQuantityValueUnitless | None = field(
@@ -258,14 +248,14 @@ class PeakItem(OrderedItem):
     peak_group: TQuantityValueMAUDots | None = None
     relative_peak_analyte_amount: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
-    peak_area: TQuantityValuePADots | TQuantityValueMVDots | TQuantityValueCountsDots | TQuantityValueNCDots | None = (
+    peak_area: TQuantityValueCountsDots | TQuantityValueMVDots | TQuantityValueNCDots | TQuantityValuePADots | None = (
         None
     )
     relative_peak_area: TQuantityValuePercent | None = None
     retention_time: TQuantityValueS | None = None
     relative_retention_time: TQuantityValuePercent | None = None
     retention_volume: TQuantityValueML | None = None
-    peak_start: TQuantityValueS | TQuantityValueML | None = None
+    peak_start: TQuantityValueML | TQuantityValueS | None = None
     peak_selectivity__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "peak selectivity (chromatography)"}
     )
@@ -337,7 +327,7 @@ class PeakItem(OrderedItem):
     peak_width_at_60_7__of_height: TQuantityValueS | None = field(
         default=None, metadata={"json_name": "peak width at 60.7 % of height"}
     )
-    peak_width_at_half_height: TQuantityValueS | TQuantityValueML | None = None
+    peak_width_at_half_height: TQuantityValueML | TQuantityValueS | None = None
     peak_width_at_5__of_height: TQuantityValueS | None = field(
         default=None, metadata={"json_name": "peak width at 5 % of height"}
     )
@@ -346,7 +336,7 @@ class PeakItem(OrderedItem):
     peak_width_at_10__of_height: TQuantityValueS | None = field(
         default=None, metadata={"json_name": "peak width at 10 % of height"}
     )
-    peak_width: TQuantityValueS | TQuantityValueML | None = None
+    peak_width: TQuantityValueML | TQuantityValueS | None = None
     statistical_skew__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "statistical skew (chromatography)"}
     )
@@ -407,6 +397,19 @@ class LogAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    sample_identifier: TStringValue
+    description: Any | None = None
+    batch_identifier: TStringValue | None = None
+    location_identifier: TStringValue | None = None
+    well_location_identifier: TStringValue | None = None
+    observation: TStringValue | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    flow_rate: TQuantityValueMLPermin | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
     device_identifier: TStringValue | None = None
     device_type: TStringValue | None = None
@@ -429,8 +432,12 @@ class DeviceControlDocumentItem(OrderedItem):
     sample_flow_rate_data_cube: SampleFlowRateDataCube | None = None
     temperature_profile_data_cube: TemperatureProfileDataCube | None = None
     solvent_concentration_data_cube: SolventConcentrationDataCube | None = None
-    pre_column_pressure_data_cube: PreColumnPressureDataCube | None = None
-    post_column_pressure_data_cube: PostColumnPressureDataCube | None = None
+    pre_column_pressure_data_cube: PreColumnPressureDataCube | None = field(
+        default=None, metadata={"json_name": "pre-column pressure data cube"}
+    )
+    post_column_pressure_data_cube: PostColumnPressureDataCube | None = field(
+        default=None, metadata={"json_name": "post-column pressure data cube"}
+    )
     sample_pressure_data_cube: SamplePressureDataCube | None = None
     system_pressure_data_cube: SystemPressureDataCube | None = None
     excitation_wavelength_setting: TQuantityValueNm | None = None

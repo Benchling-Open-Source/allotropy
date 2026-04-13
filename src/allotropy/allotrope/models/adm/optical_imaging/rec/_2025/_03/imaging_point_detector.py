@@ -6,10 +6,12 @@ from dataclasses import dataclass
 
 from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
     TBooleanValue,
+    TStringValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMs,
     TQuantityValuePercent,
     TQuantityValueUnitless,
-    TStringValue,
 )
 
 

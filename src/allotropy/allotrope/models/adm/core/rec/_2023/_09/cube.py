@@ -3,60 +3,84 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Literal
+from enum import Enum
 
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TClass,
     TUnit,
 )
 
+
+class ComponentDatatype(Enum):
+    double = "double"
+    float = "float"
+    decimal = "decimal"
+    integer = "integer"
+    byte = "byte"
+    int = "int"
+    short = "short"
+    long = "long"
+    string = "string"
+    boolean = "boolean"
+    date_time = "dateTime"
+
+
+class Scale(Enum):
+    nominal = "nominal"
+    ordinal = "ordinal"
+    cardinal = "cardinal"
+    interval = "interval"
+    range = "range"
+
+
 TBooleanArray = list[bool]
 
 
-TBooleanOrNullArray = list[bool | None]
-
-
-@dataclass(frozen=True, kw_only=True)
-class TDatacubeComponent:
-    field_component_datatype: Literal[
-        "double",
-        "float",
-        "decimal",
-        "integer",
-        "byte",
-        "int",
-        "short",
-        "long",
-        "string",
-        "boolean",
-        "dateTime",
-    ] = field(metadata={"json_name": "@componentDatatype"})
-    concept: TClass
-    unit: TUnit | None = None
-    scale: Literal["nominal", "ordinal", "cardinal", "interval", "range"] | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class TFunction:
-    type: Literal["linear", "logarithmic"] | None = None
-    start: float | None = None
-    length: float | None = None
-    incr: float | None = None
+TBooleanOrNullArray = list[None | bool]
 
 
 TNumberArray = list[float]
 
 
-TNumberOrNullArray = list[float | None]
+TNumberOrNullArray = list[None | float]
 
 
 TStringArray = list[str]
 
 
-TStringOrNullArray = list[str | None]
+TStringOrNullArray = list[None | str]
 
 
-TTupleData = list[float | bool | str | None]
+TTupleData = list[None | bool | float | str]
+
+
+class Type(Enum):
+    linear = "linear"
+    logarithmic = "logarithmic"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TDatacubeComponent:
+    field_component_datatype: ComponentDatatype = field(
+        metadata={"json_name": "@componentDatatype"}
+    )
+    concept: TClass
+    unit: TUnit | None = None
+    scale: Scale | None = None
+
+
+TDimensionArray = TBooleanArray | TNumberArray | TStringArray
+
+
+TMeasureArray = TBooleanOrNullArray | TNumberOrNullArray | TStringOrNullArray
+
+
+@dataclass(frozen=True, kw_only=True)
+class TFunction:
+    type: Type | None = None
+    start: float | None = None
+    length: float | None = None
+    incr: float | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -65,21 +89,15 @@ class TDatacubeStructure:
     measures: list[TDatacubeComponent]
 
 
-TDimensionArray = TNumberArray | TBooleanArray | TStringArray
-
-
-TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
+@dataclass(frozen=True, kw_only=True)
+class TMeasureData:
+    measures: list[TMeasureArray] | None = None
+    points: list[TTupleData] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class TDimensionData:
     dimensions: list[TDimensionArray | TFunction]
-
-
-@dataclass(frozen=True, kw_only=True)
-class TMeasureData:
-    measures: list[TMeasureArray] | None = None
-    points: list[TTupleData] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

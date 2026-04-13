@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.adm.core.rec._2024._06.core import (
-    OrderedItem,
+from allotropy.allotrope.models.adm.core.rec._2024._06.core import OrderedItem
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCountsPers,
     TQuantityValueNm,
     TQuantityValuePgPermL,
@@ -26,6 +26,6 @@ class DeviceControlAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    luminescence: TQuantityValueRLU | TQuantityValueCountsPers
+    luminescence: TQuantityValueCountsPers | TQuantityValueRLU
     device_control_aggregate_document: DeviceControlAggregateDocument | None = None
     mass_concentration: TQuantityValuePgPermL | None = None

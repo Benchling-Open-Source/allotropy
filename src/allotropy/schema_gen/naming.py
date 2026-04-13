@@ -253,9 +253,18 @@ def property_name_to_class_name(name: str) -> str:
     Examples:
         "device system document" → "DeviceSystemDocument"
         "measurement document" → "MeasurementDocument"
+        "scan position setting (plate reader)" → "ScanPositionSettingPlateReader"
+        "@componentDatatype" → "ComponentDatatype"
     """
+    # Strip @ and $ prefixes (schema metadata markers)
+    name = name.lstrip("@$")
+    # Strip parentheses before splitting (they appear in names like
+    # "scan position setting (plate reader)")
+    name = name.replace("(", " ").replace(")", " ")
     words = re.split(r"[\s\-_]+", name)
-    return "".join(w[0].upper() + w[1:] for w in words if w)
+    result = "".join(w[0].upper() + w[1:] for w in words if w)
+    # If stripping @ left a camelCase name, ensure first letter is uppercase
+    return result[0].upper() + result[1:] if result else result
 
 
 def unit_symbol_to_class_name(symbol: str) -> str:

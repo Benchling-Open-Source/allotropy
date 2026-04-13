@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TBooleanValue,
@@ -23,6 +24,26 @@ class BaselineCorrectedReporterDataCube:
         default=None, metadata={"json_name": "cube-structure"}
     )
     data: TDatacubeData | None = None
+
+
+class ContainerType(Enum):
+    reactor = "reactor"
+    controlled_lab_reactor = "controlled lab reactor"
+    tube = "tube"
+    well_plate = "well plate"
+    differential_scanning_calorimetry_pan = "differential scanning calorimetry pan"
+    q_pcr_reaction_block = "qPCR reaction block"
+    vial_rack = "vial rack"
+    pan = "pan"
+    reservoir = "reservoir"
+    array_card_block = "array card block"
+    capillary = "capillary"
+    disintegration_apparatus_basket = "disintegration apparatus basket"
+    jar = "jar"
+    container = "container"
+    tray = "tray"
+    basket = "basket"
+    cell_holder = "cell holder"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -94,6 +115,17 @@ class DeviceSystemDocument:
     description: TStringValue | None = None
     brand_name: TStringValue | None = None
     product_manufacturer: TStringValue | None = None
+
+
+class ExperimentType(Enum):
+    genotyping_q_pcr_experiment = "genotyping qPCR experiment"
+    relative_standard_curve_q_pcr_experiment = "relative standard curve qPCR experiment"
+    melt_curve_q_pcr_experiment = "melt curve qPCR experiment"
+    comparative_ct_q_pcr_experiment = "comparative CT qPCR experiment"
+    standard_curve_q_pcr_experiment = "standard curve qPCR experiment"
+    q_pcr_experiment = "qPCR experiment"
+    presence_absence_q_pcr_experiment = "presence/absence qPCR experiment"
+    primary_analysis_experiment = "primary analysis experiment"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -206,35 +238,8 @@ class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
-    experiment_type: Literal[
-        "genotyping qPCR experiment",
-        "relative standard curve qPCR experiment",
-        "melt curve qPCR experiment",
-        "comparative CT qPCR experiment",
-        "standard curve qPCR experiment",
-        "qPCR experiment",
-        "presence/absence qPCR experiment",
-        "primary analysis experiment",
-    ] | None = None
-    container_type: Literal[
-        "reactor",
-        "controlled lab reactor",
-        "tube",
-        "well plate",
-        "differential scanning calorimetry pan",
-        "qPCR reaction block",
-        "vial rack",
-        "pan",
-        "reservoir",
-        "array card block",
-        "capillary",
-        "disintegration apparatus basket",
-        "jar",
-        "container",
-        "tray",
-        "basket",
-        "cell holder",
-    ] | None = None
+    experiment_type: ExperimentType | None = None
+    container_type: ContainerType | None = None
     well_volume: Any | None = None
 
 

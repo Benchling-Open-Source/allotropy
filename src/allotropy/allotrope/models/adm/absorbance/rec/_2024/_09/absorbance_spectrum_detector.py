@@ -4,17 +4,17 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    OrderedItem,
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import OrderedItem
+from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
     TQuantityValueMAU,
     TQuantityValueMAUDotmL,
     TQuantityValueMAUDots,
     TQuantityValueNm,
-)
-from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
-    TDatacube,
-    TDatacubeStructure,
 )
 
 
@@ -31,7 +31,7 @@ class DeviceControlDocumentItem(OrderedItem):
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
     peak_height: TQuantityValueMAU | None = None
-    peak_area: TQuantityValueMAUDots | TQuantityValueMAUDotmL | None = None
+    peak_area: TQuantityValueMAUDotmL | TQuantityValueMAUDots | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

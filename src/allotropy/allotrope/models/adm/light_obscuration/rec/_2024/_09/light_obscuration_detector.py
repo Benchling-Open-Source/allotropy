@@ -7,11 +7,13 @@ from dataclasses import dataclass
 from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TBooleanValue,
     TIntValue,
+    TStringValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCountsPermL,
     TQuantityValueMicrom,
     TQuantityValueML,
     TQuantityValueUnitless,
-    TStringValue,
 )
 
 

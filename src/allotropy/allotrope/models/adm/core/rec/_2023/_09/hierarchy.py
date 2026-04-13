@@ -3,14 +3,17 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     OrderedItem,
     TDateTimeStampValue,
     TQuantityValue,
-    TQuantityValueMLPermin,
     TStringValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueMLPermin,
 )
 
 
@@ -71,225 +74,211 @@ class DiagnosticTraceDocumentItem:
     description: Any
 
 
-@dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    sample_identifier: TStringValue
-    description: Any | None = None
-    batch_identifier: TStringValue | None = None
-    location_identifier: TStringValue | None = None
-    well_location_identifier: TStringValue | None = None
-    observation: TStringValue | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    flow_rate: TQuantityValueMLPermin | None = None
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
 
 
-@dataclass(frozen=True, kw_only=True)
-class StatisticsDocumentItem:
-    statistical_feature: Literal[
-        "inner diameter",
-        "plate heater temperature",
-        "linear velocity",
-        "enthalpy of fusion",
-        "angular velocity",
-        "purity",
-        "intensity",
-        "protein attenuation coefficient",
-        "electron beam working distance",
-        "temperature",
-        "end height",
-        "relative humidity",
-        "saturation vapor pressure",
-        "heat flow",
-        "quality quantification facet",
-        "heat transfer coefficient",
-        "molar concentration",
-        "average total cell diameter",
-        "pH",
-        "foam height",
-        "relative weight loss on drying",
-        "dilution volume",
-        "flow ratio",
-        "electric conductance",
-        "sample temperature",
-        "container diameter",
-        "absorbance",
-        "sample thickness",
-        "humidity",
-        "Raman intensity",
-        "voltage",
-        "actual P/P0 result",
-        "polyol reservoir temperature",
-        "turbidity",
-        "enthalpy of sublimation",
-        "osmolality",
-        "ambient humidity",
-        "molar enthalpy of vaporization",
-        "total foam height",
-        "strain",
-        "thermal conductivity",
-        "coating gap height",
-        "measurement chamber free space volume",
-        "fracture energy",
-        "heat capacity",
-        "yield strain",
-        "incident radiation angle",
-        "mass fraction",
-        "liquid height",
-        "chromatography column length",
-        "sample width",
-        "molar enthalpy of sublimation",
-        "Raman wavenumber shift",
-        "relative response",
-        "length",
-        "velocity",
-        "electric charge",
-        "molar mass",
-        "image height",
-        "concentration",
-        "sample weight before drying",
-        "dilution factor",
-        "temperature rate",
-        "relative permittivity",
-        "transition enthalpy",
-        "total gas flow rate",
-        "gloss",
-        "water mass fraction",
-        "dielectric polarization",
-        "normalized foam height",
-        "peak onset temperature",
-        "electric current",
-        "angle",
-        "energy (datum)",
-        "abrasion weight",
-        "absolute water content",
-        "electric resistance",
-        "attenuation coefficient",
-        "molar enthalpy of fusion",
-        "water mass concentration",
-        "partial pressure",
-        "volume",
-        "position count",
-        "thermal conductance",
-        "dry sample weight",
-        "adsorbed volume at STP",
-        "force",
-        "birefringence",
-        "monolayer quantity",
-        "peak temperature",
-        "dry gas flow rate",
-        "gross weight",
-        "sample weight",
-        "image width",
-        "m/z",
-        "container height",
-        "flow rate",
-        "solvent reservoir temperature",
-        "isocyanate reservoir temperature",
-        "ambient pressure",
-        "eccentricity",
-        "mass",
-        "molar absorptivity",
-        "height",
-        "column inner diameter",
-        "heat seal length",
-        "specific surface area",
-        "reference material weight",
-        "thickness",
-        "tare weight",
-        "power",
-        "chromatography column particle size",
-        "saturated gas flow rate",
-        "well volume",
-        "degassed sample weight",
-        "voltage range",
-        "relative intensity",
-        "width",
-        "yield stress",
-        "total cell diameter",
-        "stress",
-        "relative pressure (BET)",
-        "break stress",
-        "mass concentration",
-        "chromatography column film thickness",
-        "average particle size",
-        "wavelength",
-        "heat capacity (dsc)",
-        "acquisition volume",
-        "collision energy",
-        "background corrected turbidity",
-        "mass change",
-        "chemical shift",
-        "titer",
-        "refractive index",
-        "enthalpy of vaporization",
-        "volume fraction",
-        "transmittance",
-        "electric conductivity",
-        "fill depth",
-        "Young modulus",
-        "total material height",
-        "specific rotation",
-        "qNMR purity result",
-        "size (datum)",
-        "break strain",
-        "specific enthalpy of vaporization",
-        "absolute intensity",
-        "BET C constant",
-        "plate well count",
-        "plate temperature",
-        "volume concentration",
-        "specific enthalpy of sublimation",
-        "enthalpy",
-        "area",
-        "peak load force",
-        "fluorescence",
-        "start height",
-        "polarity",
-        "angle of optical rotation",
-        "peak analyte amount",
-        "extrapolated moisture content",
-        "inlet gas pressure",
-        "hardness",
-        "molecular mass",
-        "specific enthalpy of fusion",
-        "electric impedance",
-        "hold-up volume",
-        "particle size",
-        "diameter",
-        "tablet thickness",
-        "pressure",
-        "weight loss",
-        "cell path length",
-        "glass transition temperature",
-        "specific heat capacity",
-        "wavenumber",
-        "reservoir temperature",
-        "electric resistivity",
-        "luminescence",
-        "compartment temperature",
-        "viscosity",
-        "exhaust gas flow rate",
-        "Raman interferogram intensity",
-        "ambient temperature",
-        "reflectance",
-        "detector view volume",
-        "stirring rate",
-    ]
+class StatisticalFeature(Enum):
+    inner_diameter = "inner diameter"
+    plate_heater_temperature = "plate heater temperature"
+    linear_velocity = "linear velocity"
+    enthalpy_of_fusion = "enthalpy of fusion"
+    angular_velocity = "angular velocity"
+    purity = "purity"
+    intensity = "intensity"
+    protein_attenuation_coefficient = "protein attenuation coefficient"
+    electron_beam_working_distance = "electron beam working distance"
+    temperature = "temperature"
+    end_height = "end height"
+    relative_humidity = "relative humidity"
+    saturation_vapor_pressure = "saturation vapor pressure"
+    heat_flow = "heat flow"
+    quality_quantification_facet = "quality quantification facet"
+    heat_transfer_coefficient = "heat transfer coefficient"
+    molar_concentration = "molar concentration"
+    average_total_cell_diameter = "average total cell diameter"
+    p_h = "pH"
+    foam_height = "foam height"
+    relative_weight_loss_on_drying = "relative weight loss on drying"
+    dilution_volume = "dilution volume"
+    flow_ratio = "flow ratio"
+    electric_conductance = "electric conductance"
+    sample_temperature = "sample temperature"
+    container_diameter = "container diameter"
+    absorbance = "absorbance"
+    sample_thickness = "sample thickness"
+    humidity = "humidity"
+    raman_intensity = "Raman intensity"
+    voltage = "voltage"
+    actual_p_p0_result = "actual P/P0 result"
+    polyol_reservoir_temperature = "polyol reservoir temperature"
+    turbidity = "turbidity"
+    enthalpy_of_sublimation = "enthalpy of sublimation"
+    osmolality = "osmolality"
+    ambient_humidity = "ambient humidity"
+    molar_enthalpy_of_vaporization = "molar enthalpy of vaporization"
+    total_foam_height = "total foam height"
+    strain = "strain"
+    thermal_conductivity = "thermal conductivity"
+    coating_gap_height = "coating gap height"
+    measurement_chamber_free_space_volume = "measurement chamber free space volume"
+    fracture_energy = "fracture energy"
+    heat_capacity = "heat capacity"
+    yield_strain = "yield strain"
+    incident_radiation_angle = "incident radiation angle"
+    mass_fraction = "mass fraction"
+    liquid_height = "liquid height"
+    chromatography_column_length = "chromatography column length"
+    sample_width = "sample width"
+    molar_enthalpy_of_sublimation = "molar enthalpy of sublimation"
+    raman_wavenumber_shift = "Raman wavenumber shift"
+    relative_response = "relative response"
+    length = "length"
+    velocity = "velocity"
+    electric_charge = "electric charge"
+    molar_mass = "molar mass"
+    image_height = "image height"
+    concentration = "concentration"
+    sample_weight_before_drying = "sample weight before drying"
+    dilution_factor = "dilution factor"
+    temperature_rate = "temperature rate"
+    relative_permittivity = "relative permittivity"
+    transition_enthalpy = "transition enthalpy"
+    total_gas_flow_rate = "total gas flow rate"
+    gloss = "gloss"
+    water_mass_fraction = "water mass fraction"
+    dielectric_polarization = "dielectric polarization"
+    normalized_foam_height = "normalized foam height"
+    peak_onset_temperature = "peak onset temperature"
+    electric_current = "electric current"
+    angle = "angle"
+    energy__datum_ = "energy (datum)"
+    abrasion_weight = "abrasion weight"
+    absolute_water_content = "absolute water content"
+    electric_resistance = "electric resistance"
+    attenuation_coefficient = "attenuation coefficient"
+    molar_enthalpy_of_fusion = "molar enthalpy of fusion"
+    water_mass_concentration = "water mass concentration"
+    partial_pressure = "partial pressure"
+    volume = "volume"
+    position_count = "position count"
+    thermal_conductance = "thermal conductance"
+    dry_sample_weight = "dry sample weight"
+    adsorbed_volume_at_stp = "adsorbed volume at STP"
+    force = "force"
+    birefringence = "birefringence"
+    monolayer_quantity = "monolayer quantity"
+    peak_temperature = "peak temperature"
+    dry_gas_flow_rate = "dry gas flow rate"
+    gross_weight = "gross weight"
+    sample_weight = "sample weight"
+    image_width = "image width"
+    m_z = "m/z"
+    container_height = "container height"
+    flow_rate = "flow rate"
+    solvent_reservoir_temperature = "solvent reservoir temperature"
+    isocyanate_reservoir_temperature = "isocyanate reservoir temperature"
+    ambient_pressure = "ambient pressure"
+    eccentricity = "eccentricity"
+    mass = "mass"
+    molar_absorptivity = "molar absorptivity"
+    height = "height"
+    column_inner_diameter = "column inner diameter"
+    heat_seal_length = "heat seal length"
+    specific_surface_area = "specific surface area"
+    reference_material_weight = "reference material weight"
+    thickness = "thickness"
+    tare_weight = "tare weight"
+    power = "power"
+    chromatography_column_particle_size = "chromatography column particle size"
+    saturated_gas_flow_rate = "saturated gas flow rate"
+    well_volume = "well volume"
+    degassed_sample_weight = "degassed sample weight"
+    voltage_range = "voltage range"
+    relative_intensity = "relative intensity"
+    width = "width"
+    yield_stress = "yield stress"
+    total_cell_diameter = "total cell diameter"
+    stress = "stress"
+    relative_pressure__bet_ = "relative pressure (BET)"
+    break_stress = "break stress"
+    mass_concentration = "mass concentration"
+    chromatography_column_film_thickness = "chromatography column film thickness"
+    average_particle_size = "average particle size"
+    wavelength = "wavelength"
+    heat_capacity__dsc_ = "heat capacity (dsc)"
+    acquisition_volume = "acquisition volume"
+    collision_energy = "collision energy"
+    background_corrected_turbidity = "background corrected turbidity"
+    mass_change = "mass change"
+    chemical_shift = "chemical shift"
+    titer = "titer"
+    refractive_index = "refractive index"
+    enthalpy_of_vaporization = "enthalpy of vaporization"
+    volume_fraction = "volume fraction"
+    transmittance = "transmittance"
+    electric_conductivity = "electric conductivity"
+    fill_depth = "fill depth"
+    young_modulus = "Young modulus"
+    total_material_height = "total material height"
+    specific_rotation = "specific rotation"
+    q_nmr_purity_result = "qNMR purity result"
+    size__datum_ = "size (datum)"
+    break_strain = "break strain"
+    specific_enthalpy_of_vaporization = "specific enthalpy of vaporization"
+    absolute_intensity = "absolute intensity"
+    bet_c_constant = "BET C constant"
+    plate_well_count = "plate well count"
+    plate_temperature = "plate temperature"
+    volume_concentration = "volume concentration"
+    specific_enthalpy_of_sublimation = "specific enthalpy of sublimation"
+    enthalpy = "enthalpy"
+    area = "area"
+    peak_load_force = "peak load force"
+    fluorescence = "fluorescence"
+    start_height = "start height"
+    polarity = "polarity"
+    angle_of_optical_rotation = "angle of optical rotation"
+    peak_analyte_amount = "peak analyte amount"
+    extrapolated_moisture_content = "extrapolated moisture content"
+    inlet_gas_pressure = "inlet gas pressure"
+    hardness = "hardness"
+    molecular_mass = "molecular mass"
+    specific_enthalpy_of_fusion = "specific enthalpy of fusion"
+    electric_impedance = "electric impedance"
+    hold_up_volume = "hold-up volume"
+    particle_size = "particle size"
+    diameter = "diameter"
+    tablet_thickness = "tablet thickness"
+    pressure = "pressure"
+    weight_loss = "weight loss"
+    cell_path_length = "cell path length"
+    glass_transition_temperature = "glass transition temperature"
+    specific_heat_capacity = "specific heat capacity"
+    wavenumber = "wavenumber"
+    reservoir_temperature = "reservoir temperature"
+    electric_resistivity = "electric resistivity"
+    luminescence = "luminescence"
+    compartment_temperature = "compartment temperature"
+    viscosity = "viscosity"
+    exhaust_gas_flow_rate = "exhaust gas flow rate"
+    raman_interferogram_intensity = "Raman interferogram intensity"
+    ambient_temperature = "ambient temperature"
+    reflectance = "reflectance"
+    detector_view_volume = "detector view volume"
+    stirring_rate = "stirring rate"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -321,8 +310,21 @@ class DiagnosticTraceAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class StatisticsAggregateDocument:
-    statistics_document: list[StatisticsDocumentItem] | None = None
+class SampleDocument:
+    sample_identifier: TStringValue
+    description: Any | None = None
+    batch_identifier: TStringValue | None = None
+    location_identifier: TStringValue | None = None
+    well_location_identifier: TStringValue | None = None
+    observation: TStringValue | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    flow_rate: TQuantityValueMLPermin | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatisticsDocumentItem:
+    statistical_feature: StatisticalFeature
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -339,6 +341,11 @@ class ProcessedDataDocumentItem(OrderedItem):
     data_processing_aggregate_document: DataProcessingAggregateDocument | None = None
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     processed_data_identifier: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatisticsAggregateDocument:
+    statistics_document: list[StatisticsDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

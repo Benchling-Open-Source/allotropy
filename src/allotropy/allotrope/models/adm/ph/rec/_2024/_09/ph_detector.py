@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
     TQuantityValuePH,
 )

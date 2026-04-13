@@ -3,28 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
     OrderedItem,
     TBooleanValue,
     TDateTimeStampValue,
-    TQuantityValueCountsPers,
-    TQuantityValueDegC,
-    TQuantityValueMAU,
-    TQuantityValueMAUDotmL,
-    TQuantityValueMAUDots,
-    TQuantityValueMicroL,
-    TQuantityValueMm,
-    TQuantityValueMs,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValuePercent,
-    TQuantityValuePgPermL,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
-    TQuantityValueS,
-    TQuantityValueUnitless,
     TStringValue,
 )
 from allotropy.allotrope.models.adm.core.rec._2025._03.cube import (
@@ -41,6 +26,24 @@ from allotropy.allotrope.models.adm.core.rec._2025._03.hierarchy import (
     StatisticsAggregateDocument,
     TechniqueAggregateDocument,
     TechniqueDocument,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCountsPers,
+    TQuantityValueDegC,
+    TQuantityValueMAU,
+    TQuantityValueMAUDotmL,
+    TQuantityValueMAUDots,
+    TQuantityValueMicroL,
+    TQuantityValueMm,
+    TQuantityValueMs,
+    TQuantityValueNm,
+    TQuantityValueNumberSign,
+    TQuantityValuePercent,
+    TQuantityValuePgPermL,
+    TQuantityValueRFU,
+    TQuantityValueRLU,
+    TQuantityValueS,
+    TQuantityValueUnitless,
 )
 
 
@@ -65,53 +68,24 @@ class ChromatogramDataCube(TDatacube):
     )
 
 
-@dataclass(frozen=True, kw_only=True)
-class DeviceControlDocumentItem(OrderedItem):
-    brand_name: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    detection_type: TStringValue | None = None
-    device_identifier: TStringValue | None = None
-    device_type: TStringValue | None = None
-    equipment_serial_number: TStringValue | None = None
-    firmware_version: TStringValue | None = None
-    model_number: TStringValue | None = None
-    product_manufacturer: TStringValue | None = None
-    detector_carriage_speed_setting: TStringValue | None = None
-    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
-        default=None, metadata={"json_name": "detector distance setting (plate reader)"}
-    )
-    detector_gain_setting: TStringValue | None = None
-    integration_time: TQuantityValueS | None = None
-    number_of_averages: TQuantityValueNumberSign | None = None
-    scan_position_setting__plate_reader_: Literal[
-        "bottom scan position (plate reader)",
-        "scan position configuration (plate reader)",
-        "top scan position (plate reader)",
-    ] | None = field(
-        default=None, metadata={"json_name": "scan position setting (plate reader)"}
-    )
-    shaking_configuration_description: TStringValue | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    number_of_scans_setting: TQuantityValueNumberSign | None = None
-    read_interval_setting: TQuantityValueS | None = None
-    total_measurement_time_setting: TQuantityValueS | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    auto_focus_enabled_setting: TBooleanValue | None = None
-    exposure_duration_setting: TQuantityValueMs | None = None
-    fluorescent_tag_setting: TStringValue | None = None
-    illumination_setting: TQuantityValuePercent | None = None
-    image_count_setting: TQuantityValueUnitless | None = None
-    magnification_setting: TQuantityValueUnitless | None = None
-    illumination_mode_setting: TStringValue | None = None
+class ContainerType(Enum):
+    reactor = "reactor"
+    controlled_lab_reactor = "controlled lab reactor"
+    tube = "tube"
+    well_plate = "well plate"
+    differential_scanning_calorimetry_pan = "differential scanning calorimetry pan"
+    q_pcr_reaction_block = "qPCR reaction block"
+    vial_rack = "vial rack"
+    pan = "pan"
+    reservoir = "reservoir"
+    array_card_block = "array card block"
+    capillary = "capillary"
+    disintegration_apparatus_basket = "disintegration apparatus basket"
+    jar = "jar"
+    container = "container"
+    tray = "tray"
+    basket = "basket"
+    cell_holder = "cell holder"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -174,39 +148,32 @@ class LuminescenceProfileDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
-    peak_area: TQuantityValueMAUDots | TQuantityValueMAUDotmL | None = None
+    peak_area: TQuantityValueMAUDotmL | TQuantityValueMAUDots | None = None
     peak_height: TQuantityValueMAU | None = None
 
 
-@dataclass(frozen=True, kw_only=True)
-class SampleDocument:
-    location_identifier: TStringValue
-    sample_identifier: TStringValue
-    batch_identifier: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
+class SampleRoleType(Enum):
+    control_sample_role = "control sample role"
+    standard_sample_role = "standard sample role"
+    validation_sample_role = "validation sample role"
+    experiment_sample_role = "experiment sample role"
+    sample_role = "sample role"
+    spiked_sample_role = "spiked sample role"
+    blank_role = "blank role"
+    unknown_sample_role = "unknown sample role"
+    calibration_sample_role = "calibration sample role"
+    unspiked_sample_role = "unspiked sample role"
+    specimen_role = "specimen role"
+    quality_control_sample_role = "quality control sample role"
+    reference_sample_role = "reference sample role"
+
+
+class ScanPositionSettingPlateReader(Enum):
+    bottom_scan_position__plate_reader_ = "bottom scan position (plate reader)"
+    scan_position_configuration__plate_reader_ = (
+        "scan position configuration (plate reader)"
     )
-    description: Any | None = None
-    sample_role_type: Literal[
-        "control sample role",
-        "standard sample role",
-        "validation sample role",
-        "experiment sample role",
-        "sample role",
-        "spiked sample role",
-        "blank role",
-        "unknown sample role",
-        "calibration sample role",
-        "unspiked sample role",
-        "specimen role",
-        "quality control sample role",
-        "reference sample role",
-    ] | None = None
-    written_name: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
-    vial_location_identifier: TStringValue | None = None
-    well_location_identifier: TStringValue | None = None
-    well_plate_identifier: TStringValue | None = None
+    top_scan_position__plate_reader_ = "top scan position (plate reader)"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -221,14 +188,6 @@ class TransmittanceSpectrumDataCube(TDatacube):
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
-
-
-@dataclass(frozen=True, kw_only=True)
-class DeviceControlAggregateDocument:
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    device_control_document: list[DeviceControlDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -261,6 +220,68 @@ class PeakList:
 
 
 @dataclass(frozen=True, kw_only=True)
+class SampleDocument:
+    location_identifier: TStringValue
+    sample_identifier: TStringValue
+    batch_identifier: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    description: Any | None = None
+    sample_role_type: SampleRoleType | None = None
+    written_name: TStringValue | None = None
+    mass_concentration: TQuantityValuePgPermL | None = None
+    vial_location_identifier: TStringValue | None = None
+    well_location_identifier: TStringValue | None = None
+    well_plate_identifier: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceControlDocumentItem(OrderedItem):
+    brand_name: TStringValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    detection_type: TStringValue | None = None
+    device_identifier: TStringValue | None = None
+    device_type: TStringValue | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    model_number: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
+    detector_carriage_speed_setting: TStringValue | None = None
+    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
+        default=None, metadata={"json_name": "detector distance setting (plate reader)"}
+    )
+    detector_gain_setting: TStringValue | None = None
+    integration_time: TQuantityValueS | None = None
+    number_of_averages: TQuantityValueNumberSign | None = None
+    scan_position_setting__plate_reader_: ScanPositionSettingPlateReader | None = field(
+        default=None, metadata={"json_name": "scan position setting (plate reader)"}
+    )
+    shaking_configuration_description: TStringValue | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
+    number_of_scans_setting: TQuantityValueNumberSign | None = None
+    read_interval_setting: TQuantityValueS | None = None
+    total_measurement_time_setting: TQuantityValueS | None = None
+    excitation_bandwidth_setting: TQuantityValueNm | None = None
+    excitation_wavelength_setting: TQuantityValueNm | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    auto_focus_enabled_setting: TBooleanValue | None = None
+    exposure_duration_setting: TQuantityValueMs | None = None
+    fluorescent_tag_setting: TStringValue | None = None
+    illumination_setting: TQuantityValuePercent | None = None
+    image_count_setting: TQuantityValueUnitless | None = None
+    magnification_setting: TQuantityValueUnitless | None = None
+    illumination_mode_setting: TStringValue | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
@@ -270,6 +291,14 @@ class ProcessedDataDocumentItem(OrderedItem):
     electronic_project_record: ElectronicProjectRecord | None = None
     processed_data_identifier: TStringValue | None = None
     peak_list: PeakList | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceControlAggregateDocument:
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+    device_control_document: list[DeviceControlDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -305,7 +334,7 @@ class MeasurementDocumentItem:
     mass_concentration: TQuantityValuePgPermL | None = None
     transmittance: TQuantityValueUnitless | None = None
     fluorescence: TQuantityValueRFU | None = None
-    luminescence: TQuantityValueRLU | TQuantityValueCountsPers | None = None
+    luminescence: TQuantityValueCountsPers | TQuantityValueRLU | None = None
     electropherogram_data_cube: ElectropherogramDataCube | None = None
     absorption_profile_data_cube: AbsorptionProfileDataCube | None = None
     chromatogram_data_cube: ChromatogramDataCube | None = None
@@ -341,25 +370,7 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    container_type: Literal[
-        "reactor",
-        "controlled lab reactor",
-        "tube",
-        "well plate",
-        "differential scanning calorimetry pan",
-        "qPCR reaction block",
-        "vial rack",
-        "pan",
-        "reservoir",
-        "array card block",
-        "capillary",
-        "disintegration apparatus basket",
-        "jar",
-        "container",
-        "tray",
-        "basket",
-        "cell holder",
-    ] | None = None
+    container_type: ContainerType | None = None
     experiment_type: TStringValue | None = None
     well_volume: TQuantityValueMicroL | None = None
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from enum import Enum
 from typing import Any, Literal
 
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
@@ -14,6 +15,26 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
     TDatacubeData,
     TDatacubeStructure,
 )
+
+
+class ContainerType(Enum):
+    reactor = "reactor"
+    controlled_lab_reactor = "controlled lab reactor"
+    tube = "tube"
+    well_plate = "well plate"
+    differential_scanning_calorimetry_pan = "differential scanning calorimetry pan"
+    q_pcr_reaction_block = "qPCR reaction block"
+    vial_rack = "vial rack"
+    pan = "pan"
+    reservoir = "reservoir"
+    array_card_block = "array card block"
+    capillary = "capillary"
+    disintegration_apparatus_basket = "disintegration apparatus basket"
+    jar = "jar"
+    container = "container"
+    tray = "tray"
+    basket = "basket"
+    cell_holder = "cell holder"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -185,25 +206,7 @@ class MeasurementAggregateDocument:
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_type: Literal["dPCR experiment"] | None = None
-    container_type: Literal[
-        "reactor",
-        "controlled lab reactor",
-        "tube",
-        "well plate",
-        "differential scanning calorimetry pan",
-        "qPCR reaction block",
-        "vial rack",
-        "pan",
-        "reservoir",
-        "array card block",
-        "capillary",
-        "disintegration apparatus basket",
-        "jar",
-        "container",
-        "tray",
-        "basket",
-        "cell holder",
-    ] | None = None
+    container_type: ContainerType | None = None
     well_volume: Any | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
 
