@@ -12,6 +12,7 @@ from allotropy.schema_gen.codegen import (
     _merge_class_fields,
     _strip_required_recursive,
     _topological_sort_classes,
+    FieldDef,
     GeneratedClass,
     ImportEntry,
     ModuleCode,
@@ -227,8 +228,8 @@ class TestDeepMergeSchemas:
 class TestTopologicalSortClasses:
     def test_independent_classes(self) -> None:
         classes = [
-            GeneratedClass(name="B", code="class B: pass"),
-            GeneratedClass(name="A", code="class A: pass"),
+            GeneratedClass(name="B", fields=[]),
+            GeneratedClass(name="A", fields=[]),
         ]
         result = _topological_sort_classes(classes)
         names = [c.name for c in result]
@@ -237,8 +238,10 @@ class TestTopologicalSortClasses:
 
     def test_dependency_ordering(self) -> None:
         classes = [
-            GeneratedClass(name="Child", code="class Child(Parent): pass"),
-            GeneratedClass(name="Parent", code="class Parent: pass"),
+            GeneratedClass(
+                name="Child", fields=[], bases=["Parent"], dependencies={"Parent"}
+            ),
+            GeneratedClass(name="Parent", fields=[]),
         ]
         result = _topological_sort_classes(classes)
         names = [c.name for c in result]
@@ -248,11 +251,11 @@ class TestTopologicalSortClasses:
         classes = [
             GeneratedClass(
                 name="MyUnion",
-                code="MyUnion = TypeA | TypeB",
-                is_type_alias=True,
+                alias_target="TypeA | TypeB",
+                dependencies={"TypeA", "TypeB"},
             ),
-            GeneratedClass(name="TypeA", code="class TypeA: pass"),
-            GeneratedClass(name="TypeB", code="class TypeB: pass"),
+            GeneratedClass(name="TypeA", fields=[]),
+            GeneratedClass(name="TypeB", fields=[]),
         ]
         result = _topological_sort_classes(classes)
         names = [c.name for c in result]
@@ -267,29 +270,79 @@ class TestTopologicalSortClasses:
 
 class TestMergeClassFields:
     def test_adds_new_field(self) -> None:
-        existing = "@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    a: str"
-        new = "@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    a: str\n    b: int | None = None"
-        result = _merge_class_fields(existing, new)
-        assert "a: str" in result
-        assert "b: int | None = None" in result
+        existing = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                ),
+            ],
+        )
+        new = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                ),
+                FieldDef(
+                    python_name="b", type_str="int", json_name="b", is_required=False
+                ),
+            ],
+        )
+        _merge_class_fields(existing, new)
+        assert existing.fields is not None
+        names = [f.python_name for f in existing.fields]
+        assert "a" in names
+        assert "b" in names
 
     def test_no_duplicate_fields(self) -> None:
-        existing = "@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    a: str"
-        new = "@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    a: str"
-        result = _merge_class_fields(existing, new)
-        assert result.count("a: str") == 1
+        existing = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                ),
+            ],
+        )
+        new = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                ),
+            ],
+        )
+        _merge_class_fields(existing, new)
+        assert existing.fields is not None
+        a_count = sum(1 for f in existing.fields if f.python_name == "a")
+        assert a_count == 1
 
     def test_required_before_optional(self) -> None:
-        existing = "@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    a: str | None = None"
-        new = "@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    b: str"
-        result = _merge_class_fields(existing, new)
-        lines = result.split("\n")
+        existing = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=False
+                ),
+            ],
+        )
+        new = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="b", type_str="str", json_name="b", is_required=True
+                ),
+            ],
+        )
+        _merge_class_fields(existing, new)
+        # Render and check that required fields come before optional
+        rendered = existing.render()
+        lines = rendered.split("\n")
         field_lines = [
             line
             for line in lines
             if ": " in line and not line.strip().startswith(("class", "@"))
         ]
-        # Required fields (no default) should come before optional (with default)
         req_indices = [
             i
             for i, line in enumerate(field_lines)
@@ -320,7 +373,14 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="Foo",
-                code="@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    value: str",
+                fields=[
+                    FieldDef(
+                        python_name="value",
+                        type_str="str",
+                        json_name="value",
+                        is_required=True,
+                    )
+                ],
             )
         )
         result = module.render()
@@ -332,13 +392,24 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="Foo",
-                code="@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    a: str",
+                fields=[
+                    FieldDef(
+                        python_name="a", type_str="str", json_name="a", is_required=True
+                    )
+                ],
             )
         )
         module.classes.append(
             GeneratedClass(
                 name="Foo",
-                code="@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    b: int | None = None",
+                fields=[
+                    FieldDef(
+                        python_name="b",
+                        type_str="int",
+                        json_name="b",
+                        is_required=False,
+                    )
+                ],
             )
         )
         result = module.render()
@@ -357,7 +428,15 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="Foo",
-                code="@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    value: TQuantityValue",
+                fields=[
+                    FieldDef(
+                        python_name="value",
+                        type_str="TQuantityValue",
+                        json_name="value",
+                        is_required=True,
+                    )
+                ],
+                dependencies={"TQuantityValue"},
             )
         )
         result = module.render()
@@ -378,7 +457,7 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="Foo",
-                code="@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    pass",
+                fields=[],
             )
         )
         result = module.render()
@@ -390,7 +469,7 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="Foo",
-                code="@dataclass(frozen=True, kw_only=True)\nclass Foo:\n    pass",
+                fields=[],
             )
         )
         result = module.render()
@@ -402,7 +481,7 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="MyEnum",
-                code='class MyEnum(Enum):\n    value_a = "a"',
+                enum_members=[("value_a", "a")],
             )
         )
         result = module.render()
@@ -413,8 +492,7 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="MyLiteral",
-                code='MyLiteral = Literal["a"]',
-                is_type_alias=True,
+                alias_target='Literal["a"]',
             )
         )
         result = module.render()
@@ -425,8 +503,7 @@ class TestModuleCodeRender:
         module.classes.append(
             GeneratedClass(
                 name="MyAlias",
-                code="MyAlias = str | int",
-                is_type_alias=True,
+                alias_target="str | int",
             )
         )
         result = module.render()
@@ -462,9 +539,10 @@ class TestSchemaCodeGeneratorEnum:
         }
         gen = _make_generator(schemas)
         ModuleCode(schema_url=schema_url)
-        code = gen._generate_enum(
+        cls = gen._generate_enum(
             "ContainerType", {"enum": ["well plate", "tube", "reactor"]}
         )
+        code = cls.render()
         assert "class ContainerType(Enum):" in code
         assert 'well_plate = "well plate"' in code
         assert 'tube = "tube"' in code
@@ -474,7 +552,8 @@ class TestSchemaCodeGeneratorEnum:
         # Single-value enums should remain Literal in the property resolver,
         # but _generate_enum itself always produces Enum class
         gen = _make_generator({})
-        code = gen._generate_enum("SingleValue", {"enum": ["only"]})
+        cls = gen._generate_enum("SingleValue", {"enum": ["only"]})
+        code = cls.render()
         assert "class SingleValue(Enum):" in code
         assert 'only = "only"' in code
 
