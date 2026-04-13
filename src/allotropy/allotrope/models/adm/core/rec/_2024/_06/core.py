@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
+    TClass as TClass,
+    TQuantityValue as TQuantityValue,
+    TStatisticDatumRole as TStatisticDatumRole,
+    TUnit as TUnit,
 )
-
-JsonFloat = float | InvalidJsonFloat
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -19,49 +19,16 @@ class Asm:
 
 
 @dataclass(frozen=True, kw_only=True)
+class MixedItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+
+
+@dataclass(frozen=True, kw_only=True)
 class OrderedItem:
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 TArray = list[Any]
-
-
-TClass = str
-
-
-TNamed = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TObject:
-    pass
-
-
-TReference = str
-
-
-TResource = str
-
-
-class TStatisticDatumRole(Enum):
-    arithmetic_mean_role = "arithmetic mean role"
-    median_role = "median role"
-    relative_standard_deviation_role = "relative standard deviation role"
-    skewness_role = "skewness role"
-    standard_deviation_role = "standard deviation role"
-    variance_role = "variance role"
-    maximum_value_role = "maximum value role"
-    minimum_value_role = "minimum value role"
-    initial_value_role = "initial value role"
-    final_value_role = "final value role"
-
-
-TUnit = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class MixedItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -142,6 +109,38 @@ class TLongValueItem:
     value: int
 
 
+TNamed = str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TObject:
+    pass
+
+
+from allotropy.allotrope.models.shared.definitions.quantity_values import (  # noqa: E402
+    TQuantityValueCmSqPerg as TQuantityValueCmSqPerg,
+    TQuantityValueCmSqPermol as TQuantityValueCmSqPermol,
+    TQuantityValueCountsPers as TQuantityValueCountsPers,
+    TQuantityValueDegC as TQuantityValueDegC,
+    TQuantityValueMAU as TQuantityValueMAU,
+    TQuantityValueMicroL as TQuantityValueMicroL,
+    TQuantityValueMm as TQuantityValueMm,
+    TQuantityValueNm as TQuantityValueNm,
+    TQuantityValueNumberSign as TQuantityValueNumberSign,
+    TQuantityValuePgPermL as TQuantityValuePgPermL,
+    TQuantityValueRFU as TQuantityValueRFU,
+    TQuantityValueRLU as TQuantityValueRLU,
+    TQuantityValueRLUDotmL as TQuantityValueRLUDotmL,
+    TQuantityValueRLUDots as TQuantityValueRLUDots,
+    TQuantityValueS as TQuantityValueS,
+)
+
+TReference = str
+
+
+TResource = str
+
+
 @dataclass(frozen=True, kw_only=True)
 class TShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
@@ -182,14 +181,6 @@ class TUnsignedLongValueItem:
 class TUnsignedShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValue:
-    value: JsonFloat
-    unit: TUnit
-    has_statistic_datum_role: TStatisticDatumRole | None = None
-    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
 TBooleanValue = bool | TBooleanValueItem
@@ -250,71 +241,6 @@ TUnsignedLongValue = int | TUnsignedLongValueItem
 
 
 TUnsignedShortValue = int | TUnsignedShortValueItem
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCountsPers(TQuantityValue):
-    unit: str = "Counts/s"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueDegC(TQuantityValue):
-    unit: str = "degC"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMAU(TQuantityValue):
-    unit: str = "mAU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMicroL(TQuantityValue):
-    unit: str = "μL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMm(TQuantityValue):
-    unit: str = "mm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNm(TQuantityValue):
-    unit: str = "nm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNumberSign(TQuantityValue):
-    unit: str = "#"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePgPermL(TQuantityValue):
-    unit: str = "pg/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueRFU(TQuantityValue):
-    unit: str = "RFU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueRLU(TQuantityValue):
-    unit: str = "RLU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueRLUDotmL(TQuantityValue):
-    unit: str = "RLU.mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueRLUDots(TQuantityValue):
-    unit: str = "RLU.s"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueS(TQuantityValue):
-    unit: str = "s"
 
 
 TNumericValue = (

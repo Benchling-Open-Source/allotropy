@@ -3,7 +3,6 @@ from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
-    TQuantityValue,
     TQuantityValueCm,
     TQuantityValueHz,
     TQuantityValueMAUDots,
@@ -61,7 +60,7 @@ from allotropy.allotrope.schema_mappers.data_cube import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.values import quantity_or_none
+from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
 @dataclass(frozen=True)
@@ -437,31 +436,11 @@ class Mapper(SchemaMapper[Data, Model]):
             PeakItem(
                 identifier=peak.identifier,
                 peak_index=peak.index,
-                peak_start=(
-                    TQuantityValue(value=peak.start, unit=peak.start_unit)  # type: ignore[arg-type]
-                    if peak.start is not None and peak.start_unit
-                    else None
-                ),
-                peak_end=(
-                    TQuantityValue(value=peak.end, unit=peak.end_unit)  # type: ignore[arg-type]
-                    if peak.end is not None and peak.end_unit
-                    else None
-                ),
-                peak_area=(
-                    TQuantityValue(value=peak.area, unit=peak.area_unit)  # type: ignore[arg-type]
-                    if peak.area is not None and peak.area_unit
-                    else None
-                ),
-                peak_width=(
-                    TQuantityValue(value=peak.width, unit=peak.width_unit)  # type: ignore[arg-type]
-                    if peak.width is not None and peak.width_unit
-                    else None
-                ),
-                peak_height=(
-                    TQuantityValue(value=peak.height, unit=peak.height_unit)  # type: ignore[arg-type]
-                    if peak.height is not None and peak.height_unit
-                    else None
-                ),
+                peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+                peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
+                peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),  # type: ignore[arg-type]
+                peak_width=quantity_or_none_from_unit(peak.width_unit, peak.width),  # type: ignore[arg-type]
+                peak_height=quantity_or_none_from_unit(peak.height_unit, peak.height),  # type: ignore[arg-type]
                 relative_peak_area=quantity_or_none(
                     TQuantityValuePercent, peak.relative_area
                 ),
@@ -475,13 +454,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 chromatographic_peak_asymmetry_factor=quantity_or_none(
                     TQuantityValueUnitless, peak.chromatographic_asymmetry
                 ),
-                peak_width_at_half_height=(
-                    TQuantityValue(  # type: ignore[arg-type]
-                        value=peak.width_at_half_height,
-                        unit=peak.width_at_half_height_unit or "s",
-                    )
-                    if peak.width_at_half_height is not None
-                    else None
+                peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
+                    peak.width_at_half_height_unit or "s", peak.width_at_half_height
                 ),
                 relative_retention_time=quantity_or_none(
                     TQuantityValuePercent, peak.relative_retention_time

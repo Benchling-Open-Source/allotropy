@@ -1,8 +1,8 @@
 import logging
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueSecondTime,
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueS,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
@@ -120,7 +120,7 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
                 },
                 device_control_custom_info={
                     "settling time setting": quantity_or_none(
-                        TQuantityValueSecondTime,
+                        TQuantityValueS,
                         headers.get(float, "Settling time [s]"),
                     ),
                     "reading direction setting": headers.get(str, "Reading direction"),

@@ -5,9 +5,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (  # type: ignore[attr-defined]
-    InvalidJsonFloat,
-    JsonFloat,
+from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValue,
     TQuantityValueDegC,
     TQuantityValueMAU,
@@ -53,6 +51,10 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -320,7 +322,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.exposure_duration_setting,
             ),
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-            illumination_setting=quantity_or_none_from_unit(
+            illumination_setting=quantity_or_none_from_unit(  # type: ignore[arg-type]
                 measurement.illumination_setting_unit,
                 measurement.illumination_setting,
             ),

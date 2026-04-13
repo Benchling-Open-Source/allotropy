@@ -5,14 +5,14 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDalton,
-    TQuantityValueHertz,
-    TQuantityValueMicroliterPerMinute,
-    TQuantityValueMilliliter,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDa,
+    TQuantityValueHz,
+    TQuantityValueMicroLPermin,
+    TQuantityValueML,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
     ResponseUnit,
@@ -77,7 +77,7 @@ def _get_device_control_custom_info(data: Data) -> DictType:
         "number of flow cells": data.chip_data.number_of_flow_cells,
         "number of spots": data.chip_data.number_of_spots,
         "buffer volume": quantity_or_none(
-            TQuantityValueMilliliter, data.run_metadata.buffer_volume
+            TQuantityValueML, data.run_metadata.buffer_volume
         ),
     }
     if detection_setting := data.run_metadata.detection_setting:
@@ -180,7 +180,7 @@ def create_measurements(
                     }
                 ),
                 "molecular weight": quantity_or_none(
-                    TQuantityValueDalton, measurement.molecular_weight
+                    TQuantityValueDa, measurement.molecular_weight
                 ),
                 **measurement.sample_custom_info,
             },
@@ -222,10 +222,10 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             analyst=data.run_metadata.analyst,
             measurement_aggregate_custom_info={
                 "baseline flow": quantity_or_none(
-                    TQuantityValueMicroliterPerMinute, data.run_metadata.baseline_flow
+                    TQuantityValueMicroLPermin, data.run_metadata.baseline_flow
                 ),
                 "data collection rate": quantity_or_none(
-                    TQuantityValueHertz,
+                    TQuantityValueHz,
                     try_float_or_none(data.run_metadata.data_collection_rate),
                 ),
                 **data.application_template_details.get_nested(

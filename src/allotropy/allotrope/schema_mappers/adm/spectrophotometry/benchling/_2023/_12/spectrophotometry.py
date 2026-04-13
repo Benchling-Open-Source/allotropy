@@ -42,6 +42,11 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
 )
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueKDa,
+    TQuantityValueM1cm1,
+    TQuantityValueNgPerMicroL,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -51,22 +56,6 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 )
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
-
-
-# Quantity value types not in generated core — defined here for use in custom info documents.
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueKiloDalton(TQuantityValue):
-    unit: str = "kDa"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNanogramPerMicroliter(TQuantityValue):
-    unit: str = "ng/µL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePerMolarPerCentimeter(TQuantityValue):
-    unit: str = "M-1cm-1"
 
 
 class MeasurementType(Enum):
@@ -396,7 +385,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
         sample_custom_info = measurement.sample_custom_info or {}
         sample_custom_info["Mol. Wt. kda"] = quantity_or_none(
-            TQuantityValueKiloDalton, sample_custom_info.get("Mol. Wt. kda")
+            TQuantityValueKDa, sample_custom_info.get("Mol. Wt. kda")
         )
 
         return add_custom_information_document(
@@ -423,15 +412,15 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueUnitless, data.custom_info.get("E1%")
                 ),
                 "ext. coeff x10e3": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter,
+                    TQuantityValueM1cm1,
                     data.custom_info.get("ext. coeff x10e3"),
                 ),
                 "ext.c.": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter,
+                    TQuantityValueM1cm1,
                     data.custom_info.get("ext.c. (l/(mol*cm))"),
                 ),
                 "conc. factor": quantity_or_none(
-                    TQuantityValueNanogramPerMicroliter,
+                    TQuantityValueNgPerMicroL,
                     data.custom_info.get("conc. factor (ng/ul)"),
                 ),
             }

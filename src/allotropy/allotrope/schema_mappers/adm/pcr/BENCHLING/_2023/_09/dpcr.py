@@ -30,15 +30,13 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueNumPerMicroL,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNumberPerMicroliter(TQuantityValue):
-    unit: str = "#/μL"
 
 
 @dataclass(frozen=True)
@@ -230,7 +228,7 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=ProcessedDataAggregateDocument(
                 processed_data_document=[
                     ProcessedDataDocumentItem(
-                        number_concentration=TQuantityValueNumberPerMicroliter(
+                        number_concentration=TQuantityValueNumPerMicroL(
                             value=measurement.concentration
                         ),
                         positive_partition_count=TQuantityValueNumberSign(

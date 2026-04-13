@@ -7,14 +7,14 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValueHertz,
-    TQuantityValueMilliliter,
-    TQuantityValueResponseUnit,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValueHz,
+    TQuantityValueML,
+    TQuantityValueRU,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceControlDocument,
@@ -300,7 +300,7 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
 
         device_control_custom_info: dict[str, Any] = {
             "buffer volume": quantity_or_none(
-                TQuantityValueMilliliter, data.run_metadata.buffer_volume
+                TQuantityValueML, data.run_metadata.buffer_volume
             ),
             "detection": (
                 data.run_metadata.detection_config.detection
@@ -333,13 +333,13 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
                 else None
             ),
             "maximum operating temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, data.run_metadata.rack_temperature_max
+                TQuantityValueDegC, data.run_metadata.rack_temperature_max
             ),
             "minimum operating temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, data.run_metadata.rack_temperature_min
+                TQuantityValueDegC, data.run_metadata.rack_temperature_min
             ),
             "analysis temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, data.run_metadata.analysis_temperature
+                TQuantityValueDegC, data.run_metadata.analysis_temperature
             ),
             "prime": str(bool(data.run_metadata.prime)).lower()
             if data.run_metadata.prime is not None
@@ -372,9 +372,7 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
                 if imm.flow_cell_index == fc_index and imm.level is not None:
                     device_control_custom_info = {
                         **device_control_custom_info,
-                        "level": quantity_or_none(
-                            TQuantityValueResponseUnit, imm.level
-                        ),
+                        "level": quantity_or_none(TQuantityValueRU, imm.level),
                     }
                     break
 
@@ -493,7 +491,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         measurements = _create_measurements_for_cycle(data, cycle)
         custom_info: dict[str, Any] = {
             "data collection rate": quantity_or_none(
-                TQuantityValueHertz, data.run_metadata.data_collection_rate
+                TQuantityValueHz, data.run_metadata.data_collection_rate
             ),
             **system_info.measurement_aggregate_fields,
         }

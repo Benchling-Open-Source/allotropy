@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
+    TClass as TClass,
+    TQuantityValue as TQuantityValue,
+    TStatisticDatumRole as TStatisticDatumRole,
+    TUnit as TUnit,
 )
-
-JsonFloat = float | InvalidJsonFloat
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -19,62 +19,16 @@ class Asm:
 
 
 @dataclass(frozen=True, kw_only=True)
+class MixedItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+
+
+@dataclass(frozen=True, kw_only=True)
 class OrderedItem:
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 TArray = list[Any]
-
-
-TClass = str
-
-
-TNamed = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TObject:
-    pass
-
-
-TReference = str
-
-
-TResource = str
-
-
-class TStatisticDatumRole(Enum):
-    arithmetic_mean_role = "arithmetic mean role"
-    median_role = "median role"
-    relative_standard_deviation_role = "relative standard deviation role"
-    skewness_role = "skewness role"
-    standard_deviation_role = "standard deviation role"
-    variance_role = "variance role"
-    maximum_value_role = "maximum value role"
-    minimum_value_role = "minimum value role"
-    initial_value_role = "initial value role"
-    final_value_role = "final value role"
-    coefficient_of_variation_role = "coefficient of variation role"
-    robust_coefficient_of_variation_role = "robust coefficient of variation role"
-    geometric_mean_role = "geometric mean role"
-    percentile_role = "percentile role"
-    median_absolute_deviation_percentile_role = (
-        "median absolute deviation percentile role"
-    )
-    robust_standard_deviation_role = "robust standard deviation role"
-    median_absolute_deviation_role = "median absolute deviation role"
-    frequency_of_parent_role = "frequency of parent role"
-    frequency_of_grandparent_role = "frequency of grandparent role"
-    frequency_of_total_role = "frequency of total role"
-    sum_of_squares_role = "sum of squares role"
-
-
-TUnit = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class MixedItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -155,6 +109,40 @@ class TLongValueItem:
     value: int
 
 
+TNamed = str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TObject:
+    pass
+
+
+from allotropy.allotrope.models.shared.definitions.quantity_values import (  # noqa: E402
+    TQuantityValueCounts as TQuantityValueCounts,
+    TQuantityValueCountsPers as TQuantityValueCountsPers,
+    TQuantityValueDegC as TQuantityValueDegC,
+    TQuantityValueMAU as TQuantityValueMAU,
+    TQuantityValueMAUDotmL as TQuantityValueMAUDotmL,
+    TQuantityValueMAUDots as TQuantityValueMAUDots,
+    TQuantityValueMicroL as TQuantityValueMicroL,
+    TQuantityValueMm as TQuantityValueMm,
+    TQuantityValueMs as TQuantityValueMs,
+    TQuantityValueNm as TQuantityValueNm,
+    TQuantityValueNumberSign as TQuantityValueNumberSign,
+    TQuantityValuePercent as TQuantityValuePercent,
+    TQuantityValuePgPermL as TQuantityValuePgPermL,
+    TQuantityValueRFU as TQuantityValueRFU,
+    TQuantityValueRLU as TQuantityValueRLU,
+    TQuantityValueS as TQuantityValueS,
+    TQuantityValueUnitless as TQuantityValueUnitless,
+)
+
+TReference = str
+
+
+TResource = str
+
+
 @dataclass(frozen=True, kw_only=True)
 class TShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
@@ -195,14 +183,6 @@ class TUnsignedLongValueItem:
 class TUnsignedShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValue:
-    unit: TUnit
-    value: float
-    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
-    has_statistic_datum_role: TStatisticDatumRole | None = None
 
 
 TBooleanValue = bool | TBooleanValueItem
@@ -263,91 +243,6 @@ TUnsignedLongValue = int | TUnsignedLongValueItem
 
 
 TUnsignedShortValue = int | TUnsignedShortValueItem
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCounts(TQuantityValue):
-    unit: str = "Counts"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCountsPers(TQuantityValue):
-    unit: str = "Counts/s"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueDegC(TQuantityValue):
-    unit: str = "degC"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMAU(TQuantityValue):
-    unit: str = "mAU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMAUDotmL(TQuantityValue):
-    unit: str = "mAU.mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMAUDots(TQuantityValue):
-    unit: str = "mAU.s"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMicroL(TQuantityValue):
-    unit: str = "μL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMm(TQuantityValue):
-    unit: str = "mm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMs(TQuantityValue):
-    unit: str = "ms"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNm(TQuantityValue):
-    unit: str = "nm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNumberSign(TQuantityValue):
-    unit: str = "#"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePercent(TQuantityValue):
-    unit: str = "%"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePgPermL(TQuantityValue):
-    unit: str = "pg/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueRFU(TQuantityValue):
-    unit: str = "RFU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueRLU(TQuantityValue):
-    unit: str = "RLU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueS(TQuantityValue):
-    unit: str = "s"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueUnitless(TQuantityValue):
-    unit: str = "(unitless)"
 
 
 TNumericValue = (

@@ -6,8 +6,8 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueSecondTime,
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueS,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     MeasurementType,
@@ -241,7 +241,7 @@ class ReportPointData:
             custom_info={
                 "diode_row": data.get(str, "DiodeRow"),
                 "window": (
-                    TQuantityValueSecondTime(value=window)
+                    TQuantityValueS(value=window)
                     if (window := data.get(float, "Window")) is not None
                     else None
                 ),

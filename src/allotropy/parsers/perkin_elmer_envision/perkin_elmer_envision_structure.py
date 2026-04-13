@@ -28,8 +28,8 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
     TQuantityValuePercent,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
@@ -173,15 +173,15 @@ class ResultPlateInfo(PlateInfo):
             ).group(1),
             device_control_custom_info={
                 "Ambient temperature at start": quantity_or_none(
-                    TQuantityValueDegreeCelsius,
+                    TQuantityValueDegC,
                     data.get(float, "Ambient temperature at start"),
                 ),
                 "Ambient temperature at end": quantity_or_none(
-                    TQuantityValueDegreeCelsius,
+                    TQuantityValueDegC,
                     data.get(float, "Ambient temperature at end"),
                 ),
                 "Chamber temperature at end": quantity_or_none(
-                    TQuantityValueDegreeCelsius,
+                    TQuantityValueDegC,
                     data.get(float, "Chamber temperature at end"),
                 ),
                 "Humidity at start": quantity_or_none(
@@ -194,11 +194,11 @@ class ResultPlateInfo(PlateInfo):
                 "ScanX": data.get(float, "ScanX"),
                 "ScanY": data.get(float, "ScanY"),
                 "Inside temperature at start": quantity_or_none(
-                    TQuantityValueDegreeCelsius,
+                    TQuantityValueDegC,
                     data.get(float, "Inside temperature at start"),
                 ),
                 "Inside temperature at end": quantity_or_none(
-                    TQuantityValueDegreeCelsius,
+                    TQuantityValueDegC,
                     data.get(float, "Inside temperature at end"),
                 ),
             },

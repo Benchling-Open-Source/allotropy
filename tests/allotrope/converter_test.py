@@ -12,15 +12,15 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     DataProcessingDocument,
     ProcessedDataDocumentItem,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueUnitless,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TDatacube,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TNullableQuantityValueUnitless,
 )
 
 

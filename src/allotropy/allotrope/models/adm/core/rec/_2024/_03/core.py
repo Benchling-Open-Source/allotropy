@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
+    TClass as TClass,
+    TQuantityValue as TQuantityValue,
+    TStatisticDatumRole as TStatisticDatumRole,
+    TUnit as TUnit,
 )
-
-JsonFloat = float | InvalidJsonFloat
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -19,49 +19,16 @@ class Asm:
 
 
 @dataclass(frozen=True, kw_only=True)
+class MixedItem:
+    field_type: TClass = field(metadata={"json_name": "@type"})
+
+
+@dataclass(frozen=True, kw_only=True)
 class OrderedItem:
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 TArray = list[Any]
-
-
-TClass = str
-
-
-TNamed = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class TObject:
-    pass
-
-
-TReference = str
-
-
-TResource = str
-
-
-class TStatisticDatumRole(Enum):
-    arithmetic_mean_role = "arithmetic mean role"
-    median_role = "median role"
-    relative_standard_deviation_role = "relative standard deviation role"
-    skewness_role = "skewness role"
-    standard_deviation_role = "standard deviation role"
-    variance_role = "variance role"
-    maximum_value_role = "maximum value role"
-    minimum_value_role = "minimum value role"
-    initial_value_role = "initial value role"
-    final_value_role = "final value role"
-
-
-TUnit = str
-
-
-@dataclass(frozen=True, kw_only=True)
-class MixedItem:
-    field_type: TClass = field(metadata={"json_name": "@type"})
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -142,6 +109,38 @@ class TLongValueItem:
     value: int
 
 
+TNamed = str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TObject:
+    pass
+
+
+from allotropy.allotrope.models.shared.definitions.quantity_values import (  # noqa: E402
+    TQuantityValueCell as TQuantityValueCell,
+    TQuantityValueDegC as TQuantityValueDegC,
+    TQuantityValueGPerL as TQuantityValueGPerL,
+    TQuantityValueMAU as TQuantityValueMAU,
+    TQuantityValueMicrom as TQuantityValueMicrom,
+    TQuantityValueMLPerL as TQuantityValueMLPerL,
+    TQuantityValueMmHg as TQuantityValueMmHg,
+    TQuantityValueMmolPerL as TQuantityValueMmolPerL,
+    TQuantityValueMosmPerkg as TQuantityValueMosmPerkg,
+    TQuantityValueNm as TQuantityValueNm,
+    TQuantityValueOne06cellsPermL as TQuantityValueOne06cellsPermL,
+    TQuantityValuePercent as TQuantityValuePercent,
+    TQuantityValuePgPermL as TQuantityValuePgPermL,
+    TQuantityValuePH as TQuantityValuePH,
+    TQuantityValueUnitless as TQuantityValueUnitless,
+)
+
+TReference = str
+
+
+TResource = str
+
+
 @dataclass(frozen=True, kw_only=True)
 class TShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
@@ -182,14 +181,6 @@ class TUnsignedLongValueItem:
 class TUnsignedShortValueItem:
     field_type: TClass = field(metadata={"json_name": "@type"})
     value: int
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValue:
-    value: JsonFloat
-    unit: TUnit
-    has_statistic_datum_role: TStatisticDatumRole | None = None
-    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
 TBooleanValue = bool | TBooleanValueItem
@@ -250,81 +241,6 @@ TUnsignedLongValue = int | TUnsignedLongValueItem
 
 
 TUnsignedShortValue = int | TUnsignedShortValueItem
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueCell(TQuantityValue):
-    unit: str = "cell"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueDegC(TQuantityValue):
-    unit: str = "degC"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueGPerL(TQuantityValue):
-    unit: str = "g/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMAU(TQuantityValue):
-    unit: str = "mAU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMLPerL(TQuantityValue):
-    unit: str = "mL/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMicrom(TQuantityValue):
-    unit: str = "µm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMmHg(TQuantityValue):
-    unit: str = "mmHg"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMmolPerL(TQuantityValue):
-    unit: str = "mmol/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueMosmPerkg(TQuantityValue):
-    unit: str = "mosm/kg"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueNm(TQuantityValue):
-    unit: str = "nm"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueOne06cellsPermL(TQuantityValue):
-    unit: str = "10^6 cells/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePH(TQuantityValue):
-    unit: str = "pH"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePercent(TQuantityValue):
-    unit: str = "%"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePgPermL(TQuantityValue):
-    unit: str = "pg/mL"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueUnitless(TQuantityValue):
-    unit: str = "(unitless)"
 
 
 TNumericValue = (

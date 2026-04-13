@@ -282,7 +282,8 @@ ban-relative-imports = "all"
   "N815",
 ]
 # Generated models can have class fields that shadow python builtins
-"src/allotropy/allotrope/models/**/*" = ["A003", "N801", "RUF001"]
+# PLC0414: "import X as X" used for explicit mypy re-exports of shared types
+"src/allotropy/allotrope/models/**/*" = ["A003", "N801", "PLC0414", "RUF001"]
 # Scripts can print
 "scripts/**/*" = ["T201"]
 # update_version can use subprocess

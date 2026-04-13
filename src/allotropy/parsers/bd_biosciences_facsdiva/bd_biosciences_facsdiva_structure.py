@@ -2,12 +2,12 @@ from enum import Enum
 import math
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueSecondTime,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueRFU,
+    TQuantityValueS,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
@@ -343,14 +343,14 @@ def _create_data_regions(tube: StrictXmlElement) -> list[DataRegion]:
 
                 if x_coord is not None and y_coord is not None:
                     x_unit = (
-                        TQuantityValueSecondTime.unit
+                        TQuantityValueS.unit
                         if x_param and "Time" in x_param
-                        else TQuantityValueRelativeFluorescenceUnit.unit
+                        else TQuantityValueRFU.unit
                     )
                     y_unit = (
-                        TQuantityValueSecondTime.unit
+                        TQuantityValueS.unit
                         if y_param and "Time" in y_param
-                        else TQuantityValueRelativeFluorescenceUnit.unit
+                        else TQuantityValueRFU.unit
                     )
 
                     vertices.append(

@@ -3,12 +3,12 @@ from typing import Any
 
 import numpy as np
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueHertz,
-    TQuantityValueNumber,
-    TQuantityValueResponseUnit,
-    TQuantityValueSecondTime,
-    TQuantityValueSquareResponseUnit,
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueHz,
+    TQuantityValueNumberSign,
+    TQuantityValueRU,
+    TQuantityValueRUSq,
+    TQuantityValueS,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
@@ -93,10 +93,10 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             analytical_method_identifier=data.metadata.analytical_method_id,
             analyst=data.metadata.analyst,
             measurement_aggregate_custom_info={
-                "number_of_cycles": TQuantityValueNumber(
+                "number_of_cycles": TQuantityValueNumberSign(
                     value=run_metadata.number_of_cycles
                 ),
-                "data_collection_rate": TQuantityValueHertz(
+                "data_collection_rate": TQuantityValueHz(
                     value=run_metadata.data_collection_rate
                 ),
                 "running_buffer": run_metadata.running_buffer,
@@ -141,14 +141,14 @@ def _get_measurements(
                         if measurement.kinetics.is_affinity_measurement
                         else "Kinetics Chi squared"
                     ): quantity_or_none(
-                        TQuantityValueSquareResponseUnit,
+                        TQuantityValueRUSq,
                         measurement.kinetics.kinetics_chi_squared,
                     ),
                     "tc": quantity_or_none(
                         TQuantityValueUnitless, measurement.kinetics.tc
                     ),
                     "offset": quantity_or_none(
-                        TQuantityValueResponseUnit,
+                        TQuantityValueRU,
                         measurement.kinetics.offset,
                     ),
                 }
@@ -163,9 +163,7 @@ def _get_measurements(
                     custom_info=_clean_custom_info(
                         {
                             "Step purpose": rp.step_purpose,
-                            "Window": quantity_or_none(
-                                TQuantityValueSecondTime, rp.window
-                            ),
+                            "Window": quantity_or_none(TQuantityValueS, rp.window),
                             "Baseline": rp.baseline,
                         }
                     ),

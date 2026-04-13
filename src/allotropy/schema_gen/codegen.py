@@ -50,6 +50,7 @@ class ImportEntry:
 
     module: str  # Full module path (e.g., "allotropy.allotrope.models.adm.core...")
     name: str  # Class/type name to import
+    reexport: bool = False  # If True, emit "import X as X" for mypy explicit re-export
 
 
 @dataclass
@@ -124,6 +125,9 @@ class ModuleCode:
         # be shadowed, producing F811 lint errors.
         local_class_names = {c.name for c in self.classes}
 
+        # Track which names need explicit re-export (import X as X)
+        reexport_names: set[str] = set()
+
         for imp in self.imports:
             if imp.name in local_class_names:
                 continue
@@ -132,6 +136,8 @@ class ModuleCode:
             if not module.startswith("allotropy"):
                 module = f"{models_package}.{module}"
             external_imports[module].add(imp.name)
+            if imp.reexport:
+                reexport_names.add(imp.name)
 
         # Write stdlib imports
         for stdlib_imp in sorted(stdlib_imports):
@@ -142,12 +148,16 @@ class ModuleCode:
         # Write external imports
         for module in sorted(external_imports.keys()):
             names = sorted(external_imports[module])
+
+            def _fmt(name: str) -> str:
+                return f"{name} as {name}" if name in reexport_names else name
+
             if len(names) == 1:
-                lines.append(f"from {module} import {names[0]}")
+                lines.append(f"from {module} import {_fmt(names[0])}")
             else:
                 lines.append(f"from {module} import (")
                 for name in names:
-                    lines.append(f"    {name},")
+                    lines.append(f"    {_fmt(name)},")
                 lines.append(")")
         if external_imports:
             lines.append("")
@@ -408,6 +418,30 @@ def _deep_merge_schemas(
     return result
 
 
+# These base types are defined once in shared/definitions/definitions.py and
+# imported into each generated core module rather than being regenerated per
+# core version.  This lets utilities like quantity_or_none() accept any
+# TQuantityValue subclass regardless of which core version produced it.
+# The imports use "import X as X" so mypy treats them as explicit re-exports,
+# allowing downstream generated modules to import them from core.py.
+_SHARED_DEFINITION_TYPES: dict[str, str] = {
+    "tQuantityValue": "TQuantityValue",
+    "tStatisticDatumRole": "TStatisticDatumRole",
+    "tClass": "TClass",
+    "tUnit": "TUnit",
+}
+
+_SHARED_DEFINITIONS_MODULE = "allotropy.allotrope.models.shared.definitions.definitions"
+
+# Shared module where TQuantityValue{Unit} thin subclasses live.
+# The codegen imports from here rather than generating subclasses in each
+# core.py.  When a schema introduces a unit not yet in this module, the
+# codegen records it and generate.py appends the new class.
+_SHARED_QUANTITY_VALUES_MODULE = (
+    "allotropy.allotrope.models.shared.definitions.quantity_values"
+)
+
+
 class SchemaCodeGenerator:
     """Generates Python code from a set of JSON schemas."""
 
@@ -416,6 +450,7 @@ class SchemaCodeGenerator:
         schemas: dict[str, dict[str, Any]],
         generation_order: list[str],
         models_package: str = "allotropy.allotrope.models",
+        existing_quantity_value_classes: set[str] | None = None,
     ) -> None:
         self.schemas = schemas
         self.generation_order = generation_order
@@ -424,6 +459,14 @@ class SchemaCodeGenerator:
         self._modules: dict[str, ModuleCode] = {}
         # Track unit symbols and their const values for quantity value generation
         self._unit_symbols: dict[str, str] = {}  # def_name -> const_value
+        # Known TQuantityValue subclass names in the shared quantity_values module.
+        # Pre-populated from the existing file so the codegen can import them.
+        self._known_quantity_value_classes: set[str] = (
+            existing_quantity_value_classes or set()
+        )
+        # New TQuantityValue subclasses discovered during generation that need
+        # to be appended to quantity_values.py.  Each entry is (class_name, unit_str).
+        self.new_quantity_value_classes: list[tuple[str, str]] = []
 
     def generate_all(self) -> dict[str, ModuleCode]:
         """Generate Python modules for all schemas in dependency order."""
@@ -527,6 +570,22 @@ class SchemaCodeGenerator:
         for def_name, def_schema in defs.items():
             if not isinstance(def_schema, dict):
                 continue
+
+            # Import shared definition types instead of regenerating them.
+            # Re-exported here so downstream generated modules can import
+            # from this core module without needing to know the source.
+            if def_name in _SHARED_DEFINITION_TYPES:
+                class_name = _SHARED_DEFINITION_TYPES[def_name]
+                module.imports.append(
+                    ImportEntry(
+                        module=_SHARED_DEFINITIONS_MODULE,
+                        name=class_name,
+                        reexport=True,
+                    )
+                )
+                module.exported_names[def_name] = class_name
+                continue
+
             class_name = def_name_to_class_name(def_name)
             code = self._generate_type(module, schema_url, class_name, def_schema)
             if code:
@@ -1575,20 +1634,19 @@ class SchemaCodeGenerator:
         quantity_ref: str,
         unit_ref: str,
     ) -> str:
-        """Generate a TQuantityValue{Unit} thin subclass in the core module.
+        """Import a TQuantityValue{Unit} thin subclass from the shared module.
 
-        Each unique TQuantityValue+unit combination produces one subclass that
-        lives in core.py alongside TQuantityValue itself. Technique modules
-        import these subclasses rather than generating their own copies.
+        All TQuantityValue subclasses live in a single shared module
+        (quantity_values.py) so they are defined once across all core versions.
+        When a schema references an allOf[tQuantityValue, unit], this method:
+        1. Resolves the unit's const value and derives the class name.
+        2. If the class already exists in quantity_values.py, imports it.
+        3. If not, records it as a new class for generate.py to append.
+
+        The class is imported into the *core* module (with re-export) so that
+        downstream technique modules can import it from core.py without
+        needing to know about the shared quantity_values module.
         """
-        # Extract core schema URL and base type name (without adding import to technique module)
-        core_schema_url, quantity_def_name = parse_ref(quantity_ref)
-        base_type = (
-            def_name_to_class_name(quantity_def_name)
-            if quantity_def_name
-            else "TQuantityValue"
-        )
-
         # Get the unit's const value
         _, unit_def_name = parse_ref(unit_ref)
         unit_schema_url = unit_ref.split("#")[0]
@@ -1606,33 +1664,41 @@ class SchemaCodeGenerator:
 
         class_name = quantity_value_class_name(const_value)
 
-        # Find the core module where TQuantityValue is defined
+        # Record new quantity value types for generate.py to append
+        if class_name not in self._known_quantity_value_classes:
+            self._known_quantity_value_classes.add(class_name)
+            self.new_quantity_value_classes.append((class_name, const_value))
+
+        # Find the core module so we can add a re-export import there.
+        core_schema_url, _ = parse_ref(quantity_ref)
         core_module = self._modules.get(core_schema_url) if core_schema_url else None
         target_module = core_module if core_module is not None else module
 
-        # Check if already generated in the target module
-        for cls in target_module.classes:
-            if cls.name == class_name:
-                if target_module is not module and core_schema_url:
-                    core_module_path = schema_url_to_module_path(core_schema_url)
-                    module.imports.append(
-                        ImportEntry(module=core_module_path, name=class_name)
-                    )
-                return class_name
+        # Add import from shared quantity_values into the core module (with
+        # re-export so technique modules can import from core.py).
+        if not any(
+            imp.name == class_name and imp.module == _SHARED_QUANTITY_VALUES_MODULE
+            for imp in target_module.imports
+        ):
+            target_module.imports.append(
+                ImportEntry(
+                    module=_SHARED_QUANTITY_VALUES_MODULE,
+                    name=class_name,
+                    reexport=True,
+                )
+            )
+            target_module.exported_names[class_name] = class_name
 
-        # Generate thin subclass (only overrides unit default)
-        code = (
-            f"@dataclass(frozen=True, kw_only=True)\n"
-            f"class {class_name}({base_type}):\n"
-            f"    unit: str = {_dquote(const_value)}"
-        )
-        target_module.classes.append(GeneratedClass(name=class_name, code=code))
-        target_module.exported_names[class_name] = class_name
-
-        # Add import to technique module if generated in core
+        # Add import into the technique module from core (if different)
         if target_module is not module and core_schema_url:
             core_module_path = schema_url_to_module_path(core_schema_url)
-            module.imports.append(ImportEntry(module=core_module_path, name=class_name))
+            if not any(
+                imp.name == class_name and imp.module == core_module_path
+                for imp in module.imports
+            ):
+                module.imports.append(
+                    ImportEntry(module=core_module_path, name=class_name)
+                )
 
         return class_name
 

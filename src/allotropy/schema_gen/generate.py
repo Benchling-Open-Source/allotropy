@@ -11,6 +11,7 @@ Usage:
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import subprocess
 import sys
 from typing import Any
@@ -23,6 +24,11 @@ from allotropy.schema_gen.naming import (
     normalize_schema_url,
     schema_url_to_model_file,
     unit_symbol_to_class_name,
+)
+
+# Path to the shared quantity_values module (relative to output_dir's parent)
+_QUANTITY_VALUES_FILE = Path(
+    "src/allotropy/allotrope/models/shared/definitions/quantity_values.py"
 )
 
 
@@ -94,23 +100,30 @@ def generate_models(
 
     # Generate all other modules via the custom code generator
     if other_urls:
-        generator = SchemaCodeGenerator(all_schemas, order, models_package)
+        existing_qv_classes = _read_existing_quantity_value_classes()
+        generator = SchemaCodeGenerator(
+            all_schemas, order, models_package, existing_qv_classes
+        )
         modules = generator.generate_all()
 
         for url in other_urls:
             module = modules[url]
-            if not module.classes:
+            if not module.classes and not module.imports:
                 continue
             output_path = schema_url_to_model_file(url, output_dir)
             source = module.render(models_package)
-            # Patch TQuantityValue.value to use JsonFloat (float | InvalidJsonFloat)
-            # to support NaN/Infinity serialization, matching V1 behavior.
-            if "class TQuantityValue:" in source:
-                source = _patch_json_float(source)
             _write_module(output_path, source)
             _lint_file(output_path)
             generated_files.append(output_path)
             print(f"  Generated: {output_path}")  # noqa: T201
+
+        # Append any newly discovered quantity value types to the shared module
+        if generator.new_quantity_value_classes:
+            _append_quantity_value_classes(generator.new_quantity_value_classes)
+            print(  # noqa: T201
+                f"  Added {len(generator.new_quantity_value_classes)} new"
+                f" quantity value type(s) to {_QUANTITY_VALUES_FILE}"
+            )
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
     return generated_files
@@ -178,31 +191,50 @@ def _is_units_schema(url: str) -> bool:
     return "units.schema" in url
 
 
-def _patch_json_float(source: str) -> str:
-    """Patch TQuantityValue.value to use JsonFloat instead of float.
+# ---------------------------------------------------------------------------
+# Shared quantity_values.py management
+# ---------------------------------------------------------------------------
 
-    V1 models use JsonFloat (float | InvalidJsonFloat) to support NaN/Infinity
-    serialization. The JSON schema says "type": "number" which maps to float,
-    but the allotropy pipeline needs JsonFloat for round-trip fidelity.
+_QV_CLASS_RE = re.compile(r"^class (TQuantityValue\w+)\(", re.MULTILINE)
+
+
+def _read_existing_quantity_value_classes() -> set[str]:
+    """Read class names already defined in quantity_values.py."""
+    if not _QUANTITY_VALUES_FILE.exists():
+        return set()
+    content = _QUANTITY_VALUES_FILE.read_text(encoding="utf-8")
+    return set(_QV_CLASS_RE.findall(content))
+
+
+def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
+    """Append new TQuantityValue subclasses to quantity_values.py.
+
+    Each entry in *new_classes* is ``(class_name, unit_string)``.
     """
-    import_line = (
-        "from allotropy.allotrope.models.shared.definitions.definitions import (\n"
-        "    InvalidJsonFloat,\n"
-        ")\n"
-        "\n"
-        "JsonFloat = float | InvalidJsonFloat\n"
-    )
-    # Insert after the existing imports block
-    source = source.replace(
-        "from typing import Any\n",
-        "from typing import Any\n\n" + import_line,
-    )
-    # Replace the value type in TQuantityValue
-    source = source.replace(
-        "    value: float\n    unit: TUnit",
-        "    value: JsonFloat\n    unit: TUnit",
-    )
-    return source
+    if not _QUANTITY_VALUES_FILE.exists():
+        return
+
+    lines: list[str] = []
+    for class_name, unit_str in sorted(new_classes):
+        quoted = _dquote(unit_str)
+        lines.extend(
+            [
+                "",
+                "",
+                "@dataclass(frozen=True, kw_only=True)",
+                f"class {class_name}(TQuantityValue):",
+                f"    unit: str = {quoted}",
+            ]
+        )
+    lines.append("")
+
+    content = _QUANTITY_VALUES_FILE.read_text(encoding="utf-8")
+    # Ensure we append after existing content (with a newline separator)
+    if not content.endswith("\n"):
+        content += "\n"
+    content += "\n".join(lines)
+    _QUANTITY_VALUES_FILE.write_text(content, encoding="utf-8")
+    _lint_file(_QUANTITY_VALUES_FILE)
 
 
 # ---------------------------------------------------------------------------
