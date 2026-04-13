@@ -297,17 +297,8 @@ def _write_module(path: Path, source: str) -> None:
 
 
 def _ensure_package_dirs(directory: Path) -> None:
-    """Create directory and all parents, adding __init__.py to each."""
+    """Create directory and all parents."""
     directory.mkdir(parents=True, exist_ok=True)
-
-    current = directory
-    while current != current.parent:
-        init_file = current / "__init__.py"
-        if not init_file.exists():
-            init_file.touch()
-        if current.name == "models":
-            break
-        current = current.parent
 
 
 def _lint_file(path: Path) -> None:
