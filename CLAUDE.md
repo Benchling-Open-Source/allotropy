@@ -27,10 +27,10 @@ PYTHONPATH=src python -m allotropy.schema_gen.generate \
 src/allotropy/
 ├── allotrope/
 │   ├── schemas/              # Cached JSON schemas (fetched from upstream or manually placed)
-│   ├── models/               # Generated Python dataclasses (NEVER manually edit)
-│   │   ├── adm/              # Generated technique + core models
-│   │   ├── qudt/             # Generated unit models
-│   │   └── shared/           # Legacy shared definitions (InvalidJsonFloat, TDatacube, etc.)
+│   ├── models/               # Python dataclasses representing ASM schema types
+│   │   ├── adm/              # Generated technique + core models (NEVER manually edit)
+│   │   ├── qudt/             # Generated unit models (NEVER manually edit)
+│   │   └── shared/           # Shared base types, enums, and components (manually maintained)
 │   ├── schema_mappers/      # Map intermediate Data objects → Model instances
 │   ├── schema_gen/          # Code generation pipeline
 │   │   ├── generate.py      # Entry point / orchestrator
@@ -90,17 +90,25 @@ This preserves custom fields (like `compartment temperature`) while keeping the 
 
 ```
 models/
-├── qudt/rec/_YYYY/_MM/units.py           # HasUnit + unit subclasses (custom generation)
+├── shared/                                # Shared base types (manually maintained, NOT generated)
+│   ├── definitions/
+│   │   ├── definitions.py                 # TQuantityValue, TDatacube, JsonFloat, TStatisticDatumRole, etc.
+│   │   ├── quantity_values.py             # TQuantityValue{Unit} thin subclasses (centralized)
+│   │   └── units.py                       # HasUnit + unit subclasses
+│   └── components/
+│       └── plate_reader.py                # ContainerType, SampleRoleType enums
+├── qudt/rec/_YYYY/_MM/units.py            # HasUnit + unit subclasses (generated, per core version)
 ├── adm/core/rec/_YYYY/_MM/
-│   ├── core.py                            # TQuantityValue, TStringValue, TQuantityValue{Unit} subclasses
+│   ├── core.py                            # Core types + re-exports of TQuantityValue{Unit} from shared
 │   ├── hierarchy.py                       # DataSystemDocument, SampleDocument, aggregate docs
-│   ├── cube.py                            # TDatacube, TDatacubeStructure, array types
-│   └── manifest.py                        # Manifest types
+│   └── cube.py                            # TDatacube, TDatacubeStructure, array types
 └── adm/{technique}/{status}/_YYYY/_MM/
     └── {technique}.py                     # Model + technique-specific classes (imports from core)
 ```
 
-**Dependency chain**: `units.py` → `core.py` → `cube.py` → `hierarchy.py` → `{technique}.py`
+**Dependency chain**: `shared/` → `units.py` → `core.py` → `cube.py` → `hierarchy.py` → `{technique}.py`
+
+**Shared module**: Base types in `shared/definitions/definitions.py` (TQuantityValue, TDatacube, JsonFloat, etc.) are manually maintained and imported by generated modules rather than regenerated per core version. The codegen imports these via `_SHARED_DEFINITION_TYPES` and generates TQuantityValue subclasses in `shared/definitions/quantity_values.py` to avoid duplication across core versions.
 
 ## Codegen Internals (codegen.py)
 
@@ -119,7 +127,7 @@ The generator dispatches based on schema structure:
 |----------------|---------|--------|
 | `oneOf` | `_generate_one_of()` | Union type (often `primitive \| TypedItem`) |
 | `anyOf` | `_generate_any_of()` | Union of all variants |
-| `enum` | `_generate_enum()` | `Literal[...]` type |
+| `enum` | `_generate_enum()` | Enum class (>1 value) or `Literal[...]` (single value) |
 | `object` + `properties` | `_generate_dataclass()` | Frozen dataclass |
 | `allOf` (at def level) | `_generate_all_of_def()` | Merged dataclass with inheritance |
 | `$ref` (at def level) | — | Type alias |
@@ -133,7 +141,7 @@ allOf is the most complex part. In properties, it resolves to:
 |---------|---------|--------|
 | `allOf[tQuantityValue, unit_ref]` | `osmolality` | `TQuantityValueMosmPerKg` thin subclass |
 | `allOf[tQuantityValue, {oneOf: [unit1, unit2]}]` | Multi-unit field | `TQuantityValueX \| TQuantityValueY` |
-| `allOf[tClass, {enum: [...]}]` | `sample_role_type` | `Literal["value1", "value2", ...]` |
+| `allOf[tClass, {enum: [...]}]` | `sample_role_type` | Enum class (>1 value) or `Literal[...]` (single value) |
 | `allOf[base_ref, {properties: {...}}]` | Technique overrides | Merged inline class |
 
 ### Quantity Value Types (Thin Subclasses)
