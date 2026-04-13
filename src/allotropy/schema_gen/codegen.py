@@ -83,6 +83,13 @@ class FieldDef:
     is_required: bool
 
 
+def _unit_field() -> FieldDef:
+    """Create the standard ``unit: str`` field used in unit classes."""
+    return FieldDef(
+        python_name="unit", type_str="str", json_name="unit", is_required=True
+    )
+
+
 @dataclass
 class ImportEntry:
     """A Python import to add to a generated module."""
@@ -112,6 +119,22 @@ class GeneratedClass:
     alias_target: str | None = None
     # Explicit set of type names this class depends on (for topological sort)
     dependencies: set[str] = field(default_factory=set)
+
+    def __post_init__(self) -> None:
+        variants = [
+            self.fields is not None,
+            self.enum_members is not None,
+            self.alias_target is not None,
+        ]
+        if sum(variants) > 1:
+            msg = (
+                f"GeneratedClass {self.name!r} has multiple variants set "
+                f"(fields={self.fields is not None}, "
+                f"enum_members={self.enum_members is not None}, "
+                f"alias_target={self.alias_target is not None}). "
+                f"Exactly one must be populated."
+            )
+            raise ValueError(msg)
 
     @property
     def is_type_alias(self) -> bool:
@@ -152,6 +175,30 @@ class GeneratedClass:
                 )
 
         return "\n".join(lines)
+
+    def copy(self) -> GeneratedClass:
+        """Create a shallow copy suitable for mutation without affecting the original."""
+        return GeneratedClass(
+            name=self.name,
+            fields=[
+                FieldDef(
+                    python_name=f.python_name,
+                    type_str=f.type_str,
+                    json_name=f.json_name,
+                    is_required=f.is_required,
+                )
+                for f in self.fields
+            ]
+            if self.fields is not None
+            else None,
+            bases=list(self.bases),
+            frozen=self.frozen,
+            enum_members=list(self.enum_members)
+            if self.enum_members is not None
+            else None,
+            alias_target=self.alias_target,
+            dependencies=set(self.dependencies),
+        )
 
     @property
     def needs_field_import(self) -> bool:
@@ -216,29 +263,7 @@ class ModuleCode:
         for cls in self.classes:
             if cls.name not in seen_names:
                 seen_names[cls.name] = len(unique)
-                unique.append(
-                    GeneratedClass(
-                        name=cls.name,
-                        fields=[
-                            FieldDef(
-                                python_name=f.python_name,
-                                type_str=f.type_str,
-                                json_name=f.json_name,
-                                is_required=f.is_required,
-                            )
-                            for f in cls.fields
-                        ]
-                        if cls.fields is not None
-                        else None,
-                        bases=list(cls.bases),
-                        frozen=cls.frozen,
-                        enum_members=list(cls.enum_members)
-                        if cls.enum_members is not None
-                        else None,
-                        alias_target=cls.alias_target,
-                        dependencies=set(cls.dependencies),
-                    )
-                )
+                unique.append(cls.copy())
             else:
                 # Merge fields from the duplicate into the existing class
                 existing = unique[seen_names[cls.name]]
@@ -673,6 +698,7 @@ class SchemaMerger:
                         merged_props[pk] = pv
             # Recurse one level into nested anyOf/oneOf within the variant
             # (e.g., a detector sub-schema has oneOf for different data cubes).
+            # Only one level is supported — deeper nesting raises a warning.
             for nested_key in ("anyOf", "oneOf"):
                 if nested_key in variant_schema:
                     for nested in variant_schema[nested_key]:
@@ -701,6 +727,19 @@ class SchemaMerger:
                                     )
                                 else:
                                     merged_props[pk] = pv
+                        # Warn if this nested schema itself has further
+                        # anyOf/oneOf — those properties would be silently
+                        # dropped since we only recurse one level.
+                        if nested_schema:
+                            for deeper_key in ("anyOf", "oneOf"):
+                                if deeper_key in nested_schema:
+                                    warnings.warn(
+                                        f"Schema {schema_url} has 3+ levels of "
+                                        f"anyOf/oneOf nesting ({deeper_key} inside "
+                                        f"{nested_key}). Properties from the "
+                                        f"innermost level are not merged.",
+                                        stacklevel=2,
+                                    )
 
     def merge_any_of_variants_into_props(
         self,
@@ -879,19 +918,7 @@ class SchemaCodeGenerator:
 
     def _generate_units_module(self, module: ModuleCode, defs: dict[str, Any]) -> None:
         """Generate the units module with a HasUnit base class and unit subclasses."""
-        module.classes.append(
-            GeneratedClass(
-                name="HasUnit",
-                fields=[
-                    FieldDef(
-                        python_name="unit",
-                        type_str="str",
-                        json_name="unit",
-                        is_required=True,
-                    ),
-                ],
-            )
-        )
+        module.classes.append(GeneratedClass(name="HasUnit", fields=[_unit_field()]))
         module.exported_names["HasUnit"] = "HasUnit"
 
         used_class_names: set[str] = {"HasUnit"}
@@ -913,14 +940,7 @@ class SchemaCodeGenerator:
             module.classes.append(
                 GeneratedClass(
                     name=class_name,
-                    fields=[
-                        FieldDef(
-                            python_name="unit",
-                            type_str="str",
-                            json_name="unit",
-                            is_required=True,
-                        )
-                    ],
+                    fields=[_unit_field()],
                     bases=["HasUnit"],
                     dependencies={"HasUnit"},
                 )
@@ -1426,29 +1446,39 @@ class SchemaCodeGenerator:
             return " | ".join(unique_types)
 
         # No direct unit refs — check for oneOf[unit1, unit2, ...] in inline schemas
-        for s in inline_schemas:
-            if "oneOf" in s:
-                one_of_unit_refs: list[str] = []
-                for variant in s["oneOf"]:
-                    if "$ref" in variant:
-                        ref_url = variant["$ref"].split("#")[0]
-                        try:
-                            canonical = (
-                                normalize_schema_url(ref_url) if ref_url else None
-                            )
-                        except ValueError:
-                            canonical = None
-                        if canonical and "units.schema" in canonical:
-                            one_of_unit_refs.append(variant["$ref"])
-                if one_of_unit_refs:
-                    types = [
-                        self._generate_quantity_value_type(
-                            module, schema_url, quantity_ref, uref
-                        )
-                        for uref in one_of_unit_refs
-                    ]
-                    return " | ".join(types)
+        return self._try_quantity_value_one_of_units(
+            module, schema_url, quantity_ref, inline_schemas
+        )
 
+    def _try_quantity_value_one_of_units(
+        self,
+        module: ModuleCode,
+        schema_url: str,
+        quantity_ref: str,
+        inline_schemas: list[dict[str, Any]],
+    ) -> str | None:
+        """Match allOf[tQuantityValue, {oneOf: [unit1, unit2, ...]}]."""
+        for s in inline_schemas:
+            if "oneOf" not in s:
+                continue
+            one_of_unit_refs: list[str] = []
+            for variant in s["oneOf"]:
+                if "$ref" in variant:
+                    ref_url = variant["$ref"].split("#")[0]
+                    try:
+                        canonical = normalize_schema_url(ref_url) if ref_url else None
+                    except ValueError:
+                        canonical = None
+                    if canonical and "units.schema" in canonical:
+                        one_of_unit_refs.append(variant["$ref"])
+            if one_of_unit_refs:
+                types = [
+                    self._generate_quantity_value_type(
+                        module, schema_url, quantity_ref, uref
+                    )
+                    for uref in one_of_unit_refs
+                ]
+                return " | ".join(types)
         return None
 
     def _try_class_enum_pattern(
