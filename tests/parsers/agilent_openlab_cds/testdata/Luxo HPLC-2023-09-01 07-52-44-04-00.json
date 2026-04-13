@@ -1,46 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
     "liquid chromatography aggregate document": {
-        "data system document": {
-            "ASM converter name": "allotropy_agilent_openlab_cds",
-            "ASM converter version": "0.1.117",
-            "data system instance identifier": "N/A",
-            "file name": "Luxo HPLC-2023-09-01 07-52-44-04-00.rslt",
-            "software name": "OpenLabCDS",
-            "software version": "2.5 - Build  2.5.0-REL_2.5.0.842",
-            "UNC path": "tests/parsers/agilent_openlab_cds/testdata/Luxo HPLC-2023-09-01 07-52-44-04-00.rslt"
-        },
-        "device system document": {
-            "asset management identifier": "N/A",
-            "brand name": "HPLC",
-            "product manufacturer": "Agilent",
-            "device identifier": "22772470-6730-4b19-8a15-80cf32a9c2a4",
-            "model number": "Luxo HPLC",
-            "device document": [
-                {
-                    "device type": "Pump",
-                    "device identifier": "192edc79-529b-4c03-9584-796bb6c55885",
-                    "model number": "G7111B",
-                    "product manufacturer": "Agilent",
-                    "equipment serial number": "DEAEW08816",
-                    "firmware version": "D.07.33 [0003]",
-                    "custom information document": {
-                        "device name": "Quat. Pump"
-                    }
-                },
-                {
-                    "device type": "Sampler",
-                    "device identifier": "6257ea75-d722-4e58-aa8b-ae549e41db96",
-                    "model number": "G7167A",
-                    "product manufacturer": "Agilent",
-                    "equipment serial number": "DEAGY02258",
-                    "firmware version": "D.07.27 [0006]",
-                    "custom information document": {
-                        "device name": "Multisampler"
-                    }
-                }
-            ]
-        },
         "liquid chromatography document": [
             {
                 "measurement aggregate document": {
@@ -49,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -92,6 +52,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_1",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -655,8 +616,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_1"
+                                        }
                                     }
                                 ]
                             },
@@ -692,6 +652,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -2.027444541454315,
@@ -699,9 +662,6 @@
                                             -1.9783005118370056,
                                             -1.941084861755371
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
                                     ]
                                 }
                             }
@@ -710,8 +670,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -752,6 +712,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_3",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -1175,8 +1136,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_3"
+                                        }
                                     }
                                 ]
                             },
@@ -1212,6 +1172,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.4, 140.26666666666665, 280.1333333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -0.5502179265022278,
@@ -1219,9 +1182,6 @@
                                             -0.2881363034248352,
                                             -0.17045438289642334
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.4, 140.26666666666665, 280.1333333333333, 420.0]
                                     ]
                                 }
                             }
@@ -1230,8 +1190,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -1273,6 +1233,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_5",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -1871,8 +1832,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_5"
+                                        }
                                     }
                                 ]
                             },
@@ -1908,13 +1868,13 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [0.04544854164123535, 0.03028661012649536, 0.004880130290985107,
                                             -0.03219395875930786
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
                                     ]
                                 }
                             }
@@ -1923,8 +1883,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -1965,6 +1925,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_7",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -2423,8 +2384,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_7"
+                                        }
                                     }
                                 ]
                             },
@@ -2460,11 +2420,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [0.5089789628982544, 0.5440190434455872, 0.5725398659706116, 0.5941838026046753]
-                                    ],
                                     "dimensions": [
                                         [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
+                                    ],
+                                    "measures": [
+                                        [0.5089789628982544, 0.5440190434455872, 0.5725398659706116, 0.5941838026046753]
                                     ]
                                 }
                             }
@@ -2473,8 +2433,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -2515,6 +2475,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_9",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -2763,8 +2724,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_9"
+                                        }
                                     }
                                 ]
                             },
@@ -2800,11 +2760,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [0.2966001629829407, 0.31794607639312744, 0.33582746982574463, 0.34843385219573975]
-                                    ],
                                     "dimensions": [
                                         [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
+                                    ],
+                                    "measures": [
+                                        [0.2966001629829407, 0.31794607639312744, 0.33582746982574463, 0.34843385219573975]
                                     ]
                                 }
                             }
@@ -2833,11 +2793,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.004, 12.494299999999999, 0.01, 12.4379]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.004, 12.494299999999999, 0.01, 12.4379]
                                                 ]
                                             }
                                         }
@@ -2884,8 +2844,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -2926,6 +2886,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_13",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -3174,8 +3135,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_13"
+                                        }
                                     }
                                 ]
                             },
@@ -3211,6 +3171,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2, 140.13333333333333, 280.0666666666667, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -0.5820989608764648,
@@ -3218,9 +3181,6 @@
                                             -0.7498487830162048,
                                             -0.8254274725914001
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2, 140.13333333333333, 280.0666666666667, 420.0]
                                     ]
                                 }
                             }
@@ -3249,11 +3209,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0008, 12.5017, 0.0068000000000000005, 12.443000000000001]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0008, 12.5017, 0.0068000000000000005, 12.443000000000001]
                                                 ]
                                             }
                                         }
@@ -3320,11 +3280,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0032, 12.4411, 0.0092, 12.3804]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0032, 12.4411, 0.0092, 12.3804]
                                                 ]
                                             }
                                         }
@@ -3371,8 +3331,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -3414,6 +3374,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_19",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -3837,8 +3798,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_19"
+                                        }
                                     }
                                 ]
                             },
@@ -3874,6 +3834,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -0.7854700088500977,
@@ -3881,9 +3844,6 @@
                                             -0.7456466555595398,
                                             -0.7239952683448792
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
                                     ]
                                 }
                             }
@@ -3892,8 +3852,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -3934,6 +3894,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_21",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -4217,8 +4178,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_21"
+                                        }
                                     }
                                 ]
                             },
@@ -4254,11 +4214,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [1.0352730751037598, 1.075930893421173, 1.1074170470237732, 1.1283904314041138]
-                                    ],
                                     "dimensions": [
                                         [0.1875, 140.125, 280.0625, 420.0]
+                                    ],
+                                    "measures": [
+                                        [1.0352730751037598, 1.075930893421173, 1.1074170470237732, 1.1283904314041138]
                                     ]
                                 }
                             }
@@ -4287,11 +4247,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0036000000000000003, 12.450500000000002, 0.009600000000000001, 12.3949]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0036000000000000003, 12.450500000000002, 0.009600000000000001, 12.3949]
                                                 ]
                                             }
                                         }
@@ -4337,8 +4297,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -4379,6 +4339,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_25",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -4977,8 +4938,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_25"
+                                        }
                                     }
                                 ]
                             },
@@ -5014,6 +4974,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2, 140.13333333333333, 280.0666666666667, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -1.610778272151947,
@@ -5021,9 +4984,6 @@
                                             -2.022966742515564,
                                             -2.2020265460014343
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2, 140.13333333333333, 280.0666666666667, 420.0]
                                     ]
                                 }
                             }
@@ -5032,8 +4992,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -5075,6 +5035,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_27",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -5568,8 +5529,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_27"
+                                        }
                                     }
                                 ]
                             },
@@ -5605,11 +5565,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [1.13600492477417, 1.1607706546783447, 1.1826232075691223, 1.2019872665405273]
-                                    ],
                                     "dimensions": [
                                         [0.3125, 140.20833333333334, 280.1041666666667, 420.0]
+                                    ],
+                                    "measures": [
+                                        [1.13600492477417, 1.1607706546783447, 1.1826232075691223, 1.2019872665405273]
                                     ]
                                 }
                             }
@@ -5638,11 +5598,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0036000000000000003, 12.4585, 0.009600000000000001, 12.405899999999999]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0036000000000000003, 12.4585, 0.009600000000000001, 12.405899999999999]
                                                 ]
                                             }
                                         }
@@ -5689,8 +5649,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -5732,6 +5692,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_31",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -6295,8 +6256,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_31"
+                                        }
                                     }
                                 ]
                             },
@@ -6332,6 +6292,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.0125, 140.00833333333335, 280.0041666666667, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -0.07458776235580444,
@@ -6339,9 +6302,6 @@
                                             -0.2237856388092041,
                                             -0.2693459391593933
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.0125, 140.00833333333335, 280.0041666666667, 420.0]
                                     ]
                                 }
                             }
@@ -6370,11 +6330,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0008, 12.4892, 0.0068000000000000005, 12.4247]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0008, 12.4892, 0.0068000000000000005, 12.4247]
                                                 ]
                                             }
                                         }
@@ -6441,11 +6401,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0016, 12.5392, 0.0076, 12.481100000000001]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0016, 12.5392, 0.0076, 12.481100000000001]
                                                 ]
                                             }
                                         }
@@ -6511,11 +6471,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0048000000000000004, 12.4725, 0.0108, 12.4155]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0048000000000000004, 12.4725, 0.0108, 12.4155]
                                                 ]
                                             }
                                         }
@@ -6561,8 +6521,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -6604,6 +6564,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_39",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -7062,8 +7023,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_39"
+                                        }
                                     }
                                 ]
                             },
@@ -7099,11 +7059,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [0.17401576042175293, 0.1404881477355957, 0.11554360389709473, 0.09956955909729004]
-                                    ],
                                     "dimensions": [
                                         [0.3, 140.2, 280.09999999999997, 420.0]
+                                    ],
+                                    "measures": [
+                                        [0.17401576042175293, 0.1404881477355957, 0.11554360389709473, 0.09956955909729004]
                                     ]
                                 }
                             }
@@ -7112,8 +7072,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -7155,6 +7115,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_41",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -7438,8 +7399,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_41"
+                                        }
                                     }
                                 ]
                             },
@@ -7475,11 +7435,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [0.12023746967315674, 0.11325627565383911, 0.10924041271209717, 0.10720640420913696]
-                                    ],
                                     "dimensions": [
                                         [0.3, 140.2, 280.09999999999997, 420.0]
+                                    ],
+                                    "measures": [
+                                        [0.12023746967315674, 0.11325627565383911, 0.10924041271209717, 0.10720640420913696]
                                     ]
                                 }
                             }
@@ -7488,8 +7448,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -7531,6 +7491,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_43",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -7919,8 +7880,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_43"
+                                        }
                                     }
                                 ]
                             },
@@ -7956,11 +7916,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [0.3906711935997009, 0.4102960228919983, 0.42741745710372925, 0.44067949056625366]
-                                    ],
                                     "dimensions": [
                                         [0.3125, 140.20833333333334, 280.1041666666667, 420.0]
+                                    ],
+                                    "measures": [
+                                        [0.3906711935997009, 0.4102960228919983, 0.42741745710372925, 0.44067949056625366]
                                     ]
                                 }
                             }
@@ -7969,8 +7929,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -8012,6 +7972,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_45",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -8295,8 +8256,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_45"
+                                        }
                                     }
                                 ]
                             },
@@ -8332,11 +8292,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [0.10151416063308716, 0.10190904140472412, 0.09726732969284058, 0.08635967969894409]
-                                    ],
                                     "dimensions": [
                                         [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
+                                    ],
+                                    "measures": [
+                                        [0.10151416063308716, 0.10190904140472412, 0.09726732969284058, 0.08635967969894409]
                                     ]
                                 }
                             }
@@ -8345,8 +8305,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -8387,6 +8347,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_47",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -9020,8 +8981,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_47"
+                                        }
                                     }
                                 ]
                             },
@@ -9057,11 +9017,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "measures": [
-                                        [2.4338290095329285, 2.5113970041275024, 2.5688782334327698, 2.606101334095001]
-                                    ],
                                     "dimensions": [
                                         [0.1875, 140.125, 280.0625, 420.0]
+                                    ],
+                                    "measures": [
+                                        [2.4338290095329285, 2.5113970041275024, 2.5688782334327698, 2.606101334095001]
                                     ]
                                 }
                             }
@@ -9070,8 +9030,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -9113,6 +9073,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_49",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -9431,8 +9392,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_49"
+                                        }
                                     }
                                 ]
                             },
@@ -9468,6 +9428,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -0.6014332175254822,
@@ -9475,9 +9438,6 @@
                                             -0.5643293261528015,
                                             -0.5460083484649658
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
                                     ]
                                 }
                             }
@@ -9486,8 +9446,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -9529,6 +9489,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_51",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -9917,8 +9878,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_51"
+                                        }
                                     }
                                 ]
                             },
@@ -9954,14 +9914,14 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.0125, 140.00833333333335, 280.0041666666667, 420.0]
+                                    ],
                                     "measures": [
                                         [0.03201514482498169, 0.005282461643218994,
                                             -0.015154480934143066,
                                             -0.02946704626083374
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.0125, 140.00833333333335, 280.0041666666667, 420.0]
                                     ]
                                 }
                             }
@@ -9990,11 +9950,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.004399999999999999, 12.4259, 0.010400000000000001, 12.3717]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.004399999999999999, 12.4259, 0.010400000000000001, 12.3717]
                                                 ]
                                             }
                                         }
@@ -10040,8 +10000,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -10082,6 +10042,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_55",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -10365,8 +10326,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_55"
+                                        }
                                     }
                                 ]
                             },
@@ -10402,6 +10362,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.4, 140.26666666666665, 280.1333333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -0.1930147409439087,
@@ -10409,9 +10372,6 @@
                                             -0.06753206253051758,
                                             -0.013552606105804443
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.4, 140.26666666666665, 280.1333333333333, 420.0]
                                     ]
                                 }
                             }
@@ -10420,8 +10380,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "device type": "DAD",
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
                                         "detection type": "Absorbance",
                                         "product manufacturer": "Agilent",
                                         "equipment serial number": "DEAEK09115",
@@ -10463,6 +10423,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_57",
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -11026,8 +10987,7 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_57"
+                                        }
                                     }
                                 ]
                             },
@@ -11063,6 +11023,9 @@
                                     ]
                                 },
                                 "data": {
+                                    "dimensions": [
+                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
+                                    ],
                                     "measures": [
                                         [
                                             -1.2115538120269775,
@@ -11070,9 +11033,6 @@
                                             -1.1605247855186462,
                                             -1.128949224948883
                                         ]
-                                    ],
-                                    "dimensions": [
-                                        [0.2125, 140.14166666666665, 280.0708333333333, 420.0]
                                     ]
                                 }
                             }
@@ -11101,11 +11061,11 @@
                                                 ]
                                             },
                                             "data": {
-                                                "measures": [
-                                                    [0.0032, 12.5004, 0.0092, 12.4455]
-                                                ],
                                                 "dimensions": [
                                                     [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ],
+                                                "measures": [
+                                                    [0.0032, 12.5004, 0.0092, 12.4455]
                                                 ]
                                             }
                                         }
@@ -11152,6 +11112,46 @@
                 },
                 "analyst": "SYSTEM"
             }
-        ]
+        ],
+        "data system document": {
+            "ASM converter name": "allotropy_agilent_openlab_cds",
+            "ASM converter version": "0.1.105",
+            "data system instance identifier": "N/A",
+            "file name": "Luxo HPLC-2023-09-01 07-52-44-04-00.rslt",
+            "software name": "OpenLabCDS",
+            "software version": "2.5 - Build  2.5.0-REL_2.5.0.842",
+            "UNC path": "tests/parsers/agilent_openlab_cds/testdata/Luxo HPLC-2023-09-01 07-52-44-04-00.rslt"
+        },
+        "device system document": {
+            "asset management identifier": "N/A",
+            "brand name": "HPLC",
+            "product manufacturer": "Agilent",
+            "device identifier": "22772470-6730-4b19-8a15-80cf32a9c2a4",
+            "model number": "Luxo HPLC",
+            "device document": [
+                {
+                    "device type": "Pump",
+                    "device identifier": "192edc79-529b-4c03-9584-796bb6c55885",
+                    "model number": "G7111B",
+                    "product manufacturer": "Agilent",
+                    "equipment serial number": "DEAEW08816",
+                    "firmware version": "D.07.33 [0003]",
+                    "custom information document": {
+                        "device name": "Quat. Pump"
+                    }
+                },
+                {
+                    "device type": "Sampler",
+                    "device identifier": "6257ea75-d722-4e58-aa8b-ae549e41db96",
+                    "model number": "G7167A",
+                    "product manufacturer": "Agilent",
+                    "equipment serial number": "DEAGY02258",
+                    "firmware version": "D.07.27 [0006]",
+                    "custom information document": {
+                        "device name": "Multisampler"
+                    }
+                }
+            ]
+        }
     }
 }

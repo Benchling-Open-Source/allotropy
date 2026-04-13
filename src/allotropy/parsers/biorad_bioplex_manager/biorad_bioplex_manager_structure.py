@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 import xml.etree.ElementTree as Et
 
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Error,
@@ -61,7 +62,7 @@ class AnalyteMetadata:
 
 @dataclass
 class SampleMetadata:
-    sample_type: str
+    sample_type: SampleRoleType | str
     sample_identifier: str
     description: str | None
     sample_dilution: float | None

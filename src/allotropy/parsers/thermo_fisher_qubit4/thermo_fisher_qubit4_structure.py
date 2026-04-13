@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -94,5 +95,5 @@ def create_metadata(file_path: str) -> Metadata:
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         brand_name=constants.BRAND_NAME,
         device_type=constants.DEVICE_TYPE,
-        container_type="tube",
+        container_type=ContainerType.tube,
     )

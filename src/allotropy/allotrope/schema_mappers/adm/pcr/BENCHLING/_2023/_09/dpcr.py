@@ -30,6 +30,7 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueNumPerMicroL,
 )
@@ -120,7 +121,7 @@ class Metadata:
     analyst: str | None = None
     measurement_time: str | None = None
     brand_name: str | None = None
-    container_type: str | None = None
+    container_type: ContainerType | str | None = None
 
 
 @dataclass(frozen=True)

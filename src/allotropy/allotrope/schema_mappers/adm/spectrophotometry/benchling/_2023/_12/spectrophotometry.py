@@ -38,6 +38,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
@@ -151,7 +152,7 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     brand_name: str | None = None
-    container_type: str | None = None
+    container_type: ContainerType | str | None = None
 
     file_name: str | None = None
     data_system_instance_id: str | None = None

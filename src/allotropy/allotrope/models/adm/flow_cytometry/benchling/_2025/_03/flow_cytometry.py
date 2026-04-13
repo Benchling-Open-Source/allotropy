@@ -100,12 +100,8 @@ class StatisticDimensionDocumentItem:
 @dataclass(frozen=True, kw_only=True)
 class VertexDocumentItem:
     vertex_role: TStringValue | None = None
-    x_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(
-        default=None, metadata={"json_name": "x-coordinate"}
-    )
-    y_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(
-        default=None, metadata={"json_name": "y-coordinate"}
-    )
+    x_coordinate: TQuantityValueRFU | TQuantityValueS | None = None
+    y_coordinate: TQuantityValueRFU | TQuantityValueS | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -364,12 +360,8 @@ class DataRegionDocumentItem:
     data_region_identifier: TStringValue | None = None
     region_type: TStringValue | None = None
     parent_data_region_identifier: TStringValue | None = None
-    x_coordinate_dimension_identifier: TStringValue | None = field(
-        default=None, metadata={"json_name": "x-coordinate dimension identifier"}
-    )
-    y_coordinate_dimension_identifier: TStringValue | None = field(
-        default=None, metadata={"json_name": "y-coordinate dimension identifier"}
-    )
+    x_coordinate_dimension_identifier: TStringValue | None = None
+    y_coordinate_dimension_identifier: TStringValue | None = None
     vertex_aggregate_document: VertexAggregateDocument | None = None
 
 

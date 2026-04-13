@@ -1,6 +1,7 @@
 from unittest import mock
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
@@ -189,7 +190,7 @@ def test_create_sample() -> None:
     assert SampleMetadata.create(
         sample_metadata_xml, member_well_xml
     ) == SampleMetadata(
-        sample_type="blank role",
+        sample_type=SampleRoleType.blank_role,
         sample_identifier="B",
         description="BLANK",
         errors=[],
@@ -213,7 +214,7 @@ def test_create_samples() -> None:
 
     assert samples == {
         "A12": SampleMetadata(
-            sample_type="blank role",
+            sample_type=SampleRoleType.blank_role,
             sample_identifier="B",
             description=None,
             errors=[],
@@ -224,7 +225,7 @@ def test_create_samples() -> None:
             custom_info={"ColNo": "12", "RowNo": "1"},
         ),
         "B12": SampleMetadata(
-            sample_type="blank role",
+            sample_type=SampleRoleType.blank_role,
             sample_identifier="B",
             description=None,
             errors=[],
@@ -235,7 +236,7 @@ def test_create_samples() -> None:
             custom_info={"ColNo": "12", "RowNo": "2"},
         ),
         "C1": SampleMetadata(
-            sample_type="control sample role",
+            sample_type=SampleRoleType.control_sample_role,
             sample_identifier="C1",
             description=None,
             errors=[],
@@ -247,7 +248,7 @@ def test_create_samples() -> None:
             custom_info={"ColNo": "1", "RowNo": "3"},
         ),
         "C2": SampleMetadata(
-            sample_type="control sample role",
+            sample_type=SampleRoleType.control_sample_role,
             sample_identifier="C2",
             description=None,
             errors=[],
@@ -258,7 +259,7 @@ def test_create_samples() -> None:
             custom_info={"ColNo": "2", "RowNo": "3"},
         ),
         "D2": SampleMetadata(
-            sample_type="control sample role",
+            sample_type=SampleRoleType.control_sample_role,
             sample_identifier="C2",
             description=None,
             errors=[],

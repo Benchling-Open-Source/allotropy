@@ -115,7 +115,9 @@ class FractionDocumentItem:
     retention_time: TQuantityValueS | None = None
     retention_volume: TQuantityValueML | None = None
     fraction_role: TStringValue | None = None
-    field_type: TStringValue | None = None
+    field_type: TStringValue | None = field(
+        default=None, metadata={"json_name": "@type"}
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -245,7 +247,7 @@ class PeakItem(OrderedItem):
     identifier: TStringValue | None = None
     relative_peak_height: TQuantityValuePercent | None = None
     written_name: TStringValue | None = None
-    peak_height: TQuantityValueNC | TQuantityValueMV | TQuantityValueCounts | TQuantityValuePA | TQuantityValueMAU | None = (
+    peak_height: TQuantityValueNC | TQuantityValueCounts | TQuantityValuePA | TQuantityValueMAU | TQuantityValueMV | None = (
         None
     )
     capacity_factor__chromatography_: TQuantityValueUnitless | None = field(
@@ -256,7 +258,7 @@ class PeakItem(OrderedItem):
     peak_group: TQuantityValueMAUDots | None = None
     relative_peak_analyte_amount: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
-    peak_area: TQuantityValueCountsDots | TQuantityValuePADots | TQuantityValueNCDots | TQuantityValueMVDots | None = (
+    peak_area: TQuantityValuePADots | TQuantityValueMVDots | TQuantityValueCountsDots | TQuantityValueNCDots | None = (
         None
     )
     relative_peak_area: TQuantityValuePercent | None = None
@@ -427,12 +429,8 @@ class DeviceControlDocumentItem(OrderedItem):
     sample_flow_rate_data_cube: SampleFlowRateDataCube | None = None
     temperature_profile_data_cube: TemperatureProfileDataCube | None = None
     solvent_concentration_data_cube: SolventConcentrationDataCube | None = None
-    pre_column_pressure_data_cube: PreColumnPressureDataCube | None = field(
-        default=None, metadata={"json_name": "pre-column pressure data cube"}
-    )
-    post_column_pressure_data_cube: PostColumnPressureDataCube | None = field(
-        default=None, metadata={"json_name": "post-column pressure data cube"}
-    )
+    pre_column_pressure_data_cube: PreColumnPressureDataCube | None = None
+    post_column_pressure_data_cube: PostColumnPressureDataCube | None = None
     sample_pressure_data_cube: SamplePressureDataCube | None = None
     system_pressure_data_cube: SystemPressureDataCube | None = None
     excitation_wavelength_setting: TQuantityValueNm | None = None

@@ -961,9 +961,14 @@ class SchemaCodeGenerator:
                 module.classes.append(GeneratedClass(name=inline_class_name, code=code))
             return inline_class_name
 
-        # Enum/const
+        # Enum/const — generate a named Enum class so parsers can use members
         if "enum" in prop_schema:
             values = prop_schema["enum"]
+            if len(values) > 1:
+                enum_class_name = property_name_to_class_name(prop_name)
+                code = self._generate_enum(enum_class_name, prop_schema)
+                module.classes.append(GeneratedClass(name=enum_class_name, code=code))
+                return enum_class_name
             literals = ", ".join(_dquote(v) for v in values)
             return f"Literal[{literals}]"
         if "const" in prop_schema:
@@ -1092,7 +1097,7 @@ class SchemaCodeGenerator:
                         ]
                         return " | ".join(types)
 
-        # Pattern 2: tClass + enum constraint
+        # Pattern 2: tClass + enum constraint — generate a named Enum class
         class_ref = None
         enum_values = None
         for ref in refs:
@@ -1104,6 +1109,11 @@ class SchemaCodeGenerator:
                 enum_values = s["enum"]
 
         if class_ref and enum_values:
+            if len(enum_values) > 1:
+                enum_class_name = property_name_to_class_name(prop_name)
+                code = self._generate_enum(enum_class_name, {"enum": enum_values})
+                module.classes.append(GeneratedClass(name=enum_class_name, code=code))
+                return enum_class_name
             literals = ", ".join(_dquote(v) for v in enum_values)
             return f"Literal[{literals}]"
 

@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     NaN,
 )
@@ -111,7 +112,7 @@ def create_data(df: pd.DataFrame, file_path: str) -> Data:
             product_manufacturer=constants.PRODUCT_MANUFACTURER,
             brand_name=constants.BRAND_NAME,
             device_type=constants.DEVICE_TYPE,
-            container_type="tube",
+            container_type=ContainerType.tube,
         ),
         measurement_groups=map_rows(df, create_measurement_group),
     )

@@ -203,7 +203,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
-                device_system_document=DeviceSystemDocument(
+                device_system_document=DeviceSystemDocument(  # type: ignore[arg-type]
                     device_identifier=data.metadata.device_identifier,
                     model_number=data.metadata.model_number,
                     equipment_serial_number=data.metadata.equipment_serial_number,

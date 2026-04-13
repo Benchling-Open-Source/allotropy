@@ -9,6 +9,7 @@ import warnings
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -497,7 +498,7 @@ def create_metadata(device_identifier: str, file_path: str) -> Metadata:
         device_identifier=device_identifier,
         brand_name=BRAND_NAME,
         device_type=DEVICE_TYPE,
-        container_type="well plate",
+        container_type=ContainerType.well_plate,
         software_name=SOFTWARE_NAME,
         product_manufacturer=PRODUCT_MANUFACTURER,
         file_name=Path(file_path).name,
