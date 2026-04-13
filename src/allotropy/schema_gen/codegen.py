@@ -1854,7 +1854,13 @@ class SchemaCodeGenerator:
         quantity_ref: str,
         unit_ref: str,
     ) -> str:
-        """Import a TQuantityValue{Unit} thin subclass from the shared module."""
+        """Import a TQuantityValue{Unit} thin subclass from the shared module.
+
+        Imports directly from shared/definitions/quantity_values.py into
+        whichever module needs the type.  This avoids re-export routing
+        through core.py, which would make core.py's output depend on
+        which technique schemas were included in a given generation run.
+        """
         _, unit_def_name = parse_ref(unit_ref)
         unit_schema_url = unit_ref.split("#")[0]
         try:
@@ -1871,36 +1877,17 @@ class SchemaCodeGenerator:
 
         class_name = self._qv_manager.get_or_create(const_value)
 
-        # Find the core module so we can add a re-export import there.
-        core_schema_url, _ = parse_ref(quantity_ref)
-        core_module = self._modules.get(core_schema_url) if core_schema_url else None
-        target_module = core_module if core_module is not None else module
-
-        # Add import from shared quantity_values into the core module (with
-        # re-export so technique modules can import from core.py).
+        # Import directly from shared quantity_values into the consuming module
         if not any(
             imp.name == class_name and imp.module == _SHARED_QUANTITY_VALUES_MODULE
-            for imp in target_module.imports
+            for imp in module.imports
         ):
-            target_module.imports.append(
+            module.imports.append(
                 ImportEntry(
                     module=_SHARED_QUANTITY_VALUES_MODULE,
                     name=class_name,
-                    reexport=True,
                 )
             )
-            target_module.exported_names[class_name] = class_name
-
-        # Add import into the technique module from core (if different)
-        if target_module is not module and core_schema_url:
-            core_module_path = schema_url_to_module_path(core_schema_url)
-            if not any(
-                imp.name == class_name and imp.module == core_module_path
-                for imp in module.imports
-            ):
-                module.imports.append(
-                    ImportEntry(module=core_module_path, name=class_name)
-                )
 
         return class_name
 

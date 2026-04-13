@@ -15,7 +15,7 @@ hatch run lint
 hatch run lint:fmt
 
 # Generate models from schemas (pass all schemas sharing the same core version together)
-PYTHONPATH=src python -m allotropy.schema_gen.generate \
+hatch run scripts:generate-schemas \
   "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/cell-counting.schema" \
   "http://purl.allotrope.org/json-schemas/adm/absorbance/REC/2024/09/absorbance-cube-detector.schema" \
   ...
@@ -55,18 +55,17 @@ Schema URLs → fetch (fetcher.py) → merge BENCHLING embeds (generate.py)
 
 ### Running the Generator
 
-**Critical rule**: All schemas sharing the same core version (e.g., `REC/2024/09`) MUST be passed in a single invocation. Running them separately causes shared core modules (core.py, hierarchy.py, cube.py) to be overwritten, losing types from earlier runs.
+Generation is idempotent — each schema can be run independently or together. Shared modules (core.py, hierarchy.py) produce identical output regardless of which technique schema triggers their generation. Passing multiple schemas together is supported but not required.
 
 ```bash
-# Correct: all 2024/09 schemas together
-PYTHONPATH=src python -m allotropy.schema_gen.generate \
-  "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/cell-counting.schema" \
-  "http://purl.allotrope.org/json-schemas/adm/absorbance/REC/2024/09/absorbance-cube-detector.schema" \
-  "http://purl.allotrope.org/json-schemas/adm/pcr/REC/2024/09/qpcr.schema"
+# Single schema
+hatch run scripts:generate-schemas \
+  "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/cell-counting.schema"
 
-# Wrong: separate runs overwrite shared core.py
-PYTHONPATH=src python -m allotropy.schema_gen.generate "http://...cell-counting..."
-PYTHONPATH=src python -m allotropy.schema_gen.generate "http://...absorbance..."
+# Multiple schemas together (also works)
+hatch run scripts:generate-schemas \
+  "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/cell-counting.schema" \
+  "http://purl.allotrope.org/json-schemas/adm/pcr/REC/2024/09/qpcr.schema"
 ```
 
 ### Schema Types

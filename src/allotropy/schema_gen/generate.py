@@ -5,7 +5,7 @@ dataclass modules from Allotrope JSON schemas. Core types are defined
 once in shared modules; technique schemas import from them.
 
 Usage:
-    python -m allotropy.schema_gen.generate <schema_url>
+    hatch run scripts:generate-schemas <schema_url> [schema_url ...]
 """
 
 from __future__ import annotations
