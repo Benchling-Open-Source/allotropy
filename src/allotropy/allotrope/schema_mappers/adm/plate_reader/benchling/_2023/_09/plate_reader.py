@@ -25,6 +25,7 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    ContainerType as ModelContainerType,
     CustomInformationAggregateDocument,
     CustomInformationDocumentItem,
     DataSystemDocument,
@@ -47,6 +48,9 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    SampleRoleType as ModelSampleRoleType,
+    ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
+    TransmittedLightSetting as ModelTransmittedLightSetting,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
 )
@@ -266,7 +270,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=measurement_group.experiment_type,
-                    container_type="well plate",
+                    container_type=ModelContainerType.well_plate,
                     plate_well_count=TQuantityValueNumberSign(
                         value=measurement_group.plate_well_count
                     ),
@@ -335,7 +339,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless,
                 measurement.magnification_setting,
             ),
-            transmitted_light_setting=measurement.transmitted_light_setting.value
+            transmitted_light_setting=ModelTransmittedLightSetting(
+                measurement.transmitted_light_setting.value
+            )
             if measurement.transmitted_light_setting
             else None,
             auto_focus_setting=measurement.auto_focus_setting,
@@ -458,7 +464,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMm,
                 measurement.detector_distance_setting,
             ),
-            scan_position_setting__plate_reader_=measurement.scan_position_setting.value
+            scan_position_setting__plate_reader_=ModelScanPositionSettingPlateReader(
+                measurement.scan_position_setting.value
+            )
             if measurement.scan_position_setting
             else None,
             detector_gain_setting=measurement.detector_gain_setting,
@@ -518,7 +526,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMm,
                 measurement.detector_distance_setting,
             ),
-            scan_position_setting__plate_reader_=measurement.scan_position_setting.value
+            scan_position_setting__plate_reader_=ModelScanPositionSettingPlateReader(
+                measurement.scan_position_setting.value
+            )
             if measurement.scan_position_setting
             else None,
             detector_gain_setting=measurement.detector_gain_setting,
@@ -560,7 +570,7 @@ class Mapper(SchemaMapper[Data, Model]):
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
             batch_identifier=measurement.batch_identifier,
-            sample_role_type=measurement.sample_role_type.value
+            sample_role_type=ModelSampleRoleType(measurement.sample_role_type.value)
             if measurement.sample_role_type
             else None,
         )

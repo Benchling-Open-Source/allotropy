@@ -170,7 +170,7 @@ def get_data_cube(
         cube_structure=TDatacubeStructure(
             dimensions=[
                 TDatacubeComponent(
-                    field_component_datatype=structure_dim.type_.value,
+                    field_component_datatype=structure_dim.type_.value,  # type: ignore[arg-type]
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
@@ -178,7 +178,7 @@ def get_data_cube(
             ],
             measures=[
                 TDatacubeComponent(
-                    field_component_datatype=structure_dim.type_.value,
+                    field_component_datatype=structure_dim.type_.value,  # type: ignore[arg-type]
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )

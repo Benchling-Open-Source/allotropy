@@ -21,6 +21,7 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
 )
 from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
     BaselineCorrectedReporterDataCube,
+    ContainerType as ModelContainerType,
     DataProcessingDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -36,6 +37,7 @@ from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
     QpcrDocumentItem,
     ReporterDataCube,
     SampleDocument,
+    SampleRoleType as ModelSampleRoleType,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -257,7 +259,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 MeasurementAggregateDocument(
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
-                    container_type=metadata.container_type.value,
+                    container_type=ModelContainerType(metadata.container_type.value),
                     well_volume=TQuantityValueMicroL(
                         value=measurement_group.well_volume,
                     ),
@@ -289,7 +291,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 sample_role_type=(
                     None
                     if measurement.sample_role_type is None
-                    else measurement.sample_role_type.value
+                    else ModelSampleRoleType(measurement.sample_role_type.value)
                 ),
                 well_location_identifier=measurement.well_location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,

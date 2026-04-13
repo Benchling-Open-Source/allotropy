@@ -31,6 +31,7 @@ from allotropy.allotrope.models.adm.core.rec._2025._03.hierarchy import (
 from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     AbsorptionProfileDataCube,
     AbsorptionSpectrumDataCube,
+    ContainerType as ModelContainerType,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     FluorescenceEmissionProfileDataCube,
@@ -47,6 +48,8 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader impo
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    SampleRoleType as ModelSampleRoleType,
+    ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -276,7 +279,7 @@ class Mapper(SchemaMapper[Data, Model]):
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 experiment_type=measurement_group.experiment_type,
-                container_type=ContainerType.well_plate.value,
+                container_type=ModelContainerType.well_plate,
                 plate_well_count=TQuantityValueNumberSign(
                     value=measurement_group.plate_well_count
                 ),
@@ -448,7 +451,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
-                measurement.scan_position_setting.value
+                ModelScanPositionSettingPlateReader(
+                    measurement.scan_position_setting.value
+                )
                 if measurement.scan_position_setting
                 else None
             ),
@@ -535,7 +540,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
-                measurement.scan_position_setting.value
+                ModelScanPositionSettingPlateReader(
+                    measurement.scan_position_setting.value
+                )
                 if measurement.scan_position_setting
                 else None
             ),
@@ -726,7 +733,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
-                measurement.scan_position_setting.value
+                ModelScanPositionSettingPlateReader(
+                    measurement.scan_position_setting.value
+                )
                 if measurement.scan_position_setting
                 else None
             ),
@@ -813,7 +822,7 @@ class Mapper(SchemaMapper[Data, Model]):
             well_plate_identifier=measurement.well_plate_identifier,
             well_location_identifier=measurement.well_location_identifier,
             sample_role_type=(
-                measurement.sample_role_type.value
+                ModelSampleRoleType(measurement.sample_role_type.value)
                 if measurement.sample_role_type
                 else None
             ),
