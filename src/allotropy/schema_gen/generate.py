@@ -99,6 +99,8 @@ def generate_models(
 
         for url in other_urls:
             module = modules[url]
+            if not module.classes:
+                continue
             output_path = schema_url_to_model_file(url, output_dir)
             source = module.render(models_package)
             # Patch TQuantityValue.value to use JsonFloat (float | InvalidJsonFloat)
