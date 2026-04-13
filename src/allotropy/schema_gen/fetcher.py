@@ -6,6 +6,7 @@ and downloads them all to a local cache directory.
 
 from __future__ import annotations
 
+from collections import deque
 import json
 from pathlib import Path
 from typing import Any
@@ -91,21 +92,7 @@ class SchemaFetcher:
 
     def _walk_refs(self, obj: Any, refs: set[str]) -> None:
         """Recursively walk a schema object and collect external $ref URLs."""
-        if isinstance(obj, dict):
-            if "$ref" in obj:
-                ref = obj["$ref"]
-                if not ref.startswith("#"):
-                    # External reference - extract the schema URL (before #)
-                    schema_url = ref.split("#")[0]
-                    try:
-                        refs.add(normalize_schema_url(schema_url))
-                    except ValueError:
-                        pass
-            for value in obj.values():
-                self._walk_refs(value, refs)
-        elif isinstance(obj, list):
-            for item in obj:
-                self._walk_refs(item, refs)
+        _walk_refs_for_deps(obj, refs)
 
     def _to_canonical(self, url: str) -> str:
         """Convert any URL format to canonical Allotrope URL."""
@@ -136,11 +123,11 @@ def build_dependency_order(schemas: dict[str, dict[str, Any]]) -> list[str]:
     # Topological sort (Kahn's algorithm)
     in_degree = {url: len(dep_set) for url, dep_set in deps.items()}
 
-    queue = [url for url, deg in in_degree.items() if deg == 0]
+    queue: deque[str] = deque(url for url, deg in in_degree.items() if deg == 0)
     result: list[str] = []
 
     while queue:
-        url = queue.pop(0)
+        url = queue.popleft()
         result.append(url)
         # For each schema that depends on `url`, decrement its in-degree
         for other_url, dep_set in deps.items():

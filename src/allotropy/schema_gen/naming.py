@@ -78,9 +78,11 @@ def normalize_schema_url(url: str) -> str:
         # Already canonical, strip .json if present
         return url.removesuffix(".json")
 
-    if "gitlab.com" in url and "json-schemas/" in url:
-        # Extract the path after json-schemas/
-        match = re.search(r"json-schemas/(.+?)(?:\.json)?$", url)
+    if "json-schemas/" in url:
+        # Only accept URLs hosted on gitlab.com (not substrings like evil.com/gitlab.com)
+        match = re.match(
+            r"https?://gitlab\.com/.+?/json-schemas/(.+?)(?:\.json)?$", url
+        )
         if match:
             return ALLOTROPE_URL_PREFIX + match.group(1)
 
@@ -93,6 +95,9 @@ def _decode_json_pointer(pointer: str) -> str:
 
     ~1 → /
     ~0 → ~
+
+    Order matters: ~1 must be decoded before ~0, otherwise "~01" would
+    incorrectly become "~1" (via ~0→~) then "/" (via ~1→/) instead of "~1".
     """
     return pointer.replace("~1", "/").replace("~0", "~")
 
@@ -196,13 +201,6 @@ def property_name_to_python(name: str) -> str:
         "minInclusive" → "min_inclusive"
         "fieldComponentDatatype" → "field_component_datatype"
     """
-    if name == "@index":
-        return "field_index"
-    if name == "@type":
-        return "field_type"
-    if name == "@id":
-        return "field_id"
-
     # $- and @-prefixed properties get "field_" prefix (datamodel-codegen convention)
     special_prefix = name.startswith("@") or name.startswith("$")
 
@@ -292,8 +290,10 @@ def unit_symbol_to_class_name(symbol: str) -> str:
     cleaned = cleaned.replace("·", "Dot")
     cleaned = cleaned.replace("°", "Deg")
     cleaned = cleaned.replace("θ", "Theta")
+    # Both Unicode codepoints for micro: U+03BC GREEK SMALL LETTER MU (μ)
+    # and U+00B5 MICRO SIGN (µ). Schema data uses both interchangeably.
     cleaned = cleaned.replace("μ", "Micro")
-    cleaned = cleaned.replace("µ", "Micro")  # U+00B5 MICRO SIGN
+    cleaned = cleaned.replace("µ", "Micro")
     cleaned = cleaned.replace("\u2212", "")  # MINUS SIGN (U+2212)
     cleaned = cleaned.replace(".", "Dot")
     cleaned = cleaned.replace(" ", "")

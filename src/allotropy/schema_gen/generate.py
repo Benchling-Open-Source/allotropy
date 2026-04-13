@@ -16,7 +16,7 @@ import subprocess
 import sys
 from typing import Any
 
-from allotropy.schema_gen.codegen import SchemaCodeGenerator
+from allotropy.schema_gen.codegen import _dquote, SchemaCodeGenerator
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
 from allotropy.schema_gen.naming import (
     DEFAULT_MODEL_OUTPUT_DIR,
@@ -311,21 +311,13 @@ def _extract_unit_const(schema: dict[str, Any]) -> str | None:
     return const
 
 
-def _dquote(s: str) -> str:
-    """Return a double-quoted Python string literal."""
-    if '"' not in s:
-        return f'"{s}"'
-    # Fall back to single quotes if the string contains double quotes
-    return repr(s)
-
-
 # ---------------------------------------------------------------------------
 # File writing and formatting
 # ---------------------------------------------------------------------------
 
 
 def _write_module(path: Path, source: str) -> None:
-    """Write a Python module file, creating directories and __init__.py files."""
+    """Write a Python module file, creating parent directories as needed."""
     _ensure_package_dirs(path.parent)
     path.write_text(source, encoding="utf-8")
 
