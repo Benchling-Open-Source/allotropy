@@ -1478,7 +1478,13 @@ class SchemaCodeGenerator:
                     )
                     for uref in one_of_unit_refs
                 ]
-                return " | ".join(types)
+                seen: set[str] = set()
+                unique_types: list[str] = []
+                for t in types:
+                    if t not in seen:
+                        seen.add(t)
+                        unique_types.append(t)
+                return " | ".join(unique_types)
         return None
 
     def _try_class_enum_pattern(
@@ -1559,6 +1565,13 @@ class SchemaCodeGenerator:
             base_classes: list[str] = []
             for ref in base_refs:
                 ref_type = self._resolve_ref_type(module, schema_url, ref)
+                # When the ref target's class name matches the inline class
+                # name (e.g., both property_name_to_class_name("measurement
+                # document") and def_name_to_class_name("measurementDocument")
+                # produce "MeasurementDocument"), we can't use it as a base
+                # class — that would be self-referencing.  Instead, inline
+                # the ref's properties into the merged set.  Note: this
+                # coupling between the two naming functions is intentional.
                 if ref_type == inline_class_name:
                     ref_base_url = ref.split("#")[0]
                     ref_schema = self._merger.resolve_ref_to_schema(schema_url, ref)
@@ -1901,64 +1914,53 @@ class SchemaCodeGenerator:
         schema_url: str,
         schema: dict[str, Any],
     ) -> None:
-        """Generate the top-level ADM model module."""
+        """Generate the top-level ADM model module.
+
+        Flattens the root-level allOf into a synthetic schema dict and
+        delegates to ``_generate_dataclass`` so field generation logic
+        is not duplicated.
+        """
         all_of = schema.get("allOf", [])
-        required = set(schema.get("required", []))
 
         all_props: dict[str, Any] = {}
-        all_required: set[str] = set(required)
-        manifest_ref = None
+        all_required: set[str] = set(schema.get("required", []))
+        has_manifest = False
 
         for item in all_of:
             if "$ref" in item:
                 _, def_name = parse_ref(item["$ref"])
                 if def_name == "asm":
-                    manifest_ref = item["$ref"]
+                    has_manifest = True
             if "properties" in item:
                 all_props.update(item["properties"])
             if "required" in item:
                 all_required.update(item["required"])
 
-        fields_list: list[FieldDef] = []
-        deps: set[str] = set()
+        has_manifest = has_manifest or "$asm.manifest" in all_required
 
-        # Add manifest field if present
-        if manifest_ref or "$asm.manifest" in all_required:
-            fields_list.append(
-                FieldDef(
-                    python_name=property_name_to_python("$asm.manifest"),
-                    type_str="str",
-                    json_name="$asm.manifest",
-                    is_required=True,
-                )
-            )
+        # Build a synthetic schema that _generate_dataclass can consume
+        synthetic: dict[str, Any] = {
+            "type": "object",
+            "properties": all_props,
+        }
+        if all_required:
+            synthetic["required"] = list(all_required)
 
-        for prop_name, prop_schema in all_props.items():
-            if any(prop_name.startswith(p) for p in ASM_METADATA_PREFIXES):
-                continue
-            python_name = property_name_to_python(prop_name)
-            type_str = self._resolve_property_type(
-                module, schema_url, prop_name, prop_schema
-            )
-            if type_str is None:
-                continue
-            is_required = prop_name in all_required
-            fields_list.append(
-                FieldDef(
-                    python_name=python_name,
-                    type_str=type_str,
-                    json_name=prop_name,
-                    is_required=is_required,
-                )
-            )
-            deps |= _extract_type_references(type_str)
-
-        model_cls = GeneratedClass(
-            name="Model",
-            fields=fields_list,
-            frozen=False,
-            dependencies=deps,
+        model_cls = self._generate_dataclass(
+            module, schema_url, "Model", synthetic, frozen=False
         )
+
+        # Prepend manifest field — it's always first and always required.
+        # _generate_dataclass always sets fields (never None).
+        if has_manifest and model_cls.fields is not None:
+            manifest_field = FieldDef(
+                python_name=property_name_to_python("$asm.manifest"),
+                type_str="str",
+                json_name="$asm.manifest",
+                is_required=True,
+            )
+            model_cls.fields.insert(0, manifest_field)
+
         module.classes.append(model_cls)
         module.exported_names["Model"] = "Model"
 

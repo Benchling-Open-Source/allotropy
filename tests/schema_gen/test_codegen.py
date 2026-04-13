@@ -1225,3 +1225,250 @@ class TestSchemaMerger:
             merger.merge_variant_properties(
                 url, [{"$ref": f"{url}#/$defs/outer"}], merged
             )
+
+
+# ---------------------------------------------------------------------------
+# _generate_adm_module — top-level Model class generation
+# ---------------------------------------------------------------------------
+
+
+class TestGenerateAdmModule:
+    """Tests for the top-level ADM Model class generation path."""
+
+    def _make_adm_schema(
+        self,
+        *,
+        properties: dict[str, Any],
+        required: list[str] | None = None,
+        include_manifest: bool = True,
+    ) -> dict[str, Any]:
+        """Build a minimal ADM-style schema with allOf structure."""
+        items: list[dict[str, Any]] = []
+        if include_manifest:
+            items.append({"$ref": "#/$defs/asm"})
+        if properties:
+            item: dict[str, Any] = {"properties": properties}
+            if required:
+                item["required"] = required
+            items.append(item)
+        schema: dict[str, Any] = {"allOf": items}
+        if include_manifest:
+            schema["required"] = ["$asm.manifest"]
+        return schema
+
+    def test_generates_model_with_manifest(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schema = self._make_adm_schema(
+            properties={"name": {"type": "string"}},
+            required=["name"],
+        )
+        schemas = {schema_url: schema}
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "class Model:" in source
+        assert "field_asm_manifest: str" in source
+        assert '"$asm.manifest"' in source
+
+    def test_model_is_not_frozen(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schema = self._make_adm_schema(
+            properties={"count": {"type": "integer"}},
+        )
+        schemas = {schema_url: schema}
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "@dataclass(kw_only=True)" in source
+        assert "frozen" not in source
+
+    def test_flattens_allof_properties(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "allOf": [
+                    {
+                        "properties": {"field_a": {"type": "string"}},
+                        "required": ["field_a"],
+                    },
+                    {
+                        "properties": {"field_b": {"type": "integer"}},
+                    },
+                ],
+                "required": ["$asm.manifest"],
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "field_a: str" in source
+        assert "field_b: int" in source
+
+    def test_model_without_manifest(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schema = self._make_adm_schema(
+            properties={"value": {"type": "string"}},
+            include_manifest=False,
+        )
+        schemas = {schema_url: schema}
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "class Model:" in source
+        assert "field_asm_manifest" not in source
+
+    def test_manifest_field_is_first(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schema = self._make_adm_schema(
+            properties={"aaa_field": {"type": "string"}},
+            required=["aaa_field"],
+        )
+        schemas = {schema_url: schema}
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        lines = source.split("\n")
+        field_lines = [
+            line.strip()
+            for line in lines
+            if ": " in line and not line.strip().startswith(("class", "@", "#", "from"))
+        ]
+        assert len(field_lines) >= 2
+        assert "field_asm_manifest" in field_lines[0]
+
+
+# ---------------------------------------------------------------------------
+# _resolve_all_of_merged_class — complex allOf merging paths
+# ---------------------------------------------------------------------------
+
+
+class TestResolveAllOfMergedClass:
+    """Tests for the allOf merged-class fallback (patterns 3 and 4)."""
+
+    def test_same_name_ref_inlines_properties(self) -> None:
+        """When ref target has same class name as the property, its fields are inlined."""
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    # This def produces class name "MeasurementDocument" via
+                    # def_name_to_class_name — same as property_name_to_class_name
+                    # would produce for the property "measurement document".
+                    "measurementDocument": {
+                        "type": "object",
+                        "properties": {
+                            "base_field": {"type": "string"},
+                        },
+                        "required": ["base_field"],
+                    },
+                    "myDoc": {
+                        "type": "object",
+                        "properties": {
+                            "measurement document": {
+                                "allOf": [
+                                    {"$ref": "#/$defs/measurementDocument"},
+                                    {
+                                        "properties": {
+                                            "extra_field": {"type": "integer"},
+                                        },
+                                    },
+                                ]
+                            },
+                        },
+                    },
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        # The inline class should have both base and extra fields
+        assert "base_field" in source
+        assert "extra_field" in source
+        # Should NOT produce "class MeasurementDocument(MeasurementDocument):"
+        assert "(MeasurementDocument):" not in source
+
+    def test_multiple_base_refs(self) -> None:
+        """allOf with multiple $refs produces a class with multiple bases."""
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "baseA": {
+                        "type": "object",
+                        "properties": {"a": {"type": "string"}},
+                    },
+                    "baseB": {
+                        "type": "object",
+                        "properties": {"b": {"type": "string"}},
+                    },
+                    "combined": {
+                        "type": "object",
+                        "properties": {
+                            "my prop": {
+                                "allOf": [
+                                    {"$ref": "#/$defs/baseA"},
+                                    {"$ref": "#/$defs/baseB"},
+                                    {
+                                        "properties": {
+                                            "extra": {"type": "integer"},
+                                        },
+                                    },
+                                ]
+                            },
+                        },
+                    },
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "BaseA" in source
+        assert "BaseB" in source
+        assert "extra: int" in source
+
+    def test_nested_anyof_within_allof(self) -> None:
+        """allOf items containing anyOf have their variant properties merged."""
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "variantA": {
+                        "type": "object",
+                        "properties": {"variant_field_a": {"type": "string"}},
+                    },
+                    "variantB": {
+                        "type": "object",
+                        "properties": {"variant_field_b": {"type": "integer"}},
+                    },
+                    "parentDoc": {
+                        "type": "object",
+                        "properties": {
+                            "my document": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "shared": {"type": "string"},
+                                        },
+                                    },
+                                    {
+                                        "anyOf": [
+                                            {"$ref": "#/$defs/variantA"},
+                                            {"$ref": "#/$defs/variantB"},
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        # All properties (shared + both variant fields) should be present
+        assert "shared" in source
+        assert "variant_field_a" in source
+        assert "variant_field_b" in source
