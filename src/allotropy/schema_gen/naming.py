@@ -345,11 +345,13 @@ def default_json_name(python_name: str) -> str:
     return python_name.replace("_", " ")
 
 
-def quantity_value_class_name(unit_symbol: str) -> str:
+def quantity_value_class_name(unit_symbol: str, *, nullable: bool = False) -> str:
     """Generate a TQuantityValue{Unit} class name for a unit-constrained quantity value.
 
     Examples:
         "mAU" → "TQuantityValueMAU"
         "nm" → "TQuantityValueNm"
+        "g/L" (nullable=True) → "TNullableQuantityValueGPerL"
     """
-    return "TQuantityValue" + unit_symbol_to_class_name(unit_symbol)
+    prefix = "TNullableQuantityValue" if nullable else "TQuantityValue"
+    return prefix + unit_symbol_to_class_name(unit_symbol)

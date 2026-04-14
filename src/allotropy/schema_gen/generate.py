@@ -106,9 +106,16 @@ def generate_models(
 
     # Generate all other modules via the custom code generator
     if other_urls:
-        existing_qv_classes = _read_existing_quantity_value_classes()
+        (
+            existing_qv_classes,
+            existing_unit_to_class,
+        ) = _read_existing_quantity_value_classes()
         generator = SchemaCodeGenerator(
-            all_schemas, order, models_package, existing_qv_classes
+            all_schemas,
+            order,
+            models_package,
+            existing_qv_classes,
+            existing_unit_to_class,
         )
         modules = generator.generate_all()
 
@@ -322,15 +329,34 @@ def _is_units_schema(url: str) -> bool:
 # Shared quantity_values.py management
 # ---------------------------------------------------------------------------
 
-_QV_CLASS_RE = re.compile(r"^class (TQuantityValue\w+)\(", re.MULTILINE)
+_QV_CLASS_RE = re.compile(r"^class (T(?:Nullable)?QuantityValue\w+)\(", re.MULTILINE)
+_QV_UNIT_RE = re.compile(
+    r"^class (T(?:Nullable)?QuantityValue\w+)\([^)]+\):\s*\n"
+    r"\s+unit:\s+str\s*=\s*\"([^\"]+)\"",
+    re.MULTILINE,
+)
 
 
-def _read_existing_quantity_value_classes() -> set[str]:
-    """Read class names already defined in quantity_values.py."""
+def _read_existing_quantity_value_classes() -> tuple[
+    set[str], dict[tuple[str, bool], str]
+]:
+    """Read class names and unit values already defined in quantity_values.py.
+
+    Returns:
+        (class_names, unit_to_class): Set of existing class names and a mapping
+        from ``(unit_string, nullable)`` to class name.  The *nullable* key
+        distinguishes ``TQuantityValueUnitless`` from ``TNullableQuantityValueUnitless``
+        for the same unit string.
+    """
     if not _QUANTITY_VALUES_FILE.exists():
-        return set()
+        return set(), {}
     content = _QUANTITY_VALUES_FILE.read_text(encoding="utf-8")
-    return set(_QV_CLASS_RE.findall(content))
+    class_names = set(_QV_CLASS_RE.findall(content))
+    unit_to_class: dict[tuple[str, bool], str] = {}
+    for name, unit in _QV_UNIT_RE.findall(content):
+        nullable = name.startswith("TNullableQuantityValue")
+        unit_to_class[(unit, nullable)] = name
+    return class_names, unit_to_class
 
 
 def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
@@ -344,12 +370,17 @@ def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
     lines: list[str] = []
     for class_name, unit_str in sorted(new_classes):
         quoted = _dquote(unit_str)
+        base = (
+            "TNullableQuantityValue"
+            if class_name.startswith("TNullableQuantityValue")
+            else "TQuantityValue"
+        )
         lines.extend(
             [
                 "",
                 "",
                 "@dataclass(frozen=True, kw_only=True)",
-                f"class {class_name}(TQuantityValue):",
+                f"class {class_name}({base}):",
                 f"    unit: str = {quoted}",
             ]
         )

@@ -223,7 +223,14 @@
                                     "calibration result": {
                                       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001839",
                                       "$asm.pattern": "quantity datum",
-                                      "$ref": "#/$custom/tQuantityValueUnitless"
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                        }
+                                      ]
                                     }
                                   }
                                 }
@@ -346,7 +353,14 @@
                       "plate well count": {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002231",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNumber"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                          }
+                        ]
                       },
                       "measurement document": {
                         "type": "array",
@@ -519,12 +533,26 @@
                                       "sample volume setting": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueMicroliter"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Microliter"
+                                          }
+                                        ]
                                       },
                                       "dilution factor setting": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002498",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueUnitless"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                          }
+                                        ]
                                       },
                                       "detector gain setting": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002250",
@@ -535,7 +563,14 @@
                                       "minimum assay bead count setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueNumber"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                                          }
+                                        ]
                                       }
                                     }
                                   },
@@ -546,7 +581,14 @@
                             "assay bead count": {
                               "$asm.property-class": "TODO",
                               "$asm.pattern": "quantity datum",
-                              "$ref": "#/$custom/tQuantityValueNumber"
+                              "allOf": [
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                                }
+                              ]
                             },
                             "analyte aggregate document": {
                               "type": "object",
@@ -594,12 +636,26 @@
                                       "assay bead count": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueNumber"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                                          }
+                                        ]
                                       },
                                       "fluorescence": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueRelativeFluorescenceUnit"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/RelativeFluorescenceUnit"
+                                          }
+                                        ]
                                       }
                                     }
                                   }

@@ -89,7 +89,14 @@
               "calculated datum": {
                 "$asm.property-class": "TODO",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueUnitless"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                  }
+                ]
               }
             }
           }
@@ -314,12 +321,26 @@
                       "plate well count": {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002231",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNumber"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                          }
+                        ]
                       },
                       "well volume": {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002232",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueMicroliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Microliter"
+                          }
+                        ]
                       },
                       "measurement document": {
                         "type": "array",
@@ -398,7 +419,14 @@
                                 "mass concentration": {
                                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                                   "$asm.pattern": "quantity datum",
-                                  "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/PicogramPerMilliliter"
+                                    }
+                                  ]
                                 }
                               }
                             },
@@ -448,37 +476,86 @@
                                       "total cycle number setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueNumber"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                                          }
+                                        ]
                                       },
                                       "denaturing temperature setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+                                          }
+                                        ]
                                       },
                                       "denaturing time setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueSecondTime"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/SecondTime"
+                                          }
+                                        ]
                                       },
                                       "annealing temperature setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+                                          }
+                                        ]
                                       },
                                       "annealing time setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueSecondTime"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/SecondTime"
+                                          }
+                                        ]
                                       },
                                       "extension temperature setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+                                          }
+                                        ]
                                       },
                                       "extension time setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueSecondTime"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/SecondTime"
+                                          }
+                                        ]
                                       },
                                       "PCR detection chemistry": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002233",
@@ -552,7 +629,14 @@
                                           "cycle threshold value setting": {
                                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002236",
                                             "$asm.pattern": "quantity datum",
-                                            "$ref": "#/$custom/tQuantityValueUnitless"
+                                            "allOf": [
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                              },
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                              }
+                                            ]
                                           },
                                           "automatic baseline determination enabled setting": {
                                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002237",
@@ -563,12 +647,26 @@
                                           "baseline determination start cycle setting": {
                                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002238",
                                             "$asm.pattern": "quantity datum",
-                                            "$ref": "#/$custom/tQuantityValueNumber"
+                                            "allOf": [
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                              },
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                                              }
+                                            ]
                                           },
                                           "baseline determination end cycle setting": {
                                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002239",
                                             "$asm.pattern": "quantity datum",
-                                            "$ref": "#/$custom/tQuantityValueNumber"
+                                            "allOf": [
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                              },
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Number"
+                                              }
+                                            ]
                                           },
                                           "genotyping determination method": {
                                             "$asm.property-class": "TODO",
@@ -579,19 +677,40 @@
                                           "genotyping determination method setting": {
                                             "$asm.property-class": "TODO",
                                             "$asm.pattern": "quantity datum",
-                                            "$ref": "#/$custom/tQuantityValueUnitless"
+                                            "allOf": [
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                              },
+                                              {
+                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                              }
+                                            ]
                                           }
                                         }
                                       },
                                       "cycle threshold result": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002246",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tNullableQuantityValueUnitless"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tNullableQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                          }
+                                        ]
                                       },
                                       "normalized reporter result": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002247",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueUnitless"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                          }
+                                        ]
                                       },
                                       "normalized reporter data cube": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002309",
@@ -611,7 +730,14 @@
                                       "baseline corrected reporter result": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002248",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueUnitless"
+                                        "allOf": [
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                          },
+                                          {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Unitless"
+                                          }
+                                        ]
                                       },
                                       "baseline corrected reporter data cube": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002310",

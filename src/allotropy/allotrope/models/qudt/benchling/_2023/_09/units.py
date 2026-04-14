@@ -11,12 +11,132 @@ class HasUnit:
 
 
 @dataclass(frozen=True, kw_only=True)
+class NumberSign(HasUnit):
+    unit: str = "#"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NumPerMicroL(HasUnit):
+    unit: str = "#/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Unitless(HasUnit):
+    unit: str = "(unitless)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RFU(HasUnit):
+    unit: str = "RFU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RLU(HasUnit):
+    unit: str = "RLU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Cm(HasUnit):
+    unit: str = "cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CmSqPerg(HasUnit):
+    unit: str = "cm^2/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegC(HasUnit):
+    unit: str = "degC"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GPerL(HasUnit):
+    unit: str = "g/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KDa(HasUnit):
+    unit: str = "kDa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MAU(HasUnit):
+    unit: str = "mAU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MgPerL(HasUnit):
+    unit: str = "mg/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MgPermL(HasUnit):
+    unit: str = "mg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Mm(HasUnit):
+    unit: str = "mm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NgPermL(HasUnit):
+    unit: str = "ng/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NgPerMicroL(HasUnit):
+    unit: str = "ng/µL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Nm(HasUnit):
+    unit: str = "nm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PgPermL(HasUnit):
+    unit: str = "pg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Ppb(HasUnit):
+    unit: str = "ppb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Ppm(HasUnit):
+    unit: str = "ppm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class S(HasUnit):
+    unit: str = "s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class UgPermL(HasUnit):
+    unit: str = "ug/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class UgPerMicroL(HasUnit):
+    unit: str = "ug/µL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroL(HasUnit):
+    unit: str = "μL"
+
+
+@dataclass(frozen=True, kw_only=True)
 class InchQuote(HasUnit):
     unit: str = '"'
 
 
 @dataclass(frozen=True, kw_only=True)
-class NumberSign(HasUnit):
+class NumberSign2(HasUnit):
     unit: str = "#"
 
 
@@ -41,7 +161,7 @@ class KSqmPerW(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Unitless(HasUnit):
+class Unitless2(HasUnit):
     unit: str = "(unitless)"
 
 
@@ -286,12 +406,12 @@ class C(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Cm(HasUnit):
+class Cm2(HasUnit):
     unit: str = "C m"
 
 
 @dataclass(frozen=True, kw_only=True)
-class Cm2(HasUnit):
+class Cm22(HasUnit):
     unit: str = "C m^-2"
 
 
@@ -741,7 +861,7 @@ class N(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Nm(HasUnit):
+class Nm2(HasUnit):
     unit: str = "N m"
 
 
@@ -831,7 +951,7 @@ class R(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class RFU(HasUnit):
+class RFU2(HasUnit):
     unit: str = "RFU"
 
 
@@ -841,7 +961,7 @@ class RIU(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class RLU(HasUnit):
+class RLU2(HasUnit):
     unit: str = "RLU"
 
 
@@ -851,7 +971,7 @@ class RT(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class S(HasUnit):
+class S2(HasUnit):
     unit: str = "S"
 
 
@@ -1341,7 +1461,7 @@ class DBm(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class DegC(HasUnit):
+class DegC2(HasUnit):
     unit: str = "degC"
 
 
@@ -1696,7 +1816,7 @@ class GDegC(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class GPerL(HasUnit):
+class GPerL2(HasUnit):
     unit: str = "g/L"
 
 
@@ -2371,7 +2491,7 @@ class MA(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class MAU(HasUnit):
+class MAU2(HasUnit):
     unit: str = "mAU"
 
 
@@ -2621,7 +2741,7 @@ class Mg(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class MgPerL(HasUnit):
+class MgPerL2(HasUnit):
     unit: str = "mg/L"
 
 
@@ -2646,7 +2766,7 @@ class MgPerkg(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class MgPermL(HasUnit):
+class MgPermL2(HasUnit):
     unit: str = "mg/mL"
 
 
@@ -2746,7 +2866,7 @@ class Min1(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Mm(HasUnit):
+class Mm2(HasUnit):
     unit: str = "mm"
 
 
@@ -2911,7 +3031,7 @@ class NgPerfL(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class NgPermL(HasUnit):
+class NgPermL2(HasUnit):
     unit: str = "ng/mL"
 
 
@@ -2931,12 +3051,12 @@ class NgPerpL(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class NgPerMicroL(HasUnit):
+class NgPerMicroL2(HasUnit):
     unit: str = "ng/μL"
 
 
 @dataclass(frozen=True, kw_only=True)
-class Nm2(HasUnit):
+class Nm3(HasUnit):
     unit: str = "nm"
 
 
@@ -3091,7 +3211,7 @@ class PgPerfL(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class PgPermL(HasUnit):
+class PgPermL2(HasUnit):
     unit: str = "pg/mL"
 
 
@@ -3166,12 +3286,12 @@ class Pnt(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Ppb(HasUnit):
+class Ppb2(HasUnit):
     unit: str = "ppb"
 
 
 @dataclass(frozen=True, kw_only=True)
-class Ppm(HasUnit):
+class Ppm2(HasUnit):
     unit: str = "ppm"
 
 
@@ -3256,7 +3376,7 @@ class RevPers(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class S2(HasUnit):
+class S3(HasUnit):
     unit: str = "s"
 
 
@@ -3476,7 +3596,7 @@ class U2(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Unitless2(HasUnit):
+class Unitless3(HasUnit):
     unit: str = "unitless"
 
 
@@ -3541,7 +3661,7 @@ class DegPers(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class DegC2(HasUnit):
+class DegC3(HasUnit):
     unit: str = "°C"
 
 
@@ -3701,7 +3821,7 @@ class R3(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class MicroL(HasUnit):
+class MicroL2(HasUnit):
     unit: str = "μL"
 
 

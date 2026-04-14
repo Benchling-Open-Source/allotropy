@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Literal
+from typing import Literal
 
 from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
     TDateTimeValue,
@@ -14,6 +14,14 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
 from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValueNumPerMicroL,
+    TQuantityValueS,
+    TQuantityValueUnitless,
 )
 
 
@@ -42,10 +50,10 @@ class DataProcessingDocument:
     reference_dna_description: TStringValue | None = field(
         default=None, metadata={"json_name": "reference DNA description"}
     )
-    reference_dna_copy_number_setting: Any | None = field(
+    reference_dna_copy_number_setting: TQuantityValueNumberSign | None = field(
         default=None, metadata={"json_name": "reference DNA copy number setting"}
     )
-    fluorescence_intensity_threshold_setting: Any | None = None
+    fluorescence_intensity_threshold_setting: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -77,13 +85,13 @@ class DeviceControlDocumentItem:
     device_identifier: TStringValue | None = None
     detection_type: TStringValue | None = None
     measurement_method_identifier: TStringValue | None = None
-    total_cycle_number_setting: Any | None = None
-    denaturing_temperature_setting: Any | None = None
-    denaturing_time_setting: Any | None = None
-    annealing_temperature_setting: Any | None = None
-    annealing_time_setting: Any | None = None
-    extension_temperature_setting: Any | None = None
-    extension_time_setting: Any | None = None
+    total_cycle_number_setting: TQuantityValueNumberSign | None = None
+    denaturing_temperature_setting: TQuantityValueDegC | None = None
+    denaturing_time_setting: TQuantityValueS | None = None
+    annealing_temperature_setting: TQuantityValueDegC | None = None
+    annealing_time_setting: TQuantityValueS | None = None
+    extension_temperature_setting: TQuantityValueDegC | None = None
+    extension_time_setting: TQuantityValueS | None = None
     pcr_detection_chemistry: TStringValue | None = field(
         default=None, metadata={"json_name": "PCR detection chemistry"}
     )
@@ -139,11 +147,11 @@ class SampleDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem:
-    number_concentration: Any
-    positive_partition_count: Any
+    number_concentration: TQuantityValueNumPerMicroL
+    positive_partition_count: TQuantityValueNumberSign
     data_processing_document: DataProcessingDocument | None = None
-    negative_partition_count: Any | None = None
-    confidence_interval__95_: Any | None = field(
+    negative_partition_count: TQuantityValueNumberSign | None = None
+    confidence_interval__95_: TQuantityValueNumberSign | None = field(
         default=None, metadata={"json_name": "confidence interval (95%)"}
     )
 
@@ -187,7 +195,7 @@ class MeasurementDocumentItem:
     )
     sample_document: SampleDocument
     device_control_aggregate_document: DeviceControlAggregateDocument
-    total_partition_count: Any
+    total_partition_count: TQuantityValueNumberSign
     processed_data_aggregate_document: ProcessedDataAggregateDocument
     error_aggregate_document: ErrorAggregateDocument | None = None
     reporter_dye_data_cube: ReporterDyeDataCube | None = None
@@ -201,13 +209,13 @@ class TCalculatedDataAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
-    plate_well_count: Any
+    plate_well_count: TQuantityValueNumberSign
     measurement_document: list[MeasurementDocumentItem]
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_type: Literal["dPCR experiment"] | None = None
     container_type: ContainerType | None = None
-    well_volume: Any | None = None
+    well_volume: TQuantityValueMicroL | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
 
 

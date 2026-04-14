@@ -12,6 +12,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TUnit as TUnit,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TNullableQuantityValueGPerL as TNullableQuantityValueGPerL,
+    TNullableQuantityValueMmolPerL as TNullableQuantityValueMmolPerL,
+    TNullableQuantityValueUnitless as TNullableQuantityValueUnitless,
+    TNullableQuantityValueUPerL as TNullableQuantityValueUPerL,
     TQuantityValueCell as TQuantityValueCell,
     TQuantityValueCm as TQuantityValueCm,
     TQuantityValueCmSqPerg as TQuantityValueCmSqPerg,

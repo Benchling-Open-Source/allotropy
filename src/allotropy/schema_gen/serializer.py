@@ -132,11 +132,20 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
     if origin is dict:
         return value
 
-    # Handle Optional (X | None) — unwrap to the non-None type
+    # Handle Union types (X | None, X | Y | None, etc.)
     if _is_union(origin, field_type):
         non_none_types = [a for a in args if a is not type(None)]
-        if non_none_types:
+        if len(non_none_types) == 1:
             return _structure_value(value, non_none_types[0], parent_cls)
+        # Multiple variant types: try each, preferring those whose shape matches
+        for candidate in non_none_types:
+            if not _value_matches_type_shape(value, candidate):
+                continue
+            try:
+                return _structure_value(value, candidate, parent_cls)
+            except (TypeError, KeyError, ValueError):
+                continue
+        return value
 
     # Handle Enum types
     if isinstance(field_type, type) and issubclass(field_type, Enum):
@@ -147,6 +156,18 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
         return from_dict(value, field_type)
 
     return value
+
+
+def _value_matches_type_shape(value: Any, field_type: Any) -> bool:
+    """Check if a value's shape is compatible with a candidate union variant type."""
+    origin = get_origin(field_type)
+    if origin is list:
+        return isinstance(value, list)
+    if is_dataclass(field_type) and isinstance(field_type, type):
+        return isinstance(value, dict)
+    if isinstance(field_type, type) and issubclass(field_type, Enum):
+        return isinstance(value, str | int)
+    return True
 
 
 def _is_union(origin: Any, _field_type: Any) -> bool:
@@ -160,18 +181,30 @@ def _is_union(origin: Any, _field_type: Any) -> bool:
 def _resolve_string_annotation(annotation: str, cls: type) -> Any | None:
     """Resolve a string type annotation to an actual type.
 
-    Uses the module where the class is defined to look up the name.
+    Handles simple names (``SomeClass``), generic wrappers (``list[X]``),
+    and union syntax (``A | B | None``).  Uses the module where *cls* is
+    defined to look up names.
     """
     import sys
 
-    # Strip Optional wrapper patterns like "X | None"
     annotation = annotation.strip()
-    if annotation.endswith("| None"):
-        inner = annotation[: -len("| None")].strip()
-        resolved = _resolve_string_annotation(inner, cls)
-        if resolved is not None:
-            return resolved | None
-        return None
+
+    # Handle union types: "A | B" or "A | B | None"
+    if " | " in annotation:
+        parts = [p.strip() for p in annotation.split(" | ")]
+        resolved_parts: list[Any] = []
+        for part in parts:
+            if part == "None":
+                resolved_parts.append(type(None))
+            else:
+                resolved = _resolve_string_annotation(part, cls)
+                if resolved is None:
+                    return None
+                resolved_parts.append(resolved)
+        result = resolved_parts[0]
+        for t in resolved_parts[1:]:
+            result = result | t
+        return result
 
     # Strip list[] wrapper
     if annotation.startswith("list[") and annotation.endswith("]"):
@@ -189,5 +222,5 @@ def _resolve_string_annotation(annotation: str, cls: type) -> Any | None:
             return resolved
 
     # Try builtins
-    builtins = {"str": str, "int": int, "float": float, "bool": bool}
-    return builtins.get(annotation)
+    builtins_map = {"str": str, "int": int, "float": float, "bool": bool}
+    return builtins_map.get(annotation)

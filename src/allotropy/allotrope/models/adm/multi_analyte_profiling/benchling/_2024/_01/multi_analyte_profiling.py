@@ -13,6 +13,12 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
 from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     CalculatedDataAggregateDocument,
 )
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -20,14 +26,14 @@ class AnalyteDocumentItem:
     analyte_identifier: TStringValue
     analyte_name: TStringValue
     assay_bead_identifier: TStringValue
-    assay_bead_count: Any
-    fluorescence: Any
+    assay_bead_count: TQuantityValueNumberSign
+    fluorescence: TQuantityValueRFU
 
 
 @dataclass(frozen=True, kw_only=True)
 class CalibrationResultDocumentItem:
     calibration_result_name: TStringValue | None = None
-    calibration_result: Any | None = None
+    calibration_result: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -56,10 +62,10 @@ class DeviceControlDocumentItem:
     brand_name: TStringValue | None = None
     equipment_serial_number: TStringValue | None = None
     firmware_version: TStringValue | None = None
-    sample_volume_setting: Any | None = None
-    dilution_factor_setting: Any | None = None
+    sample_volume_setting: TQuantityValueMicroL | None = None
+    dilution_factor_setting: TQuantityValueUnitless | None = None
     detector_gain_setting: TStringValue | None = None
-    minimum_assay_bead_count_setting: Any | None = None
+    minimum_assay_bead_count_setting: TQuantityValueNumberSign | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -155,7 +161,7 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue
     sample_document: SampleDocument
     device_control_aggregate_document: DeviceControlAggregateDocument
-    assay_bead_count: Any
+    assay_bead_count: TQuantityValueNumberSign
     analyte_aggregate_document: AnalyteAggregateDocument
     error_aggregate_document: ErrorAggregateDocument | None = None
 
@@ -173,7 +179,7 @@ class MeasurementAggregateDocument:
     experimental_data_identifier: TStringValue | None = None
     experiment_type: TStringValue | None = None
     container_type: TStringValue | None = None
-    plate_well_count: Any | None = None
+    plate_well_count: TQuantityValueNumberSign | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

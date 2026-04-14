@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any
 
 from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
     TBooleanValue,
@@ -14,6 +13,15 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
 from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TNullableQuantityValueUnitless,
+    TQuantityValueDegC,
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValuePgPermL,
+    TQuantityValueS,
+    TQuantityValueUnitless,
 )
 
 
@@ -48,17 +56,17 @@ class ContainerType(Enum):
 
 @dataclass(frozen=True, kw_only=True)
 class DataProcessingDocument:
-    cycle_threshold_value_setting: Any
+    cycle_threshold_value_setting: TQuantityValueUnitless
     reference_dna_description: TStringValue | None = field(
         default=None, metadata={"json_name": "reference DNA description"}
     )
     reference_sample_description: TStringValue | None = None
     automatic_cycle_threshold_enabled_setting: TBooleanValue | None = None
     automatic_baseline_determination_enabled_setting: TBooleanValue | None = None
-    baseline_determination_start_cycle_setting: Any | None = None
-    baseline_determination_end_cycle_setting: Any | None = None
+    baseline_determination_start_cycle_setting: TQuantityValueNumberSign | None = None
+    baseline_determination_end_cycle_setting: TQuantityValueNumberSign | None = None
     genotyping_determination_method: TStringValue | None = None
-    genotyping_determination_method_setting: Any | None = None
+    genotyping_determination_method_setting: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -90,13 +98,13 @@ class DeviceControlDocumentItem:
     measurement_method_identifier: TStringValue
     device_identifier: TStringValue | None = None
     detection_type: TStringValue | None = None
-    total_cycle_number_setting: Any | None = None
-    denaturing_temperature_setting: Any | None = None
-    denaturing_time_setting: Any | None = None
-    annealing_temperature_setting: Any | None = None
-    annealing_time_setting: Any | None = None
-    extension_temperature_setting: Any | None = None
-    extension_time_setting: Any | None = None
+    total_cycle_number_setting: TQuantityValueNumberSign | None = None
+    denaturing_temperature_setting: TQuantityValueDegC | None = None
+    denaturing_time_setting: TQuantityValueS | None = None
+    annealing_temperature_setting: TQuantityValueDegC | None = None
+    annealing_time_setting: TQuantityValueS | None = None
+    extension_temperature_setting: TQuantityValueDegC | None = None
+    extension_time_setting: TQuantityValueS | None = None
     pcr_detection_chemistry: TStringValue | None = field(
         default=None, metadata={"json_name": "PCR detection chemistry"}
     )
@@ -171,7 +179,7 @@ class SampleDocument:
     sample_role_type: TStringValue | None = None
     well_location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
-    mass_concentration: Any | None = None
+    mass_concentration: TQuantityValuePgPermL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -187,10 +195,10 @@ class DeviceControlAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem:
     data_processing_document: DataProcessingDocument
-    cycle_threshold_result: Any
-    normalized_reporter_result: Any | None = None
+    cycle_threshold_result: TNullableQuantityValueUnitless
+    normalized_reporter_result: TQuantityValueUnitless | None = None
     normalized_reporter_data_cube: NormalizedReporterDataCube | None = None
-    baseline_corrected_reporter_result: Any | None = None
+    baseline_corrected_reporter_result: TQuantityValueUnitless | None = None
     baseline_corrected_reporter_data_cube: BaselineCorrectedReporterDataCube | None = (
         None
     )
@@ -204,7 +212,7 @@ class CalculatedDataDocumentItem:
     data_processing_document: DataProcessingDocument | None = None
     calculated_data_name: TStringValue | None = None
     calculated_data_description: TStringValue | None = None
-    calculated_datum: Any | None = None
+    calculated_datum: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -234,13 +242,13 @@ class MeasurementDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
-    plate_well_count: Any
+    plate_well_count: TQuantityValueNumberSign
     measurement_document: list[MeasurementDocumentItem]
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_type: ExperimentType | None = None
     container_type: ContainerType | None = None
-    well_volume: Any | None = None
+    well_volume: TQuantityValueMicroL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

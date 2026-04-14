@@ -19,6 +19,27 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     DataSourceAggregateDocument,
     StatisticsAggregateDocument,
 )
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCm,
+    TQuantityValueCmSqPerg,
+    TQuantityValueDegC,
+    TQuantityValueGPerL,
+    TQuantityValueMAU,
+    TQuantityValueMgPerL,
+    TQuantityValueMgPermL,
+    TQuantityValueMicrogPerMicroL,
+    TQuantityValueMicrogPermL,
+    TQuantityValueMm,
+    TQuantityValueNgPerMicroL,
+    TQuantityValueNgPermL,
+    TQuantityValueNm,
+    TQuantityValuePgPermL,
+    TQuantityValuePpb,
+    TQuantityValuePpm,
+    TQuantityValueRFU,
+    TQuantityValueRLU,
+    TQuantityValueS,
+)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -60,8 +81,8 @@ class ContainerType(Enum):
 
 @dataclass(frozen=True, kw_only=True)
 class DataProcessingDocument:
-    cell_path_length: Any | Any | None = None
-    attenuation_coefficient: Any | None = None
+    cell_path_length: TQuantityValueCm | TQuantityValueMm | None = None
+    attenuation_coefficient: TQuantityValueCmSqPerg | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -91,7 +112,7 @@ class DeviceControlDocument:
     equipment_serial_number: TStringValue | None = None
     model_number: TStringValue | None = None
     firmware_version: TStringValue | None = None
-    exposure_duration_setting: Any | None = None
+    exposure_duration_setting: TQuantityValueS | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -144,7 +165,7 @@ class ProcessedDataDocumentItem:
     data_processing_document: DataProcessingDocument | None = None
     data_source_aggregate_document: DataSourceAggregateDocument | None = None
     processed_data_identifier: TStringValue | None = None
-    mass_concentration: Any | Any | Any | Any | Any | Any | Any | Any | Any | Any | None = (
+    mass_concentration: TQuantityValueGPerL | TQuantityValueMgPerL | TQuantityValueMgPermL | TQuantityValueMicrogPerMicroL | TQuantityValueMicrogPermL | TQuantityValueNgPerMicroL | TQuantityValueNgPermL | TQuantityValuePgPermL | TQuantityValuePpb | TQuantityValuePpm | None = (
         None
     )
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
@@ -154,26 +175,26 @@ class ProcessedDataDocumentItem:
 class FluorescenceEmissionSpectrumDetectionDeviceControlDocumentItem(
     DeviceControlDocument
 ):
-    wavelength_filter_cutoff_setting: Any | None = None
-    excitation_bandwidth_setting: Any | None = None
-    excitation_wavelength_setting: Any | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    excitation_bandwidth_setting: TQuantityValueNm | None = None
+    excitation_wavelength_setting: TQuantityValueNm | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: Any | None = None
-    detector_bandwidth_setting: Any | None = None
-    wavelength_filter_cutoff_setting: Any | None = None
-    excitation_bandwidth_setting: Any | None = None
-    excitation_wavelength_setting: Any | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    excitation_bandwidth_setting: TQuantityValueNm | None = None
+    excitation_wavelength_setting: TQuantityValueNm | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: Any | None = None
-    detector_bandwidth_setting: Any | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
@@ -181,12 +202,12 @@ class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument)
 class UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
     DeviceControlDocument
 ):
-    detector_wavelength_setting: Any | None = None
-    detector_bandwidth_setting: Any | None = None
-    electronic_absorbance_wavelength_setting: Any | None = None
-    electronic_absorbance_bandwidth_setting: Any | None = None
-    electronic_absorbance_reference_bandwidth_setting: Any | None = None
-    electronic_absorbance_reference_wavelength_setting: Any | None = None
+    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
@@ -292,7 +313,7 @@ class FluorescenceEmissionSpectrumDetectionMeasurementDocumentItems:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: Any | None = None
+    compartment_temperature: TQuantityValueDegC | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -300,14 +321,14 @@ class FluorescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: FluorescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    fluorescence: Any
+    fluorescence: TQuantityValueRFU
     measurement_time: TDateTimeStampValue | None = None
     detection_type: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: Any | None = None
-    mass_concentration: Any | None = None
+    compartment_temperature: TQuantityValueDegC | None = None
+    mass_concentration: TQuantityValuePgPermL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -315,14 +336,14 @@ class LuminescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    luminescence: Any
+    luminescence: TQuantityValueRLU
     measurement_time: TDateTimeStampValue | None = None
     detection_type: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: Any | None = None
-    mass_concentration: Any | None = None
+    compartment_temperature: TQuantityValueDegC | None = None
+    mass_concentration: TQuantityValuePgPermL | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -330,13 +351,13 @@ class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    absorbance: Any
+    absorbance: TQuantityValueMAU
     measurement_time: TDateTimeStampValue | None = None
     detection_type: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: Any | None = None
+    compartment_temperature: TQuantityValueDegC | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -350,7 +371,7 @@ class UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: Any | None = None
+    compartment_temperature: TQuantityValueDegC | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

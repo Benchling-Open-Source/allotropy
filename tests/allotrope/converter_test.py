@@ -93,6 +93,7 @@ def test_omits_null_values_except_for_specified_classes() -> None:
             "cycle threshold value setting": {"value": 1.0, "unit": "(unitless)"},
         },
     }
+    assert structure(asm_dict, ProcessedDataDocumentItem) == item
 
 
 def test_remove_none_fields_from_data_class_optional_none() -> None:
@@ -179,6 +180,7 @@ def test_union_of_lists() -> None:
             },
         ]
     }
+    assert structure(obj_dict, HasUnionOfList) == obj
 
     obj = HasUnionOfList(z=[D2(1)])
     obj_dict = unstructure(obj)
@@ -189,6 +191,7 @@ def test_union_of_lists() -> None:
             },
         ]
     }
+    assert structure(obj_dict, HasUnionOfList) == obj
 
     obj = HasUnionOfList(z=D2(1))
     obj_dict = unstructure(obj)
@@ -197,7 +200,9 @@ def test_union_of_lists() -> None:
             "y": 1,
         }
     }
+    assert structure(obj_dict, HasUnionOfList) == obj
 
     obj = HasUnionOfList(z=None)
     obj_dict = unstructure(obj)
     assert obj_dict == {}
+    assert structure(obj_dict, HasUnionOfList) == obj

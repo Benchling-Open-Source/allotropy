@@ -451,19 +451,40 @@
                           {
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001997",
                             "$asm.pattern": "quantity datum",
-                            "$ref": "#/$custom/tQuantityValueCentimeter"
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Centimeter"
+                              }
+                            ]
                           },
                           {
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001997",
                             "$asm.pattern": "quantity datum",
-                            "$ref": "#/$custom/tQuantityValueMillimeter"
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Millimeter"
+                              }
+                            ]
                           }
                         ]
                       },
                       "attenuation coefficient": {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002765",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueSquareCentimetersPerGram"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/SquareCentimetersPerGram"
+                          }
+                        ]
                       }
                     }
                   },
@@ -485,52 +506,122 @@
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanogramPerMicroliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/NanogramPerMicroliter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueMicrogramPerMicroliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/MicrogramPerMicroliter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/PicogramPerMilliliter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanogramPerMilliliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/NanogramPerMilliliter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueMicrogramPerMilliliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/MicrogramPerMilliliter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueMilligramPerMilliliter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/MilligramPerMilliliter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueGramPerLiter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/GramPerLiter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueMilligramPerLiter"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/MilligramPerLiter"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValuePartsPerMillion"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/PartsPerMillion"
+                          }
+                        ]
                       },
                       {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValuePartsPerBillion"
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/PartsPerBillion"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -679,7 +770,14 @@
         "exposure duration setting": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueSecondTime"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/SecondTime"
+            }
+          ]
         }
       },
       "required": [
@@ -701,32 +799,74 @@
               "detector wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "detector bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "electronic absorbance wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001254",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "electronic absorbance bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001253",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "electronic absorbance reference bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001251",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "electronic absorbance reference wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001252",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               }
             }
           },
@@ -806,12 +946,26 @@
         "compartment temperature": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+            }
+          ]
         },
         "absorbance": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001157",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueMilliAbsorbanceUnit"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/MilliAbsorbanceUnit"
+            }
+          ]
         }
       }
     },
@@ -843,27 +997,62 @@
               "detector wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "detector bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "wavelength filter cutoff setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002478",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "excitation bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "excitation wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               }
             }
           },
@@ -930,17 +1119,38 @@
         "compartment temperature": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+            }
+          ]
         },
         "fluorescence": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueRelativeFluorescenceUnit"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/RelativeFluorescenceUnit"
+            }
+          ]
         },
         "mass concentration": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/PicogramPerMilliliter"
+            }
+          ]
         }
       }
     },
@@ -959,12 +1169,26 @@
               "detector wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "detector bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               }
             }
           },
@@ -1044,17 +1268,38 @@
         "compartment temperature": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+            }
+          ]
         },
         "luminescence": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002507",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueRelativeLightUnit"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/RelativeLightUnit"
+            }
+          ]
         },
         "mass concentration": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/PicogramPerMilliliter"
+            }
+          ]
         }
       }
     },
@@ -1147,7 +1392,14 @@
         "compartment temperature": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+            }
+          ]
         },
         "absorption spectrum data cube": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002283",
@@ -1227,17 +1479,38 @@
               "wavelength filter cutoff setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002478",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "excitation bandwidth setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               },
               "excitation wavelength setting": {
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueNanometer"
+                "allOf": [
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/Nanometer"
+                  }
+                ]
               }
             }
           },
@@ -1317,7 +1590,14 @@
         "compartment temperature": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema#/$defs/DegreeCelsius"
+            }
+          ]
         },
         "fluorescence emission spectrum data cube": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002482",

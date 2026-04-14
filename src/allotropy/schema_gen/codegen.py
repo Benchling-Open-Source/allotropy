@@ -842,15 +842,24 @@ class QuantityValueManager:
     def __init__(
         self,
         existing_classes: set[str] | None = None,
+        existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
     ) -> None:
         self._known: set[str] = existing_classes or set()
+        # Map from (unit_string, nullable) → existing class name.  Keyed by both
+        # unit value and nullable flag so that TQuantityValueUnitless and
+        # TNullableQuantityValueUnitless are tracked independently.
+        self._unit_to_class: dict[tuple[str, bool], str] = existing_unit_to_class or {}
         self.new_classes: list[tuple[str, str]] = []
 
-    def get_or_create(self, unit_const: str) -> str:
+    def get_or_create(self, unit_const: str, *, nullable: bool = False) -> str:
         """Return the class name for *unit_const*, recording it as new if needed."""
-        class_name = quantity_value_class_name(unit_const)
+        key = (unit_const, nullable)
+        if key in self._unit_to_class:
+            return self._unit_to_class[key]
+        class_name = quantity_value_class_name(unit_const, nullable=nullable)
         if class_name not in self._known:
             self._known.add(class_name)
+            self._unit_to_class[key] = class_name
             self.new_classes.append((class_name, unit_const))
         return class_name
 
@@ -869,6 +878,7 @@ class SchemaCodeGenerator:
         generation_order: list[str],
         models_package: str = "allotropy.allotrope.models",
         existing_quantity_value_classes: set[str] | None = None,
+        existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
     ) -> None:
         self.schemas = schemas
         self.generation_order = generation_order
@@ -880,7 +890,9 @@ class SchemaCodeGenerator:
         # Schema merging helper
         self._merger = SchemaMerger(schemas)
         # Quantity value lifecycle manager
-        self._qv_manager = QuantityValueManager(existing_quantity_value_classes)
+        self._qv_manager = QuantityValueManager(
+            existing_quantity_value_classes, existing_unit_to_class
+        )
 
     @property
     def new_quantity_value_classes(self) -> list[tuple[str, str]]:
@@ -1432,13 +1444,20 @@ class SchemaCodeGenerator:
 
         Also handles the oneOf-units variant:
         allOf[tQuantityValue, {oneOf: [unit1, unit2, ...]}]
+
+        Recognises both tQuantityValue and tNullableQuantityValue.
         """
         quantity_ref = None
+        nullable = False
         unit_refs: list[str] = []
         for ref in refs:
             _, def_name = parse_ref(ref)
-            if def_name and def_name.lower() == "tquantityvalue":
+            if def_name and def_name.lower() in (
+                "tquantityvalue",
+                "tnullablequantityvalue",
+            ):
                 quantity_ref = ref
+                nullable = def_name.lower() == "tnullablequantityvalue"
             elif def_name:
                 ref_schema_url = ref.split("#")[0]
                 try:
@@ -1456,14 +1475,14 @@ class SchemaCodeGenerator:
         # Single unit ref
         if len(unit_refs) == 1:
             return self._generate_quantity_value_type(
-                module, schema_url, quantity_ref, unit_refs[0]
+                module, schema_url, quantity_ref, unit_refs[0], nullable=nullable
             )
 
         # Multiple unit refs
         if len(unit_refs) > 1:
             types = [
                 self._generate_quantity_value_type(
-                    module, schema_url, quantity_ref, uref
+                    module, schema_url, quantity_ref, uref, nullable=nullable
                 )
                 for uref in unit_refs
             ]
@@ -1477,7 +1496,7 @@ class SchemaCodeGenerator:
 
         # No direct unit refs — check for oneOf[unit1, unit2, ...] in inline schemas
         return self._try_quantity_value_one_of_units(
-            module, schema_url, quantity_ref, inline_schemas
+            module, schema_url, quantity_ref, inline_schemas, nullable=nullable
         )
 
     def _try_quantity_value_one_of_units(
@@ -1486,6 +1505,8 @@ class SchemaCodeGenerator:
         schema_url: str,
         quantity_ref: str,
         inline_schemas: list[dict[str, Any]],
+        *,
+        nullable: bool = False,
     ) -> str | None:
         """Match allOf[tQuantityValue, {oneOf: [unit1, unit2, ...]}]."""
         for s in inline_schemas:
@@ -1504,7 +1525,7 @@ class SchemaCodeGenerator:
             if one_of_unit_refs:
                 types = [
                     self._generate_quantity_value_type(
-                        module, schema_url, quantity_ref, uref
+                        module, schema_url, quantity_ref, uref, nullable=nullable
                     )
                     for uref in one_of_unit_refs
                 ]
@@ -1883,6 +1904,8 @@ class SchemaCodeGenerator:
         schema_url: str,
         quantity_ref: str,
         unit_ref: str,
+        *,
+        nullable: bool = False,
     ) -> str:
         """Import a TQuantityValue{Unit} thin subclass from the shared module.
 
@@ -1905,7 +1928,7 @@ class SchemaCodeGenerator:
         if const_value is None:
             return self._resolve_ref_type(module, schema_url, quantity_ref)
 
-        class_name = self._qv_manager.get_or_create(const_value)
+        class_name = self._qv_manager.get_or_create(const_value, nullable=nullable)
 
         # Import directly from shared quantity_values into the consuming module
         if not any(
