@@ -8,9 +8,7 @@ from allotropy.allotrope.converter import (
     structure,
     unstructure,
 )
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
-    TQuantityValueUnitless,
-)
+from allotropy.allotrope.models.shared.definitions.quantity_values import TQuantityValueUnitless
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     DataProcessingDocument,
     ProcessedDataDocumentItem,

@@ -15,8 +15,8 @@ from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting im
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    TQuantityValue,
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
     TQuantityValueMicroL,
     TQuantityValueMicrom,

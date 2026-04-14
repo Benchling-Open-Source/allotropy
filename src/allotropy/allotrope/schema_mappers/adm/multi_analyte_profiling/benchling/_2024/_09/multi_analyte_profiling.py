@@ -2,8 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.benchling._2024._09.core import (
-    TQuantityValue,
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMicroL,
     TQuantityValueNumberSign,
     TQuantityValueRFU,
@@ -40,6 +39,7 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
 from allotropy.allotrope.models.qudt.benchling._2024._09.units import Unitless
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    TQuantityValue,
     TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper

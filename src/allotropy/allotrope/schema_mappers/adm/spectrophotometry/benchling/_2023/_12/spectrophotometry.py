@@ -3,8 +3,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
-    TQuantityValue,
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMAU,
     TQuantityValueMicroL,
     TQuantityValueNm,
@@ -42,6 +41,7 @@ from allotropy.allotrope.models.shared.components.plate_reader import ContainerT
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
+    TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueKDa,

@@ -2,9 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.benchling._2024._09.core import (
-    TQuantityValueMicroL,
-)
+from allotropy.allotrope.models.shared.definitions.quantity_values import TQuantityValueMicroL
 from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     DataSystemDocument,
     DeviceDocumentItem,

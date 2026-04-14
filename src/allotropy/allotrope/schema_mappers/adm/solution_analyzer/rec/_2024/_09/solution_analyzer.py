@@ -2,22 +2,22 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    TQuantityValue,
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
     TQuantityValueCountsPermL,
     TQuantityValueDegC,
     TQuantityValueGPerL,
     TQuantityValueMAU,
-    TQuantityValueMicrom,
     TQuantityValueML,
     TQuantityValueMLPerL,
+    TQuantityValueMicrom,
     TQuantityValueMmHg,
     TQuantityValueMmolPerL,
     TQuantityValueMosmPerkg,
     TQuantityValueOne06cellsPermL,
-    TQuantityValuePercent,
     TQuantityValuePH,
+    TQuantityValuePercent,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (

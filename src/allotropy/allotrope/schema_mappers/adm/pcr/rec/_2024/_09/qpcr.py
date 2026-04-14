@@ -3,8 +3,8 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    TQuantityValue,
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMicroL,
     TQuantityValueNumberSign,
     TQuantityValueUnitless,

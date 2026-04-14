@@ -2,14 +2,14 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCm,
     TQuantityValueHz,
     TQuantityValueMAUDots,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
     TQuantityValueML,
     TQuantityValueMLPermin,
+    TQuantityValueMicroL,
+    TQuantityValueMicrom,
     TQuantityValueMm,
     TQuantityValueMmCu,
     TQuantityValueNm,

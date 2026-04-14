@@ -20,8 +20,8 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
     SensorChipDocument,
     SensorgramDataCube,
 )
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
-    TQuantityValue,
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
     TQuantityValueM,
     TQuantityValueM1s1,
