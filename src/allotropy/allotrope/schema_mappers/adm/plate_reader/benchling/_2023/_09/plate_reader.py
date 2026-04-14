@@ -5,7 +5,7 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
     TQuantityValue,
     TQuantityValueDegC,
     TQuantityValueMAU,
@@ -17,8 +17,8 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValueRLU,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.adm.core.rec._2023._09.cube import TDatacube
-from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import TDatacube
+from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
 )

@@ -10,7 +10,6 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
     TQuantityValueMAU,
     TQuantityValueMAUDotmL,
     TQuantityValueMAUDots,
@@ -69,4 +68,3 @@ class MeasurementDocumentItems:
         metadata={"json_name": "three-dimensional ultraviolet spectrum data cube"},
     )
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None

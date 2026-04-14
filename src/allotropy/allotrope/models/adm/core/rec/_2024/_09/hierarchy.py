@@ -12,7 +12,6 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TDateTimeValue,
     TIntegerValue,
     TQuantityValue,
-    TQuantityValueUnitless,
     TStringValue,
 )
 
@@ -30,12 +29,6 @@ class AnalysisSequenceDocument:
         default=None, metadata={"json_name": "UNC path"}
     )
     version_number: TStringValue | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class CalibrationResultDocumentItem:
-    calibration_result_name: TStringValue | None = None
-    calibration_result: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -80,13 +73,6 @@ class ImageDocumentItem:
     index: TIntegerValue | None = None
 
 
-@dataclass(frozen=True, kw_only=True)
-class ReferenceMaterialDocument:
-    reference_material_identifier: TStringValue | None = None
-    batch_identifier: TStringValue | None = None
-    expiry_time_prescription: TDateTimeStampValue | None = None
-
-
 class SampleRoleType(Enum):
     control_sample_role = "control sample role"
     standard_sample_role = "standard sample role"
@@ -101,12 +87,6 @@ class SampleRoleType(Enum):
     specimen_role = "specimen role"
     quality_control_sample_role = "quality control sample role"
     reference_sample_role = "reference sample role"
-
-
-@dataclass(frozen=True, kw_only=True)
-class StatisticDimensionDocumentItem:
-    dimension_identifier: TStringValue | None = None
-    statistical_value: TQuantityValue | None = None
 
 
 class StatisticalFeature(Enum):
@@ -155,7 +135,6 @@ class StatisticalFeature(Enum):
     concentration = "concentration"
     container_diameter = "container diameter"
     container_height = "container height"
-    count = "count"
     degassed_sample_weight = "degassed sample weight"
     detector_view_volume = "detector view volume"
     diameter = "diameter"
@@ -320,11 +299,6 @@ class StatisticalFeature(Enum):
 
 
 @dataclass(frozen=True, kw_only=True)
-class CalibrationResultAggregateDocument:
-    calibration_result_document: list[CalibrationResultDocumentItem] | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class CustomInformationAggregateDocument:
     custom_information_document: list[CustomInformationDocumentItem]
 
@@ -350,21 +324,8 @@ class ImageAggregateDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class StatisticDimensionAggregateDocument:
-    statistic_dimension_document: list[StatisticDimensionDocumentItem] | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class CalibrationDocumentItem:
-    calibration_name: TStringValue | None = None
-    calibration_description: TStringValue | None = None
-    calibration_time: TDateTimeStampValue | None = None
-    expiry_time_prescription: TDateTimeStampValue | None = None
-    calibration_report: TStringValue | None = None
-    reference_material_document: ReferenceMaterialDocument | None = None
-    calibration_result_aggregate_document: CalibrationResultAggregateDocument | None = (
-        None
-    )
+class StatisticsDocumentItem:
+    statistical_feature: StatisticalFeature
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -439,7 +400,6 @@ class SampleDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    location_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -464,21 +424,29 @@ class ProcessedDataDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
-class StatisticsDocumentItem:
-    statistical_feature: StatisticalFeature
-    statistic_dimension_aggregate_document: StatisticDimensionAggregateDocument | None = (
-        None
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
-class CalibrationAggregateDocument:
-    calibration_document: list[CalibrationDocumentItem] | None = None
+class StatisticsAggregateDocument:
+    statistics_document: list[StatisticsDocumentItem] | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem]
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceSystemDocument:
+    asset_management_identifier: TStringValue | None = None
+    brand_name: TStringValue | None = None
+    description: Any | None = None
+    device_document: list[DeviceDocumentItem] | None = None
+    device_identifier: TStringValue | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    model_number: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
@@ -504,28 +472,6 @@ class ProcessedDataAggregateDocument:
         None
     )
     electronic_project_record: ElectronicProjectRecord | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class StatisticsAggregateDocument:
-    statistics_document: list[StatisticsDocumentItem] | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class DeviceSystemDocument:
-    asset_management_identifier: TStringValue | None = None
-    brand_name: TStringValue | None = None
-    description: Any | None = None
-    device_document: list[DeviceDocumentItem] | None = None
-    device_identifier: TStringValue | None = None
-    equipment_serial_number: TStringValue | None = None
-    firmware_version: TStringValue | None = None
-    model_number: TStringValue | None = None
-    product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    calibration_aggregate_document: CalibrationAggregateDocument | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -575,9 +521,6 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    analytical_method_identifier: TStringValue | None = None
-    method_version: TStringValue | None = None
-    experimental_data_identifier: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

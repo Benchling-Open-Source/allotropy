@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
     TQuantityValueCm,
     TQuantityValueHz,
     TQuantityValueMAUDots,
@@ -17,7 +17,7 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
     TQuantityValueS,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     DataSystemDocument,
 )
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (

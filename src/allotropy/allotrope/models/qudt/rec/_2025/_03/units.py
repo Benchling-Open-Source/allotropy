@@ -3873,8 +3873,3 @@ class Micror(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class Unknown3(HasUnit):
     unit: str = "€"
-
-
-@dataclass(frozen=True, kw_only=True)
-class RUPers(HasUnit):
-    unit: str = "RU/s"

@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.core import (
     TQuantityValue,
     TQuantityValueDegC,
     TQuantityValuePercent,
     TQuantityValueRFU,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,

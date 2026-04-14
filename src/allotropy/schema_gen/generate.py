@@ -31,6 +31,13 @@ _QUANTITY_VALUES_FILE = Path(
     "src/allotropy/allotrope/models/shared/definitions/quantity_values.py"
 )
 
+# Regex to extract the status/version segment from an Allotrope URL path.
+# Matches e.g. "/REC/2024/09/" or "/WD/2025/03/".
+_STATUS_VERSION_RE = re.compile(r"/(REC|WD)/(\d{4}/\d{2})/")
+
+# Regex to extract the BENCHLING version from a BENCHLING schema URL.
+_BENCHLING_VERSION_RE = re.compile(r"/BENCHLING/(\d{4}/\d{2})/")
+
 
 def generate_models(
     schema_urls: str | list[str],
@@ -67,13 +74,12 @@ def generate_models(
         all_schemas.update(schemas)
 
     # Phase 1b: BENCHLING schemas embed modified copies of dependency schemas
-    # as URL-keyed $defs entries.  Before stripping them, merge any additions
-    # (e.g., extra properties like "compartment temperature") back into the
-    # separately-fetched standalone schemas so those additions aren't lost.
-    for schema in all_schemas.values():
-        _merge_embedded_defs_into_standalone(schema, all_schemas)
-    for schema in all_schemas.values():
-        _strip_embedded_defs(schema)
+    # as URL-keyed $defs entries.  Instead of merging those additions into the
+    # REC shared schemas (which would make REC output depend on which BENCHLING
+    # schemas are present), we fork them as standalone BENCHLING-versioned
+    # schemas and rewrite $refs so BENCHLING techniques reference their own
+    # shared dependency chain.
+    _fork_benchling_shared_schemas(all_schemas)
 
     # Phase 2: Determine generation order across all schemas
     order = build_dependency_order(all_schemas)
@@ -129,6 +135,154 @@ def generate_models(
     return generated_files
 
 
+# ---------------------------------------------------------------------------
+# BENCHLING shared schema forking
+# ---------------------------------------------------------------------------
+
+
+def _fork_benchling_shared_schemas(all_schemas: dict[str, Any]) -> None:
+    """Fork BENCHLING-modified dependency schemas into standalone BENCHLING versions.
+
+    BENCHLING technique schemas embed modified copies of REC/WD shared schemas
+    as URL-keyed ``$defs`` entries (keys are full ``http://`` URLs).  These
+    copies may add extra properties not in the originals.
+
+    Instead of merging additions into the REC schemas (which would make REC
+    output non-deterministic), this function:
+
+    1. Creates a BENCHLING-versioned copy of each modified shared schema
+       (deep-merging the REC base with the BENCHLING additions).
+    2. Rewrites ``$ref`` strings in the BENCHLING technique schema (and in
+       the newly created BENCHLING shared schemas) to point to the forked
+       BENCHLING versions.
+    3. Strips the URL-keyed ``$defs`` entries.
+
+    For embedded schemas that are already BENCHLING (BENCHLING-to-BENCHLING
+    embeddings, e.g., detector sub-schemas), the existing merge-into-standalone
+    behavior is preserved since those don't affect REC modules.
+    """
+    # Collect all schemas that have URL-keyed $defs (the BENCHLING embedders).
+    # We snapshot the keys first because we'll be adding new entries to all_schemas.
+    embedder_urls = [
+        url
+        for url, schema in all_schemas.items()
+        if _has_url_keyed_defs(schema) and "/BENCHLING/" in url
+    ]
+
+    # Global rewrite map: {original_rec_url → new_benchling_url}.
+    # Accumulated across all embedders so that cross-schema $ref rewriting
+    # covers all forked schemas.
+    all_rewrites: dict[str, str] = {}
+
+    for embedder_url in embedder_urls:
+        schema = all_schemas[embedder_url]
+        benchling_version = _extract_benchling_version(embedder_url)
+        if not benchling_version:
+            continue
+
+        defs = schema.get("$defs", {})
+        url_keys = [
+            k for k in defs if k.startswith("http://") or k.startswith("https://")
+        ]
+
+        for key in url_keys:
+            embedded = defs[key]
+            try:
+                canonical = normalize_schema_url(key)
+            except ValueError:
+                continue
+
+            if canonical not in all_schemas:
+                continue
+
+            if "/BENCHLING/" in canonical:
+                # BENCHLING-to-BENCHLING embedding: merge into the standalone
+                # BENCHLING schema (does not affect any REC schema).
+                all_schemas[canonical] = _deep_merge(all_schemas[canonical], embedded)
+            else:
+                # REC/WD embedding: fork as a new BENCHLING-versioned schema.
+                benchling_url = _rec_to_benchling_url(canonical, benchling_version)
+                if benchling_url in all_schemas:
+                    # Another BENCHLING technique with the same version already
+                    # forked this schema — accumulate additions.
+                    all_schemas[benchling_url] = _deep_merge(
+                        all_schemas[benchling_url], embedded
+                    )
+                else:
+                    all_schemas[benchling_url] = _deep_merge(
+                        all_schemas[canonical], embedded
+                    )
+                all_rewrites[canonical] = benchling_url
+
+    # Rewrite $refs in all BENCHLING schemas (technique + forked shared) so
+    # they reference the BENCHLING versions instead of the original REC ones.
+    for url in list(all_schemas):
+        if "/BENCHLING/" not in url:
+            continue
+        all_schemas[url] = _rewrite_refs(all_schemas[url], all_rewrites)
+
+    # Strip URL-keyed $defs from all schemas (they've been extracted).
+    for schema in all_schemas.values():
+        _strip_embedded_defs(schema)
+
+
+def _has_url_keyed_defs(schema: dict[str, Any]) -> bool:
+    """Check if a schema has URL-keyed $defs entries."""
+    defs = schema.get("$defs", {})
+    return any(k.startswith("http://") or k.startswith("https://") for k in defs)
+
+
+def _extract_benchling_version(url: str) -> str | None:
+    """Extract the version (e.g., '2023/09') from a BENCHLING schema URL."""
+    m = _BENCHLING_VERSION_RE.search(url)
+    return m.group(1) if m else None
+
+
+def _rec_to_benchling_url(rec_url: str, benchling_version: str) -> str:
+    """Convert a REC/WD schema URL to its BENCHLING-versioned counterpart.
+
+    Example:
+        rec_url = "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema"
+        benchling_version = "2023/09"
+        → "http://purl.allotrope.org/json-schemas/adm/core/BENCHLING/2023/09/hierarchy.schema"
+    """
+    return _STATUS_VERSION_RE.sub(f"/BENCHLING/{benchling_version}/", rec_url, count=1)
+
+
+def _rewrite_refs(schema: Any, rewrites: dict[str, str]) -> Any:
+    """Recursively rewrite $ref strings in a schema using the rewrite map.
+
+    Each key in *rewrites* is a canonical URL prefix; if a $ref starts with
+    that prefix (possibly followed by ``#/$defs/...``), the prefix is replaced
+    with the mapped value.
+    """
+    if isinstance(schema, dict):
+        result: dict[str, Any] = {}
+        for key, value in schema.items():
+            if key == "$ref" and isinstance(value, str):
+                result[key] = _apply_ref_rewrite(value, rewrites)
+            elif key == "$id" and isinstance(value, str):
+                # Also rewrite $id so the schema's self-reference stays consistent
+                result[key] = _apply_ref_rewrite(value, rewrites)
+            else:
+                result[key] = _rewrite_refs(value, rewrites)
+        return result
+    if isinstance(schema, list):
+        return [_rewrite_refs(item, rewrites) for item in schema]
+    return schema
+
+
+def _apply_ref_rewrite(ref: str, rewrites: dict[str, str]) -> str:
+    """Apply the first matching rewrite rule to a $ref string."""
+    for old_prefix, new_prefix in rewrites.items():
+        if ref.startswith(old_prefix):
+            return new_prefix + ref[len(old_prefix) :]
+        # Also match with .json suffix (some refs include it)
+        if ref.startswith(old_prefix + ".json"):
+            return new_prefix + ref[len(old_prefix) :]
+    return ref
+
+
 def _deep_merge(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]:
     """Deep-merge *overlay* into *base*, returning a new dict.
 
@@ -141,33 +295,6 @@ def _deep_merge(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]
         else:
             result[key] = value
     return result
-
-
-def _merge_embedded_defs_into_standalone(
-    schema: dict[str, Any], all_schemas: dict[str, Any]
-) -> None:
-    """Merge BENCHLING-embedded schema additions into standalone schemas.
-
-    BENCHLING schemas embed modified copies of dependency schemas (e.g.,
-    detector sub-schemas) as URL-keyed ``$defs`` entries.  These copies may
-    add extra properties not present in the original REC schemas (e.g.,
-    ``compartment temperature``).  This function deep-merges the embedded
-    version into the standalone schema in *all_schemas* so those additions
-    survive the subsequent ``_strip_embedded_defs`` step.
-    """
-    defs = schema.get("$defs", {})
-    for key, embedded_schema in defs.items():
-        if not (key.startswith("http://") or key.startswith("https://")):
-            continue
-        # Normalize to canonical URL
-        canonical = normalize_schema_url(key)
-        if canonical not in all_schemas:
-            continue
-        # Deep-merge the embedded schema into the standalone copy.
-        # The embedded version takes precedence for additions, but the
-        # standalone version keeps anything the embedded version doesn't
-        # override.
-        all_schemas[canonical] = _deep_merge(all_schemas[canonical], embedded_schema)
 
 
 def _strip_embedded_defs(schema: dict[str, Any]) -> None:

@@ -2,14 +2,14 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.core import (
     TQuantityValue,
     TQuantityValueMicroL,
     TQuantityValueNumberSign,
     TQuantityValueRFU,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     CalibrationAggregateDocument,
@@ -37,7 +37,7 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.qudt.rec._2024._09.units import Unitless
+from allotropy.allotrope.models.qudt.benchling._2024._09.units import Unitless
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,

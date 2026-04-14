@@ -9,7 +9,6 @@ from typing import Any
 from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     OrderedItem,
     TDateTimeStampValue,
-    TQuantityValueUnitless,
     TStringValue,
 )
 from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
@@ -39,12 +38,6 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueS,
     TQuantityValueS1,
 )
-
-
-@dataclass(frozen=True, kw_only=True)
-class CalibrationResultDocumentItem:
-    calibration_result_name: TStringValue | None = None
-    calibration_result: TQuantityValueUnitless | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -93,13 +86,6 @@ class DiagnosticTraceDocumentItem:
 
 
 @dataclass(frozen=True, kw_only=True)
-class ReferenceMaterialDocument:
-    reference_material_identifier: TStringValue | None = None
-    batch_identifier: TStringValue | None = None
-    expiry_time_prescription: TDateTimeStampValue | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class ReportPointDocumentItem:
     absolute_resonance: TQuantityValueRU | None = None
     report_point_identifier: TStringValue | None = None
@@ -143,13 +129,24 @@ class SensorgramDataCube(TDatacube):
 
 
 @dataclass(frozen=True, kw_only=True)
-class CalibrationResultAggregateDocument:
-    calibration_result_document: list[CalibrationResultDocumentItem] | None = None
+class DeviceControlAggregateDocument:
+    device_control_document: list[DeviceControlDocumentItem] | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
-class DeviceControlAggregateDocument:
-    device_control_document: list[DeviceControlDocumentItem] | None = None
+class DeviceSystemDocument:
+    device_identifier: TStringValue
+    model_number: TStringValue
+    asset_management_identifier: TStringValue | None = None
+    brand_name: TStringValue | None = None
+    description: Any | None = None
+    device_document: list[DeviceDocumentItem] | None = None
+    equipment_serial_number: TStringValue | None = None
+    firmware_version: TStringValue | None = None
+    product_manufacturer: TStringValue | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
@@ -184,19 +181,6 @@ class SampleDocument:
 
 
 @dataclass(frozen=True, kw_only=True)
-class CalibrationDocumentItem:
-    calibration_name: TStringValue | None = None
-    calibration_description: TStringValue | None = None
-    calibration_time: TDateTimeStampValue | None = None
-    expiry_time_prescription: TDateTimeStampValue | None = None
-    calibration_report: TStringValue | None = None
-    reference_material_document: ReferenceMaterialDocument | None = None
-    calibration_result_aggregate_document: CalibrationResultAggregateDocument | None = (
-        None
-    )
-
-
-@dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem(OrderedItem):
     posix_path: TStringValue | None = field(
         default=None, metadata={"json_name": "POSIX path"}
@@ -226,34 +210,12 @@ class ProcessedDataDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
-class CalibrationAggregateDocument:
-    calibration_document: list[CalibrationDocumentItem] | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
 class ProcessedDataAggregateDocument:
     processed_data_document: list[ProcessedDataDocumentItem]
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
     electronic_project_record: ElectronicProjectRecord | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class DeviceSystemDocument:
-    device_identifier: TStringValue
-    model_number: TStringValue
-    asset_management_identifier: TStringValue | None = None
-    brand_name: TStringValue | None = None
-    description: Any | None = None
-    device_document: list[DeviceDocumentItem] | None = None
-    equipment_serial_number: TStringValue | None = None
-    firmware_version: TStringValue | None = None
-    product_manufacturer: TStringValue | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
-    calibration_aggregate_document: CalibrationAggregateDocument | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -295,10 +257,8 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    analytical_method_identifier: TStringValue | None = None
-    method_version: TStringValue | None = None
-    experimental_data_identifier: TStringValue | None = None
     experiment_type: TStringValue | None = None
+    analytical_method_identifier: TStringValue | None = None
     compartment_temperature: TQuantityValueDegC | None = None
 
 

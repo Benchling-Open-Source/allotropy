@@ -6,18 +6,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.core import (
     OrderedItem,
-    TBooleanValue,
     TDateTimeStampValue,
-    TIntValue,
     TStringValue,
 )
-from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
-    TDatacube,
-    TDatacubeStructure,
-)
-from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
     DataSourceAggregateDocument,
@@ -27,6 +21,14 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     StatisticsAggregateDocument,
     TechniqueAggregateDocument,
     TechniqueDocument,
+)
+from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+    TBooleanValue,
+    TIntValue,
+)
+from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
+    TDatacube,
+    TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,

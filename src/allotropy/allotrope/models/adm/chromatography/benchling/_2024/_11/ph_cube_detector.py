@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacube,
     TDatacubeStructure,
 )

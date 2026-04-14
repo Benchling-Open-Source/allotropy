@@ -4,12 +4,12 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
+from allotropy.allotrope.models.adm.core.benchling._2025._03.core import (
     TQuantityValue,
     TQuantityValueCounts,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.adm.core.rec._2025._03.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2025._03.hierarchy import (
     DataSystemDocument,
     DeviceSystemDocument,
 )

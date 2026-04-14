@@ -6,13 +6,13 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
+from allotropy.allotrope.models.adm.core.benchling._2025._03.core import (
     OrderedItem,
     TDateTimeStampValue,
     TQuantityValue,
     TStringValue,
 )
-from allotropy.allotrope.models.adm.core.rec._2025._03.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2025._03.hierarchy import (
     CalculatedDataAggregateDocument,
     CustomInformationAggregateDocument,
     DataSourceAggregateDocument,

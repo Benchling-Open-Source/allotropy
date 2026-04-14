@@ -6,12 +6,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
     TBooleanValue,
     TDateTimeValue,
     TStringValue,
 )
-from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacubeData,
     TDatacubeStructure,
 )

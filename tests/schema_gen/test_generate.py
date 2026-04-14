@@ -19,18 +19,18 @@ from allotropy.schema_gen.generate import generate_models
 from allotropy.schema_gen.naming import ALLOTROPE_URL_PREFIX, DEFAULT_MODEL_OUTPUT_DIR
 
 
-def _collect_technique_schema_urls() -> list[str]:
-    """Collect canonical URLs for all technique schemas (not core/qudt)."""
+def _collect_all_schema_urls() -> list[str]:
+    """Collect canonical URLs for all cached schemas.
+
+    Includes core, qudt, and technique schemas so that shared modules
+    are also regenerated and verified.
+    """
     urls: list[str] = []
     for f in sorted(SCHEMA_DIR_PATH.rglob("*.schema.json")):
         # Skip .embed. / .tabular. cache copies
         if ".embed." in f.name or ".tabular." in f.name:
             continue
         rel = f.relative_to(SCHEMA_DIR_PATH)
-        # Skip core and qudt — pulled automatically as dependencies
-        technique = rel.parts[1] if len(rel.parts) > 1 else ""
-        if technique in ("core", "qudt"):
-            continue
         url_path = str(rel).removesuffix(".json")
         urls.append(ALLOTROPE_URL_PREFIX + url_path)
     return urls
@@ -50,8 +50,8 @@ def test_generated_models_are_up_to_date() -> None:
     """Regenerating all schemas must produce no changes to committed models."""
     before = _snapshot_model_files()
 
-    urls = _collect_technique_schema_urls()
-    assert urls, "No technique schemas found — check SCHEMA_DIR_PATH"
+    urls = _collect_all_schema_urls()
+    assert urls, "No schemas found — check SCHEMA_DIR_PATH"
 
     generate_models(urls)
 

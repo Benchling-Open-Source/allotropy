@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.core import (
     TQuantityValue,
     TQuantityValueCell,
     TQuantityValueCountsPermL,
@@ -21,7 +21,7 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TQuantityValuePH,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,

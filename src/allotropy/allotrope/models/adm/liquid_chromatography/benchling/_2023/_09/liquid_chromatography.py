@@ -6,18 +6,18 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from allotropy.allotrope.models.adm.core.rec._2023._09.core import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.core import (
     OrderedItem,
     TDateTimeStampValue,
     TDateTimeValue,
     TQuantityValue,
     TStringValue,
 )
-from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacube,
     TDatacubeStructure,
 )
-from allotropy.allotrope.models.adm.core.rec._2023._09.hierarchy import (
+from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     CalculatedDataAggregateDocument,
     DataSourceAggregateDocument,
     StatisticsAggregateDocument,
