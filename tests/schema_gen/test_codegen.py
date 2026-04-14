@@ -449,7 +449,7 @@ class TestModuleCodeRender:
             in result
         )
 
-    def test_reexport_syntax(self) -> None:
+    def test_reexport_adds_noqa_comment(self) -> None:
         module = ModuleCode(schema_url="http://test")
         module.imports.append(
             ImportEntry(
@@ -465,7 +465,11 @@ class TestModuleCodeRender:
             )
         )
         result = module.render()
-        assert "TQuantityValue as TQuantityValue" in result
+        # Plain import (no "as X"), with file-level noqa for F401
+        assert "import TQuantityValue\n" in result
+        assert "TQuantityValue as TQuantityValue" not in result
+        assert "# ruff: noqa: F401" in result
+        assert "Re-exports imported types" in result
 
     def test_skips_local_class_imports(self) -> None:
         module = ModuleCode(schema_url="http://test")
