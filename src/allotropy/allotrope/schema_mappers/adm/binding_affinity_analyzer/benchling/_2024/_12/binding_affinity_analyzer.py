@@ -20,6 +20,13 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
     SensorChipDocument,
     SensorgramDataCube,
 )
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
+    DataSystemDocument,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
@@ -31,13 +38,6 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueRU,
     TQuantityValueS,
     TQuantityValueS1,
-)
-from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
-    CalculatedDataAggregateDocument,
-    CalculatedDataDocumentItem,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
-    DataSystemDocument,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper

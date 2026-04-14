@@ -15,15 +15,6 @@ from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting im
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCell,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueOne06cellsPermL,
-    TQuantityValuePercent,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -36,7 +27,18 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     ImageAggregateDocument,
     ImageDocumentItem,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCell,
+    TQuantityValueMicroL,
+    TQuantityValueMicrom,
+    TQuantityValueOne06cellsPermL,
+    TQuantityValuePercent,
+    TQuantityValueUnitless,
+)
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.calculated_data_documents.definition import DataSource

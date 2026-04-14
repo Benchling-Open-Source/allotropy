@@ -2,12 +2,6 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroL,
-    TQuantityValueNumberSign,
-    TQuantityValueRFU,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -41,6 +35,12 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
     TStatisticDatumRole,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION

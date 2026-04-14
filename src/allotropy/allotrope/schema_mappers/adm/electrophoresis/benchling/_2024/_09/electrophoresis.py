@@ -1,11 +1,5 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValuePercent,
-    TQuantityValueRFU,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -35,6 +29,12 @@ from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrop
 from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
     TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValuePercent,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION

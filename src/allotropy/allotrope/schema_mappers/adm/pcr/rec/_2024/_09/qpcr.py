@@ -3,12 +3,6 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroL,
-    TQuantityValueNumberSign,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -38,6 +32,12 @@ from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
     ReporterDataCube,
     SampleDocument,
     SampleRoleType as ModelSampleRoleType,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueMicroL,
+    TQuantityValueNumberSign,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper

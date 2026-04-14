@@ -3,13 +3,6 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMAU,
-    TQuantityValueMicroL,
-    TQuantityValueNm,
-    TQuantityValueRFU,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
@@ -46,7 +39,12 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueKDa,
     TQuantityValueM1cm1,
+    TQuantityValueMAU,
+    TQuantityValueMicroL,
     TQuantityValueNgPerMicroL,
+    TQuantityValueNm,
+    TQuantityValueRFU,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper

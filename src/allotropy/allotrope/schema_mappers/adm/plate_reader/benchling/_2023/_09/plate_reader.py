@@ -5,17 +5,6 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueMAU,
-    TQuantityValueMm,
-    TQuantityValueMs,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import TDatacube
 from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     DataSourceAggregateDocument,
@@ -58,6 +47,17 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValueMAU,
+    TQuantityValueMm,
+    TQuantityValueMs,
+    TQuantityValueNm,
+    TQuantityValueNumberSign,
+    TQuantityValueRFU,
+    TQuantityValueRLU,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper

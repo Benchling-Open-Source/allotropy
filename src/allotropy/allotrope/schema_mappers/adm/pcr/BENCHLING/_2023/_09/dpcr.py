@@ -2,11 +2,6 @@ from dataclasses import dataclass
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueNumberSign,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     DataProcessingDocument,
@@ -31,8 +26,11 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueNumberSign,
     TQuantityValueNumPerMicroL,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper

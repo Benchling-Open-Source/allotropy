@@ -2,21 +2,6 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCm,
-    TQuantityValueHz,
-    TQuantityValueMAUDots,
-    TQuantityValueML,
-    TQuantityValueMLPermin,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueMm,
-    TQuantityValueMmCu,
-    TQuantityValueNm,
-    TQuantityValuePercent,
-    TQuantityValueS,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     DataSystemDocument,
 )
@@ -52,6 +37,21 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     SystemFlowRateDataCube,
     SystemPressureDataCube,
     TemperatureProfileDataCube,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCm,
+    TQuantityValueHz,
+    TQuantityValueMAUDots,
+    TQuantityValueMicroL,
+    TQuantityValueMicrom,
+    TQuantityValueML,
+    TQuantityValueMLPermin,
+    TQuantityValueMm,
+    TQuantityValueMmCu,
+    TQuantityValueNm,
+    TQuantityValuePercent,
+    TQuantityValueS,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import (
     DataCube,

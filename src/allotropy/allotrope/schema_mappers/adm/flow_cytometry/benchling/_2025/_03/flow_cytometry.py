@@ -4,10 +4,6 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCounts,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.adm.core.benchling._2025._03.hierarchy import (
     DataSystemDocument,
     DeviceSystemDocument,
@@ -42,6 +38,10 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
     TStatisticDatumRole,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueCounts,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION

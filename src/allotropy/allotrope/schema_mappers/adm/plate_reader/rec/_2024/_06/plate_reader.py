@@ -3,18 +3,6 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueMAU,
-    TQuantityValueMm,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValuePgPermL,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
-    TQuantityValueS,
-)
 from allotropy.allotrope.models.adm.core.rec._2024._06.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -44,6 +32,18 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegC,
+    TQuantityValueMAU,
+    TQuantityValueMm,
+    TQuantityValueNm,
+    TQuantityValueNumberSign,
+    TQuantityValuePgPermL,
+    TQuantityValueRFU,
+    TQuantityValueRLU,
+    TQuantityValueS,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
