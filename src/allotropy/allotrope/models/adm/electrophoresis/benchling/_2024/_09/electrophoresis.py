@@ -29,10 +29,16 @@ from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
+    TQuantityValueMAU,
+    TQuantityValueMAUDotmL,
+    TQuantityValueMAUDots,
     TQuantityValueML,
     TQuantityValueNm,
     TQuantityValueNumberSign,
     TQuantityValuePercent,
+    TQuantityValueRFU,
+    TQuantityValueRFUDotmL,
+    TQuantityValueRFUDots,
     TQuantityValueS,
     TQuantityValueUnitless,
 )
@@ -142,11 +148,13 @@ class PeakItem(OrderedItem):
         None
     )
     written_name: TStringValue | None = None
-    peak_height: TQuantityValue | None = None
+    peak_height: TQuantityValue | TQuantityValueMAU | TQuantityValueRFU | None = None
     capacity_factor__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "capacity factor (chromatography)"}
     )
-    peak_area: TQuantityValue | None = None
+    peak_area: TQuantityValue | TQuantityValueMAUDotmL | TQuantityValueMAUDots | TQuantityValueRFUDotmL | TQuantityValueRFUDots | None = (
+        None
+    )
     relative_peak_area: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
     comment: TStringValue | None = None

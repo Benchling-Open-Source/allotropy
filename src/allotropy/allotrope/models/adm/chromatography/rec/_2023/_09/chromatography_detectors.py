@@ -12,7 +12,11 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMV,
     TQuantityValueMVDots,
+    TQuantityValueNC,
+    TQuantityValueNCDots,
     TQuantityValueNm,
+    TQuantityValuePA,
+    TQuantityValuePADots,
 )
 
 
@@ -30,14 +34,29 @@ class DeviceControlDocumentItem(OrderedItem):
 
 
 @dataclass(frozen=True, kw_only=True)
-class PeakItem(OrderedItem):
+class PeakItemMillivolts(OrderedItem):
     peak_height: TQuantityValueMV | None = None
     peak_area: TQuantityValueMVDots | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
+class PeakItemNanocoulombs(OrderedItem):
+    peak_height: TQuantityValueNC | None = None
+    peak_area: TQuantityValueNCDots | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class PeakItemPicoamperes(OrderedItem):
+    peak_height: TQuantityValuePA | None = None
+    peak_area: TQuantityValuePADots | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
 class DeviceControlAggregateDocument:
     device_control_document: list[DeviceControlDocumentItem] | None = None
+
+
+PeakItem = PeakItemMillivolts | PeakItemNanocoulombs | PeakItemPicoamperes
 
 
 @dataclass(frozen=True, kw_only=True)

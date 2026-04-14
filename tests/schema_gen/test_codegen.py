@@ -8,6 +8,7 @@ import pytest
 
 from allotropy.schema_gen.codegen import (
     _absolutize_refs,
+    _all_classes_identical,
     _deep_merge_schemas,
     _dquote,
     _field_declaration,
@@ -360,6 +361,103 @@ class TestMergeClassFields:
         if req_indices and opt_indices:
             assert max(req_indices) < min(opt_indices)
 
+    def test_raises_on_type_conflict(self) -> None:
+        existing = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                ),
+            ],
+        )
+        new = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="int", json_name="a", is_required=True
+                ),
+            ],
+        )
+        with pytest.raises(ValueError, match="Internal error"):
+            _merge_class_fields(existing, new)
+
+
+# ---------------------------------------------------------------------------
+# _all_classes_identical
+# ---------------------------------------------------------------------------
+
+
+class TestAllClassesIdentical:
+    def test_single_class(self) -> None:
+        group = [
+            GeneratedClass(
+                name="Foo",
+                fields=[
+                    FieldDef(
+                        python_name="a", type_str="str", json_name="a", is_required=True
+                    )
+                ],
+            )
+        ]
+        assert _all_classes_identical(group) is True
+
+    def test_identical_classes(self) -> None:
+        cls = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                )
+            ],
+        )
+        assert _all_classes_identical([cls, cls]) is True
+
+    def test_different_types(self) -> None:
+        a = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                )
+            ],
+        )
+        b = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="int", json_name="a", is_required=True
+                )
+            ],
+        )
+        assert _all_classes_identical([a, b]) is False
+
+    def test_extra_fields_are_compatible(self) -> None:
+        a = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                )
+            ],
+        )
+        b = GeneratedClass(
+            name="Foo",
+            fields=[
+                FieldDef(
+                    python_name="a", type_str="str", json_name="a", is_required=True
+                ),
+                FieldDef(
+                    python_name="b", type_str="str", json_name="b", is_required=True
+                ),
+            ],
+        )
+        assert _all_classes_identical([a, b]) is True
+
+    def test_none_fields_mismatch(self) -> None:
+        a = GeneratedClass(name="Foo", fields=[])
+        b = GeneratedClass(name="Foo", alias_target="Bar")
+        assert _all_classes_identical([a, b]) is False
+
 
 # ---------------------------------------------------------------------------
 # ModuleCode.render
@@ -391,7 +489,8 @@ class TestModuleCodeRender:
         assert "class Foo:" in result
         assert "from dataclasses import dataclass" in result
 
-    def test_deduplicates_classes(self) -> None:
+    def test_deduplicates_identical_classes(self) -> None:
+        """Identical same-named classes merge into a single class."""
         module = ModuleCode(schema_url="http://test")
         module.classes.append(
             GeneratedClass(
@@ -408,11 +507,14 @@ class TestModuleCodeRender:
                 name="Foo",
                 fields=[
                     FieldDef(
+                        python_name="a", type_str="str", json_name="a", is_required=True
+                    ),
+                    FieldDef(
                         python_name="b",
                         type_str="int",
                         json_name="b",
                         is_required=False,
-                    )
+                    ),
                 ],
             )
         )
@@ -420,6 +522,71 @@ class TestModuleCodeRender:
         assert result.count("class Foo:") == 1
         assert "a: str" in result
         assert "b: int" in result
+
+    def test_conflicting_classes_become_variants(self) -> None:
+        """Same-named classes with different field types become variant classes + union alias."""
+        module = ModuleCode(schema_url="http://test")
+        module.classes.append(
+            GeneratedClass(
+                name="PeakItem",
+                fields=[
+                    FieldDef(
+                        python_name="peak_height",
+                        type_str="TQuantityValueMV",
+                        json_name="peak height",
+                        is_required=False,
+                    )
+                ],
+                source_context="Millivolts",
+            )
+        )
+        module.classes.append(
+            GeneratedClass(
+                name="PeakItem",
+                fields=[
+                    FieldDef(
+                        python_name="peak_height",
+                        type_str="TQuantityValueNC",
+                        json_name="peak height",
+                        is_required=False,
+                    )
+                ],
+                source_context="Nanocoulombs",
+            )
+        )
+        result = module.render()
+        assert "class PeakItemMillivolts:" in result
+        assert "class PeakItemNanocoulombs:" in result
+        assert "PeakItem = PeakItemMillivolts | PeakItemNanocoulombs" in result
+        # No merged PeakItem class
+        assert "class PeakItem:" not in result
+
+    def test_conflicting_classes_without_context_widen_to_union(self) -> None:
+        """Conflicting classes without source_context merge with widened type unions."""
+        module = ModuleCode(schema_url="http://test")
+        module.classes.append(
+            GeneratedClass(
+                name="Foo",
+                fields=[
+                    FieldDef(
+                        python_name="a", type_str="str", json_name="a", is_required=True
+                    )
+                ],
+            )
+        )
+        module.classes.append(
+            GeneratedClass(
+                name="Foo",
+                fields=[
+                    FieldDef(
+                        python_name="a", type_str="int", json_name="a", is_required=True
+                    )
+                ],
+            )
+        )
+        result = module.render()
+        assert result.count("class Foo:") == 1
+        assert "a: int | str" in result
 
     def test_renders_imports(self) -> None:
         module = ModuleCode(schema_url="http://test")

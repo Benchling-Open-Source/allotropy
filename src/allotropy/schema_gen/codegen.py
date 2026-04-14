@@ -143,6 +143,10 @@ class GeneratedClass:
     alias_target: str | None = None
     # Explicit set of type names this class depends on (for topological sort)
     dependencies: set[str] = field(default_factory=set)
+    # The parent $def class name that generated this inline class.
+    # Used during dedup to create meaningful variant suffixes
+    # (e.g., PeakItem from Millivolts $def → PeakItemMillivolts).
+    source_context: str | None = None
 
     def __post_init__(self) -> None:
         variants = [
@@ -222,6 +226,7 @@ class GeneratedClass:
             else None,
             alias_target=self.alias_target,
             dependencies=set(self.dependencies),
+            source_context=self.source_context,
         )
 
     @property
@@ -278,20 +283,58 @@ class ModuleCode:
 
         This method is pure — it does not mutate ``self.classes``.
         """
-        # Deduplicate classes by name, merging fields from duplicates.
-        # Multiple schema locations can generate the same inline type
-        # (e.g., recursive PopulationDocumentItem) with slightly different
-        # field sets — merge all fields so no properties are lost.
-        seen_names: dict[str, int] = {}  # name -> index in unique
-        unique: list[GeneratedClass] = []
+        # Deduplicate classes by name.  Group same-named classes and check
+        # whether they are structurally identical (same fields + types).
+        # Identical duplicates are merged into one class.  Conflicting
+        # duplicates (e.g., PeakItem from different detector variants with
+        # different unit types) become distinct variant classes + a union
+        # type alias preserving field-type correlation within each variant.
+        groups: dict[str, list[GeneratedClass]] = defaultdict(list)
         for cls in self.classes:
-            if cls.name not in seen_names:
-                seen_names[cls.name] = len(unique)
-                unique.append(cls.copy())
+            groups[cls.name].append(cls)
+
+        unique: list[GeneratedClass] = []
+        for name, group in groups.items():
+            if len(group) == 1:
+                unique.append(group[0].copy())
+                continue
+
+            if _all_classes_identical(group):
+                # Truly identical — merge field sets (one copy may have
+                # extra fields from a deeper schema branch).
+                merged = group[0].copy()
+                for other in group[1:]:
+                    _merge_class_fields(merged, other)
+                unique.append(merged)
+                continue
+
+            # Conflicting classes with source_context from sub-schema
+            # $defs → generate variant classes + union alias preserving
+            # field-type correlation.  Without source_context (technique-
+            # level anyOf merge), fall back to widening merge.
+            all_have_context = all(cls.source_context for cls in group)
+            if all_have_context:
+                variant_names: list[str] = []
+                for cls in group:
+                    variant_name = f"{name}{cls.source_context}"
+                    variant_cls = cls.copy()
+                    variant_cls.name = variant_name
+                    unique.append(variant_cls)
+                    variant_names.append(variant_name)
+
+                unique.append(
+                    GeneratedClass(
+                        name=name,
+                        alias_target=_join_union(variant_names),
+                        dependencies=set(variant_names),
+                    )
+                )
             else:
-                # Merge fields from the duplicate into the existing class
-                existing = unique[seen_names[cls.name]]
-                _merge_class_fields(existing, cls)
+                # Technique-level duplicates: merge with widened unions.
+                merged = group[0].copy()
+                for other in group[1:]:
+                    _widen_class_fields(merged, other)
+                unique.append(merged)
 
         # Reorder classes so that dependencies come before uses
         classes = _topological_sort_classes(unique)
@@ -430,6 +473,72 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
     return [classes[i] for i in result]
 
 
+def _all_classes_identical(group: list[GeneratedClass]) -> bool:
+    """True if all classes in *group* are type-compatible on shared fields.
+
+    Classes are compatible when every field name present in more than one
+    class has the same type string in all classes.  Extra fields in one
+    class are allowed (they'll be merged).  Used during dedup to decide
+    whether same-named classes can be merged (compatible) or must become
+    distinct variant classes (conflicting).
+    """
+    if len(group) <= 1:
+        return True
+    # Build per-class field→type maps
+    maps: list[dict[str, str] | None] = []
+    for cls in group:
+        if cls.fields is None:
+            maps.append(None)
+        else:
+            maps.append({f.python_name: f.type_str for f in cls.fields})
+
+    # All must be the same kind (dataclass vs alias/enum)
+    if any(m is None for m in maps) and any(m is not None for m in maps):
+        return False
+
+    # Compare shared field types pairwise against the first
+    ref = maps[0]
+    if ref is None:
+        return True
+    for other in maps[1:]:
+        if other is None:
+            continue
+        for name, type_str in other.items():
+            if name in ref and ref[name] != type_str:
+                return False
+    return True
+
+
+def _widen_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
+    """Merge fields from *new* into *existing*, widening types as unions on conflict.
+
+    Used for technique-level anyOf merges where same-named classes from
+    different variants have different field types.  Conflicting types are
+    combined into a union (e.g., ``TQuantityValueMV`` + ``TQuantityValueNC``
+    → ``TQuantityValueMV | TQuantityValueNC``).
+    """
+    if existing.fields is None or new.fields is None:
+        return
+
+    existing_by_name = {f.python_name: f for f in existing.fields}
+    for f in new.fields:
+        prev = existing_by_name.get(f.python_name)
+        if prev is None:
+            existing.fields.append(f)
+            existing_by_name[f.python_name] = f
+        elif prev.type_str != f.type_str:
+            # Widen to union of both types, deduplicating components
+            prev_parts = [p.strip() for p in prev.type_str.split("|")]
+            new_parts = [p.strip() for p in f.type_str.split("|")]
+            combined = _unique_ordered(prev_parts + new_parts)
+            prev.type_str = _join_union(combined)
+            # Mark optional if either side is optional
+            if not f.is_required:
+                prev.is_required = False
+
+    existing.dependencies |= new.dependencies
+
+
 def _merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
     """Merge fields from *new* into *existing*, deduplicating by field name.
 
@@ -447,12 +556,13 @@ def _merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
             existing.fields.append(f)
             existing_by_name[f.python_name] = f
         elif prev.type_str != f.type_str:
-            warnings.warn(
-                f"Type conflict merging duplicate class {existing.name!r}: "
-                f"field {f.python_name!r} has type {prev.type_str!r} vs "
-                f"{f.type_str!r}. Keeping the first.",
-                stacklevel=2,
+            msg = (
+                f"Internal error: _merge_class_fields called on non-identical "
+                f"classes {existing.name!r}: field {f.python_name!r} has type "
+                f"{prev.type_str!r} vs {f.type_str!r}. "
+                f"This should have been caught by _all_classes_identical."
             )
+            raise ValueError(msg)
 
     # Merge dependencies
     existing.dependencies |= new.dependencies
@@ -1040,10 +1150,17 @@ class SchemaCodeGenerator:
                 continue
 
             class_name = def_name_to_class_name(def_name)
+            start_idx = len(module.classes)
             cls = self._generate_type(module, schema_url, class_name, def_schema)
             if cls:
                 module.classes.append(cls)
                 module.exported_names[def_name] = class_name
+            # Tag inline classes generated as children of this $def with
+            # their source context so variant dedup can create meaningful
+            # suffixes (e.g., PeakItem from Millivolts → PeakItemMillivolts).
+            for c in module.classes[start_idx:]:
+                if c.source_context is None:
+                    c.source_context = class_name
 
         # Core modules re-export ALL existing TQuantityValue{Unit} classes
         # so that schema mappers can import them from core.py.  This set is
@@ -1504,62 +1621,41 @@ class SchemaCodeGenerator:
                 if canonical and UNITS_SCHEMA_MARKER in canonical:
                     unit_refs.append(ref)
 
+        # Also collect unit refs from inline oneOf schemas — deep-merge
+        # accumulation can produce allOf entries with both direct unit $refs
+        # AND inline {oneOf: [unit1, unit2]} schemas.
+        for s in inline_schemas:
+            if "oneOf" in s:
+                for variant in s["oneOf"]:
+                    if "$ref" in variant:
+                        ref_url = variant["$ref"].split("#")[0]
+                        try:
+                            canonical = (
+                                normalize_schema_url(ref_url) if ref_url else None
+                            )
+                        except ValueError:
+                            canonical = None
+                        if canonical and UNITS_SCHEMA_MARKER in canonical:
+                            unit_refs.append(variant["$ref"])
+
         if not quantity_ref:
             return None
 
-        # Single unit ref
+        if not unit_refs:
+            return None
+
         if len(unit_refs) == 1:
             return self._generate_quantity_value_type(
                 module, schema_url, quantity_ref, unit_refs[0], nullable=nullable
             )
 
-        # Multiple unit refs
-        if len(unit_refs) > 1:
-            types = [
-                self._generate_quantity_value_type(
-                    module, schema_url, quantity_ref, uref, nullable=nullable
-                )
-                for uref in unit_refs
-            ]
-            return _join_union(_unique_ordered(types))
-
-        # No direct unit refs — check for oneOf[unit1, unit2, ...] in inline schemas
-        return self._try_quantity_value_one_of_units(
-            module, schema_url, quantity_ref, inline_schemas, nullable=nullable
-        )
-
-    def _try_quantity_value_one_of_units(
-        self,
-        module: ModuleCode,
-        schema_url: str,
-        quantity_ref: str,
-        inline_schemas: list[dict[str, Any]],
-        *,
-        nullable: bool = False,
-    ) -> str | None:
-        """Match allOf[tQuantityValue, {oneOf: [unit1, unit2, ...]}]."""
-        for s in inline_schemas:
-            if "oneOf" not in s:
-                continue
-            one_of_unit_refs: list[str] = []
-            for variant in s["oneOf"]:
-                if "$ref" in variant:
-                    ref_url = variant["$ref"].split("#")[0]
-                    try:
-                        canonical = normalize_schema_url(ref_url) if ref_url else None
-                    except ValueError:
-                        canonical = None
-                    if canonical and UNITS_SCHEMA_MARKER in canonical:
-                        one_of_unit_refs.append(variant["$ref"])
-            if one_of_unit_refs:
-                types = [
-                    self._generate_quantity_value_type(
-                        module, schema_url, quantity_ref, uref, nullable=nullable
-                    )
-                    for uref in one_of_unit_refs
-                ]
-                return _join_union(_unique_ordered(types))
-        return None
+        types = [
+            self._generate_quantity_value_type(
+                module, schema_url, quantity_ref, uref, nullable=nullable
+            )
+            for uref in unit_refs
+        ]
+        return _join_union(_unique_ordered(types))
 
     def _try_class_enum_pattern(
         self,

@@ -30,6 +30,7 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCountsDots,
     TQuantityValueHz,
     TQuantityValueMAU,
+    TQuantityValueMAUDotmL,
     TQuantityValueMAUDots,
     TQuantityValueMicroL,
     TQuantityValueMicrom,
@@ -248,7 +249,7 @@ class PeakItem(OrderedItem):
     peak_group: TQuantityValueMAUDots | None = None
     relative_peak_analyte_amount: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
-    peak_area: TQuantityValueCountsDots | TQuantityValueMVDots | TQuantityValueNCDots | TQuantityValuePADots | None = (
+    peak_area: TQuantityValueCountsDots | TQuantityValueMAUDotmL | TQuantityValueMAUDots | TQuantityValueMVDots | TQuantityValueNCDots | TQuantityValuePADots | None = (
         None
     )
     relative_peak_area: TQuantityValuePercent | None = None
