@@ -836,6 +836,7 @@
     }
   ],
   "required": [
+    "$asm.manifest",
     "qPCR aggregate document"
   ]
 }

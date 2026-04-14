@@ -22,6 +22,7 @@ from allotropy.schema_gen.naming import (
     quantity_value_class_name,
     schema_url_to_module_path,
     unit_symbol_to_class_name,
+    UNITS_SCHEMA_MARKER,
 )
 
 
@@ -40,6 +41,28 @@ def _dquote(value: Any) -> str:
         escaped = value.replace("\\", "\\\\")
         return f'"{escaped}"'
     return repr(value)
+
+
+def _unique_ordered(items: list[str]) -> list[str]:
+    """Deduplicate a list while preserving insertion order."""
+    seen: set[str] = set()
+    result: list[str] = []
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
+
+def extract_unit_const(schema: dict[str, Any]) -> str | None:
+    """Extract the const unit value from a unit ``$defs`` entry.
+
+    Used by both the code generator and the standalone units module
+    generator in ``generate.py``.
+    """
+    props = schema.get("properties", {})
+    unit_prop = props.get("unit", {})
+    return unit_prop.get("const")
 
 
 # Properties starting with these prefixes are schema metadata, not data fields
@@ -412,16 +435,25 @@ def _merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
     """Merge fields from *new* into *existing*, deduplicating by field name.
 
     Only operates on dataclasses (``fields is not None``).  Type aliases
-    and enums are left unchanged.
+    and enums are left unchanged.  Warns when both classes define the same
+    field with a different type string.
     """
     if existing.fields is None or new.fields is None:
         return
 
-    existing_names = {f.python_name for f in existing.fields}
+    existing_by_name = {f.python_name: f for f in existing.fields}
     for f in new.fields:
-        if f.python_name not in existing_names:
+        prev = existing_by_name.get(f.python_name)
+        if prev is None:
             existing.fields.append(f)
-            existing_names.add(f.python_name)
+            existing_by_name[f.python_name] = f
+        elif prev.type_str != f.type_str:
+            warnings.warn(
+                f"Type conflict merging duplicate class {existing.name!r}: "
+                f"field {f.python_name!r} has type {prev.type_str!r} vs "
+                f"{f.type_str!r}. Keeping the first.",
+                stacklevel=2,
+            )
 
     # Merge dependencies
     existing.dependencies |= new.dependencies
@@ -837,29 +869,40 @@ class QuantityValueManager:
     Centralizes the logic for resolving quantity value types, checking
     whether they already exist in the shared module, and recording new
     ones that need to be appended.
+
+    Tracking uses a single authoritative map from ``(unit_string, nullable)``
+    to class name.  A derived ``_known_names`` set provides fast name-based
+    lookup (e.g., to enumerate all classes for core re-exports).
     """
 
     def __init__(
         self,
-        existing_classes: set[str] | None = None,
         existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
     ) -> None:
-        self._known: set[str] = existing_classes or set()
-        # Map from (unit_string, nullable) → existing class name.  Keyed by both
-        # unit value and nullable flag so that TQuantityValueUnitless and
-        # TNullableQuantityValueUnitless are tracked independently.
-        self._unit_to_class: dict[tuple[str, bool], str] = existing_unit_to_class or {}
+        # (unit_string, nullable) → class name.  Single source of truth.
+        self._unit_to_class: dict[tuple[str, bool], str] = (
+            dict(existing_unit_to_class) if existing_unit_to_class else {}
+        )
+        # Derived: set of all known class names (for fast membership checks
+        # and for enumerating classes during core re-export generation).
+        self._known_names: set[str] = set(self._unit_to_class.values())
         self.new_classes: list[tuple[str, str]] = []
+
+    @property
+    def known_class_names(self) -> set[str]:
+        """All known TQuantityValue class names (existing + newly created)."""
+        return self._known_names
 
     def get_or_create(self, unit_const: str, *, nullable: bool = False) -> str:
         """Return the class name for *unit_const*, recording it as new if needed."""
         key = (unit_const, nullable)
-        if key in self._unit_to_class:
-            return self._unit_to_class[key]
+        existing = self._unit_to_class.get(key)
+        if existing is not None:
+            return existing
         class_name = quantity_value_class_name(unit_const, nullable=nullable)
-        if class_name not in self._known:
-            self._known.add(class_name)
+        if class_name not in self._known_names:
             self._unit_to_class[key] = class_name
+            self._known_names.add(class_name)
             self.new_classes.append((class_name, unit_const))
         return class_name
 
@@ -877,7 +920,6 @@ class SchemaCodeGenerator:
         schemas: dict[str, dict[str, Any]],
         generation_order: list[str],
         models_package: str = "allotropy.allotrope.models",
-        existing_quantity_value_classes: set[str] | None = None,
         existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
     ) -> None:
         self.schemas = schemas
@@ -890,9 +932,7 @@ class SchemaCodeGenerator:
         # Schema merging helper
         self._merger = SchemaMerger(schemas)
         # Quantity value lifecycle manager
-        self._qv_manager = QuantityValueManager(
-            existing_quantity_value_classes, existing_unit_to_class
-        )
+        self._qv_manager = QuantityValueManager(existing_unit_to_class)
 
     @property
     def new_quantity_value_classes(self) -> list[tuple[str, str]]:
@@ -925,7 +965,7 @@ class SchemaCodeGenerator:
         return module
 
     def _is_units_schema(self, url: str) -> bool:
-        return "units.schema" in url
+        return UNITS_SCHEMA_MARKER in url
 
     @staticmethod
     def _is_adm_schema(schema: dict[str, Any]) -> bool:
@@ -969,11 +1009,7 @@ class SchemaCodeGenerator:
 
     @staticmethod
     def _extract_unit_const(schema: dict[str, Any]) -> str | None:
-        """Extract the const unit value from a unit definition."""
-        props = schema.get("properties", {})
-        unit_prop = props.get("unit", {})
-        const: str | None = unit_prop.get("const")
-        return const
+        return extract_unit_const(schema)
 
     # -------------------------------------------------------------------------
     # Regular $defs module generation (core, cube, hierarchy, manifest, detector)
@@ -1015,7 +1051,7 @@ class SchemaCodeGenerator:
         # deterministic (every class in quantity_values.py), making core.py
         # output identical regardless of which technique schemas are processed.
         if is_core:
-            for qv_class in sorted(self._qv_manager._known):
+            for qv_class in sorted(self._qv_manager.known_class_names):
                 if not any(
                     imp.name == qv_class
                     and imp.module == _SHARED_QUANTITY_VALUES_MODULE
@@ -1466,7 +1502,7 @@ class SchemaCodeGenerator:
                     )
                 except ValueError:
                     canonical = None
-                if canonical and "units.schema" in canonical:
+                if canonical and UNITS_SCHEMA_MARKER in canonical:
                     unit_refs.append(ref)
 
         if not quantity_ref:
@@ -1486,13 +1522,7 @@ class SchemaCodeGenerator:
                 )
                 for uref in unit_refs
             ]
-            seen: set[str] = set()
-            unique_types: list[str] = []
-            for t in types:
-                if t not in seen:
-                    seen.add(t)
-                    unique_types.append(t)
-            return _join_union(unique_types)
+            return _join_union(_unique_ordered(types))
 
         # No direct unit refs — check for oneOf[unit1, unit2, ...] in inline schemas
         return self._try_quantity_value_one_of_units(
@@ -1520,7 +1550,7 @@ class SchemaCodeGenerator:
                         canonical = normalize_schema_url(ref_url) if ref_url else None
                     except ValueError:
                         canonical = None
-                    if canonical and "units.schema" in canonical:
+                    if canonical and UNITS_SCHEMA_MARKER in canonical:
                         one_of_unit_refs.append(variant["$ref"])
             if one_of_unit_refs:
                 types = [
@@ -1529,13 +1559,7 @@ class SchemaCodeGenerator:
                     )
                     for uref in one_of_unit_refs
                 ]
-                seen: set[str] = set()
-                unique_types: list[str] = []
-                for t in types:
-                    if t not in seen:
-                        seen.add(t)
-                        unique_types.append(t)
-                return _join_union(unique_types)
+                return _join_union(_unique_ordered(types))
         return None
 
     def _try_class_enum_pattern(
@@ -1649,7 +1673,7 @@ class SchemaCodeGenerator:
             )
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
-                merged["required"] = list(set(merged_required))
+                merged["required"] = sorted(set(merged_required))
             cls = self._generate_dataclass(
                 module, schema_url, inline_class_name, merged, base_classes=base_classes
             )
@@ -1832,18 +1856,14 @@ class SchemaCodeGenerator:
         self._merger.deep_merge_base_ref_properties(schema_url, base_refs, merged_props)
 
         item_class_name = property_name_to_class_name(prop_name) + "Item"
-        seen: set[str] = set()
-        base_classes: list[str] = []
-        for ref in base_refs:
-            cls_name = self._resolve_ref_type(module, schema_url, ref)
-            if cls_name not in seen:
-                seen.add(cls_name)
-                base_classes.append(cls_name)
+        base_classes = _unique_ordered(
+            [self._resolve_ref_type(module, schema_url, ref) for ref in base_refs]
+        )
 
         if merged_props:
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
-                merged["required"] = list(set(merged_required))
+                merged["required"] = sorted(set(merged_required))
             cls = self._generate_dataclass(
                 module, schema_url, item_class_name, merged, base_classes=base_classes
             )
@@ -1964,19 +1984,21 @@ class SchemaCodeGenerator:
 
         all_props: dict[str, Any] = {}
         all_required: set[str] = set(schema.get("required", []))
-        has_manifest = False
 
         for item in all_of:
             if "$ref" in item:
-                _, def_name = parse_ref(item["$ref"])
-                if def_name == "asm":
-                    has_manifest = True
+                ref_schema = self._merger.resolve_ref_to_schema(
+                    schema_url, item["$ref"]
+                )
+                if ref_schema:
+                    all_props.update(ref_schema.get("properties", {}))
+                    all_required.update(ref_schema.get("required", []))
             if "properties" in item:
                 all_props.update(item["properties"])
             if "required" in item:
                 all_required.update(item["required"])
 
-        has_manifest = has_manifest or "$asm.manifest" in all_required
+        has_manifest = "$asm.manifest" in all_props or "$asm.manifest" in all_required
 
         # Build a synthetic schema that _generate_dataclass can consume
         synthetic: dict[str, Any] = {

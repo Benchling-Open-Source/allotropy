@@ -16,7 +16,11 @@ import subprocess
 import sys
 from typing import Any
 
-from allotropy.schema_gen.codegen import _dquote, SchemaCodeGenerator
+from allotropy.schema_gen.codegen import (
+    _dquote,
+    extract_unit_const,
+    SchemaCodeGenerator,
+)
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
 from allotropy.schema_gen.naming import (
     DEFAULT_MODEL_OUTPUT_DIR,
@@ -24,6 +28,7 @@ from allotropy.schema_gen.naming import (
     normalize_schema_url,
     schema_url_to_model_file,
     unit_symbol_to_class_name,
+    UNITS_SCHEMA_MARKER,
 )
 
 # Path to the shared quantity_values module (relative to output_dir's parent)
@@ -106,15 +111,11 @@ def generate_models(
 
     # Generate all other modules via the custom code generator
     if other_urls:
-        (
-            existing_qv_classes,
-            existing_unit_to_class,
-        ) = _read_existing_quantity_value_classes()
+        existing_unit_to_class = _read_existing_quantity_value_classes()
         generator = SchemaCodeGenerator(
             all_schemas,
             order,
             models_package,
-            existing_qv_classes,
             existing_unit_to_class,
         )
         modules = generator.generate_all()
@@ -322,14 +323,13 @@ def _strip_embedded_defs(schema: dict[str, Any]) -> None:
 
 
 def _is_units_schema(url: str) -> bool:
-    return "units.schema" in url
+    return UNITS_SCHEMA_MARKER in url
 
 
 # ---------------------------------------------------------------------------
 # Shared quantity_values.py management
 # ---------------------------------------------------------------------------
 
-_QV_CLASS_RE = re.compile(r"^class (T(?:Nullable)?QuantityValue\w+)\(", re.MULTILINE)
 _QV_UNIT_RE = re.compile(
     r"^class (T(?:Nullable)?QuantityValue\w+)\([^)]+\):\s*\n"
     r"\s+unit:\s+str\s*=\s*\"([^\"]+)\"",
@@ -337,26 +337,21 @@ _QV_UNIT_RE = re.compile(
 )
 
 
-def _read_existing_quantity_value_classes() -> tuple[
-    set[str], dict[tuple[str, bool], str]
-]:
+def _read_existing_quantity_value_classes() -> dict[tuple[str, bool], str]:
     """Read class names and unit values already defined in quantity_values.py.
 
-    Returns:
-        (class_names, unit_to_class): Set of existing class names and a mapping
-        from ``(unit_string, nullable)`` to class name.  The *nullable* key
-        distinguishes ``TQuantityValueUnitless`` from ``TNullableQuantityValueUnitless``
-        for the same unit string.
+    Returns a mapping from ``(unit_string, nullable)`` to class name.
+    The *nullable* key distinguishes ``TQuantityValueUnitless`` from
+    ``TNullableQuantityValueUnitless`` for the same unit string.
     """
     if not _QUANTITY_VALUES_FILE.exists():
-        return set(), {}
+        return {}
     content = _QUANTITY_VALUES_FILE.read_text(encoding="utf-8")
-    class_names = set(_QV_CLASS_RE.findall(content))
     unit_to_class: dict[tuple[str, bool], str] = {}
     for name, unit in _QV_UNIT_RE.findall(content):
         nullable = name.startswith("TNullableQuantityValue")
         unit_to_class[(unit, nullable)] = name
-    return class_names, unit_to_class
+    return unit_to_class
 
 
 def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
@@ -427,7 +422,7 @@ def _generate_units_module(schema: dict[str, Any]) -> str:
     for _def_name, def_schema in defs.items():
         if not isinstance(def_schema, dict):
             continue
-        const_value = _extract_unit_const(def_schema)
+        const_value = extract_unit_const(def_schema)
         if const_value is None:
             continue
 
@@ -459,14 +454,6 @@ def _generate_units_module(schema: dict[str, Any]) -> str:
     lines.append("")
 
     return "\n".join(lines)
-
-
-def _extract_unit_const(schema: dict[str, Any]) -> str | None:
-    """Extract the const unit value from a unit $defs entry."""
-    props = schema.get("properties", {})
-    unit_prop = props.get("unit", {})
-    const: str | None = unit_prop.get("const")
-    return const
 
 
 # ---------------------------------------------------------------------------

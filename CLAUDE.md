@@ -68,3 +68,7 @@ Generated models use these naming patterns:
 | `pCO2` | `p_co2` |
 
 Quantity value types use abbreviated unit names: `TQuantityValueDegC`, `TQuantityValueMAU`, `TQuantityValueMmHg`, `TQuantityValueMicroLPermin`, `TQuantityValueM`, `TQuantityValueNM`, `TQuantityValueM1s1`, `TQuantityValueS1`, `TQuantityValueRU`, `TQuantityValueS`.
+
+## Code Rules
+
+- **No runtime imports.** All imports must be at module level. Never put `import` or `from ... import` inside a function body to work around circular dependencies — fix the dependency instead.

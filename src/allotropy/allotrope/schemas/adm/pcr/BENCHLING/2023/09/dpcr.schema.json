@@ -806,6 +806,7 @@
     }
   ],
   "required": [
+    "$asm.manifest",
     "dPCR aggregate document"
   ]
 }

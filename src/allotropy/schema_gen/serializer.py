@@ -16,13 +16,72 @@ Usage::
 
 from __future__ import annotations
 
-from dataclasses import fields, is_dataclass, MISSING
+from collections.abc import Sequence
+from dataclasses import asdict, fields, is_dataclass, MISSING
 from enum import Enum
-from typing import Any, get_args, get_origin, TypeVar
+import sys
+import types
+from typing import Any, get_args, get_origin, TypeVar, Union
 
 from allotropy.schema_gen.naming import default_json_name
 
 T = TypeVar("T")
+
+# Mapping from special characters in JSON keys to safe Python identifiers.
+# Used by the custom_information_document structuring/unstructuring logic.
+# NOTE: space→"_" MUST be last, or it will break other key replacements.
+DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
+    ".": "_POINT_",
+    "-": "_DASH_",
+    "°": "_DEG_",
+    "/": "_SLASH_",
+    "\\": "_BSLASH_",
+    "(": "_OPAREN_",
+    ")": "_CPAREN_",
+    "%": "_PERCENT_",
+    ":": "_COLON_",
+    "#": "_NUMBER_",
+    "[": "_OBRACKET_",
+    "]": "_CBRACKET_",
+    "$": "_DOLLAR_",
+    "~": "_TILDE_",
+    "?": "_QMARK_",
+    "^": "_CARET_",
+    "=": "_EQUALS_",
+    "@": "_AT_",
+    "'": "_QUOTE_",
+    "*": "_ASTERISK_",
+    ",": "_COMMA_",
+    "&": "_AMPERSAND_",
+    " ": "_",
+}
+
+
+def _convert_model_key_to_dict_key(key: str) -> str:
+    """Decode a Python-safe field name back to the original JSON key."""
+    if key.startswith("_KW"):
+        key = key[3:]
+    if key.startswith("___") and key[3].isdigit():
+        key = key[3:]
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(model_val, dict_val)
+    return key
+
+
+def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
+    """Serialize a dynamically-created custom_information_document dataclass."""
+    required_keys = {a.name for a in fields(model) if a.default == MISSING}
+
+    def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
+        return {
+            _convert_model_key_to_dict_key(key): (
+                value.value if isinstance(value, Enum) else value
+            )
+            for key, value in kv_pairs
+            if key in required_keys or value is not None
+        }
+
+    return asdict(model, dict_factory=dict_factory)
 
 
 def to_dict(obj: Any) -> Any:
@@ -49,16 +108,13 @@ def to_dict(obj: Any) -> Any:
                     continue
             json_key = f.metadata.get("json_name", default_json_name(f.name))
             result[json_key] = to_dict(value)
-        # Handle dynamically-added custom_information_document (not in fields())
+        # Handle dynamically-attached custom_information_document (not in fields())
+        field_names = {f.name for f in fields(obj)}
         if (
             hasattr(obj, "custom_information_document")
-            and "custom_information_document" not in {f.name for f in fields(obj)}
+            and "custom_information_document" not in field_names
             and not isinstance(obj.custom_information_document, list)
         ):
-            from allotropy.allotrope.converter import (
-                unstructure_custom_information_document,
-            )
-
             result[
                 "custom information document"
             ] = unstructure_custom_information_document(obj.custom_information_document)
@@ -133,7 +189,7 @@ def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
         return value
 
     # Handle Union types (X | None, X | Y | None, etc.)
-    if _is_union(origin, field_type):
+    if _is_union(origin):
         non_none_types = [a for a in args if a is not type(None)]
         if len(non_none_types) == 1:
             return _structure_value(value, non_none_types[0], parent_cls)
@@ -167,14 +223,20 @@ def _value_matches_type_shape(value: Any, field_type: Any) -> bool:
         return isinstance(value, dict)
     if isinstance(field_type, type) and issubclass(field_type, Enum):
         return isinstance(value, str | int)
+    # Primitive types: check the value actually matches
+    if field_type is str:
+        return isinstance(value, str)
+    if field_type is int:
+        return isinstance(value, int) and not isinstance(value, bool)
+    if field_type is float:
+        return isinstance(value, int | float)
+    if field_type is bool:
+        return isinstance(value, bool)
     return True
 
 
-def _is_union(origin: Any, _field_type: Any) -> bool:
+def _is_union(origin: Any) -> bool:
     """Check if a type is a Union / X | Y type."""
-    import types
-    from typing import Union
-
     return origin is types.UnionType or origin is Union
 
 
@@ -185,7 +247,6 @@ def _resolve_string_annotation(annotation: str, cls: type) -> Any | None:
     and union syntax (``A | B | None``).  Uses the module where *cls* is
     defined to look up names.
     """
-    import sys
 
     annotation = annotation.strip()
 

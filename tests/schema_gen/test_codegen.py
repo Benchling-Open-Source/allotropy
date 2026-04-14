@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, ClassVar
 
 import pytest
 
@@ -1085,7 +1085,9 @@ class TestQuantityValueManager:
         assert len(mgr.new_classes) == 1
 
     def test_existing_classes_not_recorded_as_new(self) -> None:
-        mgr = QuantityValueManager(existing_classes={"TQuantityValueDegC"})
+        mgr = QuantityValueManager(
+            existing_unit_to_class={("°C", False): "TQuantityValueDegC"}
+        )
         result = mgr.get_or_create("°C")
         assert result == "TQuantityValueDegC"
         assert len(mgr.new_classes) == 0
@@ -1235,6 +1237,19 @@ class TestSchemaMerger:
 class TestGenerateAdmModule:
     """Tests for the top-level ADM Model class generation path."""
 
+    # Minimal asm definition matching the real schema structure:
+    # has $asm.manifest as a property (but not required — that's the
+    # technique schema's job, or it's detected via ref resolution).
+    _ASM_DEF: ClassVar[dict[str, Any]] = {
+        "properties": {
+            "$asm.manifest": {
+                "oneOf": [
+                    {"type": "string", "format": "iri"},
+                ]
+            }
+        },
+    }
+
     def _make_adm_schema(
         self,
         *,
@@ -1253,7 +1268,7 @@ class TestGenerateAdmModule:
             items.append(item)
         schema: dict[str, Any] = {"allOf": items}
         if include_manifest:
-            schema["required"] = ["$asm.manifest"]
+            schema["$defs"] = {"asm": self._ASM_DEF}
         return schema
 
     def test_generates_model_with_manifest(self) -> None:
@@ -1278,26 +1293,18 @@ class TestGenerateAdmModule:
         schemas = {schema_url: schema}
         gen = _make_generator(schemas)
         modules = gen.generate_all()
-        source = modules[schema_url].render()
-        assert "@dataclass(kw_only=True)" in source
-        assert "frozen" not in source
+        model_cls = next(c for c in modules[schema_url].classes if c.name == "Model")
+        assert model_cls.frozen is False
 
     def test_flattens_allof_properties(self) -> None:
         schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
-        schemas = {
-            schema_url: {
-                "allOf": [
-                    {
-                        "properties": {"field_a": {"type": "string"}},
-                        "required": ["field_a"],
-                    },
-                    {
-                        "properties": {"field_b": {"type": "integer"}},
-                    },
-                ],
-                "required": ["$asm.manifest"],
-            }
-        }
+        schema = self._make_adm_schema(
+            properties={"field_a": {"type": "string"}},
+            required=["field_a"],
+        )
+        # Add a second allOf item with more properties
+        schema["allOf"].append({"properties": {"field_b": {"type": "integer"}}})
+        schemas = {schema_url: schema}
         gen = _make_generator(schemas)
         modules = gen.generate_all()
         source = modules[schema_url].render()
@@ -1335,6 +1342,112 @@ class TestGenerateAdmModule:
         ]
         assert len(field_lines) >= 2
         assert "field_asm_manifest" in field_lines[0]
+
+    def test_manifest_detected_via_ref_properties(self) -> None:
+        """Manifest is detected when $asm.manifest comes from a resolved $ref,
+        even without listing it in the root required array."""
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "asm": {
+                        "properties": {
+                            "$asm.manifest": {"type": "string"},
+                        },
+                    },
+                },
+                "allOf": [
+                    {"$ref": "#/$defs/asm"},
+                    {"properties": {"name": {"type": "string"}}},
+                ],
+                # No "$asm.manifest" in required — the ref provides the property.
+                "required": ["name"],
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "field_asm_manifest: str" in source
+
+    def test_allof_ref_properties_merged_into_model(self) -> None:
+        """Properties from allOf $ref targets are included in the Model."""
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "base": {
+                        "properties": {
+                            "base field": {"type": "string"},
+                        },
+                        "required": ["base field"],
+                    },
+                },
+                "allOf": [
+                    {"$ref": "#/$defs/base"},
+                    {"properties": {"extra field": {"type": "integer"}}},
+                ],
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "base_field: str" in source
+        assert "extra_field: int" in source
+
+    def test_allof_ref_required_fields_collected(self) -> None:
+        """Required fields from allOf $ref targets are treated as required."""
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "base": {
+                        "properties": {
+                            "required field": {"type": "string"},
+                        },
+                        "required": ["required field"],
+                    },
+                },
+                "allOf": [
+                    {"$ref": "#/$defs/base"},
+                    {"properties": {"optional field": {"type": "integer"}}},
+                ],
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        # required_field should be required (no "| None", no default)
+        assert "required_field: str\n" in source
+        # optional_field should be optional
+        assert "optional_field: int | None" in source
+
+    def test_external_allof_ref_properties_merged(self) -> None:
+        """Properties from external schema $ref in allOf are merged into the Model."""
+        core_url = f"{BASE}adm/core/REC/2024/09/core.schema"
+        technique_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            core_url: {
+                "$defs": {
+                    "asm": {
+                        "properties": {
+                            "$asm.manifest": {"type": "string"},
+                        },
+                    },
+                },
+            },
+            technique_url: {
+                "allOf": [
+                    {"$ref": f"{core_url}#/$defs/asm"},
+                    {"properties": {"data": {"type": "string"}}},
+                ],
+                "required": ["data"],
+            },
+        }
+        gen = _make_generator(schemas, urls=[core_url, technique_url])
+        modules = gen.generate_all()
+        source = modules[technique_url].render()
+        assert "field_asm_manifest: str" in source
+        assert "data: str" in source
 
 
 # ---------------------------------------------------------------------------

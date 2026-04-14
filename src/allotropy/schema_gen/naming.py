@@ -18,6 +18,9 @@ ALLOTROPE_URL_PREFIX = "http://purl.allotrope.org/json-schemas/"
 # GitLab raw content base URL
 GITLAB_RAW_BASE = "https://gitlab.com/allotrope-public/asm/-/raw/main/json-schemas/"
 
+# Substring that identifies a units schema URL (as opposed to core/hierarchy/technique)
+UNITS_SCHEMA_MARKER = "units.schema"
+
 # Default output directories (relative to project root)
 DEFAULT_SCHEMA_CACHE_DIR = Path("src/allotropy/allotrope/schemas")
 DEFAULT_MODEL_OUTPUT_DIR = Path("src/allotropy/allotrope/models")

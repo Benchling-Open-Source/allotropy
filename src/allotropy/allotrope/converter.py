@@ -1,40 +1,16 @@
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
-from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
-from enum import Enum
+from collections.abc import Mapping
+from dataclasses import asdict, field, is_dataclass, make_dataclass
 import keyword
 from typing import Any, cast, TypeVar
 
 from allotropy.allotrope.path_util import get_model_class_from_schema
-from allotropy.schema_gen.serializer import from_dict, to_dict
-
-DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
-    ".": "_POINT_",
-    "-": "_DASH_",
-    "°": "_DEG_",
-    "/": "_SLASH_",
-    "\\": "_BSLASH_",
-    "(": "_OPAREN_",
-    ")": "_CPAREN_",
-    "%": "_PERCENT_",
-    ":": "_COLON_",
-    "#": "_NUMBER_",
-    "[": "_OBRACKET_",
-    "]": "_CBRACKET_",
-    "$": "_DOLLAR_",
-    "~": "_TILDE_",
-    "?": "_QMARK_",
-    "^": "_CARET_",
-    "=": "_EQUALS_",
-    "@": "_AT_",
-    "'": "_QUOTE_",
-    "*": "_ASTERISK_",
-    ",": "_COMMA_",
-    "&": "_AMPERSAND_",
-    # NOTE: this MUST be at the end, or it will break other key replacements.
-    " ": "_",
-}
+from allotropy.schema_gen.serializer import (
+    DICT_KEY_TO_MODEL_KEY_REPLACEMENTS,
+    from_dict,
+    to_dict,
+)
 
 ModelClass = TypeVar("ModelClass")
 
@@ -79,16 +55,6 @@ def add_custom_information_document(
     return model
 
 
-def _convert_model_key_to_dict_key(key: str) -> str:
-    if key.startswith("_KW"):
-        key = key[3:]
-    if key.startswith("___") and key[3].isdigit():
-        key = key[3:]
-    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
-        key = key.replace(model_val, dict_val)
-    return key
-
-
 def _convert_dict_to_model_key(key: str) -> str:
     if keyword.iskeyword(key):
         key = f"_KW{key}"
@@ -122,21 +88,6 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
     return make_dataclass(
         name, ((k, type(v), field(default=None)) for k, v in structured_dict.items())
     )(**structured_dict)
-
-
-def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
-    required_keys = {a.name for a in fields(model) if a.default == MISSING}
-
-    def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
-        return {
-            _convert_model_key_to_dict_key(key): (
-                value.value if isinstance(value, Enum) else value
-            )
-            for key, value in kv_pairs
-            if key in required_keys or value is not None
-        }
-
-    return asdict(model, dict_factory=dict_factory)
 
 
 def unstructure(model: Any) -> dict[str, Any]:

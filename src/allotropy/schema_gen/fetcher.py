@@ -87,12 +87,8 @@ class SchemaFetcher:
     def _extract_external_refs(self, schema: dict[str, Any]) -> set[str]:
         """Extract all external schema URLs referenced by $ref in a schema."""
         refs: set[str] = set()
-        self._walk_refs(schema, refs)
+        _walk_refs_for_deps(schema, refs)
         return refs
-
-    def _walk_refs(self, obj: Any, refs: set[str]) -> None:
-        """Recursively walk a schema object and collect external $ref URLs."""
-        _walk_refs_for_deps(obj, refs)
 
     def _to_canonical(self, url: str) -> str:
         """Convert any URL format to canonical Allotrope URL."""
