@@ -1425,7 +1425,7 @@ class TestGenerateAdmModule:
         """Properties from external schema $ref in allOf are merged into the Model."""
         core_url = f"{BASE}adm/core/REC/2024/09/core.schema"
         technique_url = f"{BASE}adm/test/REC/2024/09/test.schema"
-        schemas = {
+        schemas: dict[str, dict[str, Any]] = {
             core_url: {
                 "$defs": {
                     "asm": {

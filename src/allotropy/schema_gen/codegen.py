@@ -62,7 +62,8 @@ def extract_unit_const(schema: dict[str, Any]) -> str | None:
     """
     props = schema.get("properties", {})
     unit_prop = props.get("unit", {})
-    return unit_prop.get("const")
+    result: str | None = unit_prop.get("const")
+    return result
 
 
 # Properties starting with these prefixes are schema metadata, not data fields
