@@ -343,7 +343,7 @@ def default_json_name(python_name: str) -> str:
     The convention is that underscores map to spaces.  When the actual
     JSON name differs from this default (e.g. hyphens, camelCase, ``$``
     or ``@`` prefixes), the codegen emits explicit ``json_name`` metadata.
-    The serializer uses the same fallback so the two stay in sync.
+    The converter (structure/unstructure) uses the same fallback so the two stay in sync.
     """
     return python_name.replace("_", " ")
 

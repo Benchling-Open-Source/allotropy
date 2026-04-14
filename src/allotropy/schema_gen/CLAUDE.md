@@ -159,14 +159,16 @@ Properties with only validation keywords (`required`, `minItems`, `maxItems`, `m
 - **External refs** (`http://...schema#/$defs/X`): Look up in the already-generated module for that schema URL, add import
 - **Forward references**: Handled by `from __future__ import annotations` (string annotations)
 
-## Serializer (serializer.py)
+## Serialization (converter.py)
 
-Converts between dataclass instances and JSON dicts:
+Serialization lives in `src/allotropy/allotrope/converter.py`:
 
-- **`to_dict(obj)`**: Dataclass → JSON dict. Uses `metadata["json_name"]` or falls back to `field_name.replace("_", " ")`
-- **`from_dict(data, cls)`**: JSON dict → dataclass instance. Builds reverse mapping.
+- **`unstructure(obj)`**: Dataclass → JSON dict. Uses `metadata["json_name"]` or falls back to `field_name.replace("_", " ")`
+- **`structure(data, cls)`**: JSON dict → dataclass instance. Builds reverse mapping.
 
-**Important**: The fallback `field_name.replace("_", " ")` in the serializer must match the codegen's rule for when to omit `json_name` metadata. If these diverge, serialization breaks silently.
+These are fully reversible: `structure(unstructure(x), type(x)) == x` always holds.
+
+**Important**: The fallback `field_name.replace("_", " ")` in `unstructure`/`structure` must match the codegen's rule for when to omit `json_name` metadata. If these diverge, serialization breaks silently.
 
 ## Debugging Tips
 
@@ -180,7 +182,7 @@ The module wasn't generated yet when the technique schema tried to import. Check
 4. For anyOf compositions: fields from variants become optional (intersected required)
 
 ### "Wrong json_name / serialization mismatch"
-Compare the codegen rule (`json_name != python_name.replace("_", " ")`) with the serializer fallback (`f.name.replace("_", " ")`). They must agree on when metadata is needed.
+Compare the codegen rule (`json_name != python_name.replace("_", " ")`) with the converter fallback (`f.name.replace("_", " ")`). They must agree on when metadata is needed.
 
 ### "Duplicate class in generated output"
 Recursive schemas can generate the same inline class from multiple locations. `ModuleCode.render()` deduplicates by merging fields from duplicates. Check `_merge_class_fields()`.
