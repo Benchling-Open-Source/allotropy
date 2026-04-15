@@ -25,6 +25,18 @@ UNITS_SCHEMA_MARKER = "units.schema"
 DEFAULT_SCHEMA_CACHE_DIR = Path("src/allotropy/allotrope/schemas")
 DEFAULT_MODEL_OUTPUT_DIR = Path("src/allotropy/allotrope/models")
 
+# Pre-compiled regex patterns
+_RE_GITLAB_URL = re.compile(
+    r"https?://gitlab\.com/.+?/json-schemas/(.+?)(?:\.json)?$"
+)
+_RE_DEFS_FRAGMENT = re.compile(r"/?\$defs/(.+)$")
+_RE_SCHEMA_SUFFIX = re.compile(r"\.schema(\.json)?$")
+_RE_SEPARATOR = re.compile(r"[\s.\-/~^]+")
+_RE_NON_IDENTIFIER = re.compile(r"[^a-zA-Z0-9_]")
+_RE_CAMEL_BOUNDARY = re.compile(r"([a-z0-9])([A-Z])")
+_RE_WORD_SPLIT = re.compile(r"[\s\-_]+")
+_RE_NON_ALNUM = re.compile(r"[^a-zA-Z0-9]")
+
 
 def allotrope_url_to_relative_path(url: str) -> str:
     """Extract the relative path from an Allotrope schema URL.
@@ -83,9 +95,7 @@ def normalize_schema_url(url: str) -> str:
 
     if "json-schemas/" in url:
         # Only accept URLs hosted on gitlab.com (not substrings like evil.com/gitlab.com)
-        match = re.match(
-            r"https?://gitlab\.com/.+?/json-schemas/(.+?)(?:\.json)?$", url
-        )
+        match = _RE_GITLAB_URL.match(url)
         if match:
             return ALLOTROPE_URL_PREFIX + match.group(1)
 
@@ -123,7 +133,7 @@ def parse_ref(ref: str) -> tuple[str | None, str | None]:
         # URL-decode the fragment first (RFC 3986), then apply JSON Pointer decoding
         fragment = unquote(fragment)
         # Extract definition name from fragment like /$defs/tStringValue
-        def_match = re.match(r"/?\$defs/(.+)$", fragment)
+        def_match = _RE_DEFS_FRAGMENT.match(fragment)
         def_name = _decode_json_pointer(def_match.group(1)) if def_match else None
         schema_url = normalize_schema_url(schema_part) if schema_part else None
         return schema_url, def_name
@@ -155,7 +165,7 @@ def schema_url_to_module_path(url: str) -> str:
     """
     rel_path = allotrope_url_to_relative_path(url)
     # Remove .schema suffix
-    rel_path = re.sub(r"\.schema(\.json)?$", "", rel_path)
+    rel_path = _RE_SCHEMA_SUFFIX.sub("", rel_path)
     # Convert path separators to dots, make Python-safe
     parts = rel_path.split("/")
     python_parts = [_path_component_to_python(p) for p in parts]
@@ -173,7 +183,7 @@ def schema_url_to_model_file(
     """
     rel_path = allotrope_url_to_relative_path(url)
     # Remove .schema suffix
-    rel_path = re.sub(r"\.schema(\.json)?$", "", rel_path)
+    rel_path = _RE_SCHEMA_SUFFIX.sub("", rel_path)
     parts = rel_path.split("/")
     python_parts = [_path_component_to_python(p) for p in parts]
     file_path = Path(output_dir, *python_parts[:-1], python_parts[-1] + ".py")
@@ -214,13 +224,13 @@ def property_name_to_python(name: str) -> str:
         name = "field_" + name
 
     # Replace dots, spaces, hyphens with underscores (collapse consecutive)
-    result = re.sub(r"[\s.\-/~^]+", "_", name)
+    result = _RE_SEPARATOR.sub("_", name)
     # Replace parentheses with individual underscores (not collapsed with whitespace)
     result = result.replace("(", "_").replace(")", "_")
     # Remove any remaining non-alphanumeric chars (except underscore)
-    result = re.sub(r"[^a-zA-Z0-9_]", "", result)
+    result = _RE_NON_IDENTIFIER.sub("", result)
     # Insert underscores at camelCase boundaries (e.g. minInclusive → min_Inclusive)
-    result = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", result)
+    result = _RE_CAMEL_BOUNDARY.sub(r"\1_\2", result)
     # Ensure snake_case
     result = result.lower()
     # Don't start with a digit
@@ -246,7 +256,7 @@ def def_name_to_class_name(name: str) -> str:
         return name[0].upper() + name[1:] if name else name
 
     # Otherwise convert from space/hyphen separated
-    words = re.split(r"[\s\-_]+", name)
+    words = _RE_WORD_SPLIT.split(name)
     return "".join(w[0].upper() + w[1:] for w in words if w)
 
 
@@ -264,7 +274,7 @@ def property_name_to_class_name(name: str) -> str:
     # Strip parentheses before splitting (they appear in names like
     # "scan position setting (plate reader)")
     name = name.replace("(", " ").replace(")", " ")
-    words = re.split(r"[\s\-_]+", name)
+    words = _RE_WORD_SPLIT.split(name)
     result = "".join(w[0].upper() + w[1:] for w in words if w)
     # If stripping @ left a camelCase name, ensure first letter is uppercase
     return result[0].upper() + result[1:] if result else result
@@ -313,7 +323,7 @@ def unit_symbol_to_class_name(symbol: str) -> str:
     cleaned = cleaned.replace("'", "")
     cleaned = cleaned.replace("#", "Num")
     # Remove any remaining non-alphanumeric chars
-    cleaned = re.sub(r"[^a-zA-Z0-9]", "", cleaned)
+    cleaned = _RE_NON_ALNUM.sub("", cleaned)
     # Ensure starts with a letter
     if cleaned and cleaned[0].isdigit():
         digit_names = {
