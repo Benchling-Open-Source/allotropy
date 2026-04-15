@@ -39,6 +39,11 @@ _QUANTITY_VALUES_REL = Path("shared/definitions/quantity_values.py")
 # Relative path within the models output_dir for the shared units module
 _SHARED_UNITS_REL = Path("shared/definitions/units.py")
 
+# URL path markers for schema classification
+_BENCHLING_MARKER = "/BENCHLING/"
+_CORE_SCHEMA_MARKER = "/core/"
+_SHARED_SCHEMA_NAMES = ("core", "qudt")
+
 # Regex to extract the status/version segment from an Allotrope URL path.
 # Matches e.g. "/REC/2024/09/" or "/WD/2025/03/".
 _STATUS_VERSION_RE = re.compile(r"/(REC|WD)/(\d{4}/\d{2})/")
@@ -114,7 +119,9 @@ def _prepare_benchling_schemas(
     _load_cached_benchling_schemas(all_schemas, cache_dir)
     _fork_benchling_shared_schemas(all_schemas)
     requested_urls.update(
-        url for url in all_schemas if url not in requested_urls and "/core/" in url
+        url
+        for url in all_schemas
+        if url not in requested_urls and _CORE_SCHEMA_MARKER in url
     )
 
 
@@ -204,7 +211,7 @@ def _load_cached_benchling_schemas(
         if "BENCHLING" not in parts:
             continue
         # Skip core and qudt (shared, not technique)
-        if parts[1] in ("core", "qudt"):
+        if parts[1] in _SHARED_SCHEMA_NAMES:
             continue
 
         # Build canonical URL from cache path
@@ -251,7 +258,7 @@ def _fork_benchling_shared_schemas(all_schemas: dict[str, Any]) -> None:
     embedder_urls = [
         url
         for url, schema in all_schemas.items()
-        if _has_url_keyed_defs(schema) and "/BENCHLING/" in url
+        if _has_url_keyed_defs(schema) and _BENCHLING_MARKER in url
     ]
 
     # Global rewrite map: {original_rec_url → new_benchling_url}.
@@ -280,7 +287,7 @@ def _fork_benchling_shared_schemas(all_schemas: dict[str, Any]) -> None:
             if canonical not in all_schemas:
                 continue
 
-            if "/BENCHLING/" in canonical:
+            if _BENCHLING_MARKER in canonical:
                 # BENCHLING-to-BENCHLING embedding: merge into the standalone
                 # BENCHLING schema (does not affect any REC schema).
                 all_schemas[canonical] = _deep_merge(all_schemas[canonical], embedded)
@@ -302,7 +309,7 @@ def _fork_benchling_shared_schemas(all_schemas: dict[str, Any]) -> None:
     # Rewrite $refs in all BENCHLING schemas (technique + forked shared) so
     # they reference the BENCHLING versions instead of the original REC ones.
     for url in list(all_schemas):
-        if "/BENCHLING/" not in url:
+        if _BENCHLING_MARKER not in url:
             continue
         all_schemas[url] = _rewrite_refs(all_schemas[url], all_rewrites)
 
@@ -704,7 +711,7 @@ def _discover_cached_technique_urls(
     for schema_file in sorted(adm_dir.rglob("*.schema.json")):
         parts = schema_file.relative_to(cache_dir).parts
         # Skip core and qudt (shared schemas, not techniques)
-        if len(parts) > 1 and parts[1] in ("core", "qudt"):
+        if len(parts) > 1 and parts[1] in _SHARED_SCHEMA_NAMES:
             continue
         rel = str(schema_file.relative_to(cache_dir))
         if rel.endswith(".json"):
