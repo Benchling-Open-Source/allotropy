@@ -283,66 +283,18 @@ class ModuleCode:
     # Map from definition names in this schema to their Python class names
     exported_names: dict[str, str] = field(default_factory=dict)
 
+    def add_import(
+        self, module: str, name: str, *, reexport: bool = False
+    ) -> None:
+        """Register an import for this module."""
+        self.imports.append(ImportEntry(module=module, name=name, reexport=reexport))
+
     def render(self, models_package: str = "allotropy.allotrope.models") -> str:
         """Render the complete Python module source code.
 
         This method is pure — it does not mutate ``self.classes``.
         """
-        # Deduplicate classes by name.  Group same-named classes and check
-        # whether they are structurally identical (same fields + types).
-        # Identical duplicates are merged into one class.  Conflicting
-        # duplicates (e.g., PeakItem from different detector variants with
-        # different unit types) become distinct variant classes + a union
-        # type alias preserving field-type correlation within each variant.
-        groups: dict[str, list[GeneratedClass]] = defaultdict(list)
-        for cls in self.classes:
-            groups[cls.name].append(cls)
-
-        unique: list[GeneratedClass] = []
-        for name, group in groups.items():
-            if len(group) == 1:
-                unique.append(group[0].copy())
-                continue
-
-            if _all_classes_identical(group):
-                # Truly identical — merge field sets (one copy may have
-                # extra fields from a deeper schema branch).
-                merged = group[0].copy()
-                for other in group[1:]:
-                    _merge_class_fields(merged, other)
-                unique.append(merged)
-                continue
-
-            # Conflicting classes with source_context from sub-schema
-            # $defs → generate variant classes + union alias preserving
-            # field-type correlation.  Without source_context (technique-
-            # level anyOf merge), fall back to widening merge.
-            all_have_context = all(cls.source_context for cls in group)
-            if all_have_context:
-                variant_names: list[str] = []
-                for cls in group:
-                    variant_name = f"{name}{cls.source_context}"
-                    variant_cls = cls.copy()
-                    variant_cls.name = variant_name
-                    unique.append(variant_cls)
-                    variant_names.append(variant_name)
-
-                unique.append(
-                    GeneratedClass(
-                        name=name,
-                        alias_target=_join_union(variant_names),
-                        dependencies=set(variant_names),
-                    )
-                )
-            else:
-                # Technique-level duplicates: merge with widened unions.
-                merged = group[0].copy()
-                for other in group[1:]:
-                    _widen_class_fields(merged, other)
-                unique.append(merged)
-
-        # Reorder classes so that dependencies come before uses
-        classes = _topological_sort_classes(unique)
+        classes = _topological_sort_classes(_deduplicate_classes(self.classes))
 
         has_reexports = any(imp.reexport for imp in self.imports)
 
@@ -431,6 +383,62 @@ class ModuleCode:
         lines.append("")  # Single trailing newline
 
         return "\n".join(lines)
+
+
+def _deduplicate_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
+    """Deduplicate classes by name, handling identical, variant, and widening cases.
+
+    Same-named classes are grouped and resolved using one of three strategies:
+
+    1. **Identical merge**: All copies are type-compatible — merge field sets
+       (one copy may have extra fields from a deeper schema branch).
+    2. **Variant split**: Conflicting classes with ``source_context`` from
+       sub-schema ``$defs`` become distinct variant classes plus a union
+       type alias preserving field-type correlation.
+    3. **Widening merge**: Technique-level duplicates without source_context
+       are merged with conflicting types combined into unions.
+    """
+    groups: dict[str, list[GeneratedClass]] = defaultdict(list)
+    for cls in classes:
+        groups[cls.name].append(cls)
+
+    unique: list[GeneratedClass] = []
+    for name, group in groups.items():
+        if len(group) == 1:
+            unique.append(group[0].copy())
+            continue
+
+        if _all_classes_identical(group):
+            merged = group[0].copy()
+            for other in group[1:]:
+                _merge_class_fields(merged, other)
+            unique.append(merged)
+            continue
+
+        all_have_context = all(cls.source_context for cls in group)
+        if all_have_context:
+            variant_names: list[str] = []
+            for cls in group:
+                variant_name = f"{name}{cls.source_context}"
+                variant_cls = cls.copy()
+                variant_cls.name = variant_name
+                unique.append(variant_cls)
+                variant_names.append(variant_name)
+
+            unique.append(
+                GeneratedClass(
+                    name=name,
+                    alias_target=_join_union(variant_names),
+                    dependencies=set(variant_names),
+                )
+            )
+        else:
+            merged = group[0].copy()
+            for other in group[1:]:
+                _widen_class_fields(merged, other)
+            unique.append(merged)
+
+    return unique
 
 
 def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
@@ -1143,12 +1151,8 @@ class SchemaCodeGenerator:
             # from this core module without needing to know the source.
             if def_name in _SHARED_DEFINITION_TYPES:
                 class_name = _SHARED_DEFINITION_TYPES[def_name]
-                module.imports.append(
-                    ImportEntry(
-                        module=_SHARED_DEFINITIONS_MODULE,
-                        name=class_name,
-                        reexport=True,
-                    )
+                module.add_import(
+                    _SHARED_DEFINITIONS_MODULE, class_name, reexport=True
                 )
                 module.exported_names[def_name] = class_name
                 continue
@@ -1926,7 +1930,7 @@ class SchemaCodeGenerator:
         if ref_module and def_name and def_name in ref_module.exported_names:
             class_name = ref_module.exported_names[def_name]
             module_path = schema_url_to_module_path(ref_schema_url)
-            module.imports.append(ImportEntry(module=module_path, name=class_name))
+            module.add_import(module_path, class_name)
             return class_name
 
         # Some BENCHLING schemas reference pre-composed QV variant defs
@@ -1934,9 +1938,7 @@ class SchemaCodeGenerator:
         # exist as $defs in core.schema.  Route these to shared instead.
         if def_name and _is_quantity_value_variant(def_name):
             class_name = def_name_to_class_name(def_name)
-            module.imports.append(
-                ImportEntry(module=_SHARED_QUANTITY_VALUES_MODULE, name=class_name)
-            )
+            module.add_import(_SHARED_QUANTITY_VALUES_MODULE, class_name)
             return class_name
 
         # If we haven't generated the module yet (shouldn't happen with correct ordering),
@@ -1944,7 +1946,7 @@ class SchemaCodeGenerator:
         if def_name:
             class_name = def_name_to_class_name(def_name)
             module_path = schema_url_to_module_path(ref_schema_url)
-            module.imports.append(ImportEntry(module=module_path, name=class_name))
+            module.add_import(module_path, class_name)
             return class_name
 
         return "Any"
@@ -1985,12 +1987,7 @@ class SchemaCodeGenerator:
 
         # Import directly from shared quantity_values into the consuming module.
         # Duplicate imports are deduplicated by ModuleCode.render().
-        module.imports.append(
-            ImportEntry(
-                module=_SHARED_QUANTITY_VALUES_MODULE,
-                name=class_name,
-            )
-        )
+        module.add_import(_SHARED_QUANTITY_VALUES_MODULE, class_name)
 
         return class_name
 
