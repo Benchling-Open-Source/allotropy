@@ -56,9 +56,11 @@ def generate_models(
 ) -> list[Path]:
     """Generate modular Python models from one or more Allotrope schema URLs.
 
-    When multiple URLs are provided, schemas are fetched and merged so that
-    shared modules (core.py, hierarchy.py, etc.) accumulate types from all
-    technique schemas in a single pass.
+    Pipeline phases:
+        1. Fetch schemas and their $ref dependencies
+        2. Load cached BENCHLING schemas and fork shared dependencies
+        3. Topologically sort and update shared units module
+        4. Run code generation and write output files
 
     Args:
         schema_urls: One or more URLs to ADM schemas.
@@ -72,7 +74,22 @@ def generate_models(
     if isinstance(schema_urls, str):
         schema_urls = [schema_urls]
 
-    # Phase 1: Fetch all schemas and merge
+    all_schemas, requested_urls = _fetch_all_schemas(schema_urls, cache_dir)
+    _prepare_benchling_schemas(all_schemas, requested_urls, cache_dir)
+    order = _build_generation_order(all_schemas)
+    return _generate_and_write(
+        all_schemas, order, requested_urls, output_dir, cache_dir, models_package
+    )
+
+
+def _fetch_all_schemas(
+    schema_urls: list[str], cache_dir: Path
+) -> tuple[dict[str, Any], set[str]]:
+    """Fetch all requested schemas and their transitive $ref dependencies.
+
+    Returns the merged schema dict and the set of URLs that were directly
+    requested (only these will be written to disk).
+    """
     fetcher = SchemaFetcher(cache_dir=cache_dir)
     all_schemas: dict[str, Any] = {}
     for url in schema_urls:
@@ -80,46 +97,51 @@ def generate_models(
         schemas = fetcher.fetch_with_dependencies(url)
         print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
         all_schemas.update(schemas)
+    return all_schemas, set(all_schemas.keys())
 
-    # Snapshot the requested URLs (+ their $ref deps) before loading extras.
-    # Only these will be written to disk; cached BENCHLING schemas loaded
-    # below contribute their $defs additions but are not regenerated.
-    requested_urls = set(all_schemas.keys())
 
-    # Phase 1a: Ensure all cached BENCHLING technique schemas are loaded.
-    # BENCHLING schemas embed additions to shared schemas (core/hierarchy) as
-    # URL-keyed $defs.  If only a subset of BENCHLING schemas are requested on
-    # the command line, the fork step would produce incomplete shared modules
-    # (missing additions from other BENCHLING schemas).  Loading them all from
-    # cache ensures the forked shared schemas are always complete.
+def _prepare_benchling_schemas(
+    all_schemas: dict[str, Any], requested_urls: set[str], cache_dir: Path
+) -> None:
+    """Load cached BENCHLING schemas and fork shared dependencies.
+
+    BENCHLING schemas embed modified copies of REC/WD dependency schemas
+    as URL-keyed $defs.  This phase:
+    1. Loads all cached BENCHLING schemas (so the fork step is complete)
+    2. Forks them as standalone BENCHLING-versioned schemas
+    3. Adds forked core schemas to the requested set
+    """
     _load_cached_benchling_schemas(all_schemas, cache_dir)
-
-    # Phase 1b: BENCHLING schemas embed modified copies of dependency schemas
-    # as URL-keyed $defs entries.  Instead of merging those additions into the
-    # REC shared schemas (which would make REC output depend on which BENCHLING
-    # schemas are present), we fork them as standalone BENCHLING-versioned
-    # schemas and rewrite $refs so BENCHLING techniques reference their own
-    # shared dependency chain.
     _fork_benchling_shared_schemas(all_schemas)
-
-    # Forking may create new BENCHLING-versioned shared schemas (e.g.,
-    # core/BENCHLING/2024/09/hierarchy) that the requested techniques depend
-    # on.  Include those in the generation set.
     requested_urls.update(
         url for url in all_schemas if url not in requested_urls and "/core/" in url
     )
 
-    # Phase 2: Determine generation order across all schemas
+
+def _build_generation_order(all_schemas: dict[str, Any]) -> list[str]:
+    """Topologically sort schemas by $ref dependencies and print the order."""
     order = build_dependency_order(all_schemas)
     print("Generation order:")  # noqa: T201
     for i, url in enumerate(order):
         print(f"  {i + 1}. {url}")  # noqa: T201
+    return order
 
-    # Phase 3: Separate units schemas from the rest (units go to shared module)
-    # Only generate modules for requested schemas (+ forked shared schemas).
+
+def _generate_and_write(
+    all_schemas: dict[str, Any],
+    order: list[str],
+    requested_urls: set[str],
+    output_dir: Path,
+    cache_dir: Path,
+    models_package: str,
+) -> list[Path]:
+    """Run code generation and write output files.
+
+    Updates the shared units module, generates Python modules for each
+    requested schema, and regenerates the quantity_values module.
+    """
     other_urls = [u for u in order if not _is_units_schema(u) and u in requested_urls]
 
-    # Update shared units module with any new units from these schemas
     new_unit_count = _update_shared_units(all_schemas, cache_dir, output_dir)
     if new_unit_count:
         print(  # noqa: T201
@@ -129,10 +151,8 @@ def generate_models(
     print("\nGenerating Python modules...")  # noqa: T201
     generated_files: list[Path] = []
 
-    # Collect descriptive unit names for TQuantityValue class naming
     unit_descriptive_names = _collect_all_units(all_schemas, cache_dir)
 
-    # Generate all non-units modules via the custom code generator
     if other_urls:
         generator = SchemaCodeGenerator(
             all_schemas,
@@ -148,15 +168,10 @@ def generate_models(
                 continue
             output_path = schema_url_to_model_file(url, output_dir)
             source = module.render(models_package)
-            _write_module(output_path, source)
-            _lint_file(output_path)
+            _write_and_lint(output_path, source)
             generated_files.append(output_path)
             print(f"  Generated: {output_path}")  # noqa: T201
 
-        # Regenerate quantity_values.py from the complete unit list.
-        # This is always deterministic regardless of which schemas are
-        # being generated, because _collect_all_units scans all cached
-        # schema files on disk.
         qv_path = _regenerate_quantity_values(unit_descriptive_names, output_dir)
         print(f"  Updated {qv_path}")  # noqa: T201
 
@@ -563,8 +578,7 @@ def _update_shared_units(
     # Regenerate the entire file to maintain sorted order
     units_path = output_dir / _SHARED_UNITS_REL
     source = _generate_shared_units_source(all_units)
-    _write_module(units_path, source)
-    _lint_file(units_path)
+    _write_and_lint(units_path, source)
     return len(set(all_units) - set(existing))
 
 
@@ -633,8 +647,7 @@ def _regenerate_quantity_values(
     lines.append("")
     source = "\n".join(lines)
     qv_path = output_dir / _QUANTITY_VALUES_REL
-    _write_module(qv_path, source)
-    _lint_file(qv_path)
+    _write_and_lint(qv_path, source)
     return qv_path
 
 
@@ -652,6 +665,12 @@ def _write_module(path: Path, source: str) -> None:
 def _ensure_package_dirs(directory: Path) -> None:
     """Create directory and all parents."""
     directory.mkdir(parents=True, exist_ok=True)
+
+
+def _write_and_lint(path: Path, source: str) -> None:
+    """Write a Python module and apply formatting."""
+    _write_module(path, source)
+    _lint_file(path)
 
 
 def _lint_file(path: Path) -> None:
