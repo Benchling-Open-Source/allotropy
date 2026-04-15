@@ -1256,8 +1256,6 @@ class SchemaCodeGenerator:
                 primitive_types.append(python_type)
             elif "format" in variant:
                 primitive_types.append("str")
-            elif set(variant.keys()) <= {"required"}:
-                pass  # Skip constraint-only variants
 
         parts: list[str] = []
 
@@ -1653,36 +1651,6 @@ class SchemaCodeGenerator:
         literals = ", ".join(_dquote(v) for v in enum_values)
         return f"Literal[{literals}]"
 
-    @staticmethod
-    def _collect_all_of_parts(
-        parent_schema: dict[str, Any],
-        all_of: list[dict[str, Any]],
-    ) -> tuple[dict[str, Any], list[str], list[str]]:
-        """Collect properties, required fields, and base $refs from a schema + allOf.
-
-        Collects direct properties and $refs.  Does NOT handle anyOf/oneOf
-        variant merging — callers handle that based on context.
-        """
-        merged_props: dict[str, Any] = {}
-        merged_required: list[str] = []
-        base_refs: list[str] = []
-
-        if "properties" in parent_schema:
-            _merge_props_into(merged_props, parent_schema["properties"])
-        if "required" in parent_schema:
-            merged_required.extend(parent_schema["required"])
-
-        for item in all_of:
-            if "$ref" in item:
-                base_refs.append(item["$ref"])
-            if isinstance(item, dict):
-                if "properties" in item:
-                    _merge_props_into(merged_props, item["properties"])
-                if "required" in item:
-                    merged_required.extend(item["required"])
-
-        return merged_props, merged_required, base_refs
-
     def _resolve_all_of_merged_class(
         self,
         module: ModuleCode,
@@ -1693,7 +1661,7 @@ class SchemaCodeGenerator:
         refs: list[str],
     ) -> str:
         """Merge allOf items into an inline class (patterns 3 and 4)."""
-        merged_props, merged_required, base_refs = self._collect_all_of_parts(
+        merged_props, merged_required, base_refs = _collect_all_of_parts(
             prop_schema, all_of
         )
         # Merge variant properties from anyOf/oneOf within allOf items
@@ -1766,13 +1734,7 @@ class SchemaCodeGenerator:
         prop_schema: dict[str, Any],
     ) -> str:
         """Resolve an anyOf property type."""
-        any_of = prop_schema["anyOf"]
-        parts: list[str] = []
-        for item in any_of:
-            if "$ref" in item:
-                parts.append(self._resolve_ref_type(module, schema_url, item["$ref"]))
-            elif "type" in item:
-                parts.append(self._json_type_to_python(item["type"]))
+        parts = self._resolve_variant_types(module, schema_url, prop_schema["anyOf"])
         if len(parts) == 1:
             return parts[0]
         return _join_union(parts)
@@ -1863,14 +1825,13 @@ class SchemaCodeGenerator:
             item_type = self._resolve_ref_type(module, schema_url, items["$ref"])
             return f"list[{item_type}]"
 
+        if "type" in items and items["type"] == "object" and "properties" in items:
+            item_class_name = property_name_to_class_name(prop_name) + "Item"
+            cls = self._generate_dataclass(module, schema_url, item_class_name, items)
+            module.classes.append(cls)
+            return f"list[{item_class_name}]"
+
         if "type" in items:
-            if items["type"] == "object" and "properties" in items:
-                item_class_name = property_name_to_class_name(prop_name) + "Item"
-                cls = self._generate_dataclass(
-                    module, schema_url, item_class_name, items
-                )
-                module.classes.append(cls)
-                return f"list[{item_class_name}]"
             return f"list[{self._json_type_to_python(items['type'])}]"
 
         if "anyOf" in items or "oneOf" in items:
@@ -1895,7 +1856,7 @@ class SchemaCodeGenerator:
         """Resolve array items that use allOf (technique documents + custom props)."""
         all_of = items_schema["allOf"]
 
-        merged_props, merged_required, base_refs = self._collect_all_of_parts(
+        merged_props, merged_required, base_refs = _collect_all_of_parts(
             items_schema, all_of
         )
         # Merge anyOf variants as optional fields
@@ -2136,3 +2097,33 @@ def _partition_all_of(
         elif isinstance(item, dict):
             schemas.append(item)
     return refs, schemas
+
+
+def _collect_all_of_parts(
+    parent_schema: dict[str, Any],
+    all_of: list[dict[str, Any]],
+) -> tuple[dict[str, Any], list[str], list[str]]:
+    """Collect properties, required fields, and base $refs from a schema + allOf.
+
+    Collects direct properties and $refs.  Does NOT handle anyOf/oneOf
+    variant merging — callers handle that based on context.
+    """
+    merged_props: dict[str, Any] = {}
+    merged_required: list[str] = []
+    base_refs: list[str] = []
+
+    if "properties" in parent_schema:
+        _merge_props_into(merged_props, parent_schema["properties"])
+    if "required" in parent_schema:
+        merged_required.extend(parent_schema["required"])
+
+    for item in all_of:
+        if "$ref" in item:
+            base_refs.append(item["$ref"])
+        if isinstance(item, dict):
+            if "properties" in item:
+                _merge_props_into(merged_props, item["properties"])
+            if "required" in item:
+                merged_required.extend(item["required"])
+
+    return merged_props, merged_required, base_refs
