@@ -360,6 +360,9 @@ class LuminescencePointDetectionMeasurementDocumentItems:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItem:
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
     measurement_identifier: TStringValue | None = None
     device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument | None = (
         None
@@ -376,9 +379,6 @@ class MeasurementDocumentItem:
     absorbance: TQuantityValueMilliAbsorbanceUnit | None = None
     fluorescence: TQuantityValueRelativeFluorescenceUnit | None = None
     luminescence: TQuantityValueRelativeLightUnit | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
 
 
 @dataclass(frozen=True, kw_only=True)
