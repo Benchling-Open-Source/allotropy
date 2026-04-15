@@ -6,7 +6,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
+from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    ContainerType,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )

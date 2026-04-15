@@ -36,13 +36,12 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
-    SampleRoleType as ModelSampleRoleType,
+    SampleRoleType,
     ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
     TransmittedLightSetting as ModelTransmittedLightSetting,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
@@ -570,9 +569,7 @@ class Mapper(SchemaMapper[Data, Model]):
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
             batch_identifier=measurement.batch_identifier,
-            sample_role_type=ModelSampleRoleType(measurement.sample_role_type.value)
-            if measurement.sample_role_type
-            else None,
+            sample_role_type=measurement.sample_role_type,
         )
         return add_custom_information_document(sample_doc, custom_info)
 

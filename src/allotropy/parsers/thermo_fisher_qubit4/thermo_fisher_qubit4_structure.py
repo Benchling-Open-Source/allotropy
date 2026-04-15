@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
+from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    ContainerType,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (

@@ -11,6 +11,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     AbsorptionSpectrumDataCube,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -30,7 +31,6 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,

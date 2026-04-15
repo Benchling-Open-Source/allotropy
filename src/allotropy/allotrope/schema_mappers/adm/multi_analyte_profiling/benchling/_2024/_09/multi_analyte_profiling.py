@@ -29,9 +29,9 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     MultiAnalyteProfilingAggregateDocument,
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
+    SampleRoleType,
 )
 from allotropy.allotrope.models.qudt.benchling._2024._09.units import Unitless
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
     TStatisticDatumRole,

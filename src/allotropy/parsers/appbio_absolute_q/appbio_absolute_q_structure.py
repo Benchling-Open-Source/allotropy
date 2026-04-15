@@ -9,7 +9,7 @@ import warnings
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )

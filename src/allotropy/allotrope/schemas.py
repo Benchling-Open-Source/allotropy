@@ -16,10 +16,6 @@ from allotropy.exceptions import AllotropeSerializationError, AllotropeValidatio
 
 DEFAULT_ENCODING = "UTF-8"
 
-# Path to shared V1-style schema definitions (definitions.json, units.json, custom.json)
-SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
-SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
-
 # Override format checker to remove "uri-reference" check, which ASM schemas fail against.
 FORMAT_CHECKER = copy.deepcopy(
     jsonschema.validators.Draft202012Validator.FORMAT_CHECKER
@@ -27,41 +23,9 @@ FORMAT_CHECKER = copy.deepcopy(
 FORMAT_CHECKER.checkers.pop("uri-reference", None)
 
 
-def get_shared_definitions() -> dict[str, Any]:
-    with open(
-        Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "definitions.json"),
-        encoding=DEFAULT_ENCODING,
-    ) as f:
-        return json.load(f)  # type: ignore[no-any-return]
-
-
-def get_shared_unit_definitions() -> dict[str, Any]:
-    with open(
-        Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json"), encoding=DEFAULT_ENCODING
-    ) as f:
-        return json.load(f)  # type: ignore[no-any-return]
-
-
-def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
-    for file, section in [
-        ("definitions", "defs"),
-        ("units", "defs"),
-        ("custom", "custom"),
-    ]:
-        existing = schema.get(f"${section}", {})
-        with open(
-            Path(SHARED_SCHEMAS_DEFINITIONS_PATH, f"{file}.json"),
-            encoding=DEFAULT_ENCODING,
-        ) as f:
-            additional = json.load(f)
-        additional.update(existing)
-        schema[f"${section}"] = additional
-    return schema
-
-
 def get_schema(schema_path: Path) -> dict[str, Any]:
     with open(get_full_schema_path(schema_path), encoding=DEFAULT_ENCODING) as f:
-        return add_definitions(json.load(f))
+        return json.load(f)  # type: ignore[no-any-return]
 
 
 def get_schema_from_manifest(manifest: str) -> dict[str, Any]:
@@ -112,10 +76,6 @@ def validate_asm_schema(asm_dict: dict[str, Any]) -> None:
     try:
         schema_path = get_schema_path_from_asm(asm_dict)
         schema = _get_schema_by_path(schema_path)
-        # BENCHLING schemas may reference $custom definitions (e.g.,
-        # tQuantityValueKiloDalton) via #/$custom/... JSON pointers.
-        # Inject shared custom definitions so these refs resolve.
-        add_definitions(schema)
     except Exception as e:
         msg = f"Failed to retrieve schema for model: {e}"
         raise AllotropeSerializationError(msg) from e

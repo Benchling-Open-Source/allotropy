@@ -4,6 +4,7 @@ from typing import Any, TypeVar
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
+    ContainerType,
     DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
@@ -25,7 +26,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueNumberSign,

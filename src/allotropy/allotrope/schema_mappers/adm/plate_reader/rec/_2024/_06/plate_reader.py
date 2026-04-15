@@ -28,10 +28,9 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
-    SampleRoleType as ModelSampleRoleType,
+    SampleRoleType,
     ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegC,
@@ -567,11 +566,7 @@ class Mapper(SchemaMapper[Data, Model]):
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
             well_location_identifier=measurement.well_location_identifier,
-            sample_role_type=(
-                ModelSampleRoleType(measurement.sample_role_type.value)
-                if measurement.sample_role_type
-                else None
-            ),
+            sample_role_type=measurement.sample_role_type,
             mass_concentration=quantity_or_none(
                 TQuantityValuePgPermL,
                 measurement.mass_concentration,
