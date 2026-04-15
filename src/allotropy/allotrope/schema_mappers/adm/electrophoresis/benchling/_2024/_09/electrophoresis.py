@@ -38,7 +38,10 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.values import quantity_or_none
+from allotropy.parsers.utils.values import (
+    quantity_or_none,
+    quantity_or_none_from_unit,
+)
 
 
 @dataclass(frozen=True)
@@ -264,26 +267,14 @@ class Mapper(SchemaMapper[Data, Model]):
                 if peak.height
                 else None
             ),
-            peak_position=(
-                TQuantityValue(value=peak.position, unit=peak.position_unit)  # type: ignore[arg-type]
-                if peak.position and peak.position_unit
-                else None
-            ),
+            peak_position=quantity_or_none_from_unit(peak.position_unit, peak.position),  # type: ignore[arg-type]
             relative_corrected_peak_area=(
                 quantity_or_none(TQuantityValuePercent, peak.relative_corrected_area)
                 if peak.relative_corrected_area
                 else None
             ),
-            peak_start=(
-                TQuantityValue(value=peak.start, unit=peak.start_unit)  # type: ignore[arg-type]
-                if peak.start and peak.start_unit
-                else None
-            ),
-            peak_end=(
-                TQuantityValue(value=peak.end, unit=peak.end_unit)  # type: ignore[arg-type]
-                if peak.end and peak.end_unit
-                else None
-            ),
+            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=(
                 quantity_or_none(TQuantityValueUnitless, peak.area)
                 if peak.area
@@ -303,16 +294,8 @@ class Mapper(SchemaMapper[Data, Model]):
             data_region_identifier=data_region.identifier,
             data_region_name=data_region.name,
             comment=data_region.comment,
-            data_region_start=(
-                TQuantityValue(value=data_region.start, unit=data_region.start_unit)  # type: ignore[arg-type]
-                if data_region.start and data_region.start_unit
-                else None
-            ),
-            data_region_end=(
-                TQuantityValue(value=data_region.end, unit=data_region.end_unit)  # type: ignore[arg-type]
-                if data_region.end and data_region.end_unit
-                else None
-            ),
+            data_region_start=quantity_or_none_from_unit(data_region.start_unit, data_region.start),  # type: ignore[arg-type]
+            data_region_end=quantity_or_none_from_unit(data_region.end_unit, data_region.end),  # type: ignore[arg-type]
             data_region_area=(
                 TQuantityValueUnitless(value=data_region.area)
                 if data_region.area

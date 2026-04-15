@@ -39,6 +39,7 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader impo
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
+    TQuantityValueKiloDalton,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValueMilliSecond,
@@ -890,11 +891,7 @@ class Mapper(SchemaMapper[Data, Model]):
             elif key == "peak mode diameter":
                 processed_info[key] = quantity_or_none(TQuantityValueNanometer, value)
             elif key == "peak est. MW":
-                processed_info[key] = (
-                    TQuantityValue(value=value, unit="kDa")
-                    if value is not None
-                    else None
-                )
+                processed_info[key] = quantity_or_none(TQuantityValueKiloDalton, value)
             elif key == "peak intensity":
                 processed_info[key] = quantity_or_none(TQuantityValuePercent, value)
             elif key == "peak mass":
