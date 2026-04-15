@@ -9,8 +9,15 @@ from allotropy.schema_gen.generate import (
 
 @click.command()
 @click.argument("schema_urls", nargs=-1, required=False)
-@click.option("--all", "regenerate_all", is_flag=True, help="Regenerate all cached technique schemas.")
-def _generate_schemas(schema_urls: tuple[str, ...], *, regenerate_all: bool = False) -> None:
+@click.option(
+    "--all",
+    "regenerate_all",
+    is_flag=True,
+    help="Regenerate all cached technique schemas.",
+)
+def _generate_schemas(
+    schema_urls: tuple[str, ...], *, regenerate_all: bool = False
+) -> None:
     """Generate Python models from one or more Allotrope schema URLs.
 
     Use --all to regenerate every cached technique schema.

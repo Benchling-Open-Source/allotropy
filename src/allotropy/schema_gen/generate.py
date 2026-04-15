@@ -119,9 +119,7 @@ def generate_models(
 
     # Phase 3: Separate units schemas from the rest (units go to shared module)
     # Only generate modules for requested schemas (+ forked shared schemas).
-    other_urls = [
-        u for u in order if not _is_units_schema(u) and u in requested_urls
-    ]
+    other_urls = [u for u in order if not _is_units_schema(u) and u in requested_urls]
 
     # Update shared units module with any new units from these schemas
     new_unit_count = _update_shared_units(all_schemas, cache_dir)
