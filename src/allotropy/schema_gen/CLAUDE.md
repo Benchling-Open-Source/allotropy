@@ -3,9 +3,10 @@
 ## Pipeline Flow
 
 ```
-Schema URLs → fetch (fetcher.py) → fork BENCHLING shared schemas (generate.py)
-  → topological sort → generate units (custom) → generate models (codegen.py)
-  → patch JsonFloat → lint (ruff + black) → write .py files
+Schema URLs → _fetch_all_schemas (fetcher.py)
+  → _prepare_benchling_schemas (fork shared deps)
+  → _build_generation_order (topological sort)
+  → _generate_and_write (codegen.py → _write_and_lint → .py files)
 ```
 
 ## Running the Generator
@@ -73,14 +74,17 @@ models/
 
 ### Key Classes
 
-- **`SchemaCodeGenerator`** — Main engine. Holds all schemas + modules, generates in dependency order.
+- **`SchemaCodeGenerator`** — Module-level orchestrator. Iterates schemas in dependency order, handles shared definition re-exports, ADM root flattening. Delegates type generation to `TypeResolver`.
+- **`TypeResolver`** — Type resolution engine. All schema-to-type mapping: dispatch on schema patterns, property resolution, `$ref` resolution, quantity value generation. Receives a shared `modules` dict from the orchestrator for cross-module references.
+- **`SchemaMerger`** — Merges properties from variant sub-schemas (anyOf/oneOf composition). Pure schema-level operations, independent of code generation.
+- **`QuantityValueManager`** — Tracks TQuantityValue{Unit} thin subclasses. Maps unit strings to class names, records new classes for `generate.py` to append.
 - **`ModuleCode`** — Represents a single .py file: imports, classes, exported names. Handles deduplication and topological sorting of classes.
-- **`GeneratedClass`** — A single class or type alias with its code string.
+- **`GeneratedClass`** — IR for a single class, type alias, or enum. Has `fields`, `enum_members`, or `alias_target` (exactly one populated).
 - **`ImportEntry`** — A `from module import Name` statement.
 
-### Type Dispatch (`_generate_type`)
+### Type Dispatch (`TypeResolver.generate_type`)
 
-The generator dispatches based on schema structure:
+The type resolver dispatches based on schema structure:
 
 | Schema Pattern | Handler | Output |
 |----------------|---------|--------|
@@ -105,7 +109,7 @@ allOf is the most complex part. In properties, it resolves to:
 
 ### Quantity Value Types (Thin Subclasses)
 
-Generated in the **core module**, not technique modules:
+Centralized in `shared/definitions/quantity_values.py`, not generated per-module:
 
 ```python
 @dataclass(frozen=True, kw_only=True)
@@ -114,11 +118,12 @@ class TQuantityValueMAU(TQuantityValue):
 ```
 
 When a technique schema references `allOf[tQuantityValue, mAU_unit]`, the codegen:
-1. Checks if `TQuantityValueMAU` already exists in core module
-2. If not, generates it there
-3. Adds an import to the technique module
+1. Resolves the unit const value from the units schema `$defs`
+2. Asks `QuantityValueManager.get_or_create()` for the class name
+3. Adds an import from `shared/definitions/quantity_values` to the consuming module
+4. If the class is new, `generate.py` appends it to `quantity_values.py` after generation
 
-This prevents duplication across technique modules that share the same unit.
+This prevents duplication across technique modules and core versions that share the same unit.
 
 ### json_name Metadata
 
@@ -151,7 +156,7 @@ This is critical for the detector measurement pattern where anyOf variants contr
 
 ### Constraint-Only Overlays
 
-Properties with only validation keywords (`required`, `minItems`, `maxItems`, `minimum`, etc.) but no structural type info are skipped — they refine a base-class field, not define new types. `_resolve_property_type()` returns `None` for these.
+Properties with only validation keywords (`required`, `minItems`, `maxItems`, `minimum`, etc.) but no structural type info are skipped — they refine a base-class field, not define new types. Detected by `_is_constraint_only_overlay()`, which checks that the schema keys are a subset of `_CONSTRAINT_ONLY_KEYS`. Empty schemas are NOT overlays (they're real `Any` fields). `_resolve_property_type()` returns `None` for these.
 
 ### Reference Resolution
 
@@ -173,7 +178,7 @@ These are fully reversible: `structure(unstructure(x), type(x)) == x` always hol
 ## Debugging Tips
 
 ### "Class X not found in module Y"
-The module wasn't generated yet when the technique schema tried to import. Check that `build_dependency_order()` places Y before the technique schema.
+The module wasn't generated yet when the technique schema tried to import. Check that `_build_generation_order()` places Y before the technique schema.
 
 ### "Field missing from generated model"
 1. Check the JSON schema for the field — is it in `properties`?
@@ -185,7 +190,10 @@ The module wasn't generated yet when the technique schema tried to import. Check
 Compare the codegen rule (`json_name != python_name.replace("_", " ")`) with the converter fallback (`f.name.replace("_", " ")`). They must agree on when metadata is needed.
 
 ### "Duplicate class in generated output"
-Recursive schemas can generate the same inline class from multiple locations. `ModuleCode.render()` deduplicates by merging fields from duplicates. Check `_merge_class_fields()`.
+Recursive schemas can generate the same inline class from multiple locations. `_deduplicate_classes()` handles three strategies: identical merge (compatible fields → merge), variant split (conflicting classes with `source_context` → distinct classes + union alias), and widening merge (conflicting without context → union field types). Check `_deduplicate_classes()`, `_merge_class_fields()`, `_widen_class_fields()`.
+
+### "Schema fetch fails"
+`SchemaFetcher` has a 30-second timeout on `urlopen()`. HTTP errors produce "Schema not found (HTTP {code})" and network errors produce "Network error... {reason}" — check the exception type to distinguish "schema doesn't exist" from "server unreachable".
 
 ### "Quantity type not generated"
 The `allOf[tQuantityValue, unit_ref]` pattern must be recognized by `_resolve_all_of_property()`. If the unit ref points to a missing unit in the units schema, the type won't generate. Check the units.schema.json has the required unit definition.
