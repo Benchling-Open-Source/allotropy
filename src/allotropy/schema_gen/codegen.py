@@ -288,9 +288,7 @@ class ModuleCode:
     # Map from definition names in this schema to their Python class names
     exported_names: dict[str, str] = field(default_factory=dict)
 
-    def add_import(
-        self, module: str, name: str, *, reexport: bool = False
-    ) -> None:
+    def add_import(self, module: str, name: str, *, reexport: bool = False) -> None:
         """Register an import for this module."""
         self.imports.append(ImportEntry(module=module, name=name, reexport=reexport))
 
@@ -1065,117 +1063,41 @@ class QuantityValueManager:
 
 
 # ---------------------------------------------------------------------------
-# Main code generator
+# Type resolution engine
 # ---------------------------------------------------------------------------
 
 
-class SchemaCodeGenerator:
-    """Generates Python code from a set of JSON schemas."""
+class TypeResolver:
+    """Resolves JSON Schema definitions and properties to Python types.
+
+    Handles all schema-to-type mapping: dispatching on schema patterns
+    (oneOf, anyOf, allOf, enum, object, array, $ref), generating inline
+    classes, and resolving cross-module references.
+
+    This class is the engine of type generation — it is created and driven
+    by :class:`SchemaCodeGenerator`, which handles module-level orchestration.
+    The *modules* dict is shared with the orchestrator: as SchemaCodeGenerator
+    registers each completed module, TypeResolver can immediately resolve
+    cross-module ``$ref`` references against it.
+    """
 
     def __init__(
         self,
         schemas: dict[str, dict[str, Any]],
-        generation_order: list[str],
-        models_package: str = "allotropy.allotrope.models",
-        unit_descriptive_names: dict[str, str] | None = None,
+        modules: dict[str, ModuleCode],
+        merger: SchemaMerger,
+        qv_manager: QuantityValueManager,
     ) -> None:
-        self.schemas = schemas
-        self.generation_order = generation_order
-        self.models_package = models_package
-        # Track generated modules for cross-references
-        self._modules: dict[str, ModuleCode] = {}
-        # Schema merging helper
-        self._merger = SchemaMerger(schemas)
-        # Quantity value lifecycle manager
-        self._qv_manager = QuantityValueManager(unit_descriptive_names)
-
-    @property
-    def new_quantity_value_classes(self) -> list[tuple[str, str]]:
-        return self._qv_manager.new_classes
-
-    @property
-    def all_quantity_value_classes(self) -> dict[str, str]:
-        """All known TQuantityValue classes: {unit_string: class_name}."""
-        return self._qv_manager.all_classes
-
-    def ensure_quantity_value_class(self, unit_const: str) -> str:
-        """Ensure a TQuantityValue class exists for *unit_const*."""
-        return self._qv_manager.get_or_create(unit_const)
-
-    def generate_all(self) -> dict[str, ModuleCode]:
-        """Generate Python modules for all schemas in dependency order."""
-        for url in self.generation_order:
-            schema = self.schemas[url]
-            module = self._generate_module(url, schema)
-            self._modules[url] = module
-
-        return self._modules
-
-    def _generate_module(self, schema_url: str, schema: dict[str, Any]) -> ModuleCode:
-        """Generate a Python module for a single schema."""
-        module = ModuleCode(schema_url=schema_url)
-
-        defs = schema.get("$defs", {})
-
-        if self._is_units_schema(schema_url):
-            # Units are handled by the shared units module (shared/definitions/units.py),
-            # not generated per-schema.  Skip — no module output needed.
-            pass
-        else:
-            # Generate $defs classes if present (core, hierarchy, detector types, etc.)
-            if defs:
-                self._generate_defs_module(module, schema_url, defs)
-            # Generate ADM top-level Model class if this is a technique schema
-            if self._is_adm_schema(schema):
-                self._generate_adm_module(module, schema_url, schema)
-
-        return module
-
-    def _is_units_schema(self, url: str) -> bool:
-        return UNITS_SCHEMA_MARKER in url
-
-    @staticmethod
-    def _is_adm_schema(schema: dict[str, Any]) -> bool:
-        """Check if this is a top-level ADM schema (has allOf at root)."""
-        return "allOf" in schema
+        self._schemas = schemas
+        self._modules = modules
+        self._merger = merger
+        self._qv_manager = qv_manager
 
     # -------------------------------------------------------------------------
-    # Regular $defs module generation (core, cube, hierarchy, manifest, detector)
+    # Type dispatch (entry point from SchemaCodeGenerator)
     # -------------------------------------------------------------------------
 
-    def _generate_defs_module(
-        self, module: ModuleCode, schema_url: str, defs: dict[str, Any]
-    ) -> None:
-        """Generate classes for all $defs in a schema."""
-        for def_name, def_schema in defs.items():
-            if not isinstance(def_schema, dict):
-                continue
-
-            # Import shared definition types instead of regenerating them.
-            # Re-exported here so downstream generated modules can import
-            # from this core module without needing to know the source.
-            if def_name in _SHARED_DEFINITION_TYPES:
-                class_name = _SHARED_DEFINITION_TYPES[def_name]
-                module.add_import(
-                    _SHARED_DEFINITIONS_MODULE, class_name, reexport=True
-                )
-                module.exported_names[def_name] = class_name
-                continue
-
-            class_name = def_name_to_class_name(def_name)
-            start_idx = len(module.classes)
-            cls = self._generate_type(module, schema_url, class_name, def_schema)
-            if cls:
-                module.classes.append(cls)
-                module.exported_names[def_name] = class_name
-            # Tag inline classes generated as children of this $def with
-            # their source context so variant dedup can create meaningful
-            # suffixes (e.g., PeakItem from Millivolts → PeakItemMillivolts).
-            for c in module.classes[start_idx:]:
-                if c.source_context is None:
-                    c.source_context = class_name
-
-    def _generate_type(
+    def generate_type(
         self,
         module: ModuleCode,
         schema_url: str,
@@ -1197,7 +1119,7 @@ class SchemaCodeGenerator:
 
         # Handle object types with properties
         if schema.get("type") == "object" and "properties" in schema:
-            return self._generate_dataclass(module, schema_url, class_name, schema)
+            return self.generate_dataclass(module, schema_url, class_name, schema)
 
         # Handle object type without properties (just a marker/base type)
         if schema.get("type") == "object":
@@ -1230,7 +1152,7 @@ class SchemaCodeGenerator:
 
         # Handle dependencies/constraints (like tRangeValue)
         if "properties" in schema:
-            return self._generate_dataclass(module, schema_url, class_name, schema)
+            return self.generate_dataclass(module, schema_url, class_name, schema)
 
         # Conditional validation constraints (if/then) don't produce types —
         # they refine allowed values based on sibling fields (e.g., cFillValue*
@@ -1285,7 +1207,7 @@ class SchemaCodeGenerator:
         # If there's a primitive + object variant, generate a typed item class
         if primitive_types and object_schemas:
             item_class_name = f"{class_name}Item"
-            item_cls = self._generate_dataclass(
+            item_cls = self.generate_dataclass(
                 module, schema_url, item_class_name, object_schemas[0]
             )
             if item_cls:
@@ -1297,7 +1219,7 @@ class SchemaCodeGenerator:
             parts.extend(primitive_types)
         elif object_schemas:
             if len(object_schemas) == 1:
-                return self._generate_dataclass(
+                return self.generate_dataclass(
                     module, schema_url, class_name, object_schemas[0]
                 )
             # Multiple object variants — merge all properties
@@ -1305,7 +1227,7 @@ class SchemaCodeGenerator:
             for obj_schema in object_schemas:
                 _merge_props_into(merged_props, obj_schema.get("properties", {}))
             merged = {"type": "object", "properties": merged_props}
-            return self._generate_dataclass(module, schema_url, class_name, merged)
+            return self.generate_dataclass(module, schema_url, class_name, merged)
 
         # Add ref types
         parts.extend(ref_types)
@@ -1394,7 +1316,7 @@ class SchemaCodeGenerator:
         merged = {"type": "object", "properties": merged_props}
         if merged_required:
             merged["required"] = merged_required
-        return self._generate_dataclass(
+        return self.generate_dataclass(
             module, schema_url, class_name, merged, base_classes=base_classes
         )
 
@@ -1402,7 +1324,7 @@ class SchemaCodeGenerator:
     # Object → dataclass generation
     # -------------------------------------------------------------------------
 
-    def _generate_dataclass(
+    def generate_dataclass(
         self,
         module: ModuleCode,
         schema_url: str,
@@ -1485,7 +1407,7 @@ class SchemaCodeGenerator:
         # oneOf with properties: oneOf is just validation constraints, generate from properties
         if "oneOf" in prop_schema and "properties" in prop_schema:
             inline_class_name = property_name_to_class_name(prop_name)
-            cls = self._generate_dataclass(
+            cls = self.generate_dataclass(
                 module, schema_url, inline_class_name, prop_schema
             )
             module.classes.append(cls)
@@ -1506,7 +1428,7 @@ class SchemaCodeGenerator:
         # Inline object (with or without explicit type: "object")
         if "properties" in prop_schema:
             inline_class_name = property_name_to_class_name(prop_name)
-            cls = self._generate_dataclass(
+            cls = self.generate_dataclass(
                 module, schema_url, inline_class_name, prop_schema
             )
             # If all inner properties were constraint-only, the class is empty —
@@ -1733,7 +1655,7 @@ class SchemaCodeGenerator:
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
                 merged["required"] = sorted(set(merged_required))
-            cls = self._generate_dataclass(
+            cls = self.generate_dataclass(
                 module, schema_url, inline_class_name, merged, base_classes=base_classes
             )
             module.classes.append(cls)
@@ -1848,7 +1770,7 @@ class SchemaCodeGenerator:
 
         if "type" in items and items["type"] == "object" and "properties" in items:
             item_class_name = property_name_to_class_name(prop_name) + "Item"
-            cls = self._generate_dataclass(module, schema_url, item_class_name, items)
+            cls = self.generate_dataclass(module, schema_url, item_class_name, items)
             module.classes.append(cls)
             return f"list[{item_class_name}]"
 
@@ -1861,7 +1783,7 @@ class SchemaCodeGenerator:
 
         if "properties" in items:
             item_class_name = property_name_to_class_name(prop_name) + "Item"
-            cls = self._generate_dataclass(module, schema_url, item_class_name, items)
+            cls = self.generate_dataclass(module, schema_url, item_class_name, items)
             module.classes.append(cls)
             return f"list[{item_class_name}]"
 
@@ -1898,7 +1820,7 @@ class SchemaCodeGenerator:
             merged = {"type": "object", "properties": merged_props}
             if merged_required:
                 merged["required"] = sorted(set(merged_required))
-            cls = self._generate_dataclass(
+            cls = self.generate_dataclass(
                 module, schema_url, item_class_name, merged, base_classes=base_classes
             )
         elif base_classes:
@@ -1981,7 +1903,7 @@ class SchemaCodeGenerator:
         except ValueError:
             return self._resolve_ref_type(module, schema_url, quantity_ref)
 
-        unit_schema = self.schemas.get(canonical_unit_url, {})
+        unit_schema = self._schemas.get(canonical_unit_url, {})
         unit_def = unit_schema.get("$defs", {}).get(unit_def_name, {})
         const_value = extract_unit_const(unit_def)
 
@@ -1995,6 +1917,147 @@ class SchemaCodeGenerator:
         module.add_import(_SHARED_QUANTITY_VALUES_MODULE, class_name)
 
         return class_name
+
+    # -------------------------------------------------------------------------
+    # Utilities
+    # -------------------------------------------------------------------------
+
+    def _json_type_to_python(self, json_type: str | list[str]) -> str:
+        """Convert a JSON Schema type to a Python type annotation."""
+        if isinstance(json_type, list):
+            types = [self._json_type_to_python(t) for t in json_type]
+            return _join_union(types)
+
+        mapping = {
+            "string": "str",
+            "number": "float",
+            "integer": "int",
+            "boolean": "bool",
+            "null": "None",
+            "object": "dict[str, Any]",
+            "array": "list[Any]",
+        }
+        return mapping.get(json_type, "Any")
+
+
+# ---------------------------------------------------------------------------
+# Main code generator
+# ---------------------------------------------------------------------------
+
+
+class SchemaCodeGenerator:
+    """Generates Python modules from a set of JSON schemas.
+
+    Orchestrates module-level generation: iterates schemas in dependency
+    order, handles shared definition imports, ADM root flattening, and
+    delegates type-level generation to :class:`TypeResolver`.
+    """
+
+    def __init__(
+        self,
+        schemas: dict[str, dict[str, Any]],
+        generation_order: list[str],
+        models_package: str = "allotropy.allotrope.models",
+        unit_descriptive_names: dict[str, str] | None = None,
+    ) -> None:
+        self.schemas = schemas
+        self.generation_order = generation_order
+        self.models_package = models_package
+        # Track generated modules for cross-references
+        self._modules: dict[str, ModuleCode] = {}
+        # Schema merging helper
+        self._merger = SchemaMerger(schemas)
+        # Quantity value lifecycle manager
+        self._qv_manager = QuantityValueManager(unit_descriptive_names)
+        self._type_resolver = TypeResolver(
+            schemas, self._modules, self._merger, self._qv_manager
+        )
+
+    @property
+    def new_quantity_value_classes(self) -> list[tuple[str, str]]:
+        return self._qv_manager.new_classes
+
+    @property
+    def all_quantity_value_classes(self) -> dict[str, str]:
+        """All known TQuantityValue classes: {unit_string: class_name}."""
+        return self._qv_manager.all_classes
+
+    def ensure_quantity_value_class(self, unit_const: str) -> str:
+        """Ensure a TQuantityValue class exists for *unit_const*."""
+        return self._qv_manager.get_or_create(unit_const)
+
+    def generate_all(self) -> dict[str, ModuleCode]:
+        """Generate Python modules for all schemas in dependency order."""
+        for url in self.generation_order:
+            schema = self.schemas[url]
+            module = self._generate_module(url, schema)
+            self._modules[url] = module
+
+        return self._modules
+
+    def _generate_module(self, schema_url: str, schema: dict[str, Any]) -> ModuleCode:
+        """Generate a Python module for a single schema."""
+        module = ModuleCode(schema_url=schema_url)
+
+        defs = schema.get("$defs", {})
+
+        if self._is_units_schema(schema_url):
+            # Units are handled by the shared units module (shared/definitions/units.py),
+            # not generated per-schema.  Skip — no module output needed.
+            pass
+        else:
+            # Generate $defs classes if present (core, hierarchy, detector types, etc.)
+            if defs:
+                self._generate_defs_module(module, schema_url, defs)
+            # Generate ADM top-level Model class if this is a technique schema
+            if self._is_adm_schema(schema):
+                self._generate_adm_module(module, schema_url, schema)
+
+        return module
+
+    def _is_units_schema(self, url: str) -> bool:
+        return UNITS_SCHEMA_MARKER in url
+
+    @staticmethod
+    def _is_adm_schema(schema: dict[str, Any]) -> bool:
+        """Check if this is a top-level ADM schema (has allOf at root)."""
+        return "allOf" in schema
+
+    # -------------------------------------------------------------------------
+    # Regular $defs module generation (core, cube, hierarchy, manifest, detector)
+    # -------------------------------------------------------------------------
+
+    def _generate_defs_module(
+        self, module: ModuleCode, schema_url: str, defs: dict[str, Any]
+    ) -> None:
+        """Generate classes for all $defs in a schema."""
+        for def_name, def_schema in defs.items():
+            if not isinstance(def_schema, dict):
+                continue
+
+            # Import shared definition types instead of regenerating them.
+            # Re-exported here so downstream generated modules can import
+            # from this core module without needing to know the source.
+            if def_name in _SHARED_DEFINITION_TYPES:
+                class_name = _SHARED_DEFINITION_TYPES[def_name]
+                module.add_import(_SHARED_DEFINITIONS_MODULE, class_name, reexport=True)
+                module.exported_names[def_name] = class_name
+                continue
+
+            class_name = def_name_to_class_name(def_name)
+            start_idx = len(module.classes)
+            cls = self._type_resolver.generate_type(
+                module, schema_url, class_name, def_schema
+            )
+            if cls:
+                module.classes.append(cls)
+                module.exported_names[def_name] = class_name
+            # Tag inline classes generated as children of this $def with
+            # their source context so variant dedup can create meaningful
+            # suffixes (e.g., PeakItem from Millivolts → PeakItemMillivolts).
+            for c in module.classes[start_idx:]:
+                if c.source_context is None:
+                    c.source_context = class_name
 
     # -------------------------------------------------------------------------
     # ADM schema generation (top-level technique schemas)
@@ -2040,7 +2103,7 @@ class SchemaCodeGenerator:
         if all_required:
             synthetic["required"] = list(all_required)
 
-        model_cls = self._generate_dataclass(
+        model_cls = self._type_resolver.generate_dataclass(
             module, schema_url, "Model", synthetic, frozen=False
         )
 
@@ -2057,27 +2120,6 @@ class SchemaCodeGenerator:
 
         module.classes.append(model_cls)
         module.exported_names["Model"] = "Model"
-
-    # -------------------------------------------------------------------------
-    # Utilities
-    # -------------------------------------------------------------------------
-
-    def _json_type_to_python(self, json_type: str | list[str]) -> str:
-        """Convert a JSON Schema type to a Python type annotation."""
-        if isinstance(json_type, list):
-            types = [self._json_type_to_python(t) for t in json_type]
-            return _join_union(types)
-
-        mapping = {
-            "string": "str",
-            "number": "float",
-            "integer": "int",
-            "boolean": "bool",
-            "null": "None",
-            "object": "dict[str, Any]",
-            "array": "list[Any]",
-        }
-        return mapping.get(json_type, "Any")
 
 
 # ---------------------------------------------------------------------------

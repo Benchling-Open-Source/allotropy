@@ -1,18 +1,15 @@
 from __future__ import annotations
 
-import importlib
 from dataclasses import dataclass, field, fields, make_dataclass
 from enum import Enum
+import importlib
 from pathlib import Path
-
-import pytest
 
 from allotropy.allotrope.converter import (
     add_custom_information_document,
     structure,
     unstructure,
 )
-from allotropy.schema_gen.naming import default_json_name
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     DataProcessingDocument,
     ProcessedDataDocumentItem,
@@ -27,6 +24,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueUnitless,
 )
+from allotropy.schema_gen.naming import default_json_name
 
 # ---------------------------------------------------------------------------
 # Test fixtures — simple dataclasses for unit tests
@@ -423,8 +421,8 @@ class TestCustomInformationDocument:
     def test_nested_list_preserved(self) -> None:
         """Nested lists (e.g. data cube arrays) should pass through unchanged."""
         from allotropy.allotrope.converter import (
-            structure_custom_information_document,
             _unstructure_custom_information_document,
+            structure_custom_information_document,
         )
 
         doc = {"dimensions": [[1, 2, 3], [4, 5, 6]], "label": "cube"}
@@ -565,7 +563,11 @@ def _collect_dataclasses(module_name: str) -> list[type]:
     result = []
     for name in dir(mod):
         obj = getattr(mod, name)
-        if isinstance(obj, type) and is_dataclass(obj) and obj.__module__ == module_name:
+        if (
+            isinstance(obj, type)
+            and is_dataclass(obj)
+            and obj.__module__ == module_name
+        ):
             result.append(obj)
     return result
 

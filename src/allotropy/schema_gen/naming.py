@@ -26,9 +26,7 @@ DEFAULT_SCHEMA_CACHE_DIR = Path("src/allotropy/allotrope/schemas")
 DEFAULT_MODEL_OUTPUT_DIR = Path("src/allotropy/allotrope/models")
 
 # Pre-compiled regex patterns
-_RE_GITLAB_URL = re.compile(
-    r"https?://gitlab\.com/.+?/json-schemas/(.+?)(?:\.json)?$"
-)
+_RE_GITLAB_URL = re.compile(r"https?://gitlab\.com/.+?/json-schemas/(.+?)(?:\.json)?$")
 _RE_DEFS_FRAGMENT = re.compile(r"/?\$defs/(.+)$")
 _RE_SCHEMA_SUFFIX = re.compile(r"\.schema(\.json)?$")
 _RE_SEPARATOR = re.compile(r"[\s.\-/~^]+")

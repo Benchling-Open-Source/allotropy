@@ -713,7 +713,7 @@ class TestSchemaCodeGeneratorEnum:
         }
         gen = _make_generator(schemas)
         ModuleCode(schema_url=schema_url)
-        cls = gen._generate_enum(
+        cls = gen._type_resolver._generate_enum(
             "ContainerType", {"enum": ["well plate", "tube", "reactor"]}
         )
         code = cls.render()
@@ -726,7 +726,7 @@ class TestSchemaCodeGeneratorEnum:
         # Single-value enums should remain Literal in the property resolver,
         # but _generate_enum itself always produces Enum class
         gen = _make_generator({})
-        cls = gen._generate_enum("SingleValue", {"enum": ["only"]})
+        cls = gen._type_resolver._generate_enum("SingleValue", {"enum": ["only"]})
         code = cls.render()
         assert "class SingleValue(Enum):" in code
         assert 'only = "only"' in code
@@ -735,23 +735,23 @@ class TestSchemaCodeGeneratorEnum:
 class TestSchemaCodeGeneratorJsonTypeToPython:
     def test_string(self) -> None:
         gen = _make_generator({})
-        assert gen._json_type_to_python("string") == "str"
+        assert gen._type_resolver._json_type_to_python("string") == "str"
 
     def test_integer(self) -> None:
         gen = _make_generator({})
-        assert gen._json_type_to_python("integer") == "int"
+        assert gen._type_resolver._json_type_to_python("integer") == "int"
 
     def test_number(self) -> None:
         gen = _make_generator({})
-        assert gen._json_type_to_python("number") == "float"
+        assert gen._type_resolver._json_type_to_python("number") == "float"
 
     def test_boolean(self) -> None:
         gen = _make_generator({})
-        assert gen._json_type_to_python("boolean") == "bool"
+        assert gen._type_resolver._json_type_to_python("boolean") == "bool"
 
     def test_array_of_strings(self) -> None:
         gen = _make_generator({})
-        result = gen._json_type_to_python(["string", "null"])
+        result = gen._type_resolver._json_type_to_python(["string", "null"])
         assert "str" in result
 
 
