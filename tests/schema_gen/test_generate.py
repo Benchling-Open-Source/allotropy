@@ -10,6 +10,7 @@ and commit the result.
 
 from __future__ import annotations
 
+from collections import defaultdict
 from pathlib import Path
 import re
 
@@ -98,3 +99,34 @@ def test_single_schema_generation_is_idempotent(tmp_path: Path) -> None:
     ]
     assert rec_technique_urls, "No REC technique schemas found"
     _assert_generated_matches_committed(tmp_path, rec_technique_urls[0])
+
+
+def _one_schema_per_technique() -> list[str]:
+    """Pick one representative schema per technique for smoke testing.
+
+    Returns one URL per unique technique name (e.g. cell-counting,
+    plate-reader), preferring BENCHLING schemas over REC (they exercise
+    more codegen paths due to forking and embedded $defs).
+    """
+    urls = _discover_cached_technique_urls()
+    groups: dict[str, list[str]] = defaultdict(list)
+    for u in urls:
+        match = re.search(r"/adm/([^/]+)/", u)
+        if match:
+            groups[match.group(1)].append(u)
+
+    representatives = []
+    for _technique, technique_urls in sorted(groups.items()):
+        # Prefer BENCHLING, then WD, then REC
+        benchling = [u for u in technique_urls if "/BENCHLING/" in u]
+        wd = [u for u in technique_urls if "/WD/" in u]
+        choice = (benchling or wd or technique_urls)[0]
+        representatives.append(choice)
+    return representatives
+
+
+@pytest.mark.long
+@pytest.mark.parametrize("schema_url", _one_schema_per_technique(), ids=lambda u: re.search(r"/adm/([^/]+)/", u).group(1))  # type: ignore[union-attr]
+def test_single_technique_smoke(tmp_path: Path, schema_url: str) -> None:
+    """Each technique schema should generate output matching committed models."""
+    _assert_generated_matches_committed(tmp_path, schema_url)
