@@ -104,6 +104,11 @@ def _is_constraint_only_overlay(prop_schema: dict[str, Any]) -> bool:
     return bool(prop_schema) and prop_schema.keys() <= _CONSTRAINT_ONLY_KEYS
 
 
+def _ref_base_url(ref: str) -> str:
+    """Extract the schema URL from a $ref string, stripping any fragment."""
+    return ref.split("#")[0]
+
+
 # ---------------------------------------------------------------------------
 # Intermediate Representation (IR)
 # ---------------------------------------------------------------------------
@@ -832,7 +837,7 @@ class SchemaMerger:
         hierarchy-level fields plus technique-specific additions.
         """
         for ref in base_refs:
-            ref_base_url = ref.split("#")[0]
+            ref_base_url = _ref_base_url(ref)
             base_schema = self.resolve_ref_to_schema(schema_url, ref)
             if base_schema and "properties" in base_schema:
                 base_props = base_schema["properties"]
@@ -858,7 +863,7 @@ class SchemaMerger:
         Returns (None, "") if the variant cannot be resolved.
         """
         if "$ref" in variant:
-            base_url = variant["$ref"].split("#")[0] or fallback_base_url
+            base_url = _ref_base_url(variant["$ref"]) or fallback_base_url
             return self.resolve_ref_to_schema(schema_url, variant["$ref"]), base_url
         if isinstance(variant, dict):
             return variant, fallback_base_url
@@ -1578,7 +1583,7 @@ class SchemaCodeGenerator:
     @staticmethod
     def _is_units_ref(ref: str) -> bool:
         """Return True if *ref* points to a units schema definition."""
-        schema_url = ref.split("#")[0]
+        schema_url = _ref_base_url(ref)
         if not schema_url:
             return False
         try:
@@ -1702,7 +1707,7 @@ class SchemaCodeGenerator:
                 # the ref's properties into the merged set.  Note: this
                 # coupling between the two naming functions is intentional.
                 if ref_type == inline_class_name:
-                    ref_base_url = ref.split("#")[0]
+                    ref_base_url = _ref_base_url(ref)
                     ref_schema = self._merger.resolve_ref_to_schema(schema_url, ref)
                     if ref_schema and "properties" in ref_schema:
                         ref_props = ref_schema["properties"]
@@ -1970,7 +1975,7 @@ class SchemaCodeGenerator:
         which technique schemas were included in a given generation run.
         """
         _, unit_def_name = parse_ref(unit_ref)
-        unit_schema_url = unit_ref.split("#")[0]
+        unit_schema_url = _ref_base_url(unit_ref)
         try:
             canonical_unit_url = normalize_schema_url(unit_schema_url)
         except ValueError:
