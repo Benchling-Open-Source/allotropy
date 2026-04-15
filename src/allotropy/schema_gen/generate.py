@@ -454,7 +454,7 @@ def _extract_descriptive_name(
     if const in _IRI_NAME_CORRECTIONS:
         return _IRI_NAME_CORRECTIONS[const]
 
-    iri = def_schema.get("properties", {}).get("unit", {}).get("$asm.unit-iri", "")
+    iri: str = def_schema.get("properties", {}).get("unit", {}).get("$asm.unit-iri", "")
     if iri and "#" in iri:
         return iri.split("#")[1]
 
