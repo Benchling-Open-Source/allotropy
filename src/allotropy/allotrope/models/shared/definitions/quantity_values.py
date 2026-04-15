@@ -2741,11 +2741,6 @@ class TQuantityValueOhmMeter(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueOpticalDensity(TQuantityValue):
-    unit: str = "OD"
-
-
-@dataclass(frozen=True, kw_only=True)
 class TQuantityValueOsmolesPerLiter(TQuantityValue):
     unit: str = "osm/L"
 
@@ -2868,11 +2863,6 @@ class TQuantityValuePerMeterKelvin(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValuePerMinute(TQuantityValue):
     unit: str = "min^-1"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValuePerMolarPerCentimeter(TQuantityValue):
-    unit: str = "M-1cm-1"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -3591,16 +3581,6 @@ class TQuantityValueSquareMile(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueSquareMillimeter(TQuantityValue):
-    unit: str = "mm^2"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueSquareResponseUnit(TQuantityValue):
-    unit: str = "RU^2"
-
-
-@dataclass(frozen=True, kw_only=True)
 class TQuantityValueSquareYard(TQuantityValue):
     unit: str = "yd^2"
 
@@ -3683,11 +3663,6 @@ class TQuantityValueStilb(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueStokes(TQuantityValue):
     unit: str = "St"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueTODO(TQuantityValue):
-    unit: str = "TODO"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -3788,11 +3763,6 @@ class TQuantityValueTwoTheta(TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TQuantityValueUnifiedAtomicMassUnit(TQuantityValue):
     unit: str = "AMU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TQuantityValueUnitPerLiter(TQuantityValue):
-    unit: str = "U/L"
 
 
 @dataclass(frozen=True, kw_only=True)

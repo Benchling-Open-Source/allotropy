@@ -1,32 +1,11 @@
 from collections import defaultdict
 from datetime import timedelta
 
-from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueGramPerLiter,
-    TQuantityValueMillimolePerLiter,
-    TQuantityValueUnitPerLiter,
-)
-
 # Measurements of a sample have different timestamps, typically spaced closely together (max diff observed - 9 min)
 # Some result files have multiple sets of measurements, over multiple days.
 # Measurements with a time difference greater than MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE from the last
 # measurement recorded will be put into separate groups.
 MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE = timedelta(hours=1)
-
-
-MOLAR_CONCENTRATION_CLASSES: list[
-    (
-        type[TQuantityValueMillimolePerLiter]
-        | type[TQuantityValueGramPerLiter]
-        | type[TQuantityValueUnitPerLiter]
-    )
-] = [
-    TQuantityValueMillimolePerLiter,
-    TQuantityValueGramPerLiter,
-    TQuantityValueUnitPerLiter,
-]
-
-MOLAR_CONCENTRATION_CLS_BY_UNIT = {cls.unit: cls for cls in MOLAR_CONCENTRATION_CLASSES}
 
 
 INFO_HEADER = [

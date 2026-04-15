@@ -3,12 +3,12 @@ from typing import Any
 
 import numpy as np
 
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueHertz,
     TQuantityValueNumber,
     TQuantityValueResponseUnit,
     TQuantityValueSecondTime,
-    TQuantityValueSquareResponseUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
@@ -140,9 +140,10 @@ def _get_measurements(
                         "Affinity Chi squared"
                         if measurement.kinetics.is_affinity_measurement
                         else "Kinetics Chi squared"
-                    ): quantity_or_none(
-                        TQuantityValueSquareResponseUnit,
-                        measurement.kinetics.kinetics_chi_squared,
+                    ): (
+                        TQuantityValue(value=v, unit="RU^2")
+                        if (v := measurement.kinetics.kinetics_chi_squared) is not None
+                        else None
                     ),
                     "tc": quantity_or_none(
                         TQuantityValueUnitless, measurement.kinetics.tc

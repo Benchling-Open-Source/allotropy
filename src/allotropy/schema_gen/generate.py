@@ -399,18 +399,6 @@ _IRI_NAME_CORRECTIONS: dict[str, str] = {
     "RU.s": "ResponseUnitTimesSecond",
 }
 
-# Units that exist in shared/definitions/units.py but not in any upstream
-# schema.  These were added manually for BENCHLING parsers and must survive
-# regeneration.
-_MANUAL_UNITS: dict[str, str] = {
-    "OD": "OpticalDensity",
-    "M-1cm-1": "PerMolarPerCentimeter",
-    "mm^2": "SquareMillimeter",
-    "RU^2": "SquareResponseUnit",
-    "TODO": "TODO",
-    "U/L": "UnitPerLiter",
-}
-
 # Regex to parse existing unit classes from shared/definitions/units.py.
 _UNIT_CLASS_RE = re.compile(
     r"^class (\w+)\(HasUnit\):\s*\n\s+unit:\s+str\s*=\s*(?:UNITLESS|\"([^\"]*)\"|'([^']*)')",
@@ -500,11 +488,6 @@ def _collect_all_units(all_schemas: dict[str, Any], cache_dir: Path) -> dict[str
         if _is_units_schema(url):
             _scan_defs(schema.get("$defs", {}))
 
-    # 4. Add manual units (BENCHLING-only, not in any schema)
-    for const, name in _MANUAL_UNITS.items():
-        if const not in units:
-            units[const] = name
-
     return units
 
 
@@ -574,8 +557,7 @@ def _update_shared_units(
     all_units = _collect_all_units(all_schemas, cache_dir)
     existing = _read_existing_unit_classes(output_dir)
 
-    new_count = sum(1 for const in all_units if const not in existing)
-    if new_count == 0 and existing:
+    if set(all_units) == set(existing):
         return 0
 
     # Regenerate the entire file to maintain sorted order
@@ -583,7 +565,7 @@ def _update_shared_units(
     source = _generate_shared_units_source(all_units)
     _write_module(units_path, source)
     _lint_file(units_path)
-    return new_count
+    return len(set(all_units) - set(existing))
 
 
 # ---------------------------------------------------------------------------

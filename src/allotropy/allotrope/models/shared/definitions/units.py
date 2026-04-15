@@ -2750,11 +2750,6 @@ class OhmMeter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class OpticalDensity(HasUnit):
-    unit: str = "OD"
-
-
-@dataclass(frozen=True, kw_only=True)
 class OsmolesPerLiter(HasUnit):
     unit: str = "osm/L"
 
@@ -2877,11 +2872,6 @@ class PerMeterKelvin(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class PerMinute(HasUnit):
     unit: str = "min^-1"
-
-
-@dataclass(frozen=True, kw_only=True)
-class PerMolarPerCentimeter(HasUnit):
-    unit: str = "M-1cm-1"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -3600,16 +3590,6 @@ class SquareMile(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class SquareMillimeter(HasUnit):
-    unit: str = "mm^2"
-
-
-@dataclass(frozen=True, kw_only=True)
-class SquareResponseUnit(HasUnit):
-    unit: str = "RU^2"
-
-
-@dataclass(frozen=True, kw_only=True)
 class SquareYard(HasUnit):
     unit: str = "yd^2"
 
@@ -3692,11 +3672,6 @@ class Stilb(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class Stokes(HasUnit):
     unit: str = "St"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TODO(HasUnit):
-    unit: str = "TODO"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -3797,11 +3772,6 @@ class TwoTheta(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class UnifiedAtomicMassUnit(HasUnit):
     unit: str = "AMU"
-
-
-@dataclass(frozen=True, kw_only=True)
-class UnitPerLiter(HasUnit):
-    unit: str = "U/L"
 
 
 @dataclass(frozen=True, kw_only=True)

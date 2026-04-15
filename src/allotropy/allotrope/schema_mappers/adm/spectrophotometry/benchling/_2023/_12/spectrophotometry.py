@@ -42,7 +42,6 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
-    TQuantityValuePerMolarPerCentimeter,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
@@ -410,13 +409,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 "E1%": quantity_or_none(
                     TQuantityValueUnitless, data.custom_info.get("E1%")
                 ),
-                "ext. coeff x10e3": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter,
-                    data.custom_info.get("ext. coeff x10e3"),
+                "ext. coeff x10e3": (
+                    TQuantityValue(value=v, unit="M-1cm-1")
+                    if (v := data.custom_info.get("ext. coeff x10e3")) is not None
+                    else None
                 ),
-                "ext.c.": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter,
-                    data.custom_info.get("ext.c. (l/(mol*cm))"),
+                "ext.c.": (
+                    TQuantityValue(value=v, unit="M-1cm-1")
+                    if (v := data.custom_info.get("ext.c. (l/(mol*cm))")) is not None
+                    else None
                 ),
                 "conc. factor": quantity_or_none(
                     TQuantityValueNanogramPerMicroliter,
