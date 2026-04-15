@@ -737,6 +737,16 @@ _SHARED_QUANTITY_VALUES_MODULE = (
     "allotropy.allotrope.models.shared.definitions.quantity_values"
 )
 
+# Base type names for quantity value variants (case-sensitive prefixes).
+_QV_BASE_NAMES = ("tQuantityValue", "tNullableQuantityValue")
+
+
+def _is_quantity_value_variant(def_name: str) -> bool:
+    """Return True if *def_name* is a pre-composed QV variant (not the base type)."""
+    return any(
+        def_name.startswith(base) and def_name != base for base in _QV_BASE_NAMES
+    )
+
 
 # ---------------------------------------------------------------------------
 # Schema merging helper
@@ -1067,49 +1077,13 @@ class SchemaCodeGenerator:
         return self._qv_manager.get_or_create(unit_const, nullable=nullable)
 
     def generate_all(self) -> dict[str, ModuleCode]:
-        """Generate Python modules for all schemas in dependency order.
-
-        After all schemas are processed, revisit core modules to add
-        TQuantityValue re-exports for types discovered during technique
-        schema generation.
-        """
+        """Generate Python modules for all schemas in dependency order."""
         for url in self.generation_order:
             schema = self.schemas[url]
             module = self._generate_module(url, schema)
             self._modules[url] = module
 
-        # Post-pass: add QV re-exports to core modules now that all
-        # technique schemas have been processed and all QV types are known.
-        self._add_core_quantity_value_reexports()
         return self._modules
-
-    def _add_core_quantity_value_reexports(self) -> None:
-        """Add TQuantityValue re-exports to all core modules.
-
-        Called after all schemas are generated so the full set of QV types
-        discovered during technique/hierarchy generation is available.
-        Core modules re-export these so downstream modules can import
-        them via ``from core import TQuantityValueX``.
-        """
-        all_qv = sorted(self._qv_manager.known_class_names)
-        for url, module in self._modules.items():
-            if "/core/" not in url or "units" in url:
-                continue
-            existing_qv = {
-                imp.name
-                for imp in module.imports
-                if imp.module == _SHARED_QUANTITY_VALUES_MODULE
-            }
-            for qv_class in all_qv:
-                if qv_class not in existing_qv:
-                    module.imports.append(
-                        ImportEntry(
-                            module=_SHARED_QUANTITY_VALUES_MODULE,
-                            name=qv_class,
-                            reexport=True,
-                        )
-                    )
-                    module.exported_names[qv_class] = qv_class
 
     def _generate_module(self, schema_url: str, schema: dict[str, Any]) -> ModuleCode:
         """Generate a Python module for a single schema."""
@@ -2004,6 +1978,16 @@ class SchemaCodeGenerator:
             class_name = ref_module.exported_names[def_name]
             module_path = schema_url_to_module_path(ref_schema_url)
             module.imports.append(ImportEntry(module=module_path, name=class_name))
+            return class_name
+
+        # Some BENCHLING schemas reference pre-composed QV variant defs
+        # (e.g. core.schema#/$defs/tQuantityValueUnitless) that don't actually
+        # exist as $defs in core.schema.  Route these to shared instead.
+        if def_name and _is_quantity_value_variant(def_name):
+            class_name = def_name_to_class_name(def_name)
+            module.imports.append(
+                ImportEntry(module=_SHARED_QUANTITY_VALUES_MODULE, name=class_name)
+            )
             return class_name
 
         # If we haven't generated the module yet (shouldn't happen with correct ordering),
