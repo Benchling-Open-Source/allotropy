@@ -101,8 +101,6 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
                 (
                     structure_custom_information_document(v, key)
                     if isinstance(v, dict)
-                    else value
-                    if isinstance(v, list)
                     else v
                 )
                 for v in value

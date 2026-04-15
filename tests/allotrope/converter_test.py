@@ -415,6 +415,18 @@ class TestCustomInformationDocument:
         }
         assert structure(asm_dict, ProcessedDataDocumentItem) == item
 
+    def test_nested_list_preserved(self) -> None:
+        """Nested lists (e.g. data cube arrays) should pass through unchanged."""
+        from allotropy.allotrope.converter import (
+            structure_custom_information_document,
+            _unstructure_custom_information_document,
+        )
+
+        doc = {"dimensions": [[1, 2, 3], [4, 5, 6]], "label": "cube"}
+        structured = structure_custom_information_document(doc, "test")
+        result = _unstructure_custom_information_document(structured)
+        assert result == doc
+
 
 # ---------------------------------------------------------------------------
 # Dynamic dataclass handling
