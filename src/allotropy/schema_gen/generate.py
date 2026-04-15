@@ -10,6 +10,7 @@ Usage:
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -35,6 +36,9 @@ from allotropy.schema_gen.naming import (
 _QUANTITY_VALUES_FILE = Path(
     "src/allotropy/allotrope/models/shared/definitions/quantity_values.py"
 )
+
+# Path to the shared units module
+_SHARED_UNITS_FILE = Path("src/allotropy/allotrope/models/shared/definitions/units.py")
 
 # Regex to extract the status/version segment from an Allotrope URL path.
 # Matches e.g. "/REC/2024/09/" or "/WD/2025/03/".
@@ -92,24 +96,20 @@ def generate_models(
     for i, url in enumerate(order):
         print(f"  {i + 1}. {url}")  # noqa: T201
 
-    # Phase 3: Separate units schemas (custom generation) from the rest
-    units_urls = [u for u in order if _is_units_schema(u)]
+    # Phase 3: Separate units schemas from the rest (units go to shared module)
     other_urls = [u for u in order if not _is_units_schema(u)]
+
+    # Update shared units module with any new units from these schemas
+    new_unit_count = _update_shared_units(all_schemas, cache_dir)
+    if new_unit_count:
+        print(  # noqa: T201
+            f"  Added {new_unit_count} new unit(s) to {_SHARED_UNITS_FILE}"
+        )
 
     print("\nGenerating Python modules...")  # noqa: T201
     generated_files: list[Path] = []
 
-    # Generate units modules (custom generation, not codegen)
-    for url in units_urls:
-        schema = all_schemas[url]
-        output_path = schema_url_to_model_file(url, output_dir)
-        source = _generate_units_module(schema)
-        _write_module(output_path, source)
-        _lint_file(output_path)
-        generated_files.append(output_path)
-        print(f"  Generated: {output_path}")  # noqa: T201
-
-    # Generate all other modules via the custom code generator
+    # Generate all non-units modules via the custom code generator
     if other_urls:
         existing_unit_to_class = _read_existing_quantity_value_classes()
         generator = SchemaCodeGenerator(
@@ -327,6 +327,196 @@ def _is_units_schema(url: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
+# Shared units.py management
+# ---------------------------------------------------------------------------
+
+# Known IRI errors in upstream schemas.  The QUDT IRI for "RU.s" (response
+# unit * second) is tagged "ResponseUnitPerSecond" -- but that name belongs
+# to "RU/s" (response unit / second).
+_IRI_NAME_CORRECTIONS: dict[str, str] = {
+    "RU.s": "ResponseUnitTimesSecond",
+}
+
+# Units that exist in shared/definitions/units.py but not in any upstream
+# schema.  These were added manually for BENCHLING parsers and must survive
+# regeneration.
+_MANUAL_UNITS: dict[str, str] = {
+    "OD": "OpticalDensity",
+    "M-1cm-1": "PerMolarPerCentimeter",
+    "mm^2": "SquareMillimeter",
+    "RU^2": "SquareResponseUnit",
+    "TODO": "TODO",
+    "U/L": "UnitPerLiter",
+}
+
+# Regex to parse existing unit classes from shared/definitions/units.py.
+_UNIT_CLASS_RE = re.compile(
+    r"^class (\w+)\(HasUnit\):\s*\n\s+unit:\s+str\s*=\s*(?:UNITLESS|\"([^\"]*)\"|'([^']*)')",
+    re.MULTILINE,
+)
+
+
+def _read_existing_unit_classes() -> dict[str, str]:
+    """Read {const_value: class_name} from the current shared units file."""
+    if not _SHARED_UNITS_FILE.exists():
+        return {}
+    content = _SHARED_UNITS_FILE.read_text(encoding="utf-8")
+    result: dict[str, str] = {}
+    for match in _UNIT_CLASS_RE.finditer(content):
+        class_name = match.group(1)
+        # group(2) is double-quoted, group(3) is single-quoted
+        const = match.group(2) if match.group(2) is not None else match.group(3)
+        if const is None:
+            # UNITLESS constant reference
+            const = "(unitless)"
+        result[const] = class_name
+    return result
+
+
+def _extract_descriptive_name(
+    const: str, def_schema: dict[str, Any], def_key: str
+) -> str:
+    """Extract a descriptive class name for a unit from its schema definition.
+
+    Priority:
+    1. IRI correction map (fixes known upstream errors)
+    2. ``$asm.unit-iri`` fragment (authoritative QUDT name)
+    3. Descriptive ``$defs`` key (BENCHLING schemas use CamelCase keys)
+    4. Fallback to ``unit_symbol_to_class_name()`` (abbreviated)
+    """
+    if const in _IRI_NAME_CORRECTIONS:
+        return _IRI_NAME_CORRECTIONS[const]
+
+    iri = def_schema.get("properties", {}).get("unit", {}).get("$asm.unit-iri", "")
+    if iri and "#" in iri:
+        return iri.split("#")[1]
+
+    # BENCHLING schemas use descriptive $defs keys (e.g., "DegreeCelsius")
+    if def_key[:1].isupper() and not any(c in def_key for c in "/#%^()"):
+        return def_key
+
+    return unit_symbol_to_class_name(const)
+
+
+def _collect_all_units(all_schemas: dict[str, Any], cache_dir: Path) -> dict[str, str]:
+    """Collect all unit symbols from cached qudt schemas + in-memory schemas.
+
+    Returns ``{const_value: descriptive_class_name}``.
+    """
+    units: dict[str, str] = {}
+
+    def _scan_defs(defs: dict[str, Any]) -> None:
+        for key, val in defs.items():
+            if not isinstance(val, dict):
+                continue
+            const = extract_unit_const(val)
+            if not const or const in units:
+                continue
+            units[const] = _extract_descriptive_name(const, val, key)
+
+    # 1. Scan all cached qudt schema files on disk (complete across all versions)
+    for schema_file in sorted(cache_dir.rglob("units.schema.json")):
+        with open(schema_file, encoding="utf-8") as f:
+            schema = json.load(f)
+        _scan_defs(schema.get("$defs", {}))
+
+    # 2. Scan embedded unit additions in technique schemas on disk
+    adm_dir = cache_dir / "adm"
+    if adm_dir.is_dir():
+        for schema_file in sorted(adm_dir.rglob("*.json")):
+            with open(schema_file, encoding="utf-8") as f:
+                schema = json.load(f)
+            for key, val in schema.get("$defs", {}).items():
+                if "units.schema" in key and isinstance(val, dict):
+                    _scan_defs(val.get("$defs", {}))
+
+    # 3. Scan in-memory schemas (includes BENCHLING forks with merged additions)
+    for url, schema in all_schemas.items():
+        if _is_units_schema(url):
+            _scan_defs(schema.get("$defs", {}))
+
+    # 4. Add manual units (BENCHLING-only, not in any schema)
+    for const, name in _MANUAL_UNITS.items():
+        if const not in units:
+            units[const] = name
+
+    return units
+
+
+def _generate_shared_units_source(all_units: dict[str, str]) -> str:
+    """Generate the Python source for shared/definitions/units.py."""
+    lines: list[str] = [
+        "# THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.",
+        "from dataclasses import dataclass",
+        "",
+        'UNITLESS = "(unitless)"',
+        "",
+        "",
+        "@dataclass(frozen=True, kw_only=True)",
+        "class HasUnit:",
+        "    unit: str",
+        "",
+        "",
+    ]
+
+    # Sort entries by class name for deterministic output
+    sorted_entries = sorted(all_units.items(), key=lambda x: x[1])
+
+    # Deduplicate class names with numeric suffix
+    used_names: set[str] = {"HasUnit"}
+    for const, name in sorted_entries:
+        class_name = name
+        base = class_name
+        counter = 2
+        while class_name in used_names:
+            class_name = f"{base}{counter}"
+            counter += 1
+        used_names.add(class_name)
+
+        # Unitless uses the module-level constant
+        if const == "(unitless)":
+            default = "UNITLESS"
+        else:
+            default = _dquote(const)
+
+        lines.extend(
+            [
+                "@dataclass(frozen=True, kw_only=True)",
+                f"class {class_name}(HasUnit):",
+                f"    unit: str = {default}",
+                "",
+                "",
+            ]
+        )
+
+    # Remove trailing blank lines, add single newline
+    while lines and lines[-1] == "":
+        lines.pop()
+    lines.append("")
+
+    return "\n".join(lines)
+
+
+def _update_shared_units(all_schemas: dict[str, Any], cache_dir: Path) -> int:
+    """Update shared/definitions/units.py with any new units.
+
+    Returns the number of newly added units.
+    """
+    all_units = _collect_all_units(all_schemas, cache_dir)
+    existing = _read_existing_unit_classes()
+
+    new_count = sum(1 for const in all_units if const not in existing)
+    if new_count == 0 and existing:
+        return 0
+
+    # Regenerate the entire file to maintain sorted order
+    source = _generate_shared_units_source(all_units)
+    _write_module(_SHARED_UNITS_FILE, source)
+    _lint_file(_SHARED_UNITS_FILE)
+    return new_count
+
+
+# ---------------------------------------------------------------------------
 # Shared quantity_values.py management
 # ---------------------------------------------------------------------------
 
@@ -388,72 +578,6 @@ def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
     content += "\n".join(lines)
     _QUANTITY_VALUES_FILE.write_text(content, encoding="utf-8")
     _lint_file(_QUANTITY_VALUES_FILE)
-
-
-# ---------------------------------------------------------------------------
-# Units module generation (custom, not codegen)
-# ---------------------------------------------------------------------------
-
-
-def _generate_units_module(schema: dict[str, Any]) -> str:
-    """Generate the units module with HasUnit base class and unit subclasses.
-
-    Units schemas have a unique structure that needs special handling
-    (def keys are symbols like ``pg/mL``, ``#``, etc.).
-    """
-    lines: list[str] = [
-        "# generated by allotropy.schema_gen",
-        "",
-        "from __future__ import annotations",
-        "",
-        "from dataclasses import dataclass",
-        "",
-        "",
-        "@dataclass(frozen=True, kw_only=True)",
-        "class HasUnit:",
-        "    unit: str",
-        "",
-        "",
-    ]
-
-    used_names: set[str] = {"HasUnit"}
-    defs = schema.get("$defs", {})
-
-    for _def_name, def_schema in defs.items():
-        if not isinstance(def_schema, dict):
-            continue
-        const_value = extract_unit_const(def_schema)
-        if const_value is None:
-            continue
-
-        class_name = unit_symbol_to_class_name(const_value)
-
-        # Deduplicate with numeric suffix
-        base = class_name
-        counter = 2
-        while class_name in used_names:
-            class_name = f"{base}{counter}"
-            counter += 1
-        used_names.add(class_name)
-
-        # Use repr for the default value, ensure double quotes
-        quoted = _dquote(const_value)
-        lines.extend(
-            [
-                "@dataclass(frozen=True, kw_only=True)",
-                f"class {class_name}(HasUnit):",
-                f"    unit: str = {quoted}",
-                "",
-                "",
-            ]
-        )
-
-    # Remove trailing blank lines, add single newline
-    while lines and lines[-1] == "":
-        lines.pop()
-    lines.append("")
-
-    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------

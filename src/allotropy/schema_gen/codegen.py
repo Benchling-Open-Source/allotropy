@@ -21,7 +21,6 @@ from allotropy.schema_gen.naming import (
     property_name_to_python,
     quantity_value_class_name,
     schema_url_to_module_path,
-    unit_symbol_to_class_name,
     UNITS_SCHEMA_MARKER,
 )
 
@@ -105,13 +104,6 @@ class FieldDef:
     type_str: str
     json_name: str
     is_required: bool
-
-
-def _unit_field() -> FieldDef:
-    """Create the standard ``unit: str`` field used in unit classes."""
-    return FieldDef(
-        python_name="unit", type_str="str", json_name="unit", is_required=True
-    )
 
 
 @dataclass
@@ -1036,8 +1028,6 @@ class SchemaCodeGenerator:
         self.models_package = models_package
         # Track generated modules for cross-references
         self._modules: dict[str, ModuleCode] = {}
-        # Track unit symbols and their const values for quantity value generation
-        self._unit_symbols: dict[str, str] = {}  # def_name -> const_value
         # Schema merging helper
         self._merger = SchemaMerger(schemas)
         # Quantity value lifecycle manager
@@ -1062,7 +1052,9 @@ class SchemaCodeGenerator:
         defs = schema.get("$defs", {})
 
         if self._is_units_schema(schema_url):
-            self._generate_units_module(module, defs)
+            # Units are handled by the shared units module (shared/definitions/units.py),
+            # not generated per-schema.  Skip — no module output needed.
+            pass
         else:
             # Generate $defs classes if present (core, hierarchy, detector types, etc.)
             if defs:
@@ -1080,41 +1072,6 @@ class SchemaCodeGenerator:
     def _is_adm_schema(schema: dict[str, Any]) -> bool:
         """Check if this is a top-level ADM schema (has allOf at root)."""
         return "allOf" in schema
-
-    # -------------------------------------------------------------------------
-    # Units schema generation
-    # -------------------------------------------------------------------------
-
-    def _generate_units_module(self, module: ModuleCode, defs: dict[str, Any]) -> None:
-        """Generate the units module with a HasUnit base class and unit subclasses."""
-        module.classes.append(GeneratedClass(name="HasUnit", fields=[_unit_field()]))
-        module.exported_names["HasUnit"] = "HasUnit"
-
-        used_class_names: set[str] = {"HasUnit"}
-        for def_name, def_schema in defs.items():
-            const_value = self._extract_unit_const(def_schema)
-            if const_value is None:
-                continue
-            class_name = unit_symbol_to_class_name(const_value)
-            self._unit_symbols[def_name] = const_value
-
-            # Deduplicate class names with a numeric suffix
-            base_name = class_name
-            counter = 2
-            while class_name in used_class_names:
-                class_name = f"{base_name}{counter}"
-                counter += 1
-            used_class_names.add(class_name)
-
-            module.classes.append(
-                GeneratedClass(
-                    name=class_name,
-                    fields=[_unit_field()],
-                    bases=["HasUnit"],
-                    dependencies={"HasUnit"},
-                )
-            )
-            module.exported_names[def_name] = class_name
 
     @staticmethod
     def _extract_unit_const(schema: dict[str, Any]) -> str | None:

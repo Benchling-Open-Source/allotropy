@@ -26,7 +26,6 @@ from allotropy.schema_gen.codegen import (
 
 BASE = "http://purl.allotrope.org/json-schemas/"
 CORE_URL = f"{BASE}adm/core/REC/2024/09/core.schema"
-UNITS_URL = f"{BASE}qudt/REC/2024/09/units.schema"
 
 
 # ---------------------------------------------------------------------------

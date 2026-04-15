@@ -31,7 +31,6 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     SampleDocument,
     SampleRoleType,
 )
-from allotropy.allotrope.models.qudt.benchling._2024._09.units import Unitless
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
     TStatisticDatumRole,
@@ -42,6 +41,7 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueRFU,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.units import Unitless
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.calculated_data_documents.definition import (
