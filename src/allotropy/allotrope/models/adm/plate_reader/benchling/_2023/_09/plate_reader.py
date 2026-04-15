@@ -20,18 +20,18 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     StatisticsAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueMAU,
-    TQuantityValueMicroL,
-    TQuantityValueMm,
-    TQuantityValueMs,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMicroliter,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
+    TQuantityValueMilliSecond,
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
     TQuantityValuePercent,
-    TQuantityValuePgPermL,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
-    TQuantityValueS,
+    TQuantityValuePicogramPerMilliliter,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 
@@ -202,7 +202,7 @@ class SampleDocument:
     well_location_identifier: TStringValue | None = None
     vial_location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -216,11 +216,11 @@ class DeviceControlDocument:
     model_number: TStringValue | None = None
     firmware_version: TStringValue | None = None
     shaking_configuration_description: TStringValue | None = None
-    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
+    detector_distance_setting__plate_reader_: TQuantityValueMillimeter | None = field(
         default=None, metadata={"json_name": "detector distance setting (plate reader)"}
     )
-    integration_time: TQuantityValueS | None = None
-    number_of_averages: TQuantityValueNumberSign | None = None
+    integration_time: TQuantityValueSecondTime | None = None
+    number_of_averages: TQuantityValueNumber | None = None
     detector_gain_setting: TStringValue | None = None
     scan_position_setting__plate_reader_: ScanPositionSettingPlateReader | None = field(
         default=None, metadata={"json_name": "scan position setting (plate reader)"}
@@ -239,27 +239,27 @@ class ProcessedDataDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class FluorescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNanometer | None = None
+    excitation_bandwidth_setting: TQuantityValueNanometer | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
 @dataclass(frozen=True, kw_only=True)
 class OpticalImagingDeviceControlDocumentItem(DeviceControlDocument):
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
     magnification_setting: TQuantityValueUnitless | None = None
-    exposure_duration_setting: TQuantityValueMs | None = None
+    exposure_duration_setting: TQuantityValueMilliSecond | None = None
     illumination_setting: TQuantityValuePercent | TQuantityValueUnitless | None = None
     image_count_setting: TQuantityValueUnitless | None = None
     auto_focus_setting: TBooleanValue | None = None
@@ -272,12 +272,16 @@ class OpticalImagingDeviceControlDocumentItem(DeviceControlDocument):
 class UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
     DeviceControlDocument
 ):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNanometer | None = (
+        None
+    )
     field_index: int | None = field(default=None, metadata={"json_name": "@index"})
 
 
@@ -329,14 +333,14 @@ class FluorescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: FluorescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    fluorescence: TQuantityValueRFU
+    fluorescence: TQuantityValueRelativeFluorescenceUnit
     measurement_time: TDateTimeStampValue | None = None
     detection_type: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -344,14 +348,14 @@ class LuminescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    luminescence: TQuantityValueRLU
+    luminescence: TQuantityValueRelativeLightUnit
     measurement_time: TDateTimeStampValue | None = None
     detection_type: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -367,11 +371,11 @@ class MeasurementDocumentItem:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
-    absorbance: TQuantityValueMAU | None = None
-    fluorescence: TQuantityValueRFU | None = None
-    luminescence: TQuantityValueRLU | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
+    absorbance: TQuantityValueMilliAbsorbanceUnit | None = None
+    fluorescence: TQuantityValueRelativeFluorescenceUnit | None = None
+    luminescence: TQuantityValueRelativeLightUnit | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
@@ -388,8 +392,8 @@ class OpticalImagingMeasurementDocumentItems:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -397,26 +401,26 @@ class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    absorbance: TQuantityValueMAU
+    absorbance: TQuantityValueMilliAbsorbanceUnit
     measurement_time: TDateTimeStampValue | None = None
     detection_type: TStringValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementAggregateDocument:
     measurement_time: TDateTimeStampValue
-    plate_well_count: TQuantityValueNumberSign
+    plate_well_count: TQuantityValueNumber
     measurement_document: list[MeasurementDocumentItem]
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_type: TStringValue | None = None
     container_type: ContainerType | None = None
-    well_volume: TQuantityValueMicroL | None = None
+    well_volume: TQuantityValueMicroliter | None = None
     image_aggregate_document: OpticalImagingAggregateDocument | None = None
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None

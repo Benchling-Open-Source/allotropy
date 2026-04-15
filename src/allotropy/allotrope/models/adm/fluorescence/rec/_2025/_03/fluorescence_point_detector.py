@@ -6,19 +6,19 @@ from dataclasses import dataclass
 
 from allotropy.allotrope.models.adm.core.rec._2025._03.core import OrderedItem
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueNm,
-    TQuantityValuePgPermL,
-    TQuantityValueRFU,
+    TQuantityValueNanometer,
+    TQuantityValuePicogramPerMilliliter,
+    TQuantityValueRelativeFluorescenceUnit,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    excitation_bandwidth_setting: TQuantityValueNanometer | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -28,6 +28,6 @@ class DeviceControlAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    fluorescence: TQuantityValueRFU
+    fluorescence: TQuantityValueRelativeFluorescenceUnit
     device_control_aggregate_document: DeviceControlAggregateDocument | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None

@@ -346,15 +346,3 @@ def default_json_name(python_name: str) -> str:
     The converter (structure/unstructure) uses the same fallback so the two stay in sync.
     """
     return python_name.replace("_", " ")
-
-
-def quantity_value_class_name(unit_symbol: str, *, nullable: bool = False) -> str:
-    """Generate a TQuantityValue{Unit} class name for a unit-constrained quantity value.
-
-    Examples:
-        "mAU" → "TQuantityValueMAU"
-        "nm" → "TQuantityValueNm"
-        "g/L" (nullable=True) → "TNullableQuantityValueGPerL"
-    """
-    prefix = "TNullableQuantityValue" if nullable else "TQuantityValue"
-    return prefix + unit_symbol_to_class_name(unit_symbol)

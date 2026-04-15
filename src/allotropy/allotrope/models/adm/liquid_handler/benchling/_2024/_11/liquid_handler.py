@@ -23,7 +23,7 @@ from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroL,
+    TQuantityValueMicroliter,
 )
 
 
@@ -41,7 +41,7 @@ class DeviceControlDocumentItem(OrderedItem):
         None
     )
     transfer_type: TStringValue | None = None
-    injection_volume_setting: TQuantityValueMicroL | None = None
+    injection_volume_setting: TQuantityValueMicroliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -121,8 +121,8 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    aspiration_volume: TQuantityValueMicroL | None = None
-    transfer_volume: TQuantityValueMicroL | None = None
+    aspiration_volume: TQuantityValueMicroliter | None = None
+    transfer_volume: TQuantityValueMicroliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

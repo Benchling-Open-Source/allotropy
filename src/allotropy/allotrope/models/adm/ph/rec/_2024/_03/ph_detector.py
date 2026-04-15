@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
+    TQuantityValueDegreeCelsius,
     TQuantityValuePH,
 )
 
@@ -13,4 +13,4 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
     p_h: TQuantityValuePH = field(metadata={"json_name": "pH"})
-    temperature: TQuantityValueDegC | None = None
+    temperature: TQuantityValueDegreeCelsius | None = None

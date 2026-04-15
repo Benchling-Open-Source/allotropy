@@ -11,15 +11,15 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCounts,
-    TQuantityValueCountsDots,
-    TQuantityValueNm,
+    TQuantityValueCountsTimesSecond,
+    TQuantityValueNanometer,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -32,7 +32,7 @@ class MassChromatogramDataCube(TDatacube):
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
     peak_height: TQuantityValueCounts | None = None
-    peak_area: TQuantityValueCountsDots | None = None
+    peak_area: TQuantityValueCountsTimesSecond | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

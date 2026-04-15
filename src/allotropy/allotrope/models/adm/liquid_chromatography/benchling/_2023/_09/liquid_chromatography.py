@@ -25,29 +25,29 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCm,
+    TQuantityValueCentimeter,
     TQuantityValueCounts,
-    TQuantityValueCountsDots,
-    TQuantityValueHz,
-    TQuantityValueMAU,
-    TQuantityValueMAUDotmL,
-    TQuantityValueMAUDots,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueML,
-    TQuantityValueMLPermin,
-    TQuantityValueMm,
-    TQuantityValueMmCu,
-    TQuantityValueMV,
-    TQuantityValueMVDots,
-    TQuantityValueNC,
-    TQuantityValueNCDots,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValuePA,
-    TQuantityValuePADots,
+    TQuantityValueCountsTimesSecond,
+    TQuantityValueCubicMillimeter,
+    TQuantityValueHertz,
+    TQuantityValueMicroliter,
+    TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliAbsorbanceUnitTimesMilliliter,
+    TQuantityValueMilliAbsorbanceUnitTimesSecond,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerMinute,
+    TQuantityValueMillimeter,
+    TQuantityValueMillivolt,
+    TQuantityValueMillivoltTimesSecond,
+    TQuantityValueNanoCoulomb,
+    TQuantityValueNanoCoulombTimesSecond,
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
     TQuantityValuePercent,
-    TQuantityValueS,
+    TQuantityValuePicoAmpere,
+    TQuantityValuePicoAmpereTimesSecond,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 
@@ -63,12 +63,12 @@ class ChromatogramDataCube(TDatacube):
 class ChromatographyColumnDocument:
     chromatography_column_part_number: TStringValue | None = None
     chromatography_column_serial_number: TStringValue | None = None
-    chromatography_column_length: TQuantityValueCm | None = None
-    column_inner_diameter: TQuantityValueMm | None = None
+    chromatography_column_length: TQuantityValueCentimeter | None = None
+    column_inner_diameter: TQuantityValueMillimeter | None = None
     chromatography_column_chemistry_type: TStringValue | None = None
-    chromatography_column_particle_size: TQuantityValueMicrom | None = None
+    chromatography_column_particle_size: TQuantityValueMicrometer | None = None
     product_manufacturer: TStringValue | None = None
-    void_volume: TQuantityValueML | None = None
+    void_volume: TQuantityValueMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -116,32 +116,28 @@ class FluorescenceEmissionProfileDataCube(TDatacube):
 @dataclass(frozen=True, kw_only=True)
 class FractionDocumentItem:
     index: TStringValue | None = None
-    retention_time: TQuantityValueS | None = None
-    retention_volume: TQuantityValueML | None = None
+    retention_time: TQuantityValueSecondTime | None = None
+    retention_volume: TQuantityValueMilliliter | None = None
     fraction_role: TStringValue | None = None
     field_type: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class InjectionDocument:
-    autosampler_injection_volume_setting__chromatography_: TQuantityValueMmCu | None = (
-        field(
-            default=None,
-            metadata={
-                "json_name": "autosampler injection volume setting (chromatography)"
-            },
-        )
+    autosampler_injection_volume_setting__chromatography_: TQuantityValueCubicMillimeter | None = field(
+        default=None,
+        metadata={"json_name": "autosampler injection volume setting (chromatography)"},
     )
     injection_identifier: TStringValue | None = None
     injection_time: TDateTimeValue | None = None
-    injection_volume_setting: TQuantityValueMicroL | None = None
+    injection_volume_setting: TQuantityValueMicroliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class LogDocumentItem:
     index: TStringValue | None = None
-    retention_time: TQuantityValueS | None = None
-    retention_volume: TQuantityValueML | None = None
+    retention_time: TQuantityValueSecondTime | None = None
+    retention_volume: TQuantityValueMilliliter | None = None
     method_identifier: TStringValue | None = None
     log_entry: TStringValue | None = None
 
@@ -234,29 +230,29 @@ class ThreeDimensionalUltravioletSpectrumDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
-    peak_end: TQuantityValueML | TQuantityValueS | None = None
+    peak_end: TQuantityValueMilliliter | TQuantityValueSecondTime | None = None
     identifier: TStringValue | None = None
     relative_peak_height: TQuantityValuePercent | None = None
     written_name: TStringValue | None = None
-    peak_height: TQuantityValueCounts | TQuantityValueMAU | TQuantityValueMV | TQuantityValueNC | TQuantityValuePA | None = (
+    peak_height: TQuantityValueCounts | TQuantityValueMilliAbsorbanceUnit | TQuantityValueMillivolt | TQuantityValueNanoCoulomb | TQuantityValuePicoAmpere | None = (
         None
     )
     capacity_factor__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "capacity factor (chromatography)"}
     )
-    baseline_value_at_start_of_peak: TQuantityValueS | None = None
-    baseline_value_at_end_of_peak: TQuantityValueS | None = None
-    peak_group: TQuantityValueMAUDots | None = None
+    baseline_value_at_start_of_peak: TQuantityValueSecondTime | None = None
+    baseline_value_at_end_of_peak: TQuantityValueSecondTime | None = None
+    peak_group: TQuantityValueMilliAbsorbanceUnitTimesSecond | None = None
     relative_peak_analyte_amount: TQuantityValuePercent | None = None
     relative_corrected_peak_area: TQuantityValuePercent | None = None
-    peak_area: TQuantityValueCountsDots | TQuantityValueMAUDotmL | TQuantityValueMAUDots | TQuantityValueMVDots | TQuantityValueNCDots | TQuantityValuePADots | None = (
+    peak_area: TQuantityValueCountsTimesSecond | TQuantityValueMilliAbsorbanceUnitTimesMilliliter | TQuantityValueMilliAbsorbanceUnitTimesSecond | TQuantityValueMillivoltTimesSecond | TQuantityValueNanoCoulombTimesSecond | TQuantityValuePicoAmpereTimesSecond | None = (
         None
     )
     relative_peak_area: TQuantityValuePercent | None = None
-    retention_time: TQuantityValueS | None = None
+    retention_time: TQuantityValueSecondTime | None = None
     relative_retention_time: TQuantityValuePercent | None = None
-    retention_volume: TQuantityValueML | None = None
-    peak_start: TQuantityValueML | TQuantityValueS | None = None
+    retention_volume: TQuantityValueMilliliter | None = None
+    peak_start: TQuantityValueMilliliter | TQuantityValueSecondTime | None = None
     peak_selectivity__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "peak selectivity (chromatography)"}
     )
@@ -316,28 +312,30 @@ class PeakItem(OrderedItem):
             "json_name": "number of theoretical plates by peak width at half height (JP14)"
         },
     )
-    peak_width_at_4_4__of_height: TQuantityValueS | None = field(
+    peak_width_at_4_4__of_height: TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "peak width at 4.4 % of height"}
     )
-    peak_width_at_13_4__of_height: TQuantityValueS | None = field(
+    peak_width_at_13_4__of_height: TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "peak width at 13.4 % of height"}
     )
-    peak_width_at_32_4__of_height: TQuantityValueS | None = field(
+    peak_width_at_32_4__of_height: TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "peak width at 32.4 % of height"}
     )
-    peak_width_at_60_7__of_height: TQuantityValueS | None = field(
+    peak_width_at_60_7__of_height: TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "peak width at 60.7 % of height"}
     )
-    peak_width_at_half_height: TQuantityValueML | TQuantityValueS | None = None
-    peak_width_at_5__of_height: TQuantityValueS | None = field(
+    peak_width_at_half_height: TQuantityValueMilliliter | TQuantityValueSecondTime | None = (
+        None
+    )
+    peak_width_at_5__of_height: TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "peak width at 5 % of height"}
     )
-    peak_width_at_baseline: TQuantityValueS | None = None
-    peak_width_at_inflection: TQuantityValueS | None = None
-    peak_width_at_10__of_height: TQuantityValueS | None = field(
+    peak_width_at_baseline: TQuantityValueSecondTime | None = None
+    peak_width_at_inflection: TQuantityValueSecondTime | None = None
+    peak_width_at_10__of_height: TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "peak width at 10 % of height"}
     )
-    peak_width: TQuantityValueML | TQuantityValueS | None = None
+    peak_width: TQuantityValueMilliliter | TQuantityValueSecondTime | None = None
     statistical_skew__chromatography_: TQuantityValueUnitless | None = field(
         default=None, metadata={"json_name": "statistical skew (chromatography)"}
     )
@@ -407,7 +405,7 @@ class SampleDocument:
     observation: TStringValue | None = None
     sample_role_type: SampleRoleType | None = None
     written_name: TStringValue | None = None
-    flow_rate: TQuantityValueMLPermin | None = None
+    flow_rate: TQuantityValueMilliliterPerMinute | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -422,13 +420,17 @@ class DeviceControlDocumentItem(OrderedItem):
     firmware_version: TStringValue | None = None
     start_time_setting: TDateTimeStampValue | None = None
     detector_offset_setting: TQuantityValue | None = None
-    detector_sampling_rate_setting: TQuantityValueHz | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
+    detector_sampling_rate_setting: TQuantityValueHertz | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNanometer | None = (
+        None
+    )
     system_flow_rate_data_cube: SystemFlowRateDataCube | None = None
     sample_flow_rate_data_cube: SampleFlowRateDataCube | None = None
     temperature_profile_data_cube: TemperatureProfileDataCube | None = None
@@ -441,11 +443,11 @@ class DeviceControlDocumentItem(OrderedItem):
     )
     sample_pressure_data_cube: SamplePressureDataCube | None = None
     system_pressure_data_cube: SystemPressureDataCube | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    total_measurement_time_setting: TQuantityValueS | None = None
-    read_interval_setting: TQuantityValueS | None = None
-    number_of_scans_setting: TQuantityValueNumberSign | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
+    excitation_bandwidth_setting: TQuantityValueNanometer | None = None
+    total_measurement_time_setting: TQuantityValueSecondTime | None = None
+    read_interval_setting: TQuantityValueSecondTime | None = None
+    number_of_scans_setting: TQuantityValueNumber | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

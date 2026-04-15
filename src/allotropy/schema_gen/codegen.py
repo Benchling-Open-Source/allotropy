@@ -19,7 +19,6 @@ from allotropy.schema_gen.naming import (
     parse_ref,
     property_name_to_class_name,
     property_name_to_python,
-    quantity_value_class_name,
     schema_url_to_module_path,
     UNITS_SCHEMA_MARKER,
 )
@@ -978,19 +977,16 @@ class QuantityValueManager:
 
     def __init__(
         self,
-        existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
         unit_descriptive_names: dict[str, str] | None = None,
     ) -> None:
         # (unit_string, nullable) → class name.  Single source of truth.
-        self._unit_to_class: dict[tuple[str, bool], str] = (
-            dict(existing_unit_to_class) if existing_unit_to_class else {}
-        )
+        self._unit_to_class: dict[tuple[str, bool], str] = {}
         # unit const → descriptive name from shared units (e.g., "degC" → "DegreeCelsius").
         # Falls back to unit_symbol_to_class_name() for unknown units.
         self._descriptive: dict[str, str] = dict(unit_descriptive_names or {})
         # Derived: set of all known class names (for fast membership checks
         # and for enumerating classes during core re-export generation).
-        self._known_names: set[str] = set(self._unit_to_class.values())
+        self._known_names: set[str] = set()
         self.new_classes: list[tuple[str, str]] = []
 
     @property
@@ -1020,10 +1016,14 @@ class QuantityValueManager:
         """Build a TQuantityValue class name using descriptive unit names."""
         prefix = "TNullableQuantityValue" if nullable else "TQuantityValue"
         descriptive = self._descriptive.get(unit_const)
-        if descriptive:
-            return prefix + descriptive
-        # Fallback for units not in the shared mapping
-        return quantity_value_class_name(unit_const, nullable=nullable)
+        if not descriptive:
+            msg = (
+                f"No descriptive name for unit {unit_const!r}. "
+                "Add it to _MANUAL_UNITS in generate.py or ensure it appears "
+                "in a cached schema's $asm.unit-iri."
+            )
+            raise ValueError(msg)
+        return prefix + descriptive
 
 
 # ---------------------------------------------------------------------------
@@ -1039,7 +1039,6 @@ class SchemaCodeGenerator:
         schemas: dict[str, dict[str, Any]],
         generation_order: list[str],
         models_package: str = "allotropy.allotrope.models",
-        existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
         unit_descriptive_names: dict[str, str] | None = None,
     ) -> None:
         self.schemas = schemas
@@ -1050,9 +1049,7 @@ class SchemaCodeGenerator:
         # Schema merging helper
         self._merger = SchemaMerger(schemas)
         # Quantity value lifecycle manager
-        self._qv_manager = QuantityValueManager(
-            existing_unit_to_class, unit_descriptive_names
-        )
+        self._qv_manager = QuantityValueManager(unit_descriptive_names)
 
     @property
     def new_quantity_value_classes(self) -> list[tuple[str, str]]:
@@ -1063,13 +1060,56 @@ class SchemaCodeGenerator:
         """All known TQuantityValue classes: {(unit_string, nullable): class_name}."""
         return self._qv_manager.all_classes
 
+    def ensure_quantity_value_class(
+        self, unit_const: str, *, nullable: bool = False
+    ) -> str:
+        """Ensure a TQuantityValue class exists for *unit_const*."""
+        return self._qv_manager.get_or_create(unit_const, nullable=nullable)
+
     def generate_all(self) -> dict[str, ModuleCode]:
-        """Generate Python modules for all schemas in dependency order."""
+        """Generate Python modules for all schemas in dependency order.
+
+        After all schemas are processed, revisit core modules to add
+        TQuantityValue re-exports for types discovered during technique
+        schema generation.
+        """
         for url in self.generation_order:
             schema = self.schemas[url]
             module = self._generate_module(url, schema)
             self._modules[url] = module
+
+        # Post-pass: add QV re-exports to core modules now that all
+        # technique schemas have been processed and all QV types are known.
+        self._add_core_quantity_value_reexports()
         return self._modules
+
+    def _add_core_quantity_value_reexports(self) -> None:
+        """Add TQuantityValue re-exports to all core modules.
+
+        Called after all schemas are generated so the full set of QV types
+        discovered during technique/hierarchy generation is available.
+        Core modules re-export these so downstream modules can import
+        them via ``from core import TQuantityValueX``.
+        """
+        all_qv = sorted(self._qv_manager.known_class_names)
+        for url, module in self._modules.items():
+            if "/core/" not in url or "units" in url:
+                continue
+            existing_qv = {
+                imp.name
+                for imp in module.imports
+                if imp.module == _SHARED_QUANTITY_VALUES_MODULE
+            }
+            for qv_class in all_qv:
+                if qv_class not in existing_qv:
+                    module.imports.append(
+                        ImportEntry(
+                            module=_SHARED_QUANTITY_VALUES_MODULE,
+                            name=qv_class,
+                            reexport=True,
+                        )
+                    )
+                    module.exported_names[qv_class] = qv_class
 
     def _generate_module(self, schema_url: str, schema: dict[str, Any]) -> ModuleCode:
         """Generate a Python module for a single schema."""
@@ -1111,7 +1151,6 @@ class SchemaCodeGenerator:
         self, module: ModuleCode, schema_url: str, defs: dict[str, Any]
     ) -> None:
         """Generate classes for all $defs in a schema."""
-        is_core = False
         for def_name, def_schema in defs.items():
             if not isinstance(def_schema, dict):
                 continue
@@ -1129,7 +1168,6 @@ class SchemaCodeGenerator:
                     )
                 )
                 module.exported_names[def_name] = class_name
-                is_core = True
                 continue
 
             class_name = def_name_to_class_name(def_name)
@@ -1144,26 +1182,6 @@ class SchemaCodeGenerator:
             for c in module.classes[start_idx:]:
                 if c.source_context is None:
                     c.source_context = class_name
-
-        # Core modules re-export ALL existing TQuantityValue{Unit} classes
-        # so that schema mappers can import them from core.py.  This set is
-        # deterministic (every class in quantity_values.py), making core.py
-        # output identical regardless of which technique schemas are processed.
-        if is_core:
-            for qv_class in sorted(self._qv_manager.known_class_names):
-                if not any(
-                    imp.name == qv_class
-                    and imp.module == _SHARED_QUANTITY_VALUES_MODULE
-                    for imp in module.imports
-                ):
-                    module.imports.append(
-                        ImportEntry(
-                            module=_SHARED_QUANTITY_VALUES_MODULE,
-                            name=qv_class,
-                            reexport=True,
-                        )
-                    )
-                    module.exported_names[qv_class] = qv_class
 
     def _generate_type(
         self,

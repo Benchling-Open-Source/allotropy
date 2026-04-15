@@ -366,10 +366,10 @@ class TestRealModelSerialization:
 
     def test_quantity_value_subclass_serialization(self) -> None:
         from allotropy.allotrope.models.shared.definitions.quantity_values import (
-            TQuantityValueDegC,
+            TQuantityValueDegreeCelsius,
         )
 
-        obj = TQuantityValueDegC(value=37.0)
+        obj = TQuantityValueDegreeCelsius(value=37.0)
         result = unstructure(obj)
         assert result["value"] == 37.0
         assert result["unit"] == "degC"

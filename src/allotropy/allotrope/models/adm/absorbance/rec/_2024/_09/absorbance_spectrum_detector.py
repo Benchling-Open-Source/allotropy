@@ -10,27 +10,33 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMAU,
-    TQuantityValueMAUDotmL,
-    TQuantityValueMAUDots,
-    TQuantityValueNm,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliAbsorbanceUnitTimesMilliliter,
+    TQuantityValueMilliAbsorbanceUnitTimesSecond,
+    TQuantityValueNanometer,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNanometer | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
-    peak_height: TQuantityValueMAU | None = None
-    peak_area: TQuantityValueMAUDotmL | TQuantityValueMAUDots | None = None
+    peak_height: TQuantityValueMilliAbsorbanceUnit | None = None
+    peak_area: TQuantityValueMilliAbsorbanceUnitTimesMilliliter | TQuantityValueMilliAbsorbanceUnitTimesSecond | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)

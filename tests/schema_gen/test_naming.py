@@ -15,7 +15,6 @@ from allotropy.schema_gen.naming import (
     parse_ref,
     property_name_to_class_name,
     property_name_to_python,
-    quantity_value_class_name,
     schema_url_to_cache_path,
     schema_url_to_model_file,
     schema_url_to_module_path,
@@ -304,14 +303,3 @@ class TestUnitSymbolToClassName:
 
     def test_number_per_microliter(self) -> None:
         assert unit_symbol_to_class_name("#/μL") == "NumPerMicroL"
-
-
-class TestQuantityValueClassName:
-    def test_mau(self) -> None:
-        assert quantity_value_class_name("mAU") == "TQuantityValueMAU"
-
-    def test_nm(self) -> None:
-        assert quantity_value_class_name("nm") == "TQuantityValueNm"
-
-    def test_unitless(self) -> None:
-        assert quantity_value_class_name("(unitless)") == "TQuantityValueUnitless"

@@ -6,18 +6,18 @@ from dataclasses import dataclass
 
 from allotropy.allotrope.models.adm.core.rec._2024._03.core import TStringValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueGPerL,
-    TQuantityValueMLPerL,
-    TQuantityValueMmolPerL,
+    TQuantityValueGramPerLiter,
+    TQuantityValueMilliliterPerLiter,
+    TQuantityValueMillimolePerLiter,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class AnalyteDocumentItem:
     analyte_name: TStringValue
-    volume_concentration: TQuantityValueMLPerL | None = None
-    molar_concentration: TQuantityValueMmolPerL | None = None
-    mass_concentration: TQuantityValueGPerL | None = None
+    volume_concentration: TQuantityValueMilliliterPerLiter | None = None
+    molar_concentration: TQuantityValueMillimolePerLiter | None = None
+    mass_concentration: TQuantityValueGramPerLiter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

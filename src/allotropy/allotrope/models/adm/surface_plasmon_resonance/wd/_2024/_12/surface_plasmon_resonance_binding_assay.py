@@ -13,29 +13,29 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CustomInformationAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroLPermin,
+    TQuantityValueMicroliterPerMinute,
     TQuantityValuePercent,
-    TQuantityValueRU,
-    TQuantityValueS,
+    TQuantityValueResponseUnit,
+    TQuantityValueSecondTime,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem:
     flow_cell_identifier: TStringValue | None = None
-    flow_rate: TQuantityValueMicroLPermin | None = None
-    contact_time: TQuantityValueS | None = None
+    flow_rate: TQuantityValueMicroliterPerMinute | None = None
+    contact_time: TQuantityValueSecondTime | None = None
     dilution_factor: TQuantityValuePercent | None = None
     flow_path: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class ReportPointDocumentItem:
-    absolute_resonance: TQuantityValueRU | None = None
+    absolute_resonance: TQuantityValueResponseUnit | None = None
     report_point_identifier: TStringValue | None = None
     identifier_role: TStringValue | None = None
-    relative_resonance: TQuantityValueRU | None = None
-    time_setting: TQuantityValueS | None = None
+    relative_resonance: TQuantityValueResponseUnit | None = None
+    time_setting: TQuantityValueSecondTime | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

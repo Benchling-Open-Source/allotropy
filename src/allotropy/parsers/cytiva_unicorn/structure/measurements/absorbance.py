@@ -5,10 +5,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMAU,
-    TQuantityValueML,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
     TQuantityValuePercent,
-    TQuantityValueSPerm,
+    TQuantityValueSiemensPerMeter,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
@@ -106,7 +106,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
 
         return {
             "max peak retention": quantity_or_none(
-                TQuantityValueML,
+                TQuantityValueMilliliter,
                 peak.get_sub_float_or_none("MaxPeakRetention"),
             ),
             "percent of total area": quantity_or_none(
@@ -114,11 +114,11 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 peak.get_sub_float_or_none("PercentOfTotalArea"),
             ),
             "start peak end point height": quantity_or_none(
-                TQuantityValueMAU,
+                TQuantityValueMilliAbsorbanceUnit,
                 peak.get_sub_float_or_none("StartPeakEndpointHeight"),
             ),
             "end peak end point height": quantity_or_none(
-                TQuantityValueMAU,
+                TQuantityValueMilliAbsorbanceUnit,
                 peak.get_sub_float_or_none("EndPeakEndpointHeight"),
             ),
             "sigma": quantity_or_none(
@@ -134,22 +134,22 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 peak.get_sub_float_or_none("AssymetryPeakEnd"),
             ),
             "start conductivity height": (
-                TQuantityValueSPerm(value=start_conduct_height / 10)
+                TQuantityValueSiemensPerMeter(value=start_conduct_height / 10)
                 if start_conduct_height
                 else None
             ),
             "max conductivity height": (
-                TQuantityValueSPerm(value=max_conductivity_height / 10)
+                TQuantityValueSiemensPerMeter(value=max_conductivity_height / 10)
                 if max_conductivity_height
                 else None
             ),
             "end conductivity height": (
-                TQuantityValueSPerm(value=end_conductivity_height / 10)
+                TQuantityValueSiemensPerMeter(value=end_conductivity_height / 10)
                 if end_conductivity_height
                 else None
             ),
             "average conductivity": (
-                TQuantityValueSPerm(value=average_conductivity / 10)
+                TQuantityValueSiemensPerMeter(value=average_conductivity / 10)
                 if average_conductivity
                 else None
             ),

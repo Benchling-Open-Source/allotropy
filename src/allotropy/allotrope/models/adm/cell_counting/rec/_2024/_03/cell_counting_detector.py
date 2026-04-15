@@ -14,9 +14,9 @@ from allotropy.allotrope.models.adm.core.rec._2024._03.cube import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
-    TQuantityValueMicrom,
-    TQuantityValueNm,
-    TQuantityValueOne06cellsPermL,
+    TQuantityValueMicrometer,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueNanometer,
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
@@ -26,14 +26,14 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 class DataProcessingDocument:
     cell_type_processing_method: TStringValue | None = None
     cell_density_dilution_factor: TQuantityValueUnitless | None = None
-    minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
-    maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
+    minimum_cell_diameter_setting: TQuantityValueMicrometer | None = None
+    maximum_cell_diameter_setting: TQuantityValueMicrometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -53,22 +53,22 @@ class ProcessedDataDocumentItem:
     viability__cell_counter_: TQuantityValuePercent = field(
         metadata={"json_name": "viability (cell counter)"}
     )
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL = field(
+    viable_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter = field(
         metadata={"json_name": "viable cell density (cell counter)"}
     )
     data_processing_document: DataProcessingDocument | None = None
-    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+    total_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = field(
         default=None, metadata={"json_name": "total cell density (cell counter)"}
     )
-    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
-        default=None, metadata={"json_name": "dead cell density (cell counter)"}
+    dead_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = (
+        field(default=None, metadata={"json_name": "dead cell density (cell counter)"})
     )
-    average_total_cell_diameter: TQuantityValueMicrom | None = None
-    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+    average_total_cell_diameter: TQuantityValueMicrometer | None = None
+    average_live_cell_diameter__cell_counter_: TQuantityValueMicrometer | None = field(
         default=None,
         metadata={"json_name": "average live cell diameter (cell counter)"},
     )
-    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrometer | None = field(
         default=None,
         metadata={"json_name": "average dead cell diameter (cell counter)"},
     )

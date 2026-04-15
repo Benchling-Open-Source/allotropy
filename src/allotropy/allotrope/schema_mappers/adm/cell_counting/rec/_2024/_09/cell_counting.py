@@ -33,9 +33,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueOne06cellsPermL,
+    TQuantityValueMicroliter,
+    TQuantityValueMicrometer,
+    TQuantityValueMillionCellsPerMilliliter,
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
@@ -235,7 +235,7 @@ class Mapper(SchemaMapper[Data, Model]):
             device_type=metadata.device_type,
             detection_type=metadata.detection_type,
             sample_volume_setting=quantity_or_none(
-                TQuantityValueMicroL,
+                TQuantityValueMicroliter,
                 measurement.sample_volume_setting,
             ),
         )
@@ -283,7 +283,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             "dilution volume": quantity_or_none(
-                TQuantityValueMicroL, measurement.dilution_volume
+                TQuantityValueMicroliter, measurement.dilution_volume
             ),
         }
         custom_document.update(measurement.sample_custom_info or {})
@@ -309,7 +309,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.average_area
             ),
             "average perimeter": quantity_or_none(
-                TQuantityValueMicrom, measurement.average_perimeter
+                TQuantityValueMicrometer, measurement.average_perimeter
             ),
             "average segment area": quantity_or_none(
                 TQuantityValueUnitless, measurement.average_segment_area
@@ -327,7 +327,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValuePercent, measurement.cell_aggregation_percentage
             ),
             "aggregate size": quantity_or_none(
-                TQuantityValueMicrom, measurement.aggregate_size
+                TQuantityValueMicrometer, measurement.aggregate_size
             ),
             "aggregate count": quantity_or_none(
                 TQuantityValueCell, measurement.aggregate_count
@@ -340,10 +340,10 @@ class Mapper(SchemaMapper[Data, Model]):
             DataProcessingDocument(
                 cell_type_processing_method=measurement.cell_type_processing_method,
                 minimum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrom, measurement.minimum_cell_diameter_setting
+                    TQuantityValueMicrometer, measurement.minimum_cell_diameter_setting
                 ),
                 maximum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrom, measurement.maximum_cell_diameter_setting
+                    TQuantityValueMicrometer, measurement.maximum_cell_diameter_setting
                 ),
                 cell_density_dilution_factor=quantity_or_none(
                     TQuantityValueUnitless, measurement.cell_density_dilution_factor
@@ -361,26 +361,26 @@ class Mapper(SchemaMapper[Data, Model]):
             viability__cell_counter_=TQuantityValuePercent(
                 value=measurement.viability,
             ),
-            viable_cell_density__cell_counter_=TQuantityValueOne06cellsPermL(
+            viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
                 value=measurement.viable_cell_density,
             ),
             dead_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueOne06cellsPermL, measurement.dead_cell_density
+                TQuantityValueMillionCellsPerMilliliter, measurement.dead_cell_density
             ),
             total_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.total_cell_count
             ),
             total_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueOne06cellsPermL, measurement.total_cell_density
+                TQuantityValueMillionCellsPerMilliliter, measurement.total_cell_density
             ),
             average_total_cell_diameter=quantity_or_none(
-                TQuantityValueMicrom, measurement.average_total_cell_diameter
+                TQuantityValueMicrometer, measurement.average_total_cell_diameter
             ),
             average_live_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrom, measurement.average_live_cell_diameter
+                TQuantityValueMicrometer, measurement.average_live_cell_diameter
             ),
             average_dead_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrom, measurement.average_dead_cell_diameter
+                TQuantityValueMicrometer, measurement.average_dead_cell_diameter
             ),
             viable_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.viable_cell_count

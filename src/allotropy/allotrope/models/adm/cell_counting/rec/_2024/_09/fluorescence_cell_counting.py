@@ -10,26 +10,28 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
-    TQuantityValueNm,
-    TQuantityValueOne06cellsPermL,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueNanometer,
     TQuantityValuePercent,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNanometer | None = None
+    excitation_bandwidth_setting: TQuantityValueNanometer | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
     fluorescent_tag_setting: TStringValue | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem:
     fluorescent_tag_positive_cell_count: TQuantityValueCell
-    fluorescent_tag_positive_cell_density: TQuantityValueOne06cellsPermL | None = None
+    fluorescent_tag_positive_cell_density: TQuantityValueMillionCellsPerMilliliter | None = (
+        None
+    )
     fluorescent_tag_positive_percentage: TQuantityValuePercent | None = None
 
 

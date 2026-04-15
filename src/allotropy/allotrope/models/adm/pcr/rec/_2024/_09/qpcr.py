@@ -28,11 +28,11 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueMicroL,
-    TQuantityValueNumberSign,
-    TQuantityValuePgPermL,
-    TQuantityValueS,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMicroliter,
+    TQuantityValueNumber,
+    TQuantityValuePicogramPerMilliliter,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 
@@ -71,8 +71,8 @@ class DataProcessingDocument:
         default=None, metadata={"json_name": "cycle threshold value setting (qPCR)"}
     )
     automatic_baseline_determination_enabled_setting: TBooleanValue | None = None
-    baseline_determination_start_cycle_setting: TQuantityValueNumberSign | None = None
-    baseline_determination_end_cycle_setting: TQuantityValueNumberSign | None = None
+    baseline_determination_start_cycle_setting: TQuantityValueNumber | None = None
+    baseline_determination_end_cycle_setting: TQuantityValueNumber | None = None
     genotyping_q_pcr_method_identifier: TStringValue | None = field(
         default=None, metadata={"json_name": "genotyping qPCR method identifier"}
     )
@@ -96,12 +96,12 @@ class DeviceControlDocumentItem(OrderedItem):
         None
     )
     total_cycle_number_setting: TQuantityValueUnitless | None = None
-    denaturing_temperature_setting: TQuantityValueDegC | None = None
-    denaturing_duration_setting: TQuantityValueS | None = None
-    annealing_temperature_setting: TQuantityValueDegC | None = None
-    annealing_duration_setting: TQuantityValueS | None = None
-    primer_extension_temperature_setting: TQuantityValueDegC | None = None
-    primer_extension_duration_setting: TQuantityValueS | None = None
+    denaturing_temperature_setting: TQuantityValueDegreeCelsius | None = None
+    denaturing_duration_setting: TQuantityValueSecondTime | None = None
+    annealing_temperature_setting: TQuantityValueDegreeCelsius | None = None
+    annealing_duration_setting: TQuantityValueSecondTime | None = None
+    primer_extension_temperature_setting: TQuantityValueDegreeCelsius | None = None
+    primer_extension_duration_setting: TQuantityValueSecondTime | None = None
     q_pcr_detection_chemistry: TStringValue | None = field(
         default=None, metadata={"json_name": "qPCR detection chemistry"}
     )
@@ -246,7 +246,7 @@ class SampleDocument:
     well_location_identifier: TStringValue | None = None
     vial_location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -288,7 +288,7 @@ class MeasurementAggregateDocument:
     experimental_data_identifier: TStringValue
     experiment_type: TStringValue
     container_type: ContainerType
-    well_volume: TQuantityValueMicroL
+    well_volume: TQuantityValueMicroliter
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
@@ -299,7 +299,7 @@ class MeasurementAggregateDocument:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
     analytical_method_identifier: TStringValue | None = None
-    plate_well_count: TQuantityValueNumberSign | None = None
+    plate_well_count: TQuantityValueNumber | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

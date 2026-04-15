@@ -29,15 +29,15 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueM,
-    TQuantityValueM1s1,
-    TQuantityValueMicroLPermin,
-    TQuantityValueNM,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMicroliterPerMinute,
+    TQuantityValueMolar,
+    TQuantityValueNanomolar,
     TQuantityValuePercent,
-    TQuantityValueRU,
-    TQuantityValueS,
-    TQuantityValueS1,
+    TQuantityValuePerMolarPerSecond,
+    TQuantityValuePerSecond,
+    TQuantityValueResponseUnit,
+    TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -224,7 +224,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     experiment_type=measurement_group.experiment_type,
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     compartment_temperature=quantity_or_none(
-                        TQuantityValueDegC, metadata.compartment_temperature
+                        TQuantityValueDegreeCelsius, metadata.compartment_temperature
                     ),
                     measurement_document=[
                         self._get_measurement_document_item(measurements, metadata)
@@ -260,19 +260,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             binding_on_rate_measurement_datum__kon_=quantity_or_none(
-                TQuantityValueM1s1,
+                TQuantityValuePerMolarPerSecond,
                 measurement.binding_on_rate_measurement_datum__kon_,
             ),
             binding_off_rate_measurement_datum__koff_=quantity_or_none(
-                TQuantityValueS1,
+                TQuantityValuePerSecond,
                 measurement.binding_off_rate_measurement_datum__koff_,
             ),
             equilibrium_dissociation_constant__kd_=quantity_or_none(
-                TQuantityValueM,
+                TQuantityValueMolar,
                 measurement.equilibrium_dissociation_constant__kd_,
             ),
             maximum_binding_capacity__rmax_=quantity_or_none(
-                TQuantityValueRU,
+                TQuantityValueResponseUnit,
                 measurement.maximum_binding_capacity__rmax_,
             ),
             report_point_aggregate_document=(
@@ -282,14 +282,14 @@ class Mapper(SchemaMapper[Data, Model]):
                             ReportPointDocumentItem(
                                 report_point_identifier=report_point.identifier,
                                 identifier_role=report_point.identifier_role,
-                                absolute_resonance=TQuantityValueRU(
+                                absolute_resonance=TQuantityValueResponseUnit(
                                     value=report_point.absolute_resonance
                                 ),
                                 relative_resonance=quantity_or_none(
-                                    TQuantityValueRU,
+                                    TQuantityValueResponseUnit,
                                     report_point.relative_resonance,
                                 ),
-                                time_setting=TQuantityValueS(
+                                time_setting=TQuantityValueSecondTime(
                                     value=report_point.time_setting
                                 ),
                             ),
@@ -312,7 +312,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     location_identifier=measurement.location_identifier,
                     well_plate_identifier=measurement.well_plate_identifier,
                     concentration=quantity_or_none(
-                        TQuantityValueNM, measurement.concentration
+                        TQuantityValueNanomolar, measurement.concentration
                     ),
                 ),
                 custom_info_doc=measurement.sample_custom_info,
@@ -337,17 +337,17 @@ class Mapper(SchemaMapper[Data, Model]):
                     add_custom_information_document(
                         DeviceControlDocumentItem(
                             sample_temperature_setting=quantity_or_none(
-                                TQuantityValueDegC,
+                                TQuantityValueDegreeCelsius,
                                 device_control.sample_temperature_setting,
                             ),
                             flow_cell_identifier=device_control.flow_cell_identifier,
                             flow_path=device_control.flow_path,
                             flow_rate=quantity_or_none(
-                                TQuantityValueMicroLPermin,
+                                TQuantityValueMicroliterPerMinute,
                                 device_control.flow_rate,
                             ),
                             contact_time=quantity_or_none(
-                                TQuantityValueS, device_control.contact_time
+                                TQuantityValueSecondTime, device_control.contact_time
                             ),
                             dilution_factor=quantity_or_none(
                                 TQuantityValuePercent, device_control.dilution

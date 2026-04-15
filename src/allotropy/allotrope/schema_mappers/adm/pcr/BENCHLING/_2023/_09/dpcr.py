@@ -28,8 +28,8 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueNumberSign,
-    TQuantityValueNumPerMicroL,
+    TQuantityValueNumber,
+    TQuantityValueNumberPerMicroliter,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -167,7 +167,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return DPCRDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
-                plate_well_count=TQuantityValueNumberSign(
+                plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count
                 ),
                 error_aggregate_document=self._get_error_aggregate_document(
@@ -197,7 +197,7 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
             target_dna_description=measurement.target_identifier,
-            total_partition_count=TQuantityValueNumberSign(
+            total_partition_count=TQuantityValueNumber(
                 value=measurement.total_partition_count
             ),
             reporter_dye_data_cube=get_data_cube(
@@ -227,18 +227,18 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=ProcessedDataAggregateDocument(
                 processed_data_document=[
                     ProcessedDataDocumentItem(
-                        number_concentration=TQuantityValueNumPerMicroL(
+                        number_concentration=TQuantityValueNumberPerMicroliter(
                             value=measurement.concentration
                         ),
-                        positive_partition_count=TQuantityValueNumberSign(
+                        positive_partition_count=TQuantityValueNumber(
                             value=measurement.positive_partition_count
                         ),
                         negative_partition_count=quantity_or_none(
-                            TQuantityValueNumberSign,
+                            TQuantityValueNumber,
                             measurement.negative_partition_count,
                         ),
                         confidence_interval__95_=quantity_or_none(
-                            TQuantityValueNumberSign,
+                            TQuantityValueNumber,
                             measurement.confidence_interval__95__,
                         ),
                         data_processing_document=DataProcessingDocument(

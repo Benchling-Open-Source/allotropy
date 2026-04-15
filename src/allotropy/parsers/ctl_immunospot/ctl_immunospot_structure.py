@@ -9,7 +9,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMmSq,
+    TQuantityValueSquareMillimeter,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
@@ -50,11 +50,11 @@ def _create_measurement(
     location_identifier = f"{well_row}{well_col}"
     data_processing_document = {
         "Min. SpotSize": quantity_or_none(
-            TQuantityValueMmSq,
+            TQuantityValueSquareMillimeter,
             get_value_or_none(header_data, "Min. SpotSize"),
         ),
         "Max. SpotSize": quantity_or_none(
-            TQuantityValueMmSq,
+            TQuantityValueSquareMillimeter,
             get_value_or_none(header_data, "Max. SpotSize"),
         ),
         "Spot Separation": quantity_or_none(

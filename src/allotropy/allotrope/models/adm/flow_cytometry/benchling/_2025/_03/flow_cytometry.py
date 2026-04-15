@@ -24,9 +24,9 @@ from allotropy.allotrope.models.adm.core.benchling._2025._03.hierarchy import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCounts,
-    TQuantityValueDegC,
-    TQuantityValueRFU,
-    TQuantityValueS,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 
@@ -301,10 +301,10 @@ class StatisticalFeature(Enum):
 @dataclass(frozen=True, kw_only=True)
 class VertexDocumentItem:
     vertex_role: TStringValue | None = None
-    x_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(
+    x_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "x-coordinate"}
     )
-    y_coordinate: TQuantityValueRFU | TQuantityValueS | None = field(
+    y_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None = field(
         default=None, metadata={"json_name": "y-coordinate"}
     )
 
@@ -474,7 +474,7 @@ class MeasurementAggregateDocument:
     analytical_method_identifier: TStringValue | None = None
     experimental_data_identifier: TStringValue | None = None
     experiment_identifier: TStringValue | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

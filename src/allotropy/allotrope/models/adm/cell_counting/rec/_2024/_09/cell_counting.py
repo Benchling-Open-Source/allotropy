@@ -28,11 +28,11 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueMs,
-    TQuantityValueNm,
-    TQuantityValueOne06cellsPermL,
+    TQuantityValueMicroliter,
+    TQuantityValueMicrometer,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueMilliSecond,
+    TQuantityValueNanometer,
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
@@ -42,8 +42,8 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 class DataProcessingDocument:
     cell_type_processing_method: TStringValue | None = None
     cell_density_dilution_factor: TQuantityValueUnitless | None = None
-    minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
-    maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
+    minimum_cell_diameter_setting: TQuantityValueMicrometer | None = None
+    maximum_cell_diameter_setting: TQuantityValueMicrometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -59,15 +59,15 @@ class DeviceControlDocumentItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    sample_volume_setting: TQuantityValueMicroL | None = None
+    sample_volume_setting: TQuantityValueMicroliter | None = None
     illumination_setting: TQuantityValuePercent | None = None
-    exposure_duration_setting: TQuantityValueMs | None = None
+    exposure_duration_setting: TQuantityValueMilliSecond | None = None
     detector_gain_setting: TQuantityValueUnitless | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNanometer | None = None
+    excitation_bandwidth_setting: TQuantityValueNanometer | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
     fluorescent_tag_setting: TStringValue | None = None
 
 
@@ -134,26 +134,28 @@ class SampleDocument:
 class ProcessedDataDocumentItem(OrderedItem):
     data_processing_document: DataProcessingDocument | None = None
     fluorescent_tag_positive_cell_count: TQuantityValueCell | None = None
-    fluorescent_tag_positive_cell_density: TQuantityValueOne06cellsPermL | None = None
+    fluorescent_tag_positive_cell_density: TQuantityValueMillionCellsPerMilliliter | None = (
+        None
+    )
     fluorescent_tag_positive_percentage: TQuantityValuePercent | None = None
     viability__cell_counter_: TQuantityValuePercent | None = field(
         default=None, metadata={"json_name": "viability (cell counter)"}
     )
-    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+    total_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = field(
         default=None, metadata={"json_name": "total cell density (cell counter)"}
     )
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+    viable_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = field(
         default=None, metadata={"json_name": "viable cell density (cell counter)"}
     )
-    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
-        default=None, metadata={"json_name": "dead cell density (cell counter)"}
+    dead_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = (
+        field(default=None, metadata={"json_name": "dead cell density (cell counter)"})
     )
-    average_total_cell_diameter: TQuantityValueMicrom | None = None
-    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+    average_total_cell_diameter: TQuantityValueMicrometer | None = None
+    average_live_cell_diameter__cell_counter_: TQuantityValueMicrometer | None = field(
         default=None,
         metadata={"json_name": "average live cell diameter (cell counter)"},
     )
-    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrometer | None = field(
         default=None,
         metadata={"json_name": "average dead cell diameter (cell counter)"},
     )

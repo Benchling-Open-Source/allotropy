@@ -23,9 +23,9 @@ from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroL,
-    TQuantityValueNumberSign,
-    TQuantityValueRFU,
+    TQuantityValueMicroliter,
+    TQuantityValueNumber,
+    TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
 
@@ -35,8 +35,8 @@ class AnalyteDocumentItem(OrderedItem):
     analyte_identifier: TStringValue
     analyte_name: TStringValue
     assay_bead_identifier: TStringValue
-    assay_bead_count: TQuantityValueNumberSign
-    fluorescence: TQuantityValueRFU | None = None
+    assay_bead_count: TQuantityValueNumber
+    fluorescence: TQuantityValueRelativeFluorescenceUnit | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
 
 
@@ -74,9 +74,9 @@ class DeviceControlDocumentItem(OrderedItem):
         None
     )
     detector_gain_setting: TStringValue | None = None
-    sample_volume_setting: TQuantityValueMicroL | None = None
+    sample_volume_setting: TQuantityValueMicroliter | None = None
     dilution_factor_setting: TQuantityValueUnitless | None = None
-    minimum_assay_bead_count_threshold_setting: TQuantityValueNumberSign | None = None
+    minimum_assay_bead_count_threshold_setting: TQuantityValueNumber | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -154,7 +154,7 @@ class MeasurementDocumentItem:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    assay_bead_count: TQuantityValueNumberSign | None = None
+    assay_bead_count: TQuantityValueNumber | None = None
     analyte_aggregate_document: AnalyteAggregateDocument | None = None
 
 
@@ -176,7 +176,7 @@ class MeasurementAggregateDocument:
     measurement_time: TDateTimeStampValue | None = None
     experiment_type: TStringValue | None = None
     container_type: ContainerType | None = None
-    plate_well_count: TQuantityValueNumberSign | None = None
+    plate_well_count: TQuantityValueNumber | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -27,19 +27,19 @@ from allotropy.allotrope.models.adm.core.rec._2024._06.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCountsPers,
-    TQuantityValueDegC,
-    TQuantityValueMAU,
-    TQuantityValueMicroL,
-    TQuantityValueMm,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValuePgPermL,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
-    TQuantityValueRLUDotmL,
-    TQuantityValueRLUDots,
-    TQuantityValueS,
+    TQuantityValueCountsPerSecond,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMicroliter,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
+    TQuantityValuePicogramPerMilliliter,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
+    TQuantityValueRelativeLightUnitTimesMilliliter,
+    TQuantityValueRelativeLightUnitTimesSecond,
+    TQuantityValueSecondTime,
 )
 
 
@@ -129,8 +129,12 @@ class LuminescenceProfileDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItem(OrderedItem):
-    peak_height: TQuantityValueMAU | TQuantityValueRFU | TQuantityValueRLU | None = None
-    peak_area: TQuantityValueRLUDotmL | TQuantityValueRLUDots | None = None
+    peak_height: TQuantityValueMilliAbsorbanceUnit | TQuantityValueRelativeFluorescenceUnit | TQuantityValueRelativeLightUnit | None = (
+        None
+    )
+    peak_area: TQuantityValueRelativeLightUnitTimesMilliliter | TQuantityValueRelativeLightUnitTimesSecond | None = (
+        None
+    )
 
 
 class SampleRoleType(Enum):
@@ -200,7 +204,7 @@ class SampleDocument:
     well_location_identifier: TStringValue | None = None
     vial_location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -217,28 +221,32 @@ class DeviceControlDocumentItem(OrderedItem):
         None
     )
     shaking_configuration_description: TStringValue | None = None
-    detector_distance_setting__plate_reader_: TQuantityValueMm | None = field(
+    detector_distance_setting__plate_reader_: TQuantityValueMillimeter | None = field(
         default=None, metadata={"json_name": "detector distance setting (plate reader)"}
     )
-    integration_time: TQuantityValueS | None = None
-    number_of_averages: TQuantityValueNumberSign | None = None
+    integration_time: TQuantityValueSecondTime | None = None
+    number_of_averages: TQuantityValueNumber | None = None
     detector_gain_setting: TStringValue | None = None
     scan_position_setting__plate_reader_: ScanPositionSettingPlateReader | None = field(
         default=None, metadata={"json_name": "scan position setting (plate reader)"}
     )
     detector_carriage_speed_setting: TStringValue | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
-    total_measurement_time_setting: TQuantityValueS | None = None
-    read_interval_setting: TQuantityValueS | None = None
-    number_of_scans_setting: TQuantityValueNumberSign | None = None
-    wavelength_filter_cutoff_setting: TQuantityValueNm | None = None
-    excitation_bandwidth_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    total_measurement_time_setting: TQuantityValueSecondTime | None = None
+    read_interval_setting: TQuantityValueSecondTime | None = None
+    number_of_scans_setting: TQuantityValueNumber | None = None
+    wavelength_filter_cutoff_setting: TQuantityValueNanometer | None = None
+    excitation_bandwidth_setting: TQuantityValueNanometer | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -271,12 +279,14 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
-    absorbance: TQuantityValueMAU | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
+    absorbance: TQuantityValueMilliAbsorbanceUnit | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
     processed_data_document: ProcessedDataDocument | None = None
-    fluorescence: TQuantityValueRFU | None = None
-    luminescence: TQuantityValueCountsPers | TQuantityValueRLU | None = None
+    fluorescence: TQuantityValueRelativeFluorescenceUnit | None = None
+    luminescence: TQuantityValueCountsPerSecond | TQuantityValueRelativeLightUnit | None = (
+        None
+    )
     electropherogram_data_cube: ElectropherogramDataCube | None = None
     absorption_profile_data_cube: AbsorptionProfileDataCube | None = None
     chromatogram_data_cube: ChromatogramDataCube | None = None
@@ -290,7 +300,7 @@ class MeasurementDocumentItem:
 class MeasurementAggregateDocument:
     measurement_document: list[MeasurementDocumentItem]
     measurement_time: TDateTimeStampValue
-    plate_well_count: TQuantityValueNumberSign
+    plate_well_count: TQuantityValueNumber
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
@@ -304,7 +314,7 @@ class MeasurementAggregateDocument:
     experimental_data_identifier: TStringValue | None = None
     experiment_type: TStringValue | None = None
     container_type: ContainerType | None = None
-    well_volume: TQuantityValueMicroL | None = None
+    well_volume: TQuantityValueMicroliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -30,21 +30,21 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
-    TQuantityValueCountsPermL,
-    TQuantityValueDegC,
-    TQuantityValueGPerL,
-    TQuantityValueMAU,
-    TQuantityValueMicrom,
-    TQuantityValueML,
-    TQuantityValueMLPerL,
-    TQuantityValueMmHg,
-    TQuantityValueMmolPerL,
-    TQuantityValueMosmPerkg,
-    TQuantityValueNm,
-    TQuantityValueOne06cellsPermL,
+    TQuantityValueCountsPerMilliliter,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueGramPerLiter,
+    TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerLiter,
+    TQuantityValueMillimeterOfMercury,
+    TQuantityValueMillimolePerLiter,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueMilliOsmolesPerKilogram,
+    TQuantityValueNanometer,
     TQuantityValuePercent,
-    TQuantityValuePgPermL,
     TQuantityValuePH,
+    TQuantityValuePicogramPerMilliliter,
     TQuantityValueUnitless,
 )
 
@@ -52,17 +52,17 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 @dataclass(frozen=True, kw_only=True)
 class AnalyteDocumentItem:
     analyte_name: TStringValue | None = None
-    volume_concentration: TQuantityValueMLPerL | None = None
-    molar_concentration: TQuantityValueMmolPerL | None = None
-    mass_concentration: TQuantityValueGPerL | None = None
+    volume_concentration: TQuantityValueMilliliterPerLiter | None = None
+    molar_concentration: TQuantityValueMillimolePerLiter | None = None
+    mass_concentration: TQuantityValueGramPerLiter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class DataProcessingDocument:
     cell_type_processing_method: TStringValue | None = None
     cell_density_dilution_factor: TQuantityValueUnitless | None = None
-    minimum_cell_diameter_setting: TQuantityValueMicrom | None = None
-    maximum_cell_diameter_setting: TQuantityValueMicrom | None = None
+    minimum_cell_diameter_setting: TQuantityValueMicrometer | None = None
+    maximum_cell_diameter_setting: TQuantityValueMicrometer | None = None
     dilution_factor_setting: TQuantityValueUnitless | None = None
     data_processing_omission_setting: TBooleanValue | None = None
 
@@ -80,17 +80,21 @@ class DeviceControlDocumentItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    flush_volume_setting: TQuantityValueML | None = None
-    detector_view_volume: TQuantityValueML | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
+    flush_volume_setting: TQuantityValueMilliliter | None = None
+    detector_view_volume: TQuantityValueMilliliter | None = None
     repetition_setting: TIntValue | None = None
-    sample_volume_setting: TQuantityValueML | None = None
+    sample_volume_setting: TQuantityValueMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -104,10 +108,10 @@ class DiagnosticTraceDocumentItem:
 @dataclass(frozen=True, kw_only=True)
 class DistributionDocumentItem:
     distribution_identifier: TStringValue | None = None
-    particle_size: TQuantityValueMicrom | None = None
+    particle_size: TQuantityValueMicrometer | None = None
     cumulative_count: TQuantityValueUnitless | None = None
-    cumulative_particle_density: TQuantityValueCountsPermL | None = None
-    differential_particle_density: TQuantityValueCountsPermL | None = None
+    cumulative_particle_density: TQuantityValueCountsPerMilliliter | None = None
+    differential_particle_density: TQuantityValueCountsPerMilliliter | None = None
     differential_count: TQuantityValueUnitless | None = None
 
 
@@ -178,21 +182,21 @@ class ProcessedDataDocumentItem(OrderedItem):
     viability__cell_counter_: TQuantityValuePercent | None = field(
         default=None, metadata={"json_name": "viability (cell counter)"}
     )
-    total_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+    total_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = field(
         default=None, metadata={"json_name": "total cell density (cell counter)"}
     )
-    viable_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
+    viable_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = field(
         default=None, metadata={"json_name": "viable cell density (cell counter)"}
     )
-    dead_cell_density__cell_counter_: TQuantityValueOne06cellsPermL | None = field(
-        default=None, metadata={"json_name": "dead cell density (cell counter)"}
+    dead_cell_density__cell_counter_: TQuantityValueMillionCellsPerMilliliter | None = (
+        field(default=None, metadata={"json_name": "dead cell density (cell counter)"})
     )
-    average_total_cell_diameter: TQuantityValueMicrom | None = None
-    average_live_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+    average_total_cell_diameter: TQuantityValueMicrometer | None = None
+    average_live_cell_diameter__cell_counter_: TQuantityValueMicrometer | None = field(
         default=None,
         metadata={"json_name": "average live cell diameter (cell counter)"},
     )
-    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrom | None = field(
+    average_dead_cell_diameter__cell_counter_: TQuantityValueMicrometer | None = field(
         default=None,
         metadata={"json_name": "average dead cell diameter (cell counter)"},
     )
@@ -236,13 +240,15 @@ class MeasurementDocumentItem(OrderedItem):
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    osmolality: TQuantityValueMosmPerkg | None = None
-    absorbance: TQuantityValueMAU | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    osmolality: TQuantityValueMilliOsmolesPerKilogram | None = None
+    absorbance: TQuantityValueMilliAbsorbanceUnit | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
     p_h: TQuantityValuePH | None = field(default=None, metadata={"json_name": "pH"})
-    temperature: TQuantityValueDegC | None = None
-    p_o2: TQuantityValueMmHg | None = field(default=None, metadata={"json_name": "pO2"})
-    p_co2: TQuantityValueMmHg | None = field(
+    temperature: TQuantityValueDegreeCelsius | None = None
+    p_o2: TQuantityValueMillimeterOfMercury | None = field(
+        default=None, metadata={"json_name": "pO2"}
+    )
+    p_co2: TQuantityValueMillimeterOfMercury | None = field(
         default=None, metadata={"json_name": "pCO2"}
     )
     carbon_dioxide_saturation: TQuantityValuePercent | None = None

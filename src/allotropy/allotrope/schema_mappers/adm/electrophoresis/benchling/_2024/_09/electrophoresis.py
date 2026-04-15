@@ -31,9 +31,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
+    TQuantityValueDegreeCelsius,
     TQuantityValuePercent,
-    TQuantityValueRFU,
+    TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -202,7 +202,7 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegC, measurement.compartment_temperature
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -260,7 +260,7 @@ class Mapper(SchemaMapper[Data, Model]):
             comment=peak.comment,
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
             peak_height=(
-                quantity_or_none(TQuantityValueRFU, peak.height)
+                quantity_or_none(TQuantityValueRelativeFluorescenceUnit, peak.height)
                 if peak.height
                 else None
             ),

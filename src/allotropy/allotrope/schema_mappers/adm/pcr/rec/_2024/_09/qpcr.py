@@ -35,8 +35,8 @@ from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroL,
-    TQuantityValueNumberSign,
+    TQuantityValueMicroliter,
+    TQuantityValueNumber,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -260,11 +260,11 @@ class Mapper(SchemaMapper[Data, Model]):
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
                     container_type=ModelContainerType(metadata.container_type.value),
-                    well_volume=TQuantityValueMicroL(
+                    well_volume=TQuantityValueMicroliter(
                         value=measurement_group.well_volume,
                     ),
                     plate_well_count=quantity_or_none(
-                        TQuantityValueNumberSign, measurement_group.plate_well_count
+                        TQuantityValueNumber, measurement_group.plate_well_count
                     ),
                     measurement_document=[
                         self._get_measurement_document_item(measurement, metadata)
@@ -357,11 +357,11 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.genotyping_determination_method_setting,
                     ),
                     baseline_determination_start_cycle_setting=quantity_or_none(
-                        TQuantityValueNumberSign,
+                        TQuantityValueNumber,
                         data.baseline_determination_start_cycle_setting,
                     ),
                     baseline_determination_end_cycle_setting=quantity_or_none(
-                        TQuantityValueNumberSign,
+                        TQuantityValueNumber,
                         data.baseline_determination_end_cycle_setting,
                     ),
                 ),

@@ -5,10 +5,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMosmPerkg,
+    TQuantityValueMilliOsmolesPerKilogram,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    osmolality: TQuantityValueMosmPerkg
+    osmolality: TQuantityValueMilliOsmolesPerKilogram

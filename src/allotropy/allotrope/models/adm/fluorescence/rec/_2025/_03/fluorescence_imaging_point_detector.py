@@ -9,8 +9,8 @@ from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
     TStringValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMs,
-    TQuantityValueNm,
+    TQuantityValueMilliSecond,
+    TQuantityValueNanometer,
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
@@ -20,9 +20,9 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 class DeviceControlDocumentItem:
     fluorescent_tag_setting: TStringValue
     auto_focus_enabled_setting: TBooleanValue | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    excitation_wavelength_setting: TQuantityValueNm | None = None
-    exposure_duration_setting: TQuantityValueMs | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    excitation_wavelength_setting: TQuantityValueNanometer | None = None
+    exposure_duration_setting: TQuantityValueMilliSecond | None = None
     illumination_setting: TQuantityValuePercent | None = None
     image_count_setting: TQuantityValueUnitless | None = None
     magnification_setting: TQuantityValueUnitless | None = None

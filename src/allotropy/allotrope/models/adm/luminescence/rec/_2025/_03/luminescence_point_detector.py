@@ -6,17 +6,17 @@ from dataclasses import dataclass
 
 from allotropy.allotrope.models.adm.core.rec._2025._03.core import OrderedItem
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCountsPers,
-    TQuantityValueNm,
-    TQuantityValuePgPermL,
-    TQuantityValueRLU,
+    TQuantityValueCountsPerSecond,
+    TQuantityValueNanometer,
+    TQuantityValuePicogramPerMilliliter,
+    TQuantityValueRelativeLightUnit,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -26,6 +26,6 @@ class DeviceControlAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    luminescence: TQuantityValueCountsPers | TQuantityValueRLU
+    luminescence: TQuantityValueCountsPerSecond | TQuantityValueRelativeLightUnit
     device_control_aggregate_document: DeviceControlAggregateDocument | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None

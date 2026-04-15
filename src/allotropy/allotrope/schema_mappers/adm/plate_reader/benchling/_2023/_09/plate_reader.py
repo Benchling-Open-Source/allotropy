@@ -48,14 +48,14 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueMAU,
-    TQuantityValueMm,
-    TQuantityValueMs,
-    TQuantityValueNm,
-    TQuantityValueNumberSign,
-    TQuantityValueRFU,
-    TQuantityValueRLU,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
+    TQuantityValueMilliSecond,
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -270,7 +270,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=measurement_group.experiment_type,
                     container_type=ModelContainerType.well_plate,
-                    plate_well_count=TQuantityValueNumberSign(
+                    plate_well_count=TQuantityValueNumber(
                         value=measurement_group.plate_well_count
                     ),
                     measurement_time=self.get_date_time(
@@ -317,11 +317,11 @@ class Mapper(SchemaMapper[Data, Model]):
             firmware_version=measurement.firmware_version,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.detector_wavelength_setting,
             ),
             exposure_duration_setting=quantity_or_none(
-                TQuantityValueMs,
+                TQuantityValueMilliSecond,
                 measurement.exposure_duration_setting,
             ),
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
@@ -330,7 +330,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.illumination_setting,
             ),
             detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMm,
+                TQuantityValueMillimeter,
                 measurement.detector_distance_setting,
             ),
             detector_gain_setting=measurement.detector_gain_setting,
@@ -350,7 +350,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.image_count_setting,
             ),
             excitation_wavelength_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.excitation_wavelength_setting,
             ),
         )
@@ -399,20 +399,20 @@ class Mapper(SchemaMapper[Data, Model]):
                 firmware_version=measurement.firmware_version,
                 detection_type=measurement.detection_type,
                 detector_wavelength_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     measurement.detector_wavelength_setting,
                 ),
                 number_of_averages=quantity_or_none(
-                    TQuantityValueNumberSign, measurement.number_of_averages
+                    TQuantityValueNumber, measurement.number_of_averages
                 ),
                 detector_carriage_speed_setting=measurement.detector_carriage_speed,
                 detector_gain_setting=measurement.detector_gain_setting,
                 detector_distance_setting__plate_reader_=quantity_or_none(
-                    TQuantityValueMm,
+                    TQuantityValueMillimeter,
                     measurement.detector_distance_setting,
                 ),
                 electronic_absorbance_reference_wavelength_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     measurement.electronic_absorbance_reference_wavelength_setting,
                 ),
             )
@@ -432,14 +432,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorbance=TQuantityValueMAU(
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
                 value=assert_not_none(  # type: ignore[arg-type]
                     value=measurement.absorbance,
                     msg="Missing absorbance value in ultraviolet absorbance measurement",
                 )
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegC, measurement.compartment_temperature
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
         )
         return add_custom_information_document(measurement_doc, measurement_custom_info)
@@ -452,15 +452,15 @@ class Mapper(SchemaMapper[Data, Model]):
             firmware_version=measurement.firmware_version,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.detector_wavelength_setting,
             ),
             detector_bandwidth_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.detector_bandwidth_setting,
             ),
             detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMm,
+                TQuantityValueMillimeter,
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=ModelScanPositionSettingPlateReader(
@@ -483,14 +483,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            luminescence=TQuantityValueRLU(
+            luminescence=TQuantityValueRelativeLightUnit(
                 value=assert_not_none(  # type: ignore[arg-type]
                     measurement.luminescence,
                     msg="Missing luminescence value in luminescence measurement",
                 )
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegC, measurement.compartment_temperature
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
         )
 
@@ -502,27 +502,27 @@ class Mapper(SchemaMapper[Data, Model]):
             firmware_version=measurement.firmware_version,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.detector_wavelength_setting,
             ),
             detector_bandwidth_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.detector_bandwidth_setting,
             ),
             excitation_wavelength_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.excitation_wavelength_setting,
             ),
             excitation_bandwidth_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.excitation_bandwidth_setting,
             ),
             wavelength_filter_cutoff_setting=quantity_or_none(
-                TQuantityValueNm,
+                TQuantityValueNanometer,
                 measurement.wavelength_filter_cutoff_setting,
             ),
             detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMm,
+                TQuantityValueMillimeter,
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=ModelScanPositionSettingPlateReader(
@@ -532,7 +532,7 @@ class Mapper(SchemaMapper[Data, Model]):
             else None,
             detector_gain_setting=measurement.detector_gain_setting,
             number_of_averages=quantity_or_none(
-                TQuantityValueNumberSign, measurement.number_of_averages
+                TQuantityValueNumber, measurement.number_of_averages
             ),
             detector_carriage_speed_setting=measurement.detector_carriage_speed,
         )
@@ -547,14 +547,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            fluorescence=TQuantityValueRFU(
+            fluorescence=TQuantityValueRelativeFluorescenceUnit(
                 value=assert_not_none(  # type: ignore[arg-type]
                     measurement.fluorescence,
                     msg="Missing fluorescence value in fluorescence measurement",
                 )
             ),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegC, measurement.compartment_temperature
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             sample_document=self._get_sample_document(measurement),
         )

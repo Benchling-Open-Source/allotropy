@@ -3,9 +3,9 @@
 Running schema generation on all cached schemas must produce identical output
 to what is already committed. If this test fails, run:
 
-    hatch run scripts:generate-schemas <url>
+    hatch run scripts:generate-schemas --all
 
-for the affected schema(s) and commit the result.
+and commit the result.
 """
 
 from __future__ import annotations
@@ -15,26 +15,11 @@ import re
 
 import pytest
 
-from allotropy.allotrope.path_util import SCHEMA_DIR_PATH
-from allotropy.schema_gen.generate import generate_models
-from allotropy.schema_gen.naming import ALLOTROPE_URL_PREFIX, DEFAULT_MODEL_OUTPUT_DIR
-
-
-def _collect_all_schema_urls() -> list[str]:
-    """Collect canonical URLs for all cached schemas.
-
-    Includes core, qudt, and technique schemas so that shared modules
-    are also regenerated and verified.
-    """
-    urls: list[str] = []
-    for f in sorted(SCHEMA_DIR_PATH.rglob("*.schema.json")):
-        # Skip .embed. / .tabular. cache copies
-        if ".embed." in f.name or ".tabular." in f.name:
-            continue
-        rel = f.relative_to(SCHEMA_DIR_PATH)
-        url_path = str(rel).removesuffix(".json")
-        urls.append(ALLOTROPE_URL_PREFIX + url_path)
-    return urls
+from allotropy.schema_gen.generate import (
+    _discover_cached_technique_urls,
+    generate_models,
+)
+from allotropy.schema_gen.naming import DEFAULT_MODEL_OUTPUT_DIR
 
 
 def _extract_class_blocks(source: str) -> str:
@@ -79,7 +64,7 @@ def _assert_generated_matches_committed(
             committed_src
         ), (
             f"Generated output differs from committed for {rel}.\n"
-            "Run 'hatch run scripts:generate-schemas' for the affected schema(s) "
+            "Run 'hatch run scripts:generate-schemas --all' "
             "and commit the result."
         )
 
@@ -87,8 +72,8 @@ def _assert_generated_matches_committed(
 @pytest.mark.long
 def test_generated_models_are_up_to_date(tmp_path: Path) -> None:
     """Regenerating all schemas must produce class definitions identical to committed models."""
-    urls = _collect_all_schema_urls()
-    assert urls, "No schemas found — check SCHEMA_DIR_PATH"
+    urls = _discover_cached_technique_urls()
+    assert urls, "No schemas found — check schema cache"
     _assert_generated_matches_committed(tmp_path, urls)
 
 
@@ -100,7 +85,7 @@ def test_single_schema_generation_is_idempotent(tmp_path: Path) -> None:
     produce different output depending on which schemas are included in a run —
     e.g., BENCHLING additions leaking into REC shared modules.
     """
-    urls = _collect_all_schema_urls()
+    urls = _discover_cached_technique_urls()
     # Pick a REC technique schema (not core/qudt — we want one that pulls in
     # shared dependencies, which is where single-vs-batch divergence appears).
     rec_technique_urls = [

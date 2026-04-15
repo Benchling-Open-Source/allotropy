@@ -10,13 +10,13 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMV,
-    TQuantityValueMVDots,
-    TQuantityValueNC,
-    TQuantityValueNCDots,
-    TQuantityValueNm,
-    TQuantityValuePA,
-    TQuantityValuePADots,
+    TQuantityValueMillivolt,
+    TQuantityValueMillivoltTimesSecond,
+    TQuantityValueNanoCoulomb,
+    TQuantityValueNanoCoulombTimesSecond,
+    TQuantityValueNanometer,
+    TQuantityValuePicoAmpere,
+    TQuantityValuePicoAmpereTimesSecond,
 )
 
 
@@ -29,26 +29,26 @@ class ChromatogramDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItemMillivolts(OrderedItem):
-    peak_height: TQuantityValueMV | None = None
-    peak_area: TQuantityValueMVDots | None = None
+    peak_height: TQuantityValueMillivolt | None = None
+    peak_area: TQuantityValueMillivoltTimesSecond | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItemNanocoulombs(OrderedItem):
-    peak_height: TQuantityValueNC | None = None
-    peak_area: TQuantityValueNCDots | None = None
+    peak_height: TQuantityValueNanoCoulomb | None = None
+    peak_area: TQuantityValueNanoCoulombTimesSecond | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
 class PeakItemPicoamperes(OrderedItem):
-    peak_height: TQuantityValuePA | None = None
-    peak_area: TQuantityValuePADots | None = None
+    peak_height: TQuantityValuePicoAmpere | None = None
+    peak_area: TQuantityValuePicoAmpereTimesSecond | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

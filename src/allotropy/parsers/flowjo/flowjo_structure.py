@@ -6,8 +6,8 @@ from pathlib import Path
 import re
 
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueRFU,
-    TQuantityValueS,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
@@ -224,14 +224,14 @@ class VertexExtractor:
         self.x_dim = x_dim
         self.y_dim = y_dim
         self.x_unit = (
-            TQuantityValueS.unit
+            TQuantityValueSecondTime.unit
             if x_dim is not None and x_dim.lower() == "time"
-            else TQuantityValueRFU.unit
+            else TQuantityValueRelativeFluorescenceUnit.unit
         )
         self.y_unit = (
-            TQuantityValueS.unit
+            TQuantityValueSecondTime.unit
             if y_dim is not None and y_dim.lower() == "time"
-            else TQuantityValueRFU.unit
+            else TQuantityValueRelativeFluorescenceUnit.unit
         )
 
     def extract(self) -> list[Vertex] | None:

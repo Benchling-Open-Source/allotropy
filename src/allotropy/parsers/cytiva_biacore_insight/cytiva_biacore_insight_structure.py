@@ -8,12 +8,12 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDa,
-    TQuantityValueMicrogPermL,
-    TQuantityValueMicroLPermin,
-    TQuantityValueNM,
-    TQuantityValueRU,
-    TQuantityValueS,
+    TQuantityValueDalton,
+    TQuantityValueMicrogramPerMilliliter,
+    TQuantityValueMicroliterPerMinute,
+    TQuantityValueNanomolar,
+    TQuantityValueResponseUnit,
+    TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceControlDocument,
@@ -137,18 +137,20 @@ def _get_analyte_custom_info(
                 analyte_info[col_name] = first_row_data.get(str, col_name)
 
         # Add Concentration field (can be in nM, µM, or µg/ml)
-        concentration: TQuantityValueNM | TQuantityValueMicrogPermL | None = None
+        concentration: TQuantityValueNanomolar | TQuantityValueMicrogramPerMilliliter | None = (
+            None
+        )
         for unit_suffix in ["(nM)", "(µM)", "(µg/ml)"]:
             conc_col = f"Analyte {analyte_num} Concentration {unit_suffix}"
             if conc_col in columns_set:
                 if unit_suffix == "(nM)":
                     concentration = quantity_or_none(
-                        TQuantityValueNM,
+                        TQuantityValueNanomolar,
                         first_row_data.get(float, conc_col),
                     )
                 elif unit_suffix == "(µg/ml)":
                     concentration = quantity_or_none(
-                        TQuantityValueMicrogPermL,
+                        TQuantityValueMicrogramPerMilliliter,
                         first_row_data.get(float, conc_col),
                     )
                 # For µM, we don't have a TQuantityValue type, skip for now
@@ -160,7 +162,7 @@ def _get_analyte_custom_info(
         mw_col = f"Analyte {analyte_num} Molecular weight (Da)"
         if mw_col in columns_set:
             analyte_info[f"Analyte {analyte_num} Molecular weight"] = quantity_or_none(
-                TQuantityValueDa,
+                TQuantityValueDalton,
                 first_row_data.get(float, mw_col),
             )
 
@@ -622,13 +624,13 @@ class MeasurementData:
                 device_control_custom_info_dict[
                     f"Analyte {analyte_num} Contact time"
                 ] = quantity_or_none(
-                    TQuantityValueS,
+                    TQuantityValueSecondTime,
                     flow_cell_info.get(float, contact_time_col),
                 )
                 device_control_custom_info_dict[
                     f"Analyte {analyte_num} Dissociation time"
                 ] = quantity_or_none(
-                    TQuantityValueS,
+                    TQuantityValueSecondTime,
                     flow_cell_info.get(
                         float, f"Analyte {analyte_num} Dissociation time (s)"
                     ),
@@ -636,7 +638,7 @@ class MeasurementData:
                 device_control_custom_info_dict[
                     f"Analyte {analyte_num} Flow rate"
                 ] = quantity_or_none(
-                    TQuantityValueMicroLPermin,
+                    TQuantityValueMicroliterPerMinute,
                     flow_cell_info.get(
                         float, f"Analyte {analyte_num} Flow rate (µl/min)"
                     ),
@@ -651,13 +653,13 @@ class MeasurementData:
                 device_control_custom_info_dict[
                     f"Regeneration {regen_num} Contact time"
                 ] = quantity_or_none(
-                    TQuantityValueS,
+                    TQuantityValueSecondTime,
                     flow_cell_info.get(float, contact_time_col),
                 )
                 device_control_custom_info_dict[
                     f"Regeneration {regen_num} Flow rate"
                 ] = quantity_or_none(
-                    TQuantityValueMicroLPermin,
+                    TQuantityValueMicroliterPerMinute,
                     flow_cell_info.get(
                         float, f"Regeneration {regen_num} Flow rate (µl/min)"
                     ),
@@ -672,13 +674,13 @@ class MeasurementData:
                 device_control_custom_info_dict[
                     f"Capture {capture_num} Contact time"
                 ] = quantity_or_none(
-                    TQuantityValueS,
+                    TQuantityValueSecondTime,
                     flow_cell_info.get(float, contact_time_col),
                 )
                 device_control_custom_info_dict[
                     f"Capture {capture_num} Flow rate"
                 ] = quantity_or_none(
-                    TQuantityValueMicroLPermin,
+                    TQuantityValueMicroliterPerMinute,
                     flow_cell_info.get(
                         float, f"Capture {capture_num} Flow rate (µl/min)"
                     ),
@@ -694,7 +696,7 @@ class MeasurementData:
                         run_info.get(str, "Sensorgram type"),
                     ),
                     "Level": quantity_or_none(
-                        TQuantityValueRU,
+                        TQuantityValueResponseUnit,
                         run_info.get(float, "Level (RU)"),
                     ),
                 }
@@ -749,7 +751,7 @@ class MeasurementData:
                     # Dynamically add all Analyte columns that exist (Analyte 1-N)
                     **_get_analyte_custom_info(first_row_data, channel_data),
                     "Analyte 1 Calculated Concentration": quantity_or_none(
-                        TQuantityValueMicrogPermL,
+                        TQuantityValueMicrogramPerMilliliter,
                         calculated_concentration,
                     ),
                     # Dynamically add all Regeneration columns that exist (Regeneration 1-N)

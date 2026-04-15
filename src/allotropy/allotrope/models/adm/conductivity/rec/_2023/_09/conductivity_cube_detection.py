@@ -13,7 +13,7 @@ from allotropy.allotrope.models.adm.core.rec._2023._09.cube import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueNm,
+    TQuantityValueNanometer,
 )
 
 
@@ -26,8 +26,8 @@ class ChromatogramDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem(OrderedItem):
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

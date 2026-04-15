@@ -27,16 +27,16 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueDegC,
-    TQuantityValueM,
-    TQuantityValueM1s1,
-    TQuantityValueMicroL,
-    TQuantityValueMicroLPermin,
-    TQuantityValueNM,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMicroliter,
+    TQuantityValueMicroliterPerMinute,
+    TQuantityValueMolar,
+    TQuantityValueNanomolar,
     TQuantityValuePercent,
-    TQuantityValueRU,
-    TQuantityValueS,
-    TQuantityValueS1,
+    TQuantityValuePerMolarPerSecond,
+    TQuantityValuePerSecond,
+    TQuantityValueResponseUnit,
+    TQuantityValueSecondTime,
 )
 
 
@@ -53,11 +53,11 @@ class DeviceControlDocumentItem(OrderedItem):
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
-    sample_volume_setting: TQuantityValueMicroL | None = None
-    sample_temperature_setting: TQuantityValueDegC | None = None
+    sample_volume_setting: TQuantityValueMicroliter | None = None
+    sample_temperature_setting: TQuantityValueDegreeCelsius | None = None
     flow_cell_identifier: TStringValue | None = None
-    flow_rate: TQuantityValueMicroLPermin | None = None
-    contact_time: TQuantityValueS | None = None
+    flow_rate: TQuantityValueMicroliterPerMinute | None = None
+    contact_time: TQuantityValueSecondTime | None = None
     dilution_factor: TQuantityValuePercent | None = None
     flow_path: TStringValue | None = None
 
@@ -87,11 +87,11 @@ class DiagnosticTraceDocumentItem:
 
 @dataclass(frozen=True, kw_only=True)
 class ReportPointDocumentItem:
-    absolute_resonance: TQuantityValueRU | None = None
+    absolute_resonance: TQuantityValueResponseUnit | None = None
     report_point_identifier: TStringValue | None = None
     identifier_role: TStringValue | None = None
-    relative_resonance: TQuantityValueRU | None = None
-    time_setting: TQuantityValueS | None = None
+    relative_resonance: TQuantityValueResponseUnit | None = None
+    time_setting: TQuantityValueSecondTime | None = None
 
 
 class SampleRoleType(Enum):
@@ -177,7 +177,7 @@ class SampleDocument:
     )
     location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
-    concentration: TQuantityValueNM | None = None
+    concentration: TQuantityValueNanomolar | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -186,17 +186,20 @@ class ProcessedDataDocumentItem(OrderedItem):
         default=None, metadata={"json_name": "POSIX path"}
     )
     identifier: TStringValue | None = None
-    binding_on_rate_measurement_datum__kon_: TQuantityValueM1s1 | None = field(
-        default=None, metadata={"json_name": "binding on rate measurement datum (kon)"}
+    binding_on_rate_measurement_datum__kon_: TQuantityValuePerMolarPerSecond | None = (
+        field(
+            default=None,
+            metadata={"json_name": "binding on rate measurement datum (kon)"},
+        )
     )
-    binding_off_rate_measurement_datum__koff_: TQuantityValueS1 | None = field(
+    binding_off_rate_measurement_datum__koff_: TQuantityValuePerSecond | None = field(
         default=None,
         metadata={"json_name": "binding off rate measurement datum (koff)"},
     )
-    equilibrium_dissociation_constant__kd_: TQuantityValueM | None = field(
+    equilibrium_dissociation_constant__kd_: TQuantityValueMolar | None = field(
         default=None, metadata={"json_name": "equilibrium dissociation constant (KD)"}
     )
-    maximum_binding_capacity__rmax_: TQuantityValueRU | None = field(
+    maximum_binding_capacity__rmax_: TQuantityValueResponseUnit | None = field(
         default=None, metadata={"json_name": "maximum binding capacity (Rmax)"}
     )
     report_point_aggregate_document: ReportPointAggregateDocument | None = None
@@ -259,7 +262,7 @@ class MeasurementAggregateDocument:
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
     experiment_type: TStringValue | None = None
     analytical_method_identifier: TStringValue | None = None
-    compartment_temperature: TQuantityValueDegC | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

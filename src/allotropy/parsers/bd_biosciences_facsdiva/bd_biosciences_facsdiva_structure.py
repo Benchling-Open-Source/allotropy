@@ -6,8 +6,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueRFU,
-    TQuantityValueS,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
@@ -343,14 +343,14 @@ def _create_data_regions(tube: StrictXmlElement) -> list[DataRegion]:
 
                 if x_coord is not None and y_coord is not None:
                     x_unit = (
-                        TQuantityValueS.unit
+                        TQuantityValueSecondTime.unit
                         if x_param and "Time" in x_param
-                        else TQuantityValueRFU.unit
+                        else TQuantityValueRelativeFluorescenceUnit.unit
                     )
                     y_unit = (
-                        TQuantityValueS.unit
+                        TQuantityValueSecondTime.unit
                         if y_param and "Time" in y_param
-                        else TQuantityValueRFU.unit
+                        else TQuantityValueRelativeFluorescenceUnit.unit
                     )
 
                     vertices.append(

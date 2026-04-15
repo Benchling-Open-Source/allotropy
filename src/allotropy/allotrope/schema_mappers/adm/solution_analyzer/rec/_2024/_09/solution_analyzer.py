@@ -32,17 +32,17 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_ana
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
-    TQuantityValueCountsPermL,
-    TQuantityValueDegC,
-    TQuantityValueGPerL,
-    TQuantityValueMAU,
-    TQuantityValueMicrom,
-    TQuantityValueML,
-    TQuantityValueMLPerL,
-    TQuantityValueMmHg,
-    TQuantityValueMmolPerL,
-    TQuantityValueMosmPerkg,
-    TQuantityValueOne06cellsPermL,
+    TQuantityValueCountsPerMilliliter,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueGramPerLiter,
+    TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerLiter,
+    TQuantityValueMillimeterOfMercury,
+    TQuantityValueMillimolePerLiter,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueMilliOsmolesPerKilogram,
     TQuantityValuePercent,
     TQuantityValuePH,
     TQuantityValueUnitless,
@@ -268,14 +268,17 @@ class Mapper(SchemaMapper[Data, Model]):
                                 device_type=metadata.device_type,
                                 detection_type=measurement.detection_type,
                                 flush_volume_setting=quantity_or_none(
-                                    TQuantityValueML, metadata.flush_volume_setting
+                                    TQuantityValueMilliliter,
+                                    metadata.flush_volume_setting,
                                 ),
                                 detector_view_volume=quantity_or_none(
-                                    TQuantityValueML, metadata.detector_view_volume
+                                    TQuantityValueMilliliter,
+                                    metadata.detector_view_volume,
                                 ),
                                 repetition_setting=metadata.repetition_setting,
                                 sample_volume_setting=quantity_or_none(
-                                    TQuantityValueML, metadata.sample_volume_setting
+                                    TQuantityValueMilliliter,
+                                    metadata.sample_volume_setting,
                                 ),
                             ),
                             measurement.device_control_custom_info,
@@ -296,9 +299,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 error_aggregate_document=self._get_error_aggregate_document(
                     measurement.errors
                 ),
-                absorbance=quantity_or_none(TQuantityValueMAU, measurement.absorbance),
-                p_o2=quantity_or_none(TQuantityValueMmHg, measurement.po2),
-                p_co2=quantity_or_none(TQuantityValueMmHg, measurement.pco2),
+                absorbance=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
+                ),
+                p_o2=quantity_or_none(
+                    TQuantityValueMillimeterOfMercury, measurement.po2
+                ),
+                p_co2=quantity_or_none(
+                    TQuantityValueMillimeterOfMercury, measurement.pco2
+                ),
                 carbon_dioxide_saturation=quantity_or_none(
                     TQuantityValuePercent, measurement.carbon_dioxide_saturation
                 ),
@@ -307,10 +316,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 p_h=quantity_or_none(TQuantityValuePH, measurement.ph),
                 temperature=quantity_or_none(
-                    TQuantityValueDegC, measurement.temperature
+                    TQuantityValueDegreeCelsius, measurement.temperature
                 ),
                 osmolality=quantity_or_none(
-                    TQuantityValueMosmPerkg, measurement.osmolality
+                    TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
                 ),
             ),
             measurement.custom_info,
@@ -331,23 +340,27 @@ class Mapper(SchemaMapper[Data, Model]):
         if analyte.unit == "g/L":
             output = AnalyteDocumentItem(
                 analyte_name=analyte.name,
-                mass_concentration=TQuantityValueGPerL(value=analyte.value),
+                mass_concentration=TQuantityValueGramPerLiter(value=analyte.value),
             )
         elif analyte.unit == "mL/L":
             output = AnalyteDocumentItem(
                 analyte_name=analyte.name,
-                volume_concentration=TQuantityValueMLPerL(value=analyte.value),
+                volume_concentration=TQuantityValueMilliliterPerLiter(
+                    value=analyte.value
+                ),
             )
         elif analyte.unit == "mmol/L":
             output = AnalyteDocumentItem(
                 analyte_name=analyte.name,
-                molar_concentration=TQuantityValueMmolPerL(value=analyte.value),
+                molar_concentration=TQuantityValueMillimolePerLiter(
+                    value=analyte.value
+                ),
             )
         elif analyte.unit == "U/L":
             if analyte.name == "ldh":
                 output = AnalyteDocumentItem(
                     analyte_name=analyte.name,
-                    molar_concentration=TQuantityValueMmolPerL(
+                    molar_concentration=TQuantityValueMillimolePerLiter(
                         value=analyte.value * 0.0167
                         if analyte.value > 0
                         else analyte.value,
@@ -373,13 +386,15 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValuePercent, measurement.viability
                 ),
                 total_cell_density__cell_counter_=quantity_or_none(
-                    TQuantityValueOne06cellsPermL, measurement.total_cell_density
+                    TQuantityValueMillionCellsPerMilliliter,
+                    measurement.total_cell_density,
                 ),
                 viable_cell_density__cell_counter_=quantity_or_none(
-                    TQuantityValueOne06cellsPermL, measurement.viable_cell_density
+                    TQuantityValueMillionCellsPerMilliliter,
+                    measurement.viable_cell_density,
                 ),
                 average_live_cell_diameter__cell_counter_=quantity_or_none(
-                    TQuantityValueMicrom, measurement.average_live_cell_diameter
+                    TQuantityValueMicrometer, measurement.average_live_cell_diameter
                 ),
                 total_cell_count=quantity_or_none(
                     TQuantityValueCell, measurement.total_cell_count
@@ -406,16 +421,16 @@ class Mapper(SchemaMapper[Data, Model]):
                         add_custom_information_document(
                             DistributionDocumentItem(
                                 distribution_identifier=distribution.distribution_identifier,
-                                particle_size=TQuantityValueMicrom(
+                                particle_size=TQuantityValueMicrometer(
                                     value=distribution.particle_size
                                 ),
                                 cumulative_count=TQuantityValueUnitless(
                                     value=distribution.cumulative_count
                                 ),
-                                cumulative_particle_density=TQuantityValueCountsPermL(
+                                cumulative_particle_density=TQuantityValueCountsPerMilliliter(
                                     value=distribution.cumulative_particle_density
                                 ),
-                                differential_particle_density=TQuantityValueCountsPermL(
+                                differential_particle_density=TQuantityValueCountsPerMilliliter(
                                     value=distribution.differential_particle_density
                                 ),
                                 differential_count=TQuantityValueUnitless(

@@ -96,7 +96,7 @@ class TestFieldDeclaration:
 
     def test_pco2_needs_metadata(self) -> None:
         result = _field_declaration(
-            "p_co2", "TQuantityValueMmHg", "pCO2", is_required=False
+            "p_co2", "TQuantityValueMillimeterOfMercury", "pCO2", is_required=False
         )
         assert '"pCO2"' in result
 
@@ -531,7 +531,7 @@ class TestModuleCodeRender:
                 fields=[
                     FieldDef(
                         python_name="peak_height",
-                        type_str="TQuantityValueMV",
+                        type_str="TQuantityValueMillivolt",
                         json_name="peak height",
                         is_required=False,
                     )
@@ -545,7 +545,7 @@ class TestModuleCodeRender:
                 fields=[
                     FieldDef(
                         python_name="peak_height",
-                        type_str="TQuantityValueNC",
+                        type_str="TQuantityValueNanoCoulomb",
                         json_name="peak height",
                         is_required=False,
                     )
@@ -1242,32 +1242,39 @@ class TestGeneratedClassCopy:
 
 class TestQuantityValueManager:
     def test_get_or_create_new(self) -> None:
-        mgr = QuantityValueManager()
+        mgr = QuantityValueManager(
+            unit_descriptive_names={"mAU": "MilliAbsorbanceUnit"}
+        )
         result = mgr.get_or_create("mAU")
-        assert result == "TQuantityValueMAU"
-        assert ("TQuantityValueMAU", "mAU") in mgr.new_classes
+        assert result == "TQuantityValueMilliAbsorbanceUnit"
+        assert ("TQuantityValueMilliAbsorbanceUnit", "mAU") in mgr.new_classes
 
     def test_get_or_create_idempotent(self) -> None:
-        mgr = QuantityValueManager()
+        mgr = QuantityValueManager(unit_descriptive_names={"nm": "Nanometer"})
         first = mgr.get_or_create("nm")
         second = mgr.get_or_create("nm")
         assert first == second
         assert len(mgr.new_classes) == 1
 
-    def test_existing_classes_not_recorded_as_new(self) -> None:
-        mgr = QuantityValueManager(
-            existing_unit_to_class={("°C", False): "TQuantityValueDegC"}
-        )
+    def test_descriptive_names_used_when_available(self) -> None:
+        mgr = QuantityValueManager(unit_descriptive_names={"°C": "DegreeCelsius"})
         result = mgr.get_or_create("°C")
-        assert result == "TQuantityValueDegC"
-        assert len(mgr.new_classes) == 0
+        assert result == "TQuantityValueDegreeCelsius"
+        assert len(mgr.new_classes) == 1
 
     def test_different_units_produce_different_classes(self) -> None:
-        mgr = QuantityValueManager()
+        mgr = QuantityValueManager(
+            unit_descriptive_names={"mAU": "MilliAbsorbanceUnit", "nm": "Nanometer"}
+        )
         a = mgr.get_or_create("mAU")
         b = mgr.get_or_create("nm")
         assert a != b
         assert len(mgr.new_classes) == 2
+
+    def test_missing_descriptive_name_raises(self) -> None:
+        mgr = QuantityValueManager()
+        with pytest.raises(ValueError, match="No descriptive name"):
+            mgr.get_or_create("mAU")
 
 
 # ---------------------------------------------------------------------------

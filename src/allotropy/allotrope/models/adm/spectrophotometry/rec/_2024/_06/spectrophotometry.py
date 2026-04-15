@@ -23,13 +23,13 @@ from allotropy.allotrope.models.adm.core.rec._2024._06.hierarchy import (
     TechniqueDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCmSqPerg,
-    TQuantityValueCmSqPermol,
-    TQuantityValueMAU,
-    TQuantityValueMm,
-    TQuantityValueNm,
-    TQuantityValuePgPermL,
-    TQuantityValueS,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
+    TQuantityValueNanometer,
+    TQuantityValuePicogramPerMilliliter,
+    TQuantityValueSecondTime,
+    TQuantityValueSquareCentimetersPerGram,
+    TQuantityValueSquareCentimetersPerMole,
 )
 
 
@@ -67,16 +67,24 @@ class DeviceControlDocumentItem(OrderedItem):
         None
     )
     detector_gain_setting: TStringValue | None = None
-    exposure_duration_setting: TQuantityValueS | None = None
-    cell_path_length_setting: TQuantityValueMm | None = None
-    mass_attenuation_coefficient_setting: TQuantityValueCmSqPerg | None = None
-    molar_attenuation_coefficient_setting: TQuantityValueCmSqPermol | None = None
-    detector_wavelength_setting: TQuantityValueNm | None = None
-    detector_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_wavelength_setting: TQuantityValueNm | None = None
-    electronic_absorbance_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNm | None = None
-    electronic_absorbance_reference_wavelength_setting: TQuantityValueNm | None = None
+    exposure_duration_setting: TQuantityValueSecondTime | None = None
+    cell_path_length_setting: TQuantityValueMillimeter | None = None
+    mass_attenuation_coefficient_setting: TQuantityValueSquareCentimetersPerGram | None = (
+        None
+    )
+    molar_attenuation_coefficient_setting: TQuantityValueSquareCentimetersPerMole | None = (
+        None
+    )
+    detector_wavelength_setting: TQuantityValueNanometer | None = None
+    detector_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_wavelength_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_bandwidth_setting: TQuantityValueNanometer | None = None
+    electronic_absorbance_reference_bandwidth_setting: TQuantityValueNanometer | None = (
+        None
+    )
+    electronic_absorbance_reference_wavelength_setting: TQuantityValueNanometer | None = (
+        None
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -163,7 +171,7 @@ class SampleDocument:
     vial_location_identifier: TStringValue | None = None
     location_identifier: TStringValue | None = None
     well_plate_identifier: TStringValue | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -182,8 +190,8 @@ class MeasurementDocumentItem:
     measurement_time: TDateTimeStampValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    absorbance: TQuantityValueMAU | None = None
-    mass_concentration: TQuantityValuePgPermL | None = None
+    absorbance: TQuantityValueMilliAbsorbanceUnit | None = None
+    mass_concentration: TQuantityValuePicogramPerMilliliter | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

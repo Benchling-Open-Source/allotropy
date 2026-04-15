@@ -33,13 +33,11 @@ from allotropy.schema_gen.naming import (
     UNITS_SCHEMA_MARKER,
 )
 
-# Path to the shared quantity_values module (relative to output_dir's parent)
-_QUANTITY_VALUES_FILE = Path(
-    "src/allotropy/allotrope/models/shared/definitions/quantity_values.py"
-)
+# Relative path within the models output_dir for the shared quantity_values module
+_QUANTITY_VALUES_REL = Path("shared/definitions/quantity_values.py")
 
-# Path to the shared units module
-_SHARED_UNITS_FILE = Path("src/allotropy/allotrope/models/shared/definitions/units.py")
+# Relative path within the models output_dir for the shared units module
+_SHARED_UNITS_REL = Path("shared/definitions/units.py")
 
 # Regex to extract the status/version segment from an Allotrope URL path.
 # Matches e.g. "/REC/2024/09/" or "/WD/2025/03/".
@@ -122,10 +120,10 @@ def generate_models(
     other_urls = [u for u in order if not _is_units_schema(u) and u in requested_urls]
 
     # Update shared units module with any new units from these schemas
-    new_unit_count = _update_shared_units(all_schemas, cache_dir)
+    new_unit_count = _update_shared_units(all_schemas, cache_dir, output_dir)
     if new_unit_count:
         print(  # noqa: T201
-            f"  Added {new_unit_count} new unit(s) to {_SHARED_UNITS_FILE}"
+            f"  Added {new_unit_count} new unit(s) to {output_dir / _SHARED_UNITS_REL}"
         )
 
     print("\nGenerating Python modules...")  # noqa: T201
@@ -136,13 +134,11 @@ def generate_models(
 
     # Generate all non-units modules via the custom code generator
     if other_urls:
-        existing_unit_to_class = _read_existing_quantity_value_classes()
         generator = SchemaCodeGenerator(
             all_schemas,
             order,
             models_package,
-            existing_unit_to_class,
-            unit_descriptive_names,
+            unit_descriptive_names=unit_descriptive_names,
         )
         modules = generator.generate_all()
 
@@ -157,13 +153,14 @@ def generate_models(
             generated_files.append(output_path)
             print(f"  Generated: {output_path}")  # noqa: T201
 
-        # Regenerate quantity_values.py with any new types
-        if generator.new_quantity_value_classes:
-            _regenerate_quantity_values(generator.all_quantity_value_classes)
-            print(  # noqa: T201
-                f"  Updated {_QUANTITY_VALUES_FILE}"
-                f" ({len(generator.new_quantity_value_classes)} new type(s))"
-            )
+        # Regenerate quantity_values.py from the complete unit list.
+        # This is always deterministic regardless of which schemas are
+        # being generated, because _collect_all_units scans all cached
+        # schema files on disk.
+        qv_path = _regenerate_quantity_values(
+            unit_descriptive_names, _NULLABLE_UNITS, output_dir
+        )
+        print(f"  Updated {qv_path}")  # noqa: T201
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
     return generated_files
@@ -416,6 +413,17 @@ _MANUAL_UNITS: dict[str, str] = {
     "U/L": "UnitPerLiter",
 }
 
+# Units that need TNullableQuantityValue variants.  Only create nullable
+# variants for units that are actually used somewhere; generating nullable
+# for all ~780 units is wasteful.  "(unitless)" comes from schemas;
+# the others are used by manual parser code (e.g., roche_cedex_bioht).
+_NULLABLE_UNITS: list[str] = [
+    "(unitless)",
+    "g/L",
+    "mmol/L",
+    "U/L",
+]
+
 # Regex to parse existing unit classes from shared/definitions/units.py.
 _UNIT_CLASS_RE = re.compile(
     r"^class (\w+)\(HasUnit\):\s*\n\s+unit:\s+str\s*=\s*(?:UNITLESS|\"([^\"]*)\"|'([^']*)')",
@@ -423,11 +431,14 @@ _UNIT_CLASS_RE = re.compile(
 )
 
 
-def _read_existing_unit_classes() -> dict[str, str]:
+def _read_existing_unit_classes(
+    output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR,
+) -> dict[str, str]:
     """Read {const_value: class_name} from the current shared units file."""
-    if not _SHARED_UNITS_FILE.exists():
+    units_file = output_dir / _SHARED_UNITS_REL
+    if not units_file.exists():
         return {}
-    content = _SHARED_UNITS_FILE.read_text(encoding="utf-8")
+    content = units_file.read_text(encoding="utf-8")
     result: dict[str, str] = {}
     for match in _UNIT_CLASS_RE.finditer(content):
         class_name = match.group(1)
@@ -564,22 +575,27 @@ def _generate_shared_units_source(all_units: dict[str, str]) -> str:
     return "\n".join(lines)
 
 
-def _update_shared_units(all_schemas: dict[str, Any], cache_dir: Path) -> int:
+def _update_shared_units(
+    all_schemas: dict[str, Any],
+    cache_dir: Path,
+    output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR,
+) -> int:
     """Update shared/definitions/units.py with any new units.
 
     Returns the number of newly added units.
     """
     all_units = _collect_all_units(all_schemas, cache_dir)
-    existing = _read_existing_unit_classes()
+    existing = _read_existing_unit_classes(output_dir)
 
     new_count = sum(1 for const in all_units if const not in existing)
     if new_count == 0 and existing:
         return 0
 
     # Regenerate the entire file to maintain sorted order
+    units_path = output_dir / _SHARED_UNITS_REL
     source = _generate_shared_units_source(all_units)
-    _write_module(_SHARED_UNITS_FILE, source)
-    _lint_file(_SHARED_UNITS_FILE)
+    _write_module(units_path, source)
+    _lint_file(units_path)
     return new_count
 
 
@@ -587,37 +603,19 @@ def _update_shared_units(all_schemas: dict[str, Any], cache_dir: Path) -> int:
 # Shared quantity_values.py management
 # ---------------------------------------------------------------------------
 
-_QV_UNIT_RE = re.compile(
-    r"^class (T(?:Nullable)?QuantityValue\w+)\([^)]+\):\s*\n"
-    r"\s+unit:\s+str\s*=\s*\"([^\"]+)\"",
-    re.MULTILINE,
-)
-
-
-def _read_existing_quantity_value_classes() -> dict[tuple[str, bool], str]:
-    """Read class names and unit values already defined in quantity_values.py.
-
-    Returns a mapping from ``(unit_string, nullable)`` to class name.
-    The *nullable* key distinguishes ``TQuantityValueUnitless`` from
-    ``TNullableQuantityValueUnitless`` for the same unit string.
-    """
-    if not _QUANTITY_VALUES_FILE.exists():
-        return {}
-    content = _QUANTITY_VALUES_FILE.read_text(encoding="utf-8")
-    unit_to_class: dict[tuple[str, bool], str] = {}
-    for name, unit in _QV_UNIT_RE.findall(content):
-        nullable = name.startswith("TNullableQuantityValue")
-        unit_to_class[(unit, nullable)] = name
-    return unit_to_class
-
 
 def _regenerate_quantity_values(
-    all_classes: dict[tuple[str, bool], str],
-) -> None:
-    """Regenerate quantity_values.py from the complete set of classes.
+    unit_descriptive_names: dict[str, str],
+    nullable_units: list[str],
+    output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR,
+) -> Path:
+    """Regenerate quantity_values.py from the complete unit list.
 
-    Writes the entire file from scratch (sorted by class name) rather than
-    appending, so that naming scheme changes are applied consistently.
+    Builds the file from scratch using ``unit_descriptive_names`` (which
+    is derived from all cached schemas, so it's always complete regardless
+    of which schemas are being generated in this run).
+
+    Returns the path of the written file.
     """
     lines: list[str] = [
         "# THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.",
@@ -644,15 +642,26 @@ def _regenerate_quantity_values(
         "# ---------------------------------------------------------------------------",
     ]
 
+    # Build non-nullable classes for every known unit.
+    # Deduplicate by class name — multiple unit strings can map to the same
+    # descriptive name (e.g., "ug/µL" and "μg/μL" both → MicrogramPerMicroliter).
+    # First writer wins (dict preserves insertion order).
+    seen: dict[str, tuple[str, str]] = {}  # class_name → (base, unit_str)
+    for unit_str, descriptive in unit_descriptive_names.items():
+        name = f"TQuantityValue{descriptive}"
+        if name not in seen:
+            seen[name] = ("TQuantityValue", unit_str)
+
+    # Build nullable classes for units that need them
+    for unit_str in nullable_units:
+        nullable_desc = unit_descriptive_names.get(unit_str)
+        if nullable_desc is not None:
+            name = f"TNullableQuantityValue{nullable_desc}"
+            if name not in seen:
+                seen[name] = ("TNullableQuantityValue", unit_str)
+
     # Sort by class name for deterministic output
-    for (unit_str, _nullable), class_name in sorted(
-        all_classes.items(), key=lambda item: item[1]
-    ):
-        base = (
-            "TNullableQuantityValue"
-            if class_name.startswith("TNullableQuantityValue")
-            else "TQuantityValue"
-        )
+    for class_name, (base, unit_str) in sorted(seen.items()):
         quoted = _dquote(unit_str)
         lines.extend(
             [
@@ -666,8 +675,10 @@ def _regenerate_quantity_values(
 
     lines.append("")
     source = "\n".join(lines)
-    _QUANTITY_VALUES_FILE.write_text(source, encoding="utf-8")
-    _lint_file(_QUANTITY_VALUES_FILE)
+    qv_path = output_dir / _QUANTITY_VALUES_REL
+    _write_module(qv_path, source)
+    _lint_file(qv_path)
+    return qv_path
 
 
 # ---------------------------------------------------------------------------

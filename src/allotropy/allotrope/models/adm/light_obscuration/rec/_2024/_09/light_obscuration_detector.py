@@ -10,9 +10,9 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.core import (
     TStringValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCountsPermL,
-    TQuantityValueMicrom,
-    TQuantityValueML,
+    TQuantityValueCountsPerMilliliter,
+    TQuantityValueMicrometer,
+    TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
 
@@ -25,18 +25,18 @@ class DataProcessingDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class DeviceControlDocumentItem:
-    flush_volume_setting: TQuantityValueML
-    detector_view_volume: TQuantityValueML
+    flush_volume_setting: TQuantityValueMilliliter
+    detector_view_volume: TQuantityValueMilliliter
     repetition_setting: TIntValue
-    sample_volume_setting: TQuantityValueML
+    sample_volume_setting: TQuantityValueMilliliter
 
 
 @dataclass(frozen=True, kw_only=True)
 class DistributionDocumentItem:
-    particle_size: TQuantityValueMicrom
+    particle_size: TQuantityValueMicrometer
     cumulative_count: TQuantityValueUnitless
-    cumulative_particle_density: TQuantityValueCountsPermL
-    differential_particle_density: TQuantityValueCountsPermL
+    cumulative_particle_density: TQuantityValueCountsPerMilliliter
+    differential_particle_density: TQuantityValueCountsPerMilliliter
     differential_count: TQuantityValueUnitless
     distribution_identifier: TStringValue | None = None
 

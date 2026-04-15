@@ -20,7 +20,7 @@ from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_ha
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueMicroL,
+    TQuantityValueMicroliter,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -176,10 +176,10 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_time=self.get_date_time(measurement.measurement_time),
             sample_document=self._get_sample_document(measurement),
             aspiration_volume=quantity_or_none(
-                TQuantityValueMicroL, measurement.aspiration_volume
+                TQuantityValueMicroliter, measurement.aspiration_volume
             ),
             transfer_volume=quantity_or_none(
-                TQuantityValueMicroL, measurement.transfer_volume
+                TQuantityValueMicroliter, measurement.transfer_volume
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -187,7 +187,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         DeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             injection_volume_setting=quantity_or_none(
-                                TQuantityValueMicroL,
+                                TQuantityValueMicroliter,
                                 measurement.injection_volume_setting,
                             ),
                         ),

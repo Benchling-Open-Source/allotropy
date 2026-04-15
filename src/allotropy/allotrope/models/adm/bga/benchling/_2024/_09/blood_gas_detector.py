@@ -5,16 +5,18 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueKPa,
-    TQuantityValueMmHg,
+    TQuantityValueKiloPascal,
+    TQuantityValueMillimeterOfMercury,
     TQuantityValuePercent,
 )
 
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
-    p_o2: TQuantityValueKPa | TQuantityValueMmHg = field(metadata={"json_name": "pO2"})
-    p_co2: TQuantityValueKPa | TQuantityValueMmHg = field(
+    p_o2: TQuantityValueKiloPascal | TQuantityValueMillimeterOfMercury = field(
+        metadata={"json_name": "pO2"}
+    )
+    p_co2: TQuantityValueKiloPascal | TQuantityValueMillimeterOfMercury = field(
         metadata={"json_name": "pCO2"}
     )
     carbon_dioxide_saturation: TQuantityValuePercent | None = None

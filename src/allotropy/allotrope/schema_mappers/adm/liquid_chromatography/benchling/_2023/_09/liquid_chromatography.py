@@ -39,18 +39,18 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     TemperatureProfileDataCube,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueCm,
-    TQuantityValueHz,
-    TQuantityValueMAUDots,
-    TQuantityValueMicroL,
-    TQuantityValueMicrom,
-    TQuantityValueML,
-    TQuantityValueMLPermin,
-    TQuantityValueMm,
-    TQuantityValueMmCu,
-    TQuantityValueNm,
+    TQuantityValueCentimeter,
+    TQuantityValueCubicMillimeter,
+    TQuantityValueHertz,
+    TQuantityValueMicroliter,
+    TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnitTimesSecond,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerMinute,
+    TQuantityValueMillimeter,
+    TQuantityValueNanometer,
     TQuantityValuePercent,
-    TQuantityValueS,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import (
@@ -380,18 +380,20 @@ class Mapper(SchemaMapper[Data, Model]):
                 chromatography_column_serial_number=measurement.chromatography_serial_num,
                 chromatography_column_chemistry_type=measurement.chromatography_chemistry_type,
                 column_inner_diameter=quantity_or_none(
-                    TQuantityValueMm,
+                    TQuantityValueMillimeter,
                     measurement.column_inner_diameter,
                 ),
                 chromatography_column_part_number=measurement.chromatography_part_num,
                 chromatography_column_particle_size=quantity_or_none(
-                    TQuantityValueMicrom, measurement.chromatography_particle_size
+                    TQuantityValueMicrometer, measurement.chromatography_particle_size
                 ),
                 chromatography_column_length=quantity_or_none(
-                    TQuantityValueCm, measurement.chromatography_length
+                    TQuantityValueCentimeter, measurement.chromatography_length
                 ),
                 product_manufacturer=measurement.column_product_manufacturer,
-                void_volume=quantity_or_none(TQuantityValueML, measurement.void_volume),
+                void_volume=quantity_or_none(
+                    TQuantityValueMilliliter, measurement.void_volume
+                ),
             ),
             custom_info_doc=measurement.column_custom_info,
         )
@@ -402,11 +404,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 injection_identifier=measurement.injection_identifier,
                 injection_time=self.get_date_time(measurement.injection_time),
                 autosampler_injection_volume_setting__chromatography_=quantity_or_none(
-                    TQuantityValueMmCu,
+                    TQuantityValueCubicMillimeter,
                     measurement.autosampler_injection_volume_setting,
                 ),
                 injection_volume_setting=quantity_or_none(
-                    TQuantityValueMicroL, measurement.injection_volume_setting
+                    TQuantityValueMicroliter, measurement.injection_volume_setting
                 ),
             ),
             measurement.injection_custom_info,
@@ -422,7 +424,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 sample_role_type=measurement.sample_role_type,  # type: ignore[arg-type]
                 written_name=measurement.written_name,
                 flow_rate=quantity_or_none(
-                    TQuantityValueMLPermin, measurement.flow_rate
+                    TQuantityValueMilliliterPerMinute, measurement.flow_rate
                 ),
                 location_identifier=measurement.location_identifier,
                 well_location_identifier=measurement.well_location_identifier,
@@ -447,7 +449,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 relative_peak_height=quantity_or_none(
                     TQuantityValuePercent, peak.relative_height
                 ),
-                retention_time=quantity_or_none(TQuantityValueS, peak.retention_time),
+                retention_time=quantity_or_none(
+                    TQuantityValueSecondTime, peak.retention_time
+                ),
                 chromatographic_peak_resolution=quantity_or_none(
                     TQuantityValueUnitless, peak.chromatographic_resolution
                 ),
@@ -468,13 +472,13 @@ class Mapper(SchemaMapper[Data, Model]):
                     peak.number_of_theoretical_plates_by_peak_width_at_half_height,
                 ),
                 peak_width_at_5__of_height=quantity_or_none(
-                    TQuantityValueS, peak.peak_width_at_5_percent_of_height
+                    TQuantityValueSecondTime, peak.peak_width_at_5_percent_of_height
                 ),
                 peak_width_at_10__of_height=quantity_or_none(
-                    TQuantityValueS, peak.peak_width_at_10_percent_of_height
+                    TQuantityValueSecondTime, peak.peak_width_at_10_percent_of_height
                 ),
                 peak_width_at_baseline=quantity_or_none(
-                    TQuantityValueS, peak.peak_width_at_baseline
+                    TQuantityValueSecondTime, peak.peak_width_at_baseline
                 ),
                 asymmetry_factor_measured_at_5__height=quantity_or_none(
                     TQuantityValueUnitless,
@@ -495,12 +499,14 @@ class Mapper(SchemaMapper[Data, Model]):
                 relative_corrected_peak_area=quantity_or_none(
                     TQuantityValuePercent, peak.relative_corrected_peak_area
                 ),
-                peak_group=quantity_or_none(TQuantityValueMAUDots, peak.peak_group),
+                peak_group=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnitTimesSecond, peak.peak_group
+                ),
                 baseline_value_at_start_of_peak=quantity_or_none(
-                    TQuantityValueS, peak.baseline_value_at_start_of_peak
+                    TQuantityValueSecondTime, peak.baseline_value_at_start_of_peak
                 ),
                 baseline_value_at_end_of_peak=quantity_or_none(
-                    TQuantityValueS, peak.baseline_value_at_end_of_peak
+                    TQuantityValueSecondTime, peak.baseline_value_at_end_of_peak
                 ),
                 relative_peak_analyte_amount=quantity_or_none(
                     TQuantityValuePercent, peak.relative_peak_analyte_amount
@@ -599,15 +605,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 model_number=device_control_doc.model_number,
                 firmware_version=device_control_doc.firmware_version,
                 excitation_wavelength_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     device_control_doc.excitation_wavelength_setting,
                 ),
                 detector_wavelength_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     device_control_doc.detector_wavelength_setting,
                 ),
                 detector_bandwidth_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     device_control_doc.detector_bandwidth_setting,
                 ),
                 solvent_concentration_data_cube=get_data_cube(
@@ -646,15 +652,15 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueUnitless, device_control_doc.detector_offset_setting
                 ),
                 detector_sampling_rate_setting=quantity_or_none(
-                    TQuantityValueHz,
+                    TQuantityValueHertz,
                     device_control_doc.detector_sampling_rate_setting,
                 ),
                 electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     device_control_doc.electronic_absorbance_reference_bandwidth_setting,
                 ),
                 electronic_absorbance_reference_wavelength_setting=quantity_or_none(
-                    TQuantityValueNm,
+                    TQuantityValueNanometer,
                     device_control_doc.electronic_absorbance_reference_wavelength_setting,
                 ),
             ),
@@ -680,10 +686,10 @@ class Mapper(SchemaMapper[Data, Model]):
             fraction_role=fraction_doc.fraction_role,
             field_type=fraction_doc.field_type,
             retention_time=quantity_or_none(
-                TQuantityValueS, fraction_doc.retention_time
+                TQuantityValueSecondTime, fraction_doc.retention_time
             ),
             retention_volume=quantity_or_none(
-                TQuantityValueML, fraction_doc.retention_volume
+                TQuantityValueMilliliter, fraction_doc.retention_volume
             ),
         )
 
@@ -706,9 +712,11 @@ class Mapper(SchemaMapper[Data, Model]):
             index=log_doc.index,
             method_identifier=log_doc.method_identifier,
             log_entry=log_doc.log_entry,
-            retention_time=quantity_or_none(TQuantityValueS, log_doc.retention_time),
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, log_doc.retention_time
+            ),
             retention_volume=quantity_or_none(
-                TQuantityValueML, log_doc.retention_volume
+                TQuantityValueMilliliter, log_doc.retention_volume
             ),
         )
         return add_custom_information_document(log_doc_item, log_doc.custom_info)

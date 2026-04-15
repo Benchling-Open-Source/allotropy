@@ -37,13 +37,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TQuantityValueKDa,
-    TQuantityValueM1cm1,
-    TQuantityValueMAU,
-    TQuantityValueMicroL,
-    TQuantityValueNgPerMicroL,
-    TQuantityValueNm,
-    TQuantityValueRFU,
+    TQuantityValueKiloDalton,
+    TQuantityValueMicroliter,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueNanogramPerMicroliter,
+    TQuantityValueNanometer,
+    TQuantityValuePerMolarPerCentimeter,
+    TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -253,11 +253,11 @@ class Mapper(SchemaMapper[Data, Model]):
                             device_type=metadata.device_type,
                             detection_type=metadata.detection_type,
                             detector_wavelength_setting=quantity_or_none(
-                                TQuantityValueNm,
+                                TQuantityValueNanometer,
                                 measurement.detector_wavelength_setting,
                             ),
                             electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
-                                TQuantityValueNm,
+                                TQuantityValueNanometer,
                                 measurement.electronic_absorbance_reference_wavelength_setting,
                             ),
                         ),
@@ -265,7 +265,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorbance=TQuantityValueMAU(
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
                 value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
             ),
             calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
@@ -274,15 +274,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         custom_info_doc = (measurement.custom_info or {}) | {
             "baseline absorbance": quantity_or_none(
-                TQuantityValueMAU,
+                TQuantityValueMilliAbsorbanceUnit,
                 measurement.baseline_absorbance,
             ),
             "340 raw": quantity_or_none(
-                TQuantityValueMAU,
+                TQuantityValueMilliAbsorbanceUnit,
                 (measurement.custom_info or {}).get("340 raw"),
             ),
             "Cursor Abs.": quantity_or_none(
-                TQuantityValueMAU,
+                TQuantityValueMilliAbsorbanceUnit,
                 measurement.cursor_absorbance,
             ),
         }
@@ -330,7 +330,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detector_wavelength_setting=quantity_or_none(
-                                TQuantityValueNm,
+                                TQuantityValueNanometer,
                                 measurement.detector_wavelength_setting,
                             ),
                         ),
@@ -338,7 +338,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            fluorescence=TQuantityValueRFU(
+            fluorescence=TQuantityValueRelativeFluorescenceUnit(
                 value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
             ),
         )
@@ -350,7 +350,7 @@ class Mapper(SchemaMapper[Data, Model]):
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
         custom_info = {
             "sample volume setting": quantity_or_none(
-                TQuantityValueMicroL, measurement.sample_volume_setting
+                TQuantityValueMicroliter, measurement.sample_volume_setting
             ),
             "excitation setting": measurement.excitation_wavelength_setting,
             "emission setting": measurement.emission_wavelength_setting,
@@ -358,7 +358,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
             "Cursor Pos.": quantity_or_none(
-                TQuantityValueNm, measurement.cursor_position
+                TQuantityValueNanometer, measurement.cursor_position
             ),
         }
         return (measurement.device_control_custom_info or {}) | custom_info
@@ -384,7 +384,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
         sample_custom_info = measurement.sample_custom_info or {}
         sample_custom_info["Mol. Wt. kda"] = quantity_or_none(
-            TQuantityValueKDa, sample_custom_info.get("Mol. Wt. kda")
+            TQuantityValueKiloDalton, sample_custom_info.get("Mol. Wt. kda")
         )
 
         return add_custom_information_document(
@@ -411,15 +411,15 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueUnitless, data.custom_info.get("E1%")
                 ),
                 "ext. coeff x10e3": quantity_or_none(
-                    TQuantityValueM1cm1,
+                    TQuantityValuePerMolarPerCentimeter,
                     data.custom_info.get("ext. coeff x10e3"),
                 ),
                 "ext.c.": quantity_or_none(
-                    TQuantityValueM1cm1,
+                    TQuantityValuePerMolarPerCentimeter,
                     data.custom_info.get("ext.c. (l/(mol*cm))"),
                 ),
                 "conc. factor": quantity_or_none(
-                    TQuantityValueNgPerMicroL,
+                    TQuantityValueNanogramPerMicroliter,
                     data.custom_info.get("conc. factor (ng/ul)"),
                 ),
             }
