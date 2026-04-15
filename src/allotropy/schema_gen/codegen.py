@@ -90,6 +90,20 @@ _CONSTRAINT_ONLY_KEYS = frozenset(
 )
 
 
+def _is_constraint_only_overlay(prop_schema: dict[str, Any]) -> bool:
+    """Return True if the property schema is a constraint-only overlay.
+
+    Constraint-only overlays contain exclusively JSON Schema validation
+    keywords (e.g. ``minItems``, ``maxItems``, ``required``) that refine
+    a field already defined on a base class.  They do not introduce a new
+    type and should be skipped during code generation.
+
+    An empty schema (e.g. after stripping ``$asm`` metadata) is NOT a
+    constraint overlay — it represents a real field typed as ``Any``.
+    """
+    return bool(prop_schema) and prop_schema.keys() <= _CONSTRAINT_ONLY_KEYS
+
+
 # ---------------------------------------------------------------------------
 # Intermediate Representation (IR)
 # ---------------------------------------------------------------------------
@@ -1514,9 +1528,7 @@ class SchemaCodeGenerator:
         if "format" in prop_schema:
             return "str"
 
-        # Constraint-only overlays refine a base-class field, not define new types.
-        # An empty schema (all keys were $asm metadata) is a real field typed as Any.
-        if prop_schema and prop_schema.keys() <= _CONSTRAINT_ONLY_KEYS:
+        if _is_constraint_only_overlay(prop_schema):
             return None
 
         if prop_schema:
