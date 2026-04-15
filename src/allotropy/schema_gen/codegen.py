@@ -979,11 +979,15 @@ class QuantityValueManager:
     def __init__(
         self,
         existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
+        unit_descriptive_names: dict[str, str] | None = None,
     ) -> None:
         # (unit_string, nullable) → class name.  Single source of truth.
         self._unit_to_class: dict[tuple[str, bool], str] = (
             dict(existing_unit_to_class) if existing_unit_to_class else {}
         )
+        # unit const → descriptive name from shared units (e.g., "degC" → "DegreeCelsius").
+        # Falls back to unit_symbol_to_class_name() for unknown units.
+        self._descriptive: dict[str, str] = dict(unit_descriptive_names or {})
         # Derived: set of all known class names (for fast membership checks
         # and for enumerating classes during core re-export generation).
         self._known_names: set[str] = set(self._unit_to_class.values())
@@ -994,18 +998,32 @@ class QuantityValueManager:
         """All known TQuantityValue class names (existing + newly created)."""
         return self._known_names
 
+    @property
+    def all_classes(self) -> dict[tuple[str, bool], str]:
+        """Complete mapping of (unit_string, nullable) → class_name."""
+        return dict(self._unit_to_class)
+
     def get_or_create(self, unit_const: str, *, nullable: bool = False) -> str:
         """Return the class name for *unit_const*, recording it as new if needed."""
         key = (unit_const, nullable)
         existing = self._unit_to_class.get(key)
         if existing is not None:
             return existing
-        class_name = quantity_value_class_name(unit_const, nullable=nullable)
+        class_name = self._build_class_name(unit_const, nullable=nullable)
         if class_name not in self._known_names:
             self._unit_to_class[key] = class_name
             self._known_names.add(class_name)
             self.new_classes.append((class_name, unit_const))
         return class_name
+
+    def _build_class_name(self, unit_const: str, *, nullable: bool) -> str:
+        """Build a TQuantityValue class name using descriptive unit names."""
+        prefix = "TNullableQuantityValue" if nullable else "TQuantityValue"
+        descriptive = self._descriptive.get(unit_const)
+        if descriptive:
+            return prefix + descriptive
+        # Fallback for units not in the shared mapping
+        return quantity_value_class_name(unit_const, nullable=nullable)
 
 
 # ---------------------------------------------------------------------------
@@ -1022,6 +1040,7 @@ class SchemaCodeGenerator:
         generation_order: list[str],
         models_package: str = "allotropy.allotrope.models",
         existing_unit_to_class: dict[tuple[str, bool], str] | None = None,
+        unit_descriptive_names: dict[str, str] | None = None,
     ) -> None:
         self.schemas = schemas
         self.generation_order = generation_order
@@ -1031,11 +1050,18 @@ class SchemaCodeGenerator:
         # Schema merging helper
         self._merger = SchemaMerger(schemas)
         # Quantity value lifecycle manager
-        self._qv_manager = QuantityValueManager(existing_unit_to_class)
+        self._qv_manager = QuantityValueManager(
+            existing_unit_to_class, unit_descriptive_names
+        )
 
     @property
     def new_quantity_value_classes(self) -> list[tuple[str, str]]:
         return self._qv_manager.new_classes
+
+    @property
+    def all_quantity_value_classes(self) -> dict[tuple[str, bool], str]:
+        """All known TQuantityValue classes: {(unit_string, nullable): class_name}."""
+        return self._qv_manager.all_classes
 
     def generate_all(self) -> dict[str, ModuleCode]:
         """Generate Python modules for all schemas in dependency order."""

@@ -13,7 +13,6 @@ from typing import Any
 from urllib.request import urlopen
 
 from allotropy.schema_gen.naming import (
-    allotrope_url_to_gitlab_raw,
     DEFAULT_SCHEMA_CACHE_DIR,
     gitlab_blob_to_raw,
     normalize_schema_url,
@@ -69,11 +68,19 @@ class SchemaFetcher:
                 result: dict[str, Any] = json.load(f)
                 return result
 
-        # Download from GitLab
-        download_url = allotrope_url_to_gitlab_raw(canonical_url)
-        print(f"  Downloading: {download_url}")  # noqa: T201
-        with urlopen(download_url) as response:  # noqa: S310
-            data = response.read().decode("utf-8")
+        # Download via purl redirect (canonical URL + .json suffix)
+        purl_url = (
+            canonical_url + ".json"
+            if not canonical_url.endswith(".json")
+            else canonical_url
+        )
+        print(f"  Downloading: {purl_url}")  # noqa: T201
+        try:
+            with urlopen(purl_url) as response:  # noqa: S310
+                data = response.read().decode("utf-8")
+        except Exception as exc:
+            msg = f"Failed to download schema: {canonical_url}\n  URL: {purl_url}"
+            raise RuntimeError(msg) from exc
 
         schema: dict[str, Any] = json.loads(data)
 

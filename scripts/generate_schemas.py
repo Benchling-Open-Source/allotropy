@@ -1,18 +1,28 @@
 #!/usr/bin/env python3
 import click
 
-from allotropy.schema_gen.generate import generate_models
+from allotropy.schema_gen.generate import (
+    _discover_cached_technique_urls,
+    generate_models,
+)
 
 
 @click.command()
-@click.argument("schema_urls", nargs=-1, required=True)
-def _generate_schemas(schema_urls: tuple[str, ...]) -> None:
+@click.argument("schema_urls", nargs=-1, required=False)
+@click.option("--all", "regenerate_all", is_flag=True, help="Regenerate all cached technique schemas.")
+def _generate_schemas(schema_urls: tuple[str, ...], *, regenerate_all: bool = False) -> None:
     """Generate Python models from one or more Allotrope schema URLs.
 
-    All schemas sharing the same core version (e.g., REC/2024/09) must be
-    passed together so shared modules accumulate types from all schemas.
+    Use --all to regenerate every cached technique schema.
     """
-    generate_models(list(schema_urls))
+    if regenerate_all:
+        urls = _discover_cached_technique_urls()
+        click.echo(f"Discovered {len(urls)} cached technique schema(s)")
+    elif schema_urls:
+        urls = list(schema_urls)
+    else:
+        raise click.UsageError("Provide schema URLs or use --all.")
+    generate_models(urls)
 
 
 if __name__ == "__main__":

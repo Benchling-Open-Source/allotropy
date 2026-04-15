@@ -24,6 +24,7 @@ from allotropy.schema_gen.codegen import (
 )
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
 from allotropy.schema_gen.naming import (
+    ALLOTROPE_URL_PREFIX,
     DEFAULT_MODEL_OUTPUT_DIR,
     DEFAULT_SCHEMA_CACHE_DIR,
     normalize_schema_url,
@@ -82,6 +83,19 @@ def generate_models(
         print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
         all_schemas.update(schemas)
 
+    # Snapshot the requested URLs (+ their $ref deps) before loading extras.
+    # Only these will be written to disk; cached BENCHLING schemas loaded
+    # below contribute their $defs additions but are not regenerated.
+    requested_urls = set(all_schemas.keys())
+
+    # Phase 1a: Ensure all cached BENCHLING technique schemas are loaded.
+    # BENCHLING schemas embed additions to shared schemas (core/hierarchy) as
+    # URL-keyed $defs.  If only a subset of BENCHLING schemas are requested on
+    # the command line, the fork step would produce incomplete shared modules
+    # (missing additions from other BENCHLING schemas).  Loading them all from
+    # cache ensures the forked shared schemas are always complete.
+    _load_cached_benchling_schemas(all_schemas, cache_dir)
+
     # Phase 1b: BENCHLING schemas embed modified copies of dependency schemas
     # as URL-keyed $defs entries.  Instead of merging those additions into the
     # REC shared schemas (which would make REC output depend on which BENCHLING
@@ -90,6 +104,13 @@ def generate_models(
     # shared dependency chain.
     _fork_benchling_shared_schemas(all_schemas)
 
+    # Forking may create new BENCHLING-versioned shared schemas (e.g.,
+    # core/BENCHLING/2024/09/hierarchy) that the requested techniques depend
+    # on.  Include those in the generation set.
+    requested_urls.update(
+        url for url in all_schemas if url not in requested_urls and "/core/" in url
+    )
+
     # Phase 2: Determine generation order across all schemas
     order = build_dependency_order(all_schemas)
     print("Generation order:")  # noqa: T201
@@ -97,7 +118,10 @@ def generate_models(
         print(f"  {i + 1}. {url}")  # noqa: T201
 
     # Phase 3: Separate units schemas from the rest (units go to shared module)
-    other_urls = [u for u in order if not _is_units_schema(u)]
+    # Only generate modules for requested schemas (+ forked shared schemas).
+    other_urls = [
+        u for u in order if not _is_units_schema(u) and u in requested_urls
+    ]
 
     # Update shared units module with any new units from these schemas
     new_unit_count = _update_shared_units(all_schemas, cache_dir)
@@ -109,6 +133,9 @@ def generate_models(
     print("\nGenerating Python modules...")  # noqa: T201
     generated_files: list[Path] = []
 
+    # Collect descriptive unit names for TQuantityValue class naming
+    unit_descriptive_names = _collect_all_units(all_schemas, cache_dir)
+
     # Generate all non-units modules via the custom code generator
     if other_urls:
         existing_unit_to_class = _read_existing_quantity_value_classes()
@@ -117,6 +144,7 @@ def generate_models(
             order,
             models_package,
             existing_unit_to_class,
+            unit_descriptive_names,
         )
         modules = generator.generate_all()
 
@@ -131,12 +159,12 @@ def generate_models(
             generated_files.append(output_path)
             print(f"  Generated: {output_path}")  # noqa: T201
 
-        # Append any newly discovered quantity value types to the shared module
+        # Regenerate quantity_values.py with any new types
         if generator.new_quantity_value_classes:
-            _append_quantity_value_classes(generator.new_quantity_value_classes)
+            _regenerate_quantity_values(generator.all_quantity_value_classes)
             print(  # noqa: T201
-                f"  Added {len(generator.new_quantity_value_classes)} new"
-                f" quantity value type(s) to {_QUANTITY_VALUES_FILE}"
+                f"  Updated {_QUANTITY_VALUES_FILE}"
+                f" ({len(generator.new_quantity_value_classes)} new type(s))"
             )
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
@@ -146,6 +174,47 @@ def generate_models(
 # ---------------------------------------------------------------------------
 # BENCHLING shared schema forking
 # ---------------------------------------------------------------------------
+
+
+def _load_cached_benchling_schemas(
+    all_schemas: dict[str, Any], cache_dir: Path
+) -> None:
+    """Load all cached BENCHLING technique schemas into *all_schemas*.
+
+    This ensures that every BENCHLING schema's embedded ``$defs`` additions
+    are available to ``_fork_benchling_shared_schemas``, regardless of which
+    schemas were requested on the command line.  Without this, generating a
+    single BENCHLING technique could produce incomplete shared modules.
+    """
+    adm_dir = cache_dir / "adm"
+    if not adm_dir.is_dir():
+        return
+
+    for schema_file in sorted(adm_dir.rglob("*.schema.json")):
+        # Only BENCHLING technique schemas (not core/qudt)
+        parts = schema_file.relative_to(cache_dir).parts
+        if "BENCHLING" not in parts:
+            continue
+        # Skip core and qudt (shared, not technique)
+        if parts[1] in ("core", "qudt"):
+            continue
+
+        # Build canonical URL from cache path
+        rel = str(schema_file.relative_to(cache_dir))
+        # Remove .json extension for canonical form
+        if rel.endswith(".json"):
+            rel = rel[:-5]
+        canonical = ALLOTROPE_URL_PREFIX + rel
+
+        if canonical in all_schemas:
+            continue
+
+        with open(schema_file, encoding="utf-8") as f:
+            schema = json.load(f)
+
+        # Only load if it has URL-keyed $defs (i.e., embeds shared schema additions)
+        if _has_url_keyed_defs(schema):
+            all_schemas[canonical] = schema
 
 
 def _fork_benchling_shared_schemas(all_schemas: dict[str, Any]) -> None:
@@ -544,22 +613,49 @@ def _read_existing_quantity_value_classes() -> dict[tuple[str, bool], str]:
     return unit_to_class
 
 
-def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
-    """Append new TQuantityValue subclasses to quantity_values.py.
+def _regenerate_quantity_values(
+    all_classes: dict[tuple[str, bool], str],
+) -> None:
+    """Regenerate quantity_values.py from the complete set of classes.
 
-    Each entry in *new_classes* is ``(class_name, unit_string)``.
+    Writes the entire file from scratch (sorted by class name) rather than
+    appending, so that naming scheme changes are applied consistently.
     """
-    if not _QUANTITY_VALUES_FILE.exists():
-        return
+    lines: list[str] = [
+        "# THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.",
+        "# TQuantityValue thin subclasses, one per unit.  Each class inherits from",
+        "# TQuantityValue and only overrides the ``unit`` default so that callers",
+        "# can write ``TQuantityValueDegreeCelsius(value=42)`` without specifying the unit.",
+        "#",
+        "# Generated core modules (core.py) import and re-export the subset they",
+        "# need; parsers and schema mappers may also import directly from here.",
+        "#",
+        "# When the code-generator encounters a unit not yet listed here it will",
+        "# regenerate this file automatically.",
+        "from __future__ import annotations",
+        "",
+        "from dataclasses import dataclass",
+        "",
+        "from allotropy.allotrope.models.shared.definitions.definitions import (",
+        "    TNullableQuantityValue,",
+        "    TQuantityValue,",
+        ")",
+        "",
+        "# ---------------------------------------------------------------------------",
+        "# TQuantityValue subclasses (sorted by class name)",
+        "# ---------------------------------------------------------------------------",
+    ]
 
-    lines: list[str] = []
-    for class_name, unit_str in sorted(new_classes):
-        quoted = _dquote(unit_str)
+    # Sort by class name for deterministic output
+    for (unit_str, _nullable), class_name in sorted(
+        all_classes.items(), key=lambda item: item[1]
+    ):
         base = (
             "TNullableQuantityValue"
             if class_name.startswith("TNullableQuantityValue")
             else "TQuantityValue"
         )
+        quoted = _dquote(unit_str)
         lines.extend(
             [
                 "",
@@ -569,14 +665,10 @@ def _append_quantity_value_classes(new_classes: list[tuple[str, str]]) -> None:
                 f"    unit: str = {quoted}",
             ]
         )
-    lines.append("")
 
-    content = _QUANTITY_VALUES_FILE.read_text(encoding="utf-8")
-    # Ensure we append after existing content (with a newline separator)
-    if not content.endswith("\n"):
-        content += "\n"
-    content += "\n".join(lines)
-    _QUANTITY_VALUES_FILE.write_text(content, encoding="utf-8")
+    lines.append("")
+    source = "\n".join(lines)
+    _QUANTITY_VALUES_FILE.write_text(source, encoding="utf-8")
     _lint_file(_QUANTITY_VALUES_FILE)
 
 
@@ -616,25 +708,44 @@ def _lint_file(path: Path) -> None:
         pass
 
 
+def _discover_cached_technique_urls(
+    cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR,
+) -> list[str]:
+    """Build purl URLs for all cached technique schemas (non-core, non-qudt)."""
+    adm_dir = cache_dir / "adm"
+    if not adm_dir.is_dir():
+        return []
+    urls: list[str] = []
+    for schema_file in sorted(adm_dir.rglob("*.schema.json")):
+        parts = schema_file.relative_to(cache_dir).parts
+        # Skip core and qudt (shared schemas, not techniques)
+        if len(parts) > 1 and parts[1] in ("core", "qudt"):
+            continue
+        rel = str(schema_file.relative_to(cache_dir))
+        if rel.endswith(".json"):
+            rel = rel[:-5]
+        urls.append(ALLOTROPE_URL_PREFIX + rel)
+    return urls
+
+
 def main() -> None:
     """CLI entry point."""
     if len(sys.argv) < 2:
         msg = (
-            "Usage: python -m allotropy.schema_gen.generate <schema_url> [schema_url ...]\n"
+            "Usage: python -m allotropy.schema_gen.generate [--all] [schema_url ...]\n"
             "\n"
-            "Multiple URLs can be provided to generate all schemas in a single pass,\n"
-            "ensuring shared modules (core.py) accumulate types from all schemas.\n"
+            "  --all    Regenerate all cached technique schemas\n"
             "\n"
-            "Example:\n"
-            "  python -m allotropy.schema_gen.generate"
-            ' "https://gitlab.com/allotrope-public/asm/-/blob/main/'
-            "json-schemas/adm/spectrophotometry/REC/2024/06/"
-            'spectrophotometry.schema.json"'
+            "Multiple URLs can be provided to generate schemas in a single pass.\n"
         )
         print(msg)  # noqa: T201
         sys.exit(1)
 
-    schema_urls = sys.argv[1:]
+    if "--all" in sys.argv:
+        schema_urls = _discover_cached_technique_urls()
+        print(f"Discovered {len(schema_urls)} cached technique schema(s)")  # noqa: T201
+    else:
+        schema_urls = sys.argv[1:]
     generate_models(schema_urls)
 
 
