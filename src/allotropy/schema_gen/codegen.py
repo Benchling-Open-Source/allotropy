@@ -1239,6 +1239,12 @@ class SchemaCodeGenerator:
         if "properties" in schema:
             return self._generate_dataclass(module, schema_url, class_name, schema)
 
+        # Conditional validation constraints (if/then) don't produce types —
+        # they refine allowed values based on sibling fields (e.g., cFillValue*
+        # constrains $asm.fill-value based on @componentDatatype).
+        if "if" in schema and "then" in schema:
+            return None
+
         warnings.warn(
             f"Unrecognized schema pattern for {class_name!r} in {schema_url}, "
             f"skipping. Keys: {sorted(schema.keys())}",
