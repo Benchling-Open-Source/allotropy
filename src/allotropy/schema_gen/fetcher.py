@@ -10,6 +10,7 @@ from collections import deque
 import json
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
 from allotropy.schema_gen.naming import (
@@ -76,10 +77,13 @@ class SchemaFetcher:
         )
         print(f"  Downloading: {purl_url}")  # noqa: T201
         try:
-            with urlopen(purl_url) as response:  # noqa: S310
+            with urlopen(purl_url, timeout=30) as response:  # noqa: S310
                 data = response.read().decode("utf-8")
-        except Exception as exc:
-            msg = f"Failed to download schema: {canonical_url}\n  URL: {purl_url}"
+        except HTTPError as exc:
+            msg = f"Schema not found (HTTP {exc.code}): {canonical_url}\n  URL: {purl_url}"
+            raise RuntimeError(msg) from exc
+        except URLError as exc:
+            msg = f"Network error downloading schema: {canonical_url}\n  URL: {purl_url}\n  {exc.reason}"
             raise RuntimeError(msg) from exc
 
         schema: dict[str, Any] = json.loads(data)
@@ -140,8 +144,8 @@ def build_dependency_order(schemas: dict[str, dict[str, Any]]) -> list[str]:
                     queue.append(other_url)
 
     if len(result) != len(schemas):
-        # Circular dependency - add remaining in arbitrary order
-        remaining = set(schemas.keys()) - set(result)
+        # Circular dependency — add remaining in sorted order for reproducibility
+        remaining = sorted(set(schemas.keys()) - set(result))
         result.extend(remaining)
 
     return result
