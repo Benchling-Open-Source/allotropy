@@ -21,7 +21,8 @@ def _generate_schemas(schema_urls: tuple[str, ...], *, regenerate_all: bool = Fa
     elif schema_urls:
         urls = list(schema_urls)
     else:
-        raise click.UsageError("Provide schema URLs or use --all.")
+        msg = "Provide schema URLs or use --all."
+        raise click.UsageError(msg)
     generate_models(urls)
 
 
