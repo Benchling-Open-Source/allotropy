@@ -118,14 +118,6 @@ class TQuantityValue:
     field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
-@dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValue:
-    value: float | None
-    unit: TUnit
-    has_statistic_datum_role: TStatisticDatumRole | None = None
-    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
-
-
 class FieldComponentDatatype(Enum):
     double = "double"
     float = "float"

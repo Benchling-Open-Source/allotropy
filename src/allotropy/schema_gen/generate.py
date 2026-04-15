@@ -157,9 +157,7 @@ def generate_models(
         # This is always deterministic regardless of which schemas are
         # being generated, because _collect_all_units scans all cached
         # schema files on disk.
-        qv_path = _regenerate_quantity_values(
-            unit_descriptive_names, _NULLABLE_UNITS, output_dir
-        )
+        qv_path = _regenerate_quantity_values(unit_descriptive_names, output_dir)
         print(f"  Updated {qv_path}")  # noqa: T201
 
     print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
@@ -413,17 +411,6 @@ _MANUAL_UNITS: dict[str, str] = {
     "U/L": "UnitPerLiter",
 }
 
-# Units that need TNullableQuantityValue variants.  Only create nullable
-# variants for units that are actually used somewhere; generating nullable
-# for all ~780 units is wasteful.  "(unitless)" comes from schemas;
-# the others are used by manual parser code (e.g., roche_cedex_bioht).
-_NULLABLE_UNITS: list[str] = [
-    "(unitless)",
-    "g/L",
-    "mmol/L",
-    "U/L",
-]
-
 # Regex to parse existing unit classes from shared/definitions/units.py.
 _UNIT_CLASS_RE = re.compile(
     r"^class (\w+)\(HasUnit\):\s*\n\s+unit:\s+str\s*=\s*(?:UNITLESS|\"([^\"]*)\"|'([^']*)')",
@@ -606,7 +593,6 @@ def _update_shared_units(
 
 def _regenerate_quantity_values(
     unit_descriptive_names: dict[str, str],
-    nullable_units: list[str],
     output_dir: Path = DEFAULT_MODEL_OUTPUT_DIR,
 ) -> Path:
     """Regenerate quantity_values.py from the complete unit list.
@@ -623,8 +609,7 @@ def _regenerate_quantity_values(
         "# TQuantityValue and only overrides the ``unit`` default so that callers",
         "# can write ``TQuantityValueDegreeCelsius(value=42)`` without specifying the unit.",
         "#",
-        "# Generated core modules (core.py) import and re-export the subset they",
-        "# need; parsers and schema mappers may also import directly from here.",
+        "# Parsers and schema mappers import directly from here.",
         "#",
         "# When the code-generator encounters a unit not yet listed here it will",
         "# regenerate this file automatically.",
@@ -633,7 +618,6 @@ def _regenerate_quantity_values(
         "from dataclasses import dataclass",
         "",
         "from allotropy.allotrope.models.shared.definitions.definitions import (",
-        "    TNullableQuantityValue,",
         "    TQuantityValue,",
         ")",
         "",
@@ -642,33 +626,24 @@ def _regenerate_quantity_values(
         "# ---------------------------------------------------------------------------",
     ]
 
-    # Build non-nullable classes for every known unit.
     # Deduplicate by class name — multiple unit strings can map to the same
     # descriptive name (e.g., "ug/µL" and "μg/μL" both → MicrogramPerMicroliter).
     # First writer wins (dict preserves insertion order).
-    seen: dict[str, tuple[str, str]] = {}  # class_name → (base, unit_str)
+    seen: dict[str, str] = {}  # class_name → unit_str
     for unit_str, descriptive in unit_descriptive_names.items():
         name = f"TQuantityValue{descriptive}"
         if name not in seen:
-            seen[name] = ("TQuantityValue", unit_str)
-
-    # Build nullable classes for units that need them
-    for unit_str in nullable_units:
-        nullable_desc = unit_descriptive_names.get(unit_str)
-        if nullable_desc is not None:
-            name = f"TNullableQuantityValue{nullable_desc}"
-            if name not in seen:
-                seen[name] = ("TNullableQuantityValue", unit_str)
+            seen[name] = unit_str
 
     # Sort by class name for deterministic output
-    for class_name, (base, unit_str) in sorted(seen.items()):
+    for class_name, unit_str in sorted(seen.items()):
         quoted = _dquote(unit_str)
         lines.extend(
             [
                 "",
                 "",
                 "@dataclass(frozen=True, kw_only=True)",
-                f"class {class_name}({base}):",
+                f"class {class_name}(TQuantityValue):",
                 f"    unit: str = {quoted}",
             ]
         )

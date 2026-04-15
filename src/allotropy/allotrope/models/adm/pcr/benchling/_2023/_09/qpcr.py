@@ -15,7 +15,6 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TNullableQuantityValueUnitless,
     TQuantityValueDegreeCelsius,
     TQuantityValueMicroliter,
     TQuantityValueNumber,
@@ -195,7 +194,7 @@ class DeviceControlAggregateDocument:
 @dataclass(frozen=True, kw_only=True)
 class ProcessedDataDocumentItem:
     data_processing_document: DataProcessingDocument
-    cycle_threshold_result: TNullableQuantityValueUnitless
+    cycle_threshold_result: TQuantityValueUnitless
     normalized_reporter_result: TQuantityValueUnitless | None = None
     normalized_reporter_data_cube: NormalizedReporterDataCube | None = None
     baseline_corrected_reporter_result: TQuantityValueUnitless | None = None

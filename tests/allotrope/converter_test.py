@@ -20,7 +20,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
-    TNullableQuantityValueUnitless,
     TQuantityValueUnitless,
 )
 
@@ -333,25 +332,6 @@ class TestRealModelSerialization:
         }
         assert structure(asm_dict, TDatacube) == data_cube
 
-    def test_omits_null_values_except_for_specified_classes(self) -> None:
-        item = ProcessedDataDocumentItem(
-            cycle_threshold_result=TNullableQuantityValueUnitless(value=None),
-            data_processing_document=DataProcessingDocument(
-                cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
-            ),
-        )
-        asm_dict = unstructure(item)
-        assert asm_dict == {
-            "cycle threshold result": {"value": None, "unit": "(unitless)"},
-            "data processing document": {
-                "cycle threshold value setting": {
-                    "value": 1.0,
-                    "unit": "(unitless)",
-                },
-            },
-        }
-        assert structure(asm_dict, ProcessedDataDocumentItem) == item
-
     def test_quantity_value_serialization(self) -> None:
         from allotropy.allotrope.models.shared.definitions.definitions import (
             TQuantityValue,
@@ -406,7 +386,7 @@ class TestCustomInformationDocument:
     def test_roundtrip(self) -> None:
         item = add_custom_information_document(
             ProcessedDataDocumentItem(
-                cycle_threshold_result=TNullableQuantityValueUnitless(value=None),
+                cycle_threshold_result=TQuantityValueUnitless(value=2.0),
                 data_processing_document=DataProcessingDocument(
                     cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
                 ),
@@ -421,7 +401,7 @@ class TestCustomInformationDocument:
         assert item.custom_information_document._DOLLAR_w_POINT_e_BSLASH_ir_COLON__OBRACKET_d_CBRACKET__DASH_k_QUOTE_e_TILDE_y_SLASH__OPAREN_v_CARET_a_EQUALS_l_AT_ue_CPAREN__DEG__NUMBER_ == "Other value"  # type: ignore
         asm_dict = unstructure(item)
         assert asm_dict == {
-            "cycle threshold result": {"value": None, "unit": "(unitless)"},
+            "cycle threshold result": {"value": 2.0, "unit": "(unitless)"},
             "data processing document": {
                 "cycle threshold value setting": {
                     "value": 1.0,

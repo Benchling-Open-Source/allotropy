@@ -980,22 +980,19 @@ class QuantityValueManager:
     whether they already exist in the shared module, and recording new
     ones that need to be appended.
 
-    Tracking uses a single authoritative map from ``(unit_string, nullable)``
-    to class name.  A derived ``_known_names`` set provides fast name-based
-    lookup (e.g., to enumerate all classes for core re-exports).
+    Tracking uses a single authoritative map from unit_string to class name.
+    A derived ``_known_names`` set provides fast name-based lookup.
     """
 
     def __init__(
         self,
         unit_descriptive_names: dict[str, str] | None = None,
     ) -> None:
-        # (unit_string, nullable) → class name.  Single source of truth.
-        self._unit_to_class: dict[tuple[str, bool], str] = {}
+        # unit_string → class name.  Single source of truth.
+        self._unit_to_class: dict[str, str] = {}
         # unit const → descriptive name from shared units (e.g., "degC" → "DegreeCelsius").
-        # Falls back to unit_symbol_to_class_name() for unknown units.
         self._descriptive: dict[str, str] = dict(unit_descriptive_names or {})
-        # Derived: set of all known class names (for fast membership checks
-        # and for enumerating classes during core re-export generation).
+        # Derived: set of all known class names (for fast membership checks).
         self._known_names: set[str] = set()
         self.new_classes: list[tuple[str, str]] = []
 
@@ -1005,26 +1002,24 @@ class QuantityValueManager:
         return self._known_names
 
     @property
-    def all_classes(self) -> dict[tuple[str, bool], str]:
-        """Complete mapping of (unit_string, nullable) → class_name."""
+    def all_classes(self) -> dict[str, str]:
+        """Complete mapping of unit_string → class_name."""
         return dict(self._unit_to_class)
 
-    def get_or_create(self, unit_const: str, *, nullable: bool = False) -> str:
+    def get_or_create(self, unit_const: str) -> str:
         """Return the class name for *unit_const*, recording it as new if needed."""
-        key = (unit_const, nullable)
-        existing = self._unit_to_class.get(key)
+        existing = self._unit_to_class.get(unit_const)
         if existing is not None:
             return existing
-        class_name = self._build_class_name(unit_const, nullable=nullable)
+        class_name = self._build_class_name(unit_const)
         if class_name not in self._known_names:
-            self._unit_to_class[key] = class_name
+            self._unit_to_class[unit_const] = class_name
             self._known_names.add(class_name)
             self.new_classes.append((class_name, unit_const))
         return class_name
 
-    def _build_class_name(self, unit_const: str, *, nullable: bool) -> str:
+    def _build_class_name(self, unit_const: str) -> str:
         """Build a TQuantityValue class name using descriptive unit names."""
-        prefix = "TNullableQuantityValue" if nullable else "TQuantityValue"
         descriptive = self._descriptive.get(unit_const)
         if not descriptive:
             msg = (
@@ -1033,7 +1028,7 @@ class QuantityValueManager:
                 "in a cached schema's $asm.unit-iri."
             )
             raise ValueError(msg)
-        return prefix + descriptive
+        return "TQuantityValue" + descriptive
 
 
 # ---------------------------------------------------------------------------
@@ -1066,15 +1061,13 @@ class SchemaCodeGenerator:
         return self._qv_manager.new_classes
 
     @property
-    def all_quantity_value_classes(self) -> dict[tuple[str, bool], str]:
-        """All known TQuantityValue classes: {(unit_string, nullable): class_name}."""
+    def all_quantity_value_classes(self) -> dict[str, str]:
+        """All known TQuantityValue classes: {unit_string: class_name}."""
         return self._qv_manager.all_classes
 
-    def ensure_quantity_value_class(
-        self, unit_const: str, *, nullable: bool = False
-    ) -> str:
+    def ensure_quantity_value_class(self, unit_const: str) -> str:
         """Ensure a TQuantityValue class exists for *unit_const*."""
-        return self._qv_manager.get_or_create(unit_const, nullable=nullable)
+        return self._qv_manager.get_or_create(unit_const)
 
     def generate_all(self) -> dict[str, ModuleCode]:
         """Generate Python modules for all schemas in dependency order."""
@@ -1578,10 +1571,10 @@ class SchemaCodeGenerator:
         Also handles the oneOf-units variant:
         allOf[tQuantityValue, {oneOf: [unit1, unit2, ...]}]
 
-        Recognises both tQuantityValue and tNullableQuantityValue.
+        Recognises both tQuantityValue and tNullableQuantityValue (treated
+        identically — the nullable distinction was removed).
         """
         quantity_ref = None
-        nullable = False
         unit_refs: list[str] = []
         for ref in refs:
             _, def_name = parse_ref(ref)
@@ -1590,7 +1583,6 @@ class SchemaCodeGenerator:
                 "tnullablequantityvalue",
             ):
                 quantity_ref = ref
-                nullable = def_name.lower() == "tnullablequantityvalue"
             elif def_name:
                 ref_schema_url = ref.split("#")[0]
                 try:
@@ -1627,13 +1619,11 @@ class SchemaCodeGenerator:
 
         if len(unit_refs) == 1:
             return self._generate_quantity_value_type(
-                module, schema_url, quantity_ref, unit_refs[0], nullable=nullable
+                module, schema_url, quantity_ref, unit_refs[0]
             )
 
         types = [
-            self._generate_quantity_value_type(
-                module, schema_url, quantity_ref, uref, nullable=nullable
-            )
+            self._generate_quantity_value_type(module, schema_url, quantity_ref, uref)
             for uref in unit_refs
         ]
         return _join_union(_unique_ordered(types))
@@ -2010,8 +2000,6 @@ class SchemaCodeGenerator:
         schema_url: str,
         quantity_ref: str,
         unit_ref: str,
-        *,
-        nullable: bool = False,
     ) -> str:
         """Import a TQuantityValue{Unit} thin subclass from the shared module.
 
@@ -2034,7 +2022,7 @@ class SchemaCodeGenerator:
         if const_value is None:
             return self._resolve_ref_type(module, schema_url, quantity_ref)
 
-        class_name = self._qv_manager.get_or_create(const_value, nullable=nullable)
+        class_name = self._qv_manager.get_or_create(const_value)
 
         # Import directly from shared quantity_values into the consuming module
         if not any(

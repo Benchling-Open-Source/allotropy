@@ -3,8 +3,7 @@
 # TQuantityValue and only overrides the ``unit`` default so that callers
 # can write ``TQuantityValueDegreeCelsius(value=42)`` without specifying the unit.
 #
-# Generated core modules (core.py) import and re-export the subset they
-# need; parsers and schema mappers may also import directly from here.
+# Parsers and schema mappers import directly from here.
 #
 # When the code-generator encounters a unit not yet listed here it will
 # regenerate this file automatically.
@@ -13,33 +12,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    TNullableQuantityValue,
     TQuantityValue,
 )
 
 # ---------------------------------------------------------------------------
 # TQuantityValue subclasses (sorted by class name)
 # ---------------------------------------------------------------------------
-
-
-@dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueGramPerLiter(TNullableQuantityValue):
-    unit: str = "g/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMillimolePerLiter(TNullableQuantityValue):
-    unit: str = "mmol/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueUnitPerLiter(TNullableQuantityValue):
-    unit: str = "U/L"
-
-
-@dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueUnitless(TNullableQuantityValue):
-    unit: str = "(unitless)"
 
 
 @dataclass(frozen=True, kw_only=True)
