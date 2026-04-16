@@ -17,9 +17,11 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.units import (
     MilliAbsorbanceUnit,
     Nanometer,
+    RelativeFluorescenceUnit,
+    RelativeLightUnit,
     UNITLESS,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -1357,6 +1359,18 @@ def create_spectrum_results(
         else:
             label = "spectrum"
 
+        measure_concept: str
+        measure_unit: str
+        if read_data.read_mode == ReadMode.FLUORESCENCE:
+            measure_concept = "fluorescence"
+            measure_unit = RelativeFluorescenceUnit.unit
+        elif read_data.read_mode == ReadMode.LUMINESCENCE:
+            measure_concept = "luminescence"
+            measure_unit = RelativeLightUnit.unit
+        else:
+            measure_concept = "absorbance"
+            measure_unit = MilliAbsorbanceUnit.unit
+
         spectrum_data_cube = DataCube(
             label=label,
             structure_dimensions=[
@@ -1368,9 +1382,9 @@ def create_spectrum_results(
             ],
             structure_measures=[
                 DataCubeComponent(
-                    concept="absorbance",
+                    concept=measure_concept,
                     type_=FieldComponentDatatype.double,
-                    unit=MilliAbsorbanceUnit.unit,
+                    unit=measure_unit,
                 )
             ],
             dimensions=[wavelengths],

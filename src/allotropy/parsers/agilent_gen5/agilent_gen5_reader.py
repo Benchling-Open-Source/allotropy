@@ -1,7 +1,7 @@
 from dataclasses import replace
 from io import StringIO
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     ErrorDocument,
 )
 from allotropy.exceptions import AllotropeConversionError

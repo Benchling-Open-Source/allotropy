@@ -1,6 +1,19 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "N/A",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_molecular_devices_softmax_pro",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/moldev_softmax_pro/testdata/no_measurements.txt",
+            "file name": "no_measurements.txt",
+            "software name": "SoftMax Pro"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +22,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -70,8 +83,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -131,8 +144,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -192,8 +205,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -253,8 +266,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -314,8 +327,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -368,19 +381,6 @@
                     "container type": "well plate"
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "N/A",
-            "data system instance identifier": "N/A",
-            "UNC path": "tests/parsers/moldev_softmax_pro/testdata/no_measurements.txt",
-            "file name": "no_measurements.txt",
-            "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.92",
-            "software name": "SoftMax Pro"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "N/A"
-        }
+        ]
     }
 }

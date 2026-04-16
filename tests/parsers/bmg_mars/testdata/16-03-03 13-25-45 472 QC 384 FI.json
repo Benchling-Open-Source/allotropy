@@ -1,6 +1,20 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "16-03-03 13-25-45 472 QC 384 FI.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_bmg_labtech_mars",
+            "ASM converter version": "0.1.118",
+            "UNC path": "C:\\Program Files (x86)\\BMG\\PHERAstar\\User\\Data",
+            "file name": "16-03-03 13-25-45 472 QC 384 FI.csv",
+            "software name": "BMG MARS"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A",
+            "product manufacturer": "BMG LABTECH"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +23,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -24,8 +38,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "472-0016 A1",
                                 "location identifier": "A1",
+                                "sample identifier": "472-0016 A1",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -39,13 +53,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -54,8 +68,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -69,8 +83,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "472-0016 A2",
                                 "location identifier": "A2",
+                                "sample identifier": "472-0016 A2",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -84,13 +98,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -99,8 +113,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -114,8 +128,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "472-0016 A3",
                                 "location identifier": "A3",
+                                "sample identifier": "472-0016 A3",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -129,13 +143,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -144,8 +158,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -159,8 +173,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "472-0016 A12",
                                 "location identifier": "A12",
+                                "sample identifier": "472-0016 A12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -174,13 +188,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -189,8 +203,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -204,8 +218,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "472-0016 A13",
                                 "location identifier": "A13",
+                                "sample identifier": "472-0016 A13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -219,13 +233,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -234,8 +248,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -249,8 +263,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "472-0016 A22",
                                 "location identifier": "A22",
+                                "sample identifier": "472-0016 A22",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -264,13 +278,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -279,8 +293,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -294,8 +308,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "472-0016 A23",
                                 "location identifier": "A23",
+                                "sample identifier": "472-0016 A23",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -309,13 +323,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -324,8 +338,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -339,8 +353,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "472-0016 A24",
                                 "location identifier": "A24",
+                                "sample identifier": "472-0016 A24",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -354,13 +368,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -369,8 +383,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -384,8 +398,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "472-0016 B1",
                                 "location identifier": "B1",
+                                "sample identifier": "472-0016 B1",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -399,13 +413,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -414,8 +428,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -429,8 +443,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "472-0016 B2",
                                 "location identifier": "B2",
+                                "sample identifier": "472-0016 B2",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -444,13 +458,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -459,8 +473,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -474,8 +488,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "472-0016 B3",
                                 "location identifier": "B3",
+                                "sample identifier": "472-0016 B3",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -489,13 +503,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -504,8 +518,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -519,8 +533,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "472-0016 B12",
                                 "location identifier": "B12",
+                                "sample identifier": "472-0016 B12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -534,13 +548,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -549,8 +563,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -564,8 +578,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "472-0016 B13",
                                 "location identifier": "B13",
+                                "sample identifier": "472-0016 B13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -579,13 +593,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -594,8 +608,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -609,8 +623,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "472-0016 B22",
                                 "location identifier": "B22",
+                                "sample identifier": "472-0016 B22",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -624,13 +638,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -639,8 +653,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -654,8 +668,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "472-0016 B23",
                                 "location identifier": "B23",
+                                "sample identifier": "472-0016 B23",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -669,13 +683,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -684,8 +698,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -699,8 +713,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "472-0016 B24",
                                 "location identifier": "B24",
+                                "sample identifier": "472-0016 B24",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -714,13 +728,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -729,8 +743,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -744,8 +758,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_16",
                             "sample document": {
-                                "sample identifier": "472-0016 C1",
                                 "location identifier": "C1",
+                                "sample identifier": "472-0016 C1",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -759,13 +773,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -774,8 +788,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -789,8 +803,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_17",
                             "sample document": {
-                                "sample identifier": "472-0016 C2",
                                 "location identifier": "C2",
+                                "sample identifier": "472-0016 C2",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -804,13 +818,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -819,8 +833,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -834,8 +848,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_18",
                             "sample document": {
-                                "sample identifier": "472-0016 C3",
                                 "location identifier": "C3",
+                                "sample identifier": "472-0016 C3",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -849,13 +863,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -864,8 +878,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -879,8 +893,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_19",
                             "sample document": {
-                                "sample identifier": "472-0016 C12",
                                 "location identifier": "C12",
+                                "sample identifier": "472-0016 C12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -894,13 +908,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -909,8 +923,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -924,8 +938,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_20",
                             "sample document": {
-                                "sample identifier": "472-0016 C13",
                                 "location identifier": "C13",
+                                "sample identifier": "472-0016 C13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -939,13 +953,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -954,8 +968,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -969,8 +983,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_21",
                             "sample document": {
-                                "sample identifier": "472-0016 C22",
                                 "location identifier": "C22",
+                                "sample identifier": "472-0016 C22",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -984,13 +998,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -999,8 +1013,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1014,8 +1028,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_22",
                             "sample document": {
-                                "sample identifier": "472-0016 C23",
                                 "location identifier": "C23",
+                                "sample identifier": "472-0016 C23",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1029,13 +1043,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1044,8 +1058,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1059,8 +1073,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_23",
                             "sample document": {
-                                "sample identifier": "472-0016 C24",
                                 "location identifier": "C24",
+                                "sample identifier": "472-0016 C24",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1074,13 +1088,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1089,8 +1103,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1104,8 +1118,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_24",
                             "sample document": {
-                                "sample identifier": "472-0016 D12",
                                 "location identifier": "D12",
+                                "sample identifier": "472-0016 D12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1119,13 +1133,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1134,8 +1148,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1149,8 +1163,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_25",
                             "sample document": {
-                                "sample identifier": "472-0016 D13",
                                 "location identifier": "D13",
+                                "sample identifier": "472-0016 D13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1164,13 +1178,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1179,8 +1193,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1194,8 +1208,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_26",
                             "sample document": {
-                                "sample identifier": "472-0016 E12",
                                 "location identifier": "E12",
+                                "sample identifier": "472-0016 E12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1209,13 +1223,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1224,8 +1238,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1239,8 +1253,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_27",
                             "sample document": {
-                                "sample identifier": "472-0016 E13",
                                 "location identifier": "E13",
+                                "sample identifier": "472-0016 E13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1254,13 +1268,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1269,8 +1283,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1284,8 +1298,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_28",
                             "sample document": {
-                                "sample identifier": "472-0016 F12",
                                 "location identifier": "F12",
+                                "sample identifier": "472-0016 F12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1299,13 +1313,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1314,8 +1328,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1329,8 +1343,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_29",
                             "sample document": {
-                                "sample identifier": "472-0016 F13",
                                 "location identifier": "F13",
+                                "sample identifier": "472-0016 F13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1344,13 +1358,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1359,8 +1373,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1374,8 +1388,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_30",
                             "sample document": {
-                                "sample identifier": "472-0016 G12",
                                 "location identifier": "G12",
+                                "sample identifier": "472-0016 G12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1389,13 +1403,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1404,8 +1418,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1419,8 +1433,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_31",
                             "sample document": {
-                                "sample identifier": "472-0016 G13",
                                 "location identifier": "G13",
+                                "sample identifier": "472-0016 G13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1434,13 +1448,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1449,8 +1463,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1464,8 +1478,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_32",
                             "sample document": {
-                                "sample identifier": "472-0016 H12",
                                 "location identifier": "H12",
+                                "sample identifier": "472-0016 H12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1479,13 +1493,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1494,8 +1508,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1509,8 +1523,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_33",
                             "sample document": {
-                                "sample identifier": "472-0016 H13",
                                 "location identifier": "H13",
+                                "sample identifier": "472-0016 H13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1524,13 +1538,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1539,8 +1553,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1554,8 +1568,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_34",
                             "sample document": {
-                                "sample identifier": "472-0016 I12",
                                 "location identifier": "I12",
+                                "sample identifier": "472-0016 I12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1569,13 +1583,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1584,8 +1598,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1599,8 +1613,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_35",
                             "sample document": {
-                                "sample identifier": "472-0016 I13",
                                 "location identifier": "I13",
+                                "sample identifier": "472-0016 I13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1614,13 +1628,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1629,8 +1643,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1644,8 +1658,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_36",
                             "sample document": {
-                                "sample identifier": "472-0016 J12",
                                 "location identifier": "J12",
+                                "sample identifier": "472-0016 J12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1659,13 +1673,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1674,8 +1688,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1689,8 +1703,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_37",
                             "sample document": {
-                                "sample identifier": "472-0016 J13",
                                 "location identifier": "J13",
+                                "sample identifier": "472-0016 J13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1704,13 +1718,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1719,8 +1733,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1734,8 +1748,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_38",
                             "sample document": {
-                                "sample identifier": "472-0016 K12",
                                 "location identifier": "K12",
+                                "sample identifier": "472-0016 K12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1749,13 +1763,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1764,8 +1778,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1779,8 +1793,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_39",
                             "sample document": {
-                                "sample identifier": "472-0016 K13",
                                 "location identifier": "K13",
+                                "sample identifier": "472-0016 K13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1794,13 +1808,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1809,8 +1823,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1824,8 +1838,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_40",
                             "sample document": {
-                                "sample identifier": "472-0016 L12",
                                 "location identifier": "L12",
+                                "sample identifier": "472-0016 L12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1839,13 +1853,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1854,8 +1868,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1869,8 +1883,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_41",
                             "sample document": {
-                                "sample identifier": "472-0016 L13",
                                 "location identifier": "L13",
+                                "sample identifier": "472-0016 L13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1884,13 +1898,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1899,8 +1913,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1914,8 +1928,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_42",
                             "sample document": {
-                                "sample identifier": "472-0016 M12",
                                 "location identifier": "M12",
+                                "sample identifier": "472-0016 M12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1929,13 +1943,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1944,8 +1958,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -1959,8 +1973,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_43",
                             "sample document": {
-                                "sample identifier": "472-0016 M13",
                                 "location identifier": "M13",
+                                "sample identifier": "472-0016 M13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -1974,13 +1988,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1989,8 +2003,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2004,8 +2018,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_44",
                             "sample document": {
-                                "sample identifier": "472-0016 N1",
                                 "location identifier": "N1",
+                                "sample identifier": "472-0016 N1",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2019,13 +2033,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2034,8 +2048,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2049,8 +2063,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_45",
                             "sample document": {
-                                "sample identifier": "472-0016 N2",
                                 "location identifier": "N2",
+                                "sample identifier": "472-0016 N2",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2064,13 +2078,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2079,8 +2093,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2094,8 +2108,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_46",
                             "sample document": {
-                                "sample identifier": "472-0016 N3",
                                 "location identifier": "N3",
+                                "sample identifier": "472-0016 N3",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2109,13 +2123,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2124,8 +2138,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2139,8 +2153,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_47",
                             "sample document": {
-                                "sample identifier": "472-0016 N12",
                                 "location identifier": "N12",
+                                "sample identifier": "472-0016 N12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2154,13 +2168,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2169,8 +2183,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2184,8 +2198,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_48",
                             "sample document": {
-                                "sample identifier": "472-0016 N13",
                                 "location identifier": "N13",
+                                "sample identifier": "472-0016 N13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2199,13 +2213,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2214,8 +2228,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2229,8 +2243,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_49",
                             "sample document": {
-                                "sample identifier": "472-0016 N22",
                                 "location identifier": "N22",
+                                "sample identifier": "472-0016 N22",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2244,13 +2258,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2259,8 +2273,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2274,8 +2288,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_50",
                             "sample document": {
-                                "sample identifier": "472-0016 N23",
                                 "location identifier": "N23",
+                                "sample identifier": "472-0016 N23",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2289,13 +2303,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2304,8 +2318,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2319,8 +2333,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_51",
                             "sample document": {
-                                "sample identifier": "472-0016 N24",
                                 "location identifier": "N24",
+                                "sample identifier": "472-0016 N24",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2334,13 +2348,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2349,8 +2363,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2364,8 +2378,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_52",
                             "sample document": {
-                                "sample identifier": "472-0016 O1",
                                 "location identifier": "O1",
+                                "sample identifier": "472-0016 O1",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2379,13 +2393,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2394,8 +2408,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2409,8 +2423,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_53",
                             "sample document": {
-                                "sample identifier": "472-0016 O2",
                                 "location identifier": "O2",
+                                "sample identifier": "472-0016 O2",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2424,13 +2438,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2439,8 +2453,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2454,8 +2468,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_54",
                             "sample document": {
-                                "sample identifier": "472-0016 O3",
                                 "location identifier": "O3",
+                                "sample identifier": "472-0016 O3",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2469,13 +2483,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2484,8 +2498,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2499,8 +2513,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_55",
                             "sample document": {
-                                "sample identifier": "472-0016 O12",
                                 "location identifier": "O12",
+                                "sample identifier": "472-0016 O12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2514,13 +2528,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2529,8 +2543,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2544,8 +2558,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_56",
                             "sample document": {
-                                "sample identifier": "472-0016 O13",
                                 "location identifier": "O13",
+                                "sample identifier": "472-0016 O13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2559,13 +2573,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2574,8 +2588,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2589,8 +2603,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_57",
                             "sample document": {
-                                "sample identifier": "472-0016 O22",
                                 "location identifier": "O22",
+                                "sample identifier": "472-0016 O22",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2604,13 +2618,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2619,8 +2633,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2634,8 +2648,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_58",
                             "sample document": {
-                                "sample identifier": "472-0016 O23",
                                 "location identifier": "O23",
+                                "sample identifier": "472-0016 O23",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2649,13 +2663,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2664,8 +2678,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2679,8 +2693,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_59",
                             "sample document": {
-                                "sample identifier": "472-0016 O24",
                                 "location identifier": "O24",
+                                "sample identifier": "472-0016 O24",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2694,13 +2708,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2709,8 +2723,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2724,8 +2738,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_60",
                             "sample document": {
-                                "sample identifier": "472-0016 P1",
                                 "location identifier": "P1",
+                                "sample identifier": "472-0016 P1",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2739,13 +2753,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2754,8 +2768,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2769,8 +2783,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_61",
                             "sample document": {
-                                "sample identifier": "472-0016 P2",
                                 "location identifier": "P2",
+                                "sample identifier": "472-0016 P2",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2784,13 +2798,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2799,8 +2813,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2814,8 +2828,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_62",
                             "sample document": {
-                                "sample identifier": "472-0016 P3",
                                 "location identifier": "P3",
+                                "sample identifier": "472-0016 P3",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2829,13 +2843,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2844,8 +2858,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2859,8 +2873,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_63",
                             "sample document": {
-                                "sample identifier": "472-0016 P12",
                                 "location identifier": "P12",
+                                "sample identifier": "472-0016 P12",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2874,13 +2888,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2889,8 +2903,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2904,8 +2918,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_64",
                             "sample document": {
-                                "sample identifier": "472-0016 P13",
                                 "location identifier": "P13",
+                                "sample identifier": "472-0016 P13",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2919,13 +2933,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2934,8 +2948,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2949,8 +2963,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_65",
                             "sample document": {
-                                "sample identifier": "472-0016 P22",
                                 "location identifier": "P22",
+                                "sample identifier": "472-0016 P22",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -2964,13 +2978,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2979,8 +2993,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -2994,8 +3008,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_66",
                             "sample document": {
-                                "sample identifier": "472-0016 P23",
                                 "location identifier": "P23",
+                                "sample identifier": "472-0016 P23",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -3009,13 +3023,13 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3024,8 +3038,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "device type": "fluorescence detector",
                                         "detector wavelength setting": {
                                             "value": 520.0,
                                             "unit": "nm"
@@ -3039,8 +3053,8 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_67",
                             "sample document": {
-                                "sample identifier": "472-0016 P24",
                                 "location identifier": "P24",
+                                "sample identifier": "472-0016 P24",
                                 "well plate identifier": "472-0016"
                             },
                             "fluorescence": {
@@ -3054,28 +3068,14 @@
                         "value": 384,
                         "unit": "#"
                     },
-                    "experiment type": "472 QC 384 FI",
                     "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 1.0
-                    }
+                    "experiment type": "472 QC 384 FI"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 1.0
+                }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "16-03-03 13-25-45 472 QC 384 FI.json",
-            "data system instance identifier": "N/A",
-            "file name": "16-03-03 13-25-45 472 QC 384 FI.csv",
-            "UNC path": "C:\\Program Files (x86)\\BMG\\PHERAstar\\User\\Data",
-            "ASM converter name": "allotropy_bmg_labtech_mars",
-            "ASM converter version": "0.1.105",
-            "software name": "BMG MARS"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "N/A",
-            "product manufacturer": "BMG LABTECH"
-        }
+        ]
     }
 }

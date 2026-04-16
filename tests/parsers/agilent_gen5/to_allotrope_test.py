@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from allotropy.constants import CHARDET_ENCODING
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeValidationError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.agilent_gen5.constants import (
     MULTIPLATE_FILE_ERROR,
@@ -75,3 +75,12 @@ def test_to_allotrope_no_measurements_error() -> None:
         from_file(
             f"{TESTDATA}/calculated_data_with_no_measurements_error.txt", VENDOR_TYPE
         )
+
+
+@pytest.mark.long
+@pytest.mark.xfail(
+    raises=AllotropeValidationError,
+    reason="2026/03 plate_reader schema does not define a luminescence spectrum data cube field",
+)
+def test_luminescence_spectral_scan() -> None:
+    from_file(f"{TESTDATA}/luminescence/exclude/spectral_scan.txt", VENDOR_TYPE)

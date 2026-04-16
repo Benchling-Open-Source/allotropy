@@ -1,6 +1,793 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 0.75,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_24",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_25",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 0.5,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_26",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_27",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.825,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_28",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_29",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.15,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_30",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_31",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 5.3,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_32",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_33",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.7,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_34",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_35",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": -3.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_36",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_37",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.65,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_38",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_39",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 4.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_40",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_41",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": -4.55,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_42",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_43",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 4.875,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_44",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_45",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 4.375,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_46",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_47",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": -3.5,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_48",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_50",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_51",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": -5.225,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_52",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_53",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 7.25,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_54",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_55",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.85,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_56",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_57",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.375,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_58",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_59",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": -4.025,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_61",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 4.95,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_62",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_63",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.25,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_64",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_65",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 3.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 2.475,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max V [600]",
+                    "calculated result": {
+                        "value": 2.9,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R-Squared [600]",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_71",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
+                                "data source feature": "absorption profile data cube"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "kinetic_helper_gene_growth_curve.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
+            "file name": "kinetic_helper_gene_growth_curve.txt",
+            "software name": "Gen5",
+            "software version": "3.0.1"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Generic Reader",
+            "equipment serial number": "123456"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +796,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -43,7 +830,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -61,9 +847,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.066,
@@ -87,8 +870,12 @@
                                             -0.066,
                                             -0.066
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -107,8 +894,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -141,7 +928,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -159,9 +945,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.068,
@@ -185,8 +968,12 @@
                                             -0.067,
                                             -0.067
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -205,8 +992,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -239,7 +1026,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -257,9 +1043,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.054,
@@ -283,8 +1066,12 @@
                                             -0.053,
                                             -0.053
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -303,8 +1090,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -337,7 +1124,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -355,9 +1141,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.055,
@@ -381,8 +1164,12 @@
                                             -0.054,
                                             -0.053
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -401,8 +1188,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -435,7 +1222,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -453,9 +1239,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.063,
@@ -479,8 +1262,12 @@
                                             -0.065,
                                             -0.064
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -499,8 +1286,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -533,7 +1320,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -551,9 +1337,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.06,
@@ -577,8 +1360,12 @@
                                             -0.062,
                                             -0.062
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -597,8 +1384,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -631,7 +1418,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -649,9 +1435,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.058,
@@ -675,8 +1458,12 @@
                                             -0.056,
                                             -0.056
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -695,8 +1482,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -729,7 +1516,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -747,9 +1533,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.06,
@@ -773,8 +1556,12 @@
                                             -0.054,
                                             -0.054
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -793,8 +1580,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -827,7 +1614,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -845,9 +1631,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.063,
@@ -871,8 +1654,12 @@
                                             -0.063,
                                             -0.063
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -891,8 +1678,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -925,7 +1712,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -943,9 +1729,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.064,
@@ -969,8 +1752,12 @@
                                             -0.063,
                                             -0.064
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -989,8 +1776,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1023,7 +1810,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1041,9 +1827,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.054,
@@ -1067,8 +1850,12 @@
                                             -0.051,
                                             -0.051
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1087,8 +1874,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1121,7 +1908,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1139,9 +1925,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.059,
@@ -1165,8 +1948,12 @@
                                             -0.051,
                                             -0.05
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1185,8 +1972,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1219,7 +2006,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1237,9 +2023,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.062,
@@ -1263,8 +2046,12 @@
                                             -0.058,
                                             -0.058
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1283,8 +2070,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1317,7 +2104,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1335,9 +2121,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.062,
@@ -1361,8 +2144,12 @@
                                             -0.058,
                                             -0.057
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1381,8 +2168,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1415,7 +2202,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1433,9 +2219,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.063,
@@ -1459,8 +2242,12 @@
                                             -0.063,
                                             -0.062
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1479,8 +2266,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1513,7 +2300,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1531,9 +2317,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.062,
@@ -1557,8 +2340,12 @@
                                             -0.064,
                                             -0.064
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1577,8 +2364,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1611,7 +2398,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1629,9 +2415,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.059,
@@ -1655,8 +2438,12 @@
                                             -0.06,
                                             -0.06
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1675,8 +2462,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1709,7 +2496,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1727,9 +2513,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.06,
@@ -1753,8 +2536,12 @@
                                             -0.06,
                                             -0.06
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1773,8 +2560,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1807,7 +2594,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1825,9 +2611,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.063,
@@ -1851,8 +2634,12 @@
                                             -0.056,
                                             -0.051
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1871,8 +2658,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1905,7 +2692,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1923,9 +2709,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.063,
@@ -1949,8 +2732,12 @@
                                             -0.059,
                                             -0.058
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -1969,8 +2756,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2003,7 +2790,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2021,9 +2807,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.062,
@@ -2047,8 +2830,12 @@
                                             -0.061,
                                             -0.061
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -2067,8 +2854,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2101,7 +2888,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2119,9 +2905,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.064,
@@ -2145,8 +2928,12 @@
                                             -0.06,
                                             -0.06
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -2165,8 +2952,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2199,7 +2986,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2217,9 +3003,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.063,
@@ -2243,8 +3026,12 @@
                                             -0.06,
                                             -0.06
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -2263,8 +3050,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2297,7 +3084,6 @@
                             },
                             "analytical method identifier": "DB:\\USER\\123456 - genetic file name.prt",
                             "absorption profile data cube": {
-                                "label": "600.0",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2315,9 +3101,6 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
-                                    ],
                                     "measures": [
                                         [
                                             -0.06,
@@ -2341,8 +3124,12 @@
                                             -0.057,
                                             -0.056
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [22.0, 262.0, 502.0, 742.0, 982.0, 1222.0, 1462.0, 1702.0, 1942.0, 2182.0, 2422.0, 2662.0, 2902.0, 3142.0, 3382.0, 3622.0, 3862.0, 4102.0, 4342.0, 4582.0]
                                     ]
-                                }
+                                },
+                                "label": "600.0"
                             }
                         }
                     ],
@@ -2354,793 +3141,6 @@
                     "container type": "well plate"
                 }
             }
-        ],
-        "calculated data aggregate document": {
-            "calculated data document": [
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.75
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_24",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_25",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.5
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_26",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_27",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.825
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_28",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_29",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.15
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_30",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_31",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 5.3
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_32",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_33",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.7
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_34",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_35",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -3.9
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_36",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_37",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.65
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_38",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_39",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 4.9
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_40",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_41",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -4.55
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_42",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_43",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 4.875
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_44",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_45",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 4.375
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_46",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_47",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -3.5
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_48",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_49",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.1
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_50",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_51",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -5.225
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_52",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_53",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 7.25
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_54",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_55",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.85
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_56",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_57",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.375
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_58",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_59",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -4.025
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_60",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_61",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 4.95
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_62",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_63",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.25
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_64",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_65",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3.1
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_66",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_67",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2.475
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_68",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_69",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Max V [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2.9
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_70",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R-Squared [600]",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.0
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_71",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
-                                "data source feature": "absorption profile data cube"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "data system document": {
-            "ASM file identifier": "kinetic_helper_gene_growth_curve.json",
-            "data system instance identifier": "N/A",
-            "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
-            "file name": "kinetic_helper_gene_growth_curve.txt",
-            "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.113",
-            "software name": "Gen5",
-            "software version": "3.0.1"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "Generic Reader",
-            "equipment serial number": "123456"
-        }
+        ]
     }
 }

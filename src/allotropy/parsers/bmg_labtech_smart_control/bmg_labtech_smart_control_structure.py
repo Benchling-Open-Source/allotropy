@@ -8,7 +8,7 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 from allotropy.allotrope.models.shared.definitions.units import (
     RelativeFluorescenceUnit,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -60,7 +60,7 @@ def create_metadata(file_path: str, header: SeriesData) -> Metadata:
         file_name=path.name,
         unc_path=file_path,
         software_name=SOFTWARE_NAME,
-        custom_info_doc=header.get_custom_keys({"Path"}),
+        metadata_custom_info=header.get_custom_keys({"Path"}),
     )
 
 
@@ -84,10 +84,11 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
         # since this is ng/mL, we need to convert to pg/mL by multiplying by 1000
         mass_concentration *= 1000
 
+    experimental_data_identifier = headers.get(str, "ID1")
+
     group = MeasurementGroup(
         analyst=headers.get(str, "User"),
         measurement_time=f"{headers[str, 'Date']} {headers[str, 'Time']}",
-        experimental_data_identifier=headers.get(str, "ID1"),
         experiment_type=headers.get(str, "Test Name"),
         plate_well_count=try_float(
             headers[str, "Microplate name"].split()[-1], "plate well count"
@@ -112,6 +113,7 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
                 detector_gain_setting=headers.get(str, "Gain obtained by"),
                 scan_position_setting=scan_position_setting,
                 type_=MeasurementType.FLUORESCENCE,
+                experimental_data_identifier=experimental_data_identifier,
                 sample_custom_info={
                     "dilution factor setting": quantity_or_none(
                         TQuantityValueUnitless, row.get(float, "Dilutions")
