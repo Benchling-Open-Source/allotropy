@@ -3585,8 +3585,18 @@ class SquareMetersPerGram(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class SquareMicrometer(HasUnit):
+    unit: str = "µm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class SquareMile(HasUnit):
     unit: str = "mi^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquarePixel(HasUnit):
+    unit: str = "pixel^2"
 
 
 @dataclass(frozen=True, kw_only=True)

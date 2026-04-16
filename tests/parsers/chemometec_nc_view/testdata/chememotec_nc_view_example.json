@@ -1,6 +1,24 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "chememotec_nc_view_example.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_chemometec_nc_view",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/chemometec_nc_view/testdata/chememotec_nc_view_example.csv",
+            "file name": "chememotec_nc_view_example.csv",
+            "software name": "NC-View",
+            "custom information document": {
+                "USER": "na"
+            }
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "9002020102201902",
+            "model number": "N/A",
+            "product manufacturer": "ChemoMetec"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +27,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -25,7 +43,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_1",
+                                        "average total cell diameter": {
+                                            "value": 12.2,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.15,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.274,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 45.1,
                                             "unit": "%"
@@ -34,18 +63,7 @@
                                             "value": 0.124,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.274,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.15,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 12.2,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_1",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 0.0,
@@ -81,8 +99,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -97,7 +115,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_3",
+                                        "average total cell diameter": {
+                                            "value": 11.7,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.228,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.448,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 49.0,
                                             "unit": "%"
@@ -106,18 +135,7 @@
                                             "value": 0.22,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.448,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.228,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 11.7,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_3",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 17.5,
@@ -153,8 +171,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -169,7 +187,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_5",
+                                        "average total cell diameter": {
+                                            "value": 13.8,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.131,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.379,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 65.3,
                                             "unit": "%"
@@ -178,18 +207,7 @@
                                             "value": 0.248,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.379,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.131,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 13.8,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_5",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 4.5,
@@ -225,8 +243,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -241,7 +259,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_7",
+                                        "average total cell diameter": {
+                                            "value": 11.3,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.15,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.298,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 49.8,
                                             "unit": "%"
@@ -250,18 +279,7 @@
                                             "value": 0.148,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.298,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.15,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 11.3,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_7",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 2.5,
@@ -297,8 +315,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -313,7 +331,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_9",
+                                        "average total cell diameter": {
+                                            "value": 11.8,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.144,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.387,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 62.6,
                                             "unit": "%"
@@ -322,18 +351,7 @@
                                             "value": 0.242,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.387,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.144,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 11.8,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_9",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 6.3,
@@ -369,8 +387,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -385,7 +403,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_11",
+                                        "average total cell diameter": {
+                                            "value": 13.4,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.111,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.389,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 71.4,
                                             "unit": "%"
@@ -394,18 +423,7 @@
                                             "value": 0.278,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.389,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.111,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 13.4,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_11",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 8.7,
@@ -441,8 +459,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -457,7 +475,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_13",
+                                        "average total cell diameter": {
+                                            "value": 14.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0697,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.189,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 63.0,
                                             "unit": "%"
@@ -466,18 +495,7 @@
                                             "value": 0.119,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.189,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0697,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 14.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_13",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 8.9,
@@ -513,8 +531,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -529,7 +547,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_15",
+                                        "average total cell diameter": {
+                                            "value": 16.3,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.083,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.424,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 80.4,
                                             "unit": "%"
@@ -538,18 +567,7 @@
                                             "value": 0.341,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.424,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.083,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 16.3,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_15",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 24.4,
@@ -585,8 +603,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -601,7 +619,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_17",
+                                        "average total cell diameter": {
+                                            "value": 16.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0682,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.56,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 87.8,
                                             "unit": "%"
@@ -610,18 +639,7 @@
                                             "value": 0.492,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.56,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0682,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 16.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_17",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 16.0,
@@ -657,8 +675,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -673,7 +691,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_19",
+                                        "average total cell diameter": {
+                                            "value": 17.0,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0397,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.555,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 92.8,
                                             "unit": "%"
@@ -682,18 +711,7 @@
                                             "value": 0.516,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.555,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0397,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.0,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_19",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 24.6,
@@ -729,8 +747,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -745,7 +763,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_21",
+                                        "average total cell diameter": {
+                                            "value": 17.7,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0367,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.69,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.7,
                                             "unit": "%"
@@ -754,18 +783,7 @@
                                             "value": 0.653,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.69,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0367,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.7,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_21",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 24.8,
@@ -801,8 +819,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -817,7 +835,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_23",
+                                        "average total cell diameter": {
+                                            "value": 17.9,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0352,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.925,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 96.2,
                                             "unit": "%"
@@ -826,18 +855,7 @@
                                             "value": 0.89,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.925,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0352,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.9,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_23",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 39.0,
@@ -873,8 +891,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -889,7 +907,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_25",
+                                        "average total cell diameter": {
+                                            "value": 17.8,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0242,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.708,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 96.6,
                                             "unit": "%"
@@ -898,18 +927,7 @@
                                             "value": 0.684,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.708,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0242,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.8,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_25",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 36.6,
@@ -945,8 +963,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -961,7 +979,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_27",
+                                        "average total cell diameter": {
+                                            "value": 11.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.235,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.379,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 37.9,
                                             "unit": "%"
@@ -970,18 +999,7 @@
                                             "value": 0.144,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.379,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.235,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 11.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_27",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 2.1,
@@ -1017,8 +1035,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1033,7 +1051,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_29",
+                                        "average total cell diameter": {
+                                            "value": 12.3,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.178,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.318,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 44.2,
                                             "unit": "%"
@@ -1042,18 +1071,7 @@
                                             "value": 0.141,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.318,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.178,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 12.3,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_29",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 1.2,
@@ -1089,8 +1107,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1105,7 +1123,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_31",
+                                        "average total cell diameter": {
+                                            "value": 11.5,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.202,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.365,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 44.8,
                                             "unit": "%"
@@ -1114,18 +1143,7 @@
                                             "value": 0.163,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.365,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.202,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 11.5,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_31",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 1.2,
@@ -1161,8 +1179,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1177,7 +1195,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_33",
+                                        "average total cell diameter": {
+                                            "value": 12.9,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.177,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.433,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 59.2,
                                             "unit": "%"
@@ -1186,18 +1215,7 @@
                                             "value": 0.256,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.433,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.177,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 12.9,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_33",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 5.8,
@@ -1233,8 +1251,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1249,7 +1267,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_35",
+                                        "average total cell diameter": {
+                                            "value": 12.3,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.182,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.435,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 58.1,
                                             "unit": "%"
@@ -1258,18 +1287,7 @@
                                             "value": 0.253,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.435,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.182,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 12.3,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_35",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 4.3,
@@ -1305,8 +1323,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1321,7 +1339,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_37",
+                                        "average total cell diameter": {
+                                            "value": 14.5,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.174,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.535,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 67.5,
                                             "unit": "%"
@@ -1330,18 +1359,7 @@
                                             "value": 0.361,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.535,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.174,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 14.5,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_37",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 3.0,
@@ -1377,8 +1395,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1393,7 +1411,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_39",
+                                        "average total cell diameter": {
+                                            "value": 14.7,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.108,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.671,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 83.9,
                                             "unit": "%"
@@ -1402,18 +1431,7 @@
                                             "value": 0.563,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.671,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.108,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 14.7,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_39",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 4.2,
@@ -1449,8 +1467,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1465,7 +1483,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_41",
+                                        "average total cell diameter": {
+                                            "value": 14.7,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0626,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.983,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 93.6,
                                             "unit": "%"
@@ -1474,18 +1503,7 @@
                                             "value": 0.92,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.983,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0626,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 14.7,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_41",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 9.2,
@@ -1521,8 +1539,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1537,7 +1555,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_43",
+                                        "average total cell diameter": {
+                                            "value": 14.9,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0544,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.07,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.9,
                                             "unit": "%"
@@ -1546,18 +1575,7 @@
                                             "value": 1.02,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.07,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0544,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 14.9,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_43",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 15.3,
@@ -1593,8 +1611,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1609,7 +1627,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_45",
+                                        "average total cell diameter": {
+                                            "value": 14.8,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.08,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.12,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 92.9,
                                             "unit": "%"
@@ -1618,18 +1647,7 @@
                                             "value": 1.04,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.12,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.08,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 14.8,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_45",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 7.2,
@@ -1665,8 +1683,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1681,7 +1699,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_47",
+                                        "average total cell diameter": {
+                                            "value": 15.8,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0704,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.483,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 85.4,
                                             "unit": "%"
@@ -1690,18 +1719,7 @@
                                             "value": 0.412,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.483,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0704,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 15.8,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_47",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 33.8,
@@ -1737,8 +1755,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1753,7 +1771,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_49",
+                                        "average total cell diameter": {
+                                            "value": 17.3,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0625,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.708,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 91.2,
                                             "unit": "%"
@@ -1762,18 +1791,7 @@
                                             "value": 0.646,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.708,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0625,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.3,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_49",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 18.0,
@@ -1809,8 +1827,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1825,7 +1843,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_51",
+                                        "average total cell diameter": {
+                                            "value": 17.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0611,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.621,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 90.2,
                                             "unit": "%"
@@ -1834,18 +1863,7 @@
                                             "value": 0.56,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.621,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0611,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_51",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 29.6,
@@ -1881,8 +1899,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1897,7 +1915,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_53",
+                                        "average total cell diameter": {
+                                            "value": 17.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0425,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.619,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 93.1,
                                             "unit": "%"
@@ -1906,18 +1935,7 @@
                                             "value": 0.577,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.619,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0425,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_53",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 30.5,
@@ -1953,8 +1971,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -1969,7 +1987,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_55",
+                                        "average total cell diameter": {
+                                            "value": 18.5,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0396,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.782,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.9,
                                             "unit": "%"
@@ -1978,18 +2007,7 @@
                                             "value": 0.743,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.782,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0396,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 18.5,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_55",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 32.0,
@@ -2025,8 +2043,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -2041,7 +2059,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_57",
+                                        "average total cell diameter": {
+                                            "value": 18.2,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0272,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.792,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 96.6,
                                             "unit": "%"
@@ -2050,18 +2079,7 @@
                                             "value": 0.765,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.792,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0272,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 18.2,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_57",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 38.5,
@@ -2097,8 +2115,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -2113,7 +2131,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_59",
+                                        "average total cell diameter": {
+                                            "value": 17.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0412,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.777,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.7,
                                             "unit": "%"
@@ -2122,18 +2151,7 @@
                                             "value": 0.735,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.777,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0412,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 17.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_59",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 39.8,
@@ -2169,8 +2187,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -2185,7 +2203,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_61",
+                                        "average total cell diameter": {
+                                            "value": 18.4,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0279,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.735,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 96.2,
                                             "unit": "%"
@@ -2194,18 +2223,7 @@
                                             "value": 0.707,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.735,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0279,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 18.4,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_61",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 34.0,
@@ -2241,8 +2259,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Cell counter",
-                                        "detection type": "fluorescence"
+                                        "detection type": "fluorescence",
+                                        "device type": "Cell counter"
                                     }
                                 ]
                             },
@@ -2257,7 +2275,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_63",
+                                        "average total cell diameter": {
+                                            "value": 18.6,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0396,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.742,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.7,
                                             "unit": "%"
@@ -2266,18 +2295,7 @@
                                             "value": 0.702,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.742,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0396,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 18.6,
-                                            "unit": "µm"
-                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_63",
                                         "custom information document": {
                                             "cell aggregation percentage": {
                                                 "value": 43.7,
@@ -2306,24 +2324,6 @@
                 },
                 "analyst": "CHB"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "chememotec_nc_view_example.json",
-            "data system instance identifier": "N/A",
-            "file name": "chememotec_nc_view_example.csv",
-            "UNC path": "tests/parsers/chemometec_nc_view/testdata/chememotec_nc_view_example.csv",
-            "ASM converter name": "allotropy_chemometec_nc_view",
-            "ASM converter version": "0.1.105",
-            "software name": "NC-View",
-            "custom information document": {
-                "USER": "na"
-            }
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "equipment serial number": "9002020102201902",
-            "model number": "N/A",
-            "product manufacturer": "ChemoMetec"
-        }
+        ]
     }
 }
