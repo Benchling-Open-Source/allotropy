@@ -2,7 +2,9 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    SampleRoleType,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )

@@ -7,7 +7,7 @@ from attr import dataclass
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDalton,
     TQuantityValueMicrogramPerMilliliter,
     TQuantityValueMicroliterPerMinute,

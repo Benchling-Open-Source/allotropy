@@ -6,9 +6,6 @@ from dataclasses import dataclass
 from io import StringIO
 import re
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
-    TransmittedLightSetting,
-)
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     ImageFeature,
@@ -17,6 +14,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     MeasurementType,
     Metadata,
     ProcessedData,
+    TransmittedLightSetting,
 )
 from allotropy.exceptions import (
     AllotropeConversionError,

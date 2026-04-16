@@ -1,0 +1,229 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/flow-rate-cube-detector.schema",
+  "$defs": {
+    "measurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "device control aggregate document": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "device control document": {
+              "type": "array",
+              "$asm.array-ordered": true,
+              "$asm.array-mixed": false,
+              "$asm.pattern": "indexed datum",
+              "items": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                    "$asm.pattern": "aggregate datum",
+                    "properties": {
+                      "system flow rate data cube": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002708",
+                        "$asm.pattern": "datacube",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                          },
+                          {
+                            "properties": {
+                              "cube-structure": {
+                                "properties": {
+                                  "dimensions": {
+                                    "minItems": 1,
+                                    "maxItems": 1,
+                                    "prefixItems": [
+                                      {
+                                        "oneOf": [
+                                          {
+                                            "properties": {
+                                              "concept": {
+                                                "const": "retention time"
+                                              },
+                                              "unit": {
+                                                "const": "s"
+                                              },
+                                              "@componentDatatype": {
+                                                "const": "double"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "concept": {
+                                                "const": "retention volume"
+                                              },
+                                              "unit": {
+                                                "const": "mL"
+                                              },
+                                              "@componentDatatype": {
+                                                "const": "double"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "measures": {
+                                    "minItems": 1,
+                                    "maxItems": 1,
+                                    "contains": {
+                                      "oneOf": [
+                                        {
+                                          "properties": {
+                                            "concept": {
+                                              "const": "system flow"
+                                            },
+                                            "unit": {
+                                              "const": "CV/h"
+                                            },
+                                            "@componentDatatype": {
+                                              "const": "double"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "properties": {
+                                            "concept": {
+                                              "const": "system flow"
+                                            },
+                                            "unit": {
+                                              "const": "mL/min"
+                                            },
+                                            "@componentDatatype": {
+                                              "const": "double"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "system flow rate data cube"
+                            ]
+                          }
+                        ]
+                      },
+                      "sample flow rate data cube": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002707",
+                        "$asm.pattern": "datacube",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                          },
+                          {
+                            "properties": {
+                              "cube-structure": {
+                                "properties": {
+                                  "dimensions": {
+                                    "minItems": 1,
+                                    "maxItems": 1,
+                                    "prefixItems": [
+                                      {
+                                        "oneOf": [
+                                          {
+                                            "properties": {
+                                              "concept": {
+                                                "const": "retention time"
+                                              },
+                                              "unit": {
+                                                "const": "s"
+                                              },
+                                              "@componentDatatype": {
+                                                "const": "double"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "concept": {
+                                                "const": "retention volume"
+                                              },
+                                              "unit": {
+                                                "const": "mL"
+                                              },
+                                              "@componentDatatype": {
+                                                "const": "double"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "measures": {
+                                    "minItems": 1,
+                                    "maxItems": 1,
+                                    "contains": {
+                                      "oneOf": [
+                                        {
+                                          "properties": {
+                                            "concept": {
+                                              "const": "sample flow"
+                                            },
+                                            "unit": {
+                                              "const": "CV/h"
+                                            },
+                                            "@componentDatatype": {
+                                              "const": "double"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "properties": {
+                                            "concept": {
+                                              "const": "sample flow"
+                                            },
+                                            "unit": {
+                                              "const": "mL/min"
+                                            },
+                                            "@componentDatatype": {
+                                              "const": "double"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "properties": {
+                                            "concept": {
+                                              "const": "sample flow"
+                                            },
+                                            "unit": {
+                                              "const": "cm/s"
+                                            },
+                                            "@componentDatatype": {
+                                              "const": "double"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "sample flow rate data cube"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
