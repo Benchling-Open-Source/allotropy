@@ -285,19 +285,23 @@ def _extract_kinetic_analysis(
                             if isinstance(parameters, str):
                                 _parse_parameter_string(
                                     parameters,
-                                    kinetic_analysis[current_flow_cell_id]["parameters"],
+                                    kinetic_analysis[current_flow_cell_id][
+                                        "parameters"
+                                    ],
                                 )
 
                                 # Calculate KD from ka and kd if both are present
-                                params = kinetic_analysis[current_flow_cell_id]["parameters"]
+                                params = kinetic_analysis[current_flow_cell_id][
+                                    "parameters"
+                                ]
                                 if "ka" in params and "kd" in params:
                                     ka_val = params["ka"].get("value")
                                     kd_val = params["kd"].get("value")
                                     if ka_val and kd_val and ka_val != 0:
                                         kd_m_value = kd_val / ka_val
-                                        kinetic_analysis[current_flow_cell_id]["calculated"][
-                                            "Kd_M"
-                                        ] = {"value": kd_m_value, "units": "M"}
+                                        kinetic_analysis[current_flow_cell_id][
+                                            "calculated"
+                                        ]["Kd_M"] = {"value": kd_m_value, "units": "M"}
 
                         # Extract Chi2
                         if chi2 and current_flow_cell_id:
@@ -309,7 +313,9 @@ def _extract_kinetic_analysis(
                                 }
                             try:
                                 chi2_value = float(chi2) if chi2 != "NaN" else None
-                                kinetic_analysis[current_flow_cell_id]["fit_quality"]["Chi2"] = {
+                                kinetic_analysis[current_flow_cell_id]["fit_quality"][
+                                    "Chi2"
+                                ] = {
                                     "value": chi2_value,
                                     "units": "dimensionless",
                                 }
