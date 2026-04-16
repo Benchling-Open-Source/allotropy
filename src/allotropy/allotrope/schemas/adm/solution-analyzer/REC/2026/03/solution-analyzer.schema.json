@@ -1,0 +1,100 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/solution-analyzer/REC/2026/03/solution-analyzer.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "properties": {
+        "solution analyzer aggregate document": {
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/hierarchy.schema#/$defs/techniqueAggregateDocument"
+            },
+            {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002919",
+              "properties": {
+                "solution analyzer document": {
+                  "$asm.array-mixed": false,
+                  "$asm.array-ordered": true,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/hierarchy.schema#/$defs/techniqueDocument"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002920",
+                        "properties": {
+                          "measurement aggregate document": {
+                            "properties": {
+                              "data processing time": {
+                                "$asm.pattern": "value datum",
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002095",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tDateTimeStampValue"
+                              },
+                              "measurement document": {
+                                "items": {
+                                  "allOf": [
+                                    {
+                                      "required": [
+                                        "measurement identifier",
+                                        "measurement time"
+                                      ]
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/osmolality/REC/2026/03/osmolality-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/absorbance/REC/2026/03/absorbance-point-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/ph/REC/2026/03/ph-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/bga/REC/2026/03/blood-gas-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2026/03/cell-counting-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/metabolite-analyzer/REC/2026/03/metabolite-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/light-obscuration/REC/2026/03/light-obscuration-detector.schema#/$defs/measurementDocumentItems"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/orderedItem"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "solution analyzer document"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/asm"
+    }
+  ],
+  "required": [
+    "$asm.manifest"
+  ]
+}

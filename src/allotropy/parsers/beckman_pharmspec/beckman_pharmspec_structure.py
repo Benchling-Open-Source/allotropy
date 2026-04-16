@@ -9,7 +9,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2026._03.solution_analyzer import (
     CalculatedDataItem,
     DataProcessing,
     DataSource,

@@ -1,6 +1,21 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2026/03/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
+        "data system document": {
+            "ASM file identifier": "roche_cedex_bioht_v5_example01.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_roche_cedex_bioht",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_example01.txt",
+            "file name": "roche_cedex_bioht_v5_example01.txt",
+            "software name": "CEDEX BIO HT",
+            "software version": "5.0.0.1206 (1206.0)"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "123456",
+            "model number": "CEDEX BIO HT"
+        },
         "solution analyzer document": [
             {
                 "measurement aggregate document": {
@@ -2525,21 +2540,6 @@
                 },
                 "analyst": "ADMIN"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "roche_cedex_bioht_v5_example01.json",
-            "data system instance identifier": "N/A",
-            "file name": "roche_cedex_bioht_v5_example01.txt",
-            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_example01.txt",
-            "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.105",
-            "software name": "CEDEX BIO HT",
-            "software version": "5.0.0.1206 (1206.0)"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "equipment serial number": "123456",
-            "model number": "CEDEX BIO HT"
-        }
+        ]
     }
 }
