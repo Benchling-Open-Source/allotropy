@@ -43,6 +43,7 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValueMilliSecond,
+    TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValuePercent,
@@ -401,9 +402,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     ProcessedDataDocumentItem(
                         processed_data_identifier=measurement.processed_data_document.identifier,
                         data_processing_document={
-                            "concentration factor": TQuantityValue(
-                                value=measurement.processed_data_document.concentration_factor,
-                                unit="ng/µL",
+                            "concentration factor": quantity_or_none(
+                                TQuantityValueNanogramPerMicroliter,
+                                measurement.processed_data_document.concentration_factor,
                             )
                         }
                         if measurement.processed_data_document.concentration_factor
