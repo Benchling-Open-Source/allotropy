@@ -1,6 +1,24 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "chemometec_nucleoview_example05.json",
+            "data system instance identifier": "DESKTOP-A678B9H",
+            "ASM converter name": "allotropy_chemometec_nucleoview",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example05.csv",
+            "file name": "chemometec_nucleoview_example05.csv",
+            "software name": "NucleoView",
+            "software version": "1.4.2.0",
+            "custom information document": {
+                "21 CFR Part 11": "disabled",
+                "csv file version": 2.0
+            }
+        },
+        "device system document": {
+            "equipment serial number": "s/n 9000201099909999",
+            "model number": "NucleoView NC-200"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +27,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "dark field imager (cell counter)",
                                         "detection type": "dark field",
+                                        "device type": "dark field imager (cell counter)",
                                         "sample volume setting": {
                                             "value": 200.0,
                                             "unit": "μL"
@@ -29,20 +47,20 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "viability (cell counter)": {
-                                            "value": 68.2,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.45,
+                                        "dead cell density (cell counter)": {
+                                            "value": 1.14,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 3.58,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "dead cell density (cell counter)": {
-                                            "value": 1.14,
+                                        "viability (cell counter)": {
+                                            "value": 68.2,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.45,
                                             "unit": "10^6 cells/mL"
                                         }
                                     }
@@ -57,6 +75,7 @@
                                     }
                                 }
                             },
+                            "experimental data identifier": "20231120-0012-c-cellsABCD.cm",
                             "image aggregate document": {
                                 "image document": [
                                     {
@@ -103,36 +122,18 @@
                         ]
                     },
                     "custom information document": {
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Event log format": "Plain text",
-                        "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
-                        "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol adaptation title": "example cell counting",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Login ID": "admin"
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Login ID": "admin",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
+                        "Protocol adaptation title": "example cell counting",
+                        "Event log format": "Plain text",
+                        "Protocol template title": "Viability and Cell Count Assay",
+                        "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu"
                     }
                 },
                 "analyst": "DrScientist"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "chemometec_nucleoview_example05.json",
-            "data system instance identifier": "DESKTOP-A678B9H",
-            "file name": "chemometec_nucleoview_example05.csv",
-            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example05.csv",
-            "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.76",
-            "software name": "NucleoView",
-            "software version": "1.4.2.0",
-            "custom information document": {
-                "21 CFR Part 11": "disabled",
-                "csv file version": 2.0
-            }
-        },
-        "device system document": {
-            "equipment serial number": "s/n 9000201099909999",
-            "model number": "NucleoView NC-200"
-        }
+        ]
     }
 }

@@ -1,6 +1,18 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "chemometec_nucleoview_example03.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_chemometec_nucleoview",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example03.csv",
+            "file name": "chemometec_nucleoview_example03.csv",
+            "software name": "NucleoView"
+        },
+        "device system document": {
+            "model number": "NucleoCounter NC-200"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +21,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "dark field imager (cell counter)",
                                         "detection type": "dark field",
+                                        "device type": "dark field imager (cell counter)",
                                         "sample volume setting": {
                                             "value": 200.0,
                                             "unit": "μL"
@@ -29,6 +41,18 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
+                                        "average total cell diameter": {
+                                            "value": 10.2,
+                                            "unit": "µm"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0746,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.67,
+                                            "unit": "10^6 cells/mL"
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.5,
                                             "unit": "%"
@@ -36,18 +60,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.6,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.67,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0746,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 10.2,
-                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -102,18 +114,6 @@
                 },
                 "analyst": "DrScientist"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "chemometec_nucleoview_example03.json",
-            "data system instance identifier": "N/A",
-            "file name": "chemometec_nucleoview_example03.csv",
-            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example03.csv",
-            "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.75",
-            "software name": "NucleoView"
-        },
-        "device system document": {
-            "model number": "NucleoCounter NC-200"
-        }
+        ]
     }
 }

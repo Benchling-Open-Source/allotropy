@@ -1,6 +1,24 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "chemometec_nucleoview_example06.json",
+            "data system instance identifier": "ABC0-NBBS-FQ01",
+            "ASM converter name": "allotropy_chemometec_nucleoview",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example06.csv",
+            "file name": "chemometec_nucleoview_example06.csv",
+            "software name": "NucleoView",
+            "software version": "1.4.0.0",
+            "custom information document": {
+                "csv file version": 2.0,
+                "21 CFR Part 11": "disabled"
+            }
+        },
+        "device system document": {
+            "equipment serial number": "s/n 9000201099909999",
+            "model number": "NucleoView NC-200"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +27,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "dark field imager (cell counter)",
                                         "detection type": "dark field",
+                                        "device type": "dark field imager (cell counter)",
                                         "sample volume setting": {
                                             "value": 200.0,
                                             "unit": "μL"
@@ -29,20 +47,20 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "viability (cell counter)": {
-                                            "value": 92.8,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.58,
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.122,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.7,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.122,
+                                        "viability (cell counter)": {
+                                            "value": 92.8,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.58,
                                             "unit": "10^6 cells/mL"
                                         }
                                     }
@@ -57,6 +75,7 @@
                                     }
                                 }
                             },
+                            "experimental data identifier": "20231120-0039-c-cellsABCD.cm",
                             "image aggregate document": {
                                 "image document": [
                                     {
@@ -103,36 +122,18 @@
                         ]
                     },
                     "custom information document": {
+                        "Event log format": "Plain text",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
                         "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
                         "Login ID": "admin",
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol adaptation title": "example cell counting",
-                        "Event log format": "Plain text",
                         "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx"
+                        "Protocol adaptation title": "example cell counting"
                     }
                 },
                 "analyst": "DrScientist"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "chemometec_nucleoview_example06.json",
-            "data system instance identifier": "ABC0-NBBS-FQ01",
-            "file name": "chemometec_nucleoview_example06.csv",
-            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example06.csv",
-            "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.76",
-            "software name": "NucleoView",
-            "software version": "1.4.0.0",
-            "custom information document": {
-                "21 CFR Part 11": "disabled",
-                "csv file version": 2.0
-            }
-        },
-        "device system document": {
-            "equipment serial number": "s/n 9000201099909999",
-            "model number": "NucleoView NC-200"
-        }
+        ]
     }
 }
