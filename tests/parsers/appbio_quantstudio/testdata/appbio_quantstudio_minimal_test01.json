@@ -1,6 +1,418 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
+        "qpcr document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "total cycle number setting": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "qPCR detection chemistry": "TAQMAN",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "VIC",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                            "measurement time": "2010-10-01T01:44:54-04:00",
+                            "sample document": {
+                                "sample identifier": "NAC",
+                                "location identifier": "1",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(0,0,255)"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": false,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": false,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40,
+                                                "unit": "#"
+                                            },
+                                            "genotyping qPCR method setting (qPCR)": {
+                                                "value": 0.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "noamp": "N",
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "expfail": "N"
+                                            }
+                                        },
+                                        "normalized reporter result": {
+                                            "value": 1.13,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        1.064
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        -0.002
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "genotyping qPCR result": "Blocked IPC Control"
+                                    }
+                                ]
+                            },
+                            "target DNA description": "IPC",
+                            "reporter data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1.0
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            1654662.5
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1.0
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            1591197.5
+                                        ]
+                                    ]
+                                }
+                            },
+                            "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example"
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "total cycle number setting": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "qPCR detection chemistry": "TAQMAN",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                            "measurement time": "2010-10-01T01:44:54-04:00",
+                            "sample document": {
+                                "sample identifier": "NAC",
+                                "location identifier": "1",
+                                "sample role type": "control sample role",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": false,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": false,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40,
+                                                "unit": "#"
+                                            },
+                                            "genotyping qPCR method setting (qPCR)": {
+                                                "value": 0.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "noamp": "N",
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "expfail": "N"
+                                            }
+                                        },
+                                        "normalized reporter result": {
+                                            "value": 0.402,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.343
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        -0.007
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "genotyping qPCR result": "Negative Control"
+                                    }
+                                ]
+                            },
+                            "target DNA description": "TGFb",
+                            "reporter data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1.0
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            502840.9
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1.0
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            1591197.5
+                                        ]
+                                    ]
+                                }
+                            },
+                            "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example"
+                        }
+                    ],
+                    "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example",
+                    "experiment type": "presence/absence qPCR experiment",
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
+                }
+            }
+        ],
         "calculated data aggregate document": {
             "calculated data document": [
                 {
@@ -72,10 +484,10 @@
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_minimal_test01.json",
             "data system instance identifier": "localhost",
+            "file name": "appbio_quantstudio_minimal_test01.txt",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
             "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
-            "file name": "appbio_quantstudio_minimal_test01.txt",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
@@ -83,390 +495,6 @@
             "device identifier": "278880034",
             "equipment serial number": "278880034",
             "model number": "QuantStudio(TM) 6 Flex System"
-        },
-        "qpcr document": [
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "qPCR",
-                                        "measurement method identifier": "Ct",
-                                        "passive reference dye setting": "ROX",
-                                        "qPCR detection chemistry": "TAQMAN",
-                                        "quencher dye setting": "NFQ-MGB",
-                                        "reporter dye setting": "VIC",
-                                        "total cycle number setting": {
-                                            "value": 1.0,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2010-10-01T01:44:54-04:00",
-                            "sample document": {
-                                "location identifier": "1",
-                                "sample identifier": "NAC",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
-                            },
-                            "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "automatic baseline determination enabled setting": false,
-                                            "automatic cycle threshold enabled setting": false,
-                                            "baseline determination end cycle setting": {
-                                                "value": 40,
-                                                "unit": "#"
-                                            },
-                                            "baseline determination start cycle setting": {
-                                                "value": 1,
-                                                "unit": "#"
-                                            },
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.2,
-                                                "unit": "(unitless)"
-                                            },
-                                            "genotyping qPCR method setting (qPCR)": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "OUTLIERRG": "N",
-                                                "noamp": "N",
-                                                "expfail": "N"
-                                            }
-                                        },
-                                        "baseline corrected reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "baseline corrected reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [
-                                                        -0.002
-                                                    ]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "baseline corrected reporter"
-                                        },
-                                        "genotyping qPCR result": "Blocked IPC Control",
-                                        "normalized reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "normalized reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [1.064]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "normalized reporter"
-                                        },
-                                        "normalized reporter result": {
-                                            "value": 1.13,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            },
-                            "passive reference data cube": {
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "cycle count",
-                                            "unit": "#"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "fluorescence",
-                                            "unit": "RFU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "measures": [
-                                        [1591197.5]
-                                    ],
-                                    "dimensions": [
-                                        [1.0]
-                                    ]
-                                },
-                                "label": "passive reference dye"
-                            },
-                            "reporter data cube": {
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "cycle count",
-                                            "unit": "#"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "fluorescence",
-                                            "unit": "RFU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "measures": [
-                                        [1654662.5]
-                                    ],
-                                    "dimensions": [
-                                        [1.0]
-                                    ]
-                                },
-                                "label": "reporter dye"
-                            },
-                            "target DNA description": "IPC"
-                        },
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "qPCR",
-                                        "measurement method identifier": "Ct",
-                                        "passive reference dye setting": "ROX",
-                                        "qPCR detection chemistry": "TAQMAN",
-                                        "quencher dye setting": "NFQ-MGB",
-                                        "reporter dye setting": "FAM",
-                                        "total cycle number setting": {
-                                            "value": 1.0,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                            "measurement time": "2010-10-01T01:44:54-04:00",
-                            "sample document": {
-                                "location identifier": "1",
-                                "sample identifier": "NAC",
-                                "sample role type": "control sample role",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
-                            "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "automatic baseline determination enabled setting": false,
-                                            "automatic cycle threshold enabled setting": false,
-                                            "baseline determination end cycle setting": {
-                                                "value": 40,
-                                                "unit": "#"
-                                            },
-                                            "baseline determination start cycle setting": {
-                                                "value": 1,
-                                                "unit": "#"
-                                            },
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.2,
-                                                "unit": "(unitless)"
-                                            },
-                                            "genotyping qPCR method setting (qPCR)": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "OUTLIERRG": "N",
-                                                "noamp": "N",
-                                                "expfail": "N"
-                                            }
-                                        },
-                                        "baseline corrected reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "baseline corrected reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [
-                                                        -0.007
-                                                    ]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "baseline corrected reporter"
-                                        },
-                                        "genotyping qPCR result": "Negative Control",
-                                        "normalized reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "normalized reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [0.343]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "normalized reporter"
-                                        },
-                                        "normalized reporter result": {
-                                            "value": 0.402,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            },
-                            "passive reference data cube": {
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "cycle count",
-                                            "unit": "#"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "fluorescence",
-                                            "unit": "RFU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "measures": [
-                                        [1591197.5]
-                                    ],
-                                    "dimensions": [
-                                        [1.0]
-                                    ]
-                                },
-                                "label": "passive reference dye"
-                            },
-                            "reporter data cube": {
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "cycle count",
-                                            "unit": "#"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "fluorescence",
-                                            "unit": "RFU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "measures": [
-                                        [502840.9]
-                                    ],
-                                    "dimensions": [
-                                        [1.0]
-                                    ]
-                                },
-                                "label": "reporter dye"
-                            },
-                            "target DNA description": "TGFb"
-                        }
-                    ],
-                    "container type": "PCR reaction block",
-                    "experiment type": "presence/absence qPCR experiment",
-                    "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example",
-                    "well volume": {
-                        "value": 200.0,
-                        "unit": "μL"
-                    },
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    }
-                }
-            }
-        ]
+        }
     }
 }

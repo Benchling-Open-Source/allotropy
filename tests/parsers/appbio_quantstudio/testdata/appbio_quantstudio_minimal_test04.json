@@ -1,6 +1,306 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
+        "qpcr document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "total cycle number setting": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "qPCR detection chemistry": "TAQMAN",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "800",
+                                "location identifier": "37",
+                                "sample role type": "standard sample role",
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "well identifier": 37,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.133,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 25,
+                                                "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "RNaseP",
+                                                "reference sample description": "800",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N"
+                                            }
+                                        },
+                                        "cycle threshold result (qPCR)": {
+                                            "value": 30.155,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.627
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.001
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example"
+                        }
+                    ],
+                    "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
+                    "experiment type": "relative standard curve qPCR experiment",
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "total cycle number setting": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "qPCR detection chemistry": "TAQMAN",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "800",
+                                "location identifier": "38",
+                                "sample role type": "standard sample role",
+                                "well location identifier": "D2",
+                                "custom information document": {
+                                    "well identifier": 38,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.133,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 25,
+                                                "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "RNaseP",
+                                                "reference sample description": "800",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N"
+                                            }
+                                        },
+                                        "cycle threshold result (qPCR)": {
+                                            "value": 30.2,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.612
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1.0
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        -0.001
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example"
+                        }
+                    ],
+                    "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
+                    "experiment type": "relative standard curve qPCR experiment",
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
+                }
+            }
+        ],
         "calculated data aggregate document": {
             "calculated data document": [
                 {
@@ -328,10 +628,10 @@
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_minimal_test04.json",
             "data system instance identifier": "localhost",
+            "file name": "appbio_quantstudio_minimal_test04.txt",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test04.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
             "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test04.txt",
-            "file name": "appbio_quantstudio_minimal_test04.txt",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
@@ -339,292 +639,6 @@
             "device identifier": "278880034",
             "equipment serial number": "278880034",
             "model number": "QuantStudio(TM) 7 Flex System"
-        },
-        "qpcr document": [
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "qPCR",
-                                        "measurement method identifier": "Ct",
-                                        "passive reference dye setting": "ROX",
-                                        "qPCR detection chemistry": "TAQMAN",
-                                        "quencher dye setting": "NFQ-MGB",
-                                        "reporter dye setting": "FAM",
-                                        "total cycle number setting": {
-                                            "value": 1.0,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "sample document": {
-                                "location identifier": "37",
-                                "sample identifier": "800",
-                                "sample role type": "standard sample role",
-                                "well location identifier": "D1",
-                                "custom information document": {
-                                    "well identifier": 37,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
-                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "automatic baseline determination enabled setting": true,
-                                            "automatic cycle threshold enabled setting": true,
-                                            "baseline determination end cycle setting": {
-                                                "value": 25,
-                                                "unit": "#"
-                                            },
-                                            "baseline determination start cycle setting": {
-                                                "value": 3,
-                                                "unit": "#"
-                                            },
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.133,
-                                                "unit": "(unitless)"
-                                            },
-                                            "custom information document": {
-                                                "reference dna description": "RNaseP",
-                                                "reference sample description": "800",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N"
-                                            }
-                                        },
-                                        "baseline corrected reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "baseline corrected reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [0.001]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "baseline corrected reporter"
-                                        },
-                                        "cycle threshold result (qPCR)": {
-                                            "value": 30.155,
-                                            "unit": "(unitless)"
-                                        },
-                                        "normalized reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "normalized reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [0.627]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "normalized reporter"
-                                        }
-                                    }
-                                ]
-                            },
-                            "target DNA description": "RNaseP"
-                        }
-                    ],
-                    "container type": "PCR reaction block",
-                    "experiment type": "relative standard curve qPCR experiment",
-                    "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
-                    "well volume": {
-                        "value": 200.0,
-                        "unit": "μL"
-                    },
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    }
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "qPCR",
-                                        "measurement method identifier": "Ct",
-                                        "passive reference dye setting": "ROX",
-                                        "qPCR detection chemistry": "TAQMAN",
-                                        "quencher dye setting": "NFQ-MGB",
-                                        "reporter dye setting": "FAM",
-                                        "total cycle number setting": {
-                                            "value": 1.0,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "sample document": {
-                                "location identifier": "38",
-                                "sample identifier": "800",
-                                "sample role type": "standard sample role",
-                                "well location identifier": "D2",
-                                "custom information document": {
-                                    "well identifier": 38,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
-                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "automatic baseline determination enabled setting": true,
-                                            "automatic cycle threshold enabled setting": true,
-                                            "baseline determination end cycle setting": {
-                                                "value": 25,
-                                                "unit": "#"
-                                            },
-                                            "baseline determination start cycle setting": {
-                                                "value": 3,
-                                                "unit": "#"
-                                            },
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.133,
-                                                "unit": "(unitless)"
-                                            },
-                                            "custom information document": {
-                                                "reference dna description": "RNaseP",
-                                                "reference sample description": "800",
-                                                "Analysis Type": "Singleplex",
-                                                "RQ Min/Max Confidence Level": 95.0,
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "OUTLIERRG": "N"
-                                            }
-                                        },
-                                        "baseline corrected reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "baseline corrected reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [
-                                                        -0.001
-                                                    ]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "baseline corrected reporter"
-                                        },
-                                        "cycle threshold result (qPCR)": {
-                                            "value": 30.2,
-                                            "unit": "(unitless)"
-                                        },
-                                        "normalized reporter data cube": {
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "normalized reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "measures": [
-                                                    [0.612]
-                                                ],
-                                                "dimensions": [
-                                                    [1.0]
-                                                ]
-                                            },
-                                            "label": "normalized reporter"
-                                        }
-                                    }
-                                ]
-                            },
-                            "target DNA description": "RNaseP"
-                        }
-                    ],
-                    "container type": "PCR reaction block",
-                    "experiment type": "relative standard curve qPCR experiment",
-                    "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
-                    "well volume": {
-                        "value": 200.0,
-                        "unit": "μL"
-                    },
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    }
-                }
-            }
-        ]
+        }
     }
 }
