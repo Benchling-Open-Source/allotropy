@@ -1,20 +1,22 @@
 """Resolve technique shorthand (e.g. "plate-reader 2026/03") to purl URLs.
 
 Supports fuzzy matching of technique names against the GitLab directory listing
-and automatic discovery of all schema files within a technique+version directory.
+(with local schema cache fallback) and automatic discovery of all schema files
+within a technique+version directory.
 """
 
 from __future__ import annotations
 
 import difflib
 import json
+from pathlib import Path
 import re
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
 import click
 
-from allotropy.schema_gen.naming import ALLOTROPE_URL_PREFIX
+from allotropy.schema_gen.naming import ALLOTROPE_URL_PREFIX, DEFAULT_SCHEMA_CACHE_DIR
 
 # GitLab API base for the Allotrope public ASM repository
 _GITLAB_API_BASE = (
@@ -66,25 +68,51 @@ def parse_shorthand(input_str: str) -> tuple[str, str, str, str]:
     return technique, status, year, month
 
 
-def _gitlab_tree(path: str) -> list[dict[str, str]]:
-    """Fetch a directory listing from the GitLab API."""
+def _gitlab_tree(path: str) -> list[dict[str, str]] | None:
+    """Fetch a directory listing from the GitLab API.
+
+    Returns None on any network/HTTP error instead of raising.
+    """
     url = f"{_GITLAB_API_BASE}?path={path}&per_page=100&ref=main"
     try:
         with urlopen(url, timeout=30) as response:  # noqa: S310
             data = json.loads(response.read().decode("utf-8"))
-    except HTTPError as exc:
-        msg = f"GitLab API error (HTTP {exc.code}) listing {path}"
-        raise RuntimeError(msg) from exc
-    except URLError as exc:
-        msg = f"Network error listing {path}: {exc.reason}"
-        raise RuntimeError(msg) from exc
+    except (HTTPError, URLError, OSError):
+        return None
     return data  # type: ignore[no-any-return]
 
 
+def _list_cached_techniques(
+    cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR,
+) -> list[str]:
+    """List technique names from the local schema cache."""
+    adm_dir = cache_dir / "adm"
+    if not adm_dir.is_dir():
+        return []
+    return sorted(
+        d.name
+        for d in adm_dir.iterdir()
+        if d.is_dir() and d.name not in ("core", "qudt")
+    )
+
+
 def list_gitlab_techniques() -> list[str]:
-    """List all technique directory names from the GitLab ASM repository."""
+    """List technique names, preferring GitLab API with local cache fallback."""
     entries = _gitlab_tree("json-schemas/adm")
-    return sorted(entry["name"] for entry in entries if entry.get("type") == "tree")
+    if entries is not None:
+        return sorted(entry["name"] for entry in entries if entry.get("type") == "tree")
+    # Fallback to local cache
+    click.echo(
+        "Warning: Could not reach GitLab API, using local schema cache for technique names."
+    )
+    techniques = _list_cached_techniques()
+    if not techniques:
+        msg = (
+            "Could not reach GitLab API and no local schema cache found.\n"
+            "Check your network connection and try again."
+        )
+        raise click.ClickException(msg)
+    return techniques
 
 
 def resolve_technique_name(input_name: str, techniques: list[str]) -> str:
@@ -130,27 +158,58 @@ def resolve_technique_name(input_name: str, techniques: list[str]) -> str:
     return matches[choice - 1]
 
 
+def _list_cached_schemas(
+    technique: str,
+    status: str,
+    year: str,
+    month: str,
+    cache_dir: Path = DEFAULT_SCHEMA_CACHE_DIR,
+) -> list[str]:
+    """List schema filenames from the local cache directory."""
+    cache_path = cache_dir / "adm" / technique / status / year / month
+    if not cache_path.is_dir():
+        return []
+    return sorted(
+        f.name
+        for f in cache_path.iterdir()
+        if f.name.endswith(".schema.json") and not f.name.endswith(".embed.schema.json")
+    )
+
+
 def list_schemas_in_directory(
     technique: str, status: str, year: str, month: str
 ) -> list[str]:
-    """List schema filenames in a technique+version directory on GitLab.
+    """List schema filenames in a technique+version directory.
 
+    Tries GitLab API first, falls back to local cache.
     Returns only *.schema.json files, excluding *.embed.schema.json.
     """
     path = f"json-schemas/adm/{technique}/{status}/{year}/{month}"
-    try:
-        entries = _gitlab_tree(path)
-    except RuntimeError:
-        msg = f"No schemas found at {technique}/{status}/{year}/{month}"
-        raise click.UsageError(msg) from None
+    entries = _gitlab_tree(path)
 
-    return sorted(
-        entry["name"]
-        for entry in entries
-        if entry.get("type") == "blob"
-        and entry["name"].endswith(".schema.json")
-        and not entry["name"].endswith(".embed.schema.json")
+    if entries is not None:
+        return sorted(
+            entry["name"]
+            for entry in entries
+            if entry.get("type") == "blob"
+            and entry["name"].endswith(".schema.json")
+            and not entry["name"].endswith(".embed.schema.json")
+        )
+
+    # Fallback to local cache
+    cached = _list_cached_schemas(technique, status, year, month)
+    if cached:
+        click.echo(
+            f"Warning: Could not reach GitLab API, using local cache for {technique}/{status}/{year}/{month}."
+        )
+        return cached
+
+    msg = (
+        f"No schemas found at {technique}/{status}/{year}/{month}.\n"
+        "Could not reach GitLab API and no local cache exists for this version.\n"
+        "Check your network connection or download the schema manually first."
     )
+    raise click.ClickException(msg)
 
 
 def resolve_shorthand_to_urls(input_str: str) -> list[str]:
@@ -162,7 +221,7 @@ def resolve_shorthand_to_urls(input_str: str) -> list[str]:
     """
     technique, status, year, month = parse_shorthand(input_str)
 
-    click.echo(f"Looking up technique '{technique}' on GitLab...")
+    click.echo(f"Looking up technique '{technique}'...")
     techniques = list_gitlab_techniques()
     technique = resolve_technique_name(technique, techniques)
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from io import BytesIO
 import json
+from pathlib import Path
 from typing import Any, ClassVar
 from unittest.mock import patch
 
@@ -11,6 +12,8 @@ import click
 import pytest
 
 from allotropy.schema_gen.technique_resolver import (
+    _list_cached_schemas,
+    _list_cached_techniques,
     is_shorthand,
     list_gitlab_techniques,
     list_schemas_in_directory,
@@ -271,3 +274,89 @@ class TestResolveShorthandToUrls:
             f"{ALLOTROPE_PREFIX}adm/pcr/REC/2026/03/dpcr.schema",
             f"{ALLOTROPE_PREFIX}adm/pcr/REC/2026/03/qpcr.schema",
         ]
+
+
+class TestCacheFallback:
+    def test_list_cached_techniques(self, tmp_path: Path) -> None:
+        adm = tmp_path / "adm"
+        (adm / "pcr").mkdir(parents=True)
+        (adm / "plate-reader").mkdir()
+        (adm / "core").mkdir()  # should be excluded
+        (adm / "qudt").mkdir()  # should be excluded
+        result = _list_cached_techniques(tmp_path)
+        assert result == ["pcr", "plate-reader"]
+
+    def test_list_cached_techniques_empty(self, tmp_path: Path) -> None:
+        assert _list_cached_techniques(tmp_path) == []
+
+    def test_list_cached_schemas(self, tmp_path: Path) -> None:
+        schema_dir = tmp_path / "adm" / "pcr" / "REC" / "2026" / "03"
+        schema_dir.mkdir(parents=True)
+        (schema_dir / "qpcr.schema.json").write_text("{}")
+        (schema_dir / "qpcr.embed.schema.json").write_text("{}")
+        (schema_dir / "dpcr.schema.json").write_text("{}")
+        result = _list_cached_schemas("pcr", "REC", "2026", "03", tmp_path)
+        assert result == ["dpcr.schema.json", "qpcr.schema.json"]
+
+    def test_list_cached_schemas_missing_dir(self, tmp_path: Path) -> None:
+        assert _list_cached_schemas("pcr", "REC", "2026", "03", tmp_path) == []
+
+    def test_list_gitlab_techniques_falls_back_to_cache(self) -> None:
+        """When GitLab API fails, falls back to local cache."""
+        with (
+            patch(
+                "allotropy.schema_gen.technique_resolver._gitlab_tree",
+                return_value=None,
+            ),
+            patch(
+                "allotropy.schema_gen.technique_resolver._list_cached_techniques",
+                return_value=["pcr", "plate-reader"],
+            ),
+        ):
+            result = list_gitlab_techniques()
+        assert result == ["pcr", "plate-reader"]
+
+    def test_list_gitlab_techniques_no_cache_raises(self) -> None:
+        """When GitLab API fails and no cache, raises ClickException."""
+        with (
+            patch(
+                "allotropy.schema_gen.technique_resolver._gitlab_tree",
+                return_value=None,
+            ),
+            patch(
+                "allotropy.schema_gen.technique_resolver._list_cached_techniques",
+                return_value=[],
+            ),
+            pytest.raises(click.ClickException),
+        ):
+            list_gitlab_techniques()
+
+    def test_list_schemas_falls_back_to_cache(self) -> None:
+        """When GitLab API fails for schema listing, falls back to local cache."""
+        with (
+            patch(
+                "allotropy.schema_gen.technique_resolver._gitlab_tree",
+                return_value=None,
+            ),
+            patch(
+                "allotropy.schema_gen.technique_resolver._list_cached_schemas",
+                return_value=["plate-reader.schema.json"],
+            ),
+        ):
+            result = list_schemas_in_directory("plate-reader", "REC", "2026", "03")
+        assert result == ["plate-reader.schema.json"]
+
+    def test_list_schemas_no_cache_raises(self) -> None:
+        """When GitLab API fails and no cache, raises ClickException."""
+        with (
+            patch(
+                "allotropy.schema_gen.technique_resolver._gitlab_tree",
+                return_value=None,
+            ),
+            patch(
+                "allotropy.schema_gen.technique_resolver._list_cached_schemas",
+                return_value=[],
+            ),
+            pytest.raises(click.ClickException),
+        ):
+            list_schemas_in_directory("plate-reader", "REC", "2026", "03")
