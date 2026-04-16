@@ -10,7 +10,7 @@ from typing import Any, ClassVar, TypeAlias
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -173,6 +173,7 @@ def _create_measurement(
         absorbance=value if header.read_type is ReadType.ABSORBANCE else None,
         fluorescence=value if header.read_type is ReadType.FLUORESCENCE else None,
         luminescence=value if header.read_type is ReadType.LUMINESCENCE else None,
+        experimental_data_identifier=header.id2,
     )
 
 
@@ -185,7 +186,6 @@ def create_measurement_groups(
             measurement_time=f"{header.date} {header.time}",
             plate_well_count=data.size,
             experiment_type=header.test_name,
-            experimental_data_identifier=header.id2,
             analyst=header.user,
             measurements=[
                 _create_measurement(str(row_name), str(col_name), value, header)

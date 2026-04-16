@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2026._03.plate_reader import (
     SampleRoleType,
 )
 from allotropy.calcdocs.extractor import Element

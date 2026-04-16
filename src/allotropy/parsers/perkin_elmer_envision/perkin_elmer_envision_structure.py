@@ -27,14 +27,14 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2026._03.plate_reader import (
     SampleRoleType,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValuePercent,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -822,6 +822,8 @@ def _create_measurement(
         detector_bandwidth_setting=em_filter.bandwidth if em_filter else None,
         excitation_wavelength_setting=ex_filter.wavelength if ex_filter else None,
         excitation_bandwidth_setting=ex_filter.bandwidth if ex_filter else None,
+        analytical_method_identifier=data.basic_assay_info.protocol_id,
+        experimental_data_identifier=data.basic_assay_info.assay_id,
         device_control_custom_info=device_control_custom_info,
         sample_custom_info=sample_custom_info,
         measurement_custom_info=plate_info.custom_info,
@@ -848,8 +850,6 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         MeasurementGroup(
             measurement_time=measurement_time,
             plate_well_count=data.plate_type_info.number_of_wells,
-            analytical_method_identifier=data.basic_assay_info.protocol_id,
-            experimental_data_identifier=data.basic_assay_info.assay_id,
             measurements=well_loc_measurements[well_location],
             custom_info=data.basic_assay_info.custom_info,
         )
