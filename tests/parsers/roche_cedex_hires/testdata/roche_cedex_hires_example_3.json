@@ -1,28 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
-        "data system document": {
-            "ASM file identifier": "roche_cedex_hires_example_3.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_3.csv",
-            "file name": "roche_cedex_hires_example_3.csv",
-            "software name": "Cedex software"
-        },
-        "device system document": {
-            "asset management identifier": "G037D0901, MS, prem",
-            "brand name": "Cedex",
-            "description": "G037D0901, MS, premium version, ID = 3700901",
-            "device identifier": "3700901",
-            "model number": "Cedex HiRes",
-            "product manufacturer": "Roche",
-            "custom information document": {
-                "System description (processed)": "G037D0901, MS, premium version, ID = 3700901",
-                "Default system": "True",
-                "Default system (processed)": "True"
-            }
-        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -31,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -46,19 +24,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 12.1762867,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 99.57142857,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 12.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.460991345,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 2.471583847,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.0105925022,
@@ -68,23 +50,14 @@
                                             "value": 2800.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 2.471583847,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 99.57142857,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 2788.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.460991345,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 12.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.390319705,
@@ -114,7 +87,12 @@
                                                 "value": 6.071428571,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 12.1762867,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -140,8 +118,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -155,19 +133,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.71258354,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 86.46616364,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 18.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.0311775,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.975188,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -177,23 +159,14 @@
                                             "value": 133.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 6.975188,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 86.46616364,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 115.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 6.0311775,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 18.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.188986182,
@@ -223,7 +196,12 @@
                                                 "value": 13.53383446,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.71258354,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -249,8 +227,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -264,19 +242,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 0.25,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.75320816,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 84.61538696,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 18.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 20.76823,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 24.54427,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 3.77604175,
@@ -286,23 +268,14 @@
                                             "value": 117.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 24.54427,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 84.61538696,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 99.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 20.76823,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 18.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original2",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.194867015,
@@ -332,7 +305,12 @@
                                                 "value": 15.38461494,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.75320816,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original2"
                                     }
                                 ]
                             },
@@ -358,8 +336,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -373,19 +351,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.73137665,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 85.59999847,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 18.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 5.6116175,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.555628,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -395,23 +377,14 @@
                                             "value": 125.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 6.555628,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 85.59999847,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 107.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 5.6116175,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 18.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.191706777,
@@ -441,7 +414,12 @@
                                                 "value": 14.39999962,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.73137665,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -467,8 +445,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -482,19 +460,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 14.01182365,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 83.78378296,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 6.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.877387,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 5.8213975,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -504,23 +486,14 @@
                                             "value": 37.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 5.8213975,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 83.78378296,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 31.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 4.877387,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 6.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.211755991,
@@ -550,7 +523,12 @@
                                                 "value": 5.405405521,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 14.01182365,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -576,8 +554,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -591,19 +569,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.63530922,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 85.0,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 6.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 5.3493925,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.293403,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -613,23 +595,14 @@
                                             "value": 40.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 6.293403,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 85.0,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 34.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 5.3493925,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 6.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.187167645,
@@ -659,7 +632,12 @@
                                                 "value": 20.0,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.63530922,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -685,8 +663,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -700,19 +678,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.63530922,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 85.0,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 6.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 5.3493925,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.293403,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -722,23 +704,14 @@
                                             "value": 40.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 6.293403,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 85.0,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 34.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 5.3493925,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 6.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.187167645,
@@ -768,7 +741,12 @@
                                                 "value": 20.0,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.63530922,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -794,8 +772,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -809,19 +787,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.61170387,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 86.76470947,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 18.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.1885125,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 7.132523,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -831,23 +813,14 @@
                                             "value": 136.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 7.132523,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 86.76470947,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 118.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 6.1885125,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 18.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.182480335,
@@ -877,7 +850,12 @@
                                                 "value": 17.64705849,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.61170387,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -903,8 +881,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "cell counter",
+                                        "detection type": "brightfield",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -918,19 +896,23 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Std. Size",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Std. Size"
+                                            }
                                         },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 13.75320816,
-                                            "unit": "µm"
+                                        "viability (cell counter)": {
+                                            "value": 84.61538696,
+                                            "unit": "%"
                                         },
-                                        "dead cell count": {
-                                            "value": 18.0,
-                                            "unit": "cell"
+                                        "viable cell density (cell counter)": {
+                                            "value": 5.1920575,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.1360675,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
                                             "value": 0.9440104375,
@@ -940,23 +922,14 @@
                                             "value": 117.0,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 6.1360675,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 84.61538696,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 99.0,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 5.1920575,
-                                            "unit": "10^6 cells/mL"
+                                        "dead cell count": {
+                                            "value": 18.0,
+                                            "unit": "cell"
                                         },
-                                        "group identifier": "Original",
                                         "custom information document": {
                                             "average compactness": {
                                                 "value": 1.194867015,
@@ -986,7 +959,12 @@
                                                 "value": 15.38461494,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.75320816,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -1005,6 +983,28 @@
                 },
                 "analyst": "SuperUser"
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "roche_cedex_hires_example_3.json",
+            "data system instance identifier": "N/A",
+            "file name": "roche_cedex_hires_example_3.csv",
+            "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_3.csv",
+            "ASM converter name": "allotropy_roche_cedex_hires",
+            "ASM converter version": "0.1.118",
+            "software name": "Cedex software"
+        },
+        "device system document": {
+            "asset management identifier": "G037D0901, MS, prem",
+            "brand name": "Cedex",
+            "description": "G037D0901, MS, premium version, ID = 3700901",
+            "device identifier": "3700901",
+            "model number": "Cedex HiRes",
+            "product manufacturer": "Roche",
+            "custom information document": {
+                "System description (processed)": "G037D0901, MS, premium version, ID = 3700901",
+                "Default system (processed)": "True",
+                "Default system": "True"
+            }
+        }
     }
 }

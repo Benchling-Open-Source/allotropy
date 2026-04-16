@@ -1,19 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
-        "data system document": {
-            "ASM file identifier": "Beckman_Vi-Cell-BLU_different_mu_character.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_different_mu_character.csv",
-            "file name": "Beckman_Vi-Cell-BLU_different_mu_character.csv",
-            "software name": "Vi-Cell BLU"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "Vi-Cell BLU"
-        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -22,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "brightfield",
                                         "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield",
                                         "custom information document": {
                                             "Wash": "Normal Wash",
                                             "Aspiration cycles": 3.0,
@@ -38,68 +25,68 @@
                                 "processed data document": [
                                     {
                                         "data processing document": {
+                                            "cell type processing method": "Mammalian",
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
-                                            },
-                                            "cell type processing method": "Mammalian",
-                                            "maximum cell diameter setting": {
-                                                "value": 30.0,
-                                                "unit": "µm"
                                             },
                                             "minimum cell diameter setting": {
                                                 "value": 6.0,
                                                 "unit": "µm"
                                             },
+                                            "maximum cell diameter setting": {
+                                                "value": 30.0,
+                                                "unit": "µm"
+                                            },
                                             "custom information document": {
-                                                "Cell sharpness": 7.0,
-                                                "Cluster count": 0.0,
-                                                "Viable spot brightness (%)": 50.0,
                                                 "Bubble count": 0.0,
                                                 "Minimum circularity": 0.1,
-                                                "Average background intensity": 134.0,
+                                                "Cluster count": 0.0,
                                                 "Decluster degree": "Medium",
-                                                "Viable spot area (%)": 5.0
+                                                "Viable spot brightness (%)": 50.0,
+                                                "Viable spot area (%)": 5.0,
+                                                "Average background intensity": 134.0,
+                                                "Cell sharpness": 7.0
                                             }
                                         },
-                                        "average total cell circularity": {
-                                            "value": 0.88,
-                                            "unit": "(unitless)"
+                                        "viability (cell counter)": {
+                                            "value": 96.9,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.75,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.78,
+                                            "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
                                             "value": 18.51,
-                                            "unit": "µm"
-                                        },
-                                        "average viable cell circularity": {
-                                            "value": 0.88,
-                                            "unit": "(unitless)"
-                                        },
-                                        "average viable cell diameter (cell counter)": {
-                                            "value": 18.72,
                                             "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 2191,
                                             "unit": "cell"
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": 0.78,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "viability (cell counter)": {
-                                            "value": 96.9,
-                                            "unit": "%"
-                                        },
                                         "viable cell count": {
                                             "value": 2123,
                                             "unit": "cell"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 0.75,
-                                            "unit": "10^6 cells/mL"
+                                        "average total cell circularity": {
+                                            "value": 0.88,
+                                            "unit": "(unitless)"
+                                        },
+                                        "average viable cell circularity": {
+                                            "value": 0.88,
+                                            "unit": "(unitless)"
                                         },
                                         "custom information document": {
                                             "Average cells per image": 21.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 18.72,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -111,8 +98,8 @@
                                 "image document": [
                                     {
                                         "custom information document": {
-                                            "Images for analysis": 100.0,
-                                            "Images": 100.0
+                                            "Images": 100.0,
+                                            "Images for analysis": 100.0
                                         }
                                     }
                                 ]
@@ -122,6 +109,19 @@
                 },
                 "analyst": "Vi-CELL"
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-BLU_different_mu_character.json",
+            "data system instance identifier": "N/A",
+            "file name": "Beckman_Vi-Cell-BLU_different_mu_character.csv",
+            "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_different_mu_character.csv",
+            "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
+            "ASM converter version": "0.1.118",
+            "software name": "Vi-Cell BLU"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Vi-Cell BLU"
+        }
     }
 }
