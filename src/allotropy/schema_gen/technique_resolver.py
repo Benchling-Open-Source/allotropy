@@ -11,6 +11,7 @@ import difflib
 import json
 from pathlib import Path
 import re
+import ssl
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
@@ -68,6 +69,31 @@ def parse_shorthand(input_str: str) -> tuple[str, str, str, str]:
     return technique, status, year, month
 
 
+def _get_ssl_context() -> ssl.SSLContext:
+    """Build an SSL context that works with corporate proxies.
+
+    The hatch virtualenv Python may not trust the system certificate store
+    (e.g. on macOS the framework Python uses its own OpenSSL cert bundle).
+    We try the default context first, then fall back to known system cert
+    locations before giving up.
+    """
+    # macOS system cert bundle, Linux common locations
+    system_ca_files = (
+        "/private/etc/ssl/cert.pem",  # macOS
+        "/etc/ssl/certs/ca-certificates.crt",  # Debian/Ubuntu
+        "/etc/pki/tls/certs/ca-bundle.crt",  # RHEL/CentOS
+    )
+    ctx = ssl.create_default_context()
+    for ca_file in system_ca_files:
+        if Path(ca_file).exists():
+            try:
+                ctx.load_verify_locations(ca_file)
+                return ctx
+            except ssl.SSLError:
+                continue
+    return ctx
+
+
 def _gitlab_tree(path: str) -> list[dict[str, str]] | None:
     """Fetch a directory listing from the GitLab API.
 
@@ -75,7 +101,8 @@ def _gitlab_tree(path: str) -> list[dict[str, str]] | None:
     """
     url = f"{_GITLAB_API_BASE}?path={path}&per_page=100&ref=main"
     try:
-        with urlopen(url, timeout=30) as response:  # noqa: S310
+        ctx = _get_ssl_context()
+        with urlopen(url, timeout=30, context=ctx) as response:  # noqa: S310
             data = json.loads(response.read().decode("utf-8"))
     except (HTTPError, URLError, OSError):
         return None
