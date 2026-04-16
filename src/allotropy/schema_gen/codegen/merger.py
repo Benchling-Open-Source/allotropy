@@ -13,12 +13,12 @@ import warnings
 from allotropy.schema_gen.naming import parse_ref
 
 
-def _ref_base_url(ref: str) -> str:
+def ref_base_url(ref: str) -> str:
     """Extract the schema URL from a $ref string, stripping any fragment."""
     return ref.split("#")[0]
 
 
-def _merge_props_into(
+def merge_props_into(
     target: dict[str, Any],
     source: dict[str, Any],
     *,
@@ -27,12 +27,12 @@ def _merge_props_into(
     """Deep-merge *source* properties into *target*, merging on conflict."""
     for pk, pv in source.items():
         if pk in target:
-            target[pk] = _deep_merge_schemas(target[pk], pv, any_of=any_of)
+            target[pk] = deep_merge_schemas(target[pk], pv, any_of=any_of)
         else:
             target[pk] = pv
 
 
-def _strip_required_recursive(schema: Any) -> Any:
+def strip_required_recursive(schema: Any) -> Any:
     """Recursively remove all ``required`` arrays from a schema.
 
     Used after merging anyOf variants: in a union type, no individual
@@ -41,16 +41,14 @@ def _strip_required_recursive(schema: Any) -> Any:
     """
     if isinstance(schema, dict):
         return {
-            k: _strip_required_recursive(v)
-            for k, v in schema.items()
-            if k != "required"
+            k: strip_required_recursive(v) for k, v in schema.items() if k != "required"
         }
     if isinstance(schema, list):
-        return [_strip_required_recursive(item) for item in schema]
+        return [strip_required_recursive(item) for item in schema]
     return schema
 
 
-def _absolutize_refs(schema: Any, base_url: str) -> Any:
+def absolutize_refs(schema: Any, base_url: str) -> Any:
     """Rewrite local ``#/$defs/...`` refs to absolute URLs.
 
     When properties from one schema file are deep-merged into a different
@@ -63,14 +61,14 @@ def _absolutize_refs(schema: Any, base_url: str) -> Any:
             if key == "$ref" and isinstance(value, str) and value.startswith("#/"):
                 result[key] = f"{base_url}{value}"
             else:
-                result[key] = _absolutize_refs(value, base_url)
+                result[key] = absolutize_refs(value, base_url)
         return result
     if isinstance(schema, list):
-        return [_absolutize_refs(item, base_url) for item in schema]
+        return [absolutize_refs(item, base_url) for item in schema]
     return schema
 
 
-def _deep_merge_schemas(
+def deep_merge_schemas(
     base: dict[str, Any],
     overlay: dict[str, Any],
     *,
@@ -97,7 +95,7 @@ def _deep_merge_schemas(
                     and isinstance(merged[pname], dict)
                     and isinstance(pschema, dict)
                 ):
-                    merged[pname] = _deep_merge_schemas(
+                    merged[pname] = deep_merge_schemas(
                         merged[pname], pschema, any_of=any_of
                     )
                 else:
@@ -117,7 +115,7 @@ def _deep_merge_schemas(
                 result[key] = value
         elif key == "items" and "items" in result:
             if isinstance(result["items"], dict) and isinstance(value, dict):
-                result["items"] = _deep_merge_schemas(
+                result["items"] = deep_merge_schemas(
                     result["items"], value, any_of=any_of
                 )
             else:
@@ -137,7 +135,7 @@ def _deep_merge_schemas(
                 merged_inline: dict[str, Any] = {}
                 for item in inline_items:
                     if merged_inline:
-                        merged_inline = _deep_merge_schemas(
+                        merged_inline = deep_merge_schemas(
                             merged_inline, item, any_of=True
                         )
                     else:
@@ -207,18 +205,18 @@ class SchemaMerger:
         hierarchy-level fields plus technique-specific additions.
         """
         for ref in base_refs:
-            ref_base_url_str = _ref_base_url(ref)
+            ref_base_url_str = ref_base_url(ref)
             base_schema = self.resolve_ref_to_schema(schema_url, ref)
             if base_schema and "properties" in base_schema:
                 base_props = base_schema["properties"]
                 if ref_base_url_str:
                     base_props = {
-                        k: _absolutize_refs(v, ref_base_url_str)
+                        k: absolutize_refs(v, ref_base_url_str)
                         for k, v in base_props.items()
                     }
                 for prop_key in list(merged_props.keys()):
                     if prop_key in base_props:
-                        merged_props[prop_key] = _deep_merge_schemas(
+                        merged_props[prop_key] = deep_merge_schemas(
                             base_props[prop_key], merged_props[prop_key]
                         )
 
@@ -233,7 +231,7 @@ class SchemaMerger:
         Returns (None, "") if the variant cannot be resolved.
         """
         if "$ref" in variant:
-            base_url = _ref_base_url(variant["$ref"]) or fallback_base_url
+            base_url = ref_base_url(variant["$ref"]) or fallback_base_url
             return self.resolve_ref_to_schema(schema_url, variant["$ref"]), base_url
         if isinstance(variant, dict):
             return variant, fallback_base_url
@@ -250,8 +248,8 @@ class SchemaMerger:
             return
         props = variant_schema["properties"]
         if base_url:
-            props = {k: _absolutize_refs(v, base_url) for k, v in props.items()}
-        _merge_props_into(merged_props, props)
+            props = {k: absolutize_refs(v, base_url) for k, v in props.items()}
+        merge_props_into(merged_props, props)
 
     def merge_variant_properties(
         self,
@@ -340,35 +338,35 @@ class SchemaMerger:
                     if "oneOf" in ref_def_schema:
                         for one_of_v in ref_def_schema["oneOf"]:
                             all_one_of_variants.append(
-                                _absolutize_refs(one_of_v, abs_base)
+                                absolutize_refs(one_of_v, abs_base)
                             )
                     if any_of_merged is None:
                         any_of_merged = dict(ref_def_schema)
                     else:
-                        any_of_merged = _deep_merge_schemas(
+                        any_of_merged = deep_merge_schemas(
                             any_of_merged, ref_def_schema, any_of=True
                         )
             elif isinstance(variant, dict) and "properties" in variant:
                 if any_of_merged is None:
                     any_of_merged = dict(variant)
                 else:
-                    any_of_merged = _deep_merge_schemas(
+                    any_of_merged = deep_merge_schemas(
                         any_of_merged, variant, any_of=True
                     )
 
         if any_of_merged:
             # Strip all required arrays: in a union, no variant's fields
             # should be strictly required since only one variant applies.
-            any_of_stripped: dict[str, Any] = _strip_required_recursive(any_of_merged)
+            any_of_stripped: dict[str, Any] = strip_required_recursive(any_of_merged)
             if "properties" in any_of_stripped:
-                _merge_props_into(
+                merge_props_into(
                     merged_props, any_of_stripped["properties"], any_of=True
                 )
 
         # Extract properties from oneOf variants as optional fields
         for one_of_v in all_one_of_variants:
             if isinstance(one_of_v, dict) and "properties" in one_of_v:
-                _merge_props_into(merged_props, one_of_v["properties"], any_of=True)
+                merge_props_into(merged_props, one_of_v["properties"], any_of=True)
 
 
 # ---------------------------------------------------------------------------
@@ -404,7 +402,7 @@ def collect_all_of_parts(
     base_refs: list[str] = []
 
     if "properties" in parent_schema:
-        _merge_props_into(merged_props, parent_schema["properties"])
+        merge_props_into(merged_props, parent_schema["properties"])
     if "required" in parent_schema:
         merged_required.extend(parent_schema["required"])
 
@@ -413,7 +411,7 @@ def collect_all_of_parts(
             base_refs.append(item["$ref"])
         if isinstance(item, dict):
             if "properties" in item:
-                _merge_props_into(merged_props, item["properties"])
+                merge_props_into(merged_props, item["properties"])
             if "required" in item:
                 merged_required.extend(item["required"])
 

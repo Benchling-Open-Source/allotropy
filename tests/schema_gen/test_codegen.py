@@ -6,110 +6,112 @@ from typing import Any, ClassVar
 
 import pytest
 
-from allotropy.schema_gen.codegen import (
-    _absolutize_refs,
-    _all_classes_identical,
-    _deep_merge_schemas,
-    _dquote,
-    _field_declaration,
-    _merge_class_fields,
-    _strip_required_recursive,
-    _topological_sort_classes,
+from allotropy.schema_gen.codegen.generator import SchemaCodeGenerator
+from allotropy.schema_gen.codegen.ir import (
+    all_classes_compatible,
+    field_declaration,
     FieldDef,
     GeneratedClass,
     ImportEntry,
+    merge_class_fields,
     ModuleCode,
-    QuantityValueManager,
-    SchemaCodeGenerator,
-    SchemaMerger,
+    quote_python_literal,
+    topological_sort_classes,
 )
+from allotropy.schema_gen.codegen.merger import (
+    absolutize_refs,
+    deep_merge_schemas,
+    SchemaMerger,
+    strip_required_recursive,
+)
+from allotropy.schema_gen.codegen.quantity_values import QuantityValueManager
 
 BASE = "http://purl.allotrope.org/json-schemas/"
 CORE_URL = f"{BASE}adm/core/REC/2024/09/core.schema"
 
 
 # ---------------------------------------------------------------------------
-# _dquote
+# quote_python_literal
 # ---------------------------------------------------------------------------
 
 
 class TestDquote:
     def test_simple_string(self) -> None:
-        assert _dquote("hello") == '"hello"'
+        assert quote_python_literal("hello") == '"hello"'
 
     def test_string_with_double_quotes(self) -> None:
-        result = _dquote('say "hi"')
+        result = quote_python_literal('say "hi"')
         assert result == "'say \"hi\"'"
 
     def test_non_string(self) -> None:
-        assert _dquote(42) == "42"
+        assert quote_python_literal(42) == "42"
 
     def test_bool(self) -> None:
-        assert _dquote(True) == "True"  # noqa: FBT003
+        assert quote_python_literal(True) == "True"  # noqa: FBT003
 
     def test_backslash(self) -> None:
-        result = _dquote("a\\b")
+        result = quote_python_literal("a\\b")
         assert "\\\\" in result
 
     def test_empty_string(self) -> None:
-        assert _dquote("") == '""'
+        assert quote_python_literal("") == '""'
 
 
 # ---------------------------------------------------------------------------
-# _field_declaration
+# field_declaration
 # ---------------------------------------------------------------------------
 
 
 class TestFieldDeclaration:
     def test_required_simple_name(self) -> None:
-        result = _field_declaration(
+        result = field_declaration(
             "device_type", "str", "device type", is_required=True
         )
         assert result == "    device_type: str"
         assert "field(" not in result
 
     def test_optional_simple_name(self) -> None:
-        result = _field_declaration(
+        result = field_declaration(
             "device_type", "str", "device type", is_required=False
         )
         assert result == "    device_type: str | None = None"
         assert "field(" not in result
 
     def test_required_non_trivial_name(self) -> None:
-        result = _field_declaration(
+        result = field_declaration(
             "field_asm_manifest", "str", "$asm.manifest", is_required=True
         )
         assert "field(metadata=" in result
         assert '"$asm.manifest"' in result
 
     def test_optional_non_trivial_name(self) -> None:
-        result = _field_declaration(
+        result = field_declaration(
             "cube_structure", "TDatacubeStructure", "cube-structure", is_required=False
         )
         assert "field(default=None, metadata=" in result
         assert '"cube-structure"' in result
 
     def test_at_type_json_name(self) -> None:
-        result = _field_declaration("field_type", "str", "@type", is_required=True)
+        result = field_declaration("field_type", "str", "@type", is_required=True)
         assert '"@type"' in result
         assert "field(metadata=" in result
 
     def test_pco2_needs_metadata(self) -> None:
-        result = _field_declaration(
+        result = field_declaration(
             "p_co2", "TQuantityValueMillimeterOfMercury", "pCO2", is_required=False
         )
         assert '"pCO2"' in result
 
 
 # ---------------------------------------------------------------------------
-# _strip_required_recursive
+# strip_required_recursive
 # ---------------------------------------------------------------------------
 
 
 class TestStripRequiredRecursive:
     def test_removes_required(self) -> None:
         schema = {"properties": {"a": {}}, "required": ["a"]}
-        result = _strip_required_recursive(schema)
+        result = strip_required_recursive(schema)
         assert "required" not in result
         assert "properties" in result
 
@@ -118,55 +120,55 @@ class TestStripRequiredRecursive:
             "properties": {"a": {"properties": {"b": {}}, "required": ["b"]}},
             "required": ["a"],
         }
-        result = _strip_required_recursive(schema)
+        result = strip_required_recursive(schema)
         assert "required" not in result
         assert "required" not in result["properties"]["a"]
 
     def test_list_with_required(self) -> None:
         schema = [{"required": ["a"]}, {"required": ["b"]}]
-        result = _strip_required_recursive(schema)
+        result = strip_required_recursive(schema)
         assert all("required" not in item for item in result)
 
     def test_preserves_non_required_keys(self) -> None:
         schema = {"type": "object", "properties": {"x": {}}, "required": ["x"]}
-        result = _strip_required_recursive(schema)
+        result = strip_required_recursive(schema)
         assert result["type"] == "object"
         assert "x" in result["properties"]
 
 
 # ---------------------------------------------------------------------------
-# _absolutize_refs
+# absolutize_refs
 # ---------------------------------------------------------------------------
 
 
 class TestAbsolutizeRefs:
     def test_rewrites_local_ref(self) -> None:
         schema: dict[str, Any] = {"$ref": "#/$defs/foo"}
-        result = _absolutize_refs(schema, "http://example.com/bar.schema")
+        result = absolutize_refs(schema, "http://example.com/bar.schema")
         assert result["$ref"] == "http://example.com/bar.schema#/$defs/foo"
 
     def test_leaves_absolute_ref(self) -> None:
         schema: dict[str, Any] = {"$ref": "http://other.com#/$defs/foo"}
-        result = _absolutize_refs(schema, "http://example.com/bar.schema")
+        result = absolutize_refs(schema, "http://example.com/bar.schema")
         assert result["$ref"] == "http://other.com#/$defs/foo"
 
     def test_nested_refs(self) -> None:
         schema: dict[str, Any] = {
             "properties": {"a": {"$ref": "#/$defs/x"}, "b": {"type": "string"}}
         }
-        result = _absolutize_refs(schema, "http://base")
+        result = absolutize_refs(schema, "http://base")
         assert result["properties"]["a"]["$ref"] == "http://base#/$defs/x"
         assert result["properties"]["b"] == {"type": "string"}
 
     def test_list_items(self) -> None:
         schema: list[dict[str, Any]] = [{"$ref": "#/$defs/a"}, {"$ref": "#/$defs/b"}]
-        result = _absolutize_refs(schema, "http://base")
+        result = absolutize_refs(schema, "http://base")
         assert result[0]["$ref"] == "http://base#/$defs/a"
         assert result[1]["$ref"] == "http://base#/$defs/b"
 
 
 # ---------------------------------------------------------------------------
-# _deep_merge_schemas
+# deep_merge_schemas
 # ---------------------------------------------------------------------------
 
 
@@ -174,58 +176,58 @@ class TestDeepMergeSchemas:
     def test_overlay_adds_new_property(self) -> None:
         base = {"properties": {"a": {"type": "string"}}}
         overlay = {"properties": {"b": {"type": "integer"}}}
-        result = _deep_merge_schemas(base, overlay)
+        result = deep_merge_schemas(base, overlay)
         assert "a" in result["properties"]
         assert "b" in result["properties"]
 
     def test_overlay_overrides_property(self) -> None:
         base = {"properties": {"a": {"type": "string"}}}
         overlay = {"properties": {"a": {"type": "integer"}}}
-        result = _deep_merge_schemas(base, overlay)
+        result = deep_merge_schemas(base, overlay)
         assert result["properties"]["a"]["type"] == "integer"
 
     def test_required_union_mode(self) -> None:
         base = {"required": ["a", "b"]}
         overlay = {"required": ["b", "c"]}
-        result = _deep_merge_schemas(base, overlay)
+        result = deep_merge_schemas(base, overlay)
         assert set(result["required"]) == {"a", "b", "c"}
 
     def test_required_intersection_mode(self) -> None:
         base = {"required": ["a", "b"]}
         overlay = {"required": ["b", "c"]}
-        result = _deep_merge_schemas(base, overlay, any_of=True)
+        result = deep_merge_schemas(base, overlay, any_of=True)
         assert set(result["required"]) == {"b"}
 
     def test_anyof_base_has_required_overlay_does_not(self) -> None:
         base: dict[str, Any] = {"required": ["a", "b"]}
         overlay: dict[str, Any] = {"properties": {"x": {}}}
-        result = _deep_merge_schemas(base, overlay, any_of=True)
+        result = deep_merge_schemas(base, overlay, any_of=True)
         assert result["required"] == []
 
     def test_anyof_overlay_has_required_base_does_not(self) -> None:
         base: dict[str, Any] = {"properties": {"a": {}}}
         overlay: dict[str, Any] = {"required": ["a"]}
-        result = _deep_merge_schemas(base, overlay, any_of=True)
+        result = deep_merge_schemas(base, overlay, any_of=True)
         # Intersection with empty set is empty
         assert "required" not in result or result.get("required") == []
 
     def test_items_merge(self) -> None:
         base: dict[str, Any] = {"items": {"properties": {"a": {}}}}
         overlay: dict[str, Any] = {"items": {"properties": {"b": {}}}}
-        result = _deep_merge_schemas(base, overlay)
+        result = deep_merge_schemas(base, overlay)
         assert "a" in result["items"]["properties"]
         assert "b" in result["items"]["properties"]
 
     def test_non_dict_overlay_key(self) -> None:
         base = {"type": "string"}
         overlay = {"type": "integer", "description": "new"}
-        result = _deep_merge_schemas(base, overlay)
+        result = deep_merge_schemas(base, overlay)
         assert result["type"] == "integer"
         assert result["description"] == "new"
 
 
 # ---------------------------------------------------------------------------
-# _topological_sort_classes
+# topological_sort_classes
 # ---------------------------------------------------------------------------
 
 
@@ -235,7 +237,7 @@ class TestTopologicalSortClasses:
             GeneratedClass(name="B", fields=[]),
             GeneratedClass(name="A", fields=[]),
         ]
-        result = _topological_sort_classes(classes)
+        result = topological_sort_classes(classes)
         names = [c.name for c in result]
         # Alphabetical tie-breaking for independent classes
         assert names == ["A", "B"]
@@ -247,7 +249,7 @@ class TestTopologicalSortClasses:
             ),
             GeneratedClass(name="Parent", fields=[]),
         ]
-        result = _topological_sort_classes(classes)
+        result = topological_sort_classes(classes)
         names = [c.name for c in result]
         assert names.index("Parent") < names.index("Child")
 
@@ -261,14 +263,14 @@ class TestTopologicalSortClasses:
             GeneratedClass(name="TypeA", fields=[]),
             GeneratedClass(name="TypeB", fields=[]),
         ]
-        result = _topological_sort_classes(classes)
+        result = topological_sort_classes(classes)
         names = [c.name for c in result]
         assert names.index("TypeA") < names.index("MyUnion")
         assert names.index("TypeB") < names.index("MyUnion")
 
 
 # ---------------------------------------------------------------------------
-# _merge_class_fields
+# merge_class_fields
 # ---------------------------------------------------------------------------
 
 
@@ -293,7 +295,7 @@ class TestMergeClassFields:
                 ),
             ],
         )
-        _merge_class_fields(existing, new)
+        merge_class_fields(existing, new)
         assert existing.fields is not None
         names = [f.python_name for f in existing.fields]
         assert "a" in names
@@ -316,7 +318,7 @@ class TestMergeClassFields:
                 ),
             ],
         )
-        _merge_class_fields(existing, new)
+        merge_class_fields(existing, new)
         assert existing.fields is not None
         a_count = sum(1 for f in existing.fields if f.python_name == "a")
         assert a_count == 1
@@ -338,7 +340,7 @@ class TestMergeClassFields:
                 ),
             ],
         )
-        _merge_class_fields(existing, new)
+        merge_class_fields(existing, new)
         # Render and check that required fields come before optional
         rendered = existing.render()
         lines = rendered.split("\n")
@@ -378,11 +380,11 @@ class TestMergeClassFields:
             ],
         )
         with pytest.raises(ValueError, match="Internal error"):
-            _merge_class_fields(existing, new)
+            merge_class_fields(existing, new)
 
 
 # ---------------------------------------------------------------------------
-# _all_classes_identical
+# all_classes_compatible
 # ---------------------------------------------------------------------------
 
 
@@ -398,7 +400,7 @@ class TestAllClassesIdentical:
                 ],
             )
         ]
-        assert _all_classes_identical(group) is True
+        assert all_classes_compatible(group) is True
 
     def test_identical_classes(self) -> None:
         cls = GeneratedClass(
@@ -409,7 +411,7 @@ class TestAllClassesIdentical:
                 )
             ],
         )
-        assert _all_classes_identical([cls, cls]) is True
+        assert all_classes_compatible([cls, cls]) is True
 
     def test_different_types(self) -> None:
         a = GeneratedClass(
@@ -428,7 +430,7 @@ class TestAllClassesIdentical:
                 )
             ],
         )
-        assert _all_classes_identical([a, b]) is False
+        assert all_classes_compatible([a, b]) is False
 
     def test_extra_fields_are_compatible(self) -> None:
         a = GeneratedClass(
@@ -450,12 +452,12 @@ class TestAllClassesIdentical:
                 ),
             ],
         )
-        assert _all_classes_identical([a, b]) is True
+        assert all_classes_compatible([a, b]) is True
 
     def test_none_fields_mismatch(self) -> None:
         a = GeneratedClass(name="Foo", fields=[])
         b = GeneratedClass(name="Foo", alias_target="Bar")
-        assert _all_classes_identical([a, b]) is False
+        assert all_classes_compatible([a, b]) is False
 
 
 # ---------------------------------------------------------------------------

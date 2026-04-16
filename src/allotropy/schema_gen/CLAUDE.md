@@ -76,18 +76,19 @@ The codegen package is split into focused modules with a clear dependency hierar
 
 ```
 codegen/
-├── __init__.py          # Public re-exports (backward-compatible API surface)
 ├── ir.py                # IR types: FieldDef, GeneratedClass, ImportEntry, ModuleCode
-│                        #   + helpers: quote_python_literal, _field_declaration,
-│                        #   _deduplicate_classes, _topological_sort_classes, etc.
+│                        #   + helpers: quote_python_literal, field_declaration,
+│                        #   topological_sort_classes, merge_class_fields, etc.
 ├── merger.py            # SchemaMerger + pure merge functions
-│                        #   (_deep_merge_schemas, _strip_required_recursive,
-│                        #    _absolutize_refs, _merge_props_into)
+│                        #   (deep_merge_schemas, strip_required_recursive,
+│                        #    absolutize_refs, merge_props_into)
 ├── quantity_values.py   # QuantityValueManager + is_quantity_value_variant
 ├── type_resolver.py     # TypeResolver + ASM_METADATA_PREFIXES, extract_unit_const,
 │                        #   SHARED_DEFINITION_TYPES, SHARED_DEFINITIONS_MODULE
 └── generator.py         # SchemaCodeGenerator (orchestrator)
 ```
+
+No `__init__.py` — all consumers import directly from submodules (e.g., `from allotropy.schema_gen.codegen.ir import FieldDef`).
 
 **Dependency order**: `ir` → `merger` → `quantity_values` → `type_resolver` → `generator`. Each module only imports from modules above it in this chain (plus `naming.py`).
 
@@ -170,7 +171,7 @@ p_co2: TQuantityValueMmHg | None = field(default=None, metadata={"json_name": "p
 
 ### Deep Merge Semantics
 
-`_deep_merge_schemas(base, overlay, any_of=False)` handles two modes:
+`deep_merge_schemas(base, overlay, any_of=False)` handles two modes:
 
 - **Normal merge** (`any_of=False`): `required` fields are unioned (accumulated)
 - **anyOf merge** (`any_of=True`): `required` fields are intersected (only required if ALL variants require it)
@@ -213,7 +214,7 @@ The export map is pre-computed, so this usually means the schema URL wasn't incl
 Compare the codegen rule (`json_name != python_name.replace("_", " ")`) with the converter fallback (`f.name.replace("_", " ")`). They must agree on when metadata is needed.
 
 ### "Duplicate class in generated output"
-Recursive schemas can generate the same inline class from multiple locations. `_deduplicate_classes()` handles three strategies: identical merge (compatible fields → merge), variant split (conflicting classes with `source_context` → distinct classes + union alias), and widening merge (conflicting without context → union field types). Check `_deduplicate_classes()`, `_merge_class_fields()`, `_widen_class_fields()`.
+Recursive schemas can generate the same inline class from multiple locations. `_deduplicate_classes()` handles three strategies: identical merge (compatible fields → merge), variant split (conflicting classes with `source_context` → distinct classes + union alias), and widening merge (conflicting without context → union field types). Check `_deduplicate_classes()`, `merge_class_fields()`, `_widen_class_fields()` in `ir.py`.
 
 ### "Schema fetch fails"
 `SchemaFetcher` has a 30-second timeout on `urlopen()`. HTTP errors produce "Schema not found (HTTP {code})" and network errors produce "Network error... {reason}" — check the exception type to distinguish "schema doesn't exist" from "server unreachable".

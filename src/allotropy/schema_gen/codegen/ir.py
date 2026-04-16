@@ -32,7 +32,7 @@ def quote_python_literal(value: Any) -> str:
     return repr(value)
 
 
-def _unique_ordered(items: list[str]) -> list[str]:
+def unique_ordered(items: list[str]) -> list[str]:
     """Deduplicate a list while preserving insertion order."""
     seen: set[str] = set()
     result: list[str] = []
@@ -138,7 +138,7 @@ class GeneratedClass:
             optional = [f for f in self.fields if not f.is_required]
             for f in required + optional:
                 lines.append(
-                    _field_declaration(
+                    field_declaration(
                         f.python_name,
                         f.type_str,
                         f.json_name,
@@ -199,7 +199,7 @@ class GeneratedClass:
         return False
 
 
-def _extract_type_references(type_str: str) -> set[str]:
+def extract_type_references(type_str: str) -> set[str]:
     """Extract potential class name references from a type expression.
 
     Returns names that start with an uppercase letter and could be
@@ -231,7 +231,7 @@ class ModuleCode:
 
         This method is pure — it does not mutate ``self.classes``.
         """
-        classes = _topological_sort_classes(_deduplicate_classes(self.classes))
+        classes = topological_sort_classes(_deduplicate_classes(self.classes))
 
         has_reexports = any(imp.reexport for imp in self.imports)
 
@@ -327,7 +327,7 @@ class ModuleCode:
 # ---------------------------------------------------------------------------
 
 
-def _field_declaration(
+def field_declaration(
     python_name: str, type_str: str, json_name: str, *, is_required: bool
 ) -> str:
     """Generate a dataclass field declaration, with JSON name metadata when needed.
@@ -374,10 +374,10 @@ def _deduplicate_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
             unique.append(group[0].copy())
             continue
 
-        if _all_classes_compatible(group):
+        if all_classes_compatible(group):
             merged = group[0].copy()
             for other in group[1:]:
-                _merge_class_fields(merged, other)
+                merge_class_fields(merged, other)
             unique.append(merged)
             continue
 
@@ -394,7 +394,7 @@ def _deduplicate_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
             unique.append(
                 GeneratedClass(
                     name=name,
-                    alias_target=_join_union(variant_names),
+                    alias_target=join_union(variant_names),
                     dependencies=set(variant_names),
                 )
             )
@@ -407,7 +407,7 @@ def _deduplicate_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
     return unique
 
 
-def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
+def topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedClass]:
     """Sort classes so that dependencies come before uses.
 
     Uses the explicit ``dependencies`` set on each class rather than
@@ -452,7 +452,7 @@ def _topological_sort_classes(classes: list[GeneratedClass]) -> list[GeneratedCl
     return [classes[i] for i in result]
 
 
-def _all_classes_compatible(group: list[GeneratedClass]) -> bool:
+def all_classes_compatible(group: list[GeneratedClass]) -> bool:
     """True if all classes in *group* are type-compatible on shared fields.
 
     Classes are compatible when every field name present in more than one
@@ -509,8 +509,8 @@ def _widen_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
             # Widen to union of both types, deduplicating components
             prev_parts = [p.strip() for p in prev.type_str.split("|")]
             new_parts = [p.strip() for p in f.type_str.split("|")]
-            combined = _unique_ordered(prev_parts + new_parts)
-            prev.type_str = _join_union(combined)
+            combined = unique_ordered(prev_parts + new_parts)
+            prev.type_str = join_union(combined)
             # Mark optional if either side is optional
             if not f.is_required:
                 prev.is_required = False
@@ -518,7 +518,7 @@ def _widen_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
     existing.dependencies |= new.dependencies
 
 
-def _merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
+def merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
     """Merge fields from *new* into *existing*, deduplicating by field name.
 
     Only operates on dataclasses (``fields is not None``).  Type aliases
@@ -536,10 +536,10 @@ def _merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
             existing_by_name[f.python_name] = f
         elif prev.type_str != f.type_str:
             msg = (
-                f"Internal error: _merge_class_fields called on non-identical "
+                f"Internal error: merge_class_fields called on non-identical "
                 f"classes {existing.name!r}: field {f.python_name!r} has type "
                 f"{prev.type_str!r} vs {f.type_str!r}. "
-                f"This should have been caught by _all_classes_compatible."
+                f"This should have been caught by all_classes_compatible."
             )
             raise ValueError(msg)
 
@@ -552,15 +552,15 @@ def _merge_class_fields(existing: GeneratedClass, new: GeneratedClass) -> None:
 # ---------------------------------------------------------------------------
 
 
-def _join_union(parts: list[str]) -> str:
+def join_union(parts: list[str]) -> str:
     """Join type parts into a union string, sorted for deterministic output."""
     return " | ".join(sorted(parts))
 
 
-def _make_alias(name: str, target: str) -> GeneratedClass:
+def make_alias(name: str, target: str) -> GeneratedClass:
     """Create a type alias GeneratedClass."""
     return GeneratedClass(
         name=name,
         alias_target=target,
-        dependencies=_extract_type_references(target),
+        dependencies=extract_type_references(target),
     )

@@ -10,22 +10,22 @@ from typing import Any
 import warnings
 
 from allotropy.schema_gen.codegen.ir import (
-    _extract_type_references,
-    _join_union,
-    _make_alias,
-    _unique_ordered,
+    extract_type_references,
     FieldDef,
     GeneratedClass,
+    join_union,
+    make_alias,
     ModuleCode,
     quote_python_literal,
+    unique_ordered,
 )
 from allotropy.schema_gen.codegen.merger import (
-    _absolutize_refs,
-    _deep_merge_schemas,
-    _merge_props_into,
-    _ref_base_url,
+    absolutize_refs,
     collect_all_of_parts,
+    deep_merge_schemas,
+    merge_props_into,
     partition_all_of,
+    ref_base_url,
     SchemaMerger,
 )
 from allotropy.schema_gen.codegen.quantity_values import (
@@ -205,14 +205,14 @@ class TypeResolver:
                 item_type = self._resolve_all_of_array_items(
                     module, schema_url, class_name, items
                 )
-                return _make_alias(class_name, f"list[{item_type}]")
+                return make_alias(class_name, f"list[{item_type}]")
             item_type = self._resolve_array_item_type(module, schema_url, items)
-            return _make_alias(class_name, f"list[{item_type}]")
+            return make_alias(class_name, f"list[{item_type}]")
 
         # Handle simple type aliases
         if "type" in schema:
             python_type = self._json_type_to_python(schema["type"])
-            return _make_alias(class_name, python_type)
+            return make_alias(class_name, python_type)
 
         # Handle allOf at the definition level
         if "allOf" in schema:
@@ -221,7 +221,7 @@ class TypeResolver:
         # Handle $ref at the top level of a def (alias)
         if "$ref" in schema:
             ref_type = self._resolve_ref_type(module, schema_url, schema["$ref"])
-            return _make_alias(class_name, ref_type)
+            return make_alias(class_name, ref_type)
 
         # Handle dependencies/constraints (like tRangeValue)
         if "properties" in schema:
@@ -298,7 +298,7 @@ class TypeResolver:
             # Multiple object variants — merge all properties
             merged_props: dict[str, Any] = {}
             for obj_schema in object_schemas:
-                _merge_props_into(merged_props, obj_schema.get("properties", {}))
+                merge_props_into(merged_props, obj_schema.get("properties", {}))
             merged = {"type": "object", "properties": merged_props}
             return self.generate_dataclass(module, schema_url, class_name, merged)
 
@@ -306,10 +306,10 @@ class TypeResolver:
         parts.extend(ref_types)
 
         if not parts:
-            return _make_alias(class_name, "Any")
+            return make_alias(class_name, "Any")
         if len(parts) == 1:
-            return _make_alias(class_name, parts[0])
-        return _make_alias(class_name, _join_union(parts))
+            return make_alias(class_name, parts[0])
+        return make_alias(class_name, join_union(parts))
 
     # -------------------------------------------------------------------------
     # anyOf: union types
@@ -333,8 +333,8 @@ class TypeResolver:
                 parts.append(self._json_type_to_python(variant["type"]))
 
         if len(parts) == 1:
-            return _make_alias(class_name, parts[0])
-        return _make_alias(class_name, _join_union(parts))
+            return make_alias(class_name, parts[0])
+        return make_alias(class_name, join_union(parts))
 
     # -------------------------------------------------------------------------
     # enum types
@@ -368,7 +368,7 @@ class TypeResolver:
                 ref_type = self._resolve_ref_type(module, schema_url, item["$ref"])
                 base_classes.append(ref_type)
             if "properties" in item:
-                _merge_props_into(merged_props, item["properties"])
+                merge_props_into(merged_props, item["properties"])
             if "required" in item:
                 merged_required.extend(item["required"])
             if isinstance(item, dict):
@@ -434,7 +434,7 @@ class TypeResolver:
                     is_required=is_required,
                 )
             )
-            deps |= _extract_type_references(type_str)
+            deps |= extract_type_references(type_str)
 
         return GeneratedClass(
             name=class_name,
@@ -578,7 +578,7 @@ class TypeResolver:
     @staticmethod
     def _is_units_ref(ref: str) -> bool:
         """Return True if *ref* points to a units schema definition."""
-        schema_url = _ref_base_url(ref)
+        schema_url = ref_base_url(ref)
         if not schema_url:
             return False
         try:
@@ -635,7 +635,7 @@ class TypeResolver:
             self._generate_quantity_value_type(module, schema_url, quantity_ref, uref)
             for uref in unit_refs
         ]
-        return _join_union(_unique_ordered(types))
+        return join_union(unique_ordered(types))
 
     def _try_class_enum_pattern(
         self,
@@ -702,18 +702,18 @@ class TypeResolver:
                 # the ref's properties into the merged set.  Note: this
                 # coupling between the two naming functions is intentional.
                 if ref_type == inline_class_name:
-                    ref_base_url_str = _ref_base_url(ref)
+                    ref_base_url_str = ref_base_url(ref)
                     ref_schema = self._merger.resolve_ref_to_schema(schema_url, ref)
                     if ref_schema and "properties" in ref_schema:
                         ref_props = ref_schema["properties"]
                         if ref_base_url_str:
                             ref_props = {
-                                k: _absolutize_refs(v, ref_base_url_str)
+                                k: absolutize_refs(v, ref_base_url_str)
                                 for k, v in ref_props.items()
                             }
                         for pk, pv in ref_props.items():
                             if pk in merged_props:
-                                merged_props[pk] = _deep_merge_schemas(
+                                merged_props[pk] = deep_merge_schemas(
                                     pv, merged_props[pk]
                                 )
                             else:
@@ -753,7 +753,7 @@ class TypeResolver:
         parts = self._resolve_variant_types(module, schema_url, prop_schema["anyOf"])
         if len(parts) == 1:
             return parts[0]
-        return _join_union(parts)
+        return join_union(parts)
 
     def _resolve_one_of_property(
         self,
@@ -780,7 +780,7 @@ class TypeResolver:
                 parts.append("str")
         if len(parts) == 1:
             return parts[0]
-        return _join_union(parts)
+        return join_union(parts)
 
     def _resolve_array_item_type(
         self,
@@ -799,7 +799,7 @@ class TypeResolver:
                     module, schema_url, items_schema[variant_key]
                 )
                 if parts:
-                    return _join_union(parts)
+                    return join_union(parts)
         return "Any"
 
     def _resolve_variant_types(
@@ -885,7 +885,7 @@ class TypeResolver:
         self._merger.deep_merge_base_ref_properties(schema_url, base_refs, merged_props)
 
         item_class_name = property_name_to_class_name(prop_name) + "Item"
-        base_classes = _unique_ordered(
+        base_classes = unique_ordered(
             [self._resolve_ref_type(module, schema_url, ref) for ref in base_refs]
         )
 
@@ -973,7 +973,7 @@ class TypeResolver:
         which technique schemas were included in a given generation run.
         """
         _, unit_def_name = parse_ref(unit_ref)
-        unit_schema_url = _ref_base_url(unit_ref)
+        unit_schema_url = ref_base_url(unit_ref)
         try:
             canonical_unit_url = normalize_schema_url(unit_schema_url)
         except ValueError:
@@ -1002,5 +1002,5 @@ class TypeResolver:
         """Convert a JSON Schema type to a Python type annotation."""
         if isinstance(json_type, list):
             types = [self._json_type_to_python(t) for t in json_type]
-            return _join_union(types)
+            return join_union(types)
         return _JSON_TYPE_MAP.get(json_type, "Any")

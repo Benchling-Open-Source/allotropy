@@ -17,11 +17,9 @@ import subprocess
 import sys
 from typing import Any
 
-from allotropy.schema_gen.codegen import (
-    _dquote,
-    extract_unit_const,
-    SchemaCodeGenerator,
-)
+from allotropy.schema_gen.codegen.generator import SchemaCodeGenerator
+from allotropy.schema_gen.codegen.ir import quote_python_literal
+from allotropy.schema_gen.codegen.type_resolver import extract_unit_const
 from allotropy.schema_gen.fetcher import build_dependency_order, SchemaFetcher
 from allotropy.schema_gen.naming import (
     ALLOTROPE_URL_PREFIX,
@@ -545,7 +543,7 @@ def _generate_shared_units_source(all_units: dict[str, str]) -> str:
         if const == "(unitless)":
             default = "UNITLESS"
         else:
-            default = _dquote(const)
+            default = quote_python_literal(const)
 
         lines.extend(
             [
@@ -638,7 +636,7 @@ def _regenerate_quantity_values(
 
     # Sort by class name for deterministic output
     for class_name, unit_str in sorted(seen.items()):
-        quoted = _dquote(unit_str)
+        quoted = quote_python_literal(unit_str)
         lines.extend(
             [
                 "",

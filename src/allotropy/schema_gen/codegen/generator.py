@@ -13,7 +13,7 @@ from allotropy.schema_gen.codegen.ir import (
     ModuleCode,
 )
 from allotropy.schema_gen.codegen.merger import (
-    _merge_props_into,
+    merge_props_into,
     SchemaMerger,
 )
 from allotropy.schema_gen.codegen.quantity_values import QuantityValueManager
@@ -197,10 +197,10 @@ class SchemaCodeGenerator:
                     schema_url, item["$ref"]
                 )
                 if ref_schema:
-                    _merge_props_into(all_props, ref_schema.get("properties", {}))
+                    merge_props_into(all_props, ref_schema.get("properties", {}))
                     all_required.update(ref_schema.get("required", []))
             if "properties" in item:
-                _merge_props_into(all_props, item["properties"])
+                merge_props_into(all_props, item["properties"])
             if "required" in item:
                 all_required.update(item["required"])
 
