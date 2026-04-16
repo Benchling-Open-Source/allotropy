@@ -5,13 +5,14 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.example_weyland_yutani import constants
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -88,8 +89,11 @@ class Plate:
 
 
 def create_metadata(instrument: Instrument, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=NOT_APPLICABLE,
+        file_name=path.name,
         unc_path=file_path,
         model_number=instrument.serial_number,
         device_identifier=instrument.nickname,
@@ -101,8 +105,6 @@ def create_measurement_group(
 ) -> MeasurementGroup:
     return MeasurementGroup(
         plate_well_count=plate.number_of_wells,
-        analytical_method_identifier=basic_assay_info.protocol_id,
-        experimental_data_identifier=basic_assay_info.assay_id,
         # TODO(tutorial): extract and return actual measurement time
         measurement_time="2022-12-31",
         measurements=[
@@ -114,6 +116,8 @@ def create_measurement_group(
                 sample_identifier=f"Plate {plate.number}",
                 location_identifier=f"{result.col}{result.row}",
                 fluorescence=result.value,
+                analytical_method_identifier=basic_assay_info.protocol_id,
+                experimental_data_identifier=basic_assay_info.assay_id,
             )
             for result in plate.results
         ],
