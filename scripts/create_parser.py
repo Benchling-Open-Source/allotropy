@@ -3,13 +3,17 @@ from pathlib import Path
 
 import click
 
-from allotropy.allotrope.schema_parser.path_util import (
+from allotropy.allotrope.path_util import (
     get_import_path_from_path,
     get_manifest_from_schema_path,
     get_model_path_from_schema_path,
     SCHEMA_DIR_PATH,
 )
-from allotropy.allotrope.schema_parser.schema_model import snake_to_upper_camel
+
+
+def snake_to_upper_camel(name: str) -> str:
+    return "".join(word.capitalize() for word in name.split("_"))
+
 
 ALLOTROPY_DIR = Path(Path(__file__).parent.parent, "src/allotropy")
 TEMPLATE_DIR = Path(Path(__file__).parent, "templates")

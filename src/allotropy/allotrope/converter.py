@@ -1,97 +1,22 @@
 from __future__ import annotations
 
-import builtins
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
 import keyword
-from types import GenericAlias, UnionType
-from typing import (
-    Any,
-    cast,
-    get_args,
-    get_origin,
-    TypeVar,
-    Union,
-)
+import sys
+import types
+from typing import Any, get_args, get_origin, get_type_hints, TypeVar, Union
 
-from cattrs import Converter
-from cattrs.errors import ClassValidationError
-from cattrs.gen import make_dict_structure_fn, make_dict_unstructure_fn, override
-import numpy as np
+from allotropy.allotrope.path_util import get_model_class_from_schema
+from allotropy.schema_gen.naming import default_json_name
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
-    ProcessedDataDocumentItem,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    TDimensionArray,
-    TFunction,
-    TMeasureArray,
-)
-from allotropy.allotrope.models.shared.definitions.units import HasUnit
-from allotropy.allotrope.schema_parser.path_util import get_model_class_from_schema
+T = TypeVar("T")
+ModelClass = TypeVar("ModelClass")
 
-SPECIAL_KEYS = {
-    "manifest": "$asm.manifest",
-    "field_asm_manifest": "$asm.manifest",
-    "cube_structure": "cube-structure",
-    "field_componentDatatype": "@componentDatatype",
-    "field_asm_fill_value": "$asm.fill-value",
-    "field_type": "@type",
-    "field_index": "@index",
-    "scan_position_setting__plate_reader_": "scan position setting (plate reader)",
-    "detector_distance_setting__plate_reader_": "detector distance setting (plate reader)",
-    "cell_type__cell_counter_": "cell type (cell counter)",
-    "dead_cell_density__cell_counter_": "dead cell density (cell counter)",
-    "average_dead_cell_diameter__cell_counter_": "average dead cell diameter (cell counter)",
-    "viability__cell_counter_": "viability (cell counter)",
-    "total_cell_density__cell_counter_": "total cell density (cell counter)",
-    "viable_cell_density__cell_counter_": "viable cell density (cell counter)",
-    "average_live_cell_diameter__cell_counter_": "average live cell diameter (cell counter)",
-    "average_total_cell_diameter__cell_counter_": "average total cell diameter (cell counter)",
-    "total_cell_diameter_distribution__cell_counter_": "total cell diameter distribution (cell counter)",
-    "viable_cell_count__cell_counter_": "viable cell count (cell counter)",
-    "total_cell_count__cell_counter_": "total cell count (cell counter)",
-    "cycle_threshold_value_setting__qPCR_": "cycle threshold value setting (qPCR)",
-    "genotyping_qPCR_method_setting__qPCR_": "genotyping qPCR method setting (qPCR)",
-    "cycle_threshold_result__qPCR_": "cycle threshold result (qPCR)",
-    "autosampler_injection_volume_setting__chromatography_": "autosampler injection volume setting (chromatography)",
-    "capacity_factor__chromatography_": "capacity factor (chromatography)",
-    "peak_selectivity__chromatography_": "peak selectivity (chromatography)",
-    "peak_width_at_4_4___of_height": "peak width at 4.4 % of height",
-    "peak_width_at_13_4___of_height": "peak width at 13.4 % of height",
-    "peak_width_at_32_4___of_height": "peak width at 32.4 % of height",
-    "peak_width_at_60_7___of_height": "peak width at 60.7 % of height",
-    "peak_width_at_5___of_height": "peak width at 5 % of height",
-    "peak_width_at_10___of_height": "peak width at 10 % of height",
-    "statistical_skew__chromatography_": "statistical skew (chromatography)",
-    "asymmetry_factor_measured_at_5___height": "asymmetry factor measured at 5 % height",
-    "asymmetry_factor_measured_at_10___height": "asymmetry factor measured at 10 % height",
-    "asymmetry_factor_squared_measured_at_10___height": "asymmetry factor squared measured at 10 % height",
-    "asymmetry_factor_squared_measured_at_4_4___height": "asymmetry factor squared measured at 4.4 % height",
-    "asymmetry_factor_measured_at_4_4___height": "asymmetry factor measured at 4.4 % height",
-    "number_of_theoretical_plates__chromatography_": "number of theoretical plates (chromatography)",
-    "number_of_theoretical_plates_measured_at_60_7___of_peak_height": "number of theoretical plates measured at 60.7 % of peak height",
-    "number_of_theoretical_plates_measured_at_32_4___of_peak_height": "number of theoretical plates measured at 32.4 % of peak height",
-    "number_of_theoretical_plates_measured_at_13_4___of_peak_height": "number of theoretical plates measured at 13.4 % of peak height",
-    "number_of_theoretical_plates_measured_at_4_4___of_peak_height": "number of theoretical plates measured at 4.4 % of peak height",
-    "number_of_theoretical_plates_by_peak_width_at_half_height__JP14_": "number of theoretical plates by peak width at half height (JP14)",
-    "confidence_interval__95__": "confidence interval (95%)",
-    "co2_saturation": "CO2 saturation",
-    "o2_saturation": "O2 saturation",
-    "pco2": "pCO2",
-    "po2": "pO2",
-    "binding_on_rate_measurement_datum__kon_": "binding on rate measurement datum (kon)",
-    "binding_off_rate_measurement_datum__koff_": "binding off rate measurement datum (koff)",
-    "equilibrium_dissociation_constant__KD_": "equilibrium dissociation constant (KD)",
-    "maximum_binding_capacity__Rmax_": "maximum binding capacity (Rmax)",
-}
-SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
-    cast(tuple[str, str], reversed(item)) for item in SPECIAL_KEYS.items()
-)
-
-
+# Mapping from special characters in JSON keys to safe Python identifiers.
+# Used by the custom_information_document structuring/unstructuring logic.
+# NOTE: space→"_" MUST be last, or it will break other key replacements.
 DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     ".": "_POINT_",
     "-": "_DASH_",
@@ -115,23 +40,85 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     "*": "_ASTERISK_",
     ",": "_COMMA_",
     "&": "_AMPERSAND_",
-    # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }
 
 
-PRIMITIVE_TYPES = (
-    bool,
-    int,
-    float,
-    str,
-    type(None),
-    InvalidJsonFloat,
-    np.float64,
-    np.int64,
-)
+# ---------------------------------------------------------------------------
+# Custom information document helpers
+# ---------------------------------------------------------------------------
 
-ModelClass = TypeVar("ModelClass")
+
+def _convert_model_key_to_dict_key(key: str) -> str:
+    """Decode a Python-safe field name back to the original JSON key."""
+    if key.startswith("_KW"):
+        key = key[3:]
+    if key.startswith("___") and key[3].isdigit():
+        key = key[3:]
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(model_val, dict_val)
+    return key
+
+
+def _convert_dict_to_model_key(key: str) -> str:
+    if keyword.iskeyword(key):
+        key = f"_KW{key}"
+    if key[0].isdigit():
+        key = f"___{key}"
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(dict_val, model_val)
+    return key
+
+
+def _unstructure_custom_information_document(model: Any) -> dict[str, Any]:
+    """Serialize a dynamically-created custom_information_document dataclass."""
+    required_keys = {a.name for a in fields(model) if a.default == MISSING}
+
+    def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
+        return {
+            _convert_model_key_to_dict_key(key): (
+                value.value if isinstance(value, Enum) else value
+            )
+            for key, value in kv_pairs
+            if key in required_keys or value is not None
+        }
+
+    return asdict(model, dict_factory=dict_factory)
+
+
+def _custom_info_doc_eq(self: Any, other: Any) -> bool:
+    if not is_dataclass(other):
+        return NotImplemented
+    return asdict(self) == asdict(other)
+
+
+def structure_custom_information_document(val: dict[str, Any], name: str) -> Any:
+    structured_dict = {}
+    for key, value in val.items():
+        structured_value = value
+        if isinstance(value, list):
+            structured_value = [
+                (
+                    structure_custom_information_document(v, key)
+                    if isinstance(v, dict)
+                    else v
+                )
+                for v in value
+            ]
+        elif isinstance(value, dict):
+            structured_value = structure_custom_information_document(value, key)
+        structured_dict[_convert_dict_to_model_key(key)] = structured_value
+
+    name = name.title().replace(" ", "")
+    # eq=False + custom __eq__ so structure(unstructure(x)) == x holds even
+    # though make_dataclass creates a new type on each call.
+    cls = make_dataclass(
+        name,
+        ((k, type(v), field(default=None)) for k, v in structured_dict.items()),
+        eq=False,
+        namespace={"__eq__": _custom_info_doc_eq},
+    )
+    return cls(**structured_dict)
 
 
 def add_custom_information_document(
@@ -166,351 +153,252 @@ def add_custom_information_document(
         cleaned_dict, "custom information document"
     )
 
-    model.custom_information_document = custom_info_doc  # type: ignore
+    try:
+        model.custom_information_document = custom_info_doc  # type: ignore
+    except AttributeError:
+        # Frozen dataclasses block __setattr__; bypass with object.__setattr__
+        object.__setattr__(model, "custom_information_document", custom_info_doc)
     return model
 
 
-def _convert_model_key_to_dict_key(key: str) -> str:
-    key = SPECIAL_KEYS.get(key, key)
-    if key.startswith("_KW"):
-        key = key[3:]
-    if key.startswith("___") and key[3].isdigit():
-        key = key[3:]
-    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
-        key = key.replace(model_val, dict_val)
-    return key
+# ---------------------------------------------------------------------------
+# unstructure (model → dict)
+# ---------------------------------------------------------------------------
 
 
-def _convert_dict_to_model_key(key: str) -> str:
-    key = SPECIAL_KEYS_INVERSE.get(key, key)
-    if keyword.iskeyword(key):
-        key = f"_KW{key}"
-    if key[0].isdigit():
-        key = f"___{key}"
-    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
-        key = key.replace(dict_val, model_val)
-    return key
+def unstructure(obj: Any) -> Any:
+    """Convert a dataclass instance to a JSON-compatible dict.
 
+    - Dataclass fields are keyed by their ``json_name`` metadata (falling back
+      to ``field_name.replace("_", " ")``).
+    - ``None`` values on optional fields are omitted.
+    - Lists and dicts are recursed into.
+    - Enum values serialize as their value.
+    - Dynamically-attached ``custom_information_document`` attributes are
+      included at every nesting level.
+    - Primitives (str, int, float, bool) pass through unchanged.
+    """
+    if obj is None:
+        return None
 
-def _validate_structuring(val: Any, model: Any) -> None:
-    """Validate that all keys in val are stored in model."""
-    if isinstance(val, list):
-        if not isinstance(model, list):
-            raise AssertionError()
-        for list_value, model_list_value in zip(val, model, strict=True):
-            _validate_structuring(list_value, model_list_value)
-    if not isinstance(val, dict):
-        return
-
-    for key, value in val.items():
-        model_key = _convert_dict_to_model_key(key)
-        # If the key is unit, and this is a unit model, ensure the unit is correct.
-        if key == "unit" and isinstance(model, HasUnit):
-            unit_field = next(field for field in fields(model) if field.name == "unit")
-            if not value == unit_field.default:
-                raise AssertionError()
-        # If the value itself is None, just assert that the key is in the model.
-        if value is None:
-            if not hasattr(model, model_key):
-                raise AssertionError()
-            continue
-
-        model_val = getattr(model, model_key, None)
-        if model_val is None:
-            raise AssertionError()
-
-        _validate_structuring(value, model_val)
-
-
-def register_data_cube_hooks(converter: Converter) -> None:
-    def structure_dimension_array(val: Any, _: Any) -> TDimensionArray | TFunction:
-        if isinstance(val, list):
-            return val
-        return converter.structure(val, TFunction)
-
-    converter.register_structure_hook(
-        TDimensionArray | TFunction, structure_dimension_array
-    )
-    converter.register_structure_hook(TMeasureArray, lambda val, _: val)
-
-
-# TODO: this code is copied from cattrs 24.1.0. We currently pin to 23.1.2 because some other libraries that
-# allotropy is currently used with pin cattrs (i.e. ddtrace). When possible, upgrade to cattrs>=24.1.0 and
-# import is_sequence from cattrs.cols
-def is_subclass(obj: type, bases: builtins._ClassInfo) -> bool:
-    """A safe version of issubclass (won't raise)."""
-    try:
-        return issubclass(obj, bases)
-    except TypeError:
-        return False
-
-
-def is_sequence(type_: Any) -> bool:
-    origin = getattr(type_, "__origin__", None)
-    return type_ in (list, tuple) or (
-        type_.__class__ in (GenericAlias, type)
-        and origin
-        and (origin not in (Union, tuple) and is_subclass(origin, Sequence))
-        or (origin is tuple and type_.__args__[1] is ...)
-    )
-
-
-def register_dataclass_union_hooks(converter: Converter) -> None:
-    # Handles any union of dataclass, lists of dataclasses, and primitive values.
-    # First checks if the value is a list, and if so tries to parse with any of the list types.
-    # Then checks if the value is a primitive value or None, and if so returns that.
-    # Then tries structuring with each specified dataclass, if any.
-    def _is_valid(arg: Any) -> bool:
-        if is_sequence(arg):
-            return all(is_dataclass(sub) for sub in arg.__args__)
-        if is_dataclass(arg):
-            return True
-        if arg in PRIMITIVE_TYPES:
-            return True
-        return False
-
-    def is_dataclass_union(val: Any) -> bool:
-        if get_origin(val) not in (Union, UnionType):
-            return False
-        args = set(get_args(val))
-        return all(_is_valid(arg) for arg in args)
-
-    def dataclass_union_structure_fn(
-        cls: Any,
-    ) -> Callable[[dict[str, Any] | str | None, Any], Any | None]:
-        def structure_item(val: dict[str, Any] | str | None, _: Any) -> Any | None:
-            if isinstance(val, list):
-                valid_models = []
-                for subcls in get_args(cls):
-                    if not is_sequence(subcls):
-                        continue
-                    # I don't think this should be possible, but check and raise a readable error just in case.
-                    if len(subcls.__args__) > 1:
-                        msg = (
-                            f"Encountered a list type with more than one arg: {subcls}!"
-                        )
-                        raise AssertionError(msg)
-                    try:
-                        valid_models.append(
-                            [converter.structure(v, subcls.__args__[0]) for v in val]
-                        )
-                    except (ClassValidationError, TypeError):
-                        pass
-
-                if len(valid_models) == 1:
-                    return valid_models[0]
-                elif len(valid_models) > 1:
-                    for model in valid_models:
-                        try:
-                            _validate_structuring(val, model)
-                            return model
-                        except AssertionError:
-                            pass
-
-            if type(val) in PRIMITIVE_TYPES:
-                return val
-            valid_models = []
-            for subcls in get_args(cls):
-                if not is_dataclass(subcls):
+    if is_dataclass(obj) and not isinstance(obj, type):
+        result: dict[str, Any] = {}
+        for f in fields(obj):
+            value = getattr(obj, f.name)
+            if value is None:
+                # Keep None for required fields (no default) to preserve
+                # explicitly set null values like cycle_threshold_result.
+                is_required = f.default is MISSING and f.default_factory is MISSING
+                if not is_required:
                     continue
-                try:
-                    valid_models.append(converter.structure(val, subcls))
-                except ClassValidationError:
-                    pass
+            json_key = f.metadata.get("json_name", default_json_name(f.name))
+            result[json_key] = unstructure(value)
+        # Handle dynamically-attached custom_information_document (not in fields())
+        field_names = {f.name for f in fields(obj)}
+        if (
+            hasattr(obj, "custom_information_document")
+            and "custom_information_document" not in field_names
+            and not isinstance(obj.custom_information_document, list)
+        ):
+            result[
+                "custom information document"
+            ] = _unstructure_custom_information_document(
+                obj.custom_information_document
+            )
+        return result
 
-            if len(valid_models) == 1:
-                return valid_models[0]
-            elif len(valid_models) > 1:
-                for model in valid_models:
-                    try:
-                        _validate_structuring(val, model)
-                        return model
-                    except AssertionError:
-                        pass
+    if isinstance(obj, list):
+        return [unstructure(item) for item in obj]
 
-            msg = f"Failed to structure value {val} with type {cls}"
-            raise ValueError(msg)
+    if isinstance(obj, dict):
+        return {k: unstructure(v) for k, v in obj.items()}
 
-        return structure_item
+    # Enum values: serialize as their value
+    if isinstance(obj, Enum):
+        return obj.value
 
-    converter.register_structure_hook_factory(
-        is_dataclass_union, dataclass_union_structure_fn
-    )
+    # Primitives: str, int, float, bool
+    return obj
 
 
-def structure_custom_information_document(val: dict[str, Any], name: str) -> Any:
-    structured_dict = {}
-    for key, value in val.items():
-        structured_value = value
+# ---------------------------------------------------------------------------
+# structure (dict → model)
+# ---------------------------------------------------------------------------
+
+
+def structure(data: Mapping[str, Any] | Any, cls: type[T] | None = None) -> T:
+    """Construct a dataclass instance from a JSON-compatible dict.
+
+    Performs the inverse of ``unstructure``: maps JSON property names back to
+    Python field names using the ``json_name`` metadata, and recursively
+    structures nested dataclasses and lists.
+
+    Dynamically-attached ``custom_information_document`` dicts are
+    reconstructed and attached to the result.
+    """
+    if cls is None:
+        cls = get_model_class_from_schema(data)
+
+    if not is_dataclass(cls):
+        return data  # type: ignore[return-value]
+
+    if not isinstance(data, dict):
+        return data  # type: ignore[return-value]
+
+    # Build reverse mapping: json_name → (python_field_name, field_type)
+    # Use get_type_hints to resolve string annotations from __future__ annotations.
+    # Fall back to raw f.type strings for dynamic dataclasses where resolution fails.
+    try:
+        resolved_hints = get_type_hints(cls)
+    except (NameError, AttributeError):
+        resolved_hints = {}
+    json_to_field: dict[str, tuple[str, Any]] = {}
+    for f in fields(cls):
+        json_key = f.metadata.get("json_name", default_json_name(f.name))
+        field_type = resolved_hints.get(f.name, f.type)
+        json_to_field[json_key] = (f.name, field_type)
+
+    kwargs: dict[str, Any] = {}
+    for json_key, value in data.items():
+        if json_key not in json_to_field:
+            continue
+        field_name, field_type = json_to_field[json_key]
+        kwargs[field_name] = _structure_value(value, field_type, cls)
+
+    result = cls(**kwargs)
+
+    # Reconstruct dynamically-attached custom_information_document
+    custom_info = data.get("custom information document")
+    if custom_info is not None and isinstance(custom_info, dict):
+        result = add_custom_information_document(result, custom_info)
+
+    return result  # type: ignore[return-value]
+
+
+# ---------------------------------------------------------------------------
+# structure helpers
+# ---------------------------------------------------------------------------
+
+
+def _structure_value(value: Any, field_type: Any, parent_cls: type) -> Any:
+    """Recursively structure a JSON value into the expected Python type."""
+    if value is None:
+        return None
+
+    # Resolve string type annotations using the parent class's module globals
+    if isinstance(field_type, str):
+        field_type = _resolve_string_annotation(field_type, parent_cls)
+        if field_type is None:
+            return value
+
+    origin = get_origin(field_type)
+    args = get_args(field_type)
+
+    # Handle list[SomeType]
+    if origin is list and args:
+        item_type = args[0]
         if isinstance(value, list):
-            structured_value = [
-                (
-                    structure_custom_information_document(v, key)
-                    if isinstance(v, dict)
-                    else value
-                    if isinstance(v, list)
-                    else v
-                )
-                for v in value
-            ]
-        elif isinstance(value, dict):
-            structured_value = structure_custom_information_document(value, key)
-        structured_dict[_convert_dict_to_model_key(key)] = structured_value
+            return [_structure_value(item, item_type, parent_cls) for item in value]
+        return value
 
-    name = name.title().replace(" ", "")
-    return make_dataclass(
-        name, ((k, type(v), field(default=None)) for k, v in structured_dict.items())
-    )(**structured_dict)
+    # Handle dict[str, Any]
+    if origin is dict:
+        return value
 
+    # Handle Union types (X | None, X | Y | None, etc.)
+    if _is_union(origin):
+        non_none_types = [a for a in args if a is not type(None)]
+        if len(non_none_types) == 1:
+            return _structure_value(value, non_none_types[0], parent_cls)
+        # Multiple variant types: try each, preferring those whose shape matches
+        for candidate in non_none_types:
+            if not _value_matches_type_shape(value, candidate):
+                continue
+            try:
+                return _structure_value(value, candidate, parent_cls)
+            except (TypeError, KeyError, ValueError):
+                continue
+        return value
 
-def _create_should_omit_function(
-    cls: Any, parent_cls: Any | None = None, field_name: str | None = None
-) -> Callable[[str, Any], bool]:
-    required_keys = {a.name for a in fields(cls) if a.default == MISSING}
+    # Handle Enum types
+    if isinstance(field_type, type) and issubclass(field_type, Enum):
+        return field_type(value)
 
-    def should_omit(k: str, v: Any) -> bool:
-        if k in required_keys:
-            return False
-        if field_name in EMPTY_VALUE_CLASS_AND_FIELD.get(parent_cls, set()):
-            return v is None and k != "value"
-        return v is None
+    # Handle dataclass types
+    if is_dataclass(field_type) and isinstance(value, dict):
+        return structure(value, field_type)
 
-    return should_omit
+    return value
 
 
-def _unstructure_value(value: Any) -> Any:
-    return value.value if isinstance(value, Enum) else value
+def _value_matches_type_shape(value: Any, field_type: Any) -> bool:
+    """Check if a value's shape is compatible with a candidate union variant type."""
+    origin = get_origin(field_type)
+    if origin is list:
+        return isinstance(value, list)
+    if is_dataclass(field_type) and isinstance(field_type, type):
+        return isinstance(value, dict)
+    if isinstance(field_type, type) and issubclass(field_type, Enum):
+        return isinstance(value, str | int)
+    # Primitive types: check the value actually matches
+    if field_type is str:
+        return isinstance(value, str)
+    if field_type is int:
+        return isinstance(value, int) and not isinstance(value, bool)
+    if field_type is float:
+        return isinstance(value, int | float)
+    if field_type is bool:
+        return isinstance(value, bool)
+    return True
 
 
-def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
-    should_omit = _create_should_omit_function(model)
-
-    def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
-        return {
-            _convert_model_key_to_dict_key(key): _unstructure_value(value)
-            for key, value in kv_pairs
-            if not should_omit(key, value)
-        }
-
-    return asdict(model, dict_factory=dict_factory)
+def _is_union(origin: Any) -> bool:
+    """Check if a type is a Union / X | Y type."""
+    return origin is types.UnionType or origin is Union
 
 
-def register_dataclass_hooks(converter: Converter) -> None:
-    def dataclass_structure_fn(cls: Any) -> Callable[[Any, Any], Any | None]:
-        field_name_overrides = {
-            a.name: override(rename=_convert_model_key_to_dict_key(a.name))
-            for a in fields(cls)
-        }
-        structure_fn = make_dict_structure_fn(
-            cls,
-            converter,
-            # mypy does not recognize that unpacking a dictionary is specifying kwargs
-            **field_name_overrides,  # type: ignore[arg-type]
-        )
+def _resolve_string_annotation(annotation: str, cls: type) -> Any | None:
+    """Resolve a string type annotation to an actual type.
 
-        def structure_item(val: Any, _: Any) -> Any | None:
-            if val is None:
-                return None
-            structured = structure_fn(val, _)
-            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
-            # later. The ASM version will always be a list, so we can differentiate using that.
-            if (
-                isinstance(val, dict)
-                and "custom information document" in val
-                and not isinstance(val["custom information document"], list)
-            ):
-                structured.custom_information_document = (
-                    structure_custom_information_document(
-                        val["custom information document"],
-                        "custom information document",
-                    )
-                )
-            return structured
+    Handles simple names (``SomeClass``), generic wrappers (``list[X]``),
+    and union syntax (``A | B | None``).  Uses the module where *cls* is
+    defined to look up names.
+    """
 
-        return structure_item
+    annotation = annotation.strip()
 
-    converter.register_structure_hook_factory(is_dataclass, dataclass_structure_fn)
+    # Handle union types: "A | B" or "A | B | None"
+    if " | " in annotation:
+        parts = [p.strip() for p in annotation.split(" | ")]
+        resolved_parts: list[Any] = []
+        for part in parts:
+            if part == "None":
+                resolved_parts.append(type(None))
+            else:
+                resolved = _resolve_string_annotation(part, cls)
+                if resolved is None:
+                    return None
+                resolved_parts.append(resolved)
+        result = resolved_parts[0]
+        for t in resolved_parts[1:]:
+            result = result | t
+        return result
 
+    # Strip list[] wrapper
+    if annotation.startswith("list[") and annotation.endswith("]"):
+        inner = annotation[5:-1]
+        resolved = _resolve_string_annotation(inner, cls)
+        if resolved is not None:
+            return list[resolved]  # type: ignore[valid-type]
+        return None
 
-QPCR_NULLABLE_VALUE_CLASSES: dict[Any, set[str]] = {
-    ProcessedDataDocumentItem: {"cycle_threshold_result"}
-}
+    # Look up in the class's module
+    module = sys.modules.get(cls.__module__)
+    if module:
+        resolved = getattr(module, annotation, None)
+        if resolved is not None:
+            return resolved
 
-EMPTY_VALUE_CLASS_AND_FIELD = {
-    **QPCR_NULLABLE_VALUE_CLASSES,
-}
-
-
-def register_unstructure_hooks(converter: Converter) -> None:
-    unstructure_fn_cache = {}
-
-    def unstructure_dataclass_fn(
-        cls: Any, parent_cls: Any | None = None, field_name: str | None = None
-    ) -> Callable[[Any], dict[str, Any]]:
-        should_omit = _create_should_omit_function(cls, parent_cls, field_name)
-
-        def unstructure(obj: Any) -> Any:
-            # Break out of dataclass recursion by calling back to converter.unstructure
-            if not is_dataclass(obj):
-                return converter.unstructure(obj)
-
-            dataclass_dict = {
-                _convert_model_key_to_dict_key(k): v
-                for k, v in make_unstructure_fn(type(obj))(obj).items()
-                if not should_omit(k, v)
-            }
-            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
-            # later. The ASM version will always be a list, so we can differentiate using that.
-            if hasattr(obj, "custom_information_document") and not isinstance(
-                obj.custom_information_document, list
-            ):
-                dataclass_dict[
-                    "custom information document"
-                ] = unstructure_custom_information_document(
-                    obj.custom_information_document
-                )
-            return dataclass_dict
-
-        # This custom unstructure function overrides the unstruct_hook. We need to do this at this level
-        # because we need to know both the parent class and the field name at the same time to create the
-        # should_omit function.
-        def make_unstructure_fn(subcls: Any) -> Callable[[Any], dict[str, Any]]:
-            if (cls, subcls) not in unstructure_fn_cache:
-                field_name_overrides = {
-                    a.name: override(
-                        unstruct_hook=unstructure_dataclass_fn(subcls, cls, a.name)
-                    )
-                    for a in fields(cls)
-                }
-                unstructure_fn_cache[(cls, subcls)] = make_dict_unstructure_fn(
-                    subcls,
-                    converter,
-                    # mypy does not recognize that unpacking a dictionary is specifying kwargs
-                    **field_name_overrides,  # type: ignore[arg-type]
-                )
-            return unstructure_fn_cache[(cls, subcls)]
-
-        return unstructure
-
-    converter.register_unstructure_hook_factory(is_dataclass, unstructure_dataclass_fn)
-
-
-def setup_converter() -> Converter:
-    converter = Converter()
-    register_data_cube_hooks(converter)
-    register_dataclass_union_hooks(converter)
-    register_dataclass_hooks(converter)
-    register_unstructure_hooks(converter)
-    return converter
-
-
-CONVERTER = setup_converter()
-
-
-def unstructure(model: Any) -> dict[str, Any]:
-    return cast(dict[str, Any], CONVERTER.unstructure(model))
-
-
-def structure(asm: Mapping[str, Any], model_class: Any | None = None) -> Any:
-    model_class = model_class or get_model_class_from_schema(asm)
-    return CONVERTER.structure(asm, model_class)
+    # Try builtins
+    builtins_map = {"str": str, "int": int, "float": float, "bool": bool}
+    return builtins_map.get(annotation)

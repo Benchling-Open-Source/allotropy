@@ -4,11 +4,13 @@ from typing import Protocol, TypeVar
 
 import numpy as np
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
+from allotropy.allotrope.models.adm.core.rec._2024._09.cube import (
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
     TDimensionArray,
     TFunction,
     TMeasureArray,
@@ -162,12 +164,13 @@ def get_data_cube(
 ) -> DataCubeType | None:
     if data_cube is None:
         return None
+
     return data_cube_class(
         label=data_cube.label,
         cube_structure=TDatacubeStructure(
             dimensions=[
                 TDatacubeComponent(
-                    field_componentDatatype=structure_dim.type_,
+                    field_component_datatype=structure_dim.type_.value,  # type: ignore[arg-type]
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
@@ -175,7 +178,7 @@ def get_data_cube(
             ],
             measures=[
                 TDatacubeComponent(
-                    field_componentDatatype=structure_dim.type_,
+                    field_component_datatype=structure_dim.type_.value,  # type: ignore[arg-type]
                     concept=structure_dim.concept,
                     unit=structure_dim.unit,
                 )
@@ -183,7 +186,7 @@ def get_data_cube(
             ],
         ),
         data=TDatacubeData(
-            dimensions=_get_dimensions(data_cube.dimensions),
+            dimensions=_get_dimensions(data_cube.dimensions),  # type: ignore[arg-type]
             measures=_get_measures(data_cube.measures),
         ),
     )

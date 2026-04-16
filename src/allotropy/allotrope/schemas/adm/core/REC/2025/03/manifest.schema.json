@@ -1,0 +1,48 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/manifest.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "@id": {
+      "format": "uri",
+      "maxItems": 1,
+      "minItems": 1,
+      "type": "string"
+    },
+    "@type": {
+      "format": "uri",
+      "maxItems": 1,
+      "minItems": 1,
+      "type": "string"
+    },
+    "json-schemas": {
+      "items": {
+        "format": "uri",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "shapes": {
+      "items": {
+        "format": "uri",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "vocabulary": {
+      "items": {
+        "format": "uri",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "vocabulary",
+    "json-schemas"
+  ],
+  "title": "Schema for manifests.",
+  "type": "object"
+}

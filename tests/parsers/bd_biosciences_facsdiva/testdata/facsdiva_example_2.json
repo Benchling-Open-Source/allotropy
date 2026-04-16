@@ -39,56 +39,56 @@
                                                 {
                                                     "data region identifier": "P1",
                                                     "region type": "POLYGON",
-                                                    "x coordinate dimension identifier": "FSC-A",
-                                                    "y coordinate dimension identifier": "SSC-A",
+                                                    "x-coordinate dimension identifier": "FSC-A",
+                                                    "y-coordinate dimension identifier": "SSC-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 64031.47592453624,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 131919.37398351682,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 20189.043969374434,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 32365.298250136373,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 43453.84743385766,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3430.328400153492,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 153573.91716574476,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 14702.059150183399,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 248184.11792131007,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 51087.92580012494,
                                                                     "unit": "RFU"
                                                                 }
@@ -100,46 +100,46 @@
                                                     "data region identifier": "P2",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P1",
-                                                    "x coordinate dimension identifier": "FSC-A",
-                                                    "y coordinate dimension identifier": "FSC-H",
+                                                    "x-coordinate dimension identifier": "FSC-A",
+                                                    "y-coordinate dimension identifier": "FSC-H",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 9332.135685948931,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 56194.096950122184,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 9332.135685948931,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 8536.499550150504,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 251475.45639593658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 227082.79299556222,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 162879.83855153824,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 207677.17440003232,
                                                                     "unit": "RFU"
                                                                 }
@@ -151,56 +151,56 @@
                                                     "data region identifier": "P3",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P2",
-                                                    "x coordinate dimension identifier": "SSC-A",
-                                                    "y coordinate dimension identifier": "APC-A",
+                                                    "x-coordinate dimension identifier": "SSC-A",
+                                                    "y-coordinate dimension identifier": "APC-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 255939.05240947116,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1801.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 80677.53297703083,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1675.227272727273,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 27943.978457535515,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1411.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3128.18809542007,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 832.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1577.2011977878549,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -212,46 +212,46 @@
                                                     "data region identifier": "P8",
                                                     "region type": "RECTANGLE",
                                                     "parent data region identifier": "P3",
-                                                    "x coordinate dimension identifier": "FITC-A",
-                                                    "y coordinate dimension identifier": "PE-Texas Red-A",
+                                                    "x-coordinate dimension identifier": "FITC-A",
+                                                    "y-coordinate dimension identifier": "PE-Texas Red-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2439.0000000000005,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3991.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4018.000000000001,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3991.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4018.000000000001,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2686.5286624203823,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2439.0000000000005,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2686.5286624203823,
                                                                     "unit": "RFU"
                                                                 }
@@ -263,56 +263,56 @@
                                                     "data region identifier": "P4",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2138.3447098976108,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1359.790076335878,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3202.227501347224,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2268.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3174.2275013472254,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 609.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3216.2275013472236,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1912.2275013472254,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -324,56 +324,56 @@
                                                     "data region identifier": "P5",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 907.0477815699655,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4045.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1380.0477815699655,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4046.999999999998,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1389.0477815699658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3143.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1400.0477815699658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2173.999999999999,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": -27.952218430034126,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2173.999999999999,
                                                                     "unit": "RFU"
                                                                 }
@@ -385,36 +385,36 @@
                                                     "data region identifier": "$1510583636921",
                                                     "region type": "BINNER",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
@@ -426,46 +426,46 @@
                                                     "data region identifier": "Q1",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -477,46 +477,46 @@
                                                     "data region identifier": "Q2",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
@@ -528,46 +528,46 @@
                                                     "data region identifier": "Q3",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
@@ -579,46 +579,46 @@
                                                     "data region identifier": "Q4",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -630,56 +630,56 @@
                                                     "data region identifier": "P6",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1770.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1658.9233576642337,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2940.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2824.6532846715327,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3155.921052631579,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2495.8576642335765,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1785.7894736842106,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1210.5656934306567,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1770.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1554.3065693430658,
                                                                     "unit": "RFU"
                                                                 }
@@ -691,46 +691,46 @@
                                                     "data region identifier": "P7",
                                                     "region type": "RECTANGLE",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1747.013651877133,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3438.5496183206105,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2082.4402730375427,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3438.5496183206105,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2082.4402730375427,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2688.320610687023,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1747.013651877133,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2688.320610687023,
                                                                     "unit": "RFU"
                                                                 }
@@ -2876,56 +2876,56 @@
                                                 {
                                                     "data region identifier": "P1",
                                                     "region type": "POLYGON",
-                                                    "x coordinate dimension identifier": "FSC-A",
-                                                    "y coordinate dimension identifier": "SSC-A",
+                                                    "x-coordinate dimension identifier": "FSC-A",
+                                                    "y-coordinate dimension identifier": "SSC-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 64031.47592453624,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 131919.37398351682,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 20189.043969374434,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 32365.298250136373,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 43453.84743385766,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3430.328400153492,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 153573.91716574476,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 14702.059150183399,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 248184.11792131007,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 51087.92580012494,
                                                                     "unit": "RFU"
                                                                 }
@@ -2937,46 +2937,46 @@
                                                     "data region identifier": "P2",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P1",
-                                                    "x coordinate dimension identifier": "FSC-A",
-                                                    "y coordinate dimension identifier": "FSC-H",
+                                                    "x-coordinate dimension identifier": "FSC-A",
+                                                    "y-coordinate dimension identifier": "FSC-H",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 9332.135685948931,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 56194.096950122184,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 9332.135685948931,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 8536.499550150504,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 251475.45639593658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 227082.79299556222,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 162879.83855153824,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 207677.17440003232,
                                                                     "unit": "RFU"
                                                                 }
@@ -2988,56 +2988,56 @@
                                                     "data region identifier": "P3",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P2",
-                                                    "x coordinate dimension identifier": "SSC-A",
-                                                    "y coordinate dimension identifier": "APC-A",
+                                                    "x-coordinate dimension identifier": "SSC-A",
+                                                    "y-coordinate dimension identifier": "APC-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 255939.05240947116,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1801.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 80677.53297703083,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1675.227272727273,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 27943.978457535515,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1411.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3128.18809542007,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 832.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1577.2011977878549,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -3049,46 +3049,46 @@
                                                     "data region identifier": "P8",
                                                     "region type": "RECTANGLE",
                                                     "parent data region identifier": "P3",
-                                                    "x coordinate dimension identifier": "FITC-A",
-                                                    "y coordinate dimension identifier": "PE-Texas Red-A",
+                                                    "x-coordinate dimension identifier": "FITC-A",
+                                                    "y-coordinate dimension identifier": "PE-Texas Red-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2439.0000000000005,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3991.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4018.000000000001,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3991.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4018.000000000001,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2686.5286624203823,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2439.0000000000005,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2686.5286624203823,
                                                                     "unit": "RFU"
                                                                 }
@@ -3100,56 +3100,56 @@
                                                     "data region identifier": "P4",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2138.3447098976108,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1359.790076335878,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3202.227501347224,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2268.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3174.2275013472254,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 609.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3216.2275013472236,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1912.2275013472254,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -3161,56 +3161,56 @@
                                                     "data region identifier": "P5",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 907.0477815699655,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4045.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1380.0477815699655,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4046.999999999998,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1389.0477815699658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3143.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1400.0477815699658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2173.999999999999,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": -27.952218430034126,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2173.999999999999,
                                                                     "unit": "RFU"
                                                                 }
@@ -3222,36 +3222,36 @@
                                                     "data region identifier": "$1510583636921",
                                                     "region type": "BINNER",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
@@ -3263,46 +3263,46 @@
                                                     "data region identifier": "Q1",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -3314,46 +3314,46 @@
                                                     "data region identifier": "Q2",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
@@ -3365,46 +3365,46 @@
                                                     "data region identifier": "Q3",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
@@ -3416,46 +3416,46 @@
                                                     "data region identifier": "Q4",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -3467,56 +3467,56 @@
                                                     "data region identifier": "P6",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1770.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1658.9233576642337,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2940.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2824.6532846715327,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3155.921052631579,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2495.8576642335765,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1785.7894736842106,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1210.5656934306567,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1770.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1554.3065693430658,
                                                                     "unit": "RFU"
                                                                 }
@@ -3528,46 +3528,46 @@
                                                     "data region identifier": "P7",
                                                     "region type": "RECTANGLE",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1747.013651877133,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3438.5496183206105,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2082.4402730375427,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3438.5496183206105,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2082.4402730375427,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2688.320610687023,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1747.013651877133,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2688.320610687023,
                                                                     "unit": "RFU"
                                                                 }
@@ -5713,56 +5713,56 @@
                                                 {
                                                     "data region identifier": "P1",
                                                     "region type": "POLYGON",
-                                                    "x coordinate dimension identifier": "FSC-A",
-                                                    "y coordinate dimension identifier": "SSC-A",
+                                                    "x-coordinate dimension identifier": "FSC-A",
+                                                    "y-coordinate dimension identifier": "SSC-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 64031.47592453624,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 131919.37398351682,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 20189.043969374434,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 32365.298250136373,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 43453.84743385766,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3430.328400153492,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 153573.91716574476,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 14702.059150183399,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 248184.11792131007,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 51087.92580012494,
                                                                     "unit": "RFU"
                                                                 }
@@ -5774,46 +5774,46 @@
                                                     "data region identifier": "P2",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P1",
-                                                    "x coordinate dimension identifier": "FSC-A",
-                                                    "y coordinate dimension identifier": "FSC-H",
+                                                    "x-coordinate dimension identifier": "FSC-A",
+                                                    "y-coordinate dimension identifier": "FSC-H",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 9332.135685948931,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 56194.096950122184,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 9332.135685948931,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 8536.499550150504,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 251475.45639593658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 227082.79299556222,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 162879.83855153824,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 207677.17440003232,
                                                                     "unit": "RFU"
                                                                 }
@@ -5825,56 +5825,56 @@
                                                     "data region identifier": "P3",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P2",
-                                                    "x coordinate dimension identifier": "SSC-A",
-                                                    "y coordinate dimension identifier": "APC-A",
+                                                    "x-coordinate dimension identifier": "SSC-A",
+                                                    "y-coordinate dimension identifier": "APC-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 255939.05240947116,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1801.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 80677.53297703083,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1675.227272727273,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 27943.978457535515,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1411.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3128.18809542007,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 832.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1577.2011977878549,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -5886,46 +5886,46 @@
                                                     "data region identifier": "P8",
                                                     "region type": "RECTANGLE",
                                                     "parent data region identifier": "P3",
-                                                    "x coordinate dimension identifier": "FITC-A",
-                                                    "y coordinate dimension identifier": "PE-Texas Red-A",
+                                                    "x-coordinate dimension identifier": "FITC-A",
+                                                    "y-coordinate dimension identifier": "PE-Texas Red-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2439.0000000000005,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3991.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4018.000000000001,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3991.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4018.000000000001,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2686.5286624203823,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2439.0000000000005,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2686.5286624203823,
                                                                     "unit": "RFU"
                                                                 }
@@ -5937,56 +5937,56 @@
                                                     "data region identifier": "P4",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2138.3447098976108,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1359.790076335878,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3202.227501347224,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2268.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3174.2275013472254,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 609.0000000000005,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3216.2275013472236,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1912.2275013472254,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -5998,56 +5998,56 @@
                                                     "data region identifier": "P5",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 907.0477815699655,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4045.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1380.0477815699655,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4046.999999999998,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1389.0477815699658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3143.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1400.0477815699658,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2173.999999999999,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": -27.952218430034126,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2173.999999999999,
                                                                     "unit": "RFU"
                                                                 }
@@ -6059,36 +6059,36 @@
                                                     "data region identifier": "$1510583636921",
                                                     "region type": "BINNER",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
@@ -6100,46 +6100,46 @@
                                                     "data region identifier": "Q1",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -6151,46 +6151,46 @@
                                                     "data region identifier": "Q2",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
@@ -6202,46 +6202,46 @@
                                                     "data region identifier": "Q3",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
@@ -6253,46 +6253,46 @@
                                                     "data region identifier": "Q4",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1748.594890510949,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3915.6569343065694,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 4095.0,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1431.7105263157896,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 0.0,
                                                                     "unit": "RFU"
                                                                 }
@@ -6304,56 +6304,56 @@
                                                     "data region identifier": "P6",
                                                     "region type": "POLYGON",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1770.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1658.9233576642337,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2940.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2824.6532846715327,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 3155.921052631579,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2495.8576642335765,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1785.7894736842106,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1210.5656934306567,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1770.3947368421054,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 1554.3065693430658,
                                                                     "unit": "RFU"
                                                                 }
@@ -6365,46 +6365,46 @@
                                                     "data region identifier": "P7",
                                                     "region type": "RECTANGLE",
                                                     "parent data region identifier": "P8",
-                                                    "x coordinate dimension identifier": "AmCyan-A",
-                                                    "y coordinate dimension identifier": "PE-Cy7-A",
+                                                    "x-coordinate dimension identifier": "AmCyan-A",
+                                                    "y-coordinate dimension identifier": "PE-Cy7-A",
                                                     "vertex aggregate document": {
                                                         "vertex document": [
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1747.013651877133,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3438.5496183206105,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2082.4402730375427,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 3438.5496183206105,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 2082.4402730375427,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2688.320610687023,
                                                                     "unit": "RFU"
                                                                 }
                                                             },
                                                             {
-                                                                "x coordinate": {
+                                                                "x-coordinate": {
                                                                     "value": 1747.013651877133,
                                                                     "unit": "RFU"
                                                                 },
-                                                                "y coordinate": {
+                                                                "y-coordinate": {
                                                                     "value": 2688.320610687023,
                                                                     "unit": "RFU"
                                                                 }

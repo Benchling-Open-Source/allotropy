@@ -5,14 +5,14 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDalton,
     TQuantityValueHertz,
     TQuantityValueMicroliterPerMinute,
     TQuantityValueMilliliter,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
     ResponseUnit,

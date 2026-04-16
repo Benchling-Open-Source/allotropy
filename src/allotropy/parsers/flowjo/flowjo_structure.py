@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 import re
 
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueSecondTime,
 )
