@@ -1,0 +1,82 @@
+{
+  "$defs": {
+    "measurementDocumentItems": {
+      "anyOf": [
+        {
+          "required": [
+            "pO2"
+          ]
+        },
+        {
+          "required": [
+            "pCO2"
+          ]
+        }
+      ],
+      "properties": {
+        "carbon dioxide saturation": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002921",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%25"
+            }
+          ]
+        },
+        "oxygen saturation": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002922",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%25"
+            }
+          ]
+        },
+        "pCO2": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002923",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/mmHg"
+            }
+          ]
+        },
+        "pO2": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002924",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/mmHg"
+            }
+          ]
+        },
+        "temperature": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001584",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/degC"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/bga/REC/2026/03/blood-gas-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

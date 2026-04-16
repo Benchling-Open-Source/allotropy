@@ -1,0 +1,37 @@
+{
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "pH": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001142",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/pH"
+            }
+          ]
+        },
+        "temperature": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001584",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/degC"
+            }
+          ]
+        }
+      },
+      "required": [
+        "pH"
+      ]
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/ph/REC/2026/03/ph-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

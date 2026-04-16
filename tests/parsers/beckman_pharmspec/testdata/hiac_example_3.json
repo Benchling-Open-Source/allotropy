@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2026/03/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
         "solution analyzer document": [
             {
@@ -466,7 +466,7 @@
             "file name": "hiac_example_3.xlsx",
             "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_3.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_pharmspec",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.118",
             "software name": "PharmSpec",
             "software version": "3.0"
         },

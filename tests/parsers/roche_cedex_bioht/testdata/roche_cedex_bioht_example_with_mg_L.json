@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2026/03/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
         "solution analyzer document": [
             {
@@ -515,7 +515,7 @@
             "file name": "roche_cedex_bioht_example_with_mg_L.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example_with_mg_L.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.118",
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)"
         },
