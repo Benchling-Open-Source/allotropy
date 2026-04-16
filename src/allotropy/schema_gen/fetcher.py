@@ -75,7 +75,7 @@ class SchemaFetcher:
             if not canonical_url.endswith(".json")
             else canonical_url
         )
-        print(f"  Downloading: {purl_url}")  # noqa: T201
+        print(f"  Downloading: {purl_url}")
         try:
             with urlopen(purl_url, timeout=30) as response:  # noqa: S310
                 data = response.read().decode("utf-8")

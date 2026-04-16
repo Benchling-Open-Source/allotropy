@@ -6,7 +6,7 @@
 Schema URLs → _fetch_all_schemas (fetcher.py)
   → _prepare_benchling_schemas (fork shared deps)
   → _build_generation_order (topological sort)
-  → _generate_and_write (codegen.py → _write_and_lint → .py files)
+  → _generate_and_write (codegen/ → _write_and_lint → .py files)
 ```
 
 ## Running the Generator
@@ -68,19 +68,42 @@ models/
 
 **Dependency chain**: `shared/` → `units.py` → `core.py` → `cube.py` → `hierarchy.py` → `{technique}.py`
 
-**Shared module**: Base types in `shared/definitions/definitions.py` (TQuantityValue, TDatacube, JsonFloat, etc.) are manually maintained and imported by generated modules rather than regenerated per core version. The codegen imports these via `_SHARED_DEFINITION_TYPES` and generates TQuantityValue subclasses in `shared/definitions/quantity_values.py` to avoid duplication across core versions.
+**Shared module**: Base types in `shared/definitions/definitions.py` (TQuantityValue, TDatacube, JsonFloat, etc.) are manually maintained and imported by generated modules rather than regenerated per core version. The codegen imports these via `SHARED_DEFINITION_TYPES` and generates TQuantityValue subclasses in `shared/definitions/quantity_values.py` to avoid duplication across core versions.
 
-## Codegen Internals (codegen.py)
+## Codegen Package (`codegen/`)
+
+The codegen package is split into focused modules with a clear dependency hierarchy:
+
+```
+codegen/
+├── __init__.py          # Public re-exports (backward-compatible API surface)
+├── ir.py                # IR types: FieldDef, GeneratedClass, ImportEntry, ModuleCode
+│                        #   + helpers: quote_python_literal, _field_declaration,
+│                        #   _deduplicate_classes, _topological_sort_classes, etc.
+├── merger.py            # SchemaMerger + pure merge functions
+│                        #   (_deep_merge_schemas, _strip_required_recursive,
+│                        #    _absolutize_refs, _merge_props_into)
+├── quantity_values.py   # QuantityValueManager + is_quantity_value_variant
+├── type_resolver.py     # TypeResolver + ASM_METADATA_PREFIXES, extract_unit_const,
+│                        #   SHARED_DEFINITION_TYPES, SHARED_DEFINITIONS_MODULE
+└── generator.py         # SchemaCodeGenerator (orchestrator)
+```
+
+**Dependency order**: `ir` → `merger` → `quantity_values` → `type_resolver` → `generator`. Each module only imports from modules above it in this chain (plus `naming.py`).
 
 ### Key Classes
 
-- **`SchemaCodeGenerator`** — Module-level orchestrator. Iterates schemas in dependency order, handles shared definition re-exports, ADM root flattening. Delegates type generation to `TypeResolver`.
-- **`TypeResolver`** — Type resolution engine. All schema-to-type mapping: dispatch on schema patterns, property resolution, `$ref` resolution, quantity value generation. Receives a shared `modules` dict from the orchestrator for cross-module references.
-- **`SchemaMerger`** — Merges properties from variant sub-schemas (anyOf/oneOf composition). Pure schema-level operations, independent of code generation.
-- **`QuantityValueManager`** — Tracks TQuantityValue{Unit} thin subclasses. Maps unit strings to class names, records new classes for `generate.py` to append.
-- **`ModuleCode`** — Represents a single .py file: imports, classes, exported names. Handles deduplication and topological sorting of classes.
-- **`GeneratedClass`** — IR for a single class, type alias, or enum. Has `fields`, `enum_members`, or `alias_target` (exactly one populated).
-- **`ImportEntry`** — A `from module import Name` statement.
+- **`SchemaCodeGenerator`** (`generator.py`) — Module-level orchestrator. Pre-computes a static `_export_map` of `{schema_url: {def_name: class_name}}` before code generation starts, then iterates schemas in dependency order, handling shared definition re-exports, ADM root flattening. Delegates type generation to `TypeResolver`.
+- **`TypeResolver`** (`type_resolver.py`) — Type resolution engine. All schema-to-type mapping: dispatch on schema patterns, property resolution, `$ref` resolution, quantity value generation. Uses the pre-computed `_export_map` for cross-module name resolution (no dependency on generation order).
+- **`SchemaMerger`** (`merger.py`) — Merges properties from variant sub-schemas (anyOf/oneOf composition). Pure schema-level operations, independent of code generation.
+- **`QuantityValueManager`** (`quantity_values.py`) — Tracks TQuantityValue{Unit} thin subclasses. Maps unit strings to class names, records new classes for `generate.py` to append.
+- **`ModuleCode`** (`ir.py`) — Represents a single .py file: imports, classes, exported names. Handles deduplication and topological sorting of classes.
+- **`GeneratedClass`** (`ir.py`) — IR for a single class, type alias, or enum. Has `fields`, `enum_members`, or `alias_target` (at most one populated).
+- **`ImportEntry`** (`ir.py`) — A `from module import Name` statement.
+
+### Cross-Module Name Resolution
+
+`SchemaCodeGenerator._analyze_exports()` builds a complete, immutable mapping of every schema's exported names before any code generation starts. `TypeResolver._resolve_ref_type()` uses this static `_export_map` instead of reading from the mutable `_modules` dict, so name resolution is independent of the order modules are generated. The `_modules` dict is an output-only accumulator.
 
 ### Type Dispatch (`TypeResolver.generate_type`)
 
@@ -161,7 +184,7 @@ Properties with only validation keywords (`required`, `minItems`, `maxItems`, `m
 ### Reference Resolution
 
 - **Local refs** (`#/$defs/X`): Look up in current schema's `$defs`
-- **External refs** (`http://...schema#/$defs/X`): Look up in the already-generated module for that schema URL, add import
+- **External refs** (`http://...schema#/$defs/X`): Look up in the pre-computed `_export_map` for that schema URL, add import
 - **Forward references**: Handled by `from __future__ import annotations` (string annotations)
 
 ## Serialization (converter.py)
@@ -178,7 +201,7 @@ These are fully reversible: `structure(unstructure(x), type(x)) == x` always hol
 ## Debugging Tips
 
 ### "Class X not found in module Y"
-The module wasn't generated yet when the technique schema tried to import. Check that `_build_generation_order()` places Y before the technique schema.
+The export map is pre-computed, so this usually means the schema URL wasn't included in the generation run. Check that `_build_generation_order()` includes Y and that its `$defs` contain the expected definition name.
 
 ### "Field missing from generated model"
 1. Check the JSON schema for the field — is it in `properties`?

@@ -250,7 +250,7 @@ def structure(data: Mapping[str, Any] | Any, cls: type[T] | None = None) -> T:
     # Fall back to raw f.type strings for dynamic dataclasses where resolution fails.
     try:
         resolved_hints = get_type_hints(cls)
-    except Exception:
+    except (NameError, AttributeError):
         resolved_hints = {}
     json_to_field: dict[str, tuple[str, Any]] = {}
     for f in fields(cls):

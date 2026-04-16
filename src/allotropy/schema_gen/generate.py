@@ -98,9 +98,9 @@ def _fetch_all_schemas(
     fetcher = SchemaFetcher(cache_dir=cache_dir)
     all_schemas: dict[str, Any] = {}
     for url in schema_urls:
-        print(f"Fetching schemas from: {url}")  # noqa: T201
+        print(f"Fetching schemas from: {url}")
         schemas = fetcher.fetch_with_dependencies(url)
-        print(f"  Found {len(schemas)} schema(s)")  # noqa: T201
+        print(f"  Found {len(schemas)} schema(s)")
         all_schemas.update(schemas)
     return all_schemas, set(all_schemas.keys())
 
@@ -128,9 +128,9 @@ def _prepare_benchling_schemas(
 def _build_generation_order(all_schemas: dict[str, Any]) -> list[str]:
     """Topologically sort schemas by $ref dependencies and print the order."""
     order = build_dependency_order(all_schemas)
-    print("Generation order:")  # noqa: T201
+    print("Generation order:")
     for i, url in enumerate(order):
-        print(f"  {i + 1}. {url}")  # noqa: T201
+        print(f"  {i + 1}. {url}")
     return order
 
 
@@ -151,11 +151,11 @@ def _generate_and_write(
 
     new_unit_count = _update_shared_units(all_schemas, cache_dir, output_dir)
     if new_unit_count:
-        print(  # noqa: T201
+        print(
             f"  Added {new_unit_count} new unit(s) to {output_dir / _SHARED_UNITS_REL}"
         )
 
-    print("\nGenerating Python modules...")  # noqa: T201
+    print("\nGenerating Python modules...")
     generated_files: list[Path] = []
 
     unit_descriptive_names = _collect_all_units(all_schemas, cache_dir)
@@ -177,12 +177,10 @@ def _generate_and_write(
             source = module.render(models_package)
             _write_and_lint(output_path, source)
             generated_files.append(output_path)
-            print(f"  Generated: {output_path}")  # noqa: T201
-
+            print(f"  Generated: {output_path}")
         qv_path = _regenerate_quantity_values(unit_descriptive_names, output_dir)
-        print(f"  Updated {qv_path}")  # noqa: T201
-
-    print(f"\nDone! Generated {len(generated_files)} module(s)")  # noqa: T201
+        print(f"  Updated {qv_path}")
+    print(f"\nDone! Generated {len(generated_files)} module(s)")
     return generated_files
 
 
@@ -682,22 +680,14 @@ def _write_and_lint(path: Path, source: str) -> None:
 
 def _lint_file(path: Path) -> None:
     """Run ruff and black on a generated file to fix formatting."""
-    try:
-        subprocess.run(
-            ["ruff", "check", "--fix", "--quiet", str(path)],  # noqa: S603, S607
-            check=False,
-            capture_output=True,
-        )
-    except FileNotFoundError:
-        pass
-    try:
-        subprocess.run(
-            ["black", "--quiet", str(path)],  # noqa: S603, S607
-            check=False,
-            capture_output=True,
-        )
-    except FileNotFoundError:
-        pass
+    for tool, args in [
+        ("ruff", ["ruff", "check", "--fix", "--quiet", str(path)]),
+        ("black", ["black", "--quiet", str(path)]),
+    ]:
+        try:
+            subprocess.run(args, check=False, capture_output=True)
+        except FileNotFoundError:
+            print(f"  Warning: {tool} not found, skipping formatting for {path.name}")
 
 
 def _discover_cached_technique_urls(
@@ -730,12 +720,12 @@ def main() -> None:
             "\n"
             "Multiple URLs can be provided to generate schemas in a single pass.\n"
         )
-        print(msg)  # noqa: T201
+        print(msg)
         sys.exit(1)
 
     if "--all" in sys.argv:
         schema_urls = _discover_cached_technique_urls()
-        print(f"Discovered {len(schema_urls)} cached technique schema(s)")  # noqa: T201
+        print(f"Discovered {len(schema_urls)} cached technique schema(s)")
     else:
         schema_urls = sys.argv[1:]
     generate_models(schema_urls)

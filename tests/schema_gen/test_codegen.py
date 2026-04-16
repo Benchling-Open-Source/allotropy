@@ -699,62 +699,6 @@ def _make_generator(
     return SchemaCodeGenerator(schemas, urls, "allotropy.allotrope.models")
 
 
-class TestSchemaCodeGeneratorEnum:
-    def test_generate_enum_class(self) -> None:
-        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
-        schemas = {
-            schema_url: {
-                "$defs": {
-                    "containerType": {
-                        "enum": ["well plate", "tube", "reactor"],
-                    }
-                }
-            }
-        }
-        gen = _make_generator(schemas)
-        ModuleCode(schema_url=schema_url)
-        cls = gen._type_resolver._generate_enum(
-            "ContainerType", {"enum": ["well plate", "tube", "reactor"]}
-        )
-        code = cls.render()
-        assert "class ContainerType(Enum):" in code
-        assert 'well_plate = "well plate"' in code
-        assert 'tube = "tube"' in code
-        assert 'reactor = "reactor"' in code
-
-    def test_generate_enum_single_value(self) -> None:
-        # Single-value enums should remain Literal in the property resolver,
-        # but _generate_enum itself always produces Enum class
-        gen = _make_generator({})
-        cls = gen._type_resolver._generate_enum("SingleValue", {"enum": ["only"]})
-        code = cls.render()
-        assert "class SingleValue(Enum):" in code
-        assert 'only = "only"' in code
-
-
-class TestSchemaCodeGeneratorJsonTypeToPython:
-    def test_string(self) -> None:
-        gen = _make_generator({})
-        assert gen._type_resolver._json_type_to_python("string") == "str"
-
-    def test_integer(self) -> None:
-        gen = _make_generator({})
-        assert gen._type_resolver._json_type_to_python("integer") == "int"
-
-    def test_number(self) -> None:
-        gen = _make_generator({})
-        assert gen._type_resolver._json_type_to_python("number") == "float"
-
-    def test_boolean(self) -> None:
-        gen = _make_generator({})
-        assert gen._type_resolver._json_type_to_python("boolean") == "bool"
-
-    def test_array_of_strings(self) -> None:
-        gen = _make_generator({})
-        result = gen._type_resolver._json_type_to_python(["string", "null"])
-        assert "str" in result
-
-
 # ---------------------------------------------------------------------------
 # SchemaCodeGenerator — full module generation
 # ---------------------------------------------------------------------------

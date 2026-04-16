@@ -32,7 +32,7 @@ src/allotropy/
 │   ├── schema_mappers/      # Map intermediate Data objects → Model instances
 │   ├── schema_gen/          # Code generation pipeline (see schema_gen/CLAUDE.md for details)
 │   │   ├── generate.py      # Entry point / orchestrator
-│   │   ├── codegen.py       # JSON schema → Python dataclass generator
+│   │   ├── codegen/         # JSON schema → Python dataclass generator (package)
 │   │   ├── fetcher.py       # Schema fetching + caching + dependency resolution
 │   │   ├── naming.py        # URL ↔ Python identifier transformations
 │   │   └── serializer.py    # Dataclass ↔ JSON dict round-tripping
