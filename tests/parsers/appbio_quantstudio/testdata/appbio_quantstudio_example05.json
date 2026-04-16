@@ -1,6 +1,21 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
+        "data system document": {
+            "ASM file identifier": "appbio_quantstudio_example05.json",
+            "data system instance identifier": "localhost",
+            "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
+            "ASM converter version": "0.1.118",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example05.txt",
+            "file name": "appbio_quantstudio_example05.txt",
+            "software name": "Thermo QuantStudio",
+            "software version": "1.0"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "N/A",
+            "model number": "QuantStudio(TM) 7 Flex System"
+        },
         "qpcr document": [
             {
                 "measurement aggregate document": {
@@ -11,22 +26,22 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "total cycle number setting": {
-                                            "value": 3.0,
-                                            "unit": "(unitless)"
-                                        },
+                                        "passive reference dye setting": "ROX",
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "total cycle number setting": {
+                                            "value": 3.0,
+                                            "unit": "(unitless)"
+                                        }
                                     }
                                 ]
                             },
                             "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "sample document": {
-                                "sample identifier": "N/A",
                                 "location identifier": "1",
+                                "sample identifier": "N/A",
                                 "sample role type": "control sample role",
                                 "well location identifier": "A1",
                                 "custom information document": {
@@ -34,63 +49,36 @@
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
+                            "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.133,
-                                                "unit": "(unitless)"
-                                            },
                                             "automatic baseline determination enabled setting": true,
+                                            "automatic cycle threshold enabled setting": true,
+                                            "baseline determination end cycle setting": {
+                                                "value": 39,
+                                                "unit": "#"
+                                            },
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
                                                 "unit": "#"
                                             },
-                                            "baseline determination end cycle setting": {
-                                                "value": 39,
-                                                "unit": "#"
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.133,
+                                                "unit": "(unitless)"
                                             },
                                             "custom information document": {
                                                 "reference dna description": "N/A",
                                                 "reference sample description": "N/A",
                                                 "BADROX": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "NOISE": "N"
-                                            }
-                                        },
-                                        "normalized reporter data cube": {
-                                            "label": "normalized reporter",
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "normalized reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "dimensions": [
-                                                    [1.0, 2.0, 3.0]
-                                                ],
-                                                "measures": [
-                                                    [0.627, 0.629, 0.63]
-                                                ]
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "baseline corrected reporter data cube": {
-                                            "label": "baseline corrected reporter",
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
@@ -108,17 +96,45 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [1.0, 2.0, 3.0]
-                                                ],
                                                 "measures": [
                                                     [
                                                         -0.004,
                                                         -0.003,
                                                         -0.003
                                                     ]
+                                                ],
+                                                "dimensions": [
+                                                    [1.0, 2.0, 3.0]
                                                 ]
-                                            }
+                                            },
+                                            "label": "baseline corrected reporter"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "measures": [
+                                                    [0.627, 0.629, 0.63]
+                                                ],
+                                                "dimensions": [
+                                                    [1.0, 2.0, 3.0]
+                                                ]
+                                            },
+                                            "label": "normalized reporter"
                                         }
                                     }
                                 ]
@@ -126,9 +142,9 @@
                             "target DNA description": "TGF-B"
                         }
                     ],
-                    "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
-                    "experiment type": "comparative CT qPCR experiment",
                     "container type": "PCR reaction block",
+                    "experiment type": "comparative CT qPCR experiment",
+                    "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "well volume": {
                         "value": 200.0,
                         "unit": "μL"
@@ -148,22 +164,22 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "total cycle number setting": {
-                                            "value": 3.0,
-                                            "unit": "(unitless)"
-                                        },
+                                        "passive reference dye setting": "ROX",
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
                                         "reporter dye setting": "VIC",
-                                        "passive reference dye setting": "ROX"
+                                        "total cycle number setting": {
+                                            "value": 3.0,
+                                            "unit": "(unitless)"
+                                        }
                                     }
                                 ]
                             },
                             "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "sample document": {
-                                "sample identifier": "N/A",
                                 "location identifier": "7",
+                                "sample identifier": "N/A",
                                 "sample role type": "control sample role",
                                 "well location identifier": "A7",
                                 "custom information document": {
@@ -171,63 +187,36 @@
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
+                            "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "automatic cycle threshold enabled setting": false,
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.06,
-                                                "unit": "(unitless)"
-                                            },
                                             "automatic baseline determination enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
+                                            "baseline determination end cycle setting": {
+                                                "value": 39,
+                                                "unit": "#"
+                                            },
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
                                                 "unit": "#"
                                             },
-                                            "baseline determination end cycle setting": {
-                                                "value": 39,
-                                                "unit": "#"
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.06,
+                                                "unit": "(unitless)"
                                             },
                                             "custom information document": {
                                                 "reference dna description": "N/A",
                                                 "reference sample description": "N/A",
                                                 "BADROX": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "NOISE": "N"
-                                            }
-                                        },
-                                        "normalized reporter data cube": {
-                                            "label": "normalized reporter",
-                                            "cube-structure": {
-                                                "dimensions": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "cycle count",
-                                                        "unit": "#"
-                                                    }
-                                                ],
-                                                "measures": [
-                                                    {
-                                                        "@componentDatatype": "double",
-                                                        "concept": "normalized reporter result",
-                                                        "unit": "(unitless)"
-                                                    }
-                                                ]
-                                            },
-                                            "data": {
-                                                "dimensions": [
-                                                    [1.0, 2.0, 3.0]
-                                                ],
-                                                "measures": [
-                                                    [1.237, 1.238, 1.239]
-                                                ]
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "baseline corrected reporter data cube": {
-                                            "label": "baseline corrected reporter",
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
@@ -245,17 +234,45 @@
                                                 ]
                                             },
                                             "data": {
-                                                "dimensions": [
-                                                    [1.0, 2.0, 3.0]
-                                                ],
                                                 "measures": [
                                                     [
                                                         -0.004,
                                                         -0.003,
                                                         -0.003
                                                     ]
+                                                ],
+                                                "dimensions": [
+                                                    [1.0, 2.0, 3.0]
                                                 ]
-                                            }
+                                            },
+                                            "label": "baseline corrected reporter"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "measures": [
+                                                    [1.237, 1.238, 1.239]
+                                                ],
+                                                "dimensions": [
+                                                    [1.0, 2.0, 3.0]
+                                                ]
+                                            },
+                                            "label": "normalized reporter"
                                         }
                                     }
                                 ]
@@ -263,9 +280,9 @@
                             "target DNA description": "GAPDH"
                         }
                     ],
-                    "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
-                    "experiment type": "comparative CT qPCR experiment",
                     "container type": "PCR reaction block",
+                    "experiment type": "comparative CT qPCR experiment",
+                    "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "well volume": {
                         "value": 200.0,
                         "unit": "μL"
@@ -285,18 +302,18 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
+                                        "passive reference dye setting": "ROX",
                                         "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
-                                        "reporter dye setting": "FAM",
-                                        "passive reference dye setting": "ROX"
+                                        "reporter dye setting": "FAM"
                                     }
                                 ]
                             },
                             "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "sample document": {
-                                "sample identifier": "N/A",
                                 "location identifier": "13",
+                                "sample identifier": "N/A",
                                 "sample role type": "control sample role",
                                 "well location identifier": "B1",
                                 "custom information document": {
@@ -304,32 +321,33 @@
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
+                            "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting (qPCR)": {
-                                                "value": 0.133,
-                                                "unit": "(unitless)"
-                                            },
                                             "automatic baseline determination enabled setting": true,
+                                            "automatic cycle threshold enabled setting": true,
+                                            "baseline determination end cycle setting": {
+                                                "value": 39,
+                                                "unit": "#"
+                                            },
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
                                                 "unit": "#"
                                             },
-                                            "baseline determination end cycle setting": {
-                                                "value": 39,
-                                                "unit": "#"
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.133,
+                                                "unit": "(unitless)"
                                             },
                                             "custom information document": {
                                                 "reference dna description": "N/A",
                                                 "reference sample description": "N/A",
                                                 "BADROX": "N",
                                                 "omit": false,
+                                                "NOISE": "N",
                                                 "CQCONF": "N",
-                                                "OUTLIERRG": "N",
-                                                "NOISE": "N"
+                                                "OUTLIERRG": "N"
                                             }
                                         }
                                     }
@@ -338,9 +356,9 @@
                             "target DNA description": "TGF-B"
                         }
                     ],
-                    "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
-                    "experiment type": "comparative CT qPCR experiment",
                     "container type": "PCR reaction block",
+                    "experiment type": "comparative CT qPCR experiment",
+                    "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "well volume": {
                         "value": 200.0,
                         "unit": "μL"
@@ -351,21 +369,6 @@
                     }
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "appbio_quantstudio_example05.json",
-            "data system instance identifier": "localhost",
-            "file name": "appbio_quantstudio_example05.txt",
-            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example05.txt",
-            "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.113",
-            "software name": "Thermo QuantStudio",
-            "software version": "1.0"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "equipment serial number": "N/A",
-            "model number": "QuantStudio(TM) 7 Flex System"
-        }
+        ]
     }
 }

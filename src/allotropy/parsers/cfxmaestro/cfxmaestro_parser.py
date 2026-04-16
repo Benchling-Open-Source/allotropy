@@ -1,5 +1,5 @@
-from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import Data, Mapper
+from allotropy.allotrope.models.adm.pcr.rec._2026._03.qpcr import Model
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import Data, Mapper
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.cfxmaestro.cfxmaestro_reader import (
     CFXMaestroReader,
