@@ -8,7 +8,9 @@ from typing import Any, TypedDict
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
+    SampleRoleType,
+)
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
     ErrorDocument,

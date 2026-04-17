@@ -1,15 +1,15 @@
 from abc import abstractmethod
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueMilliliter,
-    TQuantityValuePercent,
-    TQuantityValueSeimensPerMeter,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValuePercent,
+    TQuantityValueSiemensPerMeter,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
@@ -134,22 +134,22 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 peak.get_sub_float_or_none("AssymetryPeakEnd"),
             ),
             "start conductivity height": (
-                TQuantityValueSeimensPerMeter(value=start_conduct_height / 10)
+                TQuantityValueSiemensPerMeter(value=start_conduct_height / 10)
                 if start_conduct_height
                 else None
             ),
             "max conductivity height": (
-                TQuantityValueSeimensPerMeter(value=max_conductivity_height / 10)
+                TQuantityValueSiemensPerMeter(value=max_conductivity_height / 10)
                 if max_conductivity_height
                 else None
             ),
             "end conductivity height": (
-                TQuantityValueSeimensPerMeter(value=end_conductivity_height / 10)
+                TQuantityValueSiemensPerMeter(value=end_conductivity_height / 10)
                 if end_conductivity_height
                 else None
             ),
             "average conductivity": (
-                TQuantityValueSeimensPerMeter(value=average_conductivity / 10)
+                TQuantityValueSiemensPerMeter(value=average_conductivity / 10)
                 if average_conductivity
                 else None
             ),
@@ -168,7 +168,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 end=peak.get_sub_float_or_none("EndPeakRetention"),
                 end_unit=PEAK_END_UNIT,
                 height=peak.get_sub_float_or_none("Height"),
-                height_unit="mAu",
+                height_unit="mAU",
                 written_name=peak.get_sub_text_or_none("Name"),
                 area=peak.get_sub_float_or_none("Area"),
                 area_unit=PEAK_AREA_UNIT,

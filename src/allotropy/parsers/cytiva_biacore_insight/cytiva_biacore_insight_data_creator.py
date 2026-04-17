@@ -3,12 +3,12 @@ from typing import Any
 
 import numpy as np
 
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueHertz,
     TQuantityValueNumber,
     TQuantityValueResponseUnit,
     TQuantityValueSecondTime,
-    TQuantityValueSquareResponseUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
@@ -143,9 +143,10 @@ def _get_measurements(
                     maximum_binding_capacity__rmax_=(kinetics.maximum_binding_capacity),
                     processed_data_custom_info=_clean_custom_info(
                         {
-                            chi_squared_label: quantity_or_none(
-                                TQuantityValueSquareResponseUnit,
-                                kinetics.kinetics_chi_squared,
+                            chi_squared_label: (
+                                TQuantityValue(value=v, unit="RU^2")
+                                if (v := kinetics.kinetics_chi_squared) is not None
+                                else None
                             ),
                             "tc": quantity_or_none(TQuantityValueUnitless, kinetics.tc),
                             "U-value": quantity_or_none(
