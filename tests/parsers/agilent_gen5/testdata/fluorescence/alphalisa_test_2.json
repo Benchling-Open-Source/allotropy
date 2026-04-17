@@ -1,761 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "calculated data aggregate document": {
-            "calculated data document": [
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 99.85,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_48",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 94.05,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_49",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 49.176,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_50",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 46.627,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_51",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 24.53,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_52",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 24.177,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_53",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 11.684,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_54",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 11.856,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_55",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 6.178,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_56",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 6.173,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_57",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 3.138,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_58",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 3.006,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_59",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 1.513,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_60",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 1.725,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_61",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.753,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_62",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.896,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_63",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.45,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_64",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.447,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_65",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.298,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_66",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.451,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_67",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.103,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_68",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.271,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_69",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.046,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_70",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.273,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_71",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 97.509,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_72",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_25",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 53.688,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_73",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_26",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 50.062,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_74",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_27",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 26.997,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_75",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_28",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 25.807,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_76",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_29",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 12.36,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_77",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_30",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 11.775,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_78",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_31",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 6.867,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_79",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_32",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 6.248,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_80",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_33",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 3.112,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_81",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_34",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 3.113,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_82",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_35",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 1.752,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_83",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_36",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 1.585,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_84",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_37",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.994,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_85",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_38",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 1.102,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_86",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_39",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.63,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_87",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_40",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.571,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_88",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_41",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.332,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_89",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_42",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.361,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_90",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_43",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.074,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_91",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_44",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.262,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_92",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_45",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "[Concentration]",
-                    "calculated result": {
-                        "value": 0.28,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_93",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_46",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "data system document": {
-            "ASM file identifier": "alphalisa_test_2.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/alphalisa_test_2.txt",
-            "file name": "alphalisa_test_2.txt",
-            "software name": "Gen5",
-            "software version": "3.12.08"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "Cytation5",
-            "equipment serial number": "EM15"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -764,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -812,8 +57,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -857,8 +102,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -902,8 +147,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -947,8 +192,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -992,8 +237,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1037,8 +282,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1082,8 +327,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1127,8 +372,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1172,8 +417,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1217,8 +462,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1262,8 +507,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1307,8 +552,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1352,8 +597,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1397,8 +642,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1442,8 +687,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1487,8 +732,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1532,8 +777,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1577,8 +822,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1622,8 +867,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1667,8 +912,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1712,8 +957,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1757,8 +1002,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1802,8 +1047,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1847,8 +1092,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1900,8 +1145,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1945,8 +1190,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -1990,8 +1235,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2035,8 +1280,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2080,8 +1325,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2125,8 +1370,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2170,8 +1415,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2215,8 +1460,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2260,8 +1505,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2305,8 +1550,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2350,8 +1595,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2395,8 +1640,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2440,8 +1685,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2485,8 +1730,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2530,8 +1775,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2575,8 +1820,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2620,8 +1865,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2665,8 +1910,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2710,8 +1955,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2755,8 +2000,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2800,8 +2045,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2845,8 +2090,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2890,8 +2135,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
@@ -2936,6 +2181,761 @@
                     "container type": "well plate"
                 }
             }
-        ]
+        ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 99.85
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_48",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 94.05
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 49.176
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_50",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 46.627
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_51",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 24.53
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_52",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 24.177
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_53",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 11.684
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_54",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 11.856
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_55",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 6.178
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_56",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 6.173
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_57",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.138
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_58",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.006
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_59",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.513
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.725
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_61",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.753
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_62",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.896
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_63",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.45
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_64",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.447
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_65",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.298
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.451
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.103
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.271
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.046
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.273
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_71",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 97.509
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_72",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_25",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 53.688
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_73",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_26",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 50.062
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_74",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_27",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 26.997
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_75",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_28",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 25.807
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_76",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_29",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 12.36
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_77",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_30",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 11.775
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_78",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_31",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 6.867
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_79",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_32",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 6.248
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_80",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_33",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.112
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_81",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_34",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3.113
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_82",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_35",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.752
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_83",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_36",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.585
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_84",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_37",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.994
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_85",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_38",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.102
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_86",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_39",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.63
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_87",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_40",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.571
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_88",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_41",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.332
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_89",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_42",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.361
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_90",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_43",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.074
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_91",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_44",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.262
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_92",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_45",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "[Concentration]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.28
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_93",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_46",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "alphalisa_test_2.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/alphalisa_test_2.txt",
+            "file name": "alphalisa_test_2.txt",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.118",
+            "software name": "Gen5",
+            "software version": "3.12.08"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Cytation5",
+            "equipment serial number": "EM15"
+        }
     }
 }

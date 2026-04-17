@@ -1,21 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "data system document": {
-            "ASM file identifier": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
-            "file name": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
-            "software name": "Gen5",
-            "software version": "3.12.08"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "Synergy H1",
-            "equipment serial number": "Unknown"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -24,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -50,11 +35,11 @@
                                     "Plate Number": "Plate 1"
                                 }
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.1,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -72,8 +57,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -92,11 +77,11 @@
                                 "sample identifier": "BNCH2345883 A2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.13,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -114,8 +99,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -134,11 +119,11 @@
                                 "sample identifier": "BNCH2345883 A3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.16,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -156,8 +141,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -176,11 +161,11 @@
                                 "sample identifier": "BNCH2345883 A4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.19,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -198,8 +183,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -218,11 +203,11 @@
                                 "sample identifier": "BNCH2345883 A5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.21,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -240,8 +225,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -260,11 +245,11 @@
                                 "sample identifier": "BNCH2345883 A6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.24,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -282,8 +267,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -302,11 +287,11 @@
                                 "sample identifier": "BNCH2345883 A7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.27,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -324,8 +309,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -344,6 +329,10 @@
                                 "sample identifier": "BNCH2345883 A8",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -352,10 +341,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -374,8 +359,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -394,11 +379,11 @@
                                 "sample identifier": "BNCH2345883 A9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.32,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -416,8 +401,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -436,11 +421,11 @@
                                 "sample identifier": "BNCH2345883 A10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.35,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -458,8 +443,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -478,11 +463,11 @@
                                 "sample identifier": "BNCH2345883 A11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.37,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -500,8 +485,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -520,11 +505,11 @@
                                 "sample identifier": "BNCH2345883 A12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.4,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -542,8 +527,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -562,11 +547,11 @@
                                 "sample identifier": "BNCH2345883 B1",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.12,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -584,8 +569,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -604,11 +589,11 @@
                                 "sample identifier": "BNCH2345883 B2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.15,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -626,8 +611,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -646,11 +631,11 @@
                                 "sample identifier": "BNCH2345883 B3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.17,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -668,8 +653,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -688,11 +673,11 @@
                                 "sample identifier": "BNCH2345883 B4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.2,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -710,8 +695,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -730,11 +715,11 @@
                                 "sample identifier": "BNCH2345883 B5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.23,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -752,8 +737,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -772,11 +757,11 @@
                                 "sample identifier": "BNCH2345883 B6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.26,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -794,8 +779,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -814,6 +799,10 @@
                                 "sample identifier": "BNCH2345883 B7",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -822,10 +811,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -844,8 +829,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -864,11 +849,11 @@
                                 "sample identifier": "BNCH2345883 B8",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.31,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -886,8 +871,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -906,11 +891,11 @@
                                 "sample identifier": "BNCH2345883 B9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.34,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -928,8 +913,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -948,11 +933,11 @@
                                 "sample identifier": "BNCH2345883 B10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.36,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -970,8 +955,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -990,11 +975,11 @@
                                 "sample identifier": "BNCH2345883 B11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.39,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1012,8 +997,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1032,11 +1017,11 @@
                                 "sample identifier": "BNCH2345883 B12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.41,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1054,8 +1039,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1074,11 +1059,11 @@
                                 "sample identifier": "BNCH2345883 C1",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.13,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1096,8 +1081,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1116,11 +1101,11 @@
                                 "sample identifier": "BNCH2345883 C2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.16,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1138,8 +1123,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1158,11 +1143,11 @@
                                 "sample identifier": "BNCH2345883 C3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.19,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1180,8 +1165,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1200,11 +1185,11 @@
                                 "sample identifier": "BNCH2345883 C4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.22,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1222,8 +1207,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1242,11 +1227,11 @@
                                 "sample identifier": "BNCH2345883 C5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.25,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1264,8 +1249,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1284,6 +1269,10 @@
                                 "sample identifier": "BNCH2345883 C6",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -1292,10 +1281,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1314,8 +1299,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1334,11 +1319,11 @@
                                 "sample identifier": "BNCH2345883 C7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.3,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1356,8 +1341,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1376,11 +1361,11 @@
                                 "sample identifier": "BNCH2345883 C8",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.33,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1398,8 +1383,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1418,11 +1403,11 @@
                                 "sample identifier": "BNCH2345883 C9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.35,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1440,8 +1425,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1460,11 +1445,11 @@
                                 "sample identifier": "BNCH2345883 C10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.38,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1482,8 +1467,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1502,11 +1487,11 @@
                                 "sample identifier": "BNCH2345883 C11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.4,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1524,8 +1509,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1544,11 +1529,11 @@
                                 "sample identifier": "BNCH2345883 C12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.43,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1566,8 +1551,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1586,11 +1571,11 @@
                                 "sample identifier": "BNCH2345883 D1",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.15,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1608,8 +1593,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1628,11 +1613,11 @@
                                 "sample identifier": "BNCH2345883 D2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.18,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1650,8 +1635,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1670,11 +1655,11 @@
                                 "sample identifier": "BNCH2345883 D3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.21,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1692,8 +1677,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1712,11 +1697,11 @@
                                 "sample identifier": "BNCH2345883 D4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.23,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1734,8 +1719,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1754,6 +1739,10 @@
                                 "sample identifier": "BNCH2345883 D5",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -1762,10 +1751,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1784,8 +1769,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1804,11 +1789,11 @@
                                 "sample identifier": "BNCH2345883 D6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.29,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1826,8 +1811,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1846,11 +1831,11 @@
                                 "sample identifier": "BNCH2345883 D7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.32,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1868,8 +1853,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1888,11 +1873,11 @@
                                 "sample identifier": "BNCH2345883 D8",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.34,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1910,8 +1895,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1930,11 +1915,11 @@
                                 "sample identifier": "BNCH2345883 D9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.37,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1952,8 +1937,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -1972,11 +1957,11 @@
                                 "sample identifier": "BNCH2345883 D10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.39,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -1994,8 +1979,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2014,11 +1999,11 @@
                                 "sample identifier": "BNCH2345883 D11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.42,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2036,8 +2021,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2056,6 +2041,10 @@
                                 "sample identifier": "BNCH2345883 D12",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -2064,10 +2053,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2086,8 +2071,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2106,11 +2091,11 @@
                                 "sample identifier": "BNCH2345883 E1",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.17,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2128,8 +2113,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2148,11 +2133,11 @@
                                 "sample identifier": "BNCH2345883 E2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.2,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2170,8 +2155,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2190,11 +2175,11 @@
                                 "sample identifier": "BNCH2345883 E3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.22,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2212,8 +2197,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2232,6 +2217,10 @@
                                 "sample identifier": "BNCH2345883 E4",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -2240,10 +2229,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2262,8 +2247,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2282,11 +2267,11 @@
                                 "sample identifier": "BNCH2345883 E5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.28,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2304,8 +2289,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2324,11 +2309,11 @@
                                 "sample identifier": "BNCH2345883 E6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.3,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2346,8 +2331,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2366,11 +2351,11 @@
                                 "sample identifier": "BNCH2345883 E7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.33,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2388,8 +2373,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2408,11 +2393,11 @@
                                 "sample identifier": "BNCH2345883 E8",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.36,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2430,8 +2415,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2450,11 +2435,11 @@
                                 "sample identifier": "BNCH2345883 E9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.38,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2472,8 +2457,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2492,11 +2477,11 @@
                                 "sample identifier": "BNCH2345883 E10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.41,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2514,8 +2499,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2534,6 +2519,10 @@
                                 "sample identifier": "BNCH2345883 E11",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -2542,10 +2531,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2564,8 +2549,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2584,11 +2569,11 @@
                                 "sample identifier": "BNCH2345883 E12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.46,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2606,8 +2591,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2626,11 +2611,11 @@
                                 "sample identifier": "BNCH2345883 F1",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.19,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2648,8 +2633,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2668,11 +2653,11 @@
                                 "sample identifier": "BNCH2345883 F2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.21,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2690,8 +2675,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2710,6 +2695,10 @@
                                 "sample identifier": "BNCH2345883 F3",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -2718,10 +2707,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2740,8 +2725,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2760,11 +2745,11 @@
                                 "sample identifier": "BNCH2345883 F4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.27,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2782,8 +2767,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2802,11 +2787,11 @@
                                 "sample identifier": "BNCH2345883 F5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.29,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2824,8 +2809,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2844,11 +2829,11 @@
                                 "sample identifier": "BNCH2345883 F6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.32,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2866,8 +2851,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2886,11 +2871,11 @@
                                 "sample identifier": "BNCH2345883 F7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.35,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2908,8 +2893,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2928,11 +2913,11 @@
                                 "sample identifier": "BNCH2345883 F8",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.37,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2950,8 +2935,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -2970,11 +2955,11 @@
                                 "sample identifier": "BNCH2345883 F9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.4,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -2992,8 +2977,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3012,6 +2997,10 @@
                                 "sample identifier": "BNCH2345883 F10",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -3020,10 +3009,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3042,8 +3027,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3062,11 +3047,11 @@
                                 "sample identifier": "BNCH2345883 F11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.45,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3084,8 +3069,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3104,11 +3089,11 @@
                                 "sample identifier": "BNCH2345883 F12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.47,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3126,8 +3111,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3146,11 +3131,11 @@
                                 "sample identifier": "BNCH2345883 G1",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.2,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3168,8 +3153,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3188,6 +3173,10 @@
                                 "sample identifier": "BNCH2345883 G2",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -3196,10 +3185,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3218,8 +3203,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3238,11 +3223,11 @@
                                 "sample identifier": "BNCH2345883 G3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.26,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3260,8 +3245,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3280,11 +3265,11 @@
                                 "sample identifier": "BNCH2345883 G4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.28,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3302,8 +3287,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3322,11 +3307,11 @@
                                 "sample identifier": "BNCH2345883 G5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.31,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3344,8 +3329,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3364,11 +3349,11 @@
                                 "sample identifier": "BNCH2345883 G6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.34,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3386,8 +3371,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3406,11 +3391,11 @@
                                 "sample identifier": "BNCH2345883 G7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.36,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3428,8 +3413,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3448,11 +3433,11 @@
                                 "sample identifier": "BNCH2345883 G8",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.39,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3470,8 +3455,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3490,6 +3475,10 @@
                                 "sample identifier": "BNCH2345883 G9",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -3498,10 +3487,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3520,8 +3505,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3540,11 +3525,11 @@
                                 "sample identifier": "BNCH2345883 G10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.44,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3562,8 +3547,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3582,11 +3567,11 @@
                                 "sample identifier": "BNCH2345883 G11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.46,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3604,8 +3589,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3624,11 +3609,11 @@
                                 "sample identifier": "BNCH2345883 G12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.48,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3646,8 +3631,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3666,6 +3651,10 @@
                                 "sample identifier": "BNCH2345883 H1",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -3674,10 +3663,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3696,8 +3681,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3716,11 +3701,11 @@
                                 "sample identifier": "BNCH2345883 H2",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.25,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3738,8 +3723,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3758,11 +3743,11 @@
                                 "sample identifier": "BNCH2345883 H3",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.27,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3780,8 +3765,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3800,11 +3785,11 @@
                                 "sample identifier": "BNCH2345883 H4",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.3,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3822,8 +3807,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3842,11 +3827,11 @@
                                 "sample identifier": "BNCH2345883 H5",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.33,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3864,8 +3849,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3884,11 +3869,11 @@
                                 "sample identifier": "BNCH2345883 H6",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.35,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3906,8 +3891,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3926,11 +3911,11 @@
                                 "sample identifier": "BNCH2345883 H7",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.38,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -3948,8 +3933,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -3968,6 +3953,10 @@
                                 "sample identifier": "BNCH2345883 H8",
                                 "well plate identifier": "BNCH2345883"
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
                                 "error document": [
@@ -3976,10 +3965,6 @@
                                         "error feature": "absorbance"
                                     }
                                 ]
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3998,8 +3983,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -4018,11 +4003,11 @@
                                 "sample identifier": "BNCH2345883 H9",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.43,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -4040,8 +4025,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -4060,11 +4045,11 @@
                                 "sample identifier": "BNCH2345883 H10",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.45,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -4082,8 +4067,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -4102,11 +4087,11 @@
                                 "sample identifier": "BNCH2345883 H11",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.48,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -4124,8 +4109,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Absorbance",
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
                                             "value": 8.0,
@@ -4144,11 +4129,11 @@
                                 "sample identifier": "BNCH2345883 H12",
                                 "well plate identifier": "BNCH2345883"
                             },
-                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
                                 "value": 2.5,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt"
                         }
                     ],
                     "measurement time": "2024-04-11T17:27:15+00:00",
@@ -4159,6 +4144,21 @@
                     "container type": "well plate"
                 }
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
+            "file name": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.118",
+            "software name": "Gen5",
+            "software version": "3.12.08"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Synergy H1",
+            "equipment serial number": "Unknown"
+        }
     }
 }

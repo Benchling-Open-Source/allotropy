@@ -4,14 +4,8 @@
         "plate reader document": [
             {
                 "measurement aggregate document": {
-                    "measurement time": "2022-12-31T00:00:00+00:00",
-                    "plate well count": {
-                        "value": 16,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -20,9 +14,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "A1"
+                                "location identifier": "A1",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 4.87,
@@ -30,7 +25,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -39,9 +33,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "A2"
+                                "location identifier": "A2",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 3.29,
@@ -49,7 +44,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -58,9 +52,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "A3"
+                                "location identifier": "A3",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 2.93,
@@ -68,7 +63,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -77,9 +71,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "A4"
+                                "location identifier": "A4",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 1.94,
@@ -87,7 +82,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -96,9 +90,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "B1"
+                                "location identifier": "B1",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 3.45,
@@ -106,7 +101,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -115,9 +109,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "B2"
+                                "location identifier": "B2",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 0.99,
@@ -125,7 +120,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -134,9 +128,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "B3"
+                                "location identifier": "B3",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 0.57,
@@ -144,7 +139,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -153,9 +147,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "B4"
+                                "location identifier": "B4",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 4.46,
@@ -163,7 +158,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -172,9 +166,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "C1"
+                                "location identifier": "C1",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 0.92,
@@ -182,7 +177,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -191,9 +185,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "C2"
+                                "location identifier": "C2",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 0.76,
@@ -201,7 +196,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -210,9 +204,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "C3"
+                                "location identifier": "C3",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 3.52,
@@ -220,7 +215,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -229,9 +223,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "C4"
+                                "location identifier": "C4",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 2.25,
@@ -239,7 +234,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -248,9 +242,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "D1"
+                                "location identifier": "D1",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 4.71,
@@ -258,7 +253,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -267,9 +261,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "D2"
+                                "location identifier": "D2",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 3.3,
@@ -277,7 +272,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -286,9 +280,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "D3"
+                                "location identifier": "D3",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 3.73,
@@ -296,7 +291,6 @@
                             }
                         },
                         {
-                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -305,9 +299,10 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "Plate 0",
-                                "location identifier": "D4"
+                                "location identifier": "D4",
+                                "sample identifier": "Plate 0"
                             },
                             "fluorescence": {
                                 "value": 4.05,
@@ -315,21 +310,26 @@
                             }
                         }
                     ],
+                    "measurement time": "2022-12-31T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "container type": "well plate",
                     "analytical method identifier": "Weyland Yutani Example",
-                    "experimental data identifier": "Example Assay",
-                    "container type": "well plate"
+                    "experimental data identifier": "Example Assay"
                 }
             }
         ],
+        "data system document": {
+            "UNC path": "tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv",
+            "file name": "Weyland_Yutani_simple_correct.csv",
+            "ASM converter name": "allotropy_example_weyland_yutani",
+            "ASM converter version": "0.1.61"
+        },
         "device system document": {
             "device identifier": "",
             "model number": ""
-        },
-        "data system document": {
-            "file name": "Weyland_Yutani_simple_correct.csv",
-            "UNC path": "tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv",
-            "ASM converter name": "allotropy_example_weyland_yutani",
-            "ASM converter version": "0.1.61"
         }
     }
 }

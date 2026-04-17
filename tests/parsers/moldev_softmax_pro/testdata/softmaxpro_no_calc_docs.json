@@ -1,19 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "data system document": {
-            "ASM file identifier": "N/A",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/moldev_softmax_pro/testdata/softmaxpro_no_calc_docs.txt",
-            "file name": "softmaxpro_no_calc_docs.txt",
-            "software name": "SoftMax Pro"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "N/A"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -22,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -75,8 +62,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -128,8 +115,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -181,8 +168,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -234,8 +221,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -287,8 +274,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -340,8 +327,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -393,8 +380,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -446,8 +433,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -499,8 +486,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -552,8 +539,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -605,8 +592,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -658,8 +645,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -711,8 +698,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -764,8 +751,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -817,8 +804,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -870,8 +857,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -923,8 +910,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -976,8 +963,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1029,8 +1016,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1082,8 +1069,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1135,8 +1122,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1188,8 +1175,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1241,8 +1228,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1294,8 +1281,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1347,8 +1334,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1400,8 +1387,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1453,8 +1440,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1506,8 +1493,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1559,8 +1546,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1612,8 +1599,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1665,8 +1652,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1718,8 +1705,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1771,8 +1758,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1824,8 +1811,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1877,8 +1864,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1930,8 +1917,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -1983,8 +1970,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2036,8 +2023,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2089,8 +2076,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2142,8 +2129,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2195,8 +2182,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2248,8 +2235,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2301,8 +2288,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2354,8 +2341,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2407,8 +2394,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2460,8 +2447,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2513,8 +2500,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2566,8 +2553,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2619,8 +2606,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2672,8 +2659,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2725,8 +2712,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2778,8 +2765,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2831,8 +2818,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2884,8 +2871,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2937,8 +2924,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -2990,8 +2977,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3043,8 +3030,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3096,8 +3083,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3149,8 +3136,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3202,8 +3189,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3255,8 +3242,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3308,8 +3295,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3361,8 +3348,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3414,8 +3401,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3467,8 +3454,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3520,8 +3507,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3573,8 +3560,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3626,8 +3613,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3679,8 +3666,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3732,8 +3719,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3785,8 +3772,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3838,8 +3825,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3891,8 +3878,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3944,8 +3931,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -3997,8 +3984,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4050,8 +4037,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4103,8 +4090,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4156,8 +4143,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4209,8 +4196,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4262,8 +4249,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4315,8 +4302,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4368,8 +4355,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4421,8 +4408,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4474,8 +4461,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4527,8 +4514,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4580,8 +4567,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4633,8 +4620,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4686,8 +4673,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4739,8 +4726,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4792,8 +4779,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4845,8 +4832,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4898,8 +4885,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -4951,8 +4938,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -5004,8 +4991,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -5057,8 +5044,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
@@ -5110,8 +5097,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5154,8 +5141,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5198,8 +5185,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5242,8 +5229,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5286,8 +5273,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5330,8 +5317,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5374,8 +5361,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5418,8 +5405,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5462,8 +5449,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5506,8 +5493,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5550,8 +5537,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5594,8 +5581,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5638,8 +5625,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5682,8 +5669,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5726,8 +5713,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5770,8 +5757,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5814,8 +5801,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5858,8 +5845,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5902,8 +5889,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5946,8 +5933,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -5990,8 +5977,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6034,8 +6021,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6078,8 +6065,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6122,8 +6109,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6166,8 +6153,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6210,8 +6197,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6254,8 +6241,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6298,8 +6285,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6342,8 +6329,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6386,8 +6373,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6430,8 +6417,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6474,8 +6461,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6518,8 +6505,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6562,8 +6549,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6606,8 +6593,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6650,8 +6637,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6694,8 +6681,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6738,8 +6725,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6782,8 +6769,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6826,8 +6813,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6870,8 +6857,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6914,8 +6901,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -6958,8 +6945,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7002,8 +6989,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7046,8 +7033,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7090,8 +7077,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7134,8 +7121,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7178,8 +7165,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7222,8 +7209,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7266,8 +7253,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7310,8 +7297,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7354,8 +7341,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7398,8 +7385,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7442,8 +7429,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7486,8 +7473,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7530,8 +7517,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7574,8 +7561,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7618,8 +7605,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7662,8 +7649,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7706,8 +7693,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7750,8 +7737,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7794,8 +7781,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7838,8 +7825,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7882,8 +7869,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7926,8 +7913,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -7970,8 +7957,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8014,8 +8001,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8058,8 +8045,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8102,8 +8089,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8146,8 +8133,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8190,8 +8177,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8234,8 +8221,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8278,8 +8265,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8322,8 +8309,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8366,8 +8353,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8410,8 +8397,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8454,8 +8441,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8498,8 +8485,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8542,8 +8529,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8586,8 +8573,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8630,8 +8617,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8674,8 +8661,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8718,8 +8705,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8762,8 +8749,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8806,8 +8793,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8850,8 +8837,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8894,8 +8881,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8938,8 +8925,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -8982,8 +8969,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9026,8 +9013,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9070,8 +9057,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9114,8 +9101,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9158,8 +9145,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9202,8 +9189,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9246,8 +9233,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9290,8 +9277,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9334,8 +9321,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9378,8 +9365,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9422,8 +9409,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9466,8 +9453,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9510,8 +9497,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9554,8 +9541,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9598,8 +9585,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9642,8 +9629,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9686,8 +9673,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9730,8 +9717,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9774,8 +9761,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9818,8 +9805,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9862,8 +9849,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9906,8 +9893,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9950,8 +9937,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -9994,8 +9981,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10038,8 +10025,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10082,8 +10069,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10126,8 +10113,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10170,8 +10157,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10214,8 +10201,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10258,8 +10245,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10302,8 +10289,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10346,8 +10333,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10390,8 +10377,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10434,8 +10421,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10478,8 +10465,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10522,8 +10509,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10566,8 +10553,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10610,8 +10597,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10654,8 +10641,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10698,8 +10685,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10742,8 +10729,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10786,8 +10773,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10830,8 +10817,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10874,8 +10861,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10918,8 +10905,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -10962,8 +10949,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11006,8 +10993,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11050,8 +11037,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11094,8 +11081,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11138,8 +11125,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11182,8 +11169,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11226,8 +11213,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11270,8 +11257,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11314,8 +11301,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11358,8 +11345,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11402,8 +11389,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11446,8 +11433,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11490,8 +11477,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11534,8 +11521,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11578,8 +11565,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11622,8 +11609,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11666,8 +11653,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11710,8 +11697,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11754,8 +11741,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11798,8 +11785,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11842,8 +11829,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11886,8 +11873,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11930,8 +11917,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -11974,8 +11961,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12018,8 +12005,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12062,8 +12049,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12106,8 +12093,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12150,8 +12137,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12194,8 +12181,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12238,8 +12225,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12282,8 +12269,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12326,8 +12313,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12370,8 +12357,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12414,8 +12401,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12458,8 +12445,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12502,8 +12489,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12546,8 +12533,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12590,8 +12577,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12634,8 +12621,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12678,8 +12665,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12722,8 +12709,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12766,8 +12753,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12810,8 +12797,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12854,8 +12841,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12898,8 +12885,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12942,8 +12929,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -12986,8 +12973,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13030,8 +13017,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13074,8 +13061,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13118,8 +13105,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13162,8 +13149,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13206,8 +13193,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13250,8 +13237,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13294,8 +13281,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13338,8 +13325,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13382,8 +13369,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13426,8 +13413,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13470,8 +13457,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13514,8 +13501,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
                                         "device type": "plate reader",
+                                        "detection type": "Luminescence",
                                         "number of averages": {
                                             "value": 1,
                                             "unit": "#"
@@ -13551,6 +13538,19 @@
                     "container type": "well plate"
                 }
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "N/A",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/moldev_softmax_pro/testdata/softmaxpro_no_calc_docs.txt",
+            "file name": "softmaxpro_no_calc_docs.txt",
+            "ASM converter name": "allotropy_molecular_devices_softmax_pro",
+            "ASM converter version": "0.1.118",
+            "software name": "SoftMax Pro"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A"
+        }
     }
 }

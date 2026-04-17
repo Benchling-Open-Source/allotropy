@@ -1,18 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "data system document": {
-            "ASM file identifier": "luciferase_assay_example.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/thermo_skanit/testdata/luciferase_assay_example.xlsx",
-            "file name": "luciferase_assay_example.xlsx"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "N/A"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -21,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -54,8 +42,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -87,8 +75,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -120,8 +108,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -153,8 +141,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -186,8 +174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -219,8 +207,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -252,8 +240,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -285,8 +273,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -318,8 +306,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -351,8 +339,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -384,8 +372,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -417,8 +405,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -450,8 +438,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -483,8 +471,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -516,8 +504,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -549,8 +537,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -582,8 +570,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -615,8 +603,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -648,8 +636,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -681,8 +669,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -714,8 +702,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -747,8 +735,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -780,8 +768,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -813,8 +801,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -846,8 +834,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -879,8 +867,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -912,8 +900,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -945,8 +933,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -978,8 +966,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1011,8 +999,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1044,8 +1032,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1077,8 +1065,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1110,8 +1098,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1143,8 +1131,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1176,8 +1164,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1209,8 +1197,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1242,8 +1230,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1275,8 +1263,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1308,8 +1296,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1341,8 +1329,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1374,8 +1362,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1407,8 +1395,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1440,8 +1428,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1473,8 +1461,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1506,8 +1494,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1539,8 +1527,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1572,8 +1560,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1605,8 +1593,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1638,8 +1626,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1671,8 +1659,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1704,8 +1692,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1737,8 +1725,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1770,8 +1758,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1803,8 +1791,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1836,8 +1824,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1869,8 +1857,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1902,8 +1890,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1935,8 +1923,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -1968,8 +1956,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2001,8 +1989,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2034,8 +2022,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2067,8 +2055,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2100,8 +2088,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2133,8 +2121,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2166,8 +2154,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2199,8 +2187,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2232,8 +2220,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2265,8 +2253,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2298,8 +2286,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2331,8 +2319,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2364,8 +2352,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2397,8 +2385,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2430,8 +2418,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2463,8 +2451,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2496,8 +2484,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2529,8 +2517,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2562,8 +2550,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2595,8 +2583,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2628,8 +2616,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2661,8 +2649,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2694,8 +2682,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2727,8 +2715,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2760,8 +2748,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2793,8 +2781,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2826,8 +2814,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2859,8 +2847,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2892,8 +2880,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2925,8 +2913,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2958,8 +2946,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -2991,8 +2979,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -3024,8 +3012,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -3057,8 +3045,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -3090,8 +3078,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -3123,8 +3111,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -3156,8 +3144,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Luminescence",
-                                        "device type": "plate reader"
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
@@ -3182,6 +3170,18 @@
                     "container type": "well plate"
                 }
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "luciferase_assay_example.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/luciferase_assay_example.xlsx",
+            "file name": "luciferase_assay_example.xlsx",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
+            "ASM converter version": "0.1.118"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A"
+        }
     }
 }

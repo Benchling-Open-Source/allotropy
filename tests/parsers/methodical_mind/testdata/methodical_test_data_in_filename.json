@@ -1,21 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "data system document": {
-            "ASM file identifier": "methodical_test_data_in_filename.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_msd_methodical_mind",
-            "ASM converter version": "0.1.118",
-            "UNC path": "Z:\\MSD-WP\\Export\\Data\\22M0TALA85_2023-09-08-1=Data=33933.txt",
-            "file name": "22M0TALA85_2023-09-08-1=Data=33933.txt",
-            "software name": "MMPR 1.0.38",
-            "software version": "MMPR 1.0.38"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "HTS",
-            "equipment serial number": "1298873245"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -24,27 +9,27 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "luminescence",
                                         "device type": "luminescence detector",
+                                        "detection type": "luminescence",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
-                                            "Orient": "Normal",
-                                            "Det Param": "Standard"
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_0",
                             "sample document": {
-                                "location identifier": "1",
                                 "sample identifier": "*22M0TALA85N*_A1",
+                                "location identifier": "1",
                                 "well location identifier": "A1",
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Barcode2": "<>",
                                     "Barcode3": "<>",
-                                    "Plate #": 1.0,
-                                    "Barcode2": "<>"
+                                    "Plate #": 1.0
                                 }
                             },
                             "luminescence": {
@@ -69,27 +54,27 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "luminescence",
                                         "device type": "luminescence detector",
+                                        "detection type": "luminescence",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
-                                            "Orient": "Normal",
-                                            "Det Param": "Standard"
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_1",
                             "sample document": {
-                                "location identifier": "1",
                                 "sample identifier": "*22M0TALA85N*_A2",
+                                "location identifier": "1",
                                 "well location identifier": "A2",
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Barcode2": "<>",
                                     "Barcode3": "<>",
-                                    "Plate #": 1.0,
-                                    "Barcode2": "<>"
+                                    "Plate #": 1.0
                                 }
                             },
                             "luminescence": {
@@ -114,27 +99,27 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "luminescence",
                                         "device type": "luminescence detector",
+                                        "detection type": "luminescence",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
-                                            "Orient": "Normal",
-                                            "Det Param": "Standard"
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_2",
                             "sample document": {
-                                "location identifier": "1",
                                 "sample identifier": "*22M0TALA85N*_A3",
+                                "location identifier": "1",
                                 "well location identifier": "A3",
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Barcode2": "<>",
                                     "Barcode3": "<>",
-                                    "Plate #": 1.0,
-                                    "Barcode2": "<>"
+                                    "Plate #": 1.0
                                 }
                             },
                             "luminescence": {
@@ -159,27 +144,27 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "luminescence",
                                         "device type": "luminescence detector",
+                                        "detection type": "luminescence",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
-                                            "Orient": "Normal",
-                                            "Det Param": "Standard"
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_3",
                             "sample document": {
-                                "location identifier": "1",
                                 "sample identifier": "*22M0TALA85N*_B1",
+                                "location identifier": "1",
                                 "well location identifier": "B1",
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Barcode2": "<>",
                                     "Barcode3": "<>",
-                                    "Plate #": 1.0,
-                                    "Barcode2": "<>"
+                                    "Plate #": 1.0
                                 }
                             },
                             "luminescence": {
@@ -204,27 +189,27 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "luminescence",
                                         "device type": "luminescence detector",
+                                        "detection type": "luminescence",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
-                                            "Orient": "Normal",
-                                            "Det Param": "Standard"
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_4",
                             "sample document": {
-                                "location identifier": "1",
                                 "sample identifier": "*22M0TALA85N*_B2",
+                                "location identifier": "1",
                                 "well location identifier": "B2",
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Barcode2": "<>",
                                     "Barcode3": "<>",
-                                    "Plate #": 1.0,
-                                    "Barcode2": "<>"
+                                    "Plate #": 1.0
                                 }
                             },
                             "luminescence": {
@@ -249,27 +234,27 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "luminescence",
                                         "device type": "luminescence detector",
+                                        "detection type": "luminescence",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
-                                            "Orient": "Normal",
-                                            "Det Param": "Standard"
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_5",
                             "sample document": {
-                                "location identifier": "1",
                                 "sample identifier": "*22M0TALA85N*_B3",
+                                "location identifier": "1",
                                 "well location identifier": "B3",
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Barcode2": "<>",
                                     "Barcode3": "<>",
-                                    "Plate #": 1.0,
-                                    "Barcode2": "<>"
+                                    "Plate #": 1.0
                                 }
                             },
                             "luminescence": {
@@ -287,6 +272,21 @@
                 },
                 "analyst": "dmc"
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "methodical_test_data_in_filename.json",
+            "data system instance identifier": "N/A",
+            "file name": "22M0TALA85_2023-09-08-1=Data=33933.txt",
+            "UNC path": "Z:\\MSD-WP\\Export\\Data\\22M0TALA85_2023-09-08-1=Data=33933.txt",
+            "ASM converter name": "allotropy_msd_methodical_mind",
+            "ASM converter version": "0.1.118",
+            "software name": "MMPR 1.0.38",
+            "software version": "MMPR 1.0.38"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "HTS",
+            "equipment serial number": "1298873245"
+        }
     }
 }

@@ -1,20 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "data system document": {
-            "ASM file identifier": "BMG Labtech format.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_bmg_labtech_mars",
-            "ASM converter version": "0.1.118",
-            "UNC path": "C:\\Users\\Lab user\\Documents\\Discovery\\Data",
-            "file name": "BMG Labtech format.CSV",
-            "software name": "BMG MARS"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "N/A",
-            "product manufacturer": "BMG LABTECH"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -23,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -34,15 +20,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_0",
                             "sample document": {
-                                "location identifier": "A1",
                                 "sample identifier": "xxxxxxxxxxxxx A1",
+                                "location identifier": "A1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.073,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -50,8 +36,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -65,8 +51,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -76,15 +62,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_1",
                             "sample document": {
-                                "location identifier": "A2",
                                 "sample identifier": "xxxxxxxxxxxxx A2",
+                                "location identifier": "A2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.082,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -92,8 +78,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -107,8 +93,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -118,15 +104,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_2",
                             "sample document": {
-                                "location identifier": "A3",
                                 "sample identifier": "xxxxxxxxxxxxx A3",
+                                "location identifier": "A3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.08,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -134,8 +120,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -149,8 +135,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -160,15 +146,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_3",
                             "sample document": {
-                                "location identifier": "A4",
                                 "sample identifier": "xxxxxxxxxxxxx A4",
+                                "location identifier": "A4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.107,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -176,8 +162,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -191,8 +177,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -202,15 +188,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_4",
                             "sample document": {
-                                "location identifier": "A5",
                                 "sample identifier": "xxxxxxxxxxxxx A5",
+                                "location identifier": "A5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.103,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -218,8 +204,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -233,8 +219,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -244,15 +230,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_5",
                             "sample document": {
-                                "location identifier": "A6",
                                 "sample identifier": "xxxxxxxxxxxxx A6",
+                                "location identifier": "A6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.111,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -260,8 +246,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -275,8 +261,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -286,15 +272,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_6",
                             "sample document": {
-                                "location identifier": "A7",
                                 "sample identifier": "xxxxxxxxxxxxx A7",
+                                "location identifier": "A7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.199,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -302,8 +288,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -317,8 +303,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -328,15 +314,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_7",
                             "sample document": {
-                                "location identifier": "A8",
                                 "sample identifier": "xxxxxxxxxxxxx A8",
+                                "location identifier": "A8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.159,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -344,8 +330,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -359,8 +345,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -370,15 +356,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_8",
                             "sample document": {
-                                "location identifier": "A9",
                                 "sample identifier": "xxxxxxxxxxxxx A9",
+                                "location identifier": "A9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.104,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -386,8 +372,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -401,8 +387,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -412,15 +398,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_9",
                             "sample document": {
-                                "location identifier": "A10",
                                 "sample identifier": "xxxxxxxxxxxxx A10",
+                                "location identifier": "A10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.096,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -428,8 +414,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -443,8 +429,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -454,15 +440,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_10",
                             "sample document": {
-                                "location identifier": "A11",
                                 "sample identifier": "xxxxxxxxxxxxx A11",
+                                "location identifier": "A11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.092,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -470,8 +456,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -485,8 +471,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -496,15 +482,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_11",
                             "sample document": {
-                                "location identifier": "A12",
                                 "sample identifier": "xxxxxxxxxxxxx A12",
+                                "location identifier": "A12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.089,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -512,8 +498,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -527,8 +513,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -538,15 +524,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_12",
                             "sample document": {
-                                "location identifier": "B1",
                                 "sample identifier": "xxxxxxxxxxxxx B1",
+                                "location identifier": "B1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.045,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -554,8 +540,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -569,8 +555,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -580,15 +566,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_13",
                             "sample document": {
-                                "location identifier": "B2",
                                 "sample identifier": "xxxxxxxxxxxxx B2",
+                                "location identifier": "B2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.067,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -596,8 +582,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -611,8 +597,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -622,15 +608,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_14",
                             "sample document": {
-                                "location identifier": "B3",
                                 "sample identifier": "xxxxxxxxxxxxx B3",
+                                "location identifier": "B3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -638,8 +624,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -653,8 +639,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -664,15 +650,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_15",
                             "sample document": {
-                                "location identifier": "B4",
                                 "sample identifier": "xxxxxxxxxxxxx B4",
+                                "location identifier": "B4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.118,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -680,8 +666,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -695,8 +681,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -706,15 +692,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_16",
                             "sample document": {
-                                "location identifier": "B5",
                                 "sample identifier": "xxxxxxxxxxxxx B5",
+                                "location identifier": "B5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.1,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -722,8 +708,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -737,8 +723,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -748,15 +734,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_17",
                             "sample document": {
-                                "location identifier": "B6",
                                 "sample identifier": "xxxxxxxxxxxxx B6",
+                                "location identifier": "B6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.086,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -764,8 +750,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -779,8 +765,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -790,15 +776,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_18",
                             "sample document": {
-                                "location identifier": "B7",
                                 "sample identifier": "xxxxxxxxxxxxx B7",
+                                "location identifier": "B7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.188,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -806,8 +792,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -821,8 +807,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -832,15 +818,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_19",
                             "sample document": {
-                                "location identifier": "B8",
                                 "sample identifier": "xxxxxxxxxxxxx B8",
+                                "location identifier": "B8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.112,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -848,8 +834,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -863,8 +849,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -874,15 +860,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_20",
                             "sample document": {
-                                "location identifier": "B9",
                                 "sample identifier": "xxxxxxxxxxxxx B9",
+                                "location identifier": "B9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.124,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -890,8 +876,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -905,8 +891,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -916,15 +902,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_21",
                             "sample document": {
-                                "location identifier": "B10",
                                 "sample identifier": "xxxxxxxxxxxxx B10",
+                                "location identifier": "B10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.181,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -932,8 +918,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -947,8 +933,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -958,15 +944,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_22",
                             "sample document": {
-                                "location identifier": "B11",
                                 "sample identifier": "xxxxxxxxxxxxx B11",
+                                "location identifier": "B11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.218,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -974,8 +960,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -989,8 +975,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1000,15 +986,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_23",
                             "sample document": {
-                                "location identifier": "B12",
                                 "sample identifier": "xxxxxxxxxxxxx B12",
+                                "location identifier": "B12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.23,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1016,8 +1002,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1031,8 +1017,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1042,15 +1028,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_24",
                             "sample document": {
-                                "location identifier": "C1",
                                 "sample identifier": "xxxxxxxxxxxxx C1",
+                                "location identifier": "C1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.502,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1058,8 +1044,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1073,8 +1059,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1084,15 +1070,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_25",
                             "sample document": {
-                                "location identifier": "C2",
                                 "sample identifier": "xxxxxxxxxxxxx C2",
+                                "location identifier": "C2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.065,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1100,8 +1086,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1115,8 +1101,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1126,15 +1112,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_26",
                             "sample document": {
-                                "location identifier": "C3",
                                 "sample identifier": "xxxxxxxxxxxxx C3",
+                                "location identifier": "C3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1142,8 +1128,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1157,8 +1143,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1168,15 +1154,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_27",
                             "sample document": {
-                                "location identifier": "C4",
                                 "sample identifier": "xxxxxxxxxxxxx C4",
+                                "location identifier": "C4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.656,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1184,8 +1170,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1199,8 +1185,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1210,15 +1196,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_28",
                             "sample document": {
-                                "location identifier": "C5",
                                 "sample identifier": "xxxxxxxxxxxxx C5",
+                                "location identifier": "C5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.501,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1226,8 +1212,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1241,8 +1227,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1252,15 +1238,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_29",
                             "sample document": {
-                                "location identifier": "C6",
                                 "sample identifier": "xxxxxxxxxxxxx C6",
+                                "location identifier": "C6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.132,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1268,8 +1254,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1283,8 +1269,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1294,15 +1280,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_30",
                             "sample document": {
-                                "location identifier": "C7",
                                 "sample identifier": "xxxxxxxxxxxxx C7",
+                                "location identifier": "C7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.111,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1310,8 +1296,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1325,8 +1311,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1336,15 +1322,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_31",
                             "sample document": {
-                                "location identifier": "C8",
                                 "sample identifier": "xxxxxxxxxxxxx C8",
+                                "location identifier": "C8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.142,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1352,8 +1338,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1367,8 +1353,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1378,15 +1364,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_32",
                             "sample document": {
-                                "location identifier": "C9",
                                 "sample identifier": "xxxxxxxxxxxxx C9",
+                                "location identifier": "C9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.71,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1394,8 +1380,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1409,8 +1395,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1420,15 +1406,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_33",
                             "sample document": {
-                                "location identifier": "C10",
                                 "sample identifier": "xxxxxxxxxxxxx C10",
+                                "location identifier": "C10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.581,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1436,8 +1422,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1451,8 +1437,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1462,15 +1448,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_34",
                             "sample document": {
-                                "location identifier": "C11",
                                 "sample identifier": "xxxxxxxxxxxxx C11",
+                                "location identifier": "C11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.541,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1478,8 +1464,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1493,8 +1479,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1504,15 +1490,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_35",
                             "sample document": {
-                                "location identifier": "C12",
                                 "sample identifier": "xxxxxxxxxxxxx C12",
+                                "location identifier": "C12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.596,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1520,8 +1506,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1535,8 +1521,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1546,15 +1532,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_36",
                             "sample document": {
-                                "location identifier": "D1",
                                 "sample identifier": "xxxxxxxxxxxxx D1",
+                                "location identifier": "D1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1562,8 +1548,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1577,8 +1563,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1588,15 +1574,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_37",
                             "sample document": {
-                                "location identifier": "D2",
                                 "sample identifier": "xxxxxxxxxxxxx D2",
+                                "location identifier": "D2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1604,8 +1590,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1619,8 +1605,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1630,15 +1616,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_38",
                             "sample document": {
-                                "location identifier": "D3",
                                 "sample identifier": "xxxxxxxxxxxxx D3",
+                                "location identifier": "D3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.37,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1646,8 +1632,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1661,8 +1647,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1672,15 +1658,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_39",
                             "sample document": {
-                                "location identifier": "D4",
                                 "sample identifier": "xxxxxxxxxxxxx D4",
+                                "location identifier": "D4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.634,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1688,8 +1674,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1703,8 +1689,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1714,15 +1700,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_40",
                             "sample document": {
-                                "location identifier": "D5",
                                 "sample identifier": "xxxxxxxxxxxxx D5",
+                                "location identifier": "D5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.677,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1730,8 +1716,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1745,8 +1731,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1756,15 +1742,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_41",
                             "sample document": {
-                                "location identifier": "D6",
                                 "sample identifier": "xxxxxxxxxxxxx D6",
+                                "location identifier": "D6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.606,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1772,8 +1758,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1787,8 +1773,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1798,15 +1784,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_42",
                             "sample document": {
-                                "location identifier": "D7",
                                 "sample identifier": "xxxxxxxxxxxxx D7",
+                                "location identifier": "D7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.069,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1814,8 +1800,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1829,8 +1815,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1840,15 +1826,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_43",
                             "sample document": {
-                                "location identifier": "D8",
                                 "sample identifier": "xxxxxxxxxxxxx D8",
+                                "location identifier": "D8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.666,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1856,8 +1842,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1871,8 +1857,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1882,15 +1868,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_44",
                             "sample document": {
-                                "location identifier": "D9",
                                 "sample identifier": "xxxxxxxxxxxxx D9",
+                                "location identifier": "D9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.054,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1898,8 +1884,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1913,8 +1899,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1924,15 +1910,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_45",
                             "sample document": {
-                                "location identifier": "D10",
                                 "sample identifier": "xxxxxxxxxxxxx D10",
+                                "location identifier": "D10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.836,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1940,8 +1926,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1955,8 +1941,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1966,15 +1952,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_46",
                             "sample document": {
-                                "location identifier": "D11",
                                 "sample identifier": "xxxxxxxxxxxxx D11",
+                                "location identifier": "D11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.149,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1982,8 +1968,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -1997,8 +1983,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2008,15 +1994,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_47",
                             "sample document": {
-                                "location identifier": "D12",
                                 "sample identifier": "xxxxxxxxxxxxx D12",
+                                "location identifier": "D12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.168,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2024,8 +2010,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2039,8 +2025,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2050,15 +2036,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_48",
                             "sample document": {
-                                "location identifier": "E1",
                                 "sample identifier": "xxxxxxxxxxxxx E1",
+                                "location identifier": "E1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.109,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2066,8 +2052,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2081,8 +2067,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2092,15 +2078,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_49",
                             "sample document": {
-                                "location identifier": "E2",
                                 "sample identifier": "xxxxxxxxxxxxx E2",
+                                "location identifier": "E2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.06,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2108,8 +2094,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2123,8 +2109,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2134,15 +2120,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_50",
                             "sample document": {
-                                "location identifier": "E3",
                                 "sample identifier": "xxxxxxxxxxxxx E3",
+                                "location identifier": "E3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.09,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2150,8 +2136,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2165,8 +2151,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2176,15 +2162,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_51",
                             "sample document": {
-                                "location identifier": "E4",
                                 "sample identifier": "xxxxxxxxxxxxx E4",
+                                "location identifier": "E4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.07,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2192,8 +2178,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2207,8 +2193,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2218,15 +2204,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_52",
                             "sample document": {
-                                "location identifier": "E5",
                                 "sample identifier": "xxxxxxxxxxxxx E5",
+                                "location identifier": "E5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.072,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2234,8 +2220,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2249,8 +2235,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2260,15 +2246,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_53",
                             "sample document": {
-                                "location identifier": "E6",
                                 "sample identifier": "xxxxxxxxxxxxx E6",
+                                "location identifier": "E6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.059,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2276,8 +2262,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2291,8 +2277,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2302,15 +2288,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_54",
                             "sample document": {
-                                "location identifier": "E7",
                                 "sample identifier": "xxxxxxxxxxxxx E7",
+                                "location identifier": "E7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.079,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2318,8 +2304,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2333,8 +2319,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2344,15 +2330,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_55",
                             "sample document": {
-                                "location identifier": "E8",
                                 "sample identifier": "xxxxxxxxxxxxx E8",
+                                "location identifier": "E8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.073,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2360,8 +2346,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2375,8 +2361,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2386,15 +2372,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_56",
                             "sample document": {
-                                "location identifier": "E9",
                                 "sample identifier": "xxxxxxxxxxxxx E9",
+                                "location identifier": "E9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.062,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2402,8 +2388,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2417,8 +2403,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2428,15 +2414,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_57",
                             "sample document": {
-                                "location identifier": "E10",
                                 "sample identifier": "xxxxxxxxxxxxx E10",
+                                "location identifier": "E10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2444,8 +2430,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2459,8 +2445,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2470,15 +2456,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_58",
                             "sample document": {
-                                "location identifier": "E11",
                                 "sample identifier": "xxxxxxxxxxxxx E11",
+                                "location identifier": "E11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.112,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2486,8 +2472,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2501,8 +2487,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2512,15 +2498,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_59",
                             "sample document": {
-                                "location identifier": "E12",
                                 "sample identifier": "xxxxxxxxxxxxx E12",
+                                "location identifier": "E12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.112,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2528,8 +2514,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2543,8 +2529,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2554,15 +2540,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_60",
                             "sample document": {
-                                "location identifier": "F1",
                                 "sample identifier": "xxxxxxxxxxxxx F1",
+                                "location identifier": "F1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.072,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2570,8 +2556,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2585,8 +2571,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2596,15 +2582,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_61",
                             "sample document": {
-                                "location identifier": "F2",
                                 "sample identifier": "xxxxxxxxxxxxx F2",
+                                "location identifier": "F2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2612,8 +2598,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2627,8 +2613,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2638,15 +2624,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_62",
                             "sample document": {
-                                "location identifier": "F3",
                                 "sample identifier": "xxxxxxxxxxxxx F3",
+                                "location identifier": "F3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.064,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2654,8 +2640,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2669,8 +2655,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2680,15 +2666,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_63",
                             "sample document": {
-                                "location identifier": "F4",
                                 "sample identifier": "xxxxxxxxxxxxx F4",
+                                "location identifier": "F4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2696,8 +2682,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2711,8 +2697,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2722,15 +2708,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_64",
                             "sample document": {
-                                "location identifier": "F5",
                                 "sample identifier": "xxxxxxxxxxxxx F5",
+                                "location identifier": "F5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.061,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2738,8 +2724,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2753,8 +2739,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2764,15 +2750,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_65",
                             "sample document": {
-                                "location identifier": "F6",
                                 "sample identifier": "xxxxxxxxxxxxx F6",
+                                "location identifier": "F6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.06,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2780,8 +2766,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2795,8 +2781,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2806,15 +2792,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_66",
                             "sample document": {
-                                "location identifier": "F7",
                                 "sample identifier": "xxxxxxxxxxxxx F7",
+                                "location identifier": "F7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.079,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2822,8 +2808,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2837,8 +2823,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2848,15 +2834,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_67",
                             "sample document": {
-                                "location identifier": "F8",
                                 "sample identifier": "xxxxxxxxxxxxx F8",
+                                "location identifier": "F8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.088,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2864,8 +2850,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2879,8 +2865,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2890,15 +2876,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_68",
                             "sample document": {
-                                "location identifier": "F9",
                                 "sample identifier": "xxxxxxxxxxxxx F9",
+                                "location identifier": "F9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.082,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2906,8 +2892,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2921,8 +2907,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2932,15 +2918,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_69",
                             "sample document": {
-                                "location identifier": "F10",
                                 "sample identifier": "xxxxxxxxxxxxx F10",
+                                "location identifier": "F10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2948,8 +2934,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -2963,8 +2949,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2974,15 +2960,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_70",
                             "sample document": {
-                                "location identifier": "F11",
                                 "sample identifier": "xxxxxxxxxxxxx F11",
+                                "location identifier": "F11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.068,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2990,8 +2976,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3005,8 +2991,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3016,15 +3002,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_71",
                             "sample document": {
-                                "location identifier": "F12",
                                 "sample identifier": "xxxxxxxxxxxxx F12",
+                                "location identifier": "F12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.1,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3032,8 +3018,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3047,8 +3033,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3058,15 +3044,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_72",
                             "sample document": {
-                                "location identifier": "G1",
                                 "sample identifier": "xxxxxxxxxxxxx G1",
+                                "location identifier": "G1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.314,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3074,8 +3060,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3089,8 +3075,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3100,15 +3086,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_73",
                             "sample document": {
-                                "location identifier": "G2",
                                 "sample identifier": "xxxxxxxxxxxxx G2",
+                                "location identifier": "G2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3116,8 +3102,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3131,8 +3117,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3142,15 +3128,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_74",
                             "sample document": {
-                                "location identifier": "G3",
                                 "sample identifier": "xxxxxxxxxxxxx G3",
+                                "location identifier": "G3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.057,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3158,8 +3144,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3173,8 +3159,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3184,15 +3170,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_75",
                             "sample document": {
-                                "location identifier": "G4",
                                 "sample identifier": "xxxxxxxxxxxxx G4",
+                                "location identifier": "G4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.376,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3200,8 +3186,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3215,8 +3201,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3226,15 +3212,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_76",
                             "sample document": {
-                                "location identifier": "G5",
                                 "sample identifier": "xxxxxxxxxxxxx G5",
+                                "location identifier": "G5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.411,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3242,8 +3228,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3257,8 +3243,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3268,15 +3254,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_77",
                             "sample document": {
-                                "location identifier": "G6",
                                 "sample identifier": "xxxxxxxxxxxxx G6",
+                                "location identifier": "G6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.075,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3284,8 +3270,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3299,8 +3285,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3310,15 +3296,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_78",
                             "sample document": {
-                                "location identifier": "G7",
                                 "sample identifier": "xxxxxxxxxxxxx G7",
+                                "location identifier": "G7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.081,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3326,8 +3312,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3341,8 +3327,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3352,15 +3338,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_79",
                             "sample document": {
-                                "location identifier": "G8",
                                 "sample identifier": "xxxxxxxxxxxxx G8",
+                                "location identifier": "G8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.091,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3368,8 +3354,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3383,8 +3369,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3394,15 +3380,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_80",
                             "sample document": {
-                                "location identifier": "G9",
                                 "sample identifier": "xxxxxxxxxxxxx G9",
+                                "location identifier": "G9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3410,8 +3396,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3425,8 +3411,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3436,15 +3422,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_81",
                             "sample document": {
-                                "location identifier": "G10",
                                 "sample identifier": "xxxxxxxxxxxxx G10",
+                                "location identifier": "G10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.41,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3452,8 +3438,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3467,8 +3453,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3478,15 +3464,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_82",
                             "sample document": {
-                                "location identifier": "G11",
                                 "sample identifier": "xxxxxxxxxxxxx G11",
+                                "location identifier": "G11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.212,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3494,8 +3480,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3509,8 +3495,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3520,15 +3506,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_83",
                             "sample document": {
-                                "location identifier": "G12",
                                 "sample identifier": "xxxxxxxxxxxxx G12",
+                                "location identifier": "G12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.212,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3536,8 +3522,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3551,8 +3537,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3562,15 +3548,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_84",
                             "sample document": {
-                                "location identifier": "H1",
                                 "sample identifier": "xxxxxxxxxxxxx H1",
+                                "location identifier": "H1",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.422,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3578,8 +3564,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3593,8 +3579,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3604,15 +3590,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_85",
                             "sample document": {
-                                "location identifier": "H2",
                                 "sample identifier": "xxxxxxxxxxxxx H2",
+                                "location identifier": "H2",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.224,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3620,8 +3606,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3635,8 +3621,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3646,15 +3632,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_86",
                             "sample document": {
-                                "location identifier": "H3",
                                 "sample identifier": "xxxxxxxxxxxxx H3",
+                                "location identifier": "H3",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.115,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3662,8 +3648,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3677,8 +3663,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3688,15 +3674,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_87",
                             "sample document": {
-                                "location identifier": "H4",
                                 "sample identifier": "xxxxxxxxxxxxx H4",
+                                "location identifier": "H4",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.278,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3704,8 +3690,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3719,8 +3705,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3730,15 +3716,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_88",
                             "sample document": {
-                                "location identifier": "H5",
                                 "sample identifier": "xxxxxxxxxxxxx H5",
+                                "location identifier": "H5",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.377,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3746,8 +3732,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3761,8 +3747,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3772,15 +3758,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_89",
                             "sample document": {
-                                "location identifier": "H6",
                                 "sample identifier": "xxxxxxxxxxxxx H6",
+                                "location identifier": "H6",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.385,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3788,8 +3774,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3803,8 +3789,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3814,15 +3800,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_90",
                             "sample document": {
-                                "location identifier": "H7",
                                 "sample identifier": "xxxxxxxxxxxxx H7",
+                                "location identifier": "H7",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3830,8 +3816,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3845,8 +3831,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3856,15 +3842,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_91",
                             "sample document": {
-                                "location identifier": "H8",
                                 "sample identifier": "xxxxxxxxxxxxx H8",
+                                "location identifier": "H8",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.377,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3872,8 +3858,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3887,8 +3873,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3898,15 +3884,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_92",
                             "sample document": {
-                                "location identifier": "H9",
                                 "sample identifier": "xxxxxxxxxxxxx H9",
+                                "location identifier": "H9",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.107,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3914,8 +3900,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3929,8 +3915,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3940,15 +3926,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_93",
                             "sample document": {
-                                "location identifier": "H10",
                                 "sample identifier": "xxxxxxxxxxxxx H10",
+                                "location identifier": "H10",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.462,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3956,8 +3942,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -3971,8 +3957,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3982,15 +3968,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_94",
                             "sample document": {
-                                "location identifier": "H11",
                                 "sample identifier": "xxxxxxxxxxxxx H11",
+                                "location identifier": "H11",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.116,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3998,8 +3984,8 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
@@ -4013,8 +3999,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "absorbance",
                                         "device type": "absorbance detector",
+                                        "detection type": "absorbance",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -4024,15 +4010,15 @@
                             },
                             "measurement identifier": "BMG_MARS_TEST_ID_95",
                             "sample document": {
-                                "location identifier": "H12",
                                 "sample identifier": "xxxxxxxxxxxxx H12",
+                                "location identifier": "H12",
                                 "well plate identifier": "xxxxxxxxxxxxx"
                             },
-                            "experimental data identifier": "Plate 1",
                             "absorbance": {
                                 "value": 0.207,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -4040,14 +4026,28 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "container type": "well plate",
-                    "experiment type": "xxxxxxxxxxxxx"
+                    "experiment type": "xxxxxxxxxxxxx",
+                    "container type": "well plate"
                 },
                 "analyst": "Discovery",
                 "custom information document": {
                     "TEST RUN NO.": 445.0
                 }
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "BMG Labtech format.json",
+            "data system instance identifier": "N/A",
+            "file name": "BMG Labtech format.CSV",
+            "UNC path": "C:\\Users\\Lab user\\Documents\\Discovery\\Data",
+            "ASM converter name": "allotropy_bmg_labtech_mars",
+            "ASM converter version": "0.1.118",
+            "software name": "BMG MARS"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A",
+            "product manufacturer": "BMG LABTECH"
+        }
     }
 }

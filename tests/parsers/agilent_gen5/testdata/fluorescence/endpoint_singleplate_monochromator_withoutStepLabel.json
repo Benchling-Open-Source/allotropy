@@ -1,21 +1,6 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
-        "data system document": {
-            "ASM file identifier": "endpoint_singleplate_monochromator_withoutStepLabel.json",
-            "data system instance identifier": "N/A",
-            "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.118",
-            "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_singleplate_monochromator_withoutStepLabel.txt",
-            "file name": "endpoint_singleplate_monochromator_withoutStepLabel.txt",
-            "software name": "Gen5",
-            "software version": "3.12.08"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "Synergy H1",
-            "equipment serial number": "Unknown"
-        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -24,8 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -68,8 +53,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -121,8 +106,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -162,8 +147,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -215,8 +200,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -256,8 +241,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -309,8 +294,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -350,8 +335,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -403,8 +388,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -444,8 +429,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -497,8 +482,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -538,8 +523,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -591,8 +576,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -632,8 +617,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -685,8 +670,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -726,8 +711,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -779,8 +764,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -820,8 +805,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -873,8 +858,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -914,8 +899,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -967,8 +952,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1008,8 +993,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1061,8 +1046,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1102,8 +1087,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1155,8 +1140,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1196,8 +1181,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1249,8 +1234,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1290,8 +1275,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1343,8 +1328,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1384,8 +1369,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1437,8 +1422,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1478,8 +1463,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1531,8 +1516,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1572,8 +1557,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1625,8 +1610,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1666,8 +1651,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1719,8 +1704,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1760,8 +1745,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1813,8 +1798,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1854,8 +1839,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1907,8 +1892,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -1948,8 +1933,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2001,8 +1986,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2042,8 +2027,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2095,8 +2080,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2136,8 +2121,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2189,8 +2174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2230,8 +2215,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2283,8 +2268,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2324,8 +2309,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2377,8 +2362,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2418,8 +2403,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2471,8 +2456,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2512,8 +2497,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2565,8 +2550,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2606,8 +2591,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2659,8 +2644,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2700,8 +2685,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2753,8 +2738,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2794,8 +2779,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2847,8 +2832,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2888,8 +2873,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2941,8 +2926,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -2982,8 +2967,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3035,8 +3020,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3076,8 +3061,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3129,8 +3114,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3170,8 +3155,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3223,8 +3208,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3264,8 +3249,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3317,8 +3302,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3358,8 +3343,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3411,8 +3396,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3452,8 +3437,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3505,8 +3490,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3546,8 +3531,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3599,8 +3584,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3640,8 +3625,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3693,8 +3678,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3734,8 +3719,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3787,8 +3772,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3828,8 +3813,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3881,8 +3866,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3922,8 +3907,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -3975,8 +3960,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4016,8 +4001,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4069,8 +4054,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4110,8 +4095,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4163,8 +4148,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4204,8 +4189,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4257,8 +4242,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4298,8 +4283,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4351,8 +4336,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4392,8 +4377,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4445,8 +4430,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4486,8 +4471,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4539,8 +4524,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4580,8 +4565,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4633,8 +4618,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4674,8 +4659,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4727,8 +4712,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4768,8 +4753,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4821,8 +4806,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4862,8 +4847,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4915,8 +4900,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -4956,8 +4941,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5009,8 +4994,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5050,8 +5035,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5103,8 +5088,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5144,8 +5129,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5197,8 +5182,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5238,8 +5223,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5291,8 +5276,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5332,8 +5317,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5385,8 +5370,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5426,8 +5411,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5479,8 +5464,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5520,8 +5505,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5573,8 +5558,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5614,8 +5599,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5667,8 +5652,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5708,8 +5693,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5761,8 +5746,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5802,8 +5787,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5855,8 +5840,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5896,8 +5881,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5949,8 +5934,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -5990,8 +5975,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6043,8 +6028,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6084,8 +6069,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6137,8 +6122,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6178,8 +6163,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6231,8 +6216,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6272,8 +6257,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6325,8 +6310,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6366,8 +6351,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6419,8 +6404,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6460,8 +6445,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6513,8 +6498,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6554,8 +6539,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6607,8 +6592,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6648,8 +6633,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6701,8 +6686,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6742,8 +6727,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6795,8 +6780,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6836,8 +6821,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6889,8 +6874,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6930,8 +6915,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -6983,8 +6968,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7024,8 +7009,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7077,8 +7062,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7118,8 +7103,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7171,8 +7156,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7212,8 +7197,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7265,8 +7250,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7306,8 +7291,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7359,8 +7344,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7400,8 +7385,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7453,8 +7438,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7494,8 +7479,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7547,8 +7532,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7588,8 +7573,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7641,8 +7626,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7682,8 +7667,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7735,8 +7720,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7776,8 +7761,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7829,8 +7814,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7870,8 +7855,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7923,8 +7908,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -7964,8 +7949,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8017,8 +8002,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8058,8 +8043,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8111,8 +8096,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8152,8 +8137,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8205,8 +8190,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8246,8 +8231,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8299,8 +8284,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8340,8 +8325,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8393,8 +8378,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8434,8 +8419,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8487,8 +8472,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8528,8 +8513,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8581,8 +8566,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8622,8 +8607,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8675,8 +8660,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8716,8 +8701,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8769,8 +8754,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8810,8 +8795,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8863,8 +8848,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8904,8 +8889,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8957,8 +8942,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -8998,8 +8983,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "detection type": "Fluorescence",
                                         "device type": "plate reader",
+                                        "detection type": "Fluorescence",
                                         "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 7.0,
@@ -9044,6 +9029,21 @@
                     "container type": "well plate"
                 }
             }
-        ]
+        ],
+        "data system document": {
+            "ASM file identifier": "endpoint_singleplate_monochromator_withoutStepLabel.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_singleplate_monochromator_withoutStepLabel.txt",
+            "file name": "endpoint_singleplate_monochromator_withoutStepLabel.txt",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.118",
+            "software name": "Gen5",
+            "software version": "3.12.08"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Synergy H1",
+            "equipment serial number": "Unknown"
+        }
     }
 }
