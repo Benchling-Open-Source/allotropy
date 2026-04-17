@@ -155,9 +155,14 @@ def _extract_kinetic_parameter_error(
         return None
 
     # Search through parameters for matching parameter names
-    for item in kinetic_result.parameters:
-        if item.name.lower() in [name.lower() for name in parameter_names]:
-            return float(item.error) if item.error is not None else None
+    for param in kinetic_result.parameters:
+        if param.name.lower() in [name.lower() for name in parameter_names]:
+            return float(param.error) if param.error is not None else None
+
+    # Also check calculated section for KD error (affinity analysis)
+    for calc in kinetic_result.calculated:
+        if calc.name.lower() in [name.lower() for name in parameter_names]:
+            return float(calc.error) if calc.error is not None else None
 
     return None
 
@@ -418,6 +423,12 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
                                 kinetic_data, ["kd", "koff"]
                             ),
                             "unit": "s^-1",
+                        },
+                        "KD error": {
+                            "value": _extract_kinetic_parameter_error(
+                                kinetic_data, ["KD", "Kd_M"]
+                            ),
+                            "unit": "M",
                         },
                         "Rmax error": {
                             "value": _extract_kinetic_parameter_error(

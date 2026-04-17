@@ -208,6 +208,25 @@ def _parse_parameter_string(param_string: str, parameters_dict: dict[str, Any]) 
                                         else None,
                                         "units": _get_parameter_units(param_name),
                                     }
+                    else:
+                        # Handle direct format: "0:KD|value|error" (for affinity analysis)
+                        param_parts = param_data.split("|")
+                        if len(param_parts) >= 3:
+                            param_name = param_parts[0].lower()  # kd, rmax
+                            value = param_parts[1]
+                            error = param_parts[2]
+
+                            # Extract affinity parameters (KD, Rmax)
+                            if param_name in ["ka", "kd", "rmax", "kon", "koff"]:
+                                parameters_dict[param_name] = {
+                                    "value": float(value)
+                                    if value and value != ""
+                                    else None,
+                                    "error": float(error)
+                                    if error and error != ""
+                                    else None,
+                                    "units": _get_parameter_units(param_name),
+                                }
     except AllotropeParsingError:
         # Silently ignore parsing errors - acceptable for parameter parsing
         pass
@@ -290,11 +309,27 @@ def _extract_kinetic_analysis(
                                     ],
                                 )
 
-                                # Calculate KD from ka and kd if both are present
+                                # Handle KD values from affinity analysis
                                 params = kinetic_analysis[current_flow_cell_id][
                                     "parameters"
                                 ]
-                                if "ka" in params and "kd" in params:
+
+                                # Check if this is affinity analysis (has KD in parameters but not ka)
+                                # In affinity, "kd" is actually the equilibrium KD in Molar units
+                                if "kd" in params and "ka" not in params:
+                                    # This is affinity analysis - move KD to calculated section
+                                    kd_param = params["kd"]
+                                    kinetic_analysis[current_flow_cell_id][
+                                        "calculated"
+                                    ]["KD"] = {
+                                        "value": kd_param.get("value"),
+                                        "error": kd_param.get("error"),
+                                        "units": "M",
+                                    }
+                                    # Remove from parameters to avoid confusion
+                                    del params["kd"]
+                                elif "ka" in params and "kd" in params:
+                                    # This is kinetics analysis - calculate KD from ka and kd
                                     ka_val = params["ka"].get("value")
                                     kd_val = params["kd"].get("value")
                                     if ka_val and kd_val and ka_val != 0:
