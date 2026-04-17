@@ -85,7 +85,7 @@ def validate_asm_schema(asm_dict: dict[str, Any]) -> None:
         resolver = jsonschema.RefResolver(
             base_uri=schema.get("$id", ""),
             referrer=schema,
-            store=store,
+            store=store,  # type: ignore[arg-type]
         )
         validator = jsonschema.validators.Draft202012Validator(
             schema, resolver=resolver, format_checker=FORMAT_CHECKER
