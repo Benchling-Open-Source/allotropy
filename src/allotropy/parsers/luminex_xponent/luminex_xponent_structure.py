@@ -218,8 +218,20 @@ class Measurement:
             msg = f"Could not find 'Dilution Factor' data for: '{location}'."
             raise AllotropeConversionError(msg)
 
-        # Keys in the median data that are not analyte data.
-        metadata_keys = ["Sample", "Total Events"]
+        # Keys in the count data that are not analyte data.
+        metadata_keys = [
+            "Sample",
+            "Total Events",
+            # Per-well extra columns added by v2.2 single-dataset parser
+            "WELL TYPE",
+            "WELL STATUS",
+            "WELL ACQUISITION START",
+            "WELL ACQUISITION END",
+            "TOTAL ACTIVE EVENTS",
+            "TOTAL CLASSIFIED EVENTS",
+            "TOTAL GATED EVENTS",
+            "COUNT %CV",
+        ]
 
         well_location, location_id = cls._get_location_details(location)
         dilution_factor_series = SeriesData(dilution_factor_data.loc[location])

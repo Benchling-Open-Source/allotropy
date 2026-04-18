@@ -69,6 +69,8 @@ CALCULATED_DATA_SECTIONS: dict[str, str] = {
     "Test Result": "(unitless)",
     "% Recovery": "(unitless)",
     "%CV of Replicates": "(unitless)",
+    "Background": "RFU",
+    "Net Normalized Median": "RFU",
 }
 
 # Known metric names in the columns of the single dataset results table
@@ -95,6 +97,11 @@ SINGLE_DATASET_RESULTS_METRIC_WORDS: set[str] = {
     "FACTOR",
     "SETTING",
     "UNITS",
+    "ANALYTE",
+    "NAME",
+    "REGION",
+    "BACKGROUND",
+    "REPLICATE",
 }
 
 # Allowed section names for Luminex Xponent reports. Any other name should raise an error upstream.
