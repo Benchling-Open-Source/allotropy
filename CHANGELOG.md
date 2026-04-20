@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.119] - 2026-04-20
+
+### Added
+
+- Add Intelliflex v2.2 flat CSV format support (#1184)
+- Migrate example_weyland_yutani to REC/2025/03 plate reader schema (#1177)
+- Add technique shorthand to schema scripts (#1178)
+
+### Changed
+
+- Implement modular schema generation  (#1176)
+
 ## [0.1.118] - 2026-04-10
 
 ### Added
