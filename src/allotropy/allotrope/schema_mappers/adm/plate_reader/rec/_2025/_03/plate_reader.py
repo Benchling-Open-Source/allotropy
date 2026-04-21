@@ -3,19 +3,28 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
+from allotropy.allotrope.models.adm.core.rec._2025._03.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
+    AbsorptionProfileDataCube,
+    AbsorptionSpectrumDataCube,
+    ContainerType as ModelContainerType,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
+    FluorescenceEmissionProfileDataCube,
+    FluorescenceEmissionSpectrumDataCube,
+    FluorescenceExcitationSpectrumDataCube,
+    LuminescenceProfileDataCube,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
     PeakItem,
     PeakList,
@@ -24,10 +33,11 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader impo
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
-    TQuantityValueModel,
+    SampleRoleType,
+    ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValueKiloDalton,
     TQuantityValueMilliAbsorbanceUnit,
@@ -43,10 +53,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TDatacube,
-)
-from allotropy.allotrope.models.shared.definitions.units import Unitless
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -237,7 +243,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
-                device_system_document=DeviceSystemDocument(
+                device_system_document=DeviceSystemDocument(  # type: ignore[arg-type]
                     device_identifier=data.metadata.device_identifier,
                     model_number=data.metadata.model_number,
                     equipment_serial_number=data.metadata.equipment_serial_number,
@@ -245,14 +251,14 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=add_custom_information_document(
                     DataSystemDocument(
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
                     ),
                     data.metadata.metadata_custom_info,
                 ),
@@ -274,7 +280,7 @@ class Mapper(SchemaMapper[Data, Model]):
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 experiment_type=measurement_group.experiment_type,
-                container_type=ContainerType.well_plate.value,
+                container_type=ModelContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count
                 ),
@@ -295,7 +301,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
             return self._get_ultraviolet_absorbance_measurement_document(measurement)
@@ -323,7 +329,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = DeviceControlDocumentItem(
             electronic_absorbance_reference_wavelength_setting=quantity_or_none(
                 TQuantityValueNanometer,
@@ -367,7 +373,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             illumination_mode_setting=measurement.illumination_mode_setting,
         )
-        measurement_doc = MeasurementDocument(
+        measurement_doc = MeasurementDocumentItem(
             experimental_data_identifier=measurement.experimental_data_identifier,
             analytical_method_identifier=measurement.analytical_method_identifier,
             measurement_identifier=measurement.identifier,
@@ -395,17 +401,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 processed_data_document=[
                     ProcessedDataDocumentItem(
                         processed_data_identifier=measurement.processed_data_document.identifier,
-                        data_processing_document=(
-                            {
-                                "concentration factor": quantity_or_none(
-                                    TQuantityValueNanogramPerMicroliter,
-                                    measurement.processed_data_document.concentration_factor,
-                                )
-                            }
-                            if measurement.processed_data_document.concentration_factor
-                            is not None
-                            else None
-                        ),
+                        data_processing_document={
+                            "concentration factor": quantity_or_none(
+                                TQuantityValueNanogramPerMicroliter,
+                                measurement.processed_data_document.concentration_factor,
+                            )
+                        }
+                        if measurement.processed_data_document.concentration_factor
+                        is not None
+                        else None,
                         peak_list=PeakList(
                             peak=[
                                 add_custom_information_document(
@@ -431,7 +435,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = DeviceControlDocumentItem(
             device_type=measurement.device_type,
             detection_type=measurement.detection_type,
@@ -448,7 +452,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
-                measurement.scan_position_setting.value
+                ModelScanPositionSettingPlateReader(
+                    measurement.scan_position_setting.value
+                )
                 if measurement.scan_position_setting
                 else None
             ),
@@ -476,7 +482,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             illumination_mode_setting=measurement.illumination_mode_setting,
         )
-        doc = MeasurementDocument(
+        doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             experimental_data_identifier=measurement.experimental_data_identifier,
             analytical_method_identifier=measurement.analytical_method_identifier,
@@ -506,7 +512,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = DeviceControlDocumentItem(
             device_type=measurement.device_type,
             detection_type=measurement.detection_type,
@@ -535,7 +541,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
-                measurement.scan_position_setting.value
+                ModelScanPositionSettingPlateReader(
+                    measurement.scan_position_setting.value
+                )
                 if measurement.scan_position_setting
                 else None
             ),
@@ -563,7 +571,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             illumination_mode_setting=measurement.illumination_mode_setting,
         )
-        measurement_doc = MeasurementDocument(
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             experimental_data_identifier=measurement.experimental_data_identifier,
             analytical_method_identifier=measurement.analytical_method_identifier,
@@ -594,12 +602,10 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_profile_data_cube_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         if not measurement.profile_data_cube:
             msg = "Profile data cube is required for cube detector measurements"
             raise AllotropyParserError(msg)
-
-        profile_data_cube = get_data_cube(measurement.profile_data_cube, TDatacube)
 
         device_control_document = DeviceControlDocumentItem(
             device_type=measurement.device_type,
@@ -657,7 +663,7 @@ class Mapper(SchemaMapper[Data, Model]):
             illumination_mode_setting=measurement.illumination_mode_setting,
         )
 
-        return MeasurementDocument(
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             experimental_data_identifier=measurement.experimental_data_identifier,
             analytical_method_identifier=measurement.analytical_method_identifier,
@@ -669,18 +675,22 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             absorption_profile_data_cube=(
-                profile_data_cube
+                get_data_cube(measurement.profile_data_cube, AbsorptionProfileDataCube)
                 if measurement.type_
                 == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
                 else None
             ),
             luminescence_profile_data_cube=(
-                profile_data_cube
+                get_data_cube(
+                    measurement.profile_data_cube, LuminescenceProfileDataCube
+                )
                 if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
                 else None
             ),
             fluorescence_emission_profile_data_cube=(
-                profile_data_cube
+                get_data_cube(
+                    measurement.profile_data_cube, FluorescenceEmissionProfileDataCube
+                )
                 if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
                 else None
             ),
@@ -691,12 +701,10 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_spectrum_data_cube_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         if not measurement.spectrum_data_cube:
             msg = "Spectrum data cube is required for spectrum data cube measurements"
             raise AllotropyParserError(msg)
-
-        spectrum_data_cube = get_data_cube(measurement.spectrum_data_cube, TDatacube)
 
         device_control_document = DeviceControlDocumentItem(
             device_type=measurement.device_type,
@@ -726,7 +734,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.detector_distance_setting,
             ),
             scan_position_setting__plate_reader_=(
-                measurement.scan_position_setting.value
+                ModelScanPositionSettingPlateReader(
+                    measurement.scan_position_setting.value
+                )
                 if measurement.scan_position_setting
                 else None
             ),
@@ -755,7 +765,7 @@ class Mapper(SchemaMapper[Data, Model]):
             illumination_mode_setting=measurement.illumination_mode_setting,
         )
 
-        measurement_doc = MeasurementDocument(
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             experimental_data_identifier=measurement.experimental_data_identifier,
             analytical_method_identifier=measurement.analytical_method_identifier,
@@ -773,26 +783,38 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+            absorption_spectrum_data_cube=(
+                get_data_cube(
+                    measurement.spectrum_data_cube, AbsorptionSpectrumDataCube
+                )
+                if measurement.type_
+                == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+                else None
+            ),
+            fluorescence_emission_spectrum_data_cube=(
+                get_data_cube(
+                    measurement.spectrum_data_cube, FluorescenceEmissionSpectrumDataCube
+                )
+                if measurement.type_
+                in [
+                    MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+                    MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+                ]
+                else None
+            ),
+            fluorescence_excitation_spectrum_data_cube=(
+                get_data_cube(
+                    measurement.spectrum_data_cube,
+                    FluorescenceExcitationSpectrumDataCube,
+                )
+                if measurement.type_
+                in [
+                    MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+                    MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
+                ]
+                else None
+            ),
         )
-
-        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM:
-            measurement_doc.absorption_spectrum_data_cube = spectrum_data_cube
-        elif measurement.type_ in [
-            MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
-            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
-        ]:
-            measurement_doc.fluorescence_emission_spectrum_data_cube = (
-                spectrum_data_cube
-            )
-        elif measurement.type_ in [
-            MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
-            MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
-        ]:
-            measurement_doc.fluorescence_excitation_spectrum_data_cube = (
-                spectrum_data_cube
-            )
-
-        return measurement_doc
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         sample_doc = SampleDocument(
@@ -800,11 +822,7 @@ class Mapper(SchemaMapper[Data, Model]):
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
             well_location_identifier=measurement.well_location_identifier,
-            sample_role_type=(
-                measurement.sample_role_type.value
-                if measurement.sample_role_type
-                else None
-            ),
+            sample_role_type=measurement.sample_role_type,
             mass_concentration=quantity_or_none(
                 TQuantityValuePicogramPerMilliliter,
                 measurement.mass_concentration,
@@ -827,9 +845,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     calculated_data_identifier=calculated_data_item.uuid,
                     calculated_data_name=calculated_data_item.name,
                     calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValueModel(
+                    calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
-                        unit=calculated_data_item.unit or Unitless.unit,
+                        unit=calculated_data_item.unit or "(unitless)",
                     ),
                     data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[

@@ -888,7 +888,7 @@
                                     {
                                         "device type": "HPLC",
                                         "start time setting": "2024-01-02T11:00:00+00:00",
-                                        "pre column pressure data cube": {
+                                        "pre-column pressure data cube": {
                                             "label": "PreC pressure",
                                             "cube-structure": {
                                                 "dimensions": [
@@ -915,7 +915,7 @@
                                                 ]
                                             }
                                         },
-                                        "post column pressure data cube": {
+                                        "post-column pressure data cube": {
                                             "label": "PostC pressure",
                                             "cube-structure": {
                                                 "dimensions": [
@@ -1363,7 +1363,7 @@
                                     "unit": "mL"
                                 },
                                 "fraction role": "Out-Waste",
-                                "@type": "Fraction",
+                                "field type": "Fraction",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1379,7 +1379,7 @@
                                     "value": 73.47809,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1395,7 +1395,7 @@
                                     "value": 385.0173,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1411,7 +1411,7 @@
                                     "value": 385.154,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1427,7 +1427,7 @@
                                     "value": 455.8084,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1443,7 +1443,7 @@
                                     "value": 586.219,
                                     "unit": "mL"
                                 },
-                                "@type": "Method",
+                                "field type": "Method",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1460,7 +1460,7 @@
                                     "unit": "mL"
                                 },
                                 "fraction role": "Frac",
-                                "@type": "Fraction",
+                                "field type": "Fraction",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"
@@ -1477,7 +1477,7 @@
                                     "unit": "mL"
                                 },
                                 "fraction role": "Out-Waste",
-                                "@type": "Fraction",
+                                "field type": "Fraction",
                                 "custom information document": {
                                     "EventSubType": "Undefined",
                                     "InstructionFeedback": "0"

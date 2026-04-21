@@ -1,0 +1,265 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/surface-plasmon-resonance/WD/2024/12/surface-plasmon-resonance-binding-assay.schema",
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "method name": {
+          "$asm.pattern": "value datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001606",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+        },
+        "ligand identifier": {
+          "$asm.pattern": "value datum",
+          "$asm.property-class": "TODO",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+        },
+        "device control aggregate document": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "device control document": {
+              "type": "array",
+              "$asm.array-ordered": true,
+              "$asm.array-mixed": false,
+              "$asm.pattern": "indexed datum",
+              "items": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                    "$asm.pattern": "aggregate datum",
+                    "properties": {
+                      "flow cell identifier": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "TODO",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                      },
+                      "flow rate": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001881",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/\u00b5L~1min"
+                          }
+                        ]
+                      },
+                      "contact time": {
+                        "$asm.property-class": "TODO",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/s"
+                          }
+                        ]
+                      },
+                      "dilution factor": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002758",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/%"
+                          }
+                        ]
+                      },
+                      "flow path": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "TODO",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                      }
+                    }
+                  }
+                ]
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "sensorgram data cube": {
+          "$asm.property-class": "TODO",
+          "$asm.pattern": "datacube",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema#/$defs/tDatacube"
+            },
+            {
+              "properties": {
+                "cube-structure": {
+                  "properties": {
+                    "dimensions": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "prefixItems": [
+                        {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "concept": {
+                                  "const": "elapsed time"
+                                },
+                                "unit": {
+                                  "const": "s"
+                                },
+                                "@componentDatatype": {
+                                  "const": "double"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "measures": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "contains": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "concept": {
+                                "const": "resonance"
+                              },
+                              "unit": {
+                                "const": "RU"
+                              },
+                              "@componentDatatype": {
+                                "const": "double"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "sensor chip document": {
+          "$asm.property-class": "TODO",
+          "$asm.pattern": "aggregate datum",
+          "type": "object",
+          "required": [
+            "sensor chip identifier"
+          ],
+          "properties": {
+            "sensor chip identifier": {
+              "$asm.pattern": "value datum",
+              "$asm.property-class": "TODO",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+            },
+            "sensor chip type": {
+              "$asm.pattern": "value datum",
+              "$asm.property-class": "TODO",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+            },
+            "product manufacturer": {
+              "$asm.pattern": "value datum",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+            },
+            "lot number": {
+              "$asm.pattern": "value datum",
+              "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000132",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+            },
+            "custom information aggregate document": {
+              "allOf": [
+                {
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema#/$defs/customInformationAggregateDocument"
+                }
+              ]
+            }
+          }
+        },
+        "processed data aggregate document": {
+          "properties": {
+            "processed data document": {
+              "items": {
+                "properties": {
+                  "report point aggregate document": {
+                    "properties": {
+                      "report point document": {
+                        "items": {
+                          "properties": {
+                            "absolute resonance": {
+                              "$asm.property-class": "TODO",
+                              "$asm.pattern": "quantity datum",
+                              "allOf": [
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/RU"
+                                }
+                              ]
+                            },
+                            "report point identifier": {
+                              "$asm.pattern": "value datum",
+                              "$asm.property-class": "TODO",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                            },
+                            "identifier role": {
+                              "$asm.pattern": "value datum",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/role#AFRL_0000007",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                            },
+                            "relative resonance": {
+                              "$asm.property-class": "TODO",
+                              "$asm.pattern": "quantity datum",
+                              "allOf": [
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/RU"
+                                }
+                              ]
+                            },
+                            "time setting": {
+                              "$asm.pattern": "quantity datum",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002288",
+                              "allOf": [
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/s"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

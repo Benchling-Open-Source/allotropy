@@ -1,38 +1,40 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    DataRegionAggregateDocument,
-    DataRegionDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
-    ElectrophoresisAggregateDocument,
-    ElectrophoresisDocumentItem,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
+    DataRegionAggregateDocument,
+    DataRegionDocumentItem,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
+    ElectrophoresisAggregateDocument,
+    ElectrophoresisDocumentItem,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
-    Peak,
+    PeakItem,
     PeakList,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValuePercent,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-    TQuantityValue,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -160,14 +162,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     equipment_serial_number=data.metadata.equipment_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
-                    UNC_path=data.metadata.unc_path,
+                    unc_path=data.metadata.unc_path,
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     file_name=data.metadata.file_name,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ASM_file_identifier=data.metadata.file_identifier,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
+                    asm_file_identifier=data.metadata.file_identifier,
                 ),
                 electrophoresis_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -198,13 +200,12 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
-        return MeasurementDocument(
+    ) -> MeasurementDocumentItem:
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
             compartment_temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius,
-                measurement.compartment_temperature,
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -255,8 +256,8 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def _get_peak(self, peak: ProcessedDataFeature) -> Peak:
-        return Peak(
+    def _get_peak(self, peak: ProcessedDataFeature) -> PeakItem:
+        return PeakItem(
             identifier=peak.identifier,
             peak_name=peak.name,
             comment=peak.comment,
@@ -266,26 +267,14 @@ class Mapper(SchemaMapper[Data, Model]):
                 if peak.height
                 else None
             ),
-            peak_position=(
-                quantity_or_none_from_unit(peak.position_unit, peak.position)  # type: ignore[arg-type]
-                if peak.position
-                else None
-            ),
+            peak_position=quantity_or_none_from_unit(peak.position_unit, peak.position),  # type: ignore[arg-type]
             relative_corrected_peak_area=(
                 quantity_or_none(TQuantityValuePercent, peak.relative_corrected_area)
                 if peak.relative_corrected_area
                 else None
             ),
-            peak_start=(
-                quantity_or_none_from_unit(peak.start_unit, peak.start)  # type: ignore[arg-type]
-                if peak.start
-                else None
-            ),
-            peak_end=(
-                quantity_or_none_from_unit(peak.end_unit, peak.end)  # type: ignore[arg-type]
-                if peak.end
-                else None
-            ),
+            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=(
                 quantity_or_none(TQuantityValueUnitless, peak.area)
                 if peak.area
@@ -305,17 +294,8 @@ class Mapper(SchemaMapper[Data, Model]):
             data_region_identifier=data_region.identifier,
             data_region_name=data_region.name,
             comment=data_region.comment,
-            # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-            data_region_start=(
-                quantity_or_none_from_unit(data_region.start_unit, data_region.start)  # type: ignore[arg-type]
-                if data_region.start
-                else None
-            ),
-            data_region_end=(
-                quantity_or_none_from_unit(data_region.end_unit, data_region.end)  # type: ignore[arg-type]
-                if data_region.end
-                else None
-            ),
+            data_region_start=quantity_or_none_from_unit(data_region.start_unit, data_region.start),  # type: ignore[arg-type]
+            data_region_end=quantity_or_none_from_unit(data_region.end_unit, data_region.end),  # type: ignore[arg-type]
             data_region_area=(
                 TQuantityValueUnitless(value=data_region.area)
                 if data_region.area

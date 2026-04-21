@@ -10,6 +10,436 @@ class HasUnit:
 
 
 @dataclass(frozen=True, kw_only=True)
+class Abampere(HasUnit):
+    unit: str = "abA"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Abcoulomb(HasUnit):
+    unit: str = "abC"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbcoulombPerSquareCentimeter(HasUnit):
+    unit: str = "abC/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Abfarad(HasUnit):
+    unit: str = "abF"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbfaradPerCentimeter(HasUnit):
+    unit: str = "abF/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Abhenry(HasUnit):
+    unit: str = "abH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Abohm(HasUnit):
+    unit: str = "abΩ"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Absiemen(HasUnit):
+    unit: str = "aS"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbsorbanceUnit(HasUnit):
+    unit: str = "AU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbsorbanceUnitTimesSecond(HasUnit):
+    unit: str = "AU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Abtesla(HasUnit):
+    unit: str = "abT"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Abvolt(HasUnit):
+    unit: str = "abV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbvoltCentimeter(HasUnit):
+    unit: str = "abV cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbvoltPerCentimeter(HasUnit):
+    unit: str = "abV/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AbvoltSecond(HasUnit):
+    unit: str = "abV-s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Acre(HasUnit):
+    unit: str = "ac"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AcreFoot(HasUnit):
+    unit: str = "ac ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Ampere(HasUnit):
+    unit: str = "A"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmpereHour(HasUnit):
+    unit: str = "A h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmperePerDegree(HasUnit):
+    unit: str = "A/deg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmperePerJoule(HasUnit):
+    unit: str = "A J^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmperePerMeter(HasUnit):
+    unit: str = "A/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmperePerRadian(HasUnit):
+    unit: str = "A/rad"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmperePerSquareMeter(HasUnit):
+    unit: str = "A/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmpereTurn(HasUnit):
+    unit: str = "At"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmpereTurnPerInch(HasUnit):
+    unit: str = "At/in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AmpereTurnPerMeter(HasUnit):
+    unit: str = "At/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Angstrom(HasUnit):
+    unit: str = "Å"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ArbitraryUnit(HasUnit):
+    unit: str = "arb'U"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ArbitraryUnitPerVolt(HasUnit):
+    unit: str = "arb'U/V"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ArbitraryUnitTimesHertz(HasUnit):
+    unit: str = "arb'U.Hz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ArcMinute(HasUnit):
+    unit: str = "arcMin"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ArcSecond(HasUnit):
+    unit: str = "arcSec"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Are(HasUnit):
+    unit: str = "a"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AstronomicalUnit(HasUnit):
+    unit: str = "au"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AtmosphereStandard(HasUnit):
+    unit: str = "atm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AtmosphereTechnical(HasUnit):
+    unit: str = "at"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AtomicMassUnit(HasUnit):
+    unit: str = "amu"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AtomicNumber(HasUnit):
+    unit: str = "Z"
+
+
+@dataclass(frozen=True, kw_only=True)
+class AvoirdupoisPound(HasUnit):
+    unit: str = "lb_av"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Ban(HasUnit):
+    unit: str = "ban"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Bar(HasUnit):
+    unit: str = "bar"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Barn(HasUnit):
+    unit: str = "b"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Barrel(HasUnit):
+    unit: str = "bbl"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Becquerel(HasUnit):
+    unit: str = "Bq"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BecquerelPerGram(HasUnit):
+    unit: str = "Bq/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BillionCFU(HasUnit):
+    unit: str = "10^9.CFU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Biot(HasUnit):
+    unit: str = "Bi"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Bit(HasUnit):
+    unit: str = "bit"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BitsPerSecond(HasUnit):
+    unit: str = "bps"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BoardFoot(HasUnit):
+    unit: str = "Bf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BreathPerMinute(HasUnit):
+    unit: str = "breaths/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BritishThermalUnitInternationalTable(HasUnit):
+    unit: str = "Btu (it)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BritishThermalUnitThermochemical(HasUnit):
+    unit: str = "Btu (th)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuFoot(HasUnit):
+    unit: str = "Btu ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuFootPerSquareFootHourDegreeFahrenheit(HasUnit):
+    unit: str = "Btu ft/(h ft^2 °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuInch(HasUnit):
+    unit: str = "Btu in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuInchPerSquareFootHourDegreeFahrenheit(HasUnit):
+    unit: str = "Btu in/(h ft^2 °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuInchPerSquareFootSecondDegreeFahrenheit(HasUnit):
+    unit: str = "Btu in/(ft^2 s °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerDegreeFahrenheit(HasUnit):
+    unit: str = "Btu/°F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerDegreeRankine(HasUnit):
+    unit: str = "Btu/°R"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerHour(HasUnit):
+    unit: str = "Btu/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerHourSquareFoot(HasUnit):
+    unit: str = "Btu/(h ft^2)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerPound(HasUnit):
+    unit: str = "Btu/lb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerPoundDegreeFahrenheit(HasUnit):
+    unit: str = "Btu/(lb °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerPoundDegreeRankine(HasUnit):
+    unit: str = "Btu/(lb °R)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerPoundMole(HasUnit):
+    unit: str = "Btu/(lb mol)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerPoundMoleDegreeFahrenheit(HasUnit):
+    unit: str = "Btu/(lb mol °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerSecond(HasUnit):
+    unit: str = "Btu/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerSecondSquareFoot(HasUnit):
+    unit: str = "Btu/(s ft^2)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerSquareFoot(HasUnit):
+    unit: str = "Btu/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerSquareFootHourDegreeFahrenheit(HasUnit):
+    unit: str = "Btu/(h ft^2 °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class BtuPerSquareFootSecondDegreeFahrenheit(HasUnit):
+    unit: str = "Btu/(ft^2 s °F)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Bushel(HasUnit):
+    unit: str = "bu"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Byte(HasUnit):
+    unit: str = "B"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CCID50PerMilliliter(HasUnit):
+    unit: str = "CCID50/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalorieNutritional(HasUnit):
+    unit: str = "Cal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CaloriePerGramSecond(HasUnit):
+    unit: str = "cal/(g.s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CaloriePerSecond(HasUnit):
+    unit: str = "cal/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalorieThermochemical(HasUnit):
+    unit: str = "cal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Candela(HasUnit):
+    unit: str = "cd"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CandelaPerSquareInch(HasUnit):
+    unit: str = "cd/in^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CandelaPerSquareMeter(HasUnit):
+    unit: str = "cd/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Candle(HasUnit):
+    unit: str = "cdl"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Candlepower(HasUnit):
+    unit: str = "cp"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Carat(HasUnit):
+    unit: str = "Nm/ct"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Cell(HasUnit):
     unit: str = "cell"
 
@@ -17,6 +447,106 @@ class Cell(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class Centimeter(HasUnit):
     unit: str = "cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CentimeterOfWater(HasUnit):
+    unit: str = "cmH2O"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CentimeterPerSecond(HasUnit):
+    unit: str = "cm/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CentimeterPerSecondSquared(HasUnit):
+    unit: str = "cm/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CentimeterSecondDegreeCelsius(HasUnit):
+    unit: str = "cm s °C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Centipoise(HasUnit):
+    unit: str = "cP"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Centistokes(HasUnit):
+    unit: str = "cSt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Chain(HasUnit):
+    unit: str = "ch"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CircularMil(HasUnit):
+    unit: str = "cmil"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Clo(HasUnit):
+    unit: str = "clo"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ColonyFormingUnit(HasUnit):
+    unit: str = "CFU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ColumnVolumePerHour(HasUnit):
+    unit: str = "CV/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Cord(HasUnit):
+    unit: str = "cord"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Coulomb(HasUnit):
+    unit: str = "C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombMeter(HasUnit):
+    unit: str = "C m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombPerCubicMeter(HasUnit):
+    unit: str = "C m^-3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombPerKilogram(HasUnit):
+    unit: str = "C/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombPerMeter(HasUnit):
+    unit: str = "C/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombPerMole(HasUnit):
+    unit: str = "C/mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombPerSquareMeter(HasUnit):
+    unit: str = "C m^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CoulombSquareMeter(HasUnit):
+    unit: str = "C m^2"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -45,8 +575,118 @@ class CountsTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class CubicCentimeter(HasUnit):
+    unit: str = "cm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicCentimeterPerGramAtSTP(HasUnit):
+    unit: str = "cm^3/g STP"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicCentimeterPerMinute(HasUnit):
+    unit: str = "cm^3/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicCoulombMeterPerSquareJoule(HasUnit):
+    unit: str = "C^3 m^3 J^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicFoot(HasUnit):
+    unit: str = "ft^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicFootPerMinute(HasUnit):
+    unit: str = "ft^3/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicFootPerSecond(HasUnit):
+    unit: str = "ft^3/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicInch(HasUnit):
+    unit: str = "in^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicInchPerMinute(HasUnit):
+    unit: str = "in^3/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicKilometerPerSecondSquared(HasUnit):
+    unit: str = "km^3/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeter(HasUnit):
+    unit: str = "m^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerHour(HasUnit):
+    unit: str = "m^3/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerKelvin(HasUnit):
+    unit: str = "m^3/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerKilogram(HasUnit):
+    unit: str = "m^3/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerKilogramSecondSquared(HasUnit):
+    unit: str = "m^3 kg^-1 s^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerMole(HasUnit):
+    unit: str = "m^3 mol^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerSecond(HasUnit):
+    unit: str = "m^3/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMeterPerSecondSquared(HasUnit):
+    unit: str = "m^3/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicMile(HasUnit):
+    unit: str = "mi^3"
+
+
+@dataclass(frozen=True, kw_only=True)
 class CubicMillimeter(HasUnit):
     unit: str = "mm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicYard(HasUnit):
+    unit: str = "yd^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class CubicYardPerMinute(HasUnit):
+    unit: str = "yd^3/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Curie(HasUnit):
+    unit: str = "Ci"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -55,8 +695,568 @@ class Dalton(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Dalton2(HasUnit):
+    unit: str = "u"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Day(HasUnit):
+    unit: str = "d"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DaySidereal(HasUnit):
+    unit: str = "d (s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Debye(HasUnit):
+    unit: str = "D"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Decibel(HasUnit):
+    unit: str = "dB"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DecibelCarrier(HasUnit):
+    unit: str = "dBc"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DecibelReferredToOneMilliwatt(HasUnit):
+    unit: str = "dBm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Decimeter(HasUnit):
+    unit: str = "dm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeAngle(HasUnit):
+    unit: str = "°"
+
+
+@dataclass(frozen=True, kw_only=True)
 class DegreeCelsius(HasUnit):
     unit: str = "degC"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeCelsiusCentimeter(HasUnit):
+    unit: str = "cm-degC"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeCelsiusPerHour(HasUnit):
+    unit: str = "°C/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeCelsiusPerMinute(HasUnit):
+    unit: str = "°C/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeCelsiusPerSecond(HasUnit):
+    unit: str = "°C/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeCentigrade(HasUnit):
+    unit: str = "°C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeFahrenheit(HasUnit):
+    unit: str = "°F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeFahrenheitHour(HasUnit):
+    unit: str = "°F h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeFahrenheitHourPerBtu(HasUnit):
+    unit: str = "°F h/Btu"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeFahrenheitPerHour(HasUnit):
+    unit: str = "°F/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeFahrenheitPerMinute(HasUnit):
+    unit: str = "°F/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeFahrenheitPerSecond(HasUnit):
+    unit: str = "°F/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreePerHour(HasUnit):
+    unit: str = "°/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreePerMinute(HasUnit):
+    unit: str = "°/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreePerSecond(HasUnit):
+    unit: str = "°/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreePerSecondSquared(HasUnit):
+    unit: str = "° s^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeRankine(HasUnit):
+    unit: str = "°R"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeRankinePerHour(HasUnit):
+    unit: str = "°R/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeRankinePerMinute(HasUnit):
+    unit: str = "°R/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeRankinePerSecond(HasUnit):
+    unit: str = "°R/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DegreeTimesMilliliterPerGramTimesDecimeter(HasUnit):
+    unit: str = "deg·mL·g−1·dm−1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DimensionlessMicroPerBar(HasUnit):
+    unit: str = "10^-6/bar"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Diopter(HasUnit):
+    unit: str = "dpt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Drop(HasUnit):
+    unit: str = "drp"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DryGallonUS(HasUnit):
+    unit: str = "dry_gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DryPintUS(HasUnit):
+    unit: str = "dry_pt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DryQuartUS(HasUnit):
+    unit: str = "dry_qt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Dyne(HasUnit):
+    unit: str = "dyn"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DyneCentimeter(HasUnit):
+    unit: str = "dyn cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class DynePerSquareCentimeter(HasUnit):
+    unit: str = "dyn/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class E(HasUnit):
+    unit: str = "e"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ElectronVolt(HasUnit):
+    unit: str = "eV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ElectronVoltPerKelvin(HasUnit):
+    unit: str = "eV/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ElectronVoltPerTesla(HasUnit):
+    unit: str = "eV/T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ElectronVoltSecond(HasUnit):
+    unit: str = "eV s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class EnzymeUnit(HasUnit):
+    unit: str = "U"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Erg(HasUnit):
+    unit: str = "erg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ErgPerCubicCentimeter(HasUnit):
+    unit: str = "erg/cm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ErgPerSecond(HasUnit):
+    unit: str = "erg/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ErgPerSquareCentimeterSecond(HasUnit):
+    unit: str = "erg/(cm^2 s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ErgSecond(HasUnit):
+    unit: str = "erg s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Euro(HasUnit):
+    unit: str = "€"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Farad(HasUnit):
+    unit: str = "F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FaradPerMeter(HasUnit):
+    unit: str = "F/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Faraday(HasUnit):
+    unit: str = "Fd"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Fathom(HasUnit):
+    unit: str = "fath"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Femtogram(HasUnit):
+    unit: str = "fg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerFemtoliter(HasUnit):
+    unit: str = "fg/fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerLiter(HasUnit):
+    unit: str = "fg/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerMicroliter(HasUnit):
+    unit: str = "fg/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerMilliliter(HasUnit):
+    unit: str = "fg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerNanoliter(HasUnit):
+    unit: str = "fg/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerPicoliter(HasUnit):
+    unit: str = "fg/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerSquareCentimeter(HasUnit):
+    unit: str = "fg/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FemtogramPerSquareMeter(HasUnit):
+    unit: str = "fg/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Femtoliter(HasUnit):
+    unit: str = "fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Femtometer(HasUnit):
+    unit: str = "fm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Femtomolar(HasUnit):
+    unit: str = "fmol/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Femtomole(HasUnit):
+    unit: str = "fmol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Fermi(HasUnit):
+    unit: str = "fermi"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Flight(HasUnit):
+    unit: str = "flight"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FocusFormingUnitPerMilliliter(HasUnit):
+    unit: str = "FFU/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Foot(HasUnit):
+    unit: str = "ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootCandle(HasUnit):
+    unit: str = "fc"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootLambert(HasUnit):
+    unit: str = "ft L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootOfWater(HasUnit):
+    unit: str = "ftH2O"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPerHour(HasUnit):
+    unit: str = "ft/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPerMinute(HasUnit):
+    unit: str = "ft/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPerSecond(HasUnit):
+    unit: str = "ft/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPerSecondSquared(HasUnit):
+    unit: str = "ft/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForce(HasUnit):
+    unit: str = "ft lbf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForcePerHour(HasUnit):
+    unit: str = "ft lbf/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForcePerMinute(HasUnit):
+    unit: str = "ft lbf/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForcePerSecond(HasUnit):
+    unit: str = "ft lbf/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForcePerSquareFoot(HasUnit):
+    unit: str = "ft lbf/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForcePerSquareFootSecond(HasUnit):
+    unit: str = "ft lbf/(ft^2 s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForcePerSquareMeter(HasUnit):
+    unit: str = "ft lbf/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundForceSecond(HasUnit):
+    unit: str = "lbf/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootPoundal(HasUnit):
+    unit: str = "ft-pdl"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FootUSSurvey(HasUnit):
+    unit: str = "ftUS"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FractionalArea(HasUnit):
+    unit: str = "fa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class FramePerSecond(HasUnit):
+    unit: str = "fps"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Franklin(HasUnit):
+    unit: str = "Fr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Furlong(HasUnit):
+    unit: str = "fur"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gal(HasUnit):
+    unit: str = "Gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GallonImperial(HasUnit):
+    unit: str = "imp gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GallonUS(HasUnit):
+    unit: str = "US gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GallonUSPerDay(HasUnit):
+    unit: str = "gal/d"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GallonUSPerMinute(HasUnit):
+    unit: str = "gal/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gamma(HasUnit):
+    unit: str = "gamma"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gauss(HasUnit):
+    unit: str = "Gs"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GigaElectronVolt(HasUnit):
+    unit: str = "GeV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GigaHertz(HasUnit):
+    unit: str = "GHz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gilbert(HasUnit):
+    unit: str = "Gi"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GlossUnit(HasUnit):
+    unit: str = "GU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gon(HasUnit):
+    unit: str = "gon"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Grad(HasUnit):
+    unit: str = "grad"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Grade(HasUnit):
+    unit: str = "grd"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Grain(HasUnit):
+    unit: str = "gr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GrainPerGallon(HasUnit):
+    unit: str = "gr/gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gram(HasUnit):
+    unit: str = "g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramDegreeCelsius(HasUnit):
+    unit: str = "g °C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerCubicCentimeter(HasUnit):
+    unit: str = "g/cm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerFemtoliter(HasUnit):
+    unit: str = "g/fL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -65,8 +1265,323 @@ class GramPerLiter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class GramPerMicroliter(HasUnit):
+    unit: str = "g/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerMilliliter(HasUnit):
+    unit: str = "g/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerMole(HasUnit):
+    unit: str = "g/mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerNanoliter(HasUnit):
+    unit: str = "g/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerPicoliter(HasUnit):
+    unit: str = "g/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerSquareCentimeter(HasUnit):
+    unit: str = "g/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramPerSquareMeter(HasUnit):
+    unit: str = "g/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GramsPerMinute(HasUnit):
+    unit: str = "g/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gravity(HasUnit):
+    unit: str = "G"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Gray(HasUnit):
+    unit: str = "Gy"
+
+
+@dataclass(frozen=True, kw_only=True)
+class GrayPerSecond(HasUnit):
+    unit: str = "Gy/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Hartree(HasUnit):
+    unit: str = "E_h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HeartBeatsPerMinute(HasUnit):
+    unit: str = "BPM"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Hectare(HasUnit):
+    unit: str = "ha"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Henry(HasUnit):
+    unit: str = "H"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HenryPerMeter(HasUnit):
+    unit: str = "H/m"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Hertz(HasUnit):
     unit: str = "Hz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HertzPerKelvin(HasUnit):
+    unit: str = "Hz/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HertzPerTesla(HasUnit):
+    unit: str = "Hz/T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HertzPerVolt(HasUnit):
+    unit: str = "Hz/V"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HertzTimesSecond(HasUnit):
+    unit: str = "Hz.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Horsepower(HasUnit):
+    unit: str = "HP"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HorsepowerBoiler(HasUnit):
+    unit: str = "hp/boiler"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HorsepowerElectric(HasUnit):
+    unit: str = "hp/V"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HorsepowerMetric(HasUnit):
+    unit: str = "hp/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HorsepowerWater(HasUnit):
+    unit: str = "hp/H2O"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Hour(HasUnit):
+    unit: str = "h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HourSidereal(HasUnit):
+    unit: str = "hr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HourSquareFoot(HasUnit):
+    unit: str = "h ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HundredWeightLong(HasUnit):
+    unit: str = "lcwt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class HundredWeightShort(HasUnit):
+    unit: str = "scwt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Inch(HasUnit):
+    unit: str = "in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class InchOfMercury(HasUnit):
+    unit: str = "inHg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class InchOfWater(HasUnit):
+    unit: str = "inAq"
+
+
+@dataclass(frozen=True, kw_only=True)
+class InchPerSecondSquared(HasUnit):
+    unit: str = "in/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class InchPoundForce(HasUnit):
+    unit: str = "in lbf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class InternationalUnit(HasUnit):
+    unit: str = "IU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class InternationalUnitPerLiter(HasUnit):
+    unit: str = "IU/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Joule(HasUnit):
+    unit: str = "J"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JouleMeterPerMole(HasUnit):
+    unit: str = "J m mol^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerCubicMeter(HasUnit):
+    unit: str = "J/m^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerCubicMeterKelvin(HasUnit):
+    unit: str = "J/(m^3 K)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerDegreeCelsius(HasUnit):
+    unit: str = "J/°C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerGram(HasUnit):
+    unit: str = "J/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerGramDegreeCelsius(HasUnit):
+    unit: str = "J/(g °C)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerKelvin(HasUnit):
+    unit: str = "J/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerKilogram(HasUnit):
+    unit: str = "J/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerKilogramKelvin(HasUnit):
+    unit: str = "J/(kg K)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerKilogramKelvinPerCubicMeter(HasUnit):
+    unit: str = "J/(kg K m^3)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerKilogramKelvinPerPascal(HasUnit):
+    unit: str = "J/(kg K Pa)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerMole(HasUnit):
+    unit: str = "J/mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerMoleKelvin(HasUnit):
+    unit: str = "J mol^-1 K^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerSquareMeter(HasUnit):
+    unit: str = "J/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerSquareTesla(HasUnit):
+    unit: str = "J T^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JoulePerTesla(HasUnit):
+    unit: str = "J/T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JouleSecond(HasUnit):
+    unit: str = "J s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class JouleSecondPerMole(HasUnit):
+    unit: str = "J s mol^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Katal(HasUnit):
+    unit: str = "kat"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kelvin(HasUnit):
+    unit: str = "K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KelvinPerHour(HasUnit):
+    unit: str = "K/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KelvinPerMinute(HasUnit):
+    unit: str = "K/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KelvinPerSecond(HasUnit):
+    unit: str = "K/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KelvinPerTesla(HasUnit):
+    unit: str = "K/T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KelvinPerWatt(HasUnit):
+    unit: str = "K/W"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -75,8 +1590,323 @@ class KiloDalton(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class KiloElectronVolt(HasUnit):
+    unit: str = "keV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloElectronVoltPerMicrometer(HasUnit):
+    unit: str = "keV/µm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloHertz(HasUnit):
+    unit: str = "kHz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloJoulePerMoleKelvin(HasUnit):
+    unit: str = "kJ/(mol K)"
+
+
+@dataclass(frozen=True, kw_only=True)
 class KiloPascal(HasUnit):
     unit: str = "kPa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloPascalAbsolute(HasUnit):
+    unit: str = "kPaA"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloPond(HasUnit):
+    unit: str = "kp"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloVolt(HasUnit):
+    unit: str = "kV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilobitsPerSecond(HasUnit):
+    unit: str = "kbps"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kilocalorie(HasUnit):
+    unit: str = "kcal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerCentimeterSecondDegreeCelsius(HasUnit):
+    unit: str = "cal/(cm s °C)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerGram(HasUnit):
+    unit: str = "kcal/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerGramDegreeCelsius(HasUnit):
+    unit: str = "kcal/(g °C)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerMinute(HasUnit):
+    unit: str = "kcal/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerMole(HasUnit):
+    unit: str = "kcal/mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerMoleDegreeCelsius(HasUnit):
+    unit: str = "kcal/(mol °C)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerSecond(HasUnit):
+    unit: str = "kcal/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerSquareCentimeter(HasUnit):
+    unit: str = "kcal/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerSquareCentimeterMinute(HasUnit):
+    unit: str = "kcal/(cm^2 min)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilocaloriePerSquareCentimeterSecond(HasUnit):
+    unit: str = "kcal/(cm^2 s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kilogram(HasUnit):
+    unit: str = "kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramForce(HasUnit):
+    unit: str = "kgf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramForceMeter(HasUnit):
+    unit: str = "kgf m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramForcePerSquareCentimeter(HasUnit):
+    unit: str = "kgf/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramKelvin(HasUnit):
+    unit: str = "kg K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramMeterPerSecond(HasUnit):
+    unit: str = "kg m s^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramMeterSquared(HasUnit):
+    unit: str = "kg m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerCubicMeter(HasUnit):
+    unit: str = "kg/m^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerFemtoliter(HasUnit):
+    unit: str = "kg/fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerHour(HasUnit):
+    unit: str = "kg/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerLiter(HasUnit):
+    unit: str = "kg/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerMeter(HasUnit):
+    unit: str = "kg/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerMicroliter(HasUnit):
+    unit: str = "kg/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerMilliliter(HasUnit):
+    unit: str = "kg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerMole(HasUnit):
+    unit: str = "kg mol^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerNanoliter(HasUnit):
+    unit: str = "kg/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerPicoliter(HasUnit):
+    unit: str = "kg/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerSecond(HasUnit):
+    unit: str = "kg/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerSquareCentimeter(HasUnit):
+    unit: str = "kg/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramPerSquareMeter(HasUnit):
+    unit: str = "kg/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilogramSecondSquared(HasUnit):
+    unit: str = "kg s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kilometer(HasUnit):
+    unit: str = "km"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilometerPerHour(HasUnit):
+    unit: str = "km/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KilometerPerSecond(HasUnit):
+    unit: str = "km/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kilowatt(HasUnit):
+    unit: str = "kW"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kilowatthour(HasUnit):
+    unit: str = "kW h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Kip(HasUnit):
+    unit: str = "kip"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KipPerSquareInch(HasUnit):
+    unit: str = "kip/in^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Knot(HasUnit):
+    unit: str = "kn"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KnotPerSecond(HasUnit):
+    unit: str = "kt/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Lambert(HasUnit):
+    unit: str = "Lmb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LightYear(HasUnit):
+    unit: str = "ly"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiquidCupUS(HasUnit):
+    unit: str = "cup"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiquidOunceUS(HasUnit):
+    unit: str = "oz fl"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiquidPintUS(HasUnit):
+    unit: str = "pt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiquidQuartUS(HasUnit):
+    unit: str = "qt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Liter(HasUnit):
+    unit: str = "L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiterPerGramCentimeter(HasUnit):
+    unit: str = "L/(g cm)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiterPerKilogram(HasUnit):
+    unit: str = "L/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiterPerMinute(HasUnit):
+    unit: str = "L/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LiterPerSecond(HasUnit):
+    unit: str = "L/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Lumen(HasUnit):
+    unit: str = "lm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class LuminescenceUnits(HasUnit):
+    unit: str = "LU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Lux(HasUnit):
+    unit: str = "lx"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -85,13 +1915,238 @@ class MassPerCharge(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Maxwell(HasUnit):
+    unit: str = "Mx"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaElectronVolt(HasUnit):
+    unit: str = "MeV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaElectronVoltFemtometer(HasUnit):
+    unit: str = "MeV fm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaElectronVoltPerCentimeter(HasUnit):
+    unit: str = "MeV/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaElectronVoltPerSpeedOfLight(HasUnit):
+    unit: str = "MeV/c"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaHertz(HasUnit):
+    unit: str = "MHz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaHertzPerKelvin(HasUnit):
+    unit: str = "MHz K^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaHertzPerTesla(HasUnit):
+    unit: str = "MHz T^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegaPascal(HasUnit):
+    unit: str = "MPa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MegabitsPerSecond(HasUnit):
+    unit: str = "mbps"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Meter(HasUnit):
+    unit: str = "m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterKelvin(HasUnit):
+    unit: str = "m K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterKelvinPerWatt(HasUnit):
+    unit: str = "K-m/W"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterKilogram(HasUnit):
+    unit: str = "m-kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterPerFarad(HasUnit):
+    unit: str = "m/F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterPerHour(HasUnit):
+    unit: str = "m h^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterPerKelvin(HasUnit):
+    unit: str = "m/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterPerMinute(HasUnit):
+    unit: str = "m min^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterPerSecond(HasUnit):
+    unit: str = "m s^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeterPerSecondSquared(HasUnit):
+    unit: str = "m s^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MetricTon(HasUnit):
+    unit: str = "mT"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Mho(HasUnit):
+    unit: str = "mho"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroCaloriePerDegreeCelsius(HasUnit):
+    unit: str = "µcal/°C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroFarad(HasUnit):
+    unit: str = "microF"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroFaradPerMeter(HasUnit):
+    unit: str = "mF/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroFaradPerMeterKiloHertz(HasUnit):
+    unit: str = "mF/m kHz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroHenry(HasUnit):
+    unit: str = "µH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroInch(HasUnit):
+    unit: str = "µin"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroSecond(HasUnit):
+    unit: str = "µs"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroSiemensPerCentimeter(HasUnit):
+    unit: str = "μS/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroTorr(HasUnit):
+    unit: str = "µtorr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroVoltTimesSecond(HasUnit):
+    unit: str = "μV.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroWatt(HasUnit):
+    unit: str = "µW"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicroWattPerGram(HasUnit):
+    unit: str = "µW/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Microgram(HasUnit):
+    unit: str = "μg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerFemtoliter(HasUnit):
+    unit: str = "μg/fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerLiter(HasUnit):
+    unit: str = "μg/L"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMicroliter(HasUnit):
     unit: str = "ug/µL"
 
 
 @dataclass(frozen=True, kw_only=True)
+class MicrogramPerMicroliter2(HasUnit):
+    unit: str = "μg/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMilliliter(HasUnit):
     unit: str = "ug/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerMilliliter2(HasUnit):
+    unit: str = "μg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerMinute(HasUnit):
+    unit: str = "μg/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerNanoliter(HasUnit):
+    unit: str = "μg/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerPicoliter(HasUnit):
+    unit: str = "μg/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerSquareCentimeter(HasUnit):
+    unit: str = "μg/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MicrogramPerSquareMeter(HasUnit):
+    unit: str = "μg/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Microgravity(HasUnit):
+    unit: str = "µG"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -105,8 +2160,58 @@ class MicroliterPerMinute(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MicroliterPerSecond(HasUnit):
+    unit: str = "µL/s"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Micrometer(HasUnit):
     unit: str = "µm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Micromolar(HasUnit):
+    unit: str = "μM"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Micromole(HasUnit):
+    unit: str = "μmol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Microvolt(HasUnit):
+    unit: str = "µV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilAngle(HasUnit):
+    unit: str = "mil"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilLength(HasUnit):
+    unit: str = "mil (l)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MileInternational(HasUnit):
+    unit: str = "mi"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilePerHour(HasUnit):
+    unit: str = "mi/hr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilePerMinute(HasUnit):
+    unit: str = "mi/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MileUSStatute(HasUnit):
+    unit: str = "miUS"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -115,13 +2220,63 @@ class MilliAbsorbanceUnit(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilliAbsorbanceUnitTimesLiter(HasUnit):
+    unit: str = "mAU.L"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MilliAbsorbanceUnitTimesMilliliter(HasUnit):
     unit: str = "mAU.mL"
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilliAbsorbanceUnitTimesMinute(HasUnit):
+    unit: str = "mAU.min"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MilliAbsorbanceUnitTimesSecond(HasUnit):
     unit: str = "mAU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliAmpere(HasUnit):
+    unit: str = "mA"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliArbitraryUnit(HasUnit):
+    unit: str = "mArbU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliCaloriePerMinute(HasUnit):
+    unit: str = "mcal/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliCaloriePerMoleDegreeCelsius(HasUnit):
+    unit: str = "mcal/(mol °C)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliCaloriePerSecond(HasUnit):
+    unit: str = "mcal/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliDegreeAngle(HasUnit):
+    unit: str = "m°"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliDegreeAngleTimesSecond(HasUnit):
+    unit: str = "m°.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliHenry(HasUnit):
+    unit: str = "mH"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -135,8 +2290,53 @@ class MilliSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilliTorr(HasUnit):
+    unit: str = "mtorr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliWatt(HasUnit):
+    unit: str = "mW"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliWattPerGram(HasUnit):
+    unit: str = "mW/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Millibar(HasUnit):
+    unit: str = "mbar"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Milligram(HasUnit):
+    unit: str = "mg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerDeciliter(HasUnit):
+    unit: str = "mg/dL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerFemtoliter(HasUnit):
+    unit: str = "mg/fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerKilogram(HasUnit):
+    unit: str = "mg/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MilligramPerLiter(HasUnit):
     unit: str = "mg/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerMicroliter(HasUnit):
+    unit: str = "mg/μL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -145,8 +2345,48 @@ class MilligramPerMilliliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilligramPerMinute(HasUnit):
+    unit: str = "mg/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerNanoliter(HasUnit):
+    unit: str = "mg/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerPicoliter(HasUnit):
+    unit: str = "mg/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerSecond(HasUnit):
+    unit: str = "mg/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerSquareCentimeter(HasUnit):
+    unit: str = "mg/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilligramPerSquareMeter(HasUnit):
+    unit: str = "mg/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Milligravity(HasUnit):
+    unit: str = "mG"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Milliliter(HasUnit):
     unit: str = "mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliliterPerKilogram(HasUnit):
+    unit: str = "mL/kg"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -160,6 +2400,21 @@ class MilliliterPerMinute(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilliliterPerMinuteSquared(HasUnit):
+    unit: str = "mL/min^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliliterPerSecond(HasUnit):
+    unit: str = "mL/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliliterPerSecondSquared(HasUnit):
+    unit: str = "mL/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Millimeter(HasUnit):
     unit: str = "mm"
 
@@ -170,8 +2425,43 @@ class MillimeterOfMercury(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MillimeterOfMercuryAbsolute(HasUnit):
+    unit: str = "mmHgA"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillimeterOfMercuryPerMinute(HasUnit):
+    unit: str = "mmHg/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillimeterPerMinute(HasUnit):
+    unit: str = "mm/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillimeterPerSecond(HasUnit):
+    unit: str = "mm/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Millimolar(HasUnit):
+    unit: str = "mM"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Millimole(HasUnit):
+    unit: str = "mmol"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MillimolePerLiter(HasUnit):
     unit: str = "mmol/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillimolePerMilliliter(HasUnit):
+    unit: str = "mmol/mL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -180,8 +2470,28 @@ class MillionCellsPerMilliliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MillionDollarsPerFlight(HasUnit):
+    unit: str = "M$/Flight"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillionDollarsPerYear(HasUnit):
+    unit: str = "M$/yr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillisiemenPerCentimeter(HasUnit):
+    unit: str = "mS/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Millivolt(HasUnit):
     unit: str = "mV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MillivoltTimesLiter(HasUnit):
+    unit: str = "mV.L"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -190,8 +2500,63 @@ class MillivoltTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MinuteAngle(HasUnit):
+    unit: str = "'"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MinuteSidereal(HasUnit):
+    unit: str = "min (s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MinuteTime(HasUnit):
+    unit: str = "min"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Molar(HasUnit):
     unit: str = "M"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Mole(HasUnit):
+    unit: str = "mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MoleDegreeCelsius(HasUnit):
+    unit: str = "mol-degC"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MoleKelvin(HasUnit):
+    unit: str = "mol K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MolePerCubicDecimeter(HasUnit):
+    unit: str = "mol/dm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MolePerCubicMeter(HasUnit):
+    unit: str = "mol/m^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MolePerKilogram(HasUnit):
+    unit: str = "mol/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MolePerLiter(HasUnit):
+    unit: str = "mol/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanoAmpere(HasUnit):
+    unit: str = "nA"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -200,8 +2565,38 @@ class NanoCoulomb(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class NanoCoulombTimesLiter(HasUnit):
+    unit: str = "nC.L"
+
+
+@dataclass(frozen=True, kw_only=True)
 class NanoCoulombTimesSecond(HasUnit):
     unit: str = "nC.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanoFarad(HasUnit):
+    unit: str = "nF"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanoRefractiveIndexUnitTimesSecond(HasUnit):
+    unit: str = "nano RIU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Nanogram(HasUnit):
+    unit: str = "ng"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanogramPerFemtoliter(HasUnit):
+    unit: str = "ng/fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanogramPerLiter(HasUnit):
+    unit: str = "ng/L"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -210,8 +2605,38 @@ class NanogramPerMicroliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class NanogramPerMicroliter2(HasUnit):
+    unit: str = "ng/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
 class NanogramPerMilliliter(HasUnit):
     unit: str = "ng/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanogramPerNanoliter(HasUnit):
+    unit: str = "ng/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanogramPerPicoliter(HasUnit):
+    unit: str = "ng/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanogramPerSquareCentimeter(HasUnit):
+    unit: str = "ng/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NanogramPerSquareMeter(HasUnit):
+    unit: str = "ng/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Nanoliter(HasUnit):
+    unit: str = "nL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -225,6 +2650,71 @@ class Nanomolar(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Nanomolar2(HasUnit):
+    unit: str = "nmol/dm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Nanomole(HasUnit):
+    unit: str = "nmol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Nat(HasUnit):
+    unit: str = "nat"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NauticalMile(HasUnit):
+    unit: str = "n mile"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NauticalMilePerHour(HasUnit):
+    unit: str = "nmi/hr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NauticalMilePerMinute(HasUnit):
+    unit: str = "nmi/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NephelometricTurbidityUnit(HasUnit):
+    unit: str = "NTU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Newton(HasUnit):
+    unit: str = "N"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NewtonMeter(HasUnit):
+    unit: str = "N m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NewtonPerCoulomb(HasUnit):
+    unit: str = "N/C"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NewtonPerKilogram(HasUnit):
+    unit: str = "N/kg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NewtonPerMeter(HasUnit):
+    unit: str = "N/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class NewtonPerSquareMillimeter(HasUnit):
+    unit: str = "N/mm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Number(HasUnit):
     unit: str = "#"
 
@@ -235,13 +2725,88 @@ class NumberPerMicroliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class OpticalDensity(HasUnit):
-    unit: str = "OD"
+class NumberPerYear(HasUnit):
+    unit: str = "#/yr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Oersted(HasUnit):
+    unit: str = "Oe"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OerstedCentimeter(HasUnit):
+    unit: str = "Oe cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Ohm(HasUnit):
+    unit: str = "Ω"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OhmMeter(HasUnit):
+    unit: str = "Ω m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OsmolesPerLiter(HasUnit):
+    unit: str = "osm/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OunceForce(HasUnit):
+    unit: str = "ozf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OunceForceInch(HasUnit):
+    unit: str = "ozf in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OunceImperial(HasUnit):
+    unit: str = "oz"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OunceMass(HasUnit):
+    unit: str = "ozm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OuncePerCubicInch(HasUnit):
+    unit: str = "oz/in^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OuncePerGallon(HasUnit):
+    unit: str = "oz/gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OuncePerSquareFoot(HasUnit):
+    unit: str = "oz/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OuncePerSquareYard(HasUnit):
+    unit: str = "oz/yd^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class OunceTroy(HasUnit):
+    unit: str = "oz (tr)"
 
 
 @dataclass(frozen=True, kw_only=True)
 class PH(HasUnit):
     unit: str = "pH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Parsec(HasUnit):
+    unit: str = "pc"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -255,8 +2820,58 @@ class PartsPerMillion(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class PerMolarPerCentimeter(HasUnit):
-    unit: str = "M-1cm-1"
+class PartsPerMillionTimesArbitraryUnit(HasUnit):
+    unit: str = "ppm.arb'U"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Pascal(HasUnit):
+    unit: str = "Pa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PascalPerHour(HasUnit):
+    unit: str = "Pa/hr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PascalPerSecond(HasUnit):
+    unit: str = "Pa/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PascalSecond(HasUnit):
+    unit: str = "Pa s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Peck(HasUnit):
+    unit: str = "pk"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PennyWeight(HasUnit):
+    unit: str = "dwt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerCubicMeter(HasUnit):
+    unit: str = "m^-3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerMeter(HasUnit):
+    unit: str = "m^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerMeterKelvin(HasUnit):
+    unit: str = "m^-1 K^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerMinute(HasUnit):
+    unit: str = "min^-1"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -265,8 +2880,28 @@ class PerMolarPerSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class PerMole(HasUnit):
+    unit: str = "mol^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
 class PerSecond(HasUnit):
     unit: str = "s^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerSquareGigaElectronVolt(HasUnit):
+    unit: str = "GeV^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerTeslaMeter(HasUnit):
+    unit: str = "m^-1 T^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerTeslaSecond(HasUnit):
+    unit: str = "s^-1 T^-1"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -275,8 +2910,28 @@ class Percent(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Person(HasUnit):
+    unit: str = "person"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Phot(HasUnit):
+    unit: str = "ph"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Pica(HasUnit):
+    unit: str = "Pm"
+
+
+@dataclass(frozen=True, kw_only=True)
 class PicoAmpere(HasUnit):
     unit: str = "pA"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicoAmpereTimesLiter(HasUnit):
+    unit: str = "pA.L"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -285,8 +2940,348 @@ class PicoAmpereTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class PicoAmperesTimesMinute(HasUnit):
+    unit: str = "pA.min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicoFarad(HasUnit):
+    unit: str = "pF"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Picogram(HasUnit):
+    unit: str = "pg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerFemtoliter(HasUnit):
+    unit: str = "pg/fL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerLiter(HasUnit):
+    unit: str = "pg/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerMicroliter(HasUnit):
+    unit: str = "pg/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
 class PicogramPerMilliliter(HasUnit):
     unit: str = "pg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerNanoliter(HasUnit):
+    unit: str = "pg/nL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerPicoliter(HasUnit):
+    unit: str = "pg/pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerSquareCentimeter(HasUnit):
+    unit: str = "pg/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PicogramPerSquareMeter(HasUnit):
+    unit: str = "pg/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Picoliter(HasUnit):
+    unit: str = "pL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Picometer(HasUnit):
+    unit: str = "pm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Picomolar(HasUnit):
+    unit: str = "pmol/dm^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Picomole(HasUnit):
+    unit: str = "pmol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PintImperial(HasUnit):
+    unit: str = "pi"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Pixel(HasUnit):
+    unit: str = "pixel"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PixelPerMillimeter(HasUnit):
+    unit: str = "pixel/mm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlanckCharge(HasUnit):
+    unit: str = "Q_p"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlanckLength(HasUnit):
+    unit: str = "l_P"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlanckMass(HasUnit):
+    unit: str = "m_P"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlanckTemperature(HasUnit):
+    unit: str = "Θ_P"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlanckTime(HasUnit):
+    unit: str = "t_P"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlaqueFormingUnit(HasUnit):
+    unit: str = "PFU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PlatesPerMeter(HasUnit):
+    unit: str = "plates/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Point(HasUnit):
+    unit: str = "pnt"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Poise(HasUnit):
+    unit: str = "P"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundDegreeFahrenheit(HasUnit):
+    unit: str = "lb-degF"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundDegreeRankine(HasUnit):
+    unit: str = "lb-degR"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForce(HasUnit):
+    unit: str = "lbf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForceFoot(HasUnit):
+    unit: str = "lbf-ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForceInch(HasUnit):
+    unit: str = "lbf-in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForcePerFoot(HasUnit):
+    unit: str = "lbf/ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForcePerInch(HasUnit):
+    unit: str = "lbf/in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForcePerPound(HasUnit):
+    unit: str = "lbf/lb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForcePerSquareFoot(HasUnit):
+    unit: str = "lbf/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForcePerSquareInch(HasUnit):
+    unit: str = "psi"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForcePerSquareInchSecond(HasUnit):
+    unit: str = "lbf / in^2-s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForceSecondPerSquareFoot(HasUnit):
+    unit: str = "lbf-s/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundForceSecondPerSquareInch(HasUnit):
+    unit: str = "lbf-s/in^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundMass(HasUnit):
+    unit: str = "lbm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundMole(HasUnit):
+    unit: str = "lb mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundMoleDegreeFahrenheit(HasUnit):
+    unit: str = "lb mol °F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerCubicFoot(HasUnit):
+    unit: str = "lb/ft^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerCubicInch(HasUnit):
+    unit: str = "lb/in^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerCubicMeter(HasUnit):
+    unit: str = "lbm/m^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerCubicYard(HasUnit):
+    unit: str = "lb/yd^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerFoot(HasUnit):
+    unit: str = "lb/ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerFootHour(HasUnit):
+    unit: str = "lb/(ft-hr)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerFootSecond(HasUnit):
+    unit: str = "lb/(ft-s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerGallon(HasUnit):
+    unit: str = "lb/gal"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerHour(HasUnit):
+    unit: str = "lb/hr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerInch(HasUnit):
+    unit: str = "lb/in"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerMinute(HasUnit):
+    unit: str = "lb/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundPerSquareFoot(HasUnit):
+    unit: str = "lb/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundTroy(HasUnit):
+    unit: str = "lbm (tr)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Poundal(HasUnit):
+    unit: str = "pdl"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PoundalPerSquareFoot(HasUnit):
+    unit: str = "pdl/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Quad(HasUnit):
+    unit: str = "quad"
+
+
+@dataclass(frozen=True, kw_only=True)
+class QuarticCoulombMeterPerCubicEnergy(HasUnit):
+    unit: str = "C^4 m^4 J^-3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Rad(HasUnit):
+    unit: str = "rad"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Radian(HasUnit):
+    unit: str = "r"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RadianPerHour(HasUnit):
+    unit: str = "rad/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RadianPerMinute(HasUnit):
+    unit: str = "rad/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RadianPerSecond(HasUnit):
+    unit: str = "rad/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RadianPerSecondSquared(HasUnit):
+    unit: str = "rad/s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ReciprocalCentimeter(HasUnit):
+    unit: str = "1/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RefractiveIndexUnit(HasUnit):
+    unit: str = "RIU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RegisterTon(HasUnit):
+    unit: str = "RT"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -320,6 +3315,21 @@ class RelativeLightUnitTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class RelativePermeability(HasUnit):
+    unit: str = "μr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RelativePermittivity(HasUnit):
+    unit: str = "εr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Rem(HasUnit):
+    unit: str = "rem"
+
+
+@dataclass(frozen=True, kw_only=True)
 class ResponseUnit(HasUnit):
     unit: str = "RU"
 
@@ -330,13 +3340,148 @@ class ResponseUnitPerSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class ResponseUnitTimesSecond(HasUnit):
+    unit: str = "RU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Revolution(HasUnit):
+    unit: str = "rev"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RevolutionPerHour(HasUnit):
+    unit: str = "rev/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RevolutionPerMinute(HasUnit):
+    unit: str = "rev/min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RevolutionPerSecond(HasUnit):
+    unit: str = "rev/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Rod(HasUnit):
+    unit: str = "rd"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Roentgen(HasUnit):
+    unit: str = "R"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SamplePerSecond(HasUnit):
+    unit: str = "[sps]"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SecondAngle(HasUnit):
+    unit: str = '"'
+
+
+@dataclass(frozen=True, kw_only=True)
+class SecondSquareFoot(HasUnit):
+    unit: str = "s ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class SecondTime(HasUnit):
     unit: str = "s"
 
 
 @dataclass(frozen=True, kw_only=True)
-class SeimensPerMeter(HasUnit):
+class SecondTimeSquared(HasUnit):
+    unit: str = "s^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Shake(HasUnit):
+    unit: str = "Sh"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Siemens(HasUnit):
+    unit: str = "S"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SiemensPerMeter(HasUnit):
     unit: str = "S/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SiemensPerMeterTimesLiter(HasUnit):
+    unit: str = "[S/m].L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SiemensPerMeterTimesSecond(HasUnit):
+    unit: str = "[S/m].s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SiemensTimesSecond(HasUnit):
+    unit: str = "S.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Sievert(HasUnit):
+    unit: str = "Sv"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Slug(HasUnit):
+    unit: str = "slug"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SlugPerCubicFoot(HasUnit):
+    unit: str = "slug/ft^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SlugPerFoot(HasUnit):
+    unit: str = "slug/ft"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SlugPerFootSecond(HasUnit):
+    unit: str = "slug/(ft s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SlugPerSecond(HasUnit):
+    unit: str = "slug/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SlugPerSquareFoot(HasUnit):
+    unit: str = "slug/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareAngstrom(HasUnit):
+    unit: str = "Å^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareCentimeter(HasUnit):
+    unit: str = "cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareCentimeterMinute(HasUnit):
+    unit: str = "cm^2 min"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareCentimeterSecond(HasUnit):
+    unit: str = "cm^2 s"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -350,25 +3495,415 @@ class SquareCentimetersPerMole(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class SquareMillimeter(HasUnit):
-    unit: str = "mm^2"
+class SquareCoulombMeterPerJoule(HasUnit):
+    unit: str = "C^2 m^2 J^-1"
 
 
 @dataclass(frozen=True, kw_only=True)
-class SquareResponseUnit(HasUnit):
-    unit: str = "RU^2"
+class SquareDegree(HasUnit):
+    unit: str = "deg^2"
 
 
 @dataclass(frozen=True, kw_only=True)
-class TODO(HasUnit):
-    unit: str = "TODO"
+class SquareFoot(HasUnit):
+    unit: str = "ft^2"
 
 
 @dataclass(frozen=True, kw_only=True)
-class UnitPerLiter(HasUnit):
-    unit: str = "U/L"
+class SquareFootDegreeFahrenheit(HasUnit):
+    unit: str = "ft^2 °F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareFootHourDegreeFahrenheit(HasUnit):
+    unit: str = "ft^2 h °F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareFootHourDegreeFahrenheitPerBtu(HasUnit):
+    unit: str = "(°F h ft^2)/Btu"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareFootPerBtuInch(HasUnit):
+    unit: str = "ft^2/(Btu in)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareFootPerHour(HasUnit):
+    unit: str = "ft^2/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareFootPerSecond(HasUnit):
+    unit: str = "ft^2/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareFootSecondDegreeFahrenheit(HasUnit):
+    unit: str = "ft^2 s °F"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareInch(HasUnit):
+    unit: str = "in^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMeter(HasUnit):
+    unit: str = "m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMeterKelvin(HasUnit):
+    unit: str = "m^2 K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMeterKelvinPerWatt(HasUnit):
+    unit: str = "(K^2) m/W"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMeterPerKelvin(HasUnit):
+    unit: str = "m^2/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMeterPerSecond(HasUnit):
+    unit: str = "m^2/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMeterSteradian(HasUnit):
+    unit: str = "m^2 sr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMetersPerGram(HasUnit):
+    unit: str = "m^2/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareMile(HasUnit):
+    unit: str = "mi^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SquareYard(HasUnit):
+    unit: str = "yd^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Statampere(HasUnit):
+    unit: str = "statA"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Statcoulomb(HasUnit):
+    unit: str = "statC"
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatcoulombPerMole(HasUnit):
+    unit: str = "statC/mol"
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatcoulombPerSquareCentimeter(HasUnit):
+    unit: str = "statC/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Statfarad(HasUnit):
+    unit: str = "statF"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Stathenry(HasUnit):
+    unit: str = "statH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class StathenryPerCentimeter(HasUnit):
+    unit: str = "statH/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Statmho(HasUnit):
+    unit: str = "statS"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Statohm(HasUnit):
+    unit: str = "statΩ"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Statvolt(HasUnit):
+    unit: str = "statV"
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatvoltCentimeter(HasUnit):
+    unit: str = "statV cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class StatvoltPerCentimeter(HasUnit):
+    unit: str = "statV/cm"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Steradian(HasUnit):
+    unit: str = "sr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Stere(HasUnit):
+    unit: str = "st"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Stilb(HasUnit):
+    unit: str = "sb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Stokes(HasUnit):
+    unit: str = "St"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Tablespoon(HasUnit):
+    unit: str = "tbsp"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Teaspoon(HasUnit):
+    unit: str = "tsp"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Tesla(HasUnit):
+    unit: str = "T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TeslaMeter(HasUnit):
+    unit: str = "m T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TeslaSecond(HasUnit):
+    unit: str = "s T"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Tex(HasUnit):
+    unit: str = "tex"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ThermEEC(HasUnit):
+    unit: str = "therm (EC)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ThermUS(HasUnit):
+    unit: str = "therm (US)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonAssay(HasUnit):
+    unit: str = "AT"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonEnergy(HasUnit):
+    unit: str = "t/lbf"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonLong(HasUnit):
+    unit: str = "ton (l)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonLongPerCubicYard(HasUnit):
+    unit: str = "ton/yd^3"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonOfOilEquivalent(HasUnit):
+    unit: str = "toe"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonOfRefrigeration(HasUnit):
+    unit: str = "t/fg"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonShort(HasUnit):
+    unit: str = "ton (s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonShortPerCubicYard(HasUnit):
+    unit: str = "ton/yd"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TonShortPerHour(HasUnit):
+    unit: str = "ton/h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Torr(HasUnit):
+    unit: str = "torr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TwoTheta(HasUnit):
+    unit: str = "2θ"
+
+
+@dataclass(frozen=True, kw_only=True)
+class UnifiedAtomicMassUnit(HasUnit):
+    unit: str = "AMU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class UnitPole(HasUnit):
+    unit: str = "U/nWb"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Unitless(HasUnit):
     unit: str = UNITLESS
+
+
+@dataclass(frozen=True, kw_only=True)
+class Unitless2(HasUnit):
+    unit: str = "unitless"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Volt(HasUnit):
+    unit: str = "V"
+
+
+@dataclass(frozen=True, kw_only=True)
+class VoltMeter(HasUnit):
+    unit: str = "m V"
+
+
+@dataclass(frozen=True, kw_only=True)
+class VoltPerMeter(HasUnit):
+    unit: str = "V/m"
+
+
+@dataclass(frozen=True, kw_only=True)
+class VoltPerSecond(HasUnit):
+    unit: str = "V/s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class VoltPerSquareMeter(HasUnit):
+    unit: str = "V m^-2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Watt(HasUnit):
+    unit: str = "W"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerGram(HasUnit):
+    unit: str = "W/g"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerKelvin(HasUnit):
+    unit: str = "W/K"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerMeterKelvin(HasUnit):
+    unit: str = "W/(m K)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareCentimeter(HasUnit):
+    unit: str = "W/cm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareFoot(HasUnit):
+    unit: str = "W/ft^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareInch(HasUnit):
+    unit: str = "W/in^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareMeter(HasUnit):
+    unit: str = "W/m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareMeterKelvin(HasUnit):
+    unit: str = "W/(m^2 K)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareMeterQuarticKelvin(HasUnit):
+    unit: str = "W m^-2 K^-4"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattPerSquareMeterSteradian(HasUnit):
+    unit: str = "W/(m^2 sr)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattSquareMeter(HasUnit):
+    unit: str = "W m^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class WattSquareMeterPerSteradian(HasUnit):
+    unit: str = "W m^2 sr^-1"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Watthour(HasUnit):
+    unit: str = "W h"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Weber(HasUnit):
+    unit: str = "Wb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Yard(HasUnit):
+    unit: str = "yd"
+
+
+@dataclass(frozen=True, kw_only=True)
+class Year365Day(HasUnit):
+    unit: str = "yr"
+
+
+@dataclass(frozen=True, kw_only=True)
+class YearSidereal(HasUnit):
+    unit: str = "yr (s)"
+
+
+@dataclass(frozen=True, kw_only=True)
+class YearTropical(HasUnit):
+    unit: str = "yr (t)"

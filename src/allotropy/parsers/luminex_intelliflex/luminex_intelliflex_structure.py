@@ -24,4 +24,5 @@ def create_metadata(
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header.software_version,
         device_type=DEFAULT_DEVICE_TYPE,
+        custom_info=header.custom_info,
     )
