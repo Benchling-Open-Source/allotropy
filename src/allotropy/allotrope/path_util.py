@@ -88,7 +88,8 @@ def get_schema_path_from_reference(reference: str) -> Path:
 def get_model_path_from_schema_path(schema_path: Path) -> Path:
     rel_schema_path = PureWindowsPath(get_rel_schema_path(schema_path))
     schema_file = rel_schema_path.name
-    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_")
+    stem = schema_file.replace(".schema.json", "").replace("-", "_").replace(".", "_")
+    model_file = stem + ".py"
     model_path = Path(
         *[
             re.sub("^([0-9]+)$", r"_\1", part.lower().replace("-", "_"))
@@ -101,14 +102,20 @@ def get_model_path_from_schema_path(schema_path: Path) -> Path:
 def get_schema_path_from_model_path(model_path: Path) -> Path:
     rel_model_path = PureWindowsPath(get_rel_model_path(model_path))
     model_file = rel_model_path.name
-    model_file = model_file.replace(".py", ".schema.json").replace("_", "-")
+    schema_file = model_file.replace(".py", ".schema.json").replace("_", "-")
     model_path_parts = [
         re.sub("^_([0-9]+)$", r"\1", part).replace("_", "-")
         for part in rel_model_path.parent.parts
     ]
     model_path_parts[2] = model_path_parts[2].upper()
-    model_path = Path(*model_path_parts)
-    return Path(model_path, model_file)
+    schema_dir = Path(*model_path_parts)
+    path = Path(schema_dir, schema_file)
+    if not get_full_schema_path(path).exists():
+        tabular_file = schema_file.replace("-tabular.schema.json", ".tabular.schema.json")
+        tabular = Path(schema_dir, tabular_file)
+        if get_full_schema_path(tabular).exists():
+            return tabular
+    return path
 
 
 def get_import_path_from_path(model_path: Path) -> str:
