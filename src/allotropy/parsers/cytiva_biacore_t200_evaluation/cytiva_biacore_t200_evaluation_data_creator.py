@@ -400,9 +400,7 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
         if kinetic_data is not None:
             processed_data_list = [
                 ProcessedData(
-                    model_name=kinetic_data.get("model", "N/A")
-                    if isinstance(kinetic_data, dict)
-                    else "N/A",
+                    model_name="N/A",
                     binding_on_rate_measurement_datum__kon_=kon,
                     binding_off_rate_measurement_datum__koff_=koff,
                     equilibrium_dissociation_constant__kd_=kd,
