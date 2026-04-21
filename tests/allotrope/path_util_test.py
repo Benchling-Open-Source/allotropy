@@ -55,6 +55,13 @@ def test_get_schema_path_from_manifest() -> None:
     assert get_schema_path_from_manifest(MANIFEST) == REL_SCHEMA_PATH
 
 
+def test_get_schema_path_from_manifest_tabular_fallback() -> None:
+    manifest = "http://purl.allotrope.org/manifests/liquid-chromatography/REC/2023/03/liquid-chromatography.manifest"
+    assert get_schema_path_from_manifest(manifest) == Path(
+        "adm/liquid-chromatography/REC/2023/03/liquid-chromatography.tabular.schema.json"
+    )
+
+
 def test_get_schema_path_from_asm() -> None:
     assert get_schema_path_from_asm({"$asm.manifest": MANIFEST}) == REL_SCHEMA_PATH
 
@@ -74,9 +81,27 @@ def test_get_model_path_from_schema_path() -> None:
     )
 
 
+def test_get_model_path_from_schema_path_tabular() -> None:
+    tabular_schema = Path(
+        "adm/liquid-chromatography/REC/2023/03/liquid-chromatography.tabular.schema.json"
+    )
+    assert get_model_path_from_schema_path(tabular_schema) == Path(
+        "adm/liquid_chromatography/rec/_2023/_03/liquid_chromatography_tabular.py"
+    )
+
+
 def test_get_schema_path_from_model_path() -> None:
     assert get_schema_path_from_model_path(REL_MODEL_PATH) == Path(
         "adm/plate-reader/BENCHLING/2023/09/plate-reader.schema.json"
+    )
+
+
+def test_get_schema_path_from_model_path_tabular() -> None:
+    tabular_model = Path(
+        "adm/liquid_chromatography/rec/_2023/_03/liquid_chromatography_tabular.py"
+    )
+    assert get_schema_path_from_model_path(tabular_model) == Path(
+        "adm/liquid-chromatography/REC/2023/03/liquid-chromatography.tabular.schema.json"
     )
 
 
