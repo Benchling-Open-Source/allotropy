@@ -141,11 +141,8 @@ def _get_measurements(
                     processed_data_custom_info=_clean_custom_info(
                         {
                             chi_squared_label: (
-                                TQuantityValue(
-                                    value=v, unit="RU^2"
-                                )
-                                if (v := kinetics.kinetics_chi_squared)
-                                is not None
+                                TQuantityValue(value=v, unit="RU^2")
+                                if (v := kinetics.kinetics_chi_squared) is not None
                                 else None
                             ),
                             "tc": quantity_or_none(TQuantityValueUnitless, kinetics.tc),
