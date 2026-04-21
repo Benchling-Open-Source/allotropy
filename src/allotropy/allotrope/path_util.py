@@ -111,7 +111,9 @@ def get_schema_path_from_model_path(model_path: Path) -> Path:
     schema_dir = Path(*model_path_parts)
     path = Path(schema_dir, schema_file)
     if not get_full_schema_path(path).exists():
-        tabular_file = schema_file.replace("-tabular.schema.json", ".tabular.schema.json")
+        tabular_file = schema_file.replace(
+            "-tabular.schema.json", ".tabular.schema.json"
+        )
         tabular = Path(schema_dir, tabular_file)
         if get_full_schema_path(tabular).exists():
             return tabular
