@@ -131,8 +131,21 @@ class SchemaCodeGenerator:
 
     @staticmethod
     def _is_adm_schema(schema: dict[str, Any]) -> bool:
-        """Check if this is a top-level ADM schema (has allOf at root)."""
-        return "allOf" in schema
+        """Check if this is a top-level ADM schema.
+
+        Matches schemas with root-level ``allOf`` (hierarchical ADM schemas)
+        or flat tabular schemas whose root properties contain nested objects
+        (e.g., REC/2023/03 liquid chromatography).  Manifest schemas are
+        excluded because their properties are simple arrays, not objects.
+        """
+        if "allOf" in schema:
+            return True
+        for key, val in schema.get("properties", {}).items():
+            if key.startswith(("$", "@")) or not isinstance(val, dict):
+                continue
+            if val.get("type") == "object" or "properties" in val:
+                return True
+        return False
 
     # -------------------------------------------------------------------------
     # Regular $defs module generation (core, cube, hierarchy, manifest, detector)
@@ -182,14 +195,19 @@ class SchemaCodeGenerator:
     ) -> None:
         """Generate the top-level ADM model module.
 
-        Flattens the root-level allOf into a synthetic schema dict and
-        delegates to ``_generate_dataclass`` so field generation logic
-        is not duplicated.
+        Flattens the root-level allOf (and/or root-level properties for
+        flat tabular schemas) into a synthetic schema dict and delegates
+        to ``_generate_dataclass`` so field generation logic is not
+        duplicated.
         """
         all_of = schema.get("allOf", [])
 
         all_props: dict[str, Any] = {}
         all_required: set[str] = set(schema.get("required", []))
+
+        # Flat tabular schemas have properties directly at root (no allOf).
+        if "properties" in schema:
+            merge_props_into(all_props, schema["properties"])
 
         for item in all_of:
             if "$ref" in item:
