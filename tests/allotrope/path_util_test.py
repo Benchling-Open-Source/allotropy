@@ -55,6 +55,13 @@ def test_get_schema_path_from_manifest() -> None:
     assert get_schema_path_from_manifest(MANIFEST) == REL_SCHEMA_PATH
 
 
+def test_get_schema_path_from_manifest_tabular_fallback() -> None:
+    manifest = "http://purl.allotrope.org/manifests/liquid-chromatography/REC/2023/03/liquid-chromatography.manifest"
+    assert get_schema_path_from_manifest(manifest) == Path(
+        "adm/liquid-chromatography/REC/2023/03/liquid-chromatography.tabular.schema.json"
+    )
+
+
 def test_get_schema_path_from_asm() -> None:
     assert get_schema_path_from_asm({"$asm.manifest": MANIFEST}) == REL_SCHEMA_PATH
 

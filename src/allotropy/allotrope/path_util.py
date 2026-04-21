@@ -58,7 +58,13 @@ def get_schema_path_from_manifest(manifest: str) -> Path:
     if not match:
         msg = f"No matching schema in repo for manifest: {manifest}"
         raise ValueError(msg)
-    return Path(f"adm/{match.groups()[0]}.schema.json")
+    base = match.groups()[0]
+    path = Path(f"adm/{base}.schema.json")
+    if not get_full_schema_path(path).exists():
+        tabular = Path(f"adm/{base}.tabular.schema.json")
+        if get_full_schema_path(tabular).exists():
+            return tabular
+    return path
 
 
 def get_schema_path_from_asm(asm_dict: Mapping[str, Any]) -> Path:
