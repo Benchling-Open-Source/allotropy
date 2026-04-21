@@ -444,7 +444,6 @@ def _read_existing_unit_classes(
     return result
 
 
-
 def _extract_descriptive_name(
     const: str, def_schema: dict[str, Any], def_key: str
 ) -> str:
