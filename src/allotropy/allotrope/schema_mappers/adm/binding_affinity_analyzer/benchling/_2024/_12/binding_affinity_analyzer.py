@@ -46,7 +46,7 @@ from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
-from allotropy.parsers.utils.values import assert_not_none, has_value, quantity_or_none
+from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 from allotropy.types import DictType
 
 
@@ -109,6 +109,19 @@ class DeviceControlDocument:
 
 
 @dataclass(frozen=True)
+class ProcessedData:
+    """Represents a single processed data document (one analysis model)."""
+
+    model_name: str
+    binding_on_rate_measurement_datum__kon_: float | None = None
+    binding_off_rate_measurement_datum__koff_: float | None = None
+    equilibrium_dissociation_constant__kd_: float | None = None
+    maximum_binding_capacity__rmax_: float | None = None
+    processed_data_custom_info: DictType | None = None
+    data_processing_document: DictType | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     identifier: str
     sample_identifier: str
@@ -126,18 +139,11 @@ class Measurement:
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
 
-    # Processed Data
-    binding_on_rate_measurement_datum__kon_: float | None = None
-    binding_off_rate_measurement_datum__koff_: float | None = None
-    equilibrium_dissociation_constant__kd_: float | None = None
-    maximum_binding_capacity__rmax_: float | None = None
-    processed_data_custom_info: DictType | None = None
+    # Processed Data - supports multiple analysis models
+    processed_data: list[ProcessedData] | None = None
 
     # Report point
     report_point_data: list[ReportPoint] | None = None
-
-    # Data processing
-    data_processing_document: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -249,59 +255,74 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_surface_plasmon_resonance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItem:
-        processed_data_document = ProcessedDataDocumentItem(
-            data_processing_document=(
-                {
-                    key: value
-                    for key, value in measurement.data_processing_document.items()
-                    if value is not None
-                }
-                if measurement.data_processing_document
-                else None
-            ),
-            binding_on_rate_measurement_datum__kon_=quantity_or_none(
-                TQuantityValuePerMolarPerSecond,
-                measurement.binding_on_rate_measurement_datum__kon_,
-            ),
-            binding_off_rate_measurement_datum__koff_=quantity_or_none(
-                TQuantityValuePerSecond,
-                measurement.binding_off_rate_measurement_datum__koff_,
-            ),
-            equilibrium_dissociation_constant__kd_=quantity_or_none(
-                TQuantityValueMolar,
-                measurement.equilibrium_dissociation_constant__kd_,
-            ),
-            maximum_binding_capacity__rmax_=quantity_or_none(
-                TQuantityValueResponseUnit,
-                measurement.maximum_binding_capacity__rmax_,
-            ),
-            report_point_aggregate_document=(
-                ReportPointAggregateDocument(
-                    report_point_document=[
-                        add_custom_information_document(
-                            ReportPointDocumentItem(
-                                report_point_identifier=report_point.identifier,
-                                identifier_role=report_point.identifier_role,
-                                absolute_resonance=TQuantityValueResponseUnit(
-                                    value=report_point.absolute_resonance
-                                ),
-                                relative_resonance=quantity_or_none(
-                                    TQuantityValueResponseUnit,
-                                    report_point.relative_resonance,
-                                ),
-                                time_setting=TQuantityValueSecondTime(
-                                    value=report_point.time_setting
-                                ),
+        # Report points are measurement-level data but the schema nests them
+        # inside ProcessedDataDocumentItem, so we attach them to the first entry.
+        report_point_aggregate = (
+            ReportPointAggregateDocument(
+                report_point_document=[
+                    add_custom_information_document(
+                        ReportPointDocumentItem(
+                            report_point_identifier=report_point.identifier,
+                            identifier_role=report_point.identifier_role,
+                            absolute_resonance=TQuantityValueResponseUnit(
+                                value=report_point.absolute_resonance
                             ),
-                            custom_info_doc=report_point.custom_info,
-                        )
-                        for report_point in measurement.report_point_data
-                    ]
-                )
-                if measurement.report_point_data
-                else None
-            ),
+                            relative_resonance=quantity_or_none(
+                                TQuantityValueResponseUnit,
+                                report_point.relative_resonance,
+                            ),
+                            time_setting=TQuantityValueSecondTime(
+                                value=report_point.time_setting
+                            ),
+                        ),
+                        custom_info_doc=report_point.custom_info,
+                    )
+                    for report_point in measurement.report_point_data
+                ]
+            )
+            if measurement.report_point_data
+            else None
         )
+
+        processed_data_documents = []
+        if measurement.processed_data:
+            for idx, proc_data in enumerate(measurement.processed_data):
+                doc = ProcessedDataDocumentItem(
+                    data_processing_document=(
+                        {
+                            key: value
+                            for key, value in proc_data.data_processing_document.items()
+                            if value is not None
+                        }
+                        if proc_data.data_processing_document
+                        else None
+                    ),
+                    binding_on_rate_measurement_datum__kon_=quantity_or_none(
+                        TQuantityValuePerMolarPerSecond,
+                        proc_data.binding_on_rate_measurement_datum__kon_,
+                    ),
+                    binding_off_rate_measurement_datum__koff_=quantity_or_none(
+                        TQuantityValuePerSecond,
+                        proc_data.binding_off_rate_measurement_datum__koff_,
+                    ),
+                    equilibrium_dissociation_constant__kd_=quantity_or_none(
+                        TQuantityValueMolar,
+                        proc_data.equilibrium_dissociation_constant__kd_,
+                    ),
+                    maximum_binding_capacity__rmax_=quantity_or_none(
+                        TQuantityValueResponseUnit,
+                        proc_data.maximum_binding_capacity__rmax_,
+                    ),
+                    report_point_aggregate_document=report_point_aggregate
+                    if idx == 0
+                    else None,
+                )
+                processed_data_documents.append(
+                    add_custom_information_document(
+                        doc,
+                        custom_info_doc=proc_data.processed_data_custom_info,
+                    )
+                )
 
         return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
@@ -361,14 +382,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             processed_data_aggregate_document=(
                 ProcessedDataAggregateDocument(
-                    processed_data_document=[
-                        add_custom_information_document(
-                            processed_data_document,
-                            custom_info_doc=measurement.processed_data_custom_info,
-                        )
-                    ]
+                    processed_data_document=processed_data_documents
                 )
-                if has_value(processed_data_document)
+                if processed_data_documents
                 else None
             ),
         )

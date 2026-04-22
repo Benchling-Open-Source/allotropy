@@ -22,6 +22,7 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ProcessedData,
     ReportPoint,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
@@ -154,9 +155,14 @@ def _extract_kinetic_parameter_error(
         return None
 
     # Search through parameters for matching parameter names
-    for item in kinetic_result.parameters:
-        if item.name.lower() in [name.lower() for name in parameter_names]:
-            return float(item.error) if item.error is not None else None
+    for param in kinetic_result.parameters:
+        if param.name.lower() in [name.lower() for name in parameter_names]:
+            return float(param.error) if param.error is not None else None
+
+    # Also check calculated section for KD error (affinity analysis)
+    for calc in kinetic_result.calculated:
+        if calc.name.lower() in [name.lower() for name in parameter_names]:
+            return float(calc.error) if calc.error is not None else None
 
     return None
 
@@ -381,6 +387,57 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
         # Extract kinetic analysis data using precomputed mapping (if present)
         kinetic_data = kinetic_map.get(fc_id) if kinetic_map is not None else None
 
+        # Extract kinetic parameters
+        kon = _extract_kinetic_parameter(kinetic_data, "parameters", ["ka", "kon"])
+        koff = _extract_kinetic_parameter(kinetic_data, "parameters", ["kd", "koff"])
+        kd = _extract_kinetic_parameter(
+            kinetic_data, "calculated", ["Kd_M", "KD", "kd"]
+        )
+        rmax = _extract_kinetic_parameter(kinetic_data, "parameters", ["Rmax", "rmax"])
+
+        # Create processed data object if we have kinetic data
+        processed_data_list = None
+        if kinetic_data is not None:
+            processed_data_list = [
+                ProcessedData(
+                    model_name="N/A",
+                    binding_on_rate_measurement_datum__kon_=kon,
+                    binding_off_rate_measurement_datum__koff_=koff,
+                    equilibrium_dissociation_constant__kd_=kd,
+                    maximum_binding_capacity__rmax_=rmax,
+                    processed_data_custom_info={
+                        "kinetics chi squared": {
+                            "value": _extract_chi2_value(kinetic_data),
+                            "unit": "(unitless)",
+                        },
+                        "ka error": {
+                            "value": _extract_kinetic_parameter_error(
+                                kinetic_data, ["ka", "kon"]
+                            ),
+                            "unit": "M-1s-1",
+                        },
+                        "kd error": {
+                            "value": _extract_kinetic_parameter_error(
+                                kinetic_data, ["kd", "koff"]
+                            ),
+                            "unit": "s^-1",
+                        },
+                        "KD error": {
+                            "value": _extract_kinetic_parameter_error(
+                                kinetic_data, ["KD", "Kd_M"]
+                            ),
+                            "unit": "M",
+                        },
+                        "Rmax error": {
+                            "value": _extract_kinetic_parameter_error(
+                                kinetic_data, ["Rmax", "rmax"]
+                            ),
+                            "unit": "RU",
+                        },
+                    },
+                )
+            ]
+
         measurements.append(
             Measurement(
                 identifier=random_uuid_str(),
@@ -409,44 +466,7 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
                     df_fc, cycle=cycle_num, flow_cell=fc_id
                 ),
                 report_point_data=report_points,
-                # Kinetic analysis fields
-                binding_on_rate_measurement_datum__kon_=_extract_kinetic_parameter(
-                    kinetic_data, "parameters", ["ka", "kon"]
-                ),
-                binding_off_rate_measurement_datum__koff_=_extract_kinetic_parameter(
-                    kinetic_data, "parameters", ["kd", "koff"]
-                ),
-                equilibrium_dissociation_constant__kd_=_extract_kinetic_parameter(
-                    kinetic_data, "calculated", ["Kd_M", "KD", "kd"]
-                ),
-                maximum_binding_capacity__rmax_=_extract_kinetic_parameter(
-                    kinetic_data, "parameters", ["Rmax", "rmax"]
-                ),
-                # Attach custom kinetic analysis values for processed data custom info
-                processed_data_custom_info={
-                    "kinetics chi squared": {
-                        "value": _extract_chi2_value(kinetic_data),
-                        "unit": "(unitless)",
-                    },
-                    "ka error": {
-                        "value": _extract_kinetic_parameter_error(
-                            kinetic_data, ["ka", "kon"]
-                        ),
-                        "unit": "M-1s-1",
-                    },
-                    "kd error": {
-                        "value": _extract_kinetic_parameter_error(
-                            kinetic_data, ["kd", "koff"]
-                        ),
-                        "unit": "s^-1",
-                    },
-                    "Rmax error": {
-                        "value": _extract_kinetic_parameter_error(
-                            kinetic_data, ["Rmax", "rmax"]
-                        ),
-                        "unit": "RU",
-                    },
-                },
+                processed_data=processed_data_list,
             )
         )
 

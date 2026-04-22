@@ -436,6 +436,7 @@ class CalculatedValue:
     name: str
     value: float | None
     units: str | None
+    error: float | None = None
 
 
 @dataclass(frozen=True)
@@ -461,6 +462,7 @@ class KineticResult:
                 name=key,
                 value=try_float_or_none(val.get("value")),
                 units=val.get("units"),
+                error=try_float_or_none(val.get("error")),
             )
             for key, val in (result_dict.get("calculated", {}) or {}).items()
         ]
