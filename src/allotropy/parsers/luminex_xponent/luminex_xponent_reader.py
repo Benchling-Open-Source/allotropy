@@ -279,7 +279,13 @@ class SingleDatasetParser:
         cls, lines: list[str]
     ) -> tuple[dict[str, pd.DataFrame], pd.DataFrame, pd.DataFrame, float | None]:
         """Parse single-dataset CSV and return header, calibration, min beads and results tables."""
-        df = read_csv(StringIO("\n".join(lines)), header=0)
+        # Strip document-signature footer before pandas sees it (avoids dtype pollution).
+        data_lines = []
+        for line in lines:
+            if line.strip().startswith("--DOCUMENT SIGNATURE--"):
+                break
+            data_lines.append(line)
+        df = read_csv(StringIO("\n".join(data_lines)), header=0)
 
         analyte_labels: list[str] = []
         seen_labels: set[str] = set()
