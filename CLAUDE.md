@@ -69,6 +69,25 @@ Generated models use these naming patterns:
 
 Quantity value types use abbreviated unit names: `TQuantityValueDegC`, `TQuantityValueMAU`, `TQuantityValueMmHg`, `TQuantityValueMicroLPermin`, `TQuantityValueM`, `TQuantityValueNM`, `TQuantityValueM1s1`, `TQuantityValueS1`, `TQuantityValueRU`, `TQuantityValueS`.
 
+## Vendor Auto-Discovery
+
+Each parser has a `sniff(cls, named_file_contents) -> bool` classmethod used by `discover_vendor()` to auto-detect the correct parser for a file. The discovery logic in `parser_factory.py`:
+
+1. Filters candidates by file extension
+2. Calls `sniff()` on each — collects all matches
+3. Single match: returns immediately
+4. Multiple matches: tries `create_data()` on each to disambiguate
+5. No sniff matches: tries `create_data()` on all candidates as fallback
+6. If sniff matched but parse failed: trusts the sniff result
+
+**When adding a new parser:**
+- Implement `sniff()` — check file headers, sheet names, XML root tags, etc. Keep it lightweight.
+- If the file extension is unique to this parser (e.g. `.blr`, `.rslt`), `return True` is fine.
+- For shared extensions (`.csv`, `.txt`, `.xlsx`), check distinctive content patterns.
+- **Check sniff logic of related parsers** that share the same extension — your new sniff must not false-positive on their test files, and theirs must not match yours.
+- Run `hatch run test_all.py3.10:pytest tests/discover_vendor_test.py -x -q` to verify.
+- Handle encoding: many files use UTF-16 LE (BOM `\xff\xfe`). Decode appropriately before text checks.
+
 ## Code Rules
 
 - **No runtime imports.** All imports must be at module level. Never put `import` or `from ... import` inside a function body to work around circular dependencies — fix the dependency instead.

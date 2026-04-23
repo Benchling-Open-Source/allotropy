@@ -301,14 +301,33 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
 def discover_vendor(named_file_contents: NamedFileContents) -> Vendor:
     extension = named_file_contents.extension
     candidates = [v for v in Vendor if extension in v.supported_extensions]
+    # Pass 1: collect all sniff matches.
+    sniffed: list[Vendor] = []
     for vendor in candidates:
         parser_cls = _VENDOR_TO_PARSER[vendor]
         named_file_contents.contents.seek(0)
         try:
             if parser_cls.sniff(named_file_contents):
-                return vendor
+                sniffed.append(vendor)
         except Exception:  # noqa: S112
             continue
+    # Exactly one sniff match — return without try-parse.
+    if len(sniffed) == 1:
+        return sniffed[0]
+    # Pass 2: multiple sniff matches — try parsing to disambiguate.
+    # No sniff matches — try parsing all candidates as fallback.
+    try_parse = sniffed or candidates
+    for vendor in try_parse:
+        named_file_contents.contents.seek(0)
+        try:
+            vendor.get_parser().create_data(named_file_contents)
+            return vendor
+        except Exception:  # noqa: S112
+            continue
+    # If sniff matched but try-parse failed (e.g. encoding issues unrelated to
+    # discovery), trust the sniff result rather than raising.
+    if sniffed:
+        return sniffed[0]
     msg = f"No vendor could be identified for file with extension '.{extension}'."
     raise AllotropeVendorNotFoundError(msg)
 
