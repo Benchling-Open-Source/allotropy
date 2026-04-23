@@ -20,6 +20,10 @@ class CytivaBiacoreT200EvaluationParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = "bme"
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
+        return True
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         metadata, groups = _create_data(named_file_contents)
         return Data(metadata=metadata, measurement_groups=groups)

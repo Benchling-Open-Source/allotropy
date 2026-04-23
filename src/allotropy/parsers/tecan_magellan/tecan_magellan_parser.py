@@ -1,5 +1,7 @@
 from functools import partial
 
+import openpyxl
+
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     Model,
 )
@@ -27,6 +29,32 @@ class TecanMagellanParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = TecanMagellanReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            if len(wb.sheetnames) != 1:
+                wb.close()
+                return False
+            ws = wb[wb.sheetnames[0]]
+            found_well_positions = False
+            found_date_of_measurement = False
+            for row in ws.iter_rows(max_row=50, values_only=True):
+                for cell in row:
+                    if isinstance(cell, str):
+                        if "Well positions" in cell:
+                            found_well_positions = True
+                        if "Date of measurement" in cell:
+                            found_date_of_measurement = True
+                if found_well_positions or found_date_of_measurement:
+                    break
+            wb.close()
+            return found_well_positions or found_date_of_measurement
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = TecanMagellanReader(named_file_contents)

@@ -5,6 +5,8 @@ from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.path_util import ROOT_DIR
+from allotropy.exceptions import AllotropeVendorNotFoundError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
@@ -294,6 +296,21 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.THERMO_SKANIT: ThermoSkanItParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticStunnerParser,
 }
+
+
+def discover_vendor(named_file_contents: NamedFileContents) -> Vendor:
+    extension = named_file_contents.extension
+    candidates = [v for v in Vendor if extension in v.supported_extensions]
+    for vendor in candidates:
+        parser_cls = _VENDOR_TO_PARSER[vendor]
+        named_file_contents.contents.seek(0)
+        try:
+            if parser_cls.sniff(named_file_contents):
+                return vendor
+        except Exception:  # noqa: S112
+            continue
+    msg = f"No vendor could be identified for file with extension '.{extension}'."
+    raise AllotropeVendorNotFoundError(msg)
 
 
 def get_table_contents() -> str:

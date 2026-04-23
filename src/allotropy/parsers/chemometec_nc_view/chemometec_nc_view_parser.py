@@ -25,6 +25,22 @@ class ChemometecNcViewParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = ChemometecNcViewReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            named_file_contents.contents.seek(0)
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            header = lines[0]
+            return "INSTRUMENT" in header and "VIABILITY" in header
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ChemometecNcViewReader(named_file_contents)
         return Data(

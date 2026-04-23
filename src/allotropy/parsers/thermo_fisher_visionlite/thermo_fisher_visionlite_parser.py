@@ -23,6 +23,33 @@ class ThermoFisherVisionliteParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = ThermoFisherVisionliteReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            named_file_contents.contents.seek(0)
+            raw = named_file_contents.contents.read(8192)
+            if isinstance(raw, bytes):
+                if raw[:2] == b"\xff\xfe":
+                    text = raw[2:].decode("utf-16-le", errors="replace")
+                elif raw[:2] == b"\xfe\xff":
+                    text = raw[2:].decode("utf-16-be", errors="replace")
+                else:
+                    text = raw.decode("utf-8", errors="replace")
+            else:
+                text = raw
+            lines = text.splitlines()
+            if not lines:
+                return False
+            first = lines[0].lower().strip()
+            if first.startswith("sample name") or first.startswith("well position"):
+                return True
+            # Scan/kinetic format: second line starts with "nm,"
+            if len(lines) > 1 and lines[1].strip().startswith("nm,"):
+                return True
+            return False
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return VisionLiteData.create(
             ThermoFisherVisionliteReader(named_file_contents),

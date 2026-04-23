@@ -19,6 +19,21 @@ class CfxmaestroParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = CFXMaestroReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            header = lines[0]
+            return "Well" in header and "Fluor" in header
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = CFXMaestroReader(named_file_contents)
         return Data(
