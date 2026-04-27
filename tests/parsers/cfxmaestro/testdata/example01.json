@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "qpcr document": [
             {
@@ -23,8 +23,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -50,11 +49,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -74,8 +75,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -101,11 +101,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -150,8 +152,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -177,11 +178,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -201,8 +204,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -228,11 +230,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -277,8 +281,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -304,11 +307,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -328,8 +333,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -355,11 +359,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -404,8 +410,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -431,11 +436,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -455,8 +462,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -482,11 +488,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -531,8 +539,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -558,11 +565,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -582,8 +591,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -609,11 +617,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -658,8 +668,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -685,11 +694,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -709,8 +720,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -736,11 +746,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -785,8 +797,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -812,11 +823,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -836,8 +849,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -863,11 +875,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -912,8 +926,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -939,11 +952,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -963,8 +978,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -990,11 +1004,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1039,8 +1055,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1066,11 +1081,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1090,8 +1107,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1117,11 +1133,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1166,8 +1184,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1193,11 +1210,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1217,8 +1236,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1244,11 +1262,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1293,8 +1313,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1320,11 +1339,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1344,8 +1365,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1371,11 +1391,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1420,8 +1442,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1447,11 +1468,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1471,8 +1494,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1498,11 +1520,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1547,8 +1571,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1574,11 +1597,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1598,8 +1623,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1625,11 +1649,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1674,8 +1700,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1701,11 +1726,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1725,8 +1752,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1752,11 +1778,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1801,8 +1829,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1828,11 +1855,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1852,8 +1881,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1879,11 +1907,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -1928,8 +1958,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -1955,11 +1984,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -1979,8 +2010,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2006,11 +2036,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2055,8 +2087,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2082,11 +2113,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2106,8 +2139,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2133,11 +2165,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2182,8 +2216,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2209,11 +2242,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2233,8 +2268,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref Low"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2260,11 +2294,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref Low"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2309,8 +2345,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2336,11 +2371,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2360,8 +2397,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D01",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2387,11 +2423,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2436,8 +2474,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2463,11 +2500,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2487,8 +2526,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D02",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS Baseline"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2514,11 +2552,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS Baseline"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2563,8 +2603,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2590,11 +2629,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2614,8 +2655,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D03",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2641,11 +2681,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2690,8 +2732,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2717,11 +2758,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2741,8 +2784,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D04",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "Ref High"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2768,11 +2810,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "Ref High"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2817,8 +2861,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS 3903"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2844,11 +2887,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS 3903"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2868,8 +2913,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D05",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS 3903"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2895,11 +2939,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS 3903"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -2944,8 +2990,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS 3903"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -2971,11 +3016,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS 3903"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         },
                         {
                             "device control aggregate document": {
@@ -2995,8 +3042,7 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D06",
                                 "custom information document": {
-                                    "SQ Std. Dev": 0.0,
-                                    "group identifier": "PBS 3903"
+                                    "SQ Std. Dev": 0.0
                                 }
                             },
                             "error aggregate document": {
@@ -3022,11 +3068,13 @@
                                         },
                                         "custom information document": {
                                             "Cq Std. Dev": 0.0
-                                        }
+                                        },
+                                        "group identifier": "PBS 3903"
                                     }
                                 ]
                             },
-                            "target DNA description": "N/A"
+                            "target DNA description": "N/A",
+                            "experimental data identifier": "N/A"
                         }
                     ],
                     "experimental data identifier": "N/A",
@@ -3057,7 +3105,7 @@
             "file name": "example01.csv",
             "UNC path": "tests/parsers/cfxmaestro/testdata/example01.csv",
             "ASM converter name": "allotropy_bio_rad_cfx_maestro",
-            "ASM converter version": "0.1.113",
+            "ASM converter version": "0.1.118",
             "software name": "CFX Maestro"
         },
         "device system document": {

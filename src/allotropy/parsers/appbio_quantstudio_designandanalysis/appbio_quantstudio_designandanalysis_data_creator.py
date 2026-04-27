@@ -5,7 +5,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     NaN,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import (
     CalculatedData,
     CalculatedDataItem,
     DataSource,

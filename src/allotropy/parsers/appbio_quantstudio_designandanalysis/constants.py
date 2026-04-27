@@ -1,6 +1,6 @@
 from enum import Enum
 
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import ContainerType
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import ContainerType
 
 
 # Experiment type was an enum in the BENCHLING/2023/09 version of the qpcr schema, but

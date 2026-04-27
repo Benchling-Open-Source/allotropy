@@ -1,4 +1,4 @@
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import (
     ContainerType,
     SampleRoleType,
 )
