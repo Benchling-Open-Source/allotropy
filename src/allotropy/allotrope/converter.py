@@ -208,6 +208,15 @@ def unstructure(obj: Any) -> Any:
         return result
 
     if isinstance(obj, list):
+        # Fast-path: lists of primitives (e.g., data cube float arrays with millions
+        # of elements) pass through unchanged — return directly to avoid per-element
+        # function call overhead.
+        if obj:
+            first = obj[0]
+            if (
+                first is None or isinstance(first, int | float | str | bool)
+            ) and not isinstance(first, Enum):
+                return obj
         return [unstructure(item) for item in obj]
 
     if isinstance(obj, dict):
