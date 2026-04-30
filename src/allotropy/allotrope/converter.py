@@ -183,7 +183,8 @@ def unstructure(obj: Any) -> Any:
 
     if is_dataclass(obj) and not isinstance(obj, type):
         result: dict[str, Any] = {}
-        for f in fields(obj):
+        dc_fields = fields(obj)
+        for f in dc_fields:
             value = getattr(obj, f.name)
             if value is None:
                 # Keep None for required fields (no default) to preserve
@@ -194,10 +195,9 @@ def unstructure(obj: Any) -> Any:
             json_key = f.metadata.get("json_name", default_json_name(f.name))
             result[json_key] = unstructure(value)
         # Handle dynamically-attached custom_information_document (not in fields())
-        field_names = {f.name for f in fields(obj)}
         if (
             hasattr(obj, "custom_information_document")
-            and "custom_information_document" not in field_names
+            and not any(f.name == "custom_information_document" for f in dc_fields)
             and not isinstance(obj.custom_information_document, list)
         ):
             result[
