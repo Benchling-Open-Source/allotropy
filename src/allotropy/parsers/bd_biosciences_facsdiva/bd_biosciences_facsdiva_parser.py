@@ -25,6 +25,22 @@ class BDFACSDivaParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = "xml"
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            tree = ET.parse(named_file_contents.contents)  # noqa: S314
+            root = tree.getroot()
+            root_tag = root.tag.split("}")[-1] if "}" in root.tag else root.tag
+            if root_tag == "bdfacs":
+                return True
+            child_tags = {
+                child.tag.split("}")[-1] if "}" in child.tag else child.tag
+                for child in root
+            }
+            return "experiment" in child_tags or "specimen" in child_tags
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         try:
             root_element_et = ET.parse(  # noqa: S314

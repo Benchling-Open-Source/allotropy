@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import Data, Mapper
 from allotropy.named_file_contents import NamedFileContents
@@ -30,6 +32,33 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AppBioQuantStudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            if named_file_contents.extension == "txt":
+                named_file_contents.contents.seek(0)
+                raw = named_file_contents.contents.read(8192)
+                text = (
+                    raw.decode("utf-8", errors="replace")
+                    if isinstance(raw, bytes)
+                    else raw
+                )
+                lines = text.splitlines()
+                has_star_keys = any(
+                    line.startswith("* ") and " = " in line for line in lines[:10]
+                )
+                has_brackets = any(line.startswith("[") for line in lines)
+                return has_star_keys or has_brackets
+            # xlsx: QuantStudio XLSX files have sheet names wrapped in brackets
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            sheet_names = wb.sheetnames
+            wb.close()
+            return any(name.startswith("[") for name in sheet_names)
+        except Exception:
+            return False
 
     def parse_data(
         self, reader: AppBioQuantStudioReader, original_file_path: str

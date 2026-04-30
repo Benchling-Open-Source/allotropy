@@ -25,6 +25,10 @@ class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = "rslt"
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
+        return True
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         structured_data = decode_data(named_file_contents.get_bytes_stream())
         return Data(

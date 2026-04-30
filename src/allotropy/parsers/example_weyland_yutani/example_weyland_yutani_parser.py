@@ -27,6 +27,10 @@ class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = ExampleWeylandYutaniReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:  # noqa: ARG003
+        return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ExampleWeylandYutaniReader(named_file_contents)
         basic_assay_info = BasicAssayInfo.create(reader.bottom)

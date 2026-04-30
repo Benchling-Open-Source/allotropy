@@ -1,3 +1,5 @@
+import zipfile
+
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Model,
 )
@@ -25,6 +27,15 @@ class CytivaUnicornParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "zip"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            named_file_contents.contents.seek(0)
+            with zipfile.ZipFile(named_file_contents.get_bytes_stream()) as zf:
+                return any(name.endswith(".zip") for name in zf.namelist())
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         handler = UnicornZipHandler(named_file_contents.get_bytes_stream())

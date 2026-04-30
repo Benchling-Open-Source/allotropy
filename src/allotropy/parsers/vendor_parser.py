@@ -33,6 +33,10 @@ class VendorParser(ABC, Generic[Data, Model]):
     def _get_mapper(self) -> SchemaMapper[Data, Model]:
         return self.SCHEMA_MAPPER(self.asm_converter_name, self._get_date_time)
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:  # noqa: ARG003
+        return False
+
     @abstractmethod
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         raise NotImplementedError

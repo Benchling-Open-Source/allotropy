@@ -1,5 +1,7 @@
 from collections import defaultdict
 
+import openpyxl
+
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     Model,
 )
@@ -25,6 +27,21 @@ class MabtechApexParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = MabtechApexReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            sheet_names = set(wb.sheetnames)
+            wb.close()
+            has_plate_info = (
+                "Plate Information" in sheet_names or "Plate Info" in sheet_names
+            )
+            return has_plate_info and "Plate Database" in sheet_names
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MabtechApexReader.create(named_file_contents)

@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
     Data,
@@ -29,6 +31,18 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = DesignQuantstudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            sheet_names = set(wb.sheetnames)
+            wb.close()
+            return "Results" in sheet_names
+        except Exception:
+            return False
 
     def parse_rt_pcr(
         self, reader: DesignQuantstudioReader, original_file_path: str
