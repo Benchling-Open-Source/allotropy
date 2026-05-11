@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import Data, Mapper
 from allotropy.named_file_contents import NamedFileContents
@@ -8,6 +10,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import
     create_calculated_data,
     create_measurement_groups,
     create_metadata,
+    enrich_wells_with_results,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
     AppBioQuantStudioReader,
@@ -30,6 +33,33 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = AppBioQuantStudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            if named_file_contents.extension == "txt":
+                named_file_contents.contents.seek(0)
+                raw = named_file_contents.contents.read(8192)
+                text = (
+                    raw.decode("utf-8", errors="replace")
+                    if isinstance(raw, bytes)
+                    else raw
+                )
+                lines = text.splitlines()
+                has_star_keys = any(
+                    line.startswith("* ") and " = " in line for line in lines[:10]
+                )
+                has_brackets = any(line.startswith("[") for line in lines)
+                return has_star_keys or has_brackets
+            # xlsx: QuantStudio XLSX files have sheet names wrapped in brackets
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            sheet_names = wb.sheetnames
+            wb.close()
+            return any(name.startswith("[") for name in sheet_names)
+        except Exception:
+            return False
+
     def parse_data(
         self, reader: AppBioQuantStudioReader, original_file_path: str
     ) -> Data:
@@ -41,8 +71,11 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
         results_data, result_metadata = Result.create(reader, header.experiment_type)
         melt_data = MeltCurveRawData.create(reader)
 
+        # Create immutable copies of wells with results attached
+        enriched_wells = enrich_wells_with_results(wells, results_data)
+
         calculated_data_documents = iter_calculated_data_documents(
-            [well_item for well in wells for well_item in well.items],
+            [well_item for well in enriched_wells for well_item in well.items],
             header.experiment_type,
             result_metadata.reference_sample_description,
             result_metadata.reference_dna_description,
@@ -52,7 +85,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
             metadata=create_metadata(header, original_file_path),
             measurement_groups=create_measurement_groups(
                 header,
-                wells,
+                enriched_wells,
                 amp_data,
                 multi_data,
                 results_data,

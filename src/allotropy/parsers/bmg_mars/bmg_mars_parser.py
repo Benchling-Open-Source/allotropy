@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     Model,
 )
@@ -23,6 +25,29 @@ class BmgMarsParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            has_key_value = False
+            has_raw_data = False
+            for line in lines[:30]:
+                if re.match(r"^.+:\s+.+", line):
+                    has_key_value = True
+                    break
+            for line in lines:
+                stripped = line.strip()
+                if stripped == "Raw Data" or stripped.startswith("Raw Data"):
+                    has_raw_data = True
+                    break
+            return has_key_value and has_raw_data
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BmgMarsReader(named_file_contents)

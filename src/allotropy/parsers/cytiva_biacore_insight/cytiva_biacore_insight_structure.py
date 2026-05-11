@@ -7,7 +7,7 @@ from attr import dataclass
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDalton,
     TQuantityValueMicrogramPerMilliliter,
     TQuantityValueMicroliterPerMinute,
@@ -99,6 +99,112 @@ def _get_capture_custom_info(
                 capture_info[col_name] = _first_not_null_or_none(channel_data[col_name])
 
     return capture_info
+
+
+def _get_analyte_custom_info(
+    first_row_data: SeriesData, channel_data: pd.DataFrame
+) -> dict[str, Any | None]:
+    """
+    Dynamically extract all Analyte columns (Analyte 1-N) that exist in the data.
+
+    Args:
+        first_row_data: SeriesData from first row of channel data
+        channel_data: DataFrame with channel data
+
+    Returns:
+        Dictionary with all available Analyte fields
+    """
+    analyte_info: dict[str, Any | None] = {}
+
+    # OPTIMIZATION: Get column set once for fast lookups
+    columns_set = set(channel_data.columns)
+
+    # Check for Analyte 1-10 (scan up to 10, typical max)
+    for analyte_num in range(1, 11):
+        solution_col = f"Analyte {analyte_num} Solution"
+
+        # Only process if this analyte's solution column exists
+        if solution_col not in columns_set:
+            continue
+
+        # Add Solution field
+        analyte_info[solution_col] = first_row_data.get(str, solution_col)
+
+        # Add other Analyte fields if they exist
+        for field in ["Plate id", "Position", "Control type"]:
+            col_name = f"Analyte {analyte_num} {field}"
+            if col_name in columns_set:
+                analyte_info[col_name] = first_row_data.get(str, col_name)
+
+        # Add Concentration field (can be in nM, µM, or µg/ml)
+        concentration: TQuantityValueNanomolar | TQuantityValueMicrogramPerMilliliter | None = (
+            None
+        )
+        for unit_suffix in ["(nM)", "(µM)", "(µg/ml)"]:
+            conc_col = f"Analyte {analyte_num} Concentration {unit_suffix}"
+            if conc_col in columns_set:
+                if unit_suffix == "(nM)":
+                    concentration = quantity_or_none(
+                        TQuantityValueNanomolar,
+                        first_row_data.get(float, conc_col),
+                    )
+                elif unit_suffix == "(µg/ml)":
+                    concentration = quantity_or_none(
+                        TQuantityValueMicrogramPerMilliliter,
+                        first_row_data.get(float, conc_col),
+                    )
+                # For µM, we don't have a TQuantityValue type, skip for now
+                if concentration:
+                    analyte_info[f"Analyte {analyte_num} Concentration"] = concentration
+                    break
+
+        # Add Molecular weight field
+        mw_col = f"Analyte {analyte_num} Molecular weight (Da)"
+        if mw_col in columns_set:
+            analyte_info[f"Analyte {analyte_num} Molecular weight"] = quantity_or_none(
+                TQuantityValueDalton,
+                first_row_data.get(float, mw_col),
+            )
+
+    return analyte_info
+
+
+def _get_regeneration_custom_info(
+    first_row_data: SeriesData, channel_data: pd.DataFrame
+) -> dict[str, Any | None]:
+    """
+    Dynamically extract all Regeneration columns (Regeneration 1-N) that exist in the data.
+
+    Args:
+        first_row_data: SeriesData from first row of channel data
+        channel_data: DataFrame with channel data
+
+    Returns:
+        Dictionary with all available Regeneration fields
+    """
+    regen_info: dict[str, Any | None] = {}
+
+    # OPTIMIZATION: Get column set once for fast lookups
+    columns_set = set(channel_data.columns)
+
+    # Check for Regeneration 1-10 (scan up to 10, typical max)
+    for regen_num in range(1, 11):
+        solution_col = f"Regeneration {regen_num} Solution"
+
+        # Only process if this regeneration's solution column exists
+        if solution_col not in columns_set:
+            continue
+
+        # Add Solution field
+        regen_info[solution_col] = first_row_data.get(str, solution_col)
+
+        # Add other Regeneration fields if they exist
+        for field in ["Plate id", "Position", "Control type"]:
+            col_name = f"Regeneration {regen_num} {field}"
+            if col_name in columns_set:
+                regen_info[col_name] = first_row_data.get(str, col_name)
+
+    return regen_info
 
 
 def _get_table_from_dataframe(df: pd.DataFrame, split_on: str) -> pd.DataFrame:
@@ -275,47 +381,71 @@ class BiacoreInsightMetadata:
 
 @dataclass(frozen=True)
 class KineticsData:
+    model_name: str  # "1:1 binding", "Steady state affinity", etc.
     acceptance_state: str | None = None
     curve_markers: str | None = None
-    kinetics_model: str | None = None
     binding_on_rate_measurement_datum: float | None = None
     binding_off_rate_measurement_datum: float | None = None
     equilibrium_dissociation_constant: float | None = None
     maximum_binding_capacity: float | None = None
     kinetics_chi_squared: float | None = None
     tc: float | None = None
+    u_value: float | None = None  # U-value for kinetics analysis
     offset: float | None = None  # Affinity-specific field
-    is_affinity_measurement: bool = False  # Track if this is from Affinity analysis
 
     @staticmethod
-    def create(kinetics_data: SeriesData) -> KineticsData:
-        # Detect if this is affinity data by checking which chi-squared column is present
-        kinetics_chi = kinetics_data.get(float, "Kinetics Chi² (RU²)")
-        affinity_chi = kinetics_data.get(float, "Affinity Chi² (RU²)")
-        is_affinity = kinetics_chi is None and affinity_chi is not None
+    def create_from_kinetics_model(kinetics_data: SeriesData) -> KineticsData | None:
+        """Create KineticsData from 1:1 binding model columns."""
+        model = kinetics_data.get(str, "Kinetics model")
+        if model is None:
+            return None
 
+        # For kinetics model, use the first set of columns (ka, kd, Rmax, KD, U-value)
+        # When duplicate columns exist, SeriesData.get with duplicate_strategy="first" returns first value
         return KineticsData(
+            model_name=model,
             acceptance_state=kinetics_data.get(str, "Acceptance state"),
             curve_markers=kinetics_data.get(str, "Curve markers"),
-            # Try "Kinetics model" first, fall back to "Affinity model"
-            kinetics_model=(
-                kinetics_data.get(str, "Kinetics model")
-                or kinetics_data.get(str, "Affinity model")
-            ),
             binding_on_rate_measurement_datum=kinetics_data.get(float, "ka (1/Ms)"),
             binding_off_rate_measurement_datum=kinetics_data.get(float, "kd (1/s)"),
-            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)"),
-            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)"),
-            # Try "Kinetics Chi²" first, fall back to "Affinity Chi²"
-            kinetics_chi_squared=kinetics_chi or affinity_chi,
+            equilibrium_dissociation_constant=kinetics_data.get(
+                float, "KD (M)", duplicate_strategy="first"
+            ),
+            maximum_binding_capacity=kinetics_data.get(
+                float, "Rmax (RU)", duplicate_strategy="first"
+            ),
+            kinetics_chi_squared=kinetics_data.get(float, "Kinetics Chi² (RU²)"),
+            u_value=kinetics_data.get(float, "U-value"),
             tc=kinetics_data.get(float, "tc"),
-            offset=kinetics_data.get(float, "offset (RU)"),  # Affinity-specific
-            is_affinity_measurement=is_affinity,
+        )
+
+    @staticmethod
+    def create_from_affinity_model(kinetics_data: SeriesData) -> KineticsData | None:
+        """Create KineticsData from Steady state affinity model columns."""
+        model = kinetics_data.get(str, "Affinity model")
+        if model is None:
+            return None
+
+        # For affinity model, use the second set of columns (KD, Rmax, offset)
+        # When duplicate columns exist, SeriesData.get with duplicate_strategy="last" returns last value
+        return KineticsData(
+            model_name=model,
+            acceptance_state=kinetics_data.get(str, "Acceptance state"),
+            curve_markers=kinetics_data.get(str, "Curve markers"),
+            equilibrium_dissociation_constant=kinetics_data.get(
+                float, "KD (M)", duplicate_strategy="last"
+            ),
+            maximum_binding_capacity=kinetics_data.get(
+                float, "Rmax (RU)", duplicate_strategy="last"
+            ),
+            kinetics_chi_squared=kinetics_data.get(float, "Affinity Chi² (RU²)"),
+            offset=kinetics_data.get(float, "offset (RU)"),
+            tc=kinetics_data.get(float, "tc"),
         )
 
 
 class EvaluationKinetics:
-    _data: dict[str, KineticsData]
+    _data: dict[str, list[KineticsData]]
 
     def __init__(self, kinetics_table: pd.DataFrame) -> None:
         def _get_key(row: pd.Series[Any]) -> str:
@@ -324,26 +454,117 @@ class EvaluationKinetics:
             # For affinity data, we might have multiple capture solutions
             # Build key with all available capture solutions
             capture_solution = row.get("Capture 1 Solution", "")
+            # Handle None, NaN, or pd.NA values for capture_solution
+            if capture_solution is None or (
+                isinstance(capture_solution, float) and np.isnan(capture_solution)
+            ):
+                capture_solution = ""
             analyte_solution = row.get("Analyte 1 Solution", "")
             return f"{channel_or_flowcell} {capture_solution} {analyte_solution}"
 
         self._data = {}
         if not kinetics_table.empty and len(kinetics_table.columns) > 0:
-            self._data = {
-                _get_key(row): KineticsData.create(SeriesData(row))
-                for _, row in kinetics_table.iterrows()
-            }
+            for _, row in kinetics_table.iterrows():
+                series_data = SeriesData(row)
+                key = _get_key(row)
+
+                # Try to create both kinetics and affinity models
+                models = []
+                if kinetics_model := KineticsData.create_from_kinetics_model(
+                    series_data
+                ):
+                    models.append(kinetics_model)
+                if affinity_model := KineticsData.create_from_affinity_model(
+                    series_data
+                ):
+                    models.append(affinity_model)
+
+                if models:
+                    self._data[key] = models
 
     def get_data(
         self,
         channel: int | str,
         capture_solution: str | None,
         analyte_solution: str | None,
-    ) -> KineticsData:
-        empty = KineticsData()
-        if capture_solution is None or analyte_solution is None:
-            return empty
-        return self._data.get(f"{channel} {capture_solution} {analyte_solution}", empty)
+    ) -> list[KineticsData]:
+        if analyte_solution is None:
+            return []
+        # Handle cases where capture_solution might be None (treat as empty string)
+        capture_key = capture_solution if capture_solution is not None else ""
+        return self._data.get(f"{channel} {capture_key} {analyte_solution}", [])
+
+
+class EvaluationConcentration:
+    """Stores calculated concentration data from Evaluation sheets.
+
+    Evaluation sheets (e.g., "Evaluation - Trend_Active_Stab") contain both
+    nominal concentrations and instrument-calculated concentrations based on
+    calibration curves. This class provides lookup by cycle, flow cell, and solution.
+    """
+
+    _data: dict[str, float]
+
+    def __init__(self, evaluation_tables: list[pd.DataFrame]) -> None:
+        """Parse evaluation tables and build concentration lookup.
+
+        Args:
+            evaluation_tables: List of DataFrames from Evaluation sheets,
+                              each containing concentration data
+        """
+        self._data = {}
+
+        for table in evaluation_tables:
+            if table.empty or len(table.columns) == 0:
+                continue
+
+            # Check if this table has the calculated concentration column
+            if "Calculated conc. (µg/ml)" not in table.columns:
+                continue
+
+            # Check if we have the necessary columns for keying
+            required_cols = ["Cycle", "Flow cell", "Solution"]
+            if not all(col in table.columns for col in required_cols):
+                continue
+
+            # Build lookup dictionary: key = "cycle flowcell solution"
+            for _, row in table.iterrows():
+                row_data = SeriesData(row)
+                cycle = row_data.get(int, "Cycle")
+                flow_cell = row_data.get(str, "Flow cell")
+                solution = row_data.get(str, "Solution")
+                calc_conc = row_data.get(float, "Calculated conc. (µg/ml)")
+
+                # Skip rows with missing key data or None calculated concentration
+                if cycle is None or flow_cell is None or solution is None:
+                    continue
+                if calc_conc is None:
+                    continue
+
+                # Build key: "cycle flowcell solution"
+                key = f"{cycle} {flow_cell} {solution}"
+                self._data[key] = calc_conc
+
+    def get_calculated_concentration(
+        self,
+        cycle: int,
+        flow_cell: str | int,
+        solution: str | None,
+    ) -> float | None:
+        """Get calculated concentration for a given cycle, flow cell, and solution.
+
+        Args:
+            cycle: Cycle number
+            flow_cell: Flow cell identifier (int or string like "2-1")
+            solution: Solution name (e.g., "Calib 1", "Sample 1")
+
+        Returns:
+            Calculated concentration in µg/ml, or None if not found
+        """
+        if solution is None:
+            return None
+        key = f"{cycle} {flow_cell} {solution}"
+        return self._data.get(key)
 
 
 @dataclass(frozen=True)
@@ -387,7 +608,7 @@ class MeasurementData:
     ligand_identifier: str | None
     device_control_document: list[DeviceControlDocument]
     sample_custom_info: dict[str, Any | None]
-    kinetics: KineticsData
+    kinetics: list[KineticsData]
     report_point_data: list[ReportPointData]
 
     @staticmethod
@@ -395,6 +616,7 @@ class MeasurementData:
         channel_data: pd.DataFrame,
         metadata: BiacoreInsightMetadata,
         evaluation_kinetics: EvaluationKinetics,
+        evaluation_concentration: EvaluationConcentration,
         grouping_column: str = "Channel",
     ) -> MeasurementData:
         identifier = random_uuid_str()
@@ -429,6 +651,98 @@ class MeasurementData:
             run_info = SeriesData() if run_data.empty else df_to_series_data(run_data)
             # All the info needed in the device control document is the same for all flow cell data
             flow_cell_info = SeriesData(flow_cell_data.iloc[0])
+
+            # Build device control custom info with dynamic analyte and regeneration fields
+            device_control_custom_info_dict: dict[str, Any | None] = {}
+            columns_set = set(flow_cell_data.columns)
+
+            # Dynamically add Analyte 1-N fields
+            for analyte_num in range(1, 11):
+                contact_time_col = f"Analyte {analyte_num} Contact time (s)"
+                if contact_time_col not in columns_set:
+                    continue
+
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Contact time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(float, contact_time_col),
+                )
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Dissociation time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(
+                        float, f"Analyte {analyte_num} Dissociation time (s)"
+                    ),
+                )
+                device_control_custom_info_dict[
+                    f"Analyte {analyte_num} Flow rate"
+                ] = quantity_or_none(
+                    TQuantityValueMicroliterPerMinute,
+                    flow_cell_info.get(
+                        float, f"Analyte {analyte_num} Flow rate (µl/min)"
+                    ),
+                )
+
+            # Dynamically add Regeneration 1-N fields
+            for regen_num in range(1, 11):
+                contact_time_col = f"Regeneration {regen_num} Contact time (s)"
+                if contact_time_col not in columns_set:
+                    continue
+
+                device_control_custom_info_dict[
+                    f"Regeneration {regen_num} Contact time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(float, contact_time_col),
+                )
+                device_control_custom_info_dict[
+                    f"Regeneration {regen_num} Flow rate"
+                ] = quantity_or_none(
+                    TQuantityValueMicroliterPerMinute,
+                    flow_cell_info.get(
+                        float, f"Regeneration {regen_num} Flow rate (µl/min)"
+                    ),
+                )
+
+            # Dynamically add Capture 1-N fields
+            for capture_num in range(1, 6):
+                contact_time_col = f"Capture {capture_num} Contact time (s)"
+                if contact_time_col not in columns_set:
+                    continue
+
+                device_control_custom_info_dict[
+                    f"Capture {capture_num} Contact time"
+                ] = quantity_or_none(
+                    TQuantityValueSecondTime,
+                    flow_cell_info.get(float, contact_time_col),
+                )
+                device_control_custom_info_dict[
+                    f"Capture {capture_num} Flow rate"
+                ] = quantity_or_none(
+                    TQuantityValueMicroliterPerMinute,
+                    flow_cell_info.get(
+                        float, f"Capture {capture_num} Flow rate (µl/min)"
+                    ),
+                )
+
+            # Add other standard fields
+            device_control_custom_info_dict.update(
+                {
+                    "Included": run_info.get(str, "Included"),
+                    "Sensorgram type": flow_cell_info.get(
+                        str,
+                        "Sensorgram type",
+                        run_info.get(str, "Sensorgram type"),
+                    ),
+                    "Level": quantity_or_none(
+                        TQuantityValueResponseUnit,
+                        run_info.get(float, "Level (RU)"),
+                    ),
+                }
+            )
+
             device_control_document.append(
                 DeviceControlDocument(
                     device_type=constants.DEVICE_TYPE,
@@ -437,46 +751,7 @@ class MeasurementData:
                         float, "Temperature (°C)"
                     ),
                     device_control_custom_info=_clean_custom_info(
-                        {
-                            "Analyte 1 Contact time": quantity_or_none(
-                                TQuantityValueSecondTime,
-                                flow_cell_info.get(float, "Analyte 1 Contact time (s)"),
-                            ),
-                            "Analyte 1 Dissociation time": quantity_or_none(
-                                TQuantityValueSecondTime,
-                                flow_cell_info.get(
-                                    float, "Analyte 1 Dissociation time (s)"
-                                ),
-                            ),
-                            "Analyte 1 Flow rate": quantity_or_none(
-                                TQuantityValueMicroliterPerMinute,
-                                flow_cell_info.get(
-                                    float, "Analyte 1 Flow rate (µl/min)"
-                                ),
-                            ),
-                            "Regeneration 1 Contact time": quantity_or_none(
-                                TQuantityValueSecondTime,
-                                flow_cell_info.get(
-                                    float, "Regeneration 1 Contact time (s)"
-                                ),
-                            ),
-                            "Regeneration 1 Flow rate": quantity_or_none(
-                                TQuantityValueMicroliterPerMinute,
-                                flow_cell_info.get(
-                                    float, "Regeneration 1 Flow rate (µl/min)"
-                                ),
-                            ),
-                            "Included": run_info.get(str, "Included"),
-                            "Sensorgram type": flow_cell_info.get(
-                                str,
-                                "Sensorgram type",
-                                run_info.get(str, "Sensorgram type"),
-                            ),
-                            "Level": quantity_or_none(
-                                TQuantityValueResponseUnit,
-                                run_info.get(float, "Level (RU)"),
-                            ),
-                        }
+                        device_control_custom_info_dict
                     ),
                 )
             )
@@ -489,6 +764,17 @@ class MeasurementData:
             )
         analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
 
+        # Get calculated concentration from Evaluation sheets if available
+        # Use the first flow cell from channel_data to look up the concentration
+        first_flow_cell = str(channel_data["Flow cell"].iloc[0])
+        calculated_concentration = (
+            evaluation_concentration.get_calculated_concentration(
+                cycle=cycle_number,
+                flow_cell=first_flow_cell,
+                solution=analyte_solution,
+            )
+        )
+
         return MeasurementData(
             identifier=identifier,
             sample_identifier=f"Run{run}_Cycle{cycle_number}",
@@ -500,44 +786,17 @@ class MeasurementData:
                     "Run": run,
                     "Cycle": cycle_number,
                     "Channel": channel,
-                    "Analyte 1 Solution": analyte_solution,
-                    "Analyte 1 Plate id": first_row_data.get(str, "Analyte 1 Plate id"),
-                    "Analyte 1 Position": first_row_data.get(str, "Analyte 1 Position"),
-                    "Analyte 1 Control type": first_row_data.get(
-                        str, "Analyte 1 Control type"
-                    ),
-                    "Regeneration 1 Solution": first_row_data.get(
-                        str, "Regeneration 1 Solution"
-                    ),
-                    "Regeneration 1 Plate id": first_row_data.get(
-                        str, "Regeneration 1 Plate id"
-                    ),
-                    "Regeneration 1 Position": first_row_data.get(
-                        str, "Regeneration 1 Position"
-                    ),
-                    "Regeneration 1 Control type": first_row_data.get(
-                        str, "Regeneration 1 Control type"
-                    ),
                     # Capture data may not be present in all file formats
                     # Dynamically add all Capture columns that exist (Capture 1-5)
                     **_get_capture_custom_info(channel_data, capture_solution),
-                    "Analyte 1 Concentration": (
-                        # Try nM first, then µg/ml
-                        quantity_or_none(
-                            TQuantityValueNanomolar,
-                            first_row_data.get(float, "Analyte 1 Concentration (nM)"),
-                        )
-                        or quantity_or_none(
-                            TQuantityValueMicrogramPerMilliliter,
-                            first_row_data.get(
-                                float, "Analyte 1 Concentration (µg/ml)"
-                            ),
-                        )
+                    # Dynamically add all Analyte columns that exist (Analyte 1-N)
+                    **_get_analyte_custom_info(first_row_data, channel_data),
+                    "Analyte 1 Calculated Concentration": quantity_or_none(
+                        TQuantityValueMicrogramPerMilliliter,
+                        calculated_concentration,
                     ),
-                    "Analyte 1 Molecular weight": quantity_or_none(
-                        TQuantityValueDalton,
-                        first_row_data.get(float, "Analyte 1 Molecular weight (Da)"),
-                    ),
+                    # Dynamically add all Regeneration columns that exist (Regeneration 1-N)
+                    **_get_regeneration_custom_info(first_row_data, channel_data),
                 }
             ),
             kinetics=evaluation_kinetics.get_data(
@@ -589,6 +848,31 @@ class Data:
         if evaluation_kinetics is None:
             evaluation_kinetics = EvaluationKinetics(pd.DataFrame())
 
+        # OPTIMIZATION: Parse evaluation concentration data once, not per cycle
+        # Look for Evaluation sheets with concentration data
+        evaluation_concentration_tables = []
+        evaluation_sheet_prefixes = [
+            "Evaluation - Trend_",
+            "Evaluation - Preced_",
+        ]
+        for sheet_name in reader.data.keys():
+            if any(
+                sheet_name.startswith(prefix) for prefix in evaluation_sheet_prefixes
+            ):
+                try:
+                    eval_table = _get_table_from_dataframe(
+                        reader.data[sheet_name], split_on="Cycle"
+                    )
+                    evaluation_concentration_tables.append(eval_table)
+                except (KeyError, ValueError, AssertionError):
+                    # If parsing fails (missing columns, malformed data), skip this sheet
+                    # Evaluation sheets are optional, so we continue without them
+                    continue
+
+        evaluation_concentration = EvaluationConcentration(
+            evaluation_concentration_tables
+        )
+
         # OPTIMIZATION: Group all data by cycle once using pandas groupby
         # This is much faster than filtering per cycle
         cycles_dict = {}
@@ -601,7 +885,11 @@ class Data:
                 cycle_int = int(float(str(cycle_number)))
             cycles_dict[cycle_int] = [
                 MeasurementData.create(
-                    channel_data, metadata, evaluation_kinetics, grouping_column
+                    channel_data,
+                    metadata,
+                    evaluation_kinetics,
+                    evaluation_concentration,
+                    grouping_column,
                 )
                 for _, channel_data in cycle_group.groupby(grouping_column)
             ]
@@ -652,12 +940,40 @@ class Data:
         if evaluation_kinetics is None:
             evaluation_kinetics = EvaluationKinetics(pd.DataFrame())
 
+        # Parse evaluation concentration data
+        evaluation_concentration_tables = []
+        evaluation_sheet_prefixes = [
+            "Evaluation - Trend_",
+            "Evaluation - Preced_",
+        ]
+        for sheet_name in reader.data.keys():
+            if any(
+                sheet_name.startswith(prefix) for prefix in evaluation_sheet_prefixes
+            ):
+                try:
+                    eval_table = _get_table_from_dataframe(
+                        reader.data[sheet_name], split_on="Cycle"
+                    )
+                    evaluation_concentration_tables.append(eval_table)
+                except (KeyError, ValueError, AssertionError):
+                    # If parsing fails (missing columns, malformed data), skip this sheet
+                    # Evaluation sheets are optional, so we continue without them
+                    continue
+
+        evaluation_concentration = EvaluationConcentration(
+            evaluation_concentration_tables
+        )
+
         # Determine grouping column: use "Channel" if available, otherwise "Flow cell"
         grouping_column = "Channel" if "Channel" in cycle_data.columns else "Flow cell"
 
         return [
             MeasurementData.create(
-                channel_data, metadata, evaluation_kinetics, grouping_column
+                channel_data,
+                metadata,
+                evaluation_kinetics,
+                evaluation_concentration,
+                grouping_column,
             )
             for _, channel_data in cycle_data.groupby(grouping_column)
         ]

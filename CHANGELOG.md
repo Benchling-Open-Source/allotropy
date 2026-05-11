@@ -5,6 +5,75 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.126] - 2026-04-30
+
+### Added
+
+- Add vendor auto-discovery from file contents (#1195)
+
+## [0.1.125] - 2026-04-22
+
+### Fixed
+
+- Strip document-signature footer from Intelliflex v2.2 CSV (#1193)
+
+## [0.1.123] - 2026-04-21
+
+### Added
+
+- Cytiva Biacore T200 Evaluation -- Update parser to extract kinetics data (kd, ka, RMax, chi-squared, errors) (#1183)
+
+## [0.1.122] - 2026-04-21
+
+### Fixed
+
+- Fall back to .tabular.schema.json in manifest lookup (#1190)
+
+## [0.1.121] - 2026-04-21
+
+### Added
+
+- Generate REC/2023/03 liquid chromatography tabular schema models (#1188)
+
+## [0.1.120] - 2026-04-21
+
+### Added
+
+- Generate REC/2024/03 liquid chromatography schema models (#1186)
+
+## [0.1.119] - 2026-04-20
+
+### Added
+
+- Add Intelliflex v2.2 flat CSV format support (#1184)
+- Migrate example_weyland_yutani to REC/2025/03 plate reader schema (#1177)
+- Add technique shorthand to schema scripts (#1178)
+
+### Changed
+
+- Implement modular schema generation  (#1176)
+
+## [0.1.118] - 2026-04-10
+
+### Added
+
+- Cytiva Biacore Insight - Dynamically extract Analyte, Capture, Regeneration 1-N columns (#1171)
+- Cytiva Biacore Insight - Add support for calculated concentrations (#1172)
+
+## [0.1.117] - 2026-04-08
+
+### Added
+
+- Add locale-aware timestamp parsing using Babel CLDR data (#1167)
+- Add global locale support for number parsing (#1165)
+- Reduce Cytiva Biacore T200 Control memory usage with cycle streaming (#1164)
+- Cytiva T200 - Implement streaming decoder to reduce memory usage by 55% (#1163)
+
+### Fixed
+
+- Default to day-first format for invalid/unknown locales (#1168)
+- Use immutable copy pattern for WellItem result attachment (#1166)
+
 ## [0.1.116] - 2026-04-01
 
 ### Added

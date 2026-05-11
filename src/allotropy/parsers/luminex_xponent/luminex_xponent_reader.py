@@ -14,6 +14,9 @@ from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
+# Pattern to detect analyte columns: "R<digits>: RP<digits> <METRIC>"
+_ANALYTE_COLUMN_PATTERN = re.compile(r"^R\d+:\s+RP\d+\s+")
+
 
 class LuminexXponentReader:
     SUPPORTED_EXTENSIONS = "csv"
@@ -53,7 +56,9 @@ class SingleDatasetParser:
     and yield the same data structures expected by xPONENT-based downstream code.
     """
 
-    # Columns that are always present in the single-dataset CSV export and are not analyte columns
+    # Columns that are always present in the single-dataset CSV export and are not analyte columns.
+    # Used as a minimum set for detection; any column NOT matching the analyte pattern
+    # (R<digits>: RP<digits> <METRIC>) is also treated as a fixed column.
     FIXED_INPUT_COLUMNS: ClassVar[list[str]] = [
         "INSTRUMENT TYPE",
         "SERIAL NUMBER",
@@ -63,6 +68,18 @@ class SingleDatasetParser:
         "WELL LOCATION",
         "SAMPLE ID",
     ]
+
+    # Metrics that are informational per-analyte metadata, not numeric result sections.
+    # These are parsed but not turned into statistic/calculated-data sections.
+    ANALYTE_METADATA_METRICS: ClassVar[set[str]] = {
+        "ANALYTE NAME",
+        "REGION",
+    }
+
+    @staticmethod
+    def is_analyte_column(col: str) -> bool:
+        """Return True if the column name matches the analyte column pattern R##: RP# ..."""
+        return bool(_ANALYTE_COLUMN_PATTERN.match(str(col).strip()))
 
     @staticmethod
     def parse_header(col: str) -> tuple[str, str] | None:
@@ -106,8 +123,17 @@ class SingleDatasetParser:
     def section_name_from_metric(metric_token: str) -> str:
         """Map raw metric tokens to xPONENT-style section names."""
         token_upper = metric_token.upper().strip()
-        if token_upper.endswith("AVERAGE MFI"):
-            return "Avg Net MFI"
+        # Order matters: check longer/more-specific suffixes before shorter ones
+        metric_token_to_section: list[tuple[str, str]] = [
+            ("AVERAGE MFI", "Avg Net MFI"),
+            ("REPLICATE %CV", "%CV of Replicates"),
+            ("NET NORMALIZED MEDIAN", "Net Normalized Median"),
+            ("NET MEDIAN", "Net MFI"),
+            ("%CV", "% CV"),
+        ]
+        for suffix, section in metric_token_to_section:
+            if token_upper.endswith(suffix):
+                return section
         # Title-case fallback for all other tokens
         return metric_token.title()
 
@@ -142,16 +168,35 @@ class SingleDatasetParser:
             return None
 
         if metric_token == "COUNT":  # noqa: S105
-            analyte_cols = analyte_labels
-            # Convert each analyte column to numeric, coercing errors to 0.0
-            # Use try_float_or_none for locale support, then fill None with 0.0
-            converted = cast(
-                pd.DataFrame,
-                out[analyte_cols]
-                .apply(lambda col: col.apply(try_float_or_none))
-                .fillna(0.0),
-            )
-            out["Total Events"] = converted.sum(axis=1)
+            # Use TOTAL EVENTS column from the raw data if available (v2.2 format),
+            # otherwise sum analyte counts.
+            if "TOTAL EVENTS" in df.columns:
+                out["Total Events"] = df["TOTAL EVENTS"]
+            else:
+                analyte_cols = analyte_labels
+                # Convert each analyte column to numeric, coercing errors to 0.0
+                # Use try_float_or_none for locale support, then fill None with 0.0
+                converted = cast(
+                    pd.DataFrame,
+                    out[analyte_cols]
+                    .apply(lambda col: col.apply(try_float_or_none))
+                    .fillna(0.0),
+                )
+                out["Total Events"] = converted.sum(axis=1)
+            # Add extra per-well columns from the raw data if present (v2.2 format)
+            _per_well_extra_columns = [
+                "WELL TYPE",
+                "WELL STATUS",
+                "WELL ACQUISITION START",
+                "WELL ACQUISITION END",
+                "TOTAL ACTIVE EVENTS",
+                "TOTAL CLASSIFIED EVENTS",
+                "TOTAL GATED EVENTS",
+                "COUNT %CV",
+            ]
+            for extra_col in _per_well_extra_columns:
+                if extra_col in df.columns:
+                    out[extra_col] = df[extra_col].values
         else:
             out["Total Events"] = ""
         return out.set_index("Location")
@@ -234,20 +279,42 @@ class SingleDatasetParser:
         cls, lines: list[str]
     ) -> tuple[dict[str, pd.DataFrame], pd.DataFrame, pd.DataFrame, float | None]:
         """Parse single-dataset CSV and return header, calibration, min beads and results tables."""
-        df = read_csv(StringIO("\n".join(lines)), header=0)
+        # Strip document-signature footer before pandas sees it (avoids dtype pollution).
+        data_lines = []
+        for line in lines:
+            if line.strip().startswith("--DOCUMENT SIGNATURE--"):
+                break
+            data_lines.append(line)
+        df = read_csv(StringIO("\n".join(data_lines)), header=0)
 
         analyte_labels: list[str] = []
         seen_labels: set[str] = set()
         headers_map: dict[tuple[str, str], str] = {}
         metric_tokens_ordered: list[str] = []
         seen_metric_tokens: set[str] = set()
+        analyte_metadata_map: dict[tuple[str, str], str] = {}
+
+        # Detect whether the file uses the R##: RP# column prefix pattern (v2.2 format).
+        # If so, use pattern matching to detect analyte columns; otherwise, use the
+        # FIXED_INPUT_COLUMNS list as in the original format.
+        has_prefixed_columns = any(cls.is_analyte_column(str(c)) for c in df.columns)
+
         for col in df.columns:
-            if col in cls.FIXED_INPUT_COLUMNS:
+            col_str = str(col)
+            # Skip non-analyte columns
+            if has_prefixed_columns:
+                if not cls.is_analyte_column(col_str):
+                    continue
+            elif col_str in cls.FIXED_INPUT_COLUMNS:
                 continue
             parsed = cls.parse_header(str(col))
             if not parsed:
                 continue
             analyte_label, metric = parsed
+            # Separate informational per-analyte metadata from result metrics
+            if metric.upper().strip() in cls.ANALYTE_METADATA_METRICS:
+                analyte_metadata_map[(analyte_label, metric.upper().strip())] = str(col)
+                continue
             headers_map[(analyte_label, metric)] = str(col)
             if (
                 metric.upper().strip().endswith("COUNT")
@@ -269,6 +336,22 @@ class SingleDatasetParser:
 
         cls.add_mandatory_columns(results, df, analyte_labels)
 
+        # If ANALYTE NAME columns are present (v2.2 format), rename analyte columns
+        # to real names and populate bead IDs from REGION data.
+        analyte_labels = cls._enrich_from_analyte_metadata(
+            results, df, analyte_labels, analyte_metadata_map
+        )
+
+        # Build the dilution factor section from the DILUTION column if present (v2.2 format)
+        if "DILUTION" in df.columns:
+            dilution_df = pd.DataFrame()
+            dilution_df["Location"] = [
+                f"1(1,{w})" for w in df["WELL LOCATION"].astype(str)
+            ]
+            dilution_df["Sample"] = df["SAMPLE ID"].astype(str)
+            dilution_df["Dilution Factor"] = df["DILUTION"]
+            results["Dilution Factor"] = dilution_df.set_index("Location")
+
         # Safely extract optional fields from the input DataFrame without mypy complaints
         _serial_series = (
             df["SERIAL NUMBER"] if "SERIAL NUMBER" in df.columns else pd.Series([""])
@@ -279,41 +362,153 @@ class SingleDatasetParser:
         )
         _plate_value = str(_plate_series.iloc[0]) if len(_plate_series) > 0 else ""
 
-        header = (
-            pd.DataFrame(
-                {
-                    0: [
-                        "Program",
-                        "Build",
-                        "Date",
-                        "SN",
-                        "ProtocolPlate",
-                        "ComputerName",
-                        "BatchStartTime",
-                    ],
-                    1: [
-                        "xPONENT",
-                        "Unknown",
-                        "",
-                        _serial_value,
-                        "Name",
-                        "",
-                        _plate_value,
-                    ],
-                    2: ["", "", "", "", "", "", ""],
-                    3: ["", "", "", "", "", "", ""],
-                    4: ["", "", "", "", cls._get_well_count(df), "", ""],
-                    5: ["", "", "", "", "", "", ""],
-                }
-            )
-            .set_index(0)
-            .T
-        )
+        header_rows = [
+            "Program",
+            "Build",
+            "Date",
+            "SN",
+            "ProtocolPlate",
+            "ComputerName",
+            "BatchStartTime",
+        ]
+        header_vals = [
+            "xPONENT",
+            "Unknown",
+            "",
+            _serial_value,
+            "Name",
+            "",
+            _plate_value,
+        ]
+
+        # Append v2.2-specific fields to the synthesized header if present in the data
+        _v2_2_header_fields: list[tuple[str, str]] = [
+            ("MODEL NAME", "ModelName"),
+            ("SOFTWARE VERSION", "Build"),
+            ("PROTOCOL NAME", "ProtocolName"),
+            ("PROTOCOL VERSION", "ProtocolVersion"),
+            ("PANEL NAME", "PanelName"),
+            ("BEAD TYPE", "BeadType"),
+            ("PLATE END", "BatchStopTime"),
+            ("PLATE STATUS", "PlateStatus"),
+            ("PLATE TYPE NAME", "PlateTypeName"),
+            ("UPTAKE VOLUME", "MaxSampleUptakeVolume"),
+            ("ACTIVE USER", "Operator"),
+            ("AUTHORIZED USER", "AuthorizedUser"),
+            ("CALIBRATION STATE", "CalibrationState"),
+            ("CALIBRATION LOT", "CalibrationLot"),
+            ("CALIBRATION LOT EXPIRATION", "CalibrationLotExpiration"),
+            ("CALIBRATION LOT EXPIRED", "CalibrationLotExpired"),
+            ("CALIBRATION TIMESTAMP", "CalibrationTimestamp"),
+            ("VERIFICATION STATE", "VerificationState"),
+            ("VERIFICATION LOT", "VerificationLot"),
+            ("VERIFICATION LOT EXPIRATION", "VerificationLotExpiration"),
+            ("VERIFICATION LOT EXPIRED", "VerificationLotExpired"),
+            ("VERIFICATION TIMESTAMP", "VerificationTimestamp"),
+            ("FLUIDICS VER STATE", "FluidicsVerState"),
+            ("FLUIDICS VER TIMESTAMP", "FluidicsVerTimestamp"),
+            ("FLUIDICS 1 VER LOT", "Fluidics1VerLot"),
+            ("FLUIDICS 1 VER LOT EXPIRATION", "Fluidics1VerLotExpiration"),
+            ("FLUIDICS 1 VER LOT EXPIRED", "Fluidics1VerLotExpired"),
+            ("FLUIDICS 2 VER LOT", "Fluidics2VerLot"),
+            ("FLUIDICS 2 VER LOT EXPIRATION", "Fluidics2VerLotExpiration"),
+            ("FLUIDICS 2 VER LOT EXPIRED", "Fluidics2VerLotExpired"),
+        ]
+        for csv_col, header_key in _v2_2_header_fields:
+            if csv_col in df.columns:
+                val = str(df[csv_col].iloc[0]) if len(df) > 0 else ""
+                # Override "Build" with SOFTWARE VERSION if we haven't already
+                if header_key == "Build" and "Build" in header_rows:
+                    idx = header_rows.index("Build")
+                    header_vals[idx] = val
+                    continue
+                header_rows.append(header_key)
+                header_vals.append(val)
+
+        n_cols = max(6, len(header_rows))
+        header_dict: dict[int, list[object]] = {
+            0: list(header_rows),
+            1: list(header_vals),
+        }
+        for i in range(2, n_cols):
+            vals: list[object] = [""] * len(header_rows)
+            # Put well count at ProtocolPlate row, column 4
+            if i == 4 and "ProtocolPlate" in header_rows:
+                pp_idx = header_rows.index("ProtocolPlate")
+                vals[pp_idx] = cls._get_well_count(df)
+            header_dict[i] = vals
+
+        header = pd.DataFrame(header_dict).set_index(0).T
 
         calibration = pd.DataFrame()
         min_beads: float | None = None
 
         return results, header, calibration, min_beads
+
+    @classmethod
+    def _enrich_from_analyte_metadata(
+        cls,
+        results: dict[str, pd.DataFrame],
+        df: pd.DataFrame,
+        analyte_labels: list[str],
+        analyte_metadata_map: dict[tuple[str, str], str],
+    ) -> list[str]:
+        """If ANALYTE NAME and REGION columns exist, use them to:
+        1. Rename analyte columns from region prefixes (R25: RP1) to real names (HPV6)
+        2. Populate bead IDs (region numbers) in Units section
+
+        Returns the updated analyte_labels (renamed if applicable).
+        """
+        if not analyte_metadata_map:
+            return analyte_labels
+
+        bead_ids: list[str] = []
+        rename_map: dict[str, str] = {}
+        for label in analyte_labels:
+            name_col = analyte_metadata_map.get((label, "ANALYTE NAME"))
+            region_col = analyte_metadata_map.get((label, "REGION"))
+            # Get the first non-NaN analyte name
+            name_val = ""
+            if name_col and name_col in df.columns:
+                valid = df[name_col].dropna()
+                if len(valid) > 0:
+                    name_val = str(valid.iloc[0])
+            region_val = ""
+            if region_col and region_col in df.columns:
+                valid = df[region_col].dropna()
+                if len(valid) > 0:
+                    raw = valid.iloc[0]
+                    # Convert float-like ints (e.g. 25.0) to clean strings (e.g. "25")
+                    region_val = (
+                        str(int(raw))
+                        if isinstance(raw, float) and raw == int(raw)
+                        else str(raw)
+                    )
+            bead_ids.append(region_val if region_val else "N/A")
+            if name_val and name_val != label:
+                rename_map[label] = name_val
+
+        # Rename analyte columns in all result sections
+        new_labels = [rename_map.get(label, label) for label in analyte_labels]
+        if rename_map:
+            for section_name, section_df in results.items():
+                if section_name == "Units":
+                    continue
+                results[section_name] = section_df.rename(columns=rename_map)
+
+        # Rebuild Units section with real bead IDs
+        columns = ["Analyte:", *new_labels]
+        results["Units"] = pd.DataFrame(
+            [
+                columns,
+                ["BeadID:", *bead_ids],
+                ["Units:", *[""] * len(new_labels)],
+            ],
+            index=["Analyte:", "BeadID:", "Units:"],
+            columns=columns,
+        )
+
+        return new_labels
 
 
 class MultipleDatasetParser:

@@ -1,0 +1,89 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/ph-cube-detector.schema",
+  "$defs": {
+    "measurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "chromatogram data cube": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002550",
+          "$asm.pattern": "datacube",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+            },
+            {
+              "properties": {
+                "cube-structure": {
+                  "properties": {
+                    "dimensions": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "prefixItems": [
+                        {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "concept": {
+                                  "const": "retention time"
+                                },
+                                "unit": {
+                                  "const": "s"
+                                },
+                                "@componentDatatype": {
+                                  "const": "double"
+                                }
+                              }
+                            },
+                            {
+                              "properties": {
+                                "concept": {
+                                  "const": "retention volume"
+                                },
+                                "unit": {
+                                  "const": "mL"
+                                },
+                                "@componentDatatype": {
+                                  "const": "double"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "measures": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "contains": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "concept": {
+                                "const": "pH"
+                              },
+                              "unit": {
+                                "const": "pH"
+                              },
+                              "@componentDatatype": {
+                                "const": "double"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "chromatogram data cube"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -26,6 +26,21 @@ class NovaBioFlexParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = "csv"
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            header = lines[0]
+            return "Date & Time" in header
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         try:
             data = read_csv(

@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Model,
 )
@@ -25,6 +27,23 @@ class PharmSpecParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanPharmspecReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            ws = wb[wb.sheetnames[0]]
+            for row in ws.iter_rows(max_row=20, values_only=True):
+                for cell in row:
+                    if isinstance(cell, str) and "Particle" in cell:
+                        wb.close()
+                        return True
+            wb.close()
+            return False
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BeckmanPharmspecReader(named_file_contents)

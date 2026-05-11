@@ -1,3 +1,5 @@
+import json
+
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Model,
 )
@@ -23,6 +25,14 @@ class BenchlingChromeleonParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BenchlingChromeleonReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            data = json.load(named_file_contents.contents)
+            return isinstance(data, dict) and isinstance(data.get("injections"), list)
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BenchlingChromeleonReader(named_file_contents)

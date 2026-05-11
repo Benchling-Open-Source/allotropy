@@ -241,8 +241,6 @@ def _create_measurement(
 ) -> Measurement | None:
     if not result:
         return None
-    # TODO: temp workaround for cal doc result
-    well_item._result = result
 
     (
         reporter_dye_data_cube,
@@ -330,6 +328,30 @@ def get_well_item_results(
     return results_data.get(well_item.identifier, {}).get(
         well_item.target_dna_description.replace(" ", "")
     )
+
+
+def enrich_wells_with_results(
+    wells: list[Well],
+    results_data: dict[int, dict[str, Result]],
+) -> list[Well]:
+    """Return new Wells with results attached to well items via immutable copy.
+
+    This creates new WellItem instances with _result properly set at construction time
+    (via dataclasses.replace), avoiding mutation of the private field after creation.
+    """
+    from dataclasses import replace
+
+    enriched_wells = []
+    for well in wells:
+        enriched_items = []
+        for well_item in well.items:
+            result = get_well_item_results(well_item, results_data)
+            if result:
+                enriched_items.append(replace(well_item, _result=result))
+            else:
+                enriched_items.append(well_item)
+        enriched_wells.append(replace(well, items=enriched_items))
+    return enriched_wells
 
 
 def get_well_item_amp_data(

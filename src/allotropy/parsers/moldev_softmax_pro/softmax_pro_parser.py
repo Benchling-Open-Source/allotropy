@@ -1,4 +1,8 @@
-from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import Model
+import re
+
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
+    Model,
+)
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
     Mapper,
@@ -22,6 +26,25 @@ class SoftmaxproParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            if isinstance(raw, bytes):
+                if raw[:2] == b"\xff\xfe":
+                    text = raw[2:].decode("utf-16-le", errors="replace")
+                else:
+                    text = raw.decode("utf-8", errors="replace")
+            else:
+                text = raw
+            lines = text.splitlines()
+            for line in lines:
+                if line.strip():
+                    return bool(re.match(r"^##BLOCKS=\s*\d+", line))
+            return False
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         lines = read_to_lines(named_file_contents)

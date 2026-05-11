@@ -1,0 +1,3203 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest",
+    "binding affinity analyzer aggregate document": {
+        "binding affinity analyzer document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 5006.60611979166,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [29505.669921875, 29520.5703125, 29525.26953125, 29546.849609375, 29527.9609375, 29528.5]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4360.15657552084,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 4.91410964639217e-07,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 85.360582993456,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 1.37128768154741,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.655564735722733,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell2",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [28667.08984375, 28679.369140625, 28682.6796875, 28701.5703125, 28684.740234375, 28685.310546875]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell2-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -838.580078125,
+                                            -841.201171875,
+                                            -842.58984375,
+                                            -845.279296875,
+                                            -843.22265625,
+                                            -843.169921875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4497.56510416667,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.68056994843515e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 101.799431109673,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.101359877977901,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 3.64497798754765,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell3",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [28791.490234375, 28805.83984375, 28809.630859375, 28828.6796875, 28812.05078125, 28812.869140625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_4",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell3-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -714.1796875,
+                                            -714.73046875,
+                                            -715.638671875,
+                                            -718.1318359375,
+                                            -715.919921875,
+                                            -715.560546875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4285.0966796875,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_5",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.04418108636724e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 88.1364515659826,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.0200132623088633,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.813873850224422,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell4",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [28991.5, 29004.310546875, 29027.25, 29025.720703125, 29008.939453125, 29009.640625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_6",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle1_FlowCell4-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.80000305175781, 253.5, 380.20001220703125, 506.8999938964844, 633.5999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -514.169921875,
+                                            -516.259765625,
+                                            -498.01953125,
+                                            -521.080078125,
+                                            -519.03125,
+                                            -518.78125
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2026-01-12T13:24:24+00:00",
+                    "compartment temperature": {
+                        "value": 13.0,
+                        "unit": "degC"
+                    },
+                    "custom information document": {
+                        "data collection rate": {
+                            "value": 10.0,
+                            "unit": "Hz"
+                        },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
+                        "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
+                    }
+                },
+                "analyst": "l074508"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 5006.60611979166,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_7",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [29528.369140625, 29528.849609375, 29529.869140625, 29557.4609375, 29530.130859375, 29529.859375]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4360.15657552084,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_8",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 4.91410964639217e-07,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 85.360582993456,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 1.37128768154741,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.655564735722733,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell2",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [28684.1796875, 29197.69921875, 29199.75, 29226.08984375, 29202.189453125, 29203.080078125]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_9",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell2-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -844.189453125,
+                                            -331.150390625,
+                                            -330.119140625,
+                                            -331.357421875,
+                                            -327.94140625,
+                                            -326.779296875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4497.56510416667,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_10",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.68056994843515e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 101.799431109673,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.101359877977901,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 3.64497798754765,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell3",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [28810.859375, 28811.8203125, 29290.779296875, 29317.919921875, 29294.990234375, 29296.390625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_11",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell3-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -717.509765625,
+                                            -717.029296875,
+                                            -239.08984375,
+                                            -239.4609375,
+                                            -235.140625,
+                                            -233.4296875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4285.0966796875,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_12",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.04418108636724e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 88.1364515659826,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.0200132623088633,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.813873850224422,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell4",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [29009.25, 29009.94921875, 29504.419921875, 29572.9609375, 29549.529296875, 29550.669921875]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_13",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle2_FlowCell4-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -519.119140625,
+                                            -518.900390625,
+                                            -25.44921875, 15.5927734375, 19.3974609375, 20.857421875]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2026-01-12T13:24:24+00:00",
+                    "compartment temperature": {
+                        "value": 13.0,
+                        "unit": "degC"
+                    },
+                    "custom information document": {
+                        "data collection rate": {
+                            "value": 10.0,
+                            "unit": "Hz"
+                        },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
+                        "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
+                    }
+                },
+                "analyst": "l074508"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 5006.60611979166,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_14",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [29528.669921875, 29528.9296875, 29529.9296875, 29571.580078125, 29531.119140625, 29530.650390625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4360.15657552084,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_15",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 4.91410964639217e-07,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 85.360582993456,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 1.37128768154741,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.655564735722733,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell2",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [28684.4609375, 29195.359375, 29197.4296875, 29305.75, 29203.310546875, 29202.9609375]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_16",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell2-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -844.208984375,
+                                            -333.5703125,
+                                            -332.5,
+                                            -265.8140563964844,
+                                            -327.80859375,
+                                            -327.6796875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4497.56510416667,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_17",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.68056994843515e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 101.799431109673,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.101359877977901,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 3.64497798754765,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell3",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [28813.05078125, 28813.7109375, 29291.4296875, 29336.83984375, 29296.279296875, 29297.509765625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_18",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell3-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -715.619140625,
+                                            -715.21875,
+                                            -238.5,
+                                            -234.6105499267578,
+                                            -234.8515625,
+                                            -233.08984375
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4285.0966796875,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_19",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.04418108636724e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 88.1364515659826,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.0200132623088633,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.813873850224422,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell4",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [29009.560546875, 29010.2890625, 29505.830078125, 29587.890625, 29550.41015625, 29551.470703125]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_20",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle3_FlowCell4-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 127.0999984741211, 254.10000610351562, 381.1000061035156, 508.1000061035156, 635.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -519.109375,
+                                            -518.640625,
+                                            -24.099609375, 16.462890625, 19.279296875, 20.87109375]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2026-01-12T13:24:24+00:00",
+                    "compartment temperature": {
+                        "value": 13.0,
+                        "unit": "degC"
+                    },
+                    "custom information document": {
+                        "data collection rate": {
+                            "value": 10.0,
+                            "unit": "Hz"
+                        },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
+                        "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
+                    }
+                },
+                "analyst": "l074508"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 5006.60611979166,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_21",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [29528.779296875, 29528.98046875, 29529.779296875, 29562.91015625, 29530.279296875, 29529.919921875]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4360.15657552084,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_22",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 4.91410964639217e-07,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 85.360582993456,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 1.37128768154741,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.44822836151066e-08,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.655564735722733,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell2",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [28684.599609375, 29196.01953125, 29198.009765625, 29251.16015625, 29202.779296875, 29202.66015625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "2-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_23",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell2-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -844.1796875,
+                                            -332.9609375,
+                                            -331.76953125,
+                                            -311.728515625,
+                                            -327.5,
+                                            -327.259765625
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4497.56510416667,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_24",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.68056994843515e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 101.799431109673,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.101359877977901,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 8.64149729428356e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 3.64497798754765,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell3",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [28814.16015625, 28814.83984375, 29292.220703125, 29325.05078125, 29296.41015625, 29297.83984375]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "3-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_25",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell3-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -714.619140625,
+                                            -714.140625,
+                                            -237.55859375,
+                                            -237.7607421875,
+                                            -233.859375,
+                                            -232.060546875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false",
+                                            "ligand identifier": "MASKED_LIGAND_ID",
+                                            "level": {
+                                                "value": 4285.0966796875,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_26",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "equilibrium dissociation constant (KD)": {
+                                            "value": 1.04418108636724e-05,
+                                            "unit": "M"
+                                        },
+                                        "maximum binding capacity (Rmax)": {
+                                            "value": 88.1364515659826,
+                                            "unit": "RU"
+                                        },
+                                        "custom information document": {
+                                            "kinetics chi squared": {
+                                                "value": 0.0200132623088633,
+                                                "unit": "(unitless)"
+                                            },
+                                            "kd error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "s^-1"
+                                            },
+                                            "KD error": {
+                                                "value": 1.5822553295155e-07,
+                                                "unit": "M"
+                                            },
+                                            "Rmax error": {
+                                                "value": 0.813873850224422,
+                                                "unit": "RU"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell4",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [29009.939453125, 29010.41015625, 29501.55078125, 29577.7109375, 29548.810546875, 29549.939453125]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "4-1",
+                                        "flow rate": {
+                                            "value": 30.0,
+                                            "unit": "µL/min"
+                                        },
+                                        "custom information document": {
+                                            "buffer volume": {
+                                                "value": 800.0,
+                                                "unit": "mL"
+                                            },
+                                            "detection": "Multi",
+                                            "detectionmulti": "2-1,3-1,4-1",
+                                            "flowcellsingle": "Active",
+                                            "flowcelldual": "First",
+                                            "flowcellmulti": "1,2,3,4",
+                                            "maximum operating temperature": {
+                                                "value": 45.0,
+                                                "unit": "degC"
+                                            },
+                                            "minimum operating temperature": {
+                                                "value": 4.0,
+                                                "unit": "degC"
+                                            },
+                                            "analysis temperature": {
+                                                "value": 25.0,
+                                                "unit": "degC"
+                                            },
+                                            "prime": "true",
+                                            "normalize": "false"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_27",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "well plate identifier": "MICRO96DW2",
+                                "custom information document": {
+                                    "rack2": "REAG2"
+                                }
+                            },
+                            "detection type": "surface plasmon resonance",
+                            "sensorgram data cube": {
+                                "label": "Cycle4_FlowCell4-1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "resonance",
+                                            "unit": "RU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.10000000149011612, 126.9000015258789, 253.6999969482422, 380.5, 507.29998779296875, 634.0999755859375]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -518.83984375,
+                                            -518.5703125,
+                                            -28.228515625, 14.912304878234863, 18.541015625, 20.0390625]
+                                    ]
+                                }
+                            },
+                            "sensor chip document": {
+                                "sensor chip identifier": "MASKED_CHIP_ID",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "lot number": "MASKED_LOT_NUMBER",
+                                "custom information document": {
+                                    "display name": "CM5",
+                                    "IFC": "IFC105",
+                                    "IFC Description": "IFC105",
+                                    "First Dock Date": "2026-01-06T11:31:04.711002+00:00",
+                                    "Last Use Time": "2026-01-06T12:44:35.940002+00:00",
+                                    "Last Modified Time": "2026-01-06T12:44:35.924001+00:00",
+                                    "Number of Flow Cells": "4",
+                                    "Number of Spots": "1"
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2026-01-12T13:24:24+00:00",
+                    "compartment temperature": {
+                        "value": 13.0,
+                        "unit": "degC"
+                    },
+                    "custom information document": {
+                        "data collection rate": {
+                            "value": 10.0,
+                            "unit": "Hz"
+                        },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
+                        "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
+                    }
+                },
+                "analyst": "l074508"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "biacore_evaluation_module_example4.json",
+            "data system instance identifier": "MASKED_SYSTEM_ID",
+            "file name": "biacore_evaluation_module_example4.bme",
+            "UNC path": "tests/parsers/cytiva_biacore_t200_evaluation/testdata/biacore_evaluation_module_example4.bme",
+            "ASM converter name": "allotropy_cytiva_biacore_t200_evaluation",
+            "ASM converter version": "0.1.118",
+            "software name": "Biacore T200 Evaluation Software",
+            "software version": "3.0",
+            "custom information document": {
+                "account identifier": "l093442",
+                "operating system type": "Win32NT",
+                "operating system version": "6.2.9200.0"
+            }
+        },
+        "device system document": {
+            "device identifier": "Biacore",
+            "model number": "T200",
+            "product manufacturer": "Cytiva"
+        }
+    }
+}
