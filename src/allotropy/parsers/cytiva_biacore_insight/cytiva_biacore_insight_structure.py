@@ -239,16 +239,74 @@ class RunMetadata:
     def create_runs(runs_data: pd.DataFrame) -> list[RunMetadata]:
         runs_data = runs_data.reset_index(drop=True)
         run, rest = split_dataframe(
-            runs_data, lambda row: str(row[0]).startswith("Run")
+            runs_data,
+            lambda row: bool(re.match(constants.RUN_HEADER_REGEX, str(row[0]))),
         )
         runs = [run]
         while rest is not None:
-            run, rest = split_dataframe(rest, lambda row: str(row[0]).startswith("Run"))
+            run, rest = split_dataframe(
+                rest,
+                lambda row: bool(re.match(constants.RUN_HEADER_REGEX, str(row[0]))),
+            )
             runs.append(run)
         if len(runs) > 1:
             msg = "Instrument file contains multiple runs. Only single runs are supported at the moment."
             raise AllotropeConversionError(msg)
         return [RunMetadata.create(run) for run in runs if not run.empty]
+
+    @staticmethod
+    def _build_run_table_from_transposed_sections(
+        run_data: pd.DataFrame, section_starts: list[int], method_summary_idx: int
+    ) -> pd.DataFrame:
+        """Build a flat run_table from transposed 'Flow cell N' sections.
+
+        In newer Biacore Insight formats, flow cell data is stored as:
+            Flow cell 1 | ch1 | ch2 | ch3 | ...
+            Include     | Yes | Yes | Yes | ...
+            Ligand      | ... | ... | ... | ...
+
+        This transposes each section into rows matching the old columnar format:
+            Flow cell | Channel | Include | Sensorgram type | Ligand | ...
+        """
+        rows: list[dict[str, Any]] = []
+        for i, start_idx in enumerate(section_starts):
+            end_idx = (
+                section_starts[i + 1]
+                if i + 1 < len(section_starts)
+                else method_summary_idx
+            )
+            section = run_data.loc[start_idx : end_idx - 1].dropna(how="all")
+            if section.empty:
+                continue
+            # First row is "Flow cell N | ch1 | ch2 | ..."
+            header_row = section.iloc[0]
+            flow_cell_label = str(header_row.iloc[0])
+            flow_cell_num = flow_cell_label.replace("Flow cell", "").strip()
+            channels = [
+                str(v) for v in header_row.iloc[1:] if v is not None and str(v) != "nan"
+            ]
+            # Remaining rows are attribute | val_ch1 | val_ch2 | ...
+            attr_rows = section.iloc[1:]
+            for ch_idx, channel in enumerate(channels):
+                row_dict: dict[str, Any] = {
+                    "Flow cell": flow_cell_num,
+                    "Channel": channel,
+                }
+                for _, attr_row in attr_rows.iterrows():
+                    attr_name = str(attr_row.iloc[0])
+                    if attr_name == "nan":
+                        continue
+                    # Map "Include" to "Included" for consistency with old format
+                    if attr_name == "Include":
+                        attr_name = "Included"
+                    val = (
+                        attr_row.iloc[ch_idx + 1]
+                        if ch_idx + 1 < len(attr_row)
+                        else None
+                    )
+                    row_dict[attr_name] = val
+                rows.append(row_dict)
+        return pd.DataFrame(rows)
 
     @staticmethod
     def create(run_data: pd.DataFrame) -> RunMetadata:
@@ -260,6 +318,7 @@ class RunMetadata:
             return df_to_series_data(parse_header_row(pd.concat((rd1, rd2, rd3)).T))
 
         run_table_start = 0
+        flow_cell_section_starts: list[int] = []
         chip_data = SeriesData()
         run_information = SeriesData()
         run_table = pd.DataFrame()
@@ -273,13 +332,22 @@ class RunMetadata:
                 run_information = get_run_information(idx)
             elif row[0] == "Flow cell":
                 run_table_start = idx
+            elif re.match(r"Flow cell \d+$", str(row[0])):
+                flow_cell_section_starts.append(idx)
             elif row[0] == "Method summary":
-                run_table = (
-                    parse_header_row(run_data.loc[run_table_start : idx - 1])
-                    .dropna(how="all")
-                    .reset_index(drop=True)
-                )
-                run_table = run_table.loc[:, ~run_table.columns.str.contains("^nan$")]
+                if flow_cell_section_starts:
+                    run_table = RunMetadata._build_run_table_from_transposed_sections(
+                        run_data, flow_cell_section_starts, idx
+                    )
+                else:
+                    run_table = (
+                        parse_header_row(run_data.loc[run_table_start : idx - 1])
+                        .dropna(how="all")
+                        .reset_index(drop=True)
+                    )
+                    run_table = run_table.loc[
+                        :, ~run_table.columns.str.contains("^nan$")
+                    ]
             elif row[0] == "Set temperatures 1":
                 if match := re.match(constants.COMPARTMENT_TEMP_REGEX, row[1]):
                     compartment_temperature = float(match.group(1))
@@ -317,7 +385,8 @@ class BiacoreInsightMetadata:
 
         properties = reader.data["Properties"]
         properties, runs_data = split_dataframe(
-            properties, lambda row: str(row[0]).startswith("Run")
+            properties,
+            lambda row: bool(re.match(constants.RUN_HEADER_REGEX, str(row[0]))),
         )
         if runs_data is None or runs_data.empty:
             msg = "No run data found in the properties section of instrument file."
