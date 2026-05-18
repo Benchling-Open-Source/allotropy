@@ -37,7 +37,7 @@ from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 class AbsorbanceMeasurement(UnicornMeasurement):
@@ -56,25 +56,24 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
-    ) -> UnicornMeasurement:
-        element = assert_not_none(
-            cls.filter_curve_or_none(elements, cls.get_curve_regex()),
-            "Unable to find curve data for absorbance measurement.",
+    ) -> UnicornMeasurement | None:
+        element = cls.filter_curve_or_none(elements, cls.get_curve_regex())
+        if element is None:
+            return None
+        data_cube = cls.get_data_cube_or_none(
+            handler,
+            element,
+            DataCubeComponent(
+                type_=FieldComponentDatatype.float,
+                concept="absorbance",
+                unit="mAU",
+            ),
         )
+        if data_cube is None:
+            return None
         measurement = cls.get_measurement(
             static_docs=static_docs,
-            chromatogram_data_cube=assert_not_none(
-                cls.get_data_cube_or_none(
-                    handler,
-                    element,
-                    DataCubeComponent(
-                        type_=FieldComponentDatatype.float,
-                        concept="absorbance",
-                        unit="mAU",
-                    ),
-                ),
-                msg="Unable to find information to create absorbance data cubes.",
-            ),
+            chromatogram_data_cube=data_cube,
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
@@ -93,7 +92,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
 class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     @classmethod
     def get_curve_regex(cls) -> str:
-        return r"^UV 1_\d+$"
+        return r"^UV( 1_\d+)?$"
 
     @classmethod
     def get_peaks_custom_info(
