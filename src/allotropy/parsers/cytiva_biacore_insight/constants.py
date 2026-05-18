@@ -6,3 +6,4 @@ PRODUCT_MANUFACTURER = "Cytiva"
 REQUIRED_SHEETS = ("Properties", "Report point table")
 
 COMPARTMENT_TEMP_REGEX = r"Sample compartment temperature (\d+),.*"
+RUN_HEADER_REGEX = r"Run \d+$"
