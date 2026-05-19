@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.26.1"]
+build-backend = "hatchling.build"
+
+[project]
+name = "allotropy-testdata"
+dynamic = ["version"]
+description = 'Test data files for allotropy package - instrument file format examples and expected ASM outputs.'
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["allotropy", "allotrope", "asm", "test-data", "testing"]
+authors = [
+  { name = "Benchling Open Source", email = "opensource@benchling.com" },
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/Benchling-Open-Source/allotropy#readme"
+Issues = "https://github.com/Benchling-Open-Source/allotropy/issues"
+Source = "https://github.com/Benchling-Open-Source/allotropy"
+
+[tool.hatch.version]
+path = "src/allotropy_testdata/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/README.md",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/allotropy_testdata"]
+
+[tool.hatch.build.targets.wheel.force-include]
+# Include all parser directories (includes testdata and test files)
+"../tests/parsers" = "allotropy_testdata/data/parsers"
