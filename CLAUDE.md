@@ -17,7 +17,22 @@ hatch run lint:fmt
 # Generate models from schemas
 hatch run scripts:generate-schemas \
   "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2024/09/cell-counting.schema"
+
+# Release a new version (bumps patch, updates CHANGELOG, creates branch/tag/PR/release)
+hatch run scripts:update-version
 ```
+
+## Releasing
+
+Use `hatch run scripts:update-version` to create a new release. Do NOT use `hatch version` directly. The script:
+1. Checks out a clean branch from main (`release-v{version}`)
+2. Bumps the patch version in `__about__.py`
+3. Updates `CHANGELOG.md` from conventional commit prefixes since last release
+4. Commits, pushes, tags, creates a PR and GitHub release
+
+Options:
+- `--version/-v X.Y.Z` — set an explicit version instead of auto-incrementing patch
+- `--skip_pr` — only update files locally without pushing/creating PR
 
 ## Architecture Overview
 
