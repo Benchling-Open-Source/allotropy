@@ -82,7 +82,9 @@ class Header:
                 plate_well_count = int(plate_well_count_search.group())
 
         return Header(
-            measurement_time=data[str, "Experiment Run End Time"],
+            measurement_time=data[
+                str, ("Experiment Run End Time", "Experiment Run Stop Time")
+            ],
             plate_well_count=plate_well_count,
             experiment_type=assert_not_none(
                 experiments_type_options.get(
@@ -474,6 +476,8 @@ class Result:
                     "expfail": data.get(str, "EXPFAIL"),
                     "tholdfail": data.get(str, "THOLDFAIL"),
                     "prfdrop": data.get(str, "PRFDROP"),
+                    "delta_delta_ct_minus_fsigma": data.get(float, "ΔΔCт - Fsigma"),
+                    "delta_delta_ct_plus_fsigma": data.get(float, "ΔΔCт + Fsigma"),
                     **data.get_unread(
                         skip={
                             "Well",
