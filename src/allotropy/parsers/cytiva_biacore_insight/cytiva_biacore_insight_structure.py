@@ -207,6 +207,33 @@ def _get_regeneration_custom_info(
     return regen_info
 
 
+def _find_sheet(reader_data: dict[str, Any], name: str) -> str | None:
+    """Find a sheet by name, tolerating variations in dash/space separators.
+
+    Biacore exports use inconsistent separators: "QC - X", "QC-X", "QC- X".
+    This normalizes by collapsing whitespace around dashes before comparing.
+    """
+
+    def _normalize(s: str) -> str:
+        return re.sub(r"\s*-\s*", "-", s).strip()
+
+    target = _normalize(name)
+    for sheet_name in reader_data:
+        if _normalize(sheet_name) == target:
+            return sheet_name
+    return None
+
+
+def _find_sheets_with_prefix(reader_data: dict[str, Any], prefix: str) -> list[str]:
+    """Find all sheets whose names start with prefix after normalizing separators."""
+
+    def _normalize(s: str) -> str:
+        return re.sub(r"\s*-\s*", "-", s).strip()
+
+    target = _normalize(prefix)
+    return [s for s in reader_data if _normalize(s).startswith(target)]
+
+
 def _get_table_from_dataframe(df: pd.DataFrame, split_on: str) -> pd.DataFrame:
     data_table = drop_df_rows_while(df, lambda row: row[0] != split_on)
     return parse_header_row(
@@ -422,7 +449,11 @@ class BiacoreInsightMetadata:
             "QC - Capture level",
             "QC - Binding to reference",
         ]
-        qc_tables = [table for table in table_names if table in reader.data]
+        qc_tables = [
+            sheet
+            for name in table_names
+            if (sheet := _find_sheet(reader.data, name)) is not None
+        ]
         qc_df = None
         while qc_df is None and qc_tables:
             qc_table = qc_tables.pop(0)
@@ -518,17 +549,20 @@ class EvaluationKinetics:
 
     def __init__(self, kinetics_table: pd.DataFrame) -> None:
         def _get_key(row: pd.Series[Any]) -> str:
-            # Handle both "Channel" and "Flow cell" columns
             channel_or_flowcell = row.get("Channel", row.get("Flow cell", ""))
-            # For affinity data, we might have multiple capture solutions
-            # Build key with all available capture solutions
             capture_solution = row.get("Capture 1 Solution", "")
-            # Handle None, NaN, or pd.NA values for capture_solution
             if capture_solution is None or (
                 isinstance(capture_solution, float) and np.isnan(capture_solution)
             ):
                 capture_solution = ""
-            analyte_solution = row.get("Analyte 1 Solution", "")
+            analyte_solution = row.get(
+                "Single cycle kinetics 1 Solution",
+                row.get("Analyte 1 Solution", ""),
+            )
+            if analyte_solution is None or (
+                isinstance(analyte_solution, float) and np.isnan(analyte_solution)
+            ):
+                analyte_solution = ""
             return f"{channel_or_flowcell} {capture_solution} {analyte_solution}"
 
         self._data = {}
@@ -831,7 +865,9 @@ class MeasurementData:
             capture_solution = _first_not_null_or_none(
                 channel_data["Capture 1 Solution"]
             )
-        analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
+        analyte_solution = first_row_data.get(
+            str, "Single cycle kinetics 1 Solution"
+        ) or first_row_data.get(str, "Analyte 1 Solution")
 
         # Get calculated concentration from Evaluation sheets if available
         # Use the first flow cell from channel_data to look up the concentration
@@ -896,47 +932,38 @@ class Data:
 
         # OPTIMIZATION: Parse evaluation/affinity data once, not per cycle
         evaluation_kinetics = None
-        if "Evaluation - Kinetics" in reader.data:
+        kinetics_sheet = _find_sheet(reader.data, "Evaluation - Kinetics")
+        if kinetics_sheet is not None:
             evaluation_kinetics_table = _get_table_from_dataframe(
-                reader.data["Evaluation - Kinetics"], split_on="Group"
+                reader.data[kinetics_sheet], split_on="Group"
             )
             evaluation_kinetics = EvaluationKinetics(evaluation_kinetics_table)
         else:
-            # Look for Affinity sheets (e.g., "Affinity 1", "Affinity 2", etc.)
             affinity_sheets = [
                 sheet for sheet in reader.data.keys() if sheet.startswith("Affinity")
             ]
             if affinity_sheets:
-                # Use the first Affinity sheet found
                 affinity_table = _get_table_from_dataframe(
                     reader.data[affinity_sheets[0]], split_on="Group"
                 )
                 evaluation_kinetics = EvaluationKinetics(affinity_table)
 
-        # If no kinetics or affinity data found, create empty
         if evaluation_kinetics is None:
             evaluation_kinetics = EvaluationKinetics(pd.DataFrame())
 
         # OPTIMIZATION: Parse evaluation concentration data once, not per cycle
-        # Look for Evaluation sheets with concentration data
         evaluation_concentration_tables = []
-        evaluation_sheet_prefixes = [
-            "Evaluation - Trend_",
-            "Evaluation - Preced_",
-        ]
-        for sheet_name in reader.data.keys():
-            if any(
-                sheet_name.startswith(prefix) for prefix in evaluation_sheet_prefixes
-            ):
-                try:
-                    eval_table = _get_table_from_dataframe(
-                        reader.data[sheet_name], split_on="Cycle"
-                    )
-                    evaluation_concentration_tables.append(eval_table)
-                except (KeyError, ValueError, AssertionError):
-                    # If parsing fails (missing columns, malformed data), skip this sheet
-                    # Evaluation sheets are optional, so we continue without them
-                    continue
+        eval_conc_sheets = _find_sheets_with_prefix(
+            reader.data, "Evaluation - Trend_"
+        ) + _find_sheets_with_prefix(reader.data, "Evaluation - Preced_")
+        for sheet_name in eval_conc_sheets:
+            try:
+                eval_table = _get_table_from_dataframe(
+                    reader.data[sheet_name], split_on="Cycle"
+                )
+                evaluation_concentration_tables.append(eval_table)
+            except (KeyError, ValueError, AssertionError):
+                continue
 
         evaluation_concentration = EvaluationConcentration(
             evaluation_concentration_tables
@@ -986,48 +1013,38 @@ class Data:
         cycle_data = report_point_table[report_point_table["Cycle"] == cycle_number]
 
         # Handle optional kinetics/affinity data
-        # Try "Evaluation - Kinetics" first, then look for "Affinity" sheets
         evaluation_kinetics = None
-        if "Evaluation - Kinetics" in reader.data:
+        kinetics_sheet = _find_sheet(reader.data, "Evaluation - Kinetics")
+        if kinetics_sheet is not None:
             evaluation_kinetics_table = _get_table_from_dataframe(
-                reader.data["Evaluation - Kinetics"], split_on="Group"
+                reader.data[kinetics_sheet], split_on="Group"
             )
             evaluation_kinetics = EvaluationKinetics(evaluation_kinetics_table)
         else:
-            # Look for Affinity sheets (e.g., "Affinity 1", "Affinity 2", etc.)
             affinity_sheets = [
                 sheet for sheet in reader.data.keys() if sheet.startswith("Affinity")
             ]
             if affinity_sheets:
-                # Use the first Affinity sheet found
                 affinity_table = _get_table_from_dataframe(
                     reader.data[affinity_sheets[0]], split_on="Group"
                 )
                 evaluation_kinetics = EvaluationKinetics(affinity_table)
 
-        # If no kinetics or affinity data found, create empty
         if evaluation_kinetics is None:
             evaluation_kinetics = EvaluationKinetics(pd.DataFrame())
 
-        # Parse evaluation concentration data
         evaluation_concentration_tables = []
-        evaluation_sheet_prefixes = [
-            "Evaluation - Trend_",
-            "Evaluation - Preced_",
-        ]
-        for sheet_name in reader.data.keys():
-            if any(
-                sheet_name.startswith(prefix) for prefix in evaluation_sheet_prefixes
-            ):
-                try:
-                    eval_table = _get_table_from_dataframe(
-                        reader.data[sheet_name], split_on="Cycle"
-                    )
-                    evaluation_concentration_tables.append(eval_table)
-                except (KeyError, ValueError, AssertionError):
-                    # If parsing fails (missing columns, malformed data), skip this sheet
-                    # Evaluation sheets are optional, so we continue without them
-                    continue
+        eval_conc_sheets = _find_sheets_with_prefix(
+            reader.data, "Evaluation - Trend_"
+        ) + _find_sheets_with_prefix(reader.data, "Evaluation - Preced_")
+        for sheet_name in eval_conc_sheets:
+            try:
+                eval_table = _get_table_from_dataframe(
+                    reader.data[sheet_name], split_on="Cycle"
+                )
+                evaluation_concentration_tables.append(eval_table)
+            except (KeyError, ValueError, AssertionError):
+                continue
 
         evaluation_concentration = EvaluationConcentration(
             evaluation_concentration_tables
