@@ -5,6 +5,14 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.128] - 2026-05-21
+
+### Fixed
+
+- Support new PkN column format in Stunner parser (#1205)
+- Recognize Evaluation-Kinetics sheet and SCK analyte lookup (#1204)
+- Handle QuantStudio Stop Time and non-ASCII delta columns (#1203)
+
 ## [0.1.127] - 2026-05-18
 
 ### Added
