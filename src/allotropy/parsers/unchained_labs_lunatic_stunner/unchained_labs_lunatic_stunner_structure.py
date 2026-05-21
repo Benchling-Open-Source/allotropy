@@ -56,45 +56,70 @@ from allotropy.parsers.utils.values import (
 )
 
 
+def _extract_peak_info(
+    well_plate_data: SeriesData, prefix: str, index: str
+) -> dict[str, Any] | None:
+    """Extract a single peak's data using the given column prefix (e.g. 'peak 1' or 'pk1')."""
+    peak_info: dict[str, Any] = {}
+
+    # Old format: "peak N mean dia (nm)", "peak N intensity (%)", etc.
+    # New format: "pkN intensity mean dia. (nm)", "pkN intensity area (%)", etc.
+    field_mappings: list[tuple[str, list[str]]] = [
+        (
+            "peak mean diameter",
+            [f"{prefix} mean dia (nm)", f"{prefix} intensity mean dia. (nm)"],
+        ),
+        ("peak mode diameter", [f"{prefix} mode dia (nm)"]),
+        ("peak est. MW", [f"{prefix} est. mw (kda)"]),
+        ("peak intensity", [f"{prefix} intensity (%)", f"{prefix} intensity area (%)"]),
+        ("peak mass", [f"{prefix} mass (%)", f"{prefix} mass area (%)"]),
+        ("peak mass mean diameter", [f"{prefix} mass mean dia. (nm)"]),
+        ("peak rayleigh ratio", [f"{prefix} rayleigh ratio r (1/km)"]),
+        ("peak diffusion coefficient", [f"{prefix} diffusion coefficient (um^2/s)"]),
+    ]
+
+    for output_key, candidate_columns in field_mappings:
+        for col in candidate_columns:
+            val = well_plate_data.get(float, col)
+            if val is not None:
+                peak_info[output_key] = val
+                break
+
+    peak_info["peak index"] = index
+
+    if len(peak_info) > 1:
+        return peak_info
+    return None
+
+
 def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
     """Extract peak data from well plate data and return as list of peak info dictionaries."""
     peak_data = []
 
-    peak_pattern = re.compile(r"peak (\d+) ")
-    peak_numbers = set()
+    # Detect which format is used by scanning column names
+    old_pattern = re.compile(r"peak (\d+) ")
+    new_pattern = re.compile(r"pk(\d+) ")
+    peak_numbers: set[int] = set()
+    uses_new_format = False
 
     for column in well_plate_data.series.index:
-        match = peak_pattern.match(str(column).lower())
-        if match:
+        col_lower = str(column).lower()
+        if match := old_pattern.match(col_lower):
             peak_numbers.add(int(match.group(1)))
+        elif match := new_pattern.match(col_lower):
+            peak_numbers.add(int(match.group(1)))
+            uses_new_format = True
 
     for peak_num in sorted(peak_numbers):
-        peak_info: dict[str, Any] = {}
-
-        mean_dia = well_plate_data.get(float, f"peak {peak_num} mean dia (nm)")
-        if mean_dia is not None:
-            peak_info["peak mean diameter"] = mean_dia
-
-        mode_dia = well_plate_data.get(float, f"peak {peak_num} mode dia (nm)")
-        if mode_dia is not None:
-            peak_info["peak mode diameter"] = mode_dia
-
-        est_mw = well_plate_data.get(float, f"peak {peak_num} est. mw (kda)")
-        if est_mw is not None:
-            peak_info["peak est. MW"] = est_mw
-
-        intensity = well_plate_data.get(float, f"peak {peak_num} intensity (%)")
-        if intensity is not None:
-            peak_info["peak intensity"] = intensity
-
-        mass = well_plate_data.get(float, f"peak {peak_num} mass (%)")
-        if mass is not None:
-            peak_info["peak mass"] = mass
-
-        peak_info["peak index"] = str(peak_num)
-
-        if len(peak_info) > 1:
+        prefix = f"pk{peak_num}" if uses_new_format else f"peak {peak_num}"
+        if peak_info := _extract_peak_info(well_plate_data, prefix, str(peak_num)):
             peak_data.append(peak_info)
+
+    # Read "peak of interest" / "pkoi" columns to prevent them from leaking
+    # into custom_info, but don't add as a separate peak entry since it
+    # duplicates one of the numbered peaks.
+    poi_prefix = "pkoi" if uses_new_format else "peak of interest"
+    _extract_peak_info(well_plate_data, poi_prefix, "OI")
 
     return peak_data
 
