@@ -1,4 +1,6 @@
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+    SampleRoleType,
+)
 
 DETECTION_TYPE = "luminescence"
 DEVICE_TYPE = "luminescence detector"

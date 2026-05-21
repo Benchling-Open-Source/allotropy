@@ -24,6 +24,33 @@ class LuminexXponentParser(VendorParser[MapperData, Model]):
     SUPPORTED_EXTENSIONS = LuminexXponentReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            first_line = lines[0]
+            if (
+                "INSTRUMENT TYPE" in first_line
+                and "WELL LOCATION" in first_line
+                and "SAMPLE ID" in first_line
+            ):
+                return True
+            for line in lines:
+                stripped = line.strip()
+                if stripped:
+                    return stripped.startswith("Program,") or stripped.startswith(
+                        '"Program",'
+                    )
+            return False
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
         reader = LuminexXponentReader(named_file_contents)
         data = Data.create(reader)

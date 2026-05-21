@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     Model,
 )
@@ -26,6 +28,18 @@ class MethodicalMindParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            return any(re.match(r"^=+Data=+$", line) for line in lines[:50])
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MethodicalMindReader(named_file_contents)

@@ -77,7 +77,7 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     DataSource,
     Referenceable,
 )
-from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.pandas import read_csv, series_to_float_list, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float,
@@ -1246,7 +1246,8 @@ def create_spectrum_results(
     data = read_csv(StringIO("\n".join(wavelengths_sections)), sep="\t")
 
     try:
-        wavelengths = data["Wavelength"].astype(float).tolist()
+        # Use series_to_float_list for locale support
+        wavelengths = series_to_float_list(data["Wavelength"], "wavelength")
     except (ValueError, KeyError):
         return [], []
 

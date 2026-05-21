@@ -391,7 +391,7 @@ def iter_standard_curve_calc_docs(
 
 def iter_relative_standard_curve_calc_docs(
     well_items: list[WellItem],
-    r_sample: str,
+    r_sample: str | None,
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
     # Y-Intercept, Slope, Quantity, Amp score, Cq confidence,

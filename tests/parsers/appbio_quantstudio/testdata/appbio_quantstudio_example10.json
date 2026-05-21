@@ -1,0 +1,2770 @@
+{
+  "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+  "qpcr aggregate document": {
+    "calculated data aggregate document": {
+      "calculated data document": [
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.4,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.35,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_9",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.5,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_10",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.48,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_11",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.3,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_12",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.28,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_13",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.52,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "amplification score",
+          "calculated result": {
+            "value": 1.49,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.95,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.94,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.97,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.96,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.92,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.91,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.98,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        },
+        {
+          "calculated data name": "cq confidence",
+          "calculated result": {
+            "value": 0.97,
+            "unit": "(unitless)"
+          },
+          "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
+          "data source aggregate document": {
+            "data source document": [
+              {
+                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                "data source feature": "cycle threshold result"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "data system document": {
+      "ASM file identifier": "appbio_quantstudio_example10.json",
+      "data system instance identifier": "localhost",
+      "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
+      "ASM converter version": "0.1.127",
+      "file name": "appbio_quantstudio_example10.xlsx",
+      "software name": "Thermo QuantStudio",
+      "software version": "1.0",
+      "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example10.xlsx"
+    },
+    "device system document": {
+      "device identifier": "100000",
+      "equipment serial number": "100000",
+      "model number": "QuantStudio(TM) 12K Flex System"
+    },
+    "qpcr document": [
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_1",
+                "location identifier": "1",
+                "sample role type": "unknown sample role",
+                "well location identifier": "A1",
+                "custom information document": {
+                  "well identifier": 1,
+                  "sample color": "RGB(204,255,255)",
+                  "target color": "RGB(255,153,204)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.3,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 10,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 25.5,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.50278854,
+                            0.49050022,
+                            0.49550059,
+                            0.49446421,
+                            0.50472942,
+                            0.50353399,
+                            0.50784359,
+                            0.49173878,
+                            0.49843844,
+                            0.49059594,
+                            0.49437276,
+                            0.50010711,
+                            0.49053072,
+                            0.49397675,
+                            0.50299769,
+                            0.50089883,
+                            0.49440881,
+                            0.50178531,
+                            0.50618861,
+                            0.49012998,
+                            0.60611639,
+                            0.70396279,
+                            0.79680501,
+                            0.89310959,
+                            1.00914426,
+                            1.09673189,
+                            1.19185492,
+                            1.29193433,
+                            1.40694989,
+                            1.50207452,
+                            1.60614257,
+                            1.70459464,
+                            1.80072456,
+                            1.90946232,
+                            1.99757069,
+                            2.10104081,
+                            2.20658809,
+                            2.3023704,
+                            2.40723414,
+                            2.50154704
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            -0.00949978,
+                            -0.00449941,
+                            -0.00553579,
+                            0.00472942,
+                            0.00353399,
+                            0.00784359,
+                            -0.00826122,
+                            -0.00156156,
+                            -0.00940406,
+                            -0.00562724,
+                            0.00010711,
+                            -0.00946928,
+                            -0.00602325,
+                            0.00299769,
+                            0.00089883,
+                            -0.00559119,
+                            0.00178531,
+                            0.00618861,
+                            -0.00987002,
+                            0.10611639,
+                            0.20396279,
+                            0.29680501,
+                            0.39310959,
+                            0.50914426,
+                            0.59673189,
+                            0.69185492,
+                            0.79193433,
+                            0.90694989,
+                            1.00207452,
+                            1.10614257,
+                            1.20459464,
+                            1.30072456,
+                            1.40946232,
+                            1.49757069,
+                            1.60104081,
+                            1.70658809,
+                            1.8023704,
+                            1.90723414,
+                            2.00154704
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "delta delta ct minus fsigma": -0.4,
+                      "delta delta ct plus fsigma": 0.4,
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 25.5,
+                      "EQ.Ct Mean": 25.6,
+                      "F Factor": 2.1,
+                      "EQ.Ct SE": 0.1
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "GeneA"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_1",
+                "location identifier": "2",
+                "sample role type": "unknown sample role",
+                "well location identifier": "A2",
+                "custom information document": {
+                  "well identifier": 2,
+                  "sample color": "RGB(204,255,255)",
+                  "target color": "RGB(255,153,204)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.3,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 9,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 25.8,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.50409144,
+                            0.49091649,
+                            0.49455797,
+                            0.49578776,
+                            0.49159584,
+                            0.49465582,
+                            0.49202003,
+                            0.49555947,
+                            0.50271369,
+                            0.49729664,
+                            0.49740362,
+                            0.49419014,
+                            0.49533956,
+                            0.50873309,
+                            0.50296071,
+                            0.50218262,
+                            0.49342277,
+                            0.50458254,
+                            0.49326805,
+                            0.49758911,
+                            0.60979047,
+                            0.7028,
+                            0.80113899,
+                            0.90369229,
+                            1.00685704,
+                            1.10552,
+                            1.19458096,
+                            1.290642,
+                            1.39630906,
+                            1.49535482,
+                            1.59421966,
+                            1.70885819,
+                            1.80752735,
+                            1.89629356,
+                            2.00310877,
+                            2.09791264,
+                            2.20829095,
+                            2.29917704,
+                            2.3952976,
+                            2.49493255
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            -0.00908351,
+                            -0.00544203,
+                            -0.00421224,
+                            -0.00840416,
+                            -0.00534418,
+                            -0.00797997,
+                            -0.00444053,
+                            0.00271369,
+                            -0.00270336,
+                            -0.00259638,
+                            -0.00580986,
+                            -0.00466044,
+                            0.00873309,
+                            0.00296071,
+                            0.00218262,
+                            -0.00657723,
+                            0.00458254,
+                            -0.00673195,
+                            -0.00241089,
+                            0.10979047,
+                            0.2028,
+                            0.30113899,
+                            0.40369229,
+                            0.50685704,
+                            0.60552,
+                            0.69458096,
+                            0.790642,
+                            0.89630906,
+                            0.99535482,
+                            1.09421966,
+                            1.20885819,
+                            1.30752735,
+                            1.39629356,
+                            1.50310877,
+                            1.59791264,
+                            1.70829095,
+                            1.79917704,
+                            1.8952976,
+                            1.99493255
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "delta delta ct minus fsigma": -0.4,
+                      "delta delta ct plus fsigma": 0.4,
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 25.8,
+                      "EQ.Ct Mean": 25.6,
+                      "F Factor": 2.1,
+                      "EQ.Ct SE": 0.1
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "GeneA"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_2",
+                "location identifier": "3",
+                "sample role type": "unknown sample role",
+                "well location identifier": "A3",
+                "custom information document": {
+                  "well identifier": 3,
+                  "sample color": "RGB(153,204,255)",
+                  "target color": "RGB(255,153,204)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.3,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 10,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 26.2,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.50122736,
+                            0.49525483,
+                            0.50169172,
+                            0.50795646,
+                            0.49798801,
+                            0.49438642,
+                            0.50995075,
+                            0.50019053,
+                            0.49181819,
+                            0.49094233,
+                            0.49219298,
+                            0.50254892,
+                            0.50584159,
+                            0.4984432,
+                            0.49127055,
+                            0.49763239,
+                            0.50992243,
+                            0.50058229,
+                            0.50942157,
+                            0.50721559,
+                            0.59022962,
+                            0.70441444,
+                            0.80363421,
+                            0.90073941,
+                            0.9953365,
+                            1.10281924,
+                            1.19223104,
+                            1.29869531,
+                            1.39907447,
+                            1.50907632,
+                            1.60751706,
+                            1.69526778,
+                            1.80001172,
+                            1.89357304,
+                            2.00825256,
+                            2.10741037,
+                            2.1959689,
+                            2.30277899,
+                            2.4021794,
+                            2.49305679
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            -0.00474517,
+                            0.00169172,
+                            0.00795646,
+                            -0.00201199,
+                            -0.00561358,
+                            0.00995075,
+                            0.00019053,
+                            -0.00818181,
+                            -0.00905767,
+                            -0.00780702,
+                            0.00254892,
+                            0.00584159,
+                            -0.0015568,
+                            -0.00872945,
+                            -0.00236761,
+                            0.00992243,
+                            0.00058229,
+                            0.00942157,
+                            0.00721559,
+                            0.09022962,
+                            0.20441444,
+                            0.30363421,
+                            0.40073941,
+                            0.4953365,
+                            0.60281924,
+                            0.69223104,
+                            0.79869531,
+                            0.89907447,
+                            1.00907632,
+                            1.10751706,
+                            1.19526778,
+                            1.30001172,
+                            1.39357304,
+                            1.50825256,
+                            1.60741037,
+                            1.6959689,
+                            1.80277899,
+                            1.9021794,
+                            1.99305679
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "delta delta ct minus fsigma": -0.35,
+                      "delta delta ct plus fsigma": 0.35,
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 26.2,
+                      "EQ.Ct Mean": 26.3,
+                      "F Factor": 2.0,
+                      "EQ.Ct SE": 0.12
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "GeneA"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_2",
+                "location identifier": "4",
+                "sample role type": "unknown sample role",
+                "well location identifier": "A4",
+                "custom information document": {
+                  "well identifier": 4,
+                  "sample color": "RGB(153,204,255)",
+                  "target color": "RGB(255,153,204)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.3,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 9,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 26.5,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.50525022,
+                            0.50078758,
+                            0.50557253,
+                            0.50060707,
+                            0.49001144,
+                            0.49648312,
+                            0.49038953,
+                            0.50858197,
+                            0.50757444,
+                            0.50663331,
+                            0.49615028,
+                            0.4911585,
+                            0.50756019,
+                            0.50893899,
+                            0.49171307,
+                            0.49971981,
+                            0.49138425,
+                            0.50521204,
+                            0.50531669,
+                            0.49256783,
+                            0.59950565,
+                            0.70099607,
+                            0.79530113,
+                            0.90744866,
+                            0.99846276,
+                            1.09423596,
+                            1.20078592,
+                            1.30459862,
+                            1.39402302,
+                            1.49623433,
+                            1.60990299,
+                            1.70299756,
+                            1.798762,
+                            1.90035152,
+                            1.99242008,
+                            2.09449395,
+                            2.19676171,
+                            2.30176617,
+                            2.39460229,
+                            2.49440435
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            0.00078758,
+                            0.00557253,
+                            0.00060707,
+                            -0.00998856,
+                            -0.00351688,
+                            -0.00961047,
+                            0.00858197,
+                            0.00757444,
+                            0.00663331,
+                            -0.00384972,
+                            -0.0088415,
+                            0.00756019,
+                            0.00893899,
+                            -0.00828693,
+                            -0.00028019,
+                            -0.00861575,
+                            0.00521204,
+                            0.00531669,
+                            -0.00743217,
+                            0.09950565,
+                            0.20099607,
+                            0.29530113,
+                            0.40744866,
+                            0.49846276,
+                            0.59423596,
+                            0.70078592,
+                            0.80459862,
+                            0.89402302,
+                            0.99623433,
+                            1.10990299,
+                            1.20299756,
+                            1.298762,
+                            1.40035152,
+                            1.49242008,
+                            1.59449395,
+                            1.69676171,
+                            1.80176617,
+                            1.89460229,
+                            1.99440435
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "delta delta ct minus fsigma": -0.35,
+                      "delta delta ct plus fsigma": 0.35,
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 26.5,
+                      "EQ.Ct Mean": 26.3,
+                      "F Factor": 2.0,
+                      "EQ.Ct SE": 0.12
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "GeneA"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_1",
+                "location identifier": "5",
+                "sample role type": "unknown sample role",
+                "well location identifier": "B1",
+                "custom information document": {
+                  "well identifier": 5,
+                  "sample color": "RGB(204,255,255)",
+                  "target color": "RGB(204,153,255)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.25,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 10,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 20.0,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.49141986,
+                            0.50262206,
+                            0.49457884,
+                            0.5081084,
+                            0.50719271,
+                            0.49141715,
+                            0.49476009,
+                            0.50337956,
+                            0.49428474,
+                            0.49264624,
+                            0.50871028,
+                            0.50142086,
+                            0.49945342,
+                            0.50569239,
+                            0.50614994,
+                            0.4938082,
+                            0.49193862,
+                            0.49862102,
+                            0.49847157,
+                            0.49934049,
+                            0.60458152,
+                            0.70346729,
+                            0.8096833,
+                            0.89196836,
+                            0.99805243,
+                            1.09678605,
+                            1.20723345,
+                            1.29497313,
+                            1.39380418,
+                            1.49897227,
+                            1.59843763,
+                            1.6955709,
+                            1.79499613,
+                            1.90846531,
+                            1.99886261,
+                            2.10722698,
+                            2.20100651,
+                            2.29101177,
+                            2.40998565,
+                            2.50672055
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            0.00262206,
+                            -0.00542116,
+                            0.0081084,
+                            0.00719271,
+                            -0.00858285,
+                            -0.00523991,
+                            0.00337956,
+                            -0.00571526,
+                            -0.00735376,
+                            0.00871028,
+                            0.00142086,
+                            -0.00054658,
+                            0.00569239,
+                            0.00614994,
+                            -0.0061918,
+                            -0.00806138,
+                            -0.00137898,
+                            -0.00152843,
+                            -0.00065951,
+                            0.10458152,
+                            0.20346729,
+                            0.3096833,
+                            0.39196836,
+                            0.49805243,
+                            0.59678605,
+                            0.70723345,
+                            0.79497313,
+                            0.89380418,
+                            0.99897227,
+                            1.09843763,
+                            1.1955709,
+                            1.29499613,
+                            1.40846531,
+                            1.49886261,
+                            1.60722698,
+                            1.70100651,
+                            1.79101177,
+                            1.90998565,
+                            2.00672055
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 20.0,
+                      "EQ.Ct Mean": 20.1,
+                      "F Factor": 2.2,
+                      "EQ.Ct SE": 0.08
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "RefGene"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_1",
+                "location identifier": "6",
+                "sample role type": "unknown sample role",
+                "well location identifier": "B2",
+                "custom information document": {
+                  "well identifier": 6,
+                  "sample color": "RGB(204,255,255)",
+                  "target color": "RGB(204,153,255)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.25,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 9,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 20.2,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.50937993,
+                            0.50852734,
+                            0.50697391,
+                            0.49332622,
+                            0.49971282,
+                            0.49427495,
+                            0.49802081,
+                            0.49117271,
+                            0.49757946,
+                            0.50970618,
+                            0.49530406,
+                            0.50568141,
+                            0.49910017,
+                            0.49846015,
+                            0.50914635,
+                            0.50990845,
+                            0.50111537,
+                            0.50436817,
+                            0.49309594,
+                            0.49593416,
+                            0.60937419,
+                            0.70158361,
+                            0.8008439,
+                            0.90495951,
+                            0.99114331,
+                            1.10168355,
+                            1.20005701,
+                            1.3070544,
+                            1.39314865,
+                            1.50921558,
+                            1.59160223,
+                            1.6937165,
+                            1.8019007,
+                            1.90350425,
+                            1.99470408,
+                            2.09239773,
+                            2.20780575,
+                            2.29492431,
+                            2.40189038,
+                            2.50238763
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            0.00852734,
+                            0.00697391,
+                            -0.00667378,
+                            -0.00028718,
+                            -0.00572505,
+                            -0.00197919,
+                            -0.00882729,
+                            -0.00242054,
+                            0.00970618,
+                            -0.00469594,
+                            0.00568141,
+                            -0.00089983,
+                            -0.00153985,
+                            0.00914635,
+                            0.00990845,
+                            0.00111537,
+                            0.00436817,
+                            -0.00690406,
+                            -0.00406584,
+                            0.10937419,
+                            0.20158361,
+                            0.3008439,
+                            0.40495951,
+                            0.49114331,
+                            0.60168355,
+                            0.70005701,
+                            0.8070544,
+                            0.89314865,
+                            1.00921558,
+                            1.09160223,
+                            1.1937165,
+                            1.3019007,
+                            1.40350425,
+                            1.49470408,
+                            1.59239773,
+                            1.70780575,
+                            1.79492431,
+                            1.90189038,
+                            2.00238763
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 20.2,
+                      "EQ.Ct Mean": 20.1,
+                      "F Factor": 2.2,
+                      "EQ.Ct SE": 0.08
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "RefGene"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_2",
+                "location identifier": "7",
+                "sample role type": "unknown sample role",
+                "well location identifier": "B3",
+                "custom information document": {
+                  "well identifier": 7,
+                  "sample color": "RGB(153,204,255)",
+                  "target color": "RGB(204,153,255)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.25,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 10,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 19.8,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.4983845,
+                            0.50167345,
+                            0.50045565,
+                            0.50869413,
+                            0.49408518,
+                            0.50432384,
+                            0.49477372,
+                            0.49791572,
+                            0.5034338,
+                            0.49599994,
+                            0.49632354,
+                            0.50503729,
+                            0.49145086,
+                            0.49916571,
+                            0.50996909,
+                            0.50992193,
+                            0.49146521,
+                            0.49426309,
+                            0.49530401,
+                            0.50866519,
+                            0.60761728,
+                            0.7075854,
+                            0.79739054,
+                            0.89315494,
+                            1.0066749,
+                            1.1040708,
+                            1.20223356,
+                            1.30974466,
+                            1.40307953,
+                            1.49015646,
+                            1.60634208,
+                            1.69598758,
+                            1.80326777,
+                            1.9087786,
+                            1.99268582,
+                            2.09230857,
+                            2.19214072,
+                            2.30106447,
+                            2.39544696,
+                            2.5020966
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            0.00167345,
+                            0.00045565,
+                            0.00869413,
+                            -0.00591482,
+                            0.00432384,
+                            -0.00522628,
+                            -0.00208428,
+                            0.0034338,
+                            -0.00400006,
+                            -0.00367646,
+                            0.00503729,
+                            -0.00854914,
+                            -0.00083429,
+                            0.00996909,
+                            0.00992193,
+                            -0.00853479,
+                            -0.00573691,
+                            -0.00469599,
+                            0.00866519,
+                            0.10761728,
+                            0.2075854,
+                            0.29739054,
+                            0.39315494,
+                            0.5066749,
+                            0.6040708,
+                            0.70223356,
+                            0.80974466,
+                            0.90307953,
+                            0.99015646,
+                            1.10634208,
+                            1.19598758,
+                            1.30326777,
+                            1.4087786,
+                            1.49268582,
+                            1.59230857,
+                            1.69214072,
+                            1.80106447,
+                            1.89544696,
+                            2.0020966
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 19.8,
+                      "EQ.Ct Mean": 19.9,
+                      "F Factor": 2.15,
+                      "EQ.Ct SE": 0.09
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "RefGene"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      },
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "qPCR",
+                    "measurement method identifier": "Ct",
+                    "total cycle number setting": {
+                      "value": 40.0,
+                      "unit": "(unitless)"
+                    },
+                    "qPCR detection chemistry": "TAQMAN",
+                    "quencher dye setting": "NFQ-MGB",
+                    "reporter dye setting": "FAM",
+                    "passive reference dye setting": "ROX"
+                  }
+                ]
+              },
+              "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+              "measurement time": "2024-03-10T10:45:00-05:00",
+              "sample document": {
+                "sample identifier": "Sample_2",
+                "location identifier": "8",
+                "sample role type": "unknown sample role",
+                "well location identifier": "B4",
+                "custom information document": {
+                  "well identifier": 8,
+                  "sample color": "RGB(153,204,255)",
+                  "target color": "RGB(204,153,255)"
+                }
+              },
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "data processing document": {
+                      "automatic cycle threshold enabled setting": true,
+                      "cycle threshold value setting (qPCR)": {
+                        "value": 0.25,
+                        "unit": "(unitless)"
+                      },
+                      "automatic baseline determination enabled setting": true,
+                      "baseline determination start cycle setting": {
+                        "value": 3,
+                        "unit": "#"
+                      },
+                      "baseline determination end cycle setting": {
+                        "value": 9,
+                        "unit": "#"
+                      },
+                      "custom information document": {
+                        "reference dna description": "RefGene",
+                        "reference sample description": "Sample_1",
+                        "highsd": "N",
+                        "CQCONF": "N",
+                        "NOISE": "N",
+                        "omit": false,
+                        "BADROX": "N",
+                        "OUTLIERRG": "N"
+                      }
+                    },
+                    "cycle threshold result (qPCR)": {
+                      "value": 20.0,
+                      "unit": "(unitless)"
+                    },
+                    "normalized reporter data cube": {
+                      "label": "normalized reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "normalized reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            0.50435224,
+                            0.49407195,
+                            0.50268476,
+                            0.49527968,
+                            0.49977064,
+                            0.50810673,
+                            0.50692207,
+                            0.49184597,
+                            0.49847152,
+                            0.4955336,
+                            0.49007091,
+                            0.50542238,
+                            0.50274227,
+                            0.49523911,
+                            0.50482462,
+                            0.50103361,
+                            0.49855374,
+                            0.49019339,
+                            0.49150488,
+                            0.50766213,
+                            0.60807857,
+                            0.70091181,
+                            0.8066919,
+                            0.90165019,
+                            0.99296188,
+                            1.09254891,
+                            1.19616517,
+                            1.30797963,
+                            1.40592245,
+                            1.50721405,
+                            1.60797849,
+                            1.69420153,
+                            1.79499059,
+                            1.89205587,
+                            2.00560232,
+                            2.10768269,
+                            2.19812755,
+                            2.30241323,
+                            2.39309107,
+                            2.50859762
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "baseline corrected reporter data cube": {
+                      "label": "baseline corrected reporter",
+                      "cube-structure": {
+                        "dimensions": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "cycle count",
+                            "unit": "#"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "@componentDatatype": "double",
+                            "concept": "baseline corrected reporter result",
+                            "unit": "(unitless)"
+                          }
+                        ]
+                      },
+                      "data": {
+                        "measures": [
+                          [
+                            null,
+                            -0.00592805,
+                            0.00268476,
+                            -0.00472032,
+                            -0.00022936,
+                            0.00810673,
+                            0.00692207,
+                            -0.00815403,
+                            -0.00152848,
+                            -0.0044664,
+                            -0.00992909,
+                            0.00542238,
+                            0.00274227,
+                            -0.00476089,
+                            0.00482462,
+                            0.00103361,
+                            -0.00144626,
+                            -0.00980661,
+                            -0.00849512,
+                            0.00766213,
+                            0.10807857,
+                            0.20091181,
+                            0.3066919,
+                            0.40165019,
+                            0.49296188,
+                            0.59254891,
+                            0.69616517,
+                            0.80797963,
+                            0.90592245,
+                            1.00721405,
+                            1.10797849,
+                            1.19420153,
+                            1.29499059,
+                            1.39205587,
+                            1.50560232,
+                            1.60768269,
+                            1.69812755,
+                            1.80241323,
+                            1.89309107,
+                            2.00859762
+                          ]
+                        ],
+                        "dimensions": [
+                          [
+                            1.0,
+                            2.0,
+                            3.0,
+                            4.0,
+                            5.0,
+                            6.0,
+                            7.0,
+                            8.0,
+                            9.0,
+                            10.0,
+                            11.0,
+                            12.0,
+                            13.0,
+                            14.0,
+                            15.0,
+                            16.0,
+                            17.0,
+                            18.0,
+                            19.0,
+                            20.0,
+                            21.0,
+                            22.0,
+                            23.0,
+                            24.0,
+                            25.0,
+                            26.0,
+                            27.0,
+                            28.0,
+                            29.0,
+                            30.0,
+                            31.0,
+                            32.0,
+                            33.0,
+                            34.0,
+                            35.0,
+                            36.0,
+                            37.0,
+                            38.0,
+                            39.0,
+                            40.0
+                          ]
+                        ]
+                      }
+                    },
+                    "custom information document": {
+                      "Amp Status": "Amp",
+                      "EQ.Ct": 20.0,
+                      "EQ.Ct Mean": 19.9,
+                      "F Factor": 2.15,
+                      "EQ.Ct SE": 0.09
+                    }
+                  }
+                ]
+              },
+              "target DNA description": "RefGene"
+            }
+          ],
+          "experimental data identifier": "test_experiment",
+          "experiment type": "comparative CT qPCR experiment",
+          "container type": "PCR reaction block",
+          "well volume": {
+            "value": 40,
+            "unit": "\u03bcL"
+          },
+          "plate well count": {
+            "value": 384,
+            "unit": "#"
+          }
+        }
+      }
+    ]
+  }
+}

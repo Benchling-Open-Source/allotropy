@@ -22,6 +22,22 @@ class KaleidoParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
     SUPPORTED_EXTENSIONS = "csv"
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            for line in reversed(lines):
+                stripped = line.strip()
+                if stripped:
+                    return "Exported with Kaleido" in stripped
+            return False
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         data = create_data(CsvReader(read_to_lines(named_file_contents)))
         return Data(

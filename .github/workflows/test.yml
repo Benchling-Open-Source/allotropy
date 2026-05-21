@@ -37,13 +37,12 @@ jobs:
             - '.github/**'
           schema-generation:
             - 'src/allotropy/allotrope/schemas/**'
-            - 'src/allotropy/allotrope/schema_parser/**'
             - 'src/allotropy/allotrope/models/**'
             - 'src/allotropy/allotrope/schemas.py'
+            - 'src/allotropy/schema_gen/**'
             - 'src/allotropy/exceptions.py'
-            - 'scripts/generate_schemas.py'
             - 'scripts/download_schema.py'
-            - 'tests/allotrope/schema_parser/**'
+            - 'tests/schema_gen/**'
             - 'pyproject.toml'
     - name: Detect single parser changes
       id: detect-parser
@@ -61,10 +60,10 @@ jobs:
           TEST_PARSERS=$(echo "$FILES" | grep '^tests/parsers/' | cut -d'/' -f3 | grep -v '^__pycache__$' || true)
 
           # Combine and get unique parsers
-          ALL_PARSERS=$(echo -e "$SRC_PARSERS\n$TEST_PARSERS" | sort -u | grep -v '^$')
+          ALL_PARSERS=$(echo -e "$SRC_PARSERS\n$TEST_PARSERS" | sort -u | grep -v '^$' || true)
 
           # Count unique parsers
-          PARSER_COUNT=$(echo "$ALL_PARSERS" | grep -v '^$' | wc -l)
+          PARSER_COUNT=$(echo "$ALL_PARSERS" | grep -v '^$' | wc -l || echo "0")
 
           if [[ $PARSER_COUNT -eq 1 ]]; then
             PARSER=$(echo "$ALL_PARSERS" | head -n1)
@@ -109,8 +108,7 @@ jobs:
       run: |
         if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
           echo "Running all tests"
-          hatch run test_all.py3.10:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
-        else
+          hatch run test_all.py3.10:pytest -n 2 tests        else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
           hatch run test_all.py3.10:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
         fi
@@ -137,8 +135,7 @@ jobs:
       run: |
         if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
           echo "Running all tests"
-          hatch run test_all.py3.11:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
-        else
+          hatch run test_all.py3.11:pytest -n 2 tests        else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
           hatch run test_all.py3.11:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
         fi
@@ -164,8 +161,7 @@ jobs:
       run: |
         if [[ "${{ needs.detect-changes.outputs.run-all }}" == "true" ]]; then
           echo "Running all tests"
-          hatch run test_all.py3.12:pytest -n 2 tests --ignore=tests/allotrope/schema_parser/generate_schemas_test.py
-        else
+          hatch run test_all.py3.12:pytest -n 2 tests        else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
           hatch run test_all.py3.12:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
         fi
@@ -194,7 +190,7 @@ jobs:
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Schema Generation Test
-      run: hatch run test_all.py${{ matrix.python-version }}:pytest tests/allotrope/schema_parser/generate_schemas_test.py -v
+      run: hatch run test_all.py${{ matrix.python-version }}:pytest tests/schema_gen/ -v
       timeout-minutes: 5
 
   lint:

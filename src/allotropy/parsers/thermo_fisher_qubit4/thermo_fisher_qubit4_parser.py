@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Model,
 )
@@ -17,12 +19,46 @@ from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_structure impor
 from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
 
+_QUBIT4_XLSX_RFU_COLUMNS = {"Green RFU", "Far Red RFU"}
+_QUBIT4_CSV_RFU_COLUMNS = {"Green RFU", "Far Red RFU"}
+
 
 class ThermoFisherQubit4Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific Qubit 4"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            if named_file_contents.extension == "xlsx":
+                wb = openpyxl.load_workbook(
+                    named_file_contents.get_bytes_stream(), read_only=True
+                )
+                ws = wb[wb.sheetnames[0]]
+                first_row = next(ws.iter_rows(max_row=1, values_only=True), None)
+                wb.close()
+                if first_row is None:
+                    return False
+                cells = [str(c) for c in first_row if c is not None]
+                return "Test Date" in cells and any(
+                    col in cells for col in _QUBIT4_XLSX_RFU_COLUMNS
+                )
+            named_file_contents.contents.seek(0)
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            header = lines[0]
+            return "Test Date" in header and any(
+                col in header for col in _QUBIT4_CSV_RFU_COLUMNS
+            )
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return Data(

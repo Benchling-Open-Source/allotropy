@@ -4,7 +4,9 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
-from allotropy.allotrope.schema_parser.path_util import ROOT_DIR
+from allotropy.allotrope.path_util import ROOT_DIR
+from allotropy.exceptions import AllotropeVendorNotFoundError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
@@ -29,6 +31,9 @@ from allotropy.parsers.bd_biosciences_facsdiva.bd_biosciences_facsdiva_parser im
 )
 from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser import (
     BeckmanCoulterBiomekParser,
+)
+from allotropy.parsers.beckman_echo_cherry_pick.beckman_echo_cherry_pick_parser import (
+    BeckmanEchoCherryPickParser,
 )
 from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_parser import (
     BeckmanEchoPlateReformatParser,
@@ -142,6 +147,7 @@ class Vendor(Enum):
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
     BENCHLING_EMPOWER = "BENCHLING_EMPOWER"
     BECKMAN_COULTER_BIOMEK = "BECKMAN_COULTER_BIOMEK"
+    BECKMAN_ECHO_CHERRY_PICK = "BECKMAN_ECHO_CHERRY_PICK"
     BECKMAN_ECHO_PLATE_REFORMAT = "BECKMAN_ECHO_PLATE_REFORMAT"
     BMG_LABTECH_SMART_CONTROL = "BMG_LABTECH_SMART_CONTROL"
     BMG_MARS = "BMG_MARS"
@@ -244,6 +250,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
     Vendor.BECKMAN_COULTER_BIOMEK: BeckmanCoulterBiomekParser,
+    Vendor.BECKMAN_ECHO_CHERRY_PICK: BeckmanEchoCherryPickParser,
     Vendor.BECKMAN_ECHO_PLATE_REFORMAT: BeckmanEchoPlateReformatParser,
     Vendor.BECKMAN_PHARMSPEC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
@@ -289,6 +296,40 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.THERMO_SKANIT: ThermoSkanItParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticStunnerParser,
 }
+
+
+def discover_vendor(named_file_contents: NamedFileContents) -> Vendor:
+    extension = named_file_contents.extension
+    candidates = [v for v in Vendor if extension in v.supported_extensions]
+    # Pass 1: collect all sniff matches.
+    sniffed: list[Vendor] = []
+    for vendor in candidates:
+        parser_cls = _VENDOR_TO_PARSER[vendor]
+        named_file_contents.contents.seek(0)
+        try:
+            if parser_cls.sniff(named_file_contents):
+                sniffed.append(vendor)
+        except Exception:  # noqa: S112
+            continue
+    # Exactly one sniff match — return without try-parse.
+    if len(sniffed) == 1:
+        return sniffed[0]
+    # Pass 2: multiple sniff matches — try parsing to disambiguate.
+    # No sniff matches — try parsing all candidates as fallback.
+    try_parse = sniffed or candidates
+    for vendor in try_parse:
+        named_file_contents.contents.seek(0)
+        try:
+            vendor.get_parser().create_data(named_file_contents)
+            return vendor
+        except Exception:  # noqa: S112
+            continue
+    # If sniff matched but try-parse failed (e.g. encoding issues unrelated to
+    # discovery), trust the sniff result rather than raising.
+    if sniffed:
+        return sniffed[0]
+    msg = f"No vendor could be identified for file with extension '.{extension}'."
+    raise AllotropeVendorNotFoundError(msg)
 
 
 def get_table_contents() -> str:

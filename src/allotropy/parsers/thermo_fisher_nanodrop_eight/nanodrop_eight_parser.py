@@ -1,4 +1,5 @@
 from functools import partial
+import re
 
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Model,
@@ -27,6 +28,25 @@ class NanodropEightParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = NanodropEightReader.SUPPORTED_EXTENSIONS
 
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            nanodrop_headers = {"application", "serial number", "user name"}
+            found = set()
+            for line in lines[:5]:
+                if re.match(r"^[^\t]+:\t", line):
+                    key = line.split(":\t")[0].strip().lower()
+                    if key in nanodrop_headers:
+                        found.add(key)
+            return len(found) >= 2
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = NanodropEightReader(named_file_contents)

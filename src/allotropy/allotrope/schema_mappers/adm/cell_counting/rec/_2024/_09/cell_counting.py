@@ -3,39 +3,41 @@ from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
-    CalculatedDataAggregateDocument,
-    CalculatedDataDocumentItem,
     CellCountingAggregateDocument,
     CellCountingDocumentItem,
     DataProcessingDocument,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
-    DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
-    DeviceSystemDocument,
-    ErrorAggregateDocument,
-    ErrorDocumentItem,
-    ImageAggregateDocument,
-    ImageDocumentItem,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
+    DataSystemDocument,
+    DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
+    ImageAggregateDocument,
+    ImageDocumentItem,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
     TQuantityValueMicroliter,
     TQuantityValueMicrometer,
     TQuantityValueMillionCellsPerMilliliter,
     TQuantityValuePercent,
     TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-    TQuantityValue,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -186,12 +188,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     DataSystemDocument(
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                     ),
                     data.metadata.data_system_custom_info or {},
                 ),
@@ -228,7 +230,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_doc = DeviceControlDocumentItem(
             device_type=metadata.device_type,
             detection_type=metadata.detection_type,
@@ -240,7 +242,7 @@ class Mapper(SchemaMapper[Data, Model]):
         device_control_doc = add_custom_information_document(
             device_control_doc, measurement.device_control_custom_info or {}
         )
-        measurement_document = MeasurementDocument(
+        measurement_document = MeasurementDocumentItem(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
@@ -338,16 +340,13 @@ class Mapper(SchemaMapper[Data, Model]):
             DataProcessingDocument(
                 cell_type_processing_method=measurement.cell_type_processing_method,
                 minimum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.minimum_cell_diameter_setting,
+                    TQuantityValueMicrometer, measurement.minimum_cell_diameter_setting
                 ),
                 maximum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.maximum_cell_diameter_setting,
+                    TQuantityValueMicrometer, measurement.maximum_cell_diameter_setting
                 ),
                 cell_density_dilution_factor=quantity_or_none(
-                    TQuantityValueUnitless,
-                    measurement.cell_density_dilution_factor,
+                    TQuantityValueUnitless, measurement.cell_density_dilution_factor
                 ),
             ),
             measurement.data_processing_custom_info or {},
@@ -359,32 +358,29 @@ class Mapper(SchemaMapper[Data, Model]):
                 if has_value(data_processing_document)
                 else None
             ),
-            viability__cell_counter_=TQuantityValuePercent(value=measurement.viability),
+            viability__cell_counter_=TQuantityValuePercent(
+                value=measurement.viability,
+            ),
             viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
-                value=measurement.viable_cell_density
+                value=measurement.viable_cell_density,
             ),
             dead_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter,
-                measurement.dead_cell_density,
+                TQuantityValueMillionCellsPerMilliliter, measurement.dead_cell_density
             ),
             total_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.total_cell_count
             ),
             total_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter,
-                measurement.total_cell_density,
+                TQuantityValueMillionCellsPerMilliliter, measurement.total_cell_density
             ),
             average_total_cell_diameter=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.average_total_cell_diameter,
+                TQuantityValueMicrometer, measurement.average_total_cell_diameter
             ),
             average_live_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.average_live_cell_diameter,
+                TQuantityValueMicrometer, measurement.average_live_cell_diameter
             ),
             average_dead_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.average_dead_cell_diameter,
+                TQuantityValueMicrometer, measurement.average_dead_cell_diameter
             ),
             viable_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.viable_cell_count
@@ -393,12 +389,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueCell, measurement.dead_cell_count
             ),
             average_total_cell_circularity=quantity_or_none(
-                TQuantityValueUnitless,
-                measurement.average_total_cell_circularity,
+                TQuantityValueUnitless, measurement.average_total_cell_circularity
             ),
             average_viable_cell_circularity=quantity_or_none(
-                TQuantityValueUnitless,
-                measurement.average_viable_cell_circularity,
+                TQuantityValueUnitless, measurement.average_viable_cell_circularity
             ),
         )
         return ProcessedDataAggregateDocument(
@@ -434,7 +428,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 CalculatedDataDocumentItem(
                     calculated_data_identifier=calculated_data_item.identifier,
                     calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValue(  # type:ignore[arg-type]
+                    calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),

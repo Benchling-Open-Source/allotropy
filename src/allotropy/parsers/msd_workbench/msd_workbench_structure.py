@@ -84,6 +84,11 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
             "detection range": row.get(str, "Detection Range"),
             "assay identifier": row.get(str, "Assay"),
         }
+        # Try both "Dilution Factor" and "Dilution" for backwards compatibility
+        dilution_value = row.get(int, "Dilution Factor")
+        if dilution_value is None:
+            dilution_value = row.get(int, "Dilution")
+
         return Measurement(
             type_=MeasurementType.LUMINESCENCE,
             identifier=random_uuid_str(),
@@ -99,7 +104,7 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
                 row[str, "Sample"][0].lower()
             ),
             sample_custom_info={
-                "dilution factor setting": row.get(int, "Dilution Factor"),
+                "dilution factor setting": dilution_value,
             },
             measurement_custom_info={
                 **custom_info,

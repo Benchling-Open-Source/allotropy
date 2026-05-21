@@ -29,6 +29,10 @@ class CytivaBiacoreT200ControlParser(VendorParser[MapperData, Model]):
     SUPPORTED_EXTENSIONS = "blr"
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
+        return True
+
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
         base_data = DictData(decode_data(named_file_contents))
         data = Data.create(base_data)

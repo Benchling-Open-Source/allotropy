@@ -25,6 +25,20 @@ class RocheCedexBiohtParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = RocheCedexBiohtReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            return "#ARC-FILE#" in lines[0]
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = RocheCedexBiohtReader(named_file_contents.contents)
 

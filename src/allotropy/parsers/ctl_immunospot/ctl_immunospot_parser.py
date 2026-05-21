@@ -21,6 +21,18 @@ class CtlImmunospotParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = CtlImmunospotReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            return any("ImmunoSpot" in line for line in lines[:20])
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = CtlImmunospotReader(named_file_contents)
         return Data(

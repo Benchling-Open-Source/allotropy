@@ -61,6 +61,10 @@ class FlowjoParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = "wsp"
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
+        return True
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         try:
             root_element_et = ET.parse(  # noqa: S314

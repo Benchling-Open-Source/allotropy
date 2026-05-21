@@ -24,6 +24,23 @@ class BeckmanCoulterBiomekParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = BeckmanCoulterBiomekReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            first_line = lines[0]
+            if "Well Index" in first_line:
+                return True
+            return first_line.startswith("Method = ")
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BeckmanCoulterBiomekReader(named_file_contents)
         return Data(

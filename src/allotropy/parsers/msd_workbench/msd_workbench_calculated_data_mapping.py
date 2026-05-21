@@ -44,6 +44,7 @@ class CalculatedDataColumns(Enum):
     PERCENT_RECOVERY_MEAN = "% Recovery Mean"
     CALC_CONCENTRATION = "Calc. Concentration"
     CALC_CONC_MEAN = "Calc. Conc. Mean"
+    CALC_CONC_CV = "Calc. Conc. CV"
 
 
 def create_calculated_data_groups(
@@ -83,6 +84,9 @@ def create_calculated_data_groups(
                     ),
                     calc_conc_mean=row_series.get(
                         float, CalculatedDataColumns.CALC_CONC_MEAN.value
+                    ),
+                    calc_conc_cv=row_series.get(
+                        float, CalculatedDataColumns.CALC_CONC_CV.value
                     ),
                 )
             )
@@ -156,6 +160,12 @@ def create_calculated_data_groups(
         view_data=assay_view,
         source_configs=(calc_concentration_config,),
     )
+    calc_conc_cv_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.CALC_CONC_CV.value,
+        value="calc_conc_cv",
+        view_data=assay_view,
+        source_configs=(calc_concentration_config,),
+    )
     configs = CalcDocsConfig(
         [
             mean_config,
@@ -167,6 +177,7 @@ def create_calculated_data_groups(
             percent_recovery_mean_config,
             calc_concentration_config,
             calc_conc_mean_config,
+            calc_conc_cv_config,
         ]
     )
     calc_docs = [

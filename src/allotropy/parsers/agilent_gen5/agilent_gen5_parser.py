@@ -21,6 +21,18 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            return any(line.startswith("Software Version") for line in lines[:5])
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = AgilentGen5Reader(named_file_contents)
         context = reader.extract_data_context(named_file_contents.original_file_path)

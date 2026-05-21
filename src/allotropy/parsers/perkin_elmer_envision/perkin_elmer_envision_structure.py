@@ -21,14 +21,16 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from re import search
+from re import match, search
 from typing import Any
 
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+    SampleRoleType,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValuePercent,
 )
@@ -291,7 +293,7 @@ class Result:
     uuid: str
     col: str
     row: str
-    value: int
+    value: float
 
 
 def create_results(reader: CsvReader) -> list[Result]:
@@ -316,7 +318,7 @@ def create_results(reader: CsvReader) -> list[Result]:
             uuid=random_uuid_str(),
             col=col,
             row=row,
-            value=int(series.loc[col, row]),
+            value=float(series.loc[col, row]),
         )
         for col, row in series.stack().index
     ]
@@ -673,6 +675,10 @@ class Labels:
         read_types = {
             read_type for key, read_type in patterns.items() if key in self.label
         }
+
+        # Check for absorbance wavelength patterns like A450, A562, etc.
+        if not read_types and match(r"^A\d{3}", self.label):
+            read_types.add(ReadType.ABSORBANCE)
 
         if len(read_types) > 1:
             msg = f"Unable to determine unique read type from label: '{self.label}'"

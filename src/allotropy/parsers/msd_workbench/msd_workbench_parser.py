@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import re
+
+import openpyxl
+
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     Model,
 )
@@ -38,9 +42,38 @@ class MSDWorkbenchParser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = MSDWorkbenchReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            if named_file_contents.extension == "xlsx":
+                wb = openpyxl.load_workbook(
+                    named_file_contents.get_bytes_stream(), read_only=True
+                )
+                sheet_names = set(wb.sheetnames)
+                wb.close()
+                return "Workbench data" in sheet_names
+            named_file_contents.contents.seek(0)
+            raw = named_file_contents.contents.read(4096)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            first_line = lines[0].strip()
+            if named_file_contents.extension == "csv":
+                return first_line.startswith("Plate_")
+            return bool(
+                re.match(r"^FileName\s*:\t", first_line)
+                or re.match(r"^Plate\s*#", first_line)
+            )
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         if named_file_contents.extension == "txt":
             return self._process_methodical_mind(named_file_contents)
+        # CSV and XLSX files use MSD Workbench format
         return self._process_msd_workbench(named_file_contents)
 
     def _process_methodical_mind(self, named_file_contents: NamedFileContents) -> Data:

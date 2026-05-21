@@ -1,7 +1,7 @@
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
     Mapper,
 )
@@ -26,6 +26,10 @@ class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = ExampleWeylandYutaniReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:  # noqa: ARG003
+        return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ExampleWeylandYutaniReader(named_file_contents)

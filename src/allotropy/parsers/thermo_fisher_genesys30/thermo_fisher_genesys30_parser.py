@@ -24,6 +24,29 @@ class ThermoFisherGenesys30Parser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = ThermoFisherGenesys30Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            named_file_contents.contents.seek(0)
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            first_line = lines[0]
+            sep = "\t" if "\t" in first_line else ","
+            parts = first_line.split(sep)
+            if len(parts) < 2 or parts[0].strip() != "Scan":
+                return False
+            return any(
+                p.strip().lower() == "mode"
+                for p in (lines[1].split(sep) if len(lines) > 1 else [])
+            )
+        except Exception:
+            return False
+
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ThermoFisherGenesys30Reader(named_file_contents)
         return Data(
