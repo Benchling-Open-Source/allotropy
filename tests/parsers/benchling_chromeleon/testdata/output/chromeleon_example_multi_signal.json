@@ -1,0 +1,263 @@
+{
+  "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
+  "liquid chromatography aggregate document": {
+    "data system document": {
+      "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
+      "ASM converter version": "0.1.128",
+      "file name": "chromeleon_example_multi_signal.json",
+      "software name": "Thermo Fisher Scientific Chromeleon",
+      "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example_multi_signal.json"
+    },
+    "device system document": {
+      "asset management identifier": "VF-A10-A",
+      "device document": [
+        {
+          "device type": "pump",
+          "model number": "VF-P10-A"
+        },
+        {
+          "device type": "uv",
+          "model number": "VF-D40-A"
+        },
+        {
+          "device type": "sampler",
+          "model number": "VF-A10-A"
+        }
+      ]
+    },
+    "liquid chromatography document": [
+      {
+        "measurement aggregate document": {
+          "measurement document": [
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "UV_VIS_1",
+                    "detection type": "single channel",
+                    "detector wavelength setting": {
+                      "value": 220.0,
+                      "unit": "nm"
+                    },
+                    "detector bandwidth setting": {
+                      "value": 4.0,
+                      "unit": "nm"
+                    }
+                  }
+                ]
+              },
+              "sample document": {
+                "sample identifier": "",
+                "description": "",
+                "location identifier": "B:A1",
+                "written name": "MQW"
+              },
+              "chromatography column document": {
+                "chromatography column serial number": "N/A"
+              },
+              "measurement identifier": "BENCHLING_CHROMELEON_TEST_ID_0",
+              "injection document": {
+                "injection identifier": "99999999-8888-7777-6666-555555555555",
+                "injection time": "2026-02-14T21:52:50+01:00",
+                "injection volume setting": {
+                  "value": 4.0,
+                  "unit": "\u03bcL"
+                },
+                "custom information document": {
+                  "injection": 1,
+                  "injection name": "MQW",
+                  "injection position": "B:A1",
+                  "injection status": "Finished",
+                  "injection type": "Unknown",
+                  "last update user name": "Instrument Controller",
+                  "creation user name": "PD01",
+                  "ColumnValvePosition": 1.0
+                }
+              },
+              "chromatogram data cube": {
+                "label": "UV_VIS_1",
+                "cube-structure": {
+                  "dimensions": [
+                    {
+                      "@componentDatatype": "double",
+                      "concept": "retention time",
+                      "unit": "s"
+                    }
+                  ],
+                  "measures": [
+                    {
+                      "@componentDatatype": "double",
+                      "concept": "absorbance",
+                      "unit": "mAU"
+                    }
+                  ]
+                },
+                "data": {
+                  "measures": [
+                    [
+                      0.0,
+                      0.5,
+                      1.0,
+                      0.5,
+                      0.0
+                    ]
+                  ],
+                  "dimensions": [
+                    [
+                      0.0,
+                      30.0,
+                      60.0,
+                      90.0,
+                      120.0
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "UV_VIS_2",
+                    "detection type": "single channel",
+                    "detector wavelength setting": {
+                      "value": 280.0,
+                      "unit": "nm"
+                    },
+                    "detector bandwidth setting": {
+                      "value": 4.0,
+                      "unit": "nm"
+                    }
+                  }
+                ]
+              },
+              "sample document": {
+                "sample identifier": "",
+                "description": "",
+                "location identifier": "B:A1",
+                "written name": "MQW"
+              },
+              "chromatography column document": {
+                "chromatography column serial number": "N/A"
+              },
+              "measurement identifier": "BENCHLING_CHROMELEON_TEST_ID_1",
+              "processed data aggregate document": {
+                "processed data document": [
+                  {
+                    "peak list": {
+                      "peak": [
+                        {
+                          "peak end": {
+                            "value": 96.0,
+                            "unit": "s"
+                          },
+                          "identifier": "BENCHLING_CHROMELEON_TEST_ID_2",
+                          "relative peak height": {
+                            "value": 100.0,
+                            "unit": "%"
+                          },
+                          "written name": "Peak1",
+                          "peak height": {
+                            "value": 0.8,
+                            "unit": "mAU"
+                          },
+                          "peak area": {
+                            "value": 8.0,
+                            "unit": "mAU.s"
+                          },
+                          "relative peak area": {
+                            "value": 100.0,
+                            "unit": "%"
+                          },
+                          "retention time": {
+                            "value": 60.0,
+                            "unit": "s"
+                          },
+                          "peak start": {
+                            "value": 24.0,
+                            "unit": "s"
+                          },
+                          "peak index": "1",
+                          "peak width at half height": {
+                            "value": 36.0,
+                            "unit": "s"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "injection document": {
+                "injection identifier": "99999999-8888-7777-6666-555555555555",
+                "injection time": "2026-02-14T21:52:50+01:00",
+                "injection volume setting": {
+                  "value": 4.0,
+                  "unit": "\u03bcL"
+                },
+                "custom information document": {
+                  "injection": 1,
+                  "injection name": "MQW",
+                  "injection position": "B:A1",
+                  "injection status": "Finished",
+                  "injection type": "Unknown",
+                  "last update user name": "Instrument Controller",
+                  "creation user name": "PD01",
+                  "ColumnValvePosition": 1.0
+                }
+              },
+              "chromatogram data cube": {
+                "label": "UV_VIS_2",
+                "cube-structure": {
+                  "dimensions": [
+                    {
+                      "@componentDatatype": "double",
+                      "concept": "retention time",
+                      "unit": "s"
+                    }
+                  ],
+                  "measures": [
+                    {
+                      "@componentDatatype": "double",
+                      "concept": "absorbance",
+                      "unit": "mAU"
+                    }
+                  ]
+                },
+                "data": {
+                  "measures": [
+                    [
+                      0.0,
+                      0.3,
+                      0.8,
+                      0.3,
+                      0.0
+                    ]
+                  ],
+                  "dimensions": [
+                    [
+                      0.0,
+                      30.0,
+                      60.0,
+                      90.0,
+                      120.0
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "analyst": "Instrument Controller",
+        "submitter": "PD01"
+      }
+    ],
+    "custom information document": {
+      "Sequence Creation Time": "2026-02-13T10:00:00+01:00",
+      "Sequence Directory": "ChromeleonLocal",
+      "Sequence Name": "Test_MultiSignal",
+      "Sequence Update operator": "operator1",
+      "Sequence Update Time": "2026-02-14T15:00:00+01:00"
+    }
+  }
+}

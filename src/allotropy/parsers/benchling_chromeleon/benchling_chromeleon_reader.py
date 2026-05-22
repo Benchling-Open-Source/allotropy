@@ -14,7 +14,9 @@ class BenchlingChromeleonReader:
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         contents: dict[str, Any] = json.load(named_file_contents.contents)
         self.sequence: dict[str, Any] = contents.get("sequence", {})
-        self.device_information: dict[str, Any] = contents.get("device information", {})
+        self.device_information: dict[str, Any] = (
+            contents.get("device information") or {}
+        )
         self.injections: list[dict[str, Any]] = assert_not_none(
             contents.get("injections"), "injections"
         )
