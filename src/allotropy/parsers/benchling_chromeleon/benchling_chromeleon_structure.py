@@ -28,8 +28,10 @@ from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 
 def _create_device_documents(
-    device_information: dict[str, Any]
+    device_information: dict[str, Any] | None,
 ) -> list[DeviceDocument] | None:
+    if not device_information:
+        return None
     return [
         DeviceDocument(
             device_type="pump",
@@ -51,12 +53,15 @@ def create_metadata(
     first_injection: dict[str, Any],
     sequence: dict[str, Any],
     file_path: str,
-    device_information: dict[str, Any],
+    device_information: dict[str, Any] | None,
 ) -> Metadata:
+    asset_management_identifier = (
+        (device_information.get("sampler model number") if device_information else None)
+        or first_injection.get("precondition system instrument name")
+        or NOT_APPLICABLE
+    )
     return Metadata(
-        asset_management_identifier=first_injection.get(
-            "precondition system instrument name", NOT_APPLICABLE
-        ),
+        asset_management_identifier=asset_management_identifier,
         software_name=constants.SOFTWARE_NAME,
         file_name=Path(file_path).name,
         unc_path=file_path,
@@ -223,6 +228,7 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement] | None:
             measurement_identifier=random_uuid_str(),
             description=injection.get("description"),
             sample_identifier=injection["sample identifier"],
+            written_name=injection.get("injection name"),
             location_identifier=injection.get("location identifier"),
             well_location_identifier=injection.get("custom variables", {}).get("Well"),
             observation=injection.get("custom variables", {}).get("Observation"),
@@ -239,7 +245,7 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement] | None:
             },
             device_control_docs=[
                 DeviceControlDoc(
-                    device_type=constants.DEVICE_TYPE,
+                    device_type=signal.get("signal name", constants.DEVICE_TYPE),
                     detection_type=signal.get("detection type"),
                     detector_offset_setting=val
                     if (val := signal.get("detector offset setting")) != "unknown"
@@ -271,6 +277,11 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement] | None:
                 "creation user name": injection.get("creation user name"),
                 "injection program": injection.get("injection program"),
                 "injection method": injection.get("injection method"),
+                **{
+                    k: v
+                    for k, v in injection.get("custom variables", {}).items()
+                    if v is not None
+                },
             },
             chromatography_serial_num=NOT_APPLICABLE,
             chromatogram_data_cube=_get_chromatogram(signal) if signal else None,
@@ -284,7 +295,11 @@ def create_measurement_groups(
     injections: list[dict[str, Any]]
 ) -> list[MeasurementGroup]:
     return [
-        MeasurementGroup(measurements=measurements)
-        for sample_injections in injections
-        if (measurements := _create_measurements(sample_injections)) is not None
+        MeasurementGroup(
+            measurements=measurements,
+            analyst=injection.get("last update user name"),
+            submitter=injection.get("creation user name"),
+        )
+        for injection in injections
+        if (measurements := _create_measurements(injection)) is not None
     ]

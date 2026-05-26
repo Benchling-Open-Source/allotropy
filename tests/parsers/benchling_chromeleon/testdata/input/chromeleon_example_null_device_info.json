@@ -1,0 +1,177 @@
+{
+  "device information": null,
+  "sequence": {
+    "sequence creation time": "2024-09-23T08:00:00-07:00",
+    "sequence directory": "ChromeleonLocal",
+    "sequence name": "Test_Null_DeviceInfo",
+    "sequence update operator": "testuser",
+    "sequence update time": "2024-09-23T09:00:00-07:00",
+    "custom formulas": []
+  },
+  "injections": [
+    {
+      "injection number": 1,
+      "injection name": "Blank Conditioning",
+      "injection identifier": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+      "injection time": "2024-09-23T08:05:00-07:00",
+      "injection position": "P1:A1",
+      "injection status": "Finished",
+      "injection type": "Unknown",
+      "description": "test description",
+      "sample identifier": "SAMPLE-001",
+      "location identifier": "P1:A1",
+      "last update user name": "Instrument Controller",
+      "creation user name": "testuser",
+      "detection type": "single channel",
+      "injection volume setting": 5.0,
+      "injection volume setting unit": "uL",
+      "custom variables": {
+        "Analysis_Type": "Laboratory Reagent Blank (LRB)",
+        "Fortified": "LFB Set",
+        "Duplicate": null
+      },
+      "signals": [
+        {
+          "signal name": "FLD1_Signal_A",
+          "detection type": "single channel",
+          "detector sampling rate setting": "unknown",
+          "detector offset setting": "unknown",
+          "bandwidth setting": null,
+          "wavelength setting": 280.0,
+          "reference bandwidth setting": null,
+          "reference wavelength setting": null,
+          "chromatogram": {
+            "x": [
+              0.0,
+              0.1,
+              0.2,
+              0.3,
+              0.4
+            ],
+            "y": [
+              0.0,
+              1.5,
+              3.2,
+              2.1,
+              0.5
+            ]
+          },
+          "peaks": [
+            {
+              "identifier": "1",
+              "name": "Peak1",
+              "start time": 0.05,
+              "end time": 0.35,
+              "retention time": 0.2,
+              "area": 5000.0,
+              "height": 3200.0,
+              "relative peak area": 100.0,
+              "relative peak height": 100.0,
+              "peak width at half height": 0.1,
+              "peak width at 5 % of height": null,
+              "peak width at 10 % of height": null,
+              "peak width at baseline": null,
+              "amount": null,
+              "relative retention time": null,
+              "capacity factor": null,
+              "chromatographic peak resolution": null,
+              "number of theoretical plates by peak width at half height": null,
+              "asymmetry factor measured at 5 % height": null,
+              "start value baseline": null,
+              "stop value baseline": null,
+              "peak right width at 10 % of height": null,
+              "peak left width at 10 % of height": null,
+              "group area": null,
+              "rel ce area total": null,
+              "chromatographic peak resolution (USP)": null,
+              "asymmetry aia": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "injection number": 2,
+      "injection name": "Standard 1",
+      "injection identifier": "11111111-2222-3333-4444-555555555555",
+      "injection time": "2024-09-23T08:15:00-07:00",
+      "injection position": "P1:A2",
+      "injection status": "Finished",
+      "injection type": "Unknown",
+      "description": "",
+      "sample identifier": "STD-001",
+      "location identifier": "P1:A2",
+      "last update user name": "labuser",
+      "creation user name": "admin",
+      "detection type": "single channel",
+      "injection volume setting": 10.0,
+      "injection volume setting unit": "uL",
+      "custom variables": {
+        "Analysis_Type": "Calibration Standard",
+        "Fortified": null,
+        "Duplicate": null
+      },
+      "signals": [
+        {
+          "signal name": "CD_1",
+          "detection type": "single channel",
+          "detector sampling rate setting": 2.5,
+          "detector offset setting": "unknown",
+          "bandwidth setting": 4.0,
+          "wavelength setting": 254.0,
+          "reference bandwidth setting": null,
+          "reference wavelength setting": 360.0,
+          "chromatogram": {
+            "x": [
+              0.0,
+              0.1,
+              0.2,
+              0.3,
+              0.4,
+              0.5
+            ],
+            "y": [
+              0.1,
+              2.0,
+              5.5,
+              4.0,
+              1.2,
+              0.2
+            ]
+          },
+          "peaks": [
+            {
+              "identifier": "1",
+              "name": "Analyte1",
+              "start time": 0.08,
+              "end time": 0.42,
+              "retention time": 0.2,
+              "area": 12000.0,
+              "height": 5500.0,
+              "relative peak area": 100.0,
+              "relative peak height": 100.0,
+              "peak width at half height": 0.15,
+              "peak width at 5 % of height": 0.25,
+              "peak width at 10 % of height": 0.22,
+              "peak width at baseline": 0.34,
+              "amount": 50.0,
+              "relative retention time": 1.0,
+              "capacity factor": 2.5,
+              "chromatographic peak resolution": 1.8,
+              "number of theoretical plates by peak width at half height": 500.0,
+              "asymmetry factor measured at 5 % height": 1.2,
+              "start value baseline": 0.01,
+              "stop value baseline": 0.02,
+              "peak right width at 10 % of height": 0.12,
+              "peak left width at 10 % of height": 0.1,
+              "group area": 15000.0,
+              "rel ce area total": 95.0,
+              "chromatographic peak resolution (USP)": 1.75,
+              "asymmetry aia": 1.1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
