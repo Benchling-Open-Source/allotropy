@@ -208,6 +208,10 @@ def _create_peak(peak: dict[str, Any], signal: dict[str, Any]) -> Peak:
                 "chromatographic peak resolution (USP)"
             ),
             "asymmetry aia": peak.get("asymmetry aia"),
+            "relative area group": try_float_or_none(peak.get("relative area group")),
+            "number of calibration points": try_float_or_none(
+                peak.get("number of calibration points")
+            ),
         },
     )
 
