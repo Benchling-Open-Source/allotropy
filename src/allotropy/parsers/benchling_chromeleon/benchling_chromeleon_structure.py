@@ -130,12 +130,11 @@ def _convert_to_seconds(value: float | None) -> float | None:
 
 
 def _create_peak(peak: dict[str, Any], signal: dict[str, Any]) -> Peak:
-    # Area and height are reported in μV, but are reported in ASM as mAU
-    # For Chromeleon software, 1V == 1AU, so we just need to convert μ to m
-    if (area := try_float_or_none(peak.get("area"))) is not None:
-        area /= 1000
-    if (height := try_float_or_none(peak.get("height"))) is not None:
-        height /= 1000
+    height = try_float_or_none(peak.get("height"))
+    # Area is reported in mAU·min — convert to mAU·s for ASM
+    area = try_float_or_none(peak.get("area"))
+    if area is not None:
+        area *= 60
     # Times are reported in minutes by Chromeleon - convert to seconds
     retention_time = _convert_to_seconds(try_float_or_none(peak.get("retention time")))
     width_at_half_height = _convert_to_seconds(

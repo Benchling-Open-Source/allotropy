@@ -182,14 +182,14 @@ def test_create_measurement_groups(mock_data: dict[str, Any]) -> None:
     assert peaks is not None
     peak = peaks[0]
     assert peak.peak_analyte_amount == 100.0
-    assert peak.area == 0.0030483288680073542
+    assert peak.area == 182.89973208044124
     assert peak.asymmetry_factor_measured_at_5_percent_height == 1.2188763229155313
     assert peak.area_unit == "mAU.s"
     assert peak.capacity_factor == 12
     assert peak.chromatographic_resolution == 1.7448475391025424
     assert peak.end == 14.38
     assert peak.start == 8.86
-    assert peak.height == 0.11128958058334837
+    assert peak.height == 111.28958058334837
     assert peak.end_unit == "s"
     assert peak.start_unit == "s"
     assert peak.index == "1"
