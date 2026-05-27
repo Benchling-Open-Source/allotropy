@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.130] - 2026-05-26
+
+### Fixed
+
+- Map relative area group and calibration points in Chromeleon parser (#1210)
+
+## [0.1.129] - 2026-05-26
+
+### Fixed
+
+- Map missing fields in Chromeleon parser for adapter migration (#1207)
+
 ## [0.1.128] - 2026-05-21
 
 ### Fixed

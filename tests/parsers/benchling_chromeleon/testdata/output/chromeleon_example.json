@@ -3,7 +3,7 @@
   "liquid chromatography aggregate document": {
     "data system document": {
       "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
-      "ASM converter version": "0.1.128",
+      "ASM converter version": "0.1.129",
       "file name": "chromeleon_example.json",
       "software name": "Thermo Fisher Scientific Chromeleon",
       "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example.json"
@@ -130,7 +130,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -194,7 +196,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -252,6 +256,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -425,7 +433,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -489,7 +499,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -547,6 +559,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -720,7 +736,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -784,7 +802,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -842,6 +862,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -1015,7 +1039,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1079,7 +1105,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1137,6 +1165,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -1310,7 +1342,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1374,7 +1408,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1432,6 +1468,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -1605,7 +1645,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1669,7 +1711,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1727,6 +1771,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -1900,7 +1948,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -1964,7 +2014,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2022,6 +2074,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -2195,7 +2251,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2259,7 +2317,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2317,6 +2377,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -2490,7 +2554,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2554,7 +2620,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2612,6 +2680,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -2777,7 +2849,9 @@
                             "unit": "s"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7921827104097128
+                            "chromatographic peak resolution (usp)": 1.7921827104097128,
+                            "relative area group": 37.81610105503127,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2841,7 +2915,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.67820507372619
+                            "chromatographic peak resolution (usp)": 2.67820507372619,
+                            "relative area group": 31.767026387328094,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -2899,6 +2975,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2376060633263086,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 30.416872557640634,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -3072,7 +3152,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7437195488170474
+                            "chromatographic peak resolution (usp)": 1.7437195488170474,
+                            "relative area group": 42.04181668099132,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -3128,7 +3210,9 @@
                             "unit": "s"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.695214860804459
+                            "chromatographic peak resolution (usp)": 2.695214860804459,
+                            "relative area group": 32.38557744458143,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -3186,6 +3270,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2344967852555495,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 25.572605874427246,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -3359,7 +3447,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7408423252069716
+                            "chromatographic peak resolution (usp)": 1.7408423252069716,
+                            "relative area group": 40.58699726408905,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -3423,7 +3513,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6492481035473205
+                            "chromatographic peak resolution (usp)": 2.6492481035473205,
+                            "relative area group": 31.43166760102576,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -3481,6 +3573,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.237602783081184,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.981335134885185,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -3654,7 +3750,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7412426300787887
+                            "chromatographic peak resolution (usp)": 1.7412426300787887,
+                            "relative area group": 41.237012758952396,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -3718,7 +3816,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.658792313762178
+                            "chromatographic peak resolution (usp)": 2.658792313762178,
+                            "relative area group": 31.078085438600628,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -3776,6 +3876,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2378454118741702,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.684901802446973,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -3949,7 +4053,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.740979771724609
+                            "chromatographic peak resolution (usp)": 1.740979771724609,
+                            "relative area group": 41.57749171119995,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4013,7 +4119,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6606635927954727
+                            "chromatographic peak resolution (usp)": 2.6606635927954727,
+                            "relative area group": 31.019564392670027,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4071,6 +4179,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2136076910692162,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.40294389613003,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -4244,7 +4356,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7495471541221888
+                            "chromatographic peak resolution (usp)": 1.7495471541221888,
+                            "relative area group": 41.73274045443911,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4308,7 +4422,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.677192009548953
+                            "chromatographic peak resolution (usp)": 2.677192009548953,
+                            "relative area group": 30.89185145581615,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4366,6 +4482,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.1888826766372835,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.375408089744745,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -4539,7 +4659,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7576977725711733
+                            "chromatographic peak resolution (usp)": 1.7576977725711733,
+                            "relative area group": 41.336289352689626,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4603,7 +4725,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6879874289445005
+                            "chromatographic peak resolution (usp)": 2.6879874289445005,
+                            "relative area group": 31.214714333445567,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4661,6 +4785,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.169106443716203,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.448996313864807,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -4834,7 +4962,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7339906038336619
+                            "chromatographic peak resolution (usp)": 1.7339906038336619,
+                            "relative area group": 41.01098690688492,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4898,7 +5028,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6452680063735947
+                            "chromatographic peak resolution (usp)": 2.6452680063735947,
+                            "relative area group": 31.310247827840602,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -4956,6 +5088,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2376060633263086,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.67876526527448,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -5129,7 +5265,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7294086271087814
+                            "chromatographic peak resolution (usp)": 1.7294086271087814,
+                            "relative area group": 41.650661358875176,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -5185,7 +5323,9 @@
                             "unit": "s"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.642611786755101
+                            "chromatographic peak resolution (usp)": 2.642611786755101,
+                            "relative area group": 30.95316780100753,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -5243,6 +5383,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2376060633263086,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.396170840117303,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -5416,7 +5560,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -5480,7 +5626,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -5538,6 +5686,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -5711,7 +5863,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -5775,7 +5929,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -5833,6 +5989,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
@@ -6006,7 +6166,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 1.7453679568237164
+                            "chromatographic peak resolution (usp)": 1.7453679568237164,
+                            "relative area group": 40.9093439254137,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -6070,7 +6232,9 @@
                             "unit": "(unitless)"
                           },
                           "custom information document": {
-                            "chromatographic peak resolution (usp)": 2.6568677245626446
+                            "chromatographic peak resolution (usp)": 2.6568677245626446,
+                            "relative area group": 31.151830550139536,
+                            "number of calibration points": 4.0
                           }
                         },
                         {
@@ -6128,6 +6292,10 @@
                           "asymmetry factor measured at 5 % height": {
                             "value": 1.2325188419994737,
                             "unit": "(unitless)"
+                          },
+                          "custom information document": {
+                            "relative area group": 27.938825524446756,
+                            "number of calibration points": 4.0
                           }
                         }
                       ]
