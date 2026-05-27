@@ -1,369 +1,343 @@
 {
-  "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
-  "liquid chromatography aggregate document": {
-    "data system document": {
-      "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
-      "ASM converter version": "0.1.129",
-      "file name": "chromeleon_example_null_device_info.json",
-      "software name": "Thermo Fisher Scientific Chromeleon",
-      "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example_null_device_info.json"
-    },
-    "device system document": {
-      "asset management identifier": "N/A"
-    },
-    "liquid chromatography document": [
-      {
-        "measurement aggregate document": {
-          "measurement document": [
-            {
-              "device control aggregate document": {
-                "device control document": [
-                  {
-                    "device type": "FLD1_Signal_A",
-                    "detection type": "single channel",
-                    "detector wavelength setting": {
-                      "value": 280.0,
-                      "unit": "nm"
-                    }
-                  }
-                ]
-              },
-              "sample document": {
-                "sample identifier": "SAMPLE-001",
-                "description": "test description",
-                "location identifier": "P1:A1",
-                "written name": "Blank Conditioning"
-              },
-              "chromatography column document": {
-                "chromatography column serial number": "N/A"
-              },
-              "measurement identifier": "BENCHLING_CHROMELEON_TEST_ID_0",
-              "processed data aggregate document": {
-                "processed data document": [
-                  {
-                    "peak list": {
-                      "peak": [
-                        {
-                          "peak end": {
-                            "value": 21.0,
-                            "unit": "s"
-                          },
-                          "identifier": "BENCHLING_CHROMELEON_TEST_ID_1",
-                          "relative peak height": {
-                            "value": 100.0,
-                            "unit": "%"
-                          },
-                          "written name": "Peak1",
-                          "peak height": {
-                            "value": 3.2,
-                            "unit": "mAU"
-                          },
-                          "peak area": {
-                            "value": 5.0,
-                            "unit": "mAU.s"
-                          },
-                          "relative peak area": {
-                            "value": 100.0,
-                            "unit": "%"
-                          },
-                          "retention time": {
-                            "value": 12.0,
-                            "unit": "s"
-                          },
-                          "peak start": {
-                            "value": 3.0,
-                            "unit": "s"
-                          },
-                          "peak index": "1",
-                          "peak width at half height": {
-                            "value": 6.0,
-                            "unit": "s"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              "injection document": {
-                "injection identifier": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-                "injection time": "2024-09-23T08:05:00-07:00",
-                "injection volume setting": {
-                  "value": 5.0,
-                  "unit": "\u03bcL"
-                },
-                "custom information document": {
-                  "injection": 1,
-                  "injection name": "Blank Conditioning",
-                  "injection position": "P1:A1",
-                  "injection status": "Finished",
-                  "injection type": "Unknown",
-                  "last update user name": "Instrument Controller",
-                  "creation user name": "testuser",
-                  "Analysis Type": "Laboratory Reagent Blank (LRB)",
-                  "Fortified": "LFB Set"
-                }
-              },
-              "chromatogram data cube": {
-                "label": "FLD1_Signal_A",
-                "cube-structure": {
-                  "dimensions": [
-                    {
-                      "@componentDatatype": "double",
-                      "concept": "retention time",
-                      "unit": "s"
-                    }
-                  ],
-                  "measures": [
-                    {
-                      "@componentDatatype": "double",
-                      "concept": "absorbance",
-                      "unit": "mAU"
-                    }
-                  ]
-                },
-                "data": {
-                  "measures": [
-                    [
-                      0.0,
-                      1.5,
-                      3.2,
-                      2.1,
-                      0.5
-                    ]
-                  ],
-                  "dimensions": [
-                    [
-                      0.0,
-                      6.0,
-                      12.0,
-                      18.0,
-                      24.0
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
+    "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
+    "liquid chromatography aggregate document": {
+        "data system document": {
+            "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
+            "ASM converter version": "0.1.130",
+            "file name": "chromeleon_example_null_device_info.json",
+            "software name": "Thermo Fisher Scientific Chromeleon",
+            "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example_null_device_info.json"
         },
-        "analyst": "Instrument Controller",
-        "submitter": "testuser"
-      },
-      {
-        "measurement aggregate document": {
-          "measurement document": [
-            {
-              "device control aggregate document": {
-                "device control document": [
-                  {
-                    "device type": "CD_1",
-                    "detection type": "single channel",
-                    "detector sampling rate setting": {
-                      "value": 2.5,
-                      "unit": "Hz"
-                    },
-                    "detector wavelength setting": {
-                      "value": 254.0,
-                      "unit": "nm"
-                    },
-                    "detector bandwidth setting": {
-                      "value": 4.0,
-                      "unit": "nm"
-                    },
-                    "electronic absorbance reference wavelength setting": {
-                      "value": 360.0,
-                      "unit": "nm"
-                    }
-                  }
-                ]
-              },
-              "sample document": {
-                "sample identifier": "STD-001",
-                "description": "",
-                "location identifier": "P1:A2",
-                "written name": "Standard 1"
-              },
-              "chromatography column document": {
-                "chromatography column serial number": "N/A"
-              },
-              "measurement identifier": "BENCHLING_CHROMELEON_TEST_ID_2",
-              "processed data aggregate document": {
-                "processed data document": [
-                  {
-                    "peak list": {
-                      "peak": [
-                        {
-                          "peak end": {
-                            "value": 25.2,
-                            "unit": "s"
-                          },
-                          "identifier": "BENCHLING_CHROMELEON_TEST_ID_3",
-                          "relative peak height": {
-                            "value": 100.0,
-                            "unit": "%"
-                          },
-                          "written name": "Analyte1",
-                          "peak height": {
-                            "value": 5.5,
-                            "unit": "mAU"
-                          },
-                          "capacity factor (chromatography)": {
-                            "value": 2.5,
-                            "unit": "(unitless)"
-                          },
-                          "baseline value at start of peak": {
-                            "value": 0.6,
-                            "unit": "s"
-                          },
-                          "baseline value at end of peak": {
-                            "value": 1.2,
-                            "unit": "s"
-                          },
-                          "peak group": {
-                            "value": 900000.0,
-                            "unit": "mAU.s"
-                          },
-                          "relative corrected peak area": {
-                            "value": 95.0,
-                            "unit": "%"
-                          },
-                          "peak area": {
-                            "value": 12.0,
-                            "unit": "mAU.s"
-                          },
-                          "relative peak area": {
-                            "value": 100.0,
-                            "unit": "%"
-                          },
-                          "retention time": {
-                            "value": 12.0,
-                            "unit": "s"
-                          },
-                          "relative retention time": {
-                            "value": 1.0,
-                            "unit": "%"
-                          },
-                          "peak start": {
-                            "value": 4.8,
-                            "unit": "s"
-                          },
-                          "peak analyte amount": {
-                            "value": 50.0,
-                            "unit": "(unitless)"
-                          },
-                          "peak index": "1",
-                          "chromatographic peak resolution": {
-                            "value": 1.8,
-                            "unit": "(unitless)"
-                          },
-                          "number of theoretical plates by peak width at half height": {
-                            "value": 500.0,
-                            "unit": "(unitless)"
-                          },
-                          "peak width at half height": {
-                            "value": 9.0,
-                            "unit": "s"
-                          },
-                          "peak width at 5 % of height": {
-                            "value": 15.0,
-                            "unit": "s"
-                          },
-                          "peak width at baseline": {
-                            "value": 20.400000000000002,
-                            "unit": "s"
-                          },
-                          "peak width at 10 % of height": {
-                            "value": 13.2,
-                            "unit": "s"
-                          },
-                          "asymmetry factor measured at 5 % height": {
-                            "value": 1.2,
-                            "unit": "(unitless)"
-                          },
-                          "custom information document": {
-                            "peak right width at 10% height": 7.199999999999999,
-                            "peak left width at 10% height": 6.0,
-                            "chromatographic peak resolution (usp)": 1.75,
-                            "asymmetry aia": 1.1
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              "injection document": {
-                "injection identifier": "11111111-2222-3333-4444-555555555555",
-                "injection time": "2024-09-23T08:15:00-07:00",
-                "injection volume setting": {
-                  "value": 10.0,
-                  "unit": "\u03bcL"
-                },
-                "custom information document": {
-                  "injection": 2,
-                  "injection name": "Standard 1",
-                  "injection position": "P1:A2",
-                  "injection status": "Finished",
-                  "injection type": "Unknown",
-                  "last update user name": "labuser",
-                  "creation user name": "admin",
-                  "Analysis Type": "Calibration Standard"
-                }
-              },
-              "chromatogram data cube": {
-                "label": "CD_1",
-                "cube-structure": {
-                  "dimensions": [
-                    {
-                      "@componentDatatype": "double",
-                      "concept": "retention time",
-                      "unit": "s"
-                    }
-                  ],
-                  "measures": [
-                    {
-                      "@componentDatatype": "double",
-                      "concept": "absorbance",
-                      "unit": "mAU"
-                    }
-                  ]
-                },
-                "data": {
-                  "measures": [
-                    [
-                      0.1,
-                      2.0,
-                      5.5,
-                      4.0,
-                      1.2,
-                      0.2
-                    ]
-                  ],
-                  "dimensions": [
-                    [
-                      0.0,
-                      6.0,
-                      12.0,
-                      18.0,
-                      24.0,
-                      30.0
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
+        "device system document": {
+            "asset management identifier": "N/A"
         },
-        "analyst": "labuser",
-        "submitter": "admin"
-      }
-    ],
-    "custom information document": {
-      "Sequence Creation Time": "2024-09-23T08:00:00-07:00",
-      "Sequence Directory": "ChromeleonLocal",
-      "Sequence Name": "Test_Null_DeviceInfo",
-      "Sequence Update operator": "testuser",
-      "Sequence Update Time": "2024-09-23T09:00:00-07:00"
+        "liquid chromatography document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "FLD1_Signal_A",
+                                        "detection type": "single channel",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE-001",
+                                "description": "test description",
+                                "location identifier": "P1:A1",
+                                "written name": "Blank Conditioning"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_CHROMELEON_TEST_ID_0",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 21.0,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "BENCHLING_CHROMELEON_TEST_ID_1",
+                                                    "relative peak height": {
+                                                        "value": 100.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "written name": "Peak1",
+                                                    "peak height": {
+                                                        "value": 3200.0,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 300000.0,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 100.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 12.0,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 3.0,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak index": "1",
+                                                    "peak width at half height": {
+                                                        "value": 6.0,
+                                                        "unit": "s"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "injection document": {
+                                "injection identifier": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+                                "injection time": "2024-09-23T08:05:00-07:00",
+                                "injection volume setting": {
+                                    "value": 5.0,
+                                    "unit": "μL"
+                                },
+                                "custom information document": {
+                                    "injection": 1,
+                                    "injection name": "Blank Conditioning",
+                                    "injection position": "P1:A1",
+                                    "injection status": "Finished",
+                                    "injection type": "Unknown",
+                                    "last update user name": "Instrument Controller",
+                                    "creation user name": "testuser",
+                                    "Analysis Type": "Laboratory Reagent Blank (LRB)",
+                                    "Fortified": "LFB Set"
+                                }
+                            },
+                            "chromatogram data cube": {
+                                "label": "FLD1_Signal_A",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "measures": [
+                                        [0.0, 1.5, 3.2, 2.1, 0.5]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 6.0, 12.0, 18.0, 24.0]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Instrument Controller",
+                "submitter": "testuser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "CD_1",
+                                        "detection type": "single channel",
+                                        "detector sampling rate setting": {
+                                            "value": 2.5,
+                                            "unit": "Hz"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 254.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector bandwidth setting": {
+                                            "value": 4.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference wavelength setting": {
+                                            "value": 360.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "STD-001",
+                                "description": "",
+                                "location identifier": "P1:A2",
+                                "written name": "Standard 1"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_CHROMELEON_TEST_ID_2",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 25.2,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "BENCHLING_CHROMELEON_TEST_ID_3",
+                                                    "relative peak height": {
+                                                        "value": 100.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "written name": "Analyte1",
+                                                    "peak height": {
+                                                        "value": 5500.0,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "capacity factor (chromatography)": {
+                                                        "value": 2.5,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "baseline value at start of peak": {
+                                                        "value": 0.6,
+                                                        "unit": "s"
+                                                    },
+                                                    "baseline value at end of peak": {
+                                                        "value": 1.2,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak group": {
+                                                        "value": 900000.0,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 95.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 720000.0,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 100.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 12.0,
+                                                        "unit": "s"
+                                                    },
+                                                    "relative retention time": {
+                                                        "value": 1.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 4.8,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak analyte amount": {
+                                                        "value": 50.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "peak index": "1",
+                                                    "chromatographic peak resolution": {
+                                                        "value": 1.8,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "number of theoretical plates by peak width at half height": {
+                                                        "value": 500.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "peak width at half height": {
+                                                        "value": 9.0,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at 5 % of height": {
+                                                        "value": 15.0,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 20.400000000000002,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at 10 % of height": {
+                                                        "value": 13.2,
+                                                        "unit": "s"
+                                                    },
+                                                    "asymmetry factor measured at 5 % height": {
+                                                        "value": 1.2,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "peak right width at 10% height": 7.199999999999999,
+                                                        "peak left width at 10% height": 6.0,
+                                                        "chromatographic peak resolution (usp)": 1.75,
+                                                        "asymmetry aia": 1.1
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "injection document": {
+                                "injection identifier": "11111111-2222-3333-4444-555555555555",
+                                "injection time": "2024-09-23T08:15:00-07:00",
+                                "injection volume setting": {
+                                    "value": 10.0,
+                                    "unit": "μL"
+                                },
+                                "custom information document": {
+                                    "injection": 2,
+                                    "injection name": "Standard 1",
+                                    "injection position": "P1:A2",
+                                    "injection status": "Finished",
+                                    "injection type": "Unknown",
+                                    "last update user name": "labuser",
+                                    "creation user name": "admin",
+                                    "Analysis Type": "Calibration Standard"
+                                }
+                            },
+                            "chromatogram data cube": {
+                                "label": "CD_1",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "measures": [
+                                        [0.1, 2.0, 5.5, 4.0, 1.2, 0.2]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 6.0, 12.0, 18.0, 24.0, 30.0]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "labuser",
+                "submitter": "admin"
+            }
+        ],
+        "custom information document": {
+            "Sequence Creation Time": "2024-09-23T08:00:00-07:00",
+            "Sequence Directory": "ChromeleonLocal",
+            "Sequence Name": "Test_Null_DeviceInfo",
+            "Sequence Update operator": "testuser",
+            "Sequence Update Time": "2024-09-23T09:00:00-07:00"
+        }
     }
-  }
 }
