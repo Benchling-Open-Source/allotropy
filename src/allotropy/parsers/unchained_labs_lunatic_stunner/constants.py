@@ -23,7 +23,7 @@ NO_MEASUREMENT_IN_PLATE_ERROR_MSG = (
     "The plate data does not contain absorbance measurement for {}."
 )
 
-CALCULATED_DATA_LOOKUP = {
+CALCULATED_DATA_LOOKUP: dict[str, list[dict[str, str | list[str]]]] = {
     "a260": [
         {
             "column": "a260 concentration (ng/ul)",
@@ -102,6 +102,7 @@ CALCULATED_DATA_LOOKUP = {
         },
         {
             "column": "z ave. dia (nm)",
+            "alt_columns": ["z-avg dia. (nm)"],
             "name": "Z Average Diameter",
             "feature": "dynamic light scattering",
             "unit": "nm",
@@ -114,6 +115,7 @@ CALCULATED_DATA_LOOKUP = {
         },
         {
             "column": "sd dia (nm)",
+            "alt_columns": ["sd dia. (nm)"],
             "name": "Diameter Standard Deviation",
             "feature": "dynamic light scattering",
             "unit": "nm",
@@ -168,6 +170,7 @@ CALCULATED_DATA_LOOKUP = {
         },
         {
             "column": "rayleigh ratio r (cm^-1)",
+            "alt_columns": ["rayleigh ratio r (1/km)"],
             "name": "Rayleigh ratio R",
             "feature": "dynamic light scattering",
             "unit": UNITLESS,
@@ -192,6 +195,7 @@ CALCULATED_DATA_LOOKUP = {
         },
         {
             "column": "viscosity at 20°c (cp)",
+            "alt_columns": ["viscosity at 25°c (cp)"],
             "name": "Viscosity at 20°C (cP)",
             "feature": "dynamic light scattering",
             "unit": UNITLESS,
@@ -204,6 +208,7 @@ CALCULATED_DATA_LOOKUP = {
         },
         {
             "column": "ri at 20°c",
+            "alt_columns": ["ri at 25°c"],
             "name": "RI at 20°C",
             "feature": "dynamic light scattering",
             "unit": UNITLESS,
@@ -213,6 +218,30 @@ CALCULATED_DATA_LOOKUP = {
             "name": "Diameter @ C=0",
             "feature": "dynamic light scattering",
             "unit": "nm",
+        },
+        {
+            "column": "number of peaks",
+            "name": "Number of Peaks",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "number of angles",
+            "name": "Number of Angles",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "angles measured (°)",
+            "name": "Angles Measured",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "intercept",
+            "name": "Intercept",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
         },
     ],
 }
