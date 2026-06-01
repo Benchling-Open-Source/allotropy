@@ -441,8 +441,12 @@ def _get_calculated_data_values(
     error_documents: list[ErrorDocument] = []
     for wavelength_column in wavelength_columns:
         for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-            canonical_column = item["column"]
-            columns_to_try = [canonical_column, *item.get("alt_columns", [])]
+            canonical_column = str(item["column"])
+            alt_columns = item.get("alt_columns", [])
+            columns_to_try = [
+                canonical_column,
+                *(alt_columns if isinstance(alt_columns, list) else []),
+            ]
             value: float | None = None
             is_na = False
             for col in columns_to_try:
@@ -453,7 +457,7 @@ def _get_calculated_data_values(
                 error_documents.append(
                     ErrorDocument(
                         error=NOT_APPLICABLE,
-                        error_feature=item["name"],
+                        error_feature=str(item["name"]),
                     )
                 )
             if value is not None:
@@ -516,6 +520,40 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
                     "background wvl. (nm)",
                     "plate id",
                     "plate position",
+                    "analyte",
+                    "buffer",
+                    "b/s/f/r",
+                    "acquisition filtering",
+                    "number of acquisitions",
+                    "number of acquisitions used",
+                    "number of acquisitions (total)",
+                    "number of acquisitions used (total)",
+                    "acquisition time (s)",
+                    "temperature (°c)",
+                    "molecular weight (kda)",
+                    # DLS calculated data columns
+                    "intercept",
+                    "number of peaks",
+                    "number of angles",
+                    r"^angles measured.*",
+                    r"^z.avg dia.*",
+                    "pdi",
+                    r"^sd dia.*",
+                    r"^diffusion coefficient.*",
+                    r"^rayleigh ratio r.*",
+                    r"^optical contrast constant.*",
+                    r"^viscosity at.*",
+                    r"^ri at.*",
+                    r"^derived intensity.*",
+                    r"^diameter @.*",
+                    r"^kc/r.*",
+                    r"^kd .*",
+                    r"^b22.*",
+                    # Peak columns (pk1, pk2, ..., pkoi, peak 1, peak 2, ...)
+                    r"^pk\d+.*",
+                    r"^pkoi.*",
+                    r"^peak \d+.*",
+                    r"^peak of interest.*",
                     # Strings to skip since these are already captured as measurements/calculated data
                     # Skip absorbance spectrum measurements with a### (10mm)
                     r"^a\d{3} \(10mm\)$",

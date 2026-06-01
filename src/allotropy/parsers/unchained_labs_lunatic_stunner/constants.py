@@ -23,7 +23,7 @@ NO_MEASUREMENT_IN_PLATE_ERROR_MSG = (
     "The plate data does not contain absorbance measurement for {}."
 )
 
-CALCULATED_DATA_LOOKUP: dict[str, list[dict[str, str]]] = {
+CALCULATED_DATA_LOOKUP: dict[str, list[dict[str, str | list[str]]]] = {
     "a260": [
         {
             "column": "a260 concentration (ng/ul)",
