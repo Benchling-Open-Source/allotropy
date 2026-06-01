@@ -262,6 +262,34 @@ def create_calculated_data(
                 view_data=detection_type_view,
                 source_configs=(dynamic_light_scattering_conf,),
             ),
+            CalculatedDataConfig(
+                name="Number of Peaks",
+                value="number of peaks",
+                unit=UNITLESS,
+                view_data=detection_type_view,
+                source_configs=(dynamic_light_scattering_conf,),
+            ),
+            CalculatedDataConfig(
+                name="Number of Angles",
+                value="number of angles",
+                unit=UNITLESS,
+                view_data=detection_type_view,
+                source_configs=(dynamic_light_scattering_conf,),
+            ),
+            CalculatedDataConfig(
+                name="Angles Measured",
+                value="angles measured (°)",
+                unit=UNITLESS,
+                view_data=detection_type_view,
+                source_configs=(dynamic_light_scattering_conf,),
+            ),
+            CalculatedDataConfig(
+                name="Intercept",
+                value="intercept",
+                unit=UNITLESS,
+                view_data=detection_type_view,
+                source_configs=(dynamic_light_scattering_conf,),
+            ),
         ]
     )
 

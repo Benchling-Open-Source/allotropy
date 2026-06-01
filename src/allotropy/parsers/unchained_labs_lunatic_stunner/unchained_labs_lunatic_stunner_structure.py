@@ -244,7 +244,9 @@ def _create_measurement(
         well_plate_identifier=well_plate_data.get(str, "plate id"),
         batch_identifier=well_plate_data.get(str, "sample group"),
         firmware_version=header.get(str, "client version"),
-        number_of_averages=well_plate_data.get(float, "number of acquisitions"),
+        number_of_averages=well_plate_data.get(
+            float, ("number of acquisitions", "number of acquisitions (total)")
+        ),
         integration_time=well_plate_data.get(float, "acquisition time (s)"),
         compartment_temperature=well_plate_data.get(float, "temperature (°c)"),
         sample_custom_info={
@@ -259,13 +261,18 @@ def _create_measurement(
             "molecular weight (kda)": well_plate_data.get(
                 float, "molecular weight (kda)"
             ),
+            "sample role type": well_plate_data.get(str, "b/s/f/r"),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
             "column": header.get(str, "column") or well_plate_data.get(str, "column"),
             "Number of acquisitions used": well_plate_data.get(
-                str, "number of acquisitions used"
+                str,
+                (
+                    "number of acquisitions used",
+                    "number of acquisitions used (total)",
+                ),
             ),
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
@@ -434,10 +441,14 @@ def _get_calculated_data_values(
     error_documents: list[ErrorDocument] = []
     for wavelength_column in wavelength_columns:
         for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-            value, is_na = _get_calculated_value_and_is_na(
-                well_plate_data, item["column"]
-            )
-            # Only create error docs when the cell is the literal "N/A"
+            canonical_column = item["column"]
+            columns_to_try = [canonical_column, *item.get("alt_columns", [])]
+            value: float | None = None
+            is_na = False
+            for col in columns_to_try:
+                value, is_na = _get_calculated_value_and_is_na(well_plate_data, col)
+                if value is not None:
+                    break
             if is_na:
                 error_documents.append(
                     ErrorDocument(
@@ -445,9 +456,8 @@ def _get_calculated_data_values(
                         error_feature=item["name"],
                     )
                 )
-            # Skip missing cells entirely; include numeric values
             if value is not None:
-                calculated_data_values[item["column"]] = value
+                calculated_data_values[canonical_column] = value
     return calculated_data_values, error_documents
 
 
