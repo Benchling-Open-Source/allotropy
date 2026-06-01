@@ -198,6 +198,20 @@ def create_calculated_data(
                 source_configs=(dynamic_light_scattering_conf,),
             ),
             CalculatedDataConfig(
+                name="Peak of Interest Mass Mean Diameter",
+                value="peak of interest mass mean dia (nm)",
+                unit="nm",
+                view_data=detection_type_view,
+                source_configs=(dynamic_light_scattering_conf,),
+            ),
+            CalculatedDataConfig(
+                name="Peak of Interest Rayleigh Ratio R",
+                value="peak of interest rayleigh ratio r (cm^-1)",
+                unit=UNITLESS,
+                view_data=detection_type_view,
+                source_configs=(dynamic_light_scattering_conf,),
+            ),
+            CalculatedDataConfig(
                 name="Derived intensity (cps)",
                 value="derived intensity (cps)",
                 unit=UNITLESS,

@@ -128,6 +128,7 @@ CALCULATED_DATA_LOOKUP: dict[str, list[dict[str, str | list[str]]]] = {
         },
         {
             "column": "peak of interest mean dia (nm)",
+            "alt_columns": ["pkoi intensity mean dia. (nm)"],
             "name": "Peak of Interest Mean Diameter",
             "feature": "dynamic light scattering",
             "unit": "nm",
@@ -140,18 +141,21 @@ CALCULATED_DATA_LOOKUP: dict[str, list[dict[str, str | list[str]]]] = {
         },
         {
             "column": "peak of interest est. mw (kda)",
+            "alt_columns": ["pkoi est. mw (kda)"],
             "name": "Peak of Interest Est. MW",
             "feature": "dynamic light scattering",
             "unit": "kDa",
         },
         {
             "column": "peak of interest intensity (%)",
+            "alt_columns": ["pkoi intensity area (%)"],
             "name": "Peak of Interest Intensity",
             "feature": "dynamic light scattering",
             "unit": "%",
         },
         {
             "column": "peak of interest mass (%)",
+            "alt_columns": ["pkoi mass area (%)"],
             "name": "Peak of Interest Mass",
             "feature": "dynamic light scattering",
             "unit": "%",
@@ -159,6 +163,20 @@ CALCULATED_DATA_LOOKUP: dict[str, list[dict[str, str | list[str]]]] = {
         {
             "column": "peak of interest diffusion coefficient (um^2/s)",
             "name": "Peak of Interest Diffusion coefficient",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "peak of interest mass mean dia (nm)",
+            "alt_columns": ["pkoi mass mean dia. (nm)"],
+            "name": "Peak of Interest Mass Mean Diameter",
+            "feature": "dynamic light scattering",
+            "unit": "nm",
+        },
+        {
+            "column": "peak of interest rayleigh ratio r (cm^-1)",
+            "alt_columns": ["pkoi rayleigh ratio r (1/km)"],
+            "name": "Peak of Interest Rayleigh Ratio R",
             "feature": "dynamic light scattering",
             "unit": UNITLESS,
         },
