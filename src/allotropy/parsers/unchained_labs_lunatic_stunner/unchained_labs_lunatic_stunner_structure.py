@@ -115,12 +115,6 @@ def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
         if peak_info := _extract_peak_info(well_plate_data, prefix, str(peak_num)):
             peak_data.append(peak_info)
 
-    # Read "peak of interest" / "pkoi" columns to prevent them from leaking
-    # into custom_info, but don't add as a separate peak entry since it
-    # duplicates one of the numbered peaks.
-    poi_prefix = "pkoi" if uses_new_format else "peak of interest"
-    _extract_peak_info(well_plate_data, poi_prefix, "OI")
-
     return peak_data
 
 
