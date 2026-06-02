@@ -197,9 +197,39 @@ def _fast_one_of_validator(
     yield from _original_one_of(validator, one_of, instance, schema)
 
 
+# ---------------------------------------------------------------------------
+# Cached $ref validator
+# ---------------------------------------------------------------------------
+# A single validation can trigger 40,000+ $ref lookups with only ~17 unique
+# URIs. The referencing library's lookup() does URL parsing and pointer
+# navigation on every call. We cache by (base_uri, ref) since the registry
+# is a singleton and these two values fully determine the resolution result.
+
+_ref_lookup_cache: dict[tuple[str, str], tuple[Any, Any]] = {}
+
+
+def _cached_ref_validator(
+    validator: Any, ref: str, instance: Any, schema: Any  # noqa: ARG001
+) -> Any:
+    """$ref validator that caches resolver.lookup() results."""
+    resolver = validator._resolver
+    cache_key = (resolver._base_uri, ref)
+    cached = _ref_lookup_cache.get(cache_key)
+    if cached is not None:
+        contents, resolved_resolver = cached
+    else:
+        resolved = resolver.lookup(ref)
+        contents = resolved.contents
+        resolved_resolver = resolved.resolver
+        _ref_lookup_cache[cache_key] = (contents, resolved_resolver)
+
+    yield from validator.descend(instance, contents, resolver=resolved_resolver)
+
+
 FastDraft202012Validator = jsonschema.validators.extend(  # type: ignore[no-untyped-call]
     jsonschema.validators.Draft202012Validator,
     validators={
+        "$ref": _cached_ref_validator,
         "items": _fast_items_validator,
         "oneOf": _fast_one_of_validator,
     },
