@@ -5,6 +5,12 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.133] - 2026-06-02
+
+### Fixed
+
+- Upgrade jsonschema from <4.18.0 to >=4.18.0 (#1217)
+
 ## [0.1.132] - 2026-06-01
 
 ### Fixed
