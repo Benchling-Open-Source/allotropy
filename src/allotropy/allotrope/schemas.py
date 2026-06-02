@@ -273,6 +273,9 @@ def _get_registry() -> Registry[dict[str, Any]]:
     under $defs with their own $id. When a bundled copy is LARGER than the standalone
     (more enum values, more definitions), we use the bundled version so that extended
     schemas take precedence. When a bundled copy is a subset, we keep the standalone.
+
+    Resolution is fully deterministic: files are sorted, the largest version of each $id
+    wins, and on size ties standalone schemas take precedence over bundled copies.
     """
     global _registry  # noqa: PLW0603
     if _registry is not None:
@@ -280,25 +283,33 @@ def _get_registry() -> Registry[dict[str, Any]]:
 
     schemas_by_id: dict[str, dict[str, Any]] = {}
     sizes_by_id: dict[str, int] = {}
+    is_standalone: dict[str, bool] = {}
 
-    for schema_file in SCHEMA_DIR_PATH.rglob("*.schema.json"):
+    for schema_file in sorted(SCHEMA_DIR_PATH.rglob("*.schema.json")):
         with open(schema_file, encoding=DEFAULT_ENCODING) as f:
             schema = json.load(f)
         schema_id = schema.get("$id")
         if not schema_id:
             continue
-        if schema_id not in schemas_by_id:
+        schema_size = _schema_content_size(schema)
+        existing_size = sizes_by_id.get(schema_id, -1)
+        if schema_size > existing_size or (
+            schema_size == existing_size and not is_standalone.get(schema_id, False)
+        ):
             schemas_by_id[schema_id] = schema
-            sizes_by_id[schema_id] = _schema_content_size(schema)
+            sizes_by_id[schema_id] = schema_size
+            is_standalone[schema_id] = True
 
         for val in schema.get("$defs", {}).values():
             if not isinstance(val, dict) or "$id" not in val:
                 continue
             bundled_id = val["$id"]
             bundled_size = _schema_content_size(val)
-            if bundled_size > sizes_by_id.get(bundled_id, -1):
+            existing_size = sizes_by_id.get(bundled_id, -1)
+            if bundled_size > existing_size:
                 schemas_by_id[bundled_id] = val
                 sizes_by_id[bundled_id] = bundled_size
+                is_standalone[bundled_id] = False
 
     _registry = Registry().with_resources(
         (
