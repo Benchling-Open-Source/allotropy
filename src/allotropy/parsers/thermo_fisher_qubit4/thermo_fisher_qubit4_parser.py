@@ -27,6 +27,7 @@ class ThermoFisherQubit4Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific Qubit 4"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

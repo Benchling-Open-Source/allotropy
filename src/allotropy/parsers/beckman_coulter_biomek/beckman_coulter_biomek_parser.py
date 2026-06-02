@@ -22,6 +22,7 @@ class BeckmanCoulterBiomekParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanCoulterBiomekReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = None
     SCHEMA_MAPPER = Mapper
 
     @classmethod

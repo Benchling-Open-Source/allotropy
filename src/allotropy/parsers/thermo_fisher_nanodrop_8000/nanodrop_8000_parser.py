@@ -23,6 +23,7 @@ class Nanodrop8000Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific NanoDrop 8000"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = Nanodrop8000Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

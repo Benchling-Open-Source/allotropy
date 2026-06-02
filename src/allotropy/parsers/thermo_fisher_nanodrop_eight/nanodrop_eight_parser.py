@@ -26,6 +26,7 @@ class NanodropEightParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific NanoDrop Eight"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NanodropEightReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance"
 
     SCHEMA_MAPPER = Mapper
 

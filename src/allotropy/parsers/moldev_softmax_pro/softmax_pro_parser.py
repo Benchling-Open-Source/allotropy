@@ -25,6 +25,7 @@ class SoftmaxproParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Molecular Devices SoftMax Pro"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
+    SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence, Luminescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

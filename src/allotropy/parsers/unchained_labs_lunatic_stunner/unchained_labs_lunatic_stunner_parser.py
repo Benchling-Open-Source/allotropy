@@ -25,6 +25,7 @@ class UnchainedLabsLunaticStunnerParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Unchained Labs Lunatic & Stunner"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = UnchainedLabsLunaticReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance, Dynamic Light Scattering"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

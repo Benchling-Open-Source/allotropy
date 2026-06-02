@@ -28,6 +28,7 @@ class TecanMagellanParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = TecanMagellanReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

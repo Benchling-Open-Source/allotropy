@@ -35,6 +35,7 @@ class ThermoFisherNanodropOneParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv,xlsx"
+    SUPPORTED_DETECTION_MODES = "Absorbance"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

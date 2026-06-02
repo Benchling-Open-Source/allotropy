@@ -22,6 +22,7 @@ class ThermoFisherGenesys30Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherGenesys30Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance"
     SCHEMA_MAPPER = Mapper
 
     @classmethod
