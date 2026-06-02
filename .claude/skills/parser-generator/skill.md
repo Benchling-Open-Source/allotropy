@@ -68,8 +68,10 @@ The script dynamically scans your local allotropy repository for all available s
 Use the `create_parser.py` script to generate the complete parser:
 
 ```bash
-python scripts/create_parser.py <parser_name> <vendor_name> --example <example_file>
+python scripts/create_parser.py <parser_name> <schema_regex> --display_name "Vendor Instrument" --detection_modes "Absorbance, Fluorescence"
 ```
+
+The `--detection_modes` flag sets the `SUPPORTED_DETECTION_MODES` class attribute, which populates the instruments table. Use comma-separated values for multiple modes (e.g. `"Absorbance, Fluorescence, Luminescence"`). Omit for instruments without detection (liquid handlers).
 
 ### Parser Structure Created
 
@@ -122,6 +124,7 @@ Generate `VendorParser` subclass with:
 - `DISPLAY_NAME` - User-friendly instrument name
 - `RELEASE_STATE` - Start with `ReleaseState.WORKING_DRAFT`
 - `SUPPORTED_EXTENSIONS` - File extensions (from analysis)
+- `SUPPORTED_DETECTION_MODES` - Detection modes the parser supports (e.g. `"Absorbance, Fluorescence"`) or `None` for instruments without detection (e.g. liquid handlers). This populates the "Supported Detection Modes" column in the supported instruments table.
 - `SCHEMA_MAPPER` - Reference to schema mapper
 - `create_data()` - Orchestrate reader + structure → Data
 
@@ -196,10 +199,11 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 - [ ] Confirm or select schema with `list_schemas.py`
 - [ ] Generate parser using `create_parser.py`
 - [ ] Review and adjust generated code
+- [ ] Set `SUPPORTED_DETECTION_MODES` to the correct value for the instrument
 - [ ] Add example test data to `testdata/`
 - [ ] Run tests and validate output
 - [ ] Register parser in `parser_factory.py`
-- [ ] Update README with parser info
+- [ ] Run `hatch run scripts:update-instrument-table` to regenerate the supported instruments table
 - [ ] Update `RELEASE_STATE` when stable
 
 ## Key Design Principles

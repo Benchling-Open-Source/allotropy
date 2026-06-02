@@ -58,6 +58,7 @@ class {class_name}(VendorParser[Data, Model]):
     DISPLAY_NAME = "{display_name}"
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = "{extension}"
+    SUPPORTED_DETECTION_MODES = None  # TODO: Set detection modes (e.g. "Absorbance, Fluorescence")
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
@@ -367,10 +368,11 @@ def main():
     print("\n📝 Next steps:")
     print(f"1. Edit {parser_name}_reader.py to implement file parsing")
     print(f"2. Edit {parser_name}_structure.py to map data to schema")
-    print(f"3. Add test data to {testdata_dir}")
-    print(f"4. Run tests: hatch run test:pytest tests/parsers/{parser_name}/")
-    print("5. Register parser in src/allotropy/parser_factory.py")
-    print("6. Update README.md with parser information")
+    print(f"3. Set SUPPORTED_DETECTION_MODES in {parser_name}_parser.py")
+    print(f"4. Add test data to {testdata_dir}")
+    print(f"5. Run tests: hatch run test:pytest tests/parsers/{parser_name}/")
+    print("6. Register parser in src/allotropy/parser_factory.py")
+    print("7. Run: hatch run scripts:update-instrument-table")
 
 
 if __name__ == "__main__":
