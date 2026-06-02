@@ -6,6 +6,8 @@ from typing import Any
 
 import jsonschema
 from jsonschema import ValidationError
+from referencing import Registry, Resource
+from referencing.jsonschema import DRAFT202012
 
 from allotropy.allotrope.path_util import (
     get_full_schema_path,
@@ -195,9 +197,39 @@ def _fast_one_of_validator(
     yield from _original_one_of(validator, one_of, instance, schema)
 
 
+# ---------------------------------------------------------------------------
+# Cached $ref validator
+# ---------------------------------------------------------------------------
+# A single validation can trigger 40,000+ $ref lookups with only ~17 unique
+# URIs. The referencing library's lookup() does URL parsing and pointer
+# navigation on every call. We cache by (base_uri, ref) since the registry
+# is a singleton and these two values fully determine the resolution result.
+
+_ref_lookup_cache: dict[tuple[str, str], tuple[Any, Any]] = {}
+
+
+def _cached_ref_validator(
+    validator: Any, ref: str, instance: Any, schema: Any  # noqa: ARG001
+) -> Any:
+    """$ref validator that caches resolver.lookup() results."""
+    resolver = validator._resolver
+    cache_key = (resolver._base_uri, ref)
+    cached = _ref_lookup_cache.get(cache_key)
+    if cached is not None:
+        contents, resolved_resolver = cached
+    else:
+        resolved = resolver.lookup(ref)
+        contents = resolved.contents
+        resolved_resolver = resolved.resolver
+        _ref_lookup_cache[cache_key] = (contents, resolved_resolver)
+
+    yield from validator.descend(instance, contents, resolver=resolved_resolver)
+
+
 FastDraft202012Validator = jsonschema.validators.extend(  # type: ignore[no-untyped-call]
     jsonschema.validators.Draft202012Validator,
     validators={
+        "$ref": _cached_ref_validator,
         "items": _fast_items_validator,
         "oneOf": _fast_one_of_validator,
     },
@@ -225,24 +257,56 @@ def get_schema_from_model(model: Any) -> dict[str, Any]:
     return get_schema_from_manifest(manifest)
 
 
-_schema_store: dict[str, dict[str, Any]] | None = None
+_registry: Registry[dict[str, Any]] | None = None
 
 
-def _get_schema_store() -> dict[str, dict[str, Any]]:
-    """Load all schemas into a dict keyed by their $id URI."""
-    global _schema_store  # noqa: PLW0603
-    if _schema_store is not None:
-        return _schema_store
+def _schema_content_size(schema: dict[str, Any]) -> int:
+    """Approximate content size of a schema's $defs for comparison."""
+    defs = schema.get("$defs", {})
+    return sum(len(json.dumps(v)) for v in defs.values()) if defs else 0
 
-    store: dict[str, dict[str, Any]] = {}
+
+def _get_registry() -> Registry[dict[str, Any]]:
+    """Build a referencing.Registry from all local schemas.
+
+    Some technique schemas bundle extended copies of shared schemas (e.g. core.schema)
+    under $defs with their own $id. When a bundled copy is LARGER than the standalone
+    (more enum values, more definitions), we use the bundled version so that extended
+    schemas take precedence. When a bundled copy is a subset, we keep the standalone.
+    """
+    global _registry  # noqa: PLW0603
+    if _registry is not None:
+        return _registry
+
+    schemas_by_id: dict[str, dict[str, Any]] = {}
+    sizes_by_id: dict[str, int] = {}
+
     for schema_file in SCHEMA_DIR_PATH.rglob("*.schema.json"):
         with open(schema_file, encoding=DEFAULT_ENCODING) as f:
             schema = json.load(f)
         schema_id = schema.get("$id")
-        if schema_id:
-            store[schema_id] = schema
-    _schema_store = store
-    return store
+        if not schema_id:
+            continue
+        if schema_id not in schemas_by_id:
+            schemas_by_id[schema_id] = schema
+            sizes_by_id[schema_id] = _schema_content_size(schema)
+
+        for val in schema.get("$defs", {}).values():
+            if not isinstance(val, dict) or "$id" not in val:
+                continue
+            bundled_id = val["$id"]
+            bundled_size = _schema_content_size(val)
+            if bundled_size > sizes_by_id.get(bundled_id, -1):
+                schemas_by_id[bundled_id] = val
+                sizes_by_id[bundled_id] = bundled_size
+
+    _registry = Registry().with_resources(
+        (
+            (sid, Resource.from_contents(s, default_specification=DRAFT202012))
+            for sid, s in schemas_by_id.items()
+        )
+    )
+    return _registry
 
 
 _schema_cache: dict[str, dict[str, Any]] = {}
@@ -271,14 +335,9 @@ def _get_validator(schema_path: Path) -> Any:
     if cached is not None:
         return cached
     schema = _get_schema_by_path(schema_path)
-    store = _get_schema_store()
-    resolver = jsonschema.RefResolver(
-        base_uri=schema.get("$id", ""),
-        referrer=schema,
-        store=store,
-    )
+    registry = _get_registry()
     validator = FastDraft202012Validator(
-        schema, resolver=resolver, format_checker=FORMAT_CHECKER
+        schema, registry=registry, format_checker=FORMAT_CHECKER
     )
     _validator_cache[key] = validator
     return validator
