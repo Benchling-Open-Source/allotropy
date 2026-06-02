@@ -26,6 +26,7 @@ class AppbioAbsoluteQParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio AbsoluteQ"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AppbioAbsoluteQReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

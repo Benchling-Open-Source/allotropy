@@ -26,6 +26,7 @@ class MabtechApexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Mabtech Apex"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = MabtechApexReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Optical Imaging"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

@@ -22,6 +22,7 @@ class LuminexXponentParser(VendorParser[MapperData, Model]):
     DISPLAY_NAME = "Luminex xPONENT"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = LuminexXponentReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

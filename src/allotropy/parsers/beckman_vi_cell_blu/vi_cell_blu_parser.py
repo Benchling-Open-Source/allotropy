@@ -22,6 +22,7 @@ class ViCellBluParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman Coulter Vi-Cell BLU"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ViCellBluReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Brightfield"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

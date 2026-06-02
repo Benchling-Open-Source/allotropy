@@ -18,6 +18,7 @@ class ThermoSkanItParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific SkanIt"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xlsx"
+    SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence, Luminescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

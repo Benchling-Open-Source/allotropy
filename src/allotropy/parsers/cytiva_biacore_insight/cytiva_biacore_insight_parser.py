@@ -28,6 +28,7 @@ class CytivaBiacoreInsightParser(VendorParser[MapperData, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = CytivaBiacoreInsightReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Surface Plasmon Resonance"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

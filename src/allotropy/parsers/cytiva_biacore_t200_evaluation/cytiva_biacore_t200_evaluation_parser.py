@@ -18,6 +18,7 @@ class CytivaBiacoreT200EvaluationParser(VendorParser[Data, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "bme"
+    SUPPORTED_DETECTION_MODES = "Surface Plasmon Resonance"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

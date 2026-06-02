@@ -28,6 +28,7 @@ class BioradBioplexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Bio-Rad Bio-Plex Manager"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xml"
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

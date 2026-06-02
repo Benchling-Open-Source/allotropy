@@ -59,6 +59,7 @@ class FlowjoParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "wsp"
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

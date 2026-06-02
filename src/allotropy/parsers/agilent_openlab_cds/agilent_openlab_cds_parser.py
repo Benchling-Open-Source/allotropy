@@ -23,6 +23,7 @@ class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "rslt"
+    SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

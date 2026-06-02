@@ -24,6 +24,7 @@ class AgilentGen5ImageParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent Gen5 Image"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Optical Imaging"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

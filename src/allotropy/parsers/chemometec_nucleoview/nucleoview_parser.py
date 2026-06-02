@@ -20,6 +20,7 @@ class ChemometecNucleoviewParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "ChemoMetec Nucleoview"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NucleoviewReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Dark Field"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

@@ -26,6 +26,7 @@ class PharmSpecParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman Coulter PharmSpec"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanPharmspecReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Light Obscuration"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

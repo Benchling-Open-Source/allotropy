@@ -30,6 +30,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio Design & Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = DesignQuantstudioReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

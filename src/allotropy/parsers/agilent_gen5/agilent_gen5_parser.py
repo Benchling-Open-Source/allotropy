@@ -19,6 +19,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent Gen5"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence, Luminescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod
