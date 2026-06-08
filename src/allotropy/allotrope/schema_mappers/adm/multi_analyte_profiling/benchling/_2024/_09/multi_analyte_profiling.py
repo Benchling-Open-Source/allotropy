@@ -47,6 +47,9 @@ from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
+from allotropy.parsers.utils.calculated_data_documents.mapping import (
+    map_calculated_data_documents,
+)
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -350,29 +353,11 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_calculated_data_aggregate_document(
         self, calculated_data_items: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.uuid,
-                    calculated_data_name=calculated_data_item.name,
-                    calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit or Unitless.unit,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.reference.uuid,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return map_calculated_data_documents(  # type: ignore[no-any-return]
+            calculated_data_items,
+            CalculatedDataAggregateDocument,
+            CalculatedDataDocumentItem,
+            DataSourceAggregateDocument,
+            DataSourceDocumentItem,
+            unit_fallback=Unitless.unit,
         )

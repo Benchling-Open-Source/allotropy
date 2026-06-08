@@ -1,4 +1,3 @@
-from collections.abc import Iterable
 from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -7,9 +6,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
-    CalculatedData,
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -29,9 +25,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
 from allotropy.parsers.constants import get_well_count_by_well_ids, NEGATIVE_ZERO
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-)
 
 
 def _create_processed_data_cubes(
@@ -295,29 +288,6 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type.value,
         container_type=constants.CONTAINER_TYPE,
-    )
-
-
-def create_calculated_data(
-    calculated_data_documents: Iterable[CalculatedDocument],
-) -> CalculatedData:
-    return CalculatedData(
-        items=[
-            CalculatedDataItem(
-                identifier=cal_doc.uuid,
-                name=cal_doc.name,
-                value=cal_doc.value,
-                unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=data_source.reference.uuid,
-                        feature=data_source.feature,
-                    )
-                    for data_source in cal_doc.data_sources
-                ],
-            )
-            for cal_doc in calculated_data_documents
-        ],
     )
 
 

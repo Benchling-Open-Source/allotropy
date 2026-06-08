@@ -26,10 +26,7 @@ from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrop
     ProcessedDataDocumentItem,
     SampleDocument,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-    TQuantityValue,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValuePercent,
@@ -38,6 +35,12 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
+from allotropy.parsers.utils.calculated_data_documents.mapping import (
+    map_calculated_data_documents,
+)
 from allotropy.parsers.utils.values import (
     quantity_or_none,
     quantity_or_none_from_unit,
@@ -68,21 +71,6 @@ class ProcessedData:
 
 
 @dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-
-
-@dataclass(frozen=True)
 class Error:
     error: str
     feature: str | None = None
@@ -106,7 +94,7 @@ class Measurement:
     compartment_temperature: float | None = None
 
     # Optional processed data
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
     # Errors
     errors: list[Error] | None = None
@@ -146,7 +134,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -309,32 +297,14 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data_items: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
-                    calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.identifier,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return map_calculated_data_documents(  # type: ignore[no-any-return]
+            calculated_data_items,
+            CalculatedDataAggregateDocument,
+            CalculatedDataDocumentItem,
+            DataSourceAggregateDocument,
+            DataSourceDocumentItem,
         )
 
     def _get_error_aggregate_document(

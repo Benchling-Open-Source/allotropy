@@ -9,7 +9,6 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Percent,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
-    CalculatedDataItem,
     Error,
     Measurement,
     MeasurementGroup,
@@ -29,6 +28,7 @@ from allotropy.parsers.constants import (
     NOT_APPLICABLE,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
     DataSource,
     Referenceable,
 )
@@ -63,7 +63,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
 
 def create_measurement_groups(
     data: SeriesData,
-) -> tuple[MeasurementGroup, list[CalculatedDataItem] | None]:
+) -> tuple[MeasurementGroup, list[CalculatedDocument] | None]:
     timestamp = data.get(str, "Date time")
     errors = []
     if timestamp:
@@ -140,13 +140,13 @@ def _get_calculated_data(
     groups: list[MeasurementGroup],
     cell_diameter_standard_deviation: float | None,
     percentage_of_cells_with_five_or_more: float | None,
-) -> list[CalculatedDataItem] | None:
+) -> list[CalculatedDocument] | None:
     result = []
     for group in groups:
         if cell_diameter_standard_deviation:
             result.append(
-                CalculatedDataItem(
-                    identifier=random_uuid_str(),
+                CalculatedDocument(
+                    uuid=random_uuid_str(),
                     name="Cell diameter standard deviation (um)",
                     value=cell_diameter_standard_deviation,
                     data_sources=[
@@ -162,8 +162,8 @@ def _get_calculated_data(
             )
         if percentage_of_cells_with_five_or_more:
             result.append(
-                CalculatedDataItem(
-                    identifier=random_uuid_str(),
+                CalculatedDocument(
+                    uuid=random_uuid_str(),
                     name="Percentage of cells with five or more",
                     value=percentage_of_cells_with_five_or_more,
                     data_sources=[
