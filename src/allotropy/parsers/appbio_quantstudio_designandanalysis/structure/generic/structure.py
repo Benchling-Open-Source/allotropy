@@ -107,7 +107,10 @@ class Header:
         software_name, software_version = (
             (software_info.group(1), software_info.group(2))
             if software_info
-            else (None, None)
+            else (
+                header.get(str, "Software name"),
+                header.get(str, "Software version"),
+            )
         )
 
         stage_number_raw = header.get(str, "PCR Stage/Step Number", "")
