@@ -29,15 +29,16 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
     ReportPoint,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
-from allotropy.calcdocs.config import (
-    CalcDocsConfig,
-    CalculatedDataConfig,
-    MeasurementConfig,
+from allotropy.calcdocs import (
+    build_calc_docs,
+    CalcDoc,
+    Measurement as CalcMeasurement,
+    Node,
+    UuidView,
 )
 from allotropy.calcdocs.cytiva_biacore_t200_control.extractor import (
     CytivaBiacoreExtractor,
 )
-from allotropy.calcdocs.cytiva_biacore_t200_control.views import ReportPointDataView
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_t200_control import constants
@@ -253,57 +254,49 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     ]
 
 
+_BIACORE_NODES: list[Node] = [
+    CalcMeasurement("Absolute Resonance", field="absolute_resonance"),
+    CalcDoc(
+        "Min Resonance",
+        field="min_resonance",
+        sources=["Absolute Resonance"],
+        view="uuid",
+        unit=ResponseUnit.unit,
+    ),
+    CalcDoc(
+        "Max Resonance",
+        field="max_resonance",
+        sources=["Absolute Resonance"],
+        view="uuid",
+        unit=ResponseUnit.unit,
+    ),
+    CalcDoc(
+        "LRSD",
+        field="lrsd",
+        sources=["Absolute Resonance"],
+        view="uuid",
+        unit=Unitless.unit,
+    ),
+    CalcDoc(
+        "Slope",
+        field="slope",
+        sources=["Absolute Resonance"],
+        view="uuid",
+        unit=ResponseUnitPerSecond.unit,
+    ),
+    CalcDoc(
+        "SD",
+        field="sd",
+        sources=["Absolute Resonance"],
+        view="uuid",
+        unit=Unitless.unit,
+    ),
+]
+
+
 def create_calculated_data(data: Data) -> list[CalculatedDocument]:
-    report_point_data_view = ReportPointDataView().apply(
-        CytivaBiacoreExtractor.sample_data_to_elements(data.sample_data)
+    elements = CytivaBiacoreExtractor.sample_data_to_elements(data.sample_data)
+    return build_calc_docs(
+        nodes=_BIACORE_NODES,
+        views={"uuid": UuidView().apply(elements)},
     )
-    absolute_resonance_conf = MeasurementConfig(
-        name="Absolute Resonance",
-        value="absolute_resonance",
-    )
-
-    configs = CalcDocsConfig(
-        [
-            CalculatedDataConfig(
-                name="Min Resonance",
-                value="min_resonance",
-                view_data=report_point_data_view,
-                source_configs=(absolute_resonance_conf,),
-                unit=ResponseUnit.unit,
-            ),
-            CalculatedDataConfig(
-                name="Max Resonance",
-                value="max_resonance",
-                view_data=report_point_data_view,
-                source_configs=(absolute_resonance_conf,),
-                unit=ResponseUnit.unit,
-            ),
-            CalculatedDataConfig(
-                name="LRSD",
-                value="lrsd",
-                view_data=report_point_data_view,
-                source_configs=(absolute_resonance_conf,),
-                unit=Unitless.unit,
-            ),
-            CalculatedDataConfig(
-                name="Slope",
-                value="slope",
-                view_data=report_point_data_view,
-                source_configs=(absolute_resonance_conf,),
-                unit=ResponseUnitPerSecond.unit,
-            ),
-            CalculatedDataConfig(
-                name="SD",
-                value="sd",
-                view_data=report_point_data_view,
-                source_configs=(absolute_resonance_conf,),
-                unit=Unitless.unit,
-            ),
-        ]
-    )
-
-    return [
-        calc_doc
-        for parent_calc_doc in configs.construct()
-        for calc_doc in parent_calc_doc.iter_struct()
-    ]

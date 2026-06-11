@@ -2,19 +2,290 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     MeasurementGroup,
 )
-from allotropy.calcdocs.config import (
-    CalcDocsConfig,
-    CalculatedDataConfig,
-    MeasurementConfig,
-)
-from allotropy.calcdocs.unchained_labs_lunatic_stunner.extractor import LunaticExtractor
-from allotropy.calcdocs.unchained_labs_lunatic_stunner.views import (
-    DetectionTypeView,
+from allotropy.calcdocs import (
+    build_calc_docs,
+    CalcDoc,
+    FieldView,
+    Measurement as CalcMeasurement,
+    Node,
     UuidView,
 )
+from allotropy.calcdocs.unchained_labs_lunatic_stunner.extractor import LunaticExtractor
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
+
+_ABSORBANCE = CalcMeasurement("absorbance", field="absorbance")
+_DLS = CalcMeasurement("dynamic light scattering", field="absorbance")
+
+_LUNATIC_NODES: list[Node] = [
+    _ABSORBANCE,
+    _DLS,
+    # a260
+    CalcDoc(
+        "Concentration",
+        field="a260 concentration (ng/ul)",
+        sources=["absorbance"],
+        view="uuid",
+        unit="ng/µL",
+    ),
+    CalcDoc(
+        "Concentration",
+        field="concentration (ng/ul)",
+        sources=["absorbance"],
+        view="uuid",
+        unit="ng/µL",
+    ),
+    CalcDoc(
+        "Background (A260)",
+        field="background (a260)",
+        sources=["absorbance"],
+        view="uuid",
+        unit="mAU",
+    ),
+    CalcDoc(
+        "A260/A230",
+        field="a260/a230",
+        sources=["absorbance"],
+        view="uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "A260/A280",
+        field="a260/a280",
+        sources=["absorbance"],
+        view="uuid",
+        unit=UNITLESS,
+    ),
+    # a280
+    CalcDoc(
+        "Concentration",
+        field="concentration (mg/ml)",
+        sources=["absorbance"],
+        view="uuid",
+        unit="mg/mL",
+    ),
+    CalcDoc(
+        "Background (A280)",
+        field="background (a280)",
+        sources=["absorbance"],
+        view="uuid",
+        unit="mAU",
+    ),
+    CalcDoc(
+        "A260/A280",
+        field="a260/a280",
+        sources=["absorbance"],
+        view="uuid",
+        unit=UNITLESS,
+    ),
+    # Dynamic Light Scattering
+    CalcDoc(
+        "KC/R (mol/g)",
+        field="kc/r (mol/g)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "kD (ml/g)",
+        field="kd (ml/g)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "B22",
+        field="b22 (ml.mol/g^2)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Optical contrast constant K",
+        field="optical contrast constant k (m^2 mol kg^-2)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Z Average Diameter",
+        field="z ave. dia (nm)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="nm",
+    ),
+    CalcDoc(
+        "Polydispersity Index",
+        field="pdi",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Diameter Standard Deviation",
+        field="sd dia (nm)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="nm",
+    ),
+    CalcDoc(
+        "Diffusion coefficient",
+        field="diffusion coefficient (um^2/s)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Peak of Interest Mean Diameter",
+        field="peak of interest mean dia (nm)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="nm",
+    ),
+    CalcDoc(
+        "Peak of Interest Mode Diameter",
+        field="peak of interest mode dia (nm)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="nm",
+    ),
+    CalcDoc(
+        "Peak of Interest Est. MW",
+        field="peak of interest est. mw (kda)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="kDa",
+    ),
+    CalcDoc(
+        "Peak of Interest Intensity",
+        field="peak of interest intensity (%)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="%",
+    ),
+    CalcDoc(
+        "Peak of Interest Mass",
+        field="peak of interest mass (%)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="%",
+    ),
+    CalcDoc(
+        "Peak of Interest Diffusion coefficient",
+        field="peak of interest diffusion coefficient (um^2/s)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Peak of Interest Mass Mean Diameter",
+        field="peak of interest mass mean dia (nm)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="nm",
+    ),
+    CalcDoc(
+        "Peak of Interest Rayleigh Ratio R",
+        field="peak of interest rayleigh ratio r (cm^-1)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Derived intensity (cps)",
+        field="derived intensity (cps)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Rayleigh ratio R",
+        field="rayleigh ratio r (cm^-1)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "kD goodness of fit",
+        field="kd goodness of fit",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+        description_field="kd linear fit",
+    ),
+    CalcDoc(
+        "B22 goodness of fit",
+        field="b22 goodness of fit",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+        description_field="b22 linear fit",
+    ),
+    CalcDoc(
+        "Viscosity at T (cP)",
+        field="viscosity at t (cp)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Viscosity at 20°C (cP)",
+        field="viscosity at 20°c (cp)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "RI at T",
+        field="ri at t",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "RI at 20°C",
+        field="ri at 20°c",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Diameter @ C=0",
+        field="diameter @ c=0 (nm)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit="nm",
+    ),
+    CalcDoc(
+        "Number of Peaks",
+        field="number of peaks",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Number of Angles",
+        field="number of angles",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Angles Measured",
+        field="angles measured (°)",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+    CalcDoc(
+        "Intercept",
+        field="intercept",
+        sources=["dynamic light scattering"],
+        view="detection_uuid",
+        unit=UNITLESS,
+    ),
+]
 
 
 def create_calculated_data(
@@ -24,291 +295,10 @@ def create_calculated_data(
     for measurement_group in measurement_groups:
         elements += LunaticExtractor.get_elements(measurement_group.measurements)
 
-    lunatic_view_data = UuidView().apply(elements)
-
-    absorbance_conf = MeasurementConfig(
-        name="absorbance",
-        value="absorbance",
-    )
-
-    dynamic_light_scattering_conf = MeasurementConfig(
-        name="dynamic light scattering",
-        value="absorbance",
-    )
-
-    detection_type_view = DetectionTypeView(sub_view=UuidView()).apply(elements)
-
-    configs = CalcDocsConfig(
-        [
-            # a260
-            CalculatedDataConfig(
-                name="Concentration",
-                value="a260 concentration (ng/ul)",
-                unit="ng/µL",
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Concentration",
-                value="concentration (ng/ul)",
-                unit="ng/µL",
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Background (A260)",
-                value="background (a260)",
-                unit="mAU",
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            CalculatedDataConfig(
-                name="A260/A230",
-                value="a260/a230",
-                unit=UNITLESS,
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            CalculatedDataConfig(
-                name="A260/A280",
-                value="a260/a280",
-                unit=UNITLESS,
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            # a280
-            CalculatedDataConfig(
-                name="Concentration",
-                value="concentration (mg/ml)",
-                unit="mg/mL",
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Background (A280)",
-                value="background (a280)",
-                unit="mAU",
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            CalculatedDataConfig(
-                name="A260/A280",
-                value="a260/a280",
-                unit=UNITLESS,
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
-            # Dynamic Light Scattering related calculations
-            CalculatedDataConfig(
-                name="KC/R (mol/g)",
-                value="kc/r (mol/g)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="kD (ml/g)",
-                value="kd (ml/g)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="B22",
-                value="b22 (ml.mol/g^2)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Optical contrast constant K",
-                value="optical contrast constant k (m^2 mol kg^-2)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Z Average Diameter",
-                value="z ave. dia (nm)",
-                unit="nm",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Polydispersity Index",
-                value="pdi",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Diameter Standard Deviation",
-                value="sd dia (nm)",
-                unit="nm",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Diffusion coefficient",
-                value="diffusion coefficient (um^2/s)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Mean Diameter",
-                value="peak of interest mean dia (nm)",
-                unit="nm",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Mode Diameter",
-                value="peak of interest mode dia (nm)",
-                unit="nm",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Est. MW",
-                value="peak of interest est. mw (kda)",
-                unit="kDa",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Intensity",
-                value="peak of interest intensity (%)",
-                unit="%",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Mass",
-                value="peak of interest mass (%)",
-                unit="%",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Diffusion coefficient",
-                value="peak of interest diffusion coefficient (um^2/s)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Mass Mean Diameter",
-                value="peak of interest mass mean dia (nm)",
-                unit="nm",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Peak of Interest Rayleigh Ratio R",
-                value="peak of interest rayleigh ratio r (cm^-1)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Derived intensity (cps)",
-                value="derived intensity (cps)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Rayleigh ratio R",
-                value="rayleigh ratio r (cm^-1)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="kD goodness of fit",
-                value="kd goodness of fit",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-                description_value_key="kd linear fit",
-            ),
-            CalculatedDataConfig(
-                name="B22 goodness of fit",
-                value="b22 goodness of fit",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-                description_value_key="b22 linear fit",
-            ),
-            CalculatedDataConfig(
-                name="Viscosity at T (cP)",
-                value="viscosity at t (cp)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Viscosity at 20°C (cP)",
-                value="viscosity at 20°c (cp)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="RI at T",
-                value="ri at t",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="RI at 20°C",
-                value="ri at 20°c",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Diameter @ C=0",
-                value="diameter @ c=0 (nm)",
-                unit="nm",
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Number of Peaks",
-                value="number of peaks",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Number of Angles",
-                value="number of angles",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Angles Measured",
-                value="angles measured (°)",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-            CalculatedDataConfig(
-                name="Intercept",
-                value="intercept",
-                unit=UNITLESS,
-                view_data=detection_type_view,
-                source_configs=(dynamic_light_scattering_conf,),
-            ),
-        ]
-    )
-
-    return [
-        calc_doc
-        for parent_calc_doc in configs.construct()
-        for calc_doc in parent_calc_doc.iter_struct()
-    ]
+    views = {
+        "uuid": UuidView().apply(elements),
+        "detection_uuid": FieldView("detection type", sub_view=UuidView()).apply(
+            elements
+        ),
+    }
+    return build_calc_docs(nodes=_LUNATIC_NODES, views=views)
