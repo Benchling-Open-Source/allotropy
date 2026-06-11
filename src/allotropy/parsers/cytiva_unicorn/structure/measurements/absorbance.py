@@ -92,7 +92,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
 class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     @classmethod
     def get_curve_regex(cls) -> str:
-        return r"^UV( 1_\d+)?$"
+        return r"^UV( ?1_\d+)?$"
 
     @classmethod
     def get_peaks_custom_info(
@@ -191,10 +191,10 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
 class AbsorbanceMeasurement2(AbsorbanceMeasurement):
     @classmethod
     def get_curve_regex(cls) -> str:
-        return r"^UV 2_\d+$"
+        return r"^UV ?2_\d+$"
 
 
 class AbsorbanceMeasurement3(AbsorbanceMeasurement):
     @classmethod
     def get_curve_regex(cls) -> str:
-        return r"^UV 3_\d+$"
+        return r"^UV ?3_\d+$"
