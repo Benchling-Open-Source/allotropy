@@ -41,7 +41,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
             )
             sheet_names = set(wb.sheetnames)
             wb.close()
-            return "Results" in sheet_names
+            return "Results" in sheet_names or "Primary_result" in sheet_names
         except Exception:
             return False
 

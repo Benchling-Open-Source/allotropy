@@ -16,6 +16,9 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
 )
 
+RESULTS_SHEET = "Results"
+PRIMARY_RESULT_SHEET = "Primary_result"
+
 
 class DesignQuantstudioReader:
     SUPPORTED_EXTENSIONS = "xlsx,xls"
@@ -36,12 +39,14 @@ class DesignQuantstudioReader:
 
     def __init__(self, contents: dict[str, pd.DataFrame]) -> None:
         self.contents = contents
+        if PRIMARY_RESULT_SHEET in contents and RESULTS_SHEET not in contents:
+            contents[RESULTS_SHEET] = contents.pop(PRIMARY_RESULT_SHEET)
         self.header = self._get_header(contents)
         self.data = self._get_data(contents)
 
     def _get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = assert_not_none(
-            contents.get("Results"),
+            contents.get(RESULTS_SHEET),
             msg="Unable to find 'Results' sheet.",
         )
         df, _ = split_header_and_data(sheet, lambda row: row[0] is None)
@@ -52,7 +57,28 @@ class DesignQuantstudioReader:
         for name, sheet in contents.items():
             _, data = split_header_and_data(sheet, lambda row: row[0] is None)
             data_structure[name] = parse_header_row(data.replace(np.nan, None))
+        self._normalize_well_columns(data_structure)
         return data_structure
+
+    def _normalize_well_columns(self, data_structure: dict[str, pd.DataFrame]) -> None:
+        results = data_structure.get(RESULTS_SHEET)
+        if results is None or "Well" not in results.columns:
+            return
+        first_well = results["Well"].iloc[0] if not results.empty else None
+        if first_well is None or isinstance(first_well, int | float):
+            return
+        # Alphanumeric wells — build a stable numeric mapping and add Well Position
+        all_wells: list[str] = []
+        for df in data_structure.values():
+            if "Well" in df.columns:
+                all_wells.extend(df["Well"].dropna().unique().tolist())
+        unique_wells = sorted({str(w) for w in all_wells})
+        well_to_id = {well: idx + 1 for idx, well in enumerate(unique_wells)}
+        for df in data_structure.values():
+            if "Well" in df.columns:
+                if "Well Position" not in df.columns:
+                    df.insert(1, "Well Position", df["Well"].astype(str))
+                df["Well"] = df["Well"].map(well_to_id)
 
     def has_sheet(self, sheet_name: str) -> bool:
         return sheet_name in self.data

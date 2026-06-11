@@ -5,6 +5,14 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.135] - 2026-06-10
+
+### Added
+
+- Add Diomni v4.2/4.3 file support to QuantStudio Design & Analysis parser (#1224)
+- Add Vi-Cell XR single-sample report format support (#1222)
+- Add SUPPORTED_DETECTION_MODES to parsers for auto-generated table (#1219)
+
 ## [0.1.134] - 2026-06-02
 
 ### Fixed
