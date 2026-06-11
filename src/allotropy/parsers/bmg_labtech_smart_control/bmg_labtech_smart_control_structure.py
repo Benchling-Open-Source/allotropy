@@ -15,17 +15,18 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
     ScanPositionSettingPlateReader,
 )
+from allotropy.calcdocs import (
+    build_calc_docs,
+    CalcDoc,
+    Measurement as CalcMeasurement,
+    Node,
+)
 from allotropy.calcdocs.bmg_labtech_smart_control.extractor import (
     BmgLabtechSmartControlExtractor,
 )
 from allotropy.calcdocs.bmg_labtech_smart_control.views import (
     BlankRoleTypeView,
     CorrectedView,
-)
-from allotropy.calcdocs.config import (
-    CalcDocsConfig,
-    CalculatedDataConfig,
-    MeasurementConfig,
 )
 from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reader import (
     BmgLabtechSmartControlReader,
@@ -193,34 +194,25 @@ def create_calculated_data_documents(
         )
 
     elements = BmgLabtechSmartControlExtractor.get_elements(calc_data_measurements)
-    corrected_view_data = CorrectedView().apply(elements=elements)
-    role_type_view_data = BlankRoleTypeView().apply(elements=elements)
-
-    measurement_conf = MeasurementConfig(
-        name="fluorescence",
-        value="fluorescence",
-    )
-    average_of_blank_used_conf = CalculatedDataConfig(
-        name="Average of all blanks used",
-        value="average_of_blank_used",
-        view_data=role_type_view_data,
-        source_configs=(measurement_conf,),
-        unit=RelativeFluorescenceUnit.unit,
-    )
-
-    corrected_conf = CalculatedDataConfig(
-        name="Blank corrected based on Raw Data (480-14/520-30)",
-        value="corrected_value",
-        view_data=corrected_view_data,
-        source_configs=(measurement_conf, average_of_blank_used_conf),
-        unit=RelativeFluorescenceUnit.unit,
-    )
-
-    configs = CalcDocsConfig([average_of_blank_used_conf, corrected_conf])
-
-    calc_docs = [
-        calc_doc
-        for parent_calc_doc in configs.construct()
-        for calc_doc in parent_calc_doc.iter_struct()
+    nodes: list[Node] = [
+        CalcMeasurement("fluorescence", field="fluorescence"),
+        CalcDoc(
+            "Average of all blanks used",
+            field="average_of_blank_used",
+            sources=["fluorescence"],
+            view="role_type",
+            unit=RelativeFluorescenceUnit.unit,
+        ),
+        CalcDoc(
+            "Blank corrected based on Raw Data (480-14/520-30)",
+            field="corrected_value",
+            sources=["fluorescence", "Average of all blanks used"],
+            view="corrected",
+            unit=RelativeFluorescenceUnit.unit,
+        ),
     ]
-    return calc_docs
+    views = {
+        "role_type": BlankRoleTypeView().apply(elements=elements),
+        "corrected": CorrectedView().apply(elements=elements),
+    }
+    return build_calc_docs(nodes=nodes, views=views)

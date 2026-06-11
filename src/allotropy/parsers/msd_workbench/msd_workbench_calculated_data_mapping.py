@@ -5,18 +5,14 @@ import pandas as pd
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
 )
-from allotropy.calcdocs.config import (
-    CalcDocsConfig,
-    CalculatedDataConfig,
-    MeasurementConfig,
+from allotropy.calcdocs import (
+    build_calc_docs,
+    CalcDoc,
+    FieldView,
+    Measurement as CalcMeasurement,
+    Node,
 )
 from allotropy.calcdocs.msd_workbench.extractor import MsdWorkbenchExtractor
-from allotropy.calcdocs.msd_workbench.views import (
-    AssayIdentifierView,
-    LocationIdentifierView,
-    SampleIdentifierView,
-    WellPlateIdentifierView,
-)
 from allotropy.parsers.msd_workbench.calculdated_data_structure import (
     CalculatedDataMeasurementStructure,
 )
@@ -93,96 +89,77 @@ def create_calculated_data_groups(
             # we do not need additional data for the calculated data documents
             row_series.get_unread()
     elements = MsdWorkbenchExtractor.get_elements(calc_data_measurements)
-    sample_assay_view = SampleIdentifierView(sub_view=AssayIdentifierView()).apply(
-        elements
-    )
-    assay_view = AssayIdentifierView().apply(elements)
-    sample_well_plate_location_id_view = AssayIdentifierView(
-        sub_view=WellPlateIdentifierView(
-            sub_view=LocationIdentifierView(SampleIdentifierView())
-        )
-    ).apply(elements)
-    measurement_conf = MeasurementConfig(
-        name="luminescence",
-        value="luminescence",
-    )
-    adj_signal_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.ADJUSTED_SIGNAL.value,
-        value="adjusted_signal",
-        view_data=sample_assay_view,
-        source_configs=(measurement_conf,),
-    )
-    mean_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.MEAN.value,
-        value="mean",
-        view_data=assay_view,
-        source_configs=(measurement_conf,),
-    )
-    adj_signal_mean_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.ADJ_SIG_MEAN.value,
-        value="adj_sig_mean",
-        view_data=assay_view,
-        source_configs=(mean_config,),
-    )
-    rsquared_config = CalculatedDataConfig(
-        name="R-Squared",
-        value="fit_statistic_rsquared",
-        view_data=assay_view,
-        source_configs=(measurement_conf,),
-    )
-    cv_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.CV.value,
-        value="cv",
-        view_data=assay_view,
-        source_configs=(measurement_conf,),
-    )
-    percent_recovery_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.PERCENT_RECOVERY.value,
-        value="percent_recovery",
-        view_data=sample_well_plate_location_id_view,
-        source_configs=(measurement_conf,),
-    )
-    percent_recovery_mean_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.PERCENT_RECOVERY_MEAN.value,
-        value="percent_recovery_mean",
-        view_data=assay_view,
-        source_configs=(percent_recovery_config,),
-    )
-    calc_concentration_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.CALC_CONCENTRATION.value,
-        value="calc_concentration",
-        view_data=sample_well_plate_location_id_view,
-        source_configs=(measurement_conf,),
-    )
-    calc_conc_mean_config = CalculatedDataConfig(
-        name="Calc. Concentration Mean",
-        value="calc_conc_mean",
-        view_data=assay_view,
-        source_configs=(calc_concentration_config,),
-    )
-    calc_conc_cv_config = CalculatedDataConfig(
-        name=CalculatedDataColumns.CALC_CONC_CV.value,
-        value="calc_conc_cv",
-        view_data=assay_view,
-        source_configs=(calc_concentration_config,),
-    )
-    configs = CalcDocsConfig(
-        [
-            mean_config,
-            adj_signal_config,
-            adj_signal_mean_config,
-            rsquared_config,
-            cv_config,
-            percent_recovery_config,
-            percent_recovery_mean_config,
-            calc_concentration_config,
-            calc_conc_mean_config,
-            calc_conc_cv_config,
-        ]
-    )
-    calc_docs = [
-        calc_doc
-        for parent_calc_doc in configs.construct()
-        for calc_doc in parent_calc_doc.iter_struct()
+    views = {
+        "sample_assay": FieldView(
+            "sample_identifier", sub_view=FieldView("assay_identifier")
+        ).apply(elements),
+        "assay": FieldView("assay_identifier").apply(elements),
+        "assay_plate_loc_sample": FieldView(
+            "assay_identifier",
+            sub_view=FieldView(
+                "well_plate_identifier",
+                sub_view=FieldView(
+                    "location_identifier", sub_view=FieldView("sample_identifier")
+                ),
+            ),
+        ).apply(elements),
+    }
+    nodes: list[Node] = [
+        CalcMeasurement("luminescence", field="luminescence"),
+        CalcDoc("Mean", field="mean", sources=["luminescence"], view="assay"),
+        CalcDoc(
+            CalculatedDataColumns.ADJUSTED_SIGNAL.value,
+            field="adjusted_signal",
+            sources=["luminescence"],
+            view="sample_assay",
+        ),
+        CalcDoc(
+            CalculatedDataColumns.ADJ_SIG_MEAN.value,
+            field="adj_sig_mean",
+            sources=["Mean"],
+            view="assay",
+        ),
+        CalcDoc(
+            "R-Squared",
+            field="fit_statistic_rsquared",
+            sources=["luminescence"],
+            view="assay",
+        ),
+        CalcDoc(
+            CalculatedDataColumns.CV.value,
+            field="cv",
+            sources=["luminescence"],
+            view="assay",
+        ),
+        CalcDoc(
+            CalculatedDataColumns.PERCENT_RECOVERY.value,
+            field="percent_recovery",
+            sources=["luminescence"],
+            view="assay_plate_loc_sample",
+        ),
+        CalcDoc(
+            CalculatedDataColumns.PERCENT_RECOVERY_MEAN.value,
+            field="percent_recovery_mean",
+            sources=[CalculatedDataColumns.PERCENT_RECOVERY.value],
+            view="assay",
+        ),
+        CalcDoc(
+            CalculatedDataColumns.CALC_CONCENTRATION.value,
+            field="calc_concentration",
+            sources=["luminescence"],
+            view="assay_plate_loc_sample",
+        ),
+        CalcDoc(
+            "Calc. Concentration Mean",
+            field="calc_conc_mean",
+            sources=[CalculatedDataColumns.CALC_CONCENTRATION.value],
+            view="assay",
+        ),
+        CalcDoc(
+            CalculatedDataColumns.CALC_CONC_CV.value,
+            field="calc_conc_cv",
+            sources=[CalculatedDataColumns.CALC_CONCENTRATION.value],
+            view="assay",
+        ),
     ]
-    return calc_docs
+    return build_calc_docs(nodes=nodes, views=views)
