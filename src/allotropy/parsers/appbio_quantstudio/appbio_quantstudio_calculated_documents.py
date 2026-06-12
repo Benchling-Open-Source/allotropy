@@ -22,237 +22,286 @@ NORM_REPORTER = Measurement(
     "normalized reporter result", field="normalized_reporter_result"
 )
 
-COMPARATIVE_CT_NODES: list[Node] = [
-    CTR,
-    CalcDoc(
+
+def _comparative_ct_nodes() -> list[Node]:
+    y_intercept = CalcDoc(
         "y intercept",
         field="y_intercept",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="tdna_role",
         source_only=True,
-    ),
-    CalcDoc(
+    )
+    slope = CalcDoc(
         "slope",
         field="slope",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="tdna_role",
         source_only=True,
-    ),
-    CalcDoc(
+    )
+    quantity = CalcDoc(
         "quantity",
         field="quantity",
-        sources=["cycle threshold result", "y intercept", "slope"],
+        sources=[CTR, y_intercept, slope],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    amp_score = CalcDoc(
         "amplification score",
         field="amp_score",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    cq_conf = CalcDoc(
         "cq confidence",
         field="cq_conf",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
-        "quantity mean", field="quantity_mean", sources=["quantity"], view="sid_tdna"
-    ),
-    CalcDoc("quantity sd", field="quantity_sd", sources=["quantity"], view="sid_tdna"),
-    CalcDoc(
-        "ct mean", field="ct_mean", sources=["cycle threshold result"], view="sid_tdna"
-    ),
-    CalcDoc(
-        "ct sd", field="ct_sd", sources=["cycle threshold result"], view="sid_tdna"
-    ),
-    CalcDoc(
-        "ct mean @ref",
+    )
+    quantity_mean = CalcDoc(
+        "quantity mean", field="quantity_mean", sources=[quantity], view="sid_tdna"
+    )
+    quantity_sd = CalcDoc(
+        "quantity sd", field="quantity_sd", sources=[quantity], view="sid_tdna"
+    )
+    ct_mean = CalcDoc("ct mean", field="ct_mean", sources=[CTR], view="sid_tdna")
+    ct_sd = CalcDoc("ct sd", field="ct_sd", sources=[CTR], view="sid_tdna")
+    ct_mean_ref = CalcDoc(
+        "ct mean",
         field="ct_mean",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_ref",
         source_only=True,
-        output_name="ct mean",
-    ),
-    CalcDoc(
+    )
+    delta_ct_se = CalcDoc(
         "delta ct se",
         field="delta_ct_se",
-        sources=["ct mean", "ct mean @ref"],
+        sources=[ct_mean, ct_mean_ref],
         view="sid_tdna",
-    ),
-    CalcDoc(
+    )
+    delta_ct_mean = CalcDoc(
         "delta ct mean",
         field="delta_ct_mean",
-        sources=["ct mean", "ct mean @ref"],
+        sources=[ct_mean, ct_mean_ref],
         view="sid_tdna",
         source_only=True,
-    ),
-    CalcDoc(
-        "delta ct mean @ref_sample",
+    )
+    delta_ct_mean_ref_sample = CalcDoc(
+        "delta ct mean",
         field="delta_ct_mean",
-        sources=["ct mean", "ct mean @ref"],
+        sources=[ct_mean, ct_mean_ref],
         view="sid_ref_tdna",
         source_only=True,
-        output_name="delta ct mean",
-    ),
-    CalcDoc(
+    )
+    delta_delta_ct = CalcDoc(
         "delta delta ct",
         field="delta_delta_ct",
-        sources=["delta ct mean", "delta ct mean @ref_sample"],
+        sources=[delta_ct_mean, delta_ct_mean_ref_sample],
         view="sid_tdna",
         source_only=True,
-    ),
-    CalcDoc(
-        "rq", field="rq", sources=["delta delta ct"], view="sid_tdna", source_only=True
-    ),
-    CalcDoc("rq min", field="rq_min", sources=["rq"], view="sid_tdna_blacklist"),
-    CalcDoc("rq max", field="rq_max", sources=["rq"], view="sid_tdna_blacklist"),
-]
+    )
+    rq = CalcDoc(
+        "rq", field="rq", sources=[delta_delta_ct], view="sid_tdna", source_only=True
+    )
+    rq_min = CalcDoc("rq min", field="rq_min", sources=[rq], view="sid_tdna_blacklist")
+    rq_max = CalcDoc("rq max", field="rq_max", sources=[rq], view="sid_tdna_blacklist")
+    return [
+        CTR,
+        y_intercept,
+        slope,
+        quantity,
+        amp_score,
+        cq_conf,
+        quantity_mean,
+        quantity_sd,
+        ct_mean,
+        ct_sd,
+        ct_mean_ref,
+        delta_ct_se,
+        delta_ct_mean,
+        delta_ct_mean_ref_sample,
+        delta_delta_ct,
+        rq,
+        rq_min,
+        rq_max,
+    ]
 
-STANDARD_CURVE_NODES: list[Node] = [
-    CTR,
-    CalcDoc(
-        "quantity",
-        field="quantity",
-        sources=["cycle threshold result", "y intercept", "slope"],
-        view="sid_tdna_uuid",
-    ),
-    CalcDoc(
-        "amplification score",
-        field="amp_score",
-        sources=["cycle threshold result"],
-        view="sid_tdna_uuid",
-    ),
-    CalcDoc(
-        "cq confidence",
-        field="cq_conf",
-        sources=["cycle threshold result"],
-        view="sid_tdna_uuid",
-    ),
-    CalcDoc(
-        "quantity mean", field="quantity_mean", sources=["quantity"], view="sid_tdna"
-    ),
-    CalcDoc("quantity sd", field="quantity_sd", sources=["quantity"], view="sid_tdna"),
-    CalcDoc(
-        "ct mean", field="ct_mean", sources=["cycle threshold result"], view="sid_tdna"
-    ),
-    CalcDoc(
-        "ct sd", field="ct_sd", sources=["cycle threshold result"], view="sid_tdna"
-    ),
-    CalcDoc(
+
+COMPARATIVE_CT_NODES: list[Node] = _comparative_ct_nodes()
+
+
+def _standard_curve_nodes() -> list[Node]:
+    y_intercept = CalcDoc(
         "y intercept",
         field="y_intercept",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="tdna_role",
-    ),
-    CalcDoc(
-        "slope", field="slope", sources=["cycle threshold result"], view="tdna_role"
-    ),
-    CalcDoc(
-        "r^2", field="r_squared", sources=["cycle threshold result"], view="tdna_role"
-    ),
-    CalcDoc(
-        "efficiency",
-        field="efficiency",
-        sources=["cycle threshold result"],
-        view="tdna_role",
-    ),
-]
-
-RELATIVE_STANDARD_CURVE_NODES: list[Node] = [
-    CTR,
-    CalcDoc(
+    )
+    slope = CalcDoc("slope", field="slope", sources=[CTR], view="tdna_role")
+    quantity = CalcDoc(
         "quantity",
         field="quantity",
-        sources=["cycle threshold result", "y intercept", "slope"],
+        sources=[CTR, y_intercept, slope],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    amp_score = CalcDoc(
         "amplification score",
         field="amp_score",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    cq_conf = CalcDoc(
         "cq confidence",
         field="cq_conf",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
-        "quantity mean", field="quantity_mean", sources=["quantity"], view="sid_tdna"
-    ),
-    CalcDoc("quantity sd", field="quantity_sd", sources=["quantity"], view="sid_tdna"),
-    CalcDoc(
-        "ct mean", field="ct_mean", sources=["cycle threshold result"], view="sid_tdna"
-    ),
-    CalcDoc(
-        "ct sd", field="ct_sd", sources=["cycle threshold result"], view="sid_tdna"
-    ),
-    CalcDoc(
+    )
+    quantity_mean = CalcDoc(
+        "quantity mean", field="quantity_mean", sources=[quantity], view="sid_tdna"
+    )
+    quantity_sd = CalcDoc(
+        "quantity sd", field="quantity_sd", sources=[quantity], view="sid_tdna"
+    )
+    ct_mean = CalcDoc("ct mean", field="ct_mean", sources=[CTR], view="sid_tdna")
+    ct_sd = CalcDoc("ct sd", field="ct_sd", sources=[CTR], view="sid_tdna")
+    r_squared = CalcDoc("r^2", field="r_squared", sources=[CTR], view="tdna_role")
+    efficiency = CalcDoc(
+        "efficiency",
+        field="efficiency",
+        sources=[CTR],
+        view="tdna_role",
+    )
+    return [
+        CTR,
+        quantity,
+        amp_score,
+        cq_conf,
+        quantity_mean,
+        quantity_sd,
+        ct_mean,
+        ct_sd,
+        y_intercept,
+        slope,
+        r_squared,
+        efficiency,
+    ]
+
+
+STANDARD_CURVE_NODES: list[Node] = _standard_curve_nodes()
+
+
+def _relative_standard_curve_nodes() -> list[Node]:
+    y_intercept = CalcDoc(
+        "y intercept",
+        field="y_intercept",
+        sources=[CTR],
+        view="tdna_role",
+    )
+    slope = CalcDoc("slope", field="slope", sources=[CTR], view="tdna_role")
+    quantity = CalcDoc(
+        "quantity",
+        field="quantity",
+        sources=[CTR, y_intercept, slope],
+        view="sid_tdna_uuid",
+    )
+    amp_score = CalcDoc(
+        "amplification score",
+        field="amp_score",
+        sources=[CTR],
+        view="sid_tdna_uuid",
+    )
+    cq_conf = CalcDoc(
+        "cq confidence",
+        field="cq_conf",
+        sources=[CTR],
+        view="sid_tdna_uuid",
+    )
+    quantity_mean = CalcDoc(
+        "quantity mean", field="quantity_mean", sources=[quantity], view="sid_tdna"
+    )
+    quantity_sd = CalcDoc(
+        "quantity sd", field="quantity_sd", sources=[quantity], view="sid_tdna"
+    )
+    ct_mean = CalcDoc("ct mean", field="ct_mean", sources=[CTR], view="sid_tdna")
+    ct_sd = CalcDoc("ct sd", field="ct_sd", sources=[CTR], view="sid_tdna")
+    relative_rq = CalcDoc(
         "relative rq",
         field="rq",
-        sources=["quantity mean"],
+        sources=[quantity_mean],
         view="sid_tdna",
         source_only=True,
-    ),
-    CalcDoc(
-        "relative rq min", field="rq_min", sources=["relative rq"], view="sid_tdna"
-    ),
-    CalcDoc(
-        "relative rq max", field="rq_max", sources=["relative rq"], view="sid_tdna"
-    ),
-    CalcDoc(
-        "y intercept",
-        field="y_intercept",
-        sources=["cycle threshold result"],
-        view="tdna_role",
-    ),
-    CalcDoc(
-        "slope", field="slope", sources=["cycle threshold result"], view="tdna_role"
-    ),
-    CalcDoc(
-        "r^2", field="r_squared", sources=["cycle threshold result"], view="tdna_role"
-    ),
-    CalcDoc(
+    )
+    relative_rq_min = CalcDoc(
+        "relative rq min", field="rq_min", sources=[relative_rq], view="sid_tdna"
+    )
+    relative_rq_max = CalcDoc(
+        "relative rq max", field="rq_max", sources=[relative_rq], view="sid_tdna"
+    )
+    r_squared = CalcDoc("r^2", field="r_squared", sources=[CTR], view="tdna_role")
+    efficiency = CalcDoc(
         "efficiency",
         field="efficiency",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="tdna_role",
-    ),
-]
+    )
+    return [
+        CTR,
+        quantity,
+        amp_score,
+        cq_conf,
+        quantity_mean,
+        quantity_sd,
+        ct_mean,
+        ct_sd,
+        relative_rq,
+        relative_rq_min,
+        relative_rq_max,
+        y_intercept,
+        slope,
+        r_squared,
+        efficiency,
+    ]
 
-PRESENCE_ABSENCE_NODES: list[Node] = [
-    CTR,
-    NORM_REPORTER,
-    CalcDoc(
+
+RELATIVE_STANDARD_CURVE_NODES: list[Node] = _relative_standard_curve_nodes()
+
+
+def _presence_absence_nodes() -> list[Node]:
+    quantity = CalcDoc(
         "quantity",
         field="quantity",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    amp_score = CalcDoc(
         "amplification score",
         field="amp_score",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    cq_conf = CalcDoc(
         "cq confidence",
         field="cq_conf",
-        sources=["cycle threshold result"],
+        sources=[CTR],
         view="sid_tdna_uuid",
-    ),
-    CalcDoc(
+    )
+    rn_mean = CalcDoc(
         "rn mean",
         field="rn_mean",
-        sources=["normalized reporter result"],
+        sources=[NORM_REPORTER],
         view="sid_tdna",
-    ),
-    CalcDoc(
-        "rn sd", field="rn_sd", sources=["normalized reporter result"], view="sid_tdna"
-    ),
-]
+    )
+    rn_sd = CalcDoc("rn sd", field="rn_sd", sources=[NORM_REPORTER], view="sid_tdna")
+    return [
+        CTR,
+        NORM_REPORTER,
+        quantity,
+        amp_score,
+        cq_conf,
+        rn_mean,
+        rn_sd,
+    ]
+
+
+PRESENCE_ABSENCE_NODES: list[Node] = _presence_absence_nodes()
 
 
 def iter_comparative_ct_calc_docs(

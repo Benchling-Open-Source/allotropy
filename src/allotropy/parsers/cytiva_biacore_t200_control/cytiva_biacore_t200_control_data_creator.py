@@ -254,44 +254,49 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     ]
 
 
-_BIACORE_NODES: list[Node] = [
-    CalcMeasurement("Absolute Resonance", field="absolute_resonance"),
-    CalcDoc(
+def _get_biacore_nodes() -> list[Node]:
+    absolute_resonance = CalcMeasurement(
+        "Absolute Resonance", field="absolute_resonance"
+    )
+    min_resonance = CalcDoc(
         "Min Resonance",
         field="min_resonance",
-        sources=["Absolute Resonance"],
+        sources=[absolute_resonance],
         view="uuid",
         unit=ResponseUnit.unit,
-    ),
-    CalcDoc(
+    )
+    max_resonance = CalcDoc(
         "Max Resonance",
         field="max_resonance",
-        sources=["Absolute Resonance"],
+        sources=[absolute_resonance],
         view="uuid",
         unit=ResponseUnit.unit,
-    ),
-    CalcDoc(
+    )
+    lrsd = CalcDoc(
         "LRSD",
         field="lrsd",
-        sources=["Absolute Resonance"],
+        sources=[absolute_resonance],
         view="uuid",
         unit=Unitless.unit,
-    ),
-    CalcDoc(
+    )
+    slope = CalcDoc(
         "Slope",
         field="slope",
-        sources=["Absolute Resonance"],
+        sources=[absolute_resonance],
         view="uuid",
         unit=ResponseUnitPerSecond.unit,
-    ),
-    CalcDoc(
+    )
+    sd = CalcDoc(
         "SD",
         field="sd",
-        sources=["Absolute Resonance"],
+        sources=[absolute_resonance],
         view="uuid",
         unit=Unitless.unit,
-    ),
-]
+    )
+    return [absolute_resonance, min_resonance, max_resonance, lrsd, slope, sd]
+
+
+_BIACORE_NODES: list[Node] = _get_biacore_nodes()
 
 
 def create_calculated_data(data: Data) -> list[CalculatedDocument]:

@@ -104,62 +104,73 @@ def create_calculated_data_groups(
             ),
         ).apply(elements),
     }
+    luminescence = CalcMeasurement("luminescence", field="luminescence")
+    mean = CalcDoc("Mean", field="mean", sources=[luminescence], view="assay")
+    adjusted_signal = CalcDoc(
+        CalculatedDataColumns.ADJUSTED_SIGNAL.value,
+        field="adjusted_signal",
+        sources=[luminescence],
+        view="sample_assay",
+    )
+    adj_sig_mean = CalcDoc(
+        CalculatedDataColumns.ADJ_SIG_MEAN.value,
+        field="adj_sig_mean",
+        sources=[mean],
+        view="assay",
+    )
+    r_squared = CalcDoc(
+        "R-Squared",
+        field="fit_statistic_rsquared",
+        sources=[luminescence],
+        view="assay",
+    )
+    cv = CalcDoc(
+        CalculatedDataColumns.CV.value,
+        field="cv",
+        sources=[luminescence],
+        view="assay",
+    )
+    percent_recovery = CalcDoc(
+        CalculatedDataColumns.PERCENT_RECOVERY.value,
+        field="percent_recovery",
+        sources=[luminescence],
+        view="assay_plate_loc_sample",
+    )
+    percent_recovery_mean = CalcDoc(
+        CalculatedDataColumns.PERCENT_RECOVERY_MEAN.value,
+        field="percent_recovery_mean",
+        sources=[percent_recovery],
+        view="assay",
+    )
+    calc_concentration = CalcDoc(
+        CalculatedDataColumns.CALC_CONCENTRATION.value,
+        field="calc_concentration",
+        sources=[luminescence],
+        view="assay_plate_loc_sample",
+    )
+    calc_conc_mean = CalcDoc(
+        "Calc. Concentration Mean",
+        field="calc_conc_mean",
+        sources=[calc_concentration],
+        view="assay",
+    )
+    calc_conc_cv = CalcDoc(
+        CalculatedDataColumns.CALC_CONC_CV.value,
+        field="calc_conc_cv",
+        sources=[calc_concentration],
+        view="assay",
+    )
     nodes: list[Node] = [
-        CalcMeasurement("luminescence", field="luminescence"),
-        CalcDoc("Mean", field="mean", sources=["luminescence"], view="assay"),
-        CalcDoc(
-            CalculatedDataColumns.ADJUSTED_SIGNAL.value,
-            field="adjusted_signal",
-            sources=["luminescence"],
-            view="sample_assay",
-        ),
-        CalcDoc(
-            CalculatedDataColumns.ADJ_SIG_MEAN.value,
-            field="adj_sig_mean",
-            sources=["Mean"],
-            view="assay",
-        ),
-        CalcDoc(
-            "R-Squared",
-            field="fit_statistic_rsquared",
-            sources=["luminescence"],
-            view="assay",
-        ),
-        CalcDoc(
-            CalculatedDataColumns.CV.value,
-            field="cv",
-            sources=["luminescence"],
-            view="assay",
-        ),
-        CalcDoc(
-            CalculatedDataColumns.PERCENT_RECOVERY.value,
-            field="percent_recovery",
-            sources=["luminescence"],
-            view="assay_plate_loc_sample",
-        ),
-        CalcDoc(
-            CalculatedDataColumns.PERCENT_RECOVERY_MEAN.value,
-            field="percent_recovery_mean",
-            sources=[CalculatedDataColumns.PERCENT_RECOVERY.value],
-            view="assay",
-        ),
-        CalcDoc(
-            CalculatedDataColumns.CALC_CONCENTRATION.value,
-            field="calc_concentration",
-            sources=["luminescence"],
-            view="assay_plate_loc_sample",
-        ),
-        CalcDoc(
-            "Calc. Concentration Mean",
-            field="calc_conc_mean",
-            sources=[CalculatedDataColumns.CALC_CONCENTRATION.value],
-            view="assay",
-        ),
-        CalcDoc(
-            CalculatedDataColumns.CALC_CONC_CV.value,
-            field="calc_conc_cv",
-            sources=[CalculatedDataColumns.CALC_CONCENTRATION.value],
-            view="assay",
-        ),
+        luminescence,
+        mean,
+        adjusted_signal,
+        adj_sig_mean,
+        r_squared,
+        cv,
+        percent_recovery,
+        percent_recovery_mean,
+        calc_concentration,
+        calc_conc_mean,
+        calc_conc_cv,
     ]
     return build_calc_docs(nodes=nodes, views=views)

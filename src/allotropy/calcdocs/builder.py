@@ -26,7 +26,7 @@ class Measurement:
 class CalcDoc:
     name: str
     field: str
-    sources: list[str] = dataclass_field(default_factory=list)
+    sources: list[Measurement | CalcDoc] = dataclass_field(default_factory=list)
     view: str = ""
     unit: str | None = None
     description: str | None = None
@@ -34,7 +34,6 @@ class CalcDoc:
     required: bool = False
     optional: bool = False
     source_only: bool = False
-    output_name: str | None = None
 
 
 Node = Measurement | CalcDoc
@@ -44,59 +43,81 @@ def build_calc_docs(
     nodes: list[Node],
     views: dict[str, ViewData],
 ) -> list[CalculatedDocument]:
-    measurements: dict[str, MeasurementConfig] = {}
+    _validate_graph(nodes, views)
+
+    measurements: dict[int, MeasurementConfig] = {}
     calc_configs: dict[int, CalculatedDataConfig] = {}
 
     for node in nodes:
         if isinstance(node, Measurement):
-            measurements[node.name] = MeasurementConfig(
+            measurements[id(node)] = MeasurementConfig(
                 name=node.name,
                 value=node.field,
                 required=node.required,
             )
 
-    for idx, node in enumerate(nodes):
+    for node in nodes:
         if isinstance(node, CalcDoc):
-            _build_calc_config(idx, node, nodes, views, measurements, calc_configs)
+            _build_calc_config(node, views, measurements, calc_configs)
 
     top_level_configs = [
-        calc_configs[idx]
-        for idx, node in enumerate(nodes)
-        if isinstance(node, CalcDoc) and idx in calc_configs and not node.source_only
+        calc_configs[id(node)]
+        for node in nodes
+        if isinstance(node, CalcDoc)
+        and id(node) in calc_configs
+        and not node.source_only
     ]
 
     result = CalcDocsConfig(top_level_configs).construct()
     return list(chain.from_iterable(doc.iter_struct() for doc in result))
 
 
+def _validate_graph(nodes: list[Node], views: dict[str, ViewData]) -> None:
+    node_set = {id(n) for n in nodes}
+
+    for node in nodes:
+        if not isinstance(node, CalcDoc):
+            continue
+        if node.view and node.view not in views:
+            msg = (
+                f"CalcDoc '{node.name}' references view '{node.view}' "
+                f"but available views are: {sorted(views.keys())}"
+            )
+            raise ValueError(msg)
+        for source in node.sources:
+            if id(source) not in node_set:
+                msg = (
+                    f"CalcDoc '{node.name}' references source '{source.name}' "
+                    f"which is not in the nodes list"
+                )
+                raise ValueError(msg)
+
+
 def _build_calc_config(
-    idx: int,
     node: CalcDoc,
-    all_nodes: list[Node],
     views: dict[str, ViewData],
-    measurements: dict[str, MeasurementConfig],
+    measurements: dict[int, MeasurementConfig],
     calc_configs: dict[int, CalculatedDataConfig],
 ) -> CalculatedDataConfig:
-    if idx in calc_configs:
-        return calc_configs[idx]
+    if id(node) in calc_configs:
+        return calc_configs[id(node)]
 
     view_data = views[node.view]
 
     source_configs: list[CalculatedDataConfig | MeasurementConfig] = []
-    for source_name in node.sources:
-        if source_name in measurements:
-            source_configs.append(measurements[source_name])
+    for source in node.sources:
+        if isinstance(source, Measurement):
+            source_configs.append(measurements[id(source)])
         else:
-            source_idx, source_node = _find_node(source_name, all_nodes)
             source_config = _build_calc_config(
-                source_idx, source_node, all_nodes, views, measurements, calc_configs
+                source, views, measurements, calc_configs
             )
             source_configs.append(source_config)
 
     config: CalculatedDataConfig
     if node.optional:
         config = CalculatedDataConfigWithOptional(
-            name=node.output_name or node.name,
+            name=node.name,
             value=node.field,
             view_data=view_data,
             source_configs=tuple(source_configs),
@@ -108,7 +129,7 @@ def _build_calc_config(
         )
     else:
         config = CalculatedDataConfig(
-            name=node.output_name or node.name,
+            name=node.name,
             value=node.field,
             view_data=view_data,
             source_configs=tuple(source_configs),
@@ -117,13 +138,20 @@ def _build_calc_config(
             description_value_key=node.description_field,
             required=node.required,
         )
-    calc_configs[idx] = config
+    calc_configs[id(node)] = config
     return config
 
 
-def _find_node(name: str, nodes: list[Node]) -> tuple[int, CalcDoc]:
-    for idx, node in enumerate(nodes):
-        if isinstance(node, CalcDoc) and node.name == name:
-            return idx, node
-    msg = f"CalcDoc source '{name}' not found in nodes list"
-    raise ValueError(msg)
+def describe_graph(nodes: list[Node]) -> str:
+    lines = []
+    for node in nodes:
+        if isinstance(node, Measurement):
+            lines.append(f"  [M] {node.name} <- element.{node.field}")
+        elif isinstance(node, CalcDoc):
+            prefix = "(source_only) " if node.source_only else ""
+            source_names = [s.name for s in node.sources]
+            lines.append(
+                f"  [C] {prefix}{node.name} <- element.{node.field} "
+                f"| view={node.view} | sources={source_names}"
+            )
+    return "\n".join(lines)

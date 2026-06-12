@@ -194,23 +194,22 @@ def create_calculated_data_documents(
         )
 
     elements = BmgLabtechSmartControlExtractor.get_elements(calc_data_measurements)
-    nodes: list[Node] = [
-        CalcMeasurement("fluorescence", field="fluorescence"),
-        CalcDoc(
-            "Average of all blanks used",
-            field="average_of_blank_used",
-            sources=["fluorescence"],
-            view="role_type",
-            unit=RelativeFluorescenceUnit.unit,
-        ),
-        CalcDoc(
-            "Blank corrected based on Raw Data (480-14/520-30)",
-            field="corrected_value",
-            sources=["fluorescence", "Average of all blanks used"],
-            view="corrected",
-            unit=RelativeFluorescenceUnit.unit,
-        ),
-    ]
+    fluorescence = CalcMeasurement("fluorescence", field="fluorescence")
+    average_of_blanks = CalcDoc(
+        "Average of all blanks used",
+        field="average_of_blank_used",
+        sources=[fluorescence],
+        view="role_type",
+        unit=RelativeFluorescenceUnit.unit,
+    )
+    blank_corrected = CalcDoc(
+        "Blank corrected based on Raw Data (480-14/520-30)",
+        field="corrected_value",
+        sources=[fluorescence, average_of_blanks],
+        view="corrected",
+        unit=RelativeFluorescenceUnit.unit,
+    )
+    nodes: list[Node] = [fluorescence, average_of_blanks, blank_corrected]
     views = {
         "role_type": BlankRoleTypeView().apply(elements=elements),
         "corrected": CorrectedView().apply(elements=elements),
