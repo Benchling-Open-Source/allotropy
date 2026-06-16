@@ -18,7 +18,6 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
 
 
 def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
