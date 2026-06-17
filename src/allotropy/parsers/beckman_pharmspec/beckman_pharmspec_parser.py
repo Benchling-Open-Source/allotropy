@@ -1,7 +1,6 @@
 from io import BytesIO
 
 import openpyxl
-import pandas as pd
 
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Model,
@@ -22,6 +21,7 @@ from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
     Header,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.pandas import read_excel
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -66,8 +66,11 @@ class PharmSpecParser(VendorParser[Data, Model]):
                 text = content_bytes[:4000].decode("utf-8", errors="ignore")
                 return "Run Counter Test" in text or "Particle Size" in text
             # Binary XLS - read with pandas to check content
-            df = pd.read_excel(
-                BytesIO(content_bytes), header=None, engine="calamine", nrows=20
+            df = read_excel(
+                BytesIO(content_bytes),
+                header=None,
+                engine="calamine",
+                nrows=20,
             )
             for _, row in df.iterrows():
                 for cell in row.values:

@@ -83,11 +83,11 @@ class BeckmanPharmspecReader:
             self._read_xls_binary(BytesIO(content_bytes))
 
     def _read_xls_binary(self, contents: BytesIO) -> None:
-        df = pd.read_excel(contents, header=None, engine="calamine")
+        df = read_excel(contents, header=None, engine="calamine")
         self._parse_hiac_run_counter_format(df)
 
     def _read_xls_html(self, content_bytes: bytes) -> None:
-        tables = pd.read_html(BytesIO(content_bytes))
+        tables = pd.read_html(content_bytes.decode("utf-8", errors="ignore"))
 
         # Combine header tables (tables 0 and 1) into a unified dataframe
         header_frames = []
