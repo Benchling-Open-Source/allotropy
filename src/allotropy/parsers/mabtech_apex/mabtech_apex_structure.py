@@ -13,29 +13,33 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
     ProcessedData,
 )
-from allotropy.exceptions import AllotropeParsingError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
 
 
 def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
-    machine_id = assert_not_none(
-        re.match(
-            "([A-Z]+[a-z]*) ([0-9]+)",
-            plate_info[str, "Machine ID"],
-        ),
-        msg="Unable to interpret Machine ID",
-    )
+    raw_machine_id = plate_info[str, "Machine ID"]
+    machine_id_match = re.match(r"([A-Z]+[a-z]*) ([0-9]+)", raw_machine_id)
+
+    if machine_id_match:
+        model_number = machine_id_match.group(1)
+        serial_number = machine_id_match.group(2)
+    elif re.fullmatch(r"[0-9]+", raw_machine_id):
+        model_number = NOT_APPLICABLE
+        serial_number = raw_machine_id
+    else:
+        msg = f"Unable to interpret Machine ID: {raw_machine_id}"
+        raise AllotropeConversionError(msg)
 
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         software_name=constants.SOFTWARE_NAME,
         software_version=plate_info.get(str, "Software Version"),
-        model_number=machine_id.group(1),
-        equipment_serial_number=machine_id.group(2),
+        model_number=model_number,
+        equipment_serial_number=serial_number,
         file_name=Path(file_path).name,
         unc_path=plate_info.get(str, "Path", file_path),
         custom_info=plate_info.get_unread(),
