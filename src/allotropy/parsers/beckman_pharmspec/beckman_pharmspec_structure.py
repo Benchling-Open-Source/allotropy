@@ -112,10 +112,10 @@ class Header:
         return Header(
             measurement_time=data[str, "Sample Date"].replace(".", "-"),
             flush_volume_setting=0,
-            detector_view_volume=data[float, "View Volume"],
+            detector_view_volume=data[float, ("View Volume", "View Volume (%)")],
             repetition_setting=data[int, "No Of Runs"],
             sample_volume_setting=data[float, "Sample Volume (mL)"],
-            sample_identifier=data[str, "Probe"],
+            sample_identifier=data[str, ("Probe", "Sample Name")],
             dilution_factor_setting=data[float, "Dilution Factor"],
             analyst=data[str, "Operator Name"],
             software_version=Header._get_software_version_report_string(data),

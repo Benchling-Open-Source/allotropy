@@ -226,6 +226,33 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 - **Binding kinetics, SPR responses** → `binding-affinity`
 - **Flow cytometry markers, populations** → `flow-cytometry`
 
+## Generating Test Expected Output (JSON files)
+
+**IMPORTANT**: Never manually generate expected JSON output files using `allotrope_from_file()` directly. The test framework uses a UUID mocking mechanism that replaces random UUIDs with deterministic test IDs (e.g., `BECKMAN_PHARMSPEC_TEST_ID_0`). Manually generated JSON will have random UUIDs that won't match the test IDs at comparison time.
+
+**Correct procedure to generate expected output for new test data files:**
+
+1. Place the input test file(s) (e.g., `.xls`, `.xlsx`, `.csv`) in the `tests/parsers/{parser_name}/testdata/` directory
+2. Do NOT create the corresponding `.json` file manually
+3. Run the tests with `--overwrite` flag — the framework will write the expected output:
+   ```bash
+   hatch run test_all.py3.10:pytest tests/parsers/{parser_name}/ --overwrite -q
+   ```
+4. The first run will fail with `AssertionError: Missing expected output file ... writing expected output because 'write_actual_to_expected_on_fail=True'` — this is expected behavior, it means the JSON was written
+5. Run the tests again to verify they pass:
+   ```bash
+   hatch run test_all.py3.10:pytest tests/parsers/{parser_name}/ -q
+   ```
+
+The test framework (in `src/allotropy/testing/utils.py`) uses `mock_uuid_generation(vendor.name)` which patches the UUID generator to produce sequential test IDs like `{VENDOR_NAME}_TEST_ID_0`, `{VENDOR_NAME}_TEST_ID_1`, etc. This ensures deterministic output for comparison.
+
+**After generating the JSON, manually inspect it** to verify all expected data from the original input file is present and correct. The test framework only guarantees the parser ran without errors — it cannot verify that all data was captured. Check:
+- All measurement values match the source file (spot-check particle sizes, counts, concentrations, etc.)
+- Metadata fields are populated correctly (sample name, operator, date/time, serial numbers)
+- The correct number of measurements/runs/groups appear (e.g., if the input has 4 runs, the output should have 4 measurement documents)
+- Calculated data (averages, etc.) is present if the source file includes it
+- No fields are unexpectedly null or missing
+
 ## Troubleshooting
 
 **Schema detection fails**: Manually specify schema after reviewing `list_schemas.py` output
