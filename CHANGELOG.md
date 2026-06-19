@@ -5,6 +5,16 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.137] - 2026-06-17
+
+### Added
+
+- Add HIAC .xls file support to Beckman PharmSpec parser (#1232)
+
+### Fixed
+
+- Accept numeric-only Machine ID in Mabtech APEX parser (#1231)
+
 ## [0.1.136] - 2026-06-11
 
 ### Fixed
