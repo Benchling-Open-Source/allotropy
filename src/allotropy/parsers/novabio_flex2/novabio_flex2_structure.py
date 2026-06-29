@@ -89,10 +89,6 @@ class Sample:
             cell_density_dilution = cell_density_dilution.split(":")[0]
 
         unused_keys = {
-            "Sample Time",
-            "PCO2 @ Temp",
-            "PO2 @ Temp",
-            "pH @ Temp",
             "Operator",
             "Osm",
         }

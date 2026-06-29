@@ -1,6 +1,19 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/BENCHLING/2024/09/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
+        "data system document": {
+            "ASM file identifier": "SampleResults2022-06-28_142558.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_novabio_flex2",
+            "ASM converter version": "0.1.138",
+            "file name": "SampleResults2022-06-28_142558.csv",
+            "software name": "NovaBio Flex",
+            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv"
+        },
+        "device system document": {
+            "model number": "Flex2",
+            "product manufacturer": "Nova Biomedical"
+        },
         "solution analyzer document": [
             {
                 "measurement aggregate document": {
@@ -9,13 +22,13 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Sparging O2%": 20.9,
                                             "Chemistry Flow Time": 6.67,
-                                            "pH / Gas Flow Time": 3.65
+                                            "Vessel Pressure (psi)": 0.0,
+                                            "pH / Gas Flow Time": 3.65,
+                                            "Sparging O2%": 20.9
                                         }
                                     }
                                 ]
@@ -27,9 +40,13 @@
                                 "batch identifier": "BATCH_123",
                                 "description": "Spent Media",
                                 "custom information document": {
-                                    "Vessel ID": "3L Bioreactor",
+                                    "Cell Type": "Workhog",
+                                    "Sample Time": "24-6-2022  14:34:52",
+                                    "pH @ Temp": 7.4,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Cell Type": "Workhog"
+                                    "Vessel ID": "3L Bioreactor",
+                                    "PCO2 @ Temp": 46.8,
+                                    "PO2 @ Temp": 191.6
                                 }
                             },
                             "analyte aggregate document": {
@@ -104,13 +121,13 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Sparging O2%": 20.9,
                                             "Chemistry Flow Time": 6.67,
-                                            "pH / Gas Flow Time": 3.65
+                                            "Vessel Pressure (psi)": 0.0,
+                                            "pH / Gas Flow Time": 3.65,
+                                            "Sparging O2%": 20.9
                                         }
                                     }
                                 ]
@@ -122,9 +139,13 @@
                                 "batch identifier": "BATCH_123",
                                 "description": "Spent Media",
                                 "custom information document": {
-                                    "Vessel ID": "3L Bioreactor",
+                                    "Cell Type": "Workhog",
+                                    "Sample Time": "24-6-2022  14:34:52",
+                                    "pH @ Temp": 7.4,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Cell Type": "Workhog"
+                                    "Vessel ID": "3L Bioreactor",
+                                    "PCO2 @ Temp": 46.8,
+                                    "PO2 @ Temp": 191.6
                                 }
                             },
                             "pO2": {
@@ -148,13 +169,13 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Sparging O2%": 20.9,
                                             "Chemistry Flow Time": 6.67,
-                                            "pH / Gas Flow Time": 3.65
+                                            "Vessel Pressure (psi)": 0.0,
+                                            "pH / Gas Flow Time": 3.65,
+                                            "Sparging O2%": 20.9
                                         }
                                     }
                                 ]
@@ -166,9 +187,13 @@
                                 "batch identifier": "BATCH_123",
                                 "description": "Spent Media",
                                 "custom information document": {
-                                    "Vessel ID": "3L Bioreactor",
+                                    "Cell Type": "Workhog",
+                                    "Sample Time": "24-6-2022  14:34:52",
+                                    "pH @ Temp": 7.4,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Cell Type": "Workhog"
+                                    "Vessel ID": "3L Bioreactor",
+                                    "PCO2 @ Temp": 46.8,
+                                    "PO2 @ Temp": 191.6
                                 }
                             },
                             "pH": {
@@ -185,19 +210,6 @@
                 },
                 "analyst": "ANALYST1"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "SampleResults2022-06-28_142558.json",
-            "data system instance identifier": "N/A",
-            "file name": "SampleResults2022-06-28_142558.csv",
-            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv",
-            "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.105",
-            "software name": "NovaBio Flex"
-        },
-        "device system document": {
-            "model number": "Flex2",
-            "product manufacturer": "Nova Biomedical"
-        }
+        ]
     }
 }
