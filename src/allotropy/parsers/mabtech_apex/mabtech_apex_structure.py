@@ -22,14 +22,14 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
     raw_machine_id = plate_info[str, "Machine ID"]
-    machine_id_match = re.match(r"([A-Z]+[a-z]*) ([0-9]+)", raw_machine_id)
+    machine_id_match = re.match(r"([A-Za-z]+)\W*(\d+)", raw_machine_id)
 
     if machine_id_match:
         model_number = machine_id_match.group(1)
         serial_number = machine_id_match.group(2)
-    elif re.fullmatch(r"[0-9]+", raw_machine_id):
+    elif re.search(r"\d+", raw_machine_id):
         model_number = NOT_APPLICABLE
-        serial_number = raw_machine_id
+        serial_number = re.search(r"\d+", raw_machine_id).group()  # type: ignore[union-attr]
     else:
         msg = f"Unable to interpret Machine ID: {raw_machine_id}"
         raise AllotropeConversionError(msg)
