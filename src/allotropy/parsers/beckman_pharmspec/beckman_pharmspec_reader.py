@@ -21,6 +21,13 @@ class BeckmanPharmspecReader:
     def _read_xlsx(self, named_file_contents: NamedFileContents) -> None:
         df = read_excel(named_file_contents.contents, header=None, engine="calamine")
 
+        # Detect format: PharmSpec uses col1=":" with value in col2,
+        # HIAC Run Counter uses col1=": value" (colon+value merged).
+        is_pharmspec = df[1].str.strip().eq(":").any() if 1 in df.columns else False
+        if not is_pharmspec:
+            self._parse_hiac_run_counter_format(df)
+            return
+
         """
         Find the data in the raw dataframe. We identify the boundary of the data
         by finding the index first row which contains the word 'Particle' and ending right before
