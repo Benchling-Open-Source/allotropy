@@ -5,8 +5,6 @@ from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -30,6 +28,11 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     SOFTWARE_NAME,
     UNIT_CLASS_LOOKUP,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.utils.xml import (
@@ -42,7 +45,7 @@ from allotropy.parsers.utils.xml import (
 
 def _get_calculated_data(
     element: ET.Element, excluded_tags: list[str], source_id: str, feature: str
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     calculated_data = []
     for node in element:
         if (name := node.tag) in excluded_tags:
@@ -50,12 +53,14 @@ def _get_calculated_data(
         if (value := try_float_or_none(node.text)) is None:
             continue
         calculated_data.append(
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
+            CalculatedDocument(
+                uuid=random_uuid_str(),
                 name=name,
                 value=value,
                 unit=UNITLESS,
-                data_sources=[DataSource(identifier=source_id, feature=feature)],
+                data_sources=[
+                    DataSource(reference=Referenceable(uuid=source_id), feature=feature)
+                ],
             )
         )
 
@@ -140,9 +145,9 @@ def _create_region(
 
 def _create_measurement(
     sample_element: ET.Element, screen_tape: ET.Element, unit: str
-) -> tuple[Measurement, list[CalculatedDataItem]]:
+) -> tuple[Measurement, list[CalculatedDocument]]:
     measurement_id = random_uuid_str()
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
     calculated_data.extend(
         _get_calculated_data(
             element=sample_element,
@@ -232,7 +237,7 @@ def _get_unit_class(
 
 def create_measurement_groups(
     root_element: ET.Element,
-) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     screen_tapes_element = get_element_from_xml(root_element, "ScreenTapes")
     screen_tapes = {
         get_val_from_xml(screen_tape, "ScreenTapeID"): screen_tape
@@ -240,7 +245,7 @@ def create_measurement_groups(
     }
 
     measurement_groups: list[MeasurementGroup] = []
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
     for sample_element in get_element_from_xml(root_element, "Samples").iter("Sample"):
         screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
         try:
