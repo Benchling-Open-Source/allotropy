@@ -64,7 +64,7 @@ def num_wells_to_n_columns(well_count: int) -> int:
 
 
 def time_to_seconds(time: str) -> float:
-    """Transforms time string into seconds. Supports H:MM:SS, HH:MM:SS, H:MM, M:SS formats."""
+    """Transforms time string into seconds. Supports H:MM:SS, HH:MM:SS, and M:SS formats."""
     parts = time.split(":")
     if len(parts) == 3:
         try:
