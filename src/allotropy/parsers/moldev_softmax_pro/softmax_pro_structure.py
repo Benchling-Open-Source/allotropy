@@ -3,7 +3,6 @@ from __future__ import annotations
 from abc import ABC
 from collections.abc import Iterator
 from dataclasses import dataclass, field
-from datetime import datetime
 from enum import Enum
 import math
 import re
@@ -65,14 +64,25 @@ def num_wells_to_n_columns(well_count: int) -> int:
 
 
 def time_to_seconds(time: str) -> float:
-    """Transforms HH:MM:SS formatted time into seconds"""
-    try:
-        pt = datetime.strptime(time, "%H:%M:%S").astimezone()
-    except ValueError as e:
-        msg = "Bad time formatting, expected HH:MM:SS, got {time}"
-        raise AllotropeConversionError(msg) from e
-
-    return pt.hour * 3600 + pt.minute * 60 + pt.second
+    """Transforms time string into seconds. Supports H:MM:SS, HH:MM:SS, H:MM, M:SS formats."""
+    parts = time.split(":")
+    if len(parts) == 3:
+        try:
+            h, m, s = int(parts[0]), int(parts[1]), int(parts[2])
+            return h * 3600 + m * 60 + s
+        except ValueError as e:
+            msg = f"Bad time formatting, expected HH:MM:SS, got {time}"
+            raise AllotropeConversionError(msg) from e
+    elif len(parts) == 2:
+        try:
+            m, s = int(parts[0]), int(parts[1])
+            return m * 60 + s
+        except ValueError as e:
+            msg = f"Bad time formatting, expected MM:SS, got {time}"
+            raise AllotropeConversionError(msg) from e
+    else:
+        msg = f"Bad time formatting, expected HH:MM:SS or MM:SS, got {time}"
+        raise AllotropeConversionError(msg)
 
 
 class ReadType(Enum):
@@ -256,10 +266,8 @@ class GroupData:
             # We are doing 1 for now, but we should check
             data = data.dropna(axis=1, how="all")
 
-        assert_not_none(
-            data.get("Sample"),
-            msg=f"Unable to find sample identifier column in group data {name}",
-        )
+        if data.empty or data.get("Sample") is None:
+            return GroupData(name=name, sample_data=[])
 
         calc_data_cols = GroupData.get_calculated_data_columns(data)
 
@@ -296,18 +304,10 @@ class GroupColumns:
 
     @staticmethod
     def create(reader: CsvReader) -> GroupColumns:
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t", header=0),
-            msg="Unable to find group block columns.",
-        )
+        data = reader.pop_csv_block_as_df(sep="\t", header=0)
 
-        if "Formula Name" not in data:
-            msg = "Unable to find 'Formula Name' in group block columns."
-            raise AllotropeConversionError(msg)
-
-        if "Formula" not in data:
-            msg = "Unable to find 'Formula' in group block columns."
-            raise AllotropeConversionError(msg)
+        if data is None or "Formula Name" not in data or "Formula" not in data:
+            return GroupColumns(data={})
 
         return GroupColumns(
             data=dict(zip(data["Formula Name"], data["Formula"], strict=True)),
@@ -430,8 +430,7 @@ class PlateWavelengthData:
         for position, raw_value in data.items():
             value = try_non_nan_float_or_none(raw_value)
             if value is None and elapsed_time is not None:
-                msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
-                raise AllotropeConversionError(msg)
+                continue
             data_elements[str(position)] = DataElement(
                 uuid=random_uuid_str(),
                 plate=header.name,
@@ -459,6 +458,8 @@ class PlateWavelengthData:
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
         }
         for position, value in data.items():
+            if position not in self.data_elements:
+                continue
             if value is None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
                 raise AllotropeConversionError(msg)
