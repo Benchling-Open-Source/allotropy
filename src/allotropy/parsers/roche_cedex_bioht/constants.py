@@ -29,7 +29,7 @@ DATA_HEADER_V6_V7 = [
     "sample role type",
     "col6",
     "analyte name",
-    "col8",
+    "dilution factor",
     "concentration unit",
     "flag",
     "concentration value",
