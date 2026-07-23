@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     create_measurements,
     RawMeasurement,
@@ -106,32 +106,50 @@ def test_create_measurements() -> None:
 
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
-            "lactate_LAC2B": RawMeasurement(
+            "lactate_LAC2B_None": RawMeasurement(
                 "lactate",
                 "2021-05-20T16:55:51+00:00",
                 2.45,
                 "g/L",
                 "LAC2B",
                 None,
-                {"analyte code": "LAC2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "LAC2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
-            "glutamine_GLN2B": RawMeasurement(
+            "glutamine_GLN2B_None": RawMeasurement(
                 "glutamine",
                 "2021-05-20T16:56:51+00:00",
                 4.35,
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "GLN2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
-            "osmolality_OSM2B": RawMeasurement(
+            "osmolality_OSM2B_None": RawMeasurement(
                 "osmolality",
                 "2021-05-20T16:57:51+00:00",
                 3.7448,
                 "mosm/kg",
                 "OSM2B",
                 None,
-                {"analyte code": "OSM2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "OSM2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
         }
     }
@@ -155,40 +173,61 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
 
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
-            "lactate_LAC2B": RawMeasurement(
+            "lactate_LAC2B_None": RawMeasurement(
                 "lactate",
                 "2021-05-20T16:55:51+00:00",
                 2.45,
                 "g/L",
                 "LAC2B",
                 None,
-                {"analyte code": "LAC2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "LAC2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
-            "glutamine_GLN2B": RawMeasurement(
+            "glutamine_GLN2B_None": RawMeasurement(
                 "glutamine",
                 "2021-05-20T16:56:51+00:00",
                 4.35,
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "GLN2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
         },
         "2021-05-21T16:57:51+00:00": {
-            "glutamine_GLN2B": RawMeasurement(
+            "glutamine_GLN2B_None": RawMeasurement(
                 "glutamine",
                 "2021-05-21T16:57:51+00:00",
                 3.45,
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "GLN2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
         },
     }
 
 
-def test_create_measurements_duplicate_measurements() -> None:
+def test_create_measurements_duplicate_measurements_split_into_new_group() -> None:
+    # A repeated analyte at the same dilution within the time window represents a second
+    # round of measurements, so it is split into a new group keyed by its own time rather
+    # than colliding with the first round.
     data = pd.DataFrame(
         {
             "analyte name": ["lactate", "glutamine", "glutamine"],
@@ -202,12 +241,48 @@ def test_create_measurements_duplicate_measurements() -> None:
             "analyte code": ["LAC2B", "GLN2B", "GLN2B"],
         },
     )
+    measurements = create_measurements(data)
 
-    with pytest.raises(
-        AllotropyParserError,
-        match="Duplicate measurement for GLN2B in the same measurement group. 3.45 vs 4.35",
-    ):
-        create_measurements(data)
+    assert set(measurements) == {
+        "2021-05-20T16:55:51+00:00",
+        "2021-05-20T16:57:51+00:00",
+    }
+    assert (
+        measurements["2021-05-20T16:55:51+00:00"][
+            "glutamine_GLN2B_None"
+        ].concentration_value
+        == 4.35
+    )
+    assert (
+        measurements["2021-05-20T16:57:51+00:00"][
+            "glutamine_GLN2B_None"
+        ].concentration_value
+        == 3.45
+    )
+
+
+def test_create_measurements_same_analyte_different_dilution() -> None:
+    # The same analyte measured at different dilutions in the same group is distinct, not
+    # a duplicate, so both are retained under separate ids.
+    data = pd.DataFrame(
+        {
+            "analyte name": ["glutamine", "glutamine"],
+            "measurement time": [
+                "2021-05-20T16:55:51+00:00",
+                "2021-05-20T16:56:51+00:00",
+            ],
+            "dilution factor": ["", "1/5"],
+            "concentration unit": ["mmol/L", "mmol/L"],
+            "concentration value": [4.35, 3.45],
+            "analyte code": ["GLN2B", "GLN2B"],
+        },
+    )
+    measurements = create_measurements(data)
+
+    group = measurements["2021-05-20T16:55:51+00:00"]
+    assert set(group) == {"glutamine_GLN2B_None", "glutamine_GLN2B_1/5"}
+    assert group["glutamine_GLN2B_None"].concentration_value == 4.35
+    assert group["glutamine_GLN2B_1/5"].concentration_value == 3.45
 
 
 def test_create_sample() -> None:
@@ -235,23 +310,35 @@ def test_create_sample() -> None:
     assert sample.batch == "batch_id"
     assert sample.measurements == {
         "2021-05-20 16:55:51": {
-            "lactate_LAC2B": RawMeasurement(
+            "lactate_LAC2B_None": RawMeasurement(
                 "lactate",
                 "2021-05-20 16:55:51",
                 2.45,
                 "g/L",
                 "LAC2B",
                 None,
-                {"analyte code": "LAC2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "LAC2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
-            "glutamine_GLN2B": RawMeasurement(
+            "glutamine_GLN2B_None": RawMeasurement(
                 "glutamine",
                 "2021-05-20 16:56:51",
                 4.35,
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None, "flag": None},
+                None,
+                {
+                    "analyte code": "GLN2B",
+                    "dilution factor": None,
+                    "record type": None,
+                    "flag": None,
+                },
             ),
         }
     }
