@@ -71,19 +71,19 @@ class Header:
 
     FILTER_FORMATS: ClassVar[dict[str, tuple[str, FilterHandler]]] = {
         "Raw Data (Ex/Em)": (
-            r"Raw Data \((\d+\.?\d*)/(\d+\.?\d*)\)",
+            r"Raw Data\s+\((\d+\.?\d*)/(\d+\.?\d*)\)",
             lambda m: (float(m.group(2)), float(m.group(1))),
         ),
         "Raw Data (Ex Em)": (
-            r"Raw Data \((\d+\.?\d*) (\d+\.?\d*)\)",
+            r"Raw Data\s+\((\d+\.?\d*) (\d+\.?\d*)\)",
             lambda m: (float(m.group(2)), float(m.group(1))),
         ),
         "Raw Data (Em)": (
-            r"Raw Data \((\d+\.?\d*)\)",
+            r"Raw Data\s+\((\d+\.?\d*)\)",
             lambda m: (float(m.group(1)), None),
         ),
         "Raw Data (No filter)": (
-            r"Raw Data \(No filter\)",
+            r"Raw Data\s+\(No filter\)",
             lambda _: (None, None),
         ),
     }
@@ -100,7 +100,7 @@ class Header:
 
         # Get wavelengths from RawData line
         raw_data_line = assert_not_none(
-            re.search(r"Raw Data \(.*?\)", header_content),
+            re.search(r"Raw Data\s+\(.*?\)", header_content),
             msg="Raw Data line not found in input file.",
         ).group(0)
 
