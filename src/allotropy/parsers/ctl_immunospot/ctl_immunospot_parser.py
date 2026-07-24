@@ -19,6 +19,7 @@ class CtlImmunospotParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "CTL ImmunoSpot"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = CtlImmunospotReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Optical Imaging"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

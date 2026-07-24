@@ -31,6 +31,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio RT-PCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AppBioQuantStudioReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

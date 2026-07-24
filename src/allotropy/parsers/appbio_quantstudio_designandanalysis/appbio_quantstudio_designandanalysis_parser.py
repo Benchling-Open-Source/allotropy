@@ -30,6 +30,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio Design & Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = DesignQuantstudioReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod
@@ -40,7 +41,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
             )
             sheet_names = set(wb.sheetnames)
             wb.close()
-            return "Results" in sheet_names
+            return "Results" in sheet_names or "Primary_result" in sheet_names
         except Exception:
             return False
 

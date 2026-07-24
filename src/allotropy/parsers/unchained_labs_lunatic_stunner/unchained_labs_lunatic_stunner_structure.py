@@ -115,12 +115,6 @@ def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
         if peak_info := _extract_peak_info(well_plate_data, prefix, str(peak_num)):
             peak_data.append(peak_info)
 
-    # Read "peak of interest" / "pkoi" columns to prevent them from leaking
-    # into custom_info, but don't add as a separate peak entry since it
-    # duplicates one of the numbered peaks.
-    poi_prefix = "pkoi" if uses_new_format else "peak of interest"
-    _extract_peak_info(well_plate_data, poi_prefix, "OI")
-
     return peak_data
 
 
@@ -244,7 +238,9 @@ def _create_measurement(
         well_plate_identifier=well_plate_data.get(str, "plate id"),
         batch_identifier=well_plate_data.get(str, "sample group"),
         firmware_version=header.get(str, "client version"),
-        number_of_averages=well_plate_data.get(float, "number of acquisitions"),
+        number_of_averages=well_plate_data.get(
+            float, ("number of acquisitions", "number of acquisitions (total)")
+        ),
         integration_time=well_plate_data.get(float, "acquisition time (s)"),
         compartment_temperature=well_plate_data.get(float, "temperature (°c)"),
         sample_custom_info={
@@ -259,13 +255,18 @@ def _create_measurement(
             "molecular weight (kda)": well_plate_data.get(
                 float, "molecular weight (kda)"
             ),
+            "sample role type": well_plate_data.get(str, "b/s/f/r"),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
             "column": header.get(str, "column") or well_plate_data.get(str, "column"),
             "Number of acquisitions used": well_plate_data.get(
-                str, "number of acquisitions used"
+                str,
+                (
+                    "number of acquisitions used",
+                    "number of acquisitions used (total)",
+                ),
             ),
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
@@ -434,20 +435,27 @@ def _get_calculated_data_values(
     error_documents: list[ErrorDocument] = []
     for wavelength_column in wavelength_columns:
         for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-            value, is_na = _get_calculated_value_and_is_na(
-                well_plate_data, item["column"]
-            )
-            # Only create error docs when the cell is the literal "N/A"
+            canonical_column = str(item["column"])
+            alt_columns = item.get("alt_columns", [])
+            columns_to_try = [
+                canonical_column,
+                *(alt_columns if isinstance(alt_columns, list) else []),
+            ]
+            value: float | None = None
+            is_na = False
+            for col in columns_to_try:
+                value, is_na = _get_calculated_value_and_is_na(well_plate_data, col)
+                if value is not None:
+                    break
             if is_na:
                 error_documents.append(
                     ErrorDocument(
                         error=NOT_APPLICABLE,
-                        error_feature=item["name"],
+                        error_feature=str(item["name"]),
                     )
                 )
-            # Skip missing cells entirely; include numeric values
             if value is not None:
-                calculated_data_values[item["column"]] = value
+                calculated_data_values[canonical_column] = value
     return calculated_data_values, error_documents
 
 
@@ -506,6 +514,40 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
                     "background wvl. (nm)",
                     "plate id",
                     "plate position",
+                    "analyte",
+                    "buffer",
+                    "b/s/f/r",
+                    "acquisition filtering",
+                    "number of acquisitions",
+                    "number of acquisitions used",
+                    "number of acquisitions (total)",
+                    "number of acquisitions used (total)",
+                    "acquisition time (s)",
+                    "temperature (°c)",
+                    "molecular weight (kda)",
+                    # DLS calculated data columns
+                    "intercept",
+                    "number of peaks",
+                    "number of angles",
+                    r"^angles measured.*",
+                    r"^z.avg dia.*",
+                    "pdi",
+                    r"^sd dia.*",
+                    r"^diffusion coefficient.*",
+                    r"^rayleigh ratio r.*",
+                    r"^optical contrast constant.*",
+                    r"^viscosity at.*",
+                    r"^ri at.*",
+                    r"^derived intensity.*",
+                    r"^diameter @.*",
+                    r"^kc/r.*",
+                    r"^kd .*",
+                    r"^b22.*",
+                    # Peak columns (pk1, pk2, ..., pkoi, peak 1, peak 2, ...)
+                    r"^pk\d+.*",
+                    r"^pkoi.*",
+                    r"^peak \d+.*",
+                    r"^peak of interest.*",
                     # Strings to skip since these are already captured as measurements/calculated data
                     # Skip absorbance spectrum measurements with a### (10mm)
                     r"^a\d{3} \(10mm\)$",

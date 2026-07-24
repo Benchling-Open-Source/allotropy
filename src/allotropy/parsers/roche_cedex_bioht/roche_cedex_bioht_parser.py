@@ -23,6 +23,7 @@ class RocheCedexBiohtParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Roche Cedex BioHT"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = RocheCedexBiohtReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Metabolite Detection"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

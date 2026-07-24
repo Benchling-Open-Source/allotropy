@@ -5,6 +5,100 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.142] - 2026-07-23
+
+### Fixed
+
+- Support EnVision calculated formulas without a name prefix (#1246)
+- Handle dilutions, replicate measurements, and mmol/l unit in Roche Cedex Bio HT (#1244)
+- Handle multiple spaces in Raw Data line for BMG MARS parser (#1243)
+
+## [0.1.141] - 2026-07-14
+
+### Fixed
+
+- Handle trailing tabs and quoted fields in Agilent Gen5 parser (#1241)
+- Support SpectraMax 340PC-384 kinetic files in SoftMax Pro parser (#1240)
+
+## [0.1.140] - 2026-06-30
+
+### Fixed
+
+- Support HIAC Run Counter format in .xlsx files for Beckman PharmSpec parser (#1238)
+
+## [0.1.139] - 2026-06-29
+
+### Fixed
+
+- Surface previously skipped columns as custom info in NovaBio Flex2 parser (#1236)
+
+## [0.1.138] - 2026-06-29
+
+### Fixed
+
+- Handle special characters in Machine ID in Mabtech APEX parser (#1234)
+
+## [0.1.137] - 2026-06-17
+
+### Added
+
+- Add HIAC .xls file support to Beckman PharmSpec parser (#1232)
+
+### Fixed
+
+- Accept numeric-only Machine ID in Mabtech APEX parser (#1231)
+
+## [0.1.136] - 2026-06-11
+
+### Fixed
+
+- Make space optional in Cytiva UNICORN UV curve regexes (#1229)
+
+## [0.1.135] - 2026-06-10
+
+### Added
+
+- Add Diomni v4.2/4.3 file support to QuantStudio Design & Analysis parser (#1224)
+- Add Vi-Cell XR single-sample report format support (#1222)
+- Add SUPPORTED_DETECTION_MODES to parsers for auto-generated table (#1219)
+
+## [0.1.134] - 2026-06-02
+
+### Fixed
+
+- Make schema registry building fully deterministic (#1220)
+
+## [0.1.133] - 2026-06-02
+
+### Fixed
+
+- Upgrade jsonschema from <4.18.0 to >=4.18.0 (#1217)
+
+## [0.1.132] - 2026-06-01
+
+### Fixed
+
+- Report Peak of Interest data as calculated data in Stunner parser (#1215)
+
+## [0.1.131] - 2026-06-01
+
+### Fixed
+
+- Resolve duplicate columns in Stunner DLS output (#1213)
+- Correct peak height and area unit conversions in Chromeleon parser (#1212)
+
+## [0.1.130] - 2026-05-26
+
+### Fixed
+
+- Map relative area group and calibration points in Chromeleon parser (#1210)
+
+## [0.1.129] - 2026-05-26
+
+### Fixed
+
+- Map missing fields in Chromeleon parser for adapter migration (#1207)
+
 ## [0.1.128] - 2026-05-21
 
 ### Fixed

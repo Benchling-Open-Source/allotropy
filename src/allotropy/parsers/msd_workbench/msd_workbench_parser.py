@@ -40,6 +40,7 @@ class MSDWorkbenchParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "MSD Discovery Workbench"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = MSDWorkbenchReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Luminescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

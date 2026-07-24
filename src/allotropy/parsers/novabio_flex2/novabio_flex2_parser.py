@@ -24,6 +24,9 @@ class NovaBioFlexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "NovaBio Flex2"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"
+    SUPPORTED_DETECTION_MODES = (
+        "Metabolite Detection, Blood Gas, pH, Osmolality, Cell Counting"
+    )
     SCHEMA_MAPPER = Mapper
 
     @classmethod

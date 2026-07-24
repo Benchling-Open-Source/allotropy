@@ -388,10 +388,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Polydispersity Index",
+                    "calculated data name": "Z Average Diameter",
                     "calculated result": {
                         "value": -0.0,
-                        "unit": "(unitless)"
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_31",
                     "data source aggregate document": {
@@ -404,10 +404,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Polydispersity Index",
+                    "calculated data name": "Z Average Diameter",
                     "calculated result": {
-                        "value": 0.08,
-                        "unit": "(unitless)"
+                        "value": 12.5,
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_32",
                     "data source aggregate document": {
@@ -420,10 +420,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Polydispersity Index",
+                    "calculated data name": "Z Average Diameter",
                     "calculated result": {
-                        "value": 0.15,
-                        "unit": "(unitless)"
+                        "value": 18.7,
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_33",
                     "data source aggregate document": {
@@ -436,10 +436,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Polydispersity Index",
+                    "calculated data name": "Z Average Diameter",
                     "calculated result": {
-                        "value": 0.22,
-                        "unit": "(unitless)"
+                        "value": 25.4,
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_34",
                     "data source aggregate document": {
@@ -452,7 +452,7 @@
                     }
                 },
                 {
-                    "calculated data name": "Diffusion coefficient",
+                    "calculated data name": "Polydispersity Index",
                     "calculated result": {
                         "value": -0.0,
                         "unit": "(unitless)"
@@ -468,9 +468,9 @@
                     }
                 },
                 {
-                    "calculated data name": "Diffusion coefficient",
+                    "calculated data name": "Polydispersity Index",
                     "calculated result": {
-                        "value": 34.28,
+                        "value": 0.08,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_36",
@@ -484,9 +484,9 @@
                     }
                 },
                 {
-                    "calculated data name": "Diffusion coefficient",
+                    "calculated data name": "Polydispersity Index",
                     "calculated result": {
-                        "value": 22.91,
+                        "value": 0.15,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_37",
@@ -500,9 +500,9 @@
                     }
                 },
                 {
-                    "calculated data name": "Diffusion coefficient",
+                    "calculated data name": "Polydispersity Index",
                     "calculated result": {
-                        "value": 16.87,
+                        "value": 0.22,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_38",
@@ -516,10 +516,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Derived intensity (cps)",
+                    "calculated data name": "Diameter Standard Deviation",
                     "calculated result": {
                         "value": -0.0,
-                        "unit": "(unitless)"
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_39",
                     "data source aggregate document": {
@@ -532,10 +532,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Derived intensity (cps)",
+                    "calculated data name": "Diameter Standard Deviation",
                     "calculated result": {
-                        "value": 8500000.0,
-                        "unit": "(unitless)"
+                        "value": 3.21,
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_40",
                     "data source aggregate document": {
@@ -548,10 +548,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Derived intensity (cps)",
+                    "calculated data name": "Diameter Standard Deviation",
                     "calculated result": {
-                        "value": 12000000.0,
-                        "unit": "(unitless)"
+                        "value": 7.82,
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_41",
                     "data source aggregate document": {
@@ -564,10 +564,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Derived intensity (cps)",
+                    "calculated data name": "Diameter Standard Deviation",
                     "calculated result": {
-                        "value": 15000000.0,
-                        "unit": "(unitless)"
+                        "value": 12.1,
+                        "unit": "nm"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_42",
                     "data source aggregate document": {
@@ -580,7 +580,7 @@
                     }
                 },
                 {
-                    "calculated data name": "Rayleigh ratio R",
+                    "calculated data name": "Diffusion coefficient",
                     "calculated result": {
                         "value": -0.0,
                         "unit": "(unitless)"
@@ -596,12 +596,524 @@
                     }
                 },
                 {
+                    "calculated data name": "Diffusion coefficient",
+                    "calculated result": {
+                        "value": 34.28,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_44",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Diffusion coefficient",
+                    "calculated result": {
+                        "value": 22.91,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_45",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Diffusion coefficient",
+                    "calculated result": {
+                        "value": 16.87,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_46",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mean Diameter",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_47",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mean Diameter",
+                    "calculated result": {
+                        "value": 12.5,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_48",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mean Diameter",
+                    "calculated result": {
+                        "value": 13.2,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mean Diameter",
+                    "calculated result": {
+                        "value": 14.1,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_50",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Est. MW",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "kDa"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_51",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Est. MW",
+                    "calculated result": {
+                        "value": 195.0,
+                        "unit": "kDa"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_52",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Est. MW",
+                    "calculated result": {
+                        "value": 210.0,
+                        "unit": "kDa"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_53",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Est. MW",
+                    "calculated result": {
+                        "value": 225.0,
+                        "unit": "kDa"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_54",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Intensity",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_55",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Intensity",
+                    "calculated result": {
+                        "value": 100.0,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_56",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Intensity",
+                    "calculated result": {
+                        "value": 82.5,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_57",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Intensity",
+                    "calculated result": {
+                        "value": 65.0,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_58",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_59",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass",
+                    "calculated result": {
+                        "value": 100.0,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass",
+                    "calculated result": {
+                        "value": 98.7,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_61",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass",
+                    "calculated result": {
+                        "value": 92.1,
+                        "unit": "%"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_62",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass Mean Diameter",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_63",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass Mean Diameter",
+                    "calculated result": {
+                        "value": 12.1,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_64",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass Mean Diameter",
+                    "calculated result": {
+                        "value": 12.8,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_65",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Mass Mean Diameter",
+                    "calculated result": {
+                        "value": 13.5,
+                        "unit": "nm"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Rayleigh Ratio R",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Rayleigh Ratio R",
+                    "calculated result": {
+                        "value": 0.000312,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Rayleigh Ratio R",
+                    "calculated result": {
+                        "value": 0.000289,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Peak of Interest Rayleigh Ratio R",
+                    "calculated result": {
+                        "value": 0.000198,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Derived intensity (cps)",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_71",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Derived intensity (cps)",
+                    "calculated result": {
+                        "value": 8500000.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_72",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Derived intensity (cps)",
+                    "calculated result": {
+                        "value": 12000000.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_73",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Derived intensity (cps)",
+                    "calculated result": {
+                        "value": 15000000.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_74",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Rayleigh ratio R",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_75",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
                     "calculated data name": "Rayleigh ratio R",
                     "calculated result": {
                         "value": 0.000245,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_44",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_76",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -617,7 +1129,7 @@
                         "value": 0.000341,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_45",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_77",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -633,7 +1145,7 @@
                         "value": 0.000425,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_46",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_78",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -649,7 +1161,7 @@
                         "value": -0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_47",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_79",
                     "calculation description": "y = NaNx + NaN",
                     "data source aggregate document": {
                         "data source document": [
@@ -666,7 +1178,7 @@
                         "value": 0.98,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_48",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_80",
                     "calculation description": "y = -0.052x + 11.8",
                     "data source aggregate document": {
                         "data source document": [
@@ -683,7 +1195,7 @@
                         "value": 0.95,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_49",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_81",
                     "calculation description": "y = -0.038x + 12.1",
                     "data source aggregate document": {
                         "data source document": [
@@ -700,7 +1212,7 @@
                         "value": -0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_50",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_82",
                     "calculation description": "y = NaNx + NaN",
                     "data source aggregate document": {
                         "data source document": [
@@ -717,7 +1229,7 @@
                         "value": -0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_51",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_83",
                     "calculation description": "y = NaNx + NaN",
                     "data source aggregate document": {
                         "data source document": [
@@ -734,7 +1246,7 @@
                         "value": 0.97,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_52",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_84",
                     "calculation description": "y = -1.05e-04x + 11.8",
                     "data source aggregate document": {
                         "data source document": [
@@ -751,7 +1263,7 @@
                         "value": 0.93,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_53",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_85",
                     "calculation description": "y = -8.2e-05x + 12.1",
                     "data source aggregate document": {
                         "data source document": [
@@ -768,7 +1280,7 @@
                         "value": -0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_54",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_86",
                     "calculation description": "y = NaNx + NaN",
                     "data source aggregate document": {
                         "data source document": [
@@ -785,7 +1297,7 @@
                         "value": 0.89,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_55",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_87",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -801,7 +1313,7 @@
                         "value": 0.89,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_56",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_88",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -817,7 +1329,7 @@
                         "value": 0.89,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_57",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_89",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -833,7 +1345,7 @@
                         "value": 0.89,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_58",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_90",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -844,12 +1356,12 @@
                     }
                 },
                 {
-                    "calculated data name": "Viscosity at 20\u00b0C (cP)",
+                    "calculated data name": "Viscosity at 20°C (cP)",
                     "calculated result": {
                         "value": 1.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_59",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_91",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -860,12 +1372,12 @@
                     }
                 },
                 {
-                    "calculated data name": "Viscosity at 20\u00b0C (cP)",
+                    "calculated data name": "Viscosity at 20°C (cP)",
                     "calculated result": {
                         "value": 1.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_60",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_92",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -876,12 +1388,12 @@
                     }
                 },
                 {
-                    "calculated data name": "Viscosity at 20\u00b0C (cP)",
+                    "calculated data name": "Viscosity at 20°C (cP)",
                     "calculated result": {
                         "value": 1.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_61",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_93",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -892,12 +1404,12 @@
                     }
                 },
                 {
-                    "calculated data name": "Viscosity at 20\u00b0C (cP)",
+                    "calculated data name": "Viscosity at 20°C (cP)",
                     "calculated result": {
                         "value": 1.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_62",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_94",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -913,7 +1425,7 @@
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_63",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_95",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -929,7 +1441,7 @@
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_64",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_96",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -945,7 +1457,7 @@
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_65",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_97",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -961,7 +1473,7 @@
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_66",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_98",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -972,12 +1484,12 @@
                     }
                 },
                 {
-                    "calculated data name": "RI at 20\u00b0C",
+                    "calculated data name": "RI at 20°C",
                     "calculated result": {
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_67",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_99",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -988,12 +1500,12 @@
                     }
                 },
                 {
-                    "calculated data name": "RI at 20\u00b0C",
+                    "calculated data name": "RI at 20°C",
                     "calculated result": {
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_68",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_100",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1004,12 +1516,12 @@
                     }
                 },
                 {
-                    "calculated data name": "RI at 20\u00b0C",
+                    "calculated data name": "RI at 20°C",
                     "calculated result": {
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_69",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_101",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1020,12 +1532,12 @@
                     }
                 },
                 {
-                    "calculated data name": "RI at 20\u00b0C",
+                    "calculated data name": "RI at 20°C",
                     "calculated result": {
                         "value": 1.334,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_70",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_102",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1041,7 +1553,7 @@
                         "value": -0.0,
                         "unit": "nm"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_71",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_103",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1057,7 +1569,7 @@
                         "value": 11.8,
                         "unit": "nm"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_72",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_104",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1073,7 +1585,7 @@
                         "value": 12.1,
                         "unit": "nm"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_73",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_105",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1089,7 +1601,71 @@
                         "value": -0.0,
                         "unit": "nm"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_74",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_106",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Number of Peaks",
+                    "calculated result": {
+                        "value": -0.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_107",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Number of Peaks",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_108",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Number of Peaks",
+                    "calculated result": {
+                        "value": 2.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_109",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                                "data source feature": "dynamic light scattering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Number of Peaks",
+                    "calculated result": {
+                        "value": 3.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_110",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1105,7 +1681,7 @@
             "ASM file identifier": "Unchained_Labs_Stunner_example02.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.127",
+            "ASM converter version": "0.1.131",
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Unchained_Labs_Stunner_example02.xlsx",
             "file name": "Unchained_Labs_Stunner_example02.xlsx",
             "software name": "Lunatic and Stunner Analysis",
@@ -1188,11 +1764,43 @@
                                     },
                                     {
                                         "error": "N/A",
+                                        "error feature": "Z Average Diameter"
+                                    },
+                                    {
+                                        "error": "N/A",
                                         "error feature": "Polydispersity Index"
                                     },
                                     {
                                         "error": "N/A",
+                                        "error feature": "Diameter Standard Deviation"
+                                    },
+                                    {
+                                        "error": "N/A",
                                         "error feature": "Diffusion coefficient"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Peak of Interest Mean Diameter"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Peak of Interest Est. MW"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Peak of Interest Intensity"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Peak of Interest Mass"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Peak of Interest Mass Mean Diameter"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Peak of Interest Rayleigh Ratio R"
                                     },
                                     {
                                         "error": "N/A",
@@ -1216,6 +1824,10 @@
                                     },
                                     {
                                         "error": "N/A",
+                                        "error feature": "Number of Peaks"
+                                    },
+                                    {
+                                        "error": "N/A",
                                         "error feature": "absorbance"
                                     }
                                 ]
@@ -1228,11 +1840,6 @@
                             "absorbance": {
                                 "value": -0.0,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "z-avg dia. (nm)": "N/A",
-                                "number of peaks": "N/A",
-                                "sd dia. (nm)": "N/A"
                             }
                         }
                     ],
@@ -1335,11 +1942,6 @@
                             "absorbance": {
                                 "value": 7.02,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "z-avg dia. (nm)": 12.5,
-                                "number of peaks": 1.0,
-                                "sd dia. (nm)": 3.21
                             }
                         }
                     ],
@@ -1465,11 +2067,6 @@
                             "absorbance": {
                                 "value": 13.77,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "z-avg dia. (nm)": 18.7,
-                                "number of peaks": 2.0,
-                                "sd dia. (nm)": 7.82
                             }
                         }
                     ],
@@ -1642,11 +2239,6 @@
                             "absorbance": {
                                 "value": 20.83,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "z-avg dia. (nm)": 25.4,
-                                "number of peaks": 3.0,
-                                "sd dia. (nm)": 12.1
                             }
                         }
                     ],

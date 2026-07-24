@@ -21,6 +21,7 @@ class AgilentTapestationAnalysisParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent TapeStation Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xml"
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

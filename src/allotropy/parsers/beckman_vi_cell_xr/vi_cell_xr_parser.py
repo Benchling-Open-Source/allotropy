@@ -29,6 +29,7 @@ class ViCellXRParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman Coulter Vi-Cell XR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt,xls,xlsx"
+    SUPPORTED_DETECTION_MODES = "Brightfield"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

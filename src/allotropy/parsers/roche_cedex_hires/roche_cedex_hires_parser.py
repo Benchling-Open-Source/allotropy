@@ -25,6 +25,7 @@ class RocheCedexHiResParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = RocheCedexHiResReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Brightfield"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

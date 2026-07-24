@@ -21,6 +21,9 @@ class KaleidoParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
     SUPPORTED_EXTENSIONS = "csv"
+    SUPPORTED_DETECTION_MODES = (
+        "Absorbance, Fluorescence, Luminescence, Optical Imaging"
+    )
 
     @classmethod
     def sniff(cls, named_file_contents: NamedFileContents) -> bool:

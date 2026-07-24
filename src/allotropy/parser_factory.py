@@ -208,6 +208,10 @@ class Vendor(Enum):
         ]
 
     @property
+    def supported_detection_modes(self) -> str | None:
+        return self.get_parser().SUPPORTED_DETECTION_MODES
+
+    @property
     def manifests(self) -> list[str]:
         # NOTE: this is a list because eventually parsers will support multiple schemas as they are upgraded.
         return [self.get_parser()._get_mapper().MANIFEST]
@@ -355,16 +359,16 @@ def get_table_contents() -> str:
             continue
         table_data[vendor.technique].append(vendor)
 
-    contents += '[cols="4*^.^"]\n'
+    contents += '[cols="5*^.^"]\n'
     contents += "|===\n"
-    contents += (
-        "|Instrument Category|Instrument Software|Release Status|Exported ASM Schema\n"
-    )
+    contents += "|Instrument Category|Instrument Software|Release Status|Exported ASM Schema|Supported Detection Modes\n"
     for technique in sorted(table_data):
         vendors = table_data[technique]
-        contents += f".{len(vendors)}+|{technique}|{vendors[0].display_name}|{vendors[0].release_state}|{vendors[0].asm_versions[0]}\n"
+        modes = vendors[0].supported_detection_modes or "N/A"
+        contents += f".{len(vendors)}+|{technique}|{vendors[0].display_name}|{vendors[0].release_state}|{vendors[0].asm_versions[0]}|{modes}\n"
         for vendor in vendors[1:]:
-            contents += f"|{vendor.display_name}|{vendor.release_state}|{vendor.asm_versions[0]}\n"
+            modes = vendor.supported_detection_modes or "N/A"
+            contents += f"|{vendor.display_name}|{vendor.release_state}|{vendor.asm_versions[0]}|{modes}\n"
     contents += "|==="
 
     return contents

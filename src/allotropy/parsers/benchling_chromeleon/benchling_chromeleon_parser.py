@@ -24,6 +24,7 @@ class BenchlingChromeleonParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BenchlingChromeleonReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence, Conductivity"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

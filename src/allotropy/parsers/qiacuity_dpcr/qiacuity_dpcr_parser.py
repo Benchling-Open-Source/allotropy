@@ -25,6 +25,7 @@ class QiacuitydPCRParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Qiacuity dPCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = QiacuitydPCRReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod

@@ -1,6 +1,30 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
     "liquid chromatography aggregate document": {
+        "data system document": {
+            "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
+            "ASM converter version": "0.1.130",
+            "file name": "chromeleon_example.json",
+            "software name": "Thermo Fisher Scientific Chromeleon",
+            "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example.json"
+        },
+        "device system document": {
+            "asset management identifier": "N/A",
+            "device document": [
+                {
+                    "device type": "pump",
+                    "model number": "HPG-3200RS"
+                },
+                {
+                    "device type": "uv",
+                    "model number": "DAD-3000RS"
+                },
+                {
+                    "device type": "sampler",
+                    "model number": "N/A"
+                }
+            ]
+        },
         "liquid chromatography document": [
             {
                 "measurement aggregate document": {
@@ -9,7 +33,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -33,7 +57,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA1"
+                                "location identifier": "RA1",
+                                "written name": "Blank"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -56,11 +81,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -105,7 +130,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -120,11 +147,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -169,7 +196,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -184,11 +213,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -227,6 +256,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -270,29 +303,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -301,7 +329,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -325,7 +353,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA2"
+                                "location identifier": "RA2",
+                                "written name": "SST Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -348,11 +377,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -397,7 +426,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -412,11 +443,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -461,7 +492,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -476,11 +509,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -519,6 +552,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -562,29 +599,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -593,7 +625,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -617,7 +649,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA3"
+                                "location identifier": "RA3",
+                                "written name": "SST Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -640,11 +673,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -689,7 +722,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -704,11 +739,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -753,7 +788,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -768,11 +805,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -811,6 +848,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -854,29 +895,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -885,7 +921,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -909,7 +945,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA4"
+                                "location identifier": "RA4",
+                                "written name": "SST Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -932,11 +969,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -981,7 +1018,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -996,11 +1035,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1045,7 +1084,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1060,11 +1101,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1103,6 +1144,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -1146,29 +1191,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -1177,7 +1217,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -1201,7 +1241,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA5"
+                                "location identifier": "RA5",
+                                "written name": "SST Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -1224,11 +1265,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1273,7 +1314,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1288,11 +1331,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1337,7 +1380,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1352,11 +1397,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1395,6 +1440,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -1438,29 +1487,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -1469,7 +1513,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -1493,7 +1537,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA6"
+                                "location identifier": "RA6",
+                                "written name": "SST Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -1516,11 +1561,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1565,7 +1610,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1580,11 +1627,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1629,7 +1676,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1644,11 +1693,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1687,6 +1736,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -1730,29 +1783,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -1761,7 +1809,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -1785,7 +1833,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA7"
+                                "location identifier": "RA7",
+                                "written name": "Calibration Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -1808,11 +1857,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1857,7 +1906,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1872,11 +1923,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1921,7 +1972,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -1936,11 +1989,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -1979,6 +2032,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -2022,29 +2079,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -2053,7 +2105,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -2077,7 +2129,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RA8"
+                                "location identifier": "RA8",
+                                "written name": "Calibration Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -2100,11 +2153,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2149,7 +2202,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -2164,11 +2219,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2213,7 +2268,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -2228,11 +2285,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2271,6 +2328,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -2314,29 +2375,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -2345,7 +2401,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -2369,7 +2425,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB1"
+                                "location identifier": "RB1",
+                                "written name": "Dosage Unit 1"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -2392,11 +2449,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2441,7 +2498,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -2456,11 +2515,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2505,7 +2564,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -2520,11 +2581,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2563,6 +2624,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -2606,29 +2671,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -2637,7 +2697,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -2661,7 +2721,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB2"
+                                "location identifier": "RB2",
+                                "written name": "Dosage Unit 2"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -2684,11 +2745,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.10622303378582297,
+                                                        "value": 106.22303378582298,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0026117990654063047,
+                                                        "value": 156.7079439243783,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2725,7 +2786,9 @@
                                                         "unit": "s"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7921827104097128
+                                                        "chromatographic peak resolution (usp)": 1.7921827104097128,
+                                                        "relative area group": 37.81610105503127,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -2740,11 +2803,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08341861644507235,
+                                                        "value": 83.41861644507236,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002194014917307882,
+                                                        "value": 131.64089503847293,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2789,7 +2852,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.67820507372619
+                                                        "chromatographic peak resolution (usp)": 2.67820507372619,
+                                                        "relative area group": 31.767026387328094,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -2804,11 +2869,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07361934335516412,
+                                                        "value": 73.61934335516412,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002100765470322303,
+                                                        "value": 126.04592821933818,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -2847,6 +2912,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2376060633263086,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 30.416872557640634,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -2890,29 +2959,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -2921,7 +2985,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -2945,7 +3009,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB3"
+                                "location identifier": "RB3",
+                                "written name": "Dosage Unit 3"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -2968,11 +3033,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11088799843208963,
+                                                        "value": 110.88799843208963,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030250093044811178,
+                                                        "value": 181.50055826886708,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3017,7 +3082,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7437195488170474
+                                                        "chromatographic peak resolution (usp)": 1.7437195488170474,
+                                                        "relative area group": 42.04181668099132,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3032,11 +3099,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.0857562251029818,
+                                                        "value": 85.7562251029818,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023302197867473944,
+                                                        "value": 139.81318720484367,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3073,7 +3140,9 @@
                                                         "unit": "s"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.695214860804459
+                                                        "chromatographic peak resolution (usp)": 2.695214860804459,
+                                                        "relative area group": 32.38557744458143,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3088,11 +3157,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07056554764133181,
+                                                        "value": 70.56554764133182,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0018400101807433805,
+                                                        "value": 110.40061084460284,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3131,6 +3200,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2344967852555495,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 25.572605874427246,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -3174,29 +3247,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -3205,7 +3273,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -3229,7 +3297,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB4"
+                                "location identifier": "RB4",
+                                "written name": "Dosage Unit 4"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -3252,11 +3321,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11119161067151861,
+                                                        "value": 111.19161067151862,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030477351574798553,
+                                                        "value": 182.8641094487913,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3301,7 +3370,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7408423252069716
+                                                        "chromatographic peak resolution (usp)": 1.7408423252069716,
+                                                        "relative area group": 40.58699726408905,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3316,11 +3387,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08589027909727787,
+                                                        "value": 85.89027909727787,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002360248475208721,
+                                                        "value": 141.61490851252327,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3365,7 +3436,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6492481035473205
+                                                        "chromatographic peak resolution (usp)": 2.6492481035473205,
+                                                        "relative area group": 31.43166760102576,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3380,11 +3453,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07362407832334805,
+                                                        "value": 73.62407832334806,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0021011581194076284,
+                                                        "value": 126.06948716445771,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3423,6 +3496,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.237602783081184,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.981335134885185,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -3466,29 +3543,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -3497,7 +3569,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -3521,7 +3593,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB5"
+                                "location identifier": "RB5",
+                                "written name": "Dosage Unit 5"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -3544,11 +3617,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11168532893211912,
+                                                        "value": 111.68532893211912,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030856740484843134,
+                                                        "value": 185.1404429090588,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3593,7 +3666,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7412426300787887
+                                                        "chromatographic peak resolution (usp)": 1.7412426300787887,
+                                                        "relative area group": 41.237012758952396,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3608,11 +3683,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08556478427935824,
+                                                        "value": 85.56478427935824,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002325504087190442,
+                                                        "value": 139.53024523142653,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3657,7 +3732,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.658792313762178
+                                                        "chromatographic peak resolution (usp)": 2.658792313762178,
+                                                        "relative area group": 31.078085438600628,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3672,11 +3749,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07329811104821975,
+                                                        "value": 73.29811104821975,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002071599694332889,
+                                                        "value": 124.29598165997334,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3715,6 +3792,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2378454118741702,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.684901802446973,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -3758,29 +3839,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -3789,7 +3865,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -3813,7 +3889,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB6"
+                                "location identifier": "RB6",
+                                "written name": "Dosage Unit 6"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -3836,11 +3913,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11180531684806054,
+                                                        "value": 111.80531684806054,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.003111761448391765,
+                                                        "value": 186.7056869035059,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3885,7 +3962,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.740979771724609
+                                                        "chromatographic peak resolution (usp)": 1.740979771724609,
+                                                        "relative area group": 41.57749171119995,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3900,11 +3979,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08552572684346832,
+                                                        "value": 85.52572684346832,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002321580274574739,
+                                                        "value": 139.29481647448432,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -3949,7 +4028,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6606635927954727
+                                                        "chromatographic peak resolution (usp)": 2.6606635927954727,
+                                                        "relative area group": 31.019564392670027,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -3964,11 +4045,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07329135314977982,
+                                                        "value": 73.29135314977982,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0020509035268582556,
+                                                        "value": 123.05421161149533,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4007,6 +4088,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2136076910692162,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.40294389613003,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -4050,29 +4135,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -4081,7 +4161,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -4105,7 +4185,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB7"
+                                "location identifier": "RB7",
+                                "written name": "Dosage Unit 7"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -4128,11 +4209,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11142461625108377,
+                                                        "value": 111.42461625108376,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030709707677926737,
+                                                        "value": 184.25824606756044,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4177,7 +4258,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7495471541221888
+                                                        "chromatographic peak resolution (usp)": 1.7495471541221888,
+                                                        "relative area group": 41.73274045443911,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -4192,11 +4275,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08484779422860798,
+                                                        "value": 84.84779422860798,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0022732265303155724,
+                                                        "value": 136.39359181893434,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4241,7 +4324,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.677192009548953
+                                                        "chromatographic peak resolution (usp)": 2.677192009548953,
+                                                        "relative area group": 30.89185145581615,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -4256,11 +4341,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07287033590273688,
+                                                        "value": 72.87033590273688,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0020144633945566536,
+                                                        "value": 120.86780367339922,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4299,6 +4384,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.1888826766372835,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.375408089744745,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -4342,29 +4431,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -4373,7 +4457,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -4397,7 +4481,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RB8"
+                                "location identifier": "RB8",
+                                "written name": "Dosage Unit 8"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -4420,11 +4505,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11048838942705087,
+                                                        "value": 110.48838942705088,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002986527171581122,
+                                                        "value": 179.1916302948673,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4469,7 +4554,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7576977725711733
+                                                        "chromatographic peak resolution (usp)": 1.7576977725711733,
+                                                        "relative area group": 41.336289352689626,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -4484,11 +4571,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08453207394196331,
+                                                        "value": 84.53207394196332,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0022552482085311347,
+                                                        "value": 135.31489251186807,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4533,7 +4620,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6879874289445005
+                                                        "chromatographic peak resolution (usp)": 2.6879874289445005,
+                                                        "relative area group": 31.214714333445567,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -4548,11 +4637,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07246050970519374,
+                                                        "value": 72.46050970519374,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.001983176879388989,
+                                                        "value": 118.99061276333934,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4591,6 +4680,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.169106443716203,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.448996313864807,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -4634,29 +4727,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -4665,7 +4753,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -4689,7 +4777,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RC1"
+                                "location identifier": "RC1",
+                                "written name": "Dosage Unit 9"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -4712,11 +4801,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11185134672580614,
+                                                        "value": 111.85134672580614,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0031126556539685132,
+                                                        "value": 186.75933923811078,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4761,7 +4850,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7339906038336619
+                                                        "chromatographic peak resolution (usp)": 1.7339906038336619,
+                                                        "relative area group": 41.01098690688492,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -4776,11 +4867,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08623895787433863,
+                                                        "value": 86.23895787433864,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023763880676600387,
+                                                        "value": 142.58328405960233,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4825,7 +4916,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6452680063735947
+                                                        "chromatographic peak resolution (usp)": 2.6452680063735947,
+                                                        "relative area group": 31.310247827840602,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -4840,11 +4933,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07361934335516412,
+                                                        "value": 73.61934335516412,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002100765470322303,
+                                                        "value": 126.04592821933818,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -4883,6 +4976,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2376060633263086,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.67876526527448,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -4926,29 +5023,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -4957,7 +5049,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -4981,7 +5073,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RC2"
+                                "location identifier": "RC2",
+                                "written name": "Dosage Unit 10"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -5004,11 +5097,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11231315585094342,
+                                                        "value": 112.31315585094343,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.003193813898644739,
+                                                        "value": 191.62883391868434,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5053,7 +5146,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7294086271087814
+                                                        "chromatographic peak resolution (usp)": 1.7294086271087814,
+                                                        "relative area group": 41.650661358875176,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5068,11 +5163,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08647036991946239,
+                                                        "value": 86.47036991946239,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023735195145676907,
+                                                        "value": 142.41117087406144,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5109,7 +5204,9 @@
                                                         "unit": "s"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.642611786755101
+                                                        "chromatographic peak resolution (usp)": 2.642611786755101,
+                                                        "relative area group": 30.95316780100753,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5124,11 +5221,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.07361934335516412,
+                                                        "value": 73.61934335516412,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002100765470322303,
+                                                        "value": 126.04592821933818,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5167,6 +5264,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2376060633263086,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.396170840117303,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -5210,29 +5311,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -5241,7 +5337,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -5265,7 +5361,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RC3"
+                                "location identifier": "RC3",
+                                "written name": "Calibration Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -5288,11 +5385,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5337,7 +5434,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5352,11 +5451,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5401,7 +5500,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5416,11 +5517,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5459,6 +5560,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -5502,29 +5607,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -5533,7 +5633,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -5557,7 +5657,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RC4"
+                                "location identifier": "RC4",
+                                "written name": "Calibration Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -5580,11 +5681,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5629,7 +5730,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5644,11 +5747,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5693,7 +5796,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5708,11 +5813,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5751,6 +5856,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -5794,29 +5903,24 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             },
             {
                 "measurement aggregate document": {
@@ -5825,7 +5929,7 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC",
+                                        "device type": "UV_VIS_1",
                                         "detection type": "single channel",
                                         "detector wavelength setting": {
                                             "value": 230.0,
@@ -5849,7 +5953,8 @@
                             "sample document": {
                                 "sample identifier": "",
                                 "description": "",
-                                "location identifier": "RC5"
+                                "location identifier": "RC5",
+                                "written name": "Check Standard"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -5872,11 +5977,11 @@
                                                     },
                                                     "written name": "Substance 1",
                                                     "peak height": {
-                                                        "value": 0.11128958058334837,
+                                                        "value": 111.28958058334837,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0030483288680073542,
+                                                        "value": 182.89973208044125,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5921,7 +6026,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 1.7453679568237164
+                                                        "chromatographic peak resolution (usp)": 1.7453679568237164,
+                                                        "relative area group": 40.9093439254137,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -5936,11 +6043,11 @@
                                                     },
                                                     "written name": "Substance 2",
                                                     "peak height": {
-                                                        "value": 0.08531255555870823,
+                                                        "value": 85.31255555870823,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.0023212551276891066,
+                                                        "value": 139.2753076613464,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -5985,7 +6092,9 @@
                                                         "unit": "(unitless)"
                                                     },
                                                     "custom information document": {
-                                                        "chromatographic peak resolution (usp)": 2.6568677245626446
+                                                        "chromatographic peak resolution (usp)": 2.6568677245626446,
+                                                        "relative area group": 31.151830550139536,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 },
                                                 {
@@ -6000,11 +6109,11 @@
                                                     },
                                                     "written name": "Substance 3",
                                                     "peak height": {
-                                                        "value": 0.0735672725863069,
+                                                        "value": 73.5672725863069,
                                                         "unit": "mAU"
                                                     },
                                                     "peak area": {
-                                                        "value": 0.002081840484649877,
+                                                        "value": 124.9104290789926,
                                                         "unit": "mAU.s"
                                                     },
                                                     "relative peak area": {
@@ -6043,6 +6152,10 @@
                                                     "asymmetry factor measured at 5 % height": {
                                                         "value": 1.2325188419994737,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "relative area group": 27.938825524446756,
+                                                        "number of calibration points": 4.0
                                                     }
                                                 }
                                             ]
@@ -6086,55 +6199,26 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [
-                                            0.0,
-                                            0.010000000000000002,
-                                            0.020000000000000004,
-                                            0.03,
-                                            0.04000000000000001
-                                        ]
-                                    ],
                                     "measures": [
-                                        [
-                                            0.0,
+                                        [0.0,
                                             -1.0146761124737885e-08,
                                             -7.111027239027897e-08,
                                             -2.3425987111285345e-07,
                                             -4.954396381502703e-07
                                         ]
+                                    ],
+                                    "dimensions": [
+                                        [0.0, 0.010000000000000002, 0.020000000000000004, 0.03, 0.04000000000000001]
                                     ]
                                 }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "anatoliy.kolesnick",
+                "submitter": "anatoliy.kolesnick"
             }
         ],
-        "data system document": {
-            "ASM converter name": "allotropy_benchling_thermo_fisher_scientific_chromeleon",
-            "ASM converter version": "0.1.75",
-            "file name": "chromeleon_example.json",
-            "software name": "Thermo Fisher Scientific Chromeleon",
-            "UNC path": "tests/parsers/benchling_chromeleon/testdata/input/chromeleon_example.json"
-        },
-        "device system document": {
-            "asset management identifier": "N/A",
-            "device document": [
-                {
-                    "device type": "pump",
-                    "model number": "HPG-3200RS"
-                },
-                {
-                    "device type": "uv",
-                    "model number": "DAD-3000RS"
-                },
-                {
-                    "device type": "sampler",
-                    "model number": "N/A"
-                }
-            ]
-        },
         "custom information document": {
             "Sequence Creation Time": "2024-10-21T12:15:44.51+02:00",
             "Sequence Directory": "Suppositories - 3 Peaks",

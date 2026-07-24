@@ -1,0 +1,120 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-XR_report_format.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
+            "ASM converter version": "0.1.134",
+            "file name": "Beckman_Vi-Cell-XR_report_format.xlsx",
+            "software name": "Vi-Cell XR",
+            "software version": "2.04",
+            "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.04/Beckman_Vi-Cell-XR_report_format.xlsx"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Vi-Cell XR"
+        },
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)",
+                                        "custom information document": {
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
+                            "measurement time": "2026-05-11T14:59:27+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell type processing method": "Default",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 5.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Cell sharpness": 100.0
+                                            }
+                                        },
+                                        "viability (cell counter)": {
+                                            "value": 86.99453735351562,
+                                            "unit": "%"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.9703072143554687,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.8441272808074951,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 16.80272565612793,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 915,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 796,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.6407691074371338,
+                                            "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.89999389648438,
+                                            "Average cells / image": 18.299999237060547
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "7B"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "C:\\ViCELLXR\\Data\\7B.txt"
+                    }
+                },
+                "analyst": "Vi-Cell XR"
+            }
+        ]
+    }
+}

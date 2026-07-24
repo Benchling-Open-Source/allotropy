@@ -27,6 +27,7 @@ class MethodicalMindParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "MSD Methodical Mind"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
+    SUPPORTED_DETECTION_MODES = "Luminescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod
