@@ -1,17 +1,21 @@
 from __future__ import annotations
 
 from io import StringIO
+from pathlib import PureWindowsPath
 import re
-from typing import cast, ClassVar
+from typing import Any, cast, ClassVar
 
 import pandas as pd
 
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
+    Calibration,
+)
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import round_to_nearest_well_count
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent import constants
-from allotropy.parsers.utils.pandas import read_csv
+from allotropy.parsers.utils.pandas import read_csv, read_multisheet_excel
 from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 # Pattern to detect analyte columns: "R<digits>: RP<digits> <METRIC>"
@@ -19,10 +23,21 @@ _ANALYTE_COLUMN_PATTERN = re.compile(r"^R\d+:\s+RP\d+\s+")
 
 
 class LuminexXponentReader:
-    SUPPORTED_EXTENSIONS = "csv"
+    SUPPORTED_EXTENSIONS = "csv,xlsx"
+
+    # The instrument's Excel export puts the flat result table on this sheet, alongside
+    # additional sheets (calibration/verification/history) that have no ASM representation.
+    RESULTS_SHEET_NAME = "Results"
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        self.lines = read_to_lines(named_file_contents)
+        if named_file_contents.extension == "xlsx":
+            self.lines = self._read_xlsx_to_lines(named_file_contents)
+        else:
+            self.lines = read_to_lines(named_file_contents)
+
+        # Calibrations parsed directly into schema objects. The multiple-dataset format
+        # reports them as text rows, which are structured later from calibration_data.
+        self.calibrations: list[Calibration] | None = None
 
         if LuminexXponentReader._is_single_dataset(self.lines):
             (
@@ -30,7 +45,10 @@ class LuminexXponentReader:
                 self.header_data,
                 self.calibration_data,
                 self.minimum_assay_bead_count_setting,
-            ) = SingleDatasetParser.parse(self.lines)
+                self.calibrations,
+            ) = SingleDatasetParser.parse(
+                self.lines, named_file_contents.original_file_path
+            )
         else:
             reader = CsvReader(self.lines)
             (
@@ -39,6 +57,24 @@ class LuminexXponentReader:
                 self.calibration_data,
                 self.minimum_assay_bead_count_setting,
             ) = MultipleDatasetParser.parse(reader)
+
+    @classmethod
+    def _read_xlsx_to_lines(cls, named_file_contents: NamedFileContents) -> list[str]:
+        """Read the results sheet of an Excel export as CSV lines.
+
+        Downstream parsing is line/CSV based, so the sheet is serialized to CSV rather
+        than handled as a separate code path.
+        """
+        sheets = read_multisheet_excel(
+            named_file_contents.get_bytes_stream(), engine="calamine"
+        )
+        if cls.RESULTS_SHEET_NAME not in sheets:
+            msg = f"Unable to find sheet '{cls.RESULTS_SHEET_NAME}' in Excel file, got: {list(sheets)}."
+            raise AllotropeConversionError(msg)
+        # Excel reports store all values as text in the flat export; keep them verbatim so
+        # the CSV parsing path applies the same type coercion it does for .csv input.
+        contents = sheets[cls.RESULTS_SHEET_NAME].to_csv(index=False, na_rep="")
+        return contents.splitlines()
 
     @staticmethod
     def _is_single_dataset(lines: list[str]) -> bool:
@@ -100,13 +136,19 @@ class SingleDatasetParser:
         # Compare words case-insensitively, without extra cleaning
         cleaned = [p.upper() for p in parts]
 
+        # A parenthetical descriptor (e.g. "(RP1/RP2)" in "RATIO (RP1/RP2)") is part
+        # of the metric name but its contents vary by reporter, so it is not a fixed
+        # metric word. Treat any fully-parenthesized token as an allowed metric word.
+        def is_metric_word(word: str) -> bool:
+            return word in constants.SINGLE_DATASET_RESULTS_METRIC_WORDS or (
+                word.startswith("(") and word.endswith(")")
+            )
+
         # Find earliest index where the suffix is all known metric words
         split_index: int | None = None
         for i in range(1, len(parts)):
             suffix = cleaned[i:]
-            if suffix and all(
-                s in constants.SINGLE_DATASET_RESULTS_METRIC_WORDS for s in suffix
-            ):
+            if suffix and all(is_metric_word(s) for s in suffix):
                 split_index = i
                 break
 
@@ -129,13 +171,16 @@ class SingleDatasetParser:
             ("REPLICATE %CV", "%CV of Replicates"),
             ("NET NORMALIZED MEDIAN", "Net Normalized Median"),
             ("NET MEDIAN", "Net MFI"),
-            ("%CV", "% CV"),
+            ("TRIMMED %CV", "Trimmed %CV"),
+            ("%CV", "%CV"),
         ]
         for suffix, section in metric_token_to_section:
             if token_upper.endswith(suffix):
                 return section
-        # Title-case fallback for all other tokens
-        return metric_token.title()
+        # Drop any trailing parenthetical descriptor (e.g. "RATIO (RP1/RP2)" -> "Ratio")
+        # before the title-case fallback so it maps to a stable section name.
+        base_token = re.sub(r"\s*\([^)]*\)\s*$", "", metric_token).strip()
+        return base_token.title()
 
     @staticmethod
     def build_section(
@@ -193,6 +238,7 @@ class SingleDatasetParser:
                 "TOTAL CLASSIFIED EVENTS",
                 "TOTAL GATED EVENTS",
                 "COUNT %CV",
+                "ACQUISITION DURATION",
             ]
             for extra_col in _per_well_extra_columns:
                 if extra_col in df.columns:
@@ -262,6 +308,36 @@ class SingleDatasetParser:
             results["Units"] = units_df
 
     @staticmethod
+    def _get_computer_name(original_file_path: str | None) -> str:
+        """Read the acquiring computer name from the exported file name.
+
+        The flat export has no column for it, but files exported to a network share are
+        named after the UNC path they came from, with separators replaced by underscores:
+        "\\\\uspltmrlwg00060\\results\\<plate>.xlsx" -> "____uspltmrlwg00060_results___<plate>.xlsx".
+        Files not exported this way have no computer name to report.
+        """
+        if not original_file_path:
+            return ""
+        path = PureWindowsPath(original_file_path)
+        # An actual UNC path reports the host directly.
+        if path.drive.startswith("\\\\"):
+            return path.drive.lstrip("\\").split("\\")[0]
+        match = re.match(r"^_{2,}(?P<computer_name>[^_]+)_", path.name)
+        return match.group("computer_name") if match else ""
+
+    @staticmethod
+    def _first_value(series: pd.Series[Any]) -> str:
+        """Return the first value of a series as a string, or "" if it holds no data.
+
+        Columns like "ACTIVE USER" use "N/A" to mean "not reported", which pandas reads
+        as NaN. Stringifying that directly would emit the literal text "nan" downstream.
+        """
+        if len(series) == 0:
+            return ""
+        value = series.iloc[0]
+        return "" if pd.isna(value) else str(value)
+
+    @staticmethod
     def _get_well_count(df: pd.DataFrame) -> int:
         # Count unique values in WELL LOCATION matching Excel-like cell ids: Letter(s) + Number(s)
         # Example matches: A1, B12, AA3
@@ -276,8 +352,14 @@ class SingleDatasetParser:
 
     @classmethod
     def parse(
-        cls, lines: list[str]
-    ) -> tuple[dict[str, pd.DataFrame], pd.DataFrame, pd.DataFrame, float | None]:
+        cls, lines: list[str], original_file_path: str | None = None
+    ) -> tuple[
+        dict[str, pd.DataFrame],
+        pd.DataFrame,
+        pd.DataFrame,
+        float | None,
+        list[Calibration],
+    ]:
         """Parse single-dataset CSV and return header, calibration, min beads and results tables."""
         # Strip document-signature footer before pandas sees it (avoids dtype pollution).
         data_lines = []
@@ -356,11 +438,11 @@ class SingleDatasetParser:
         _serial_series = (
             df["SERIAL NUMBER"] if "SERIAL NUMBER" in df.columns else pd.Series([""])
         )
-        _serial_value = str(_serial_series.iloc[0]) if len(_serial_series) > 0 else ""
+        _serial_value = cls._first_value(_serial_series)
         _plate_series = (
             df["PLATE START"] if "PLATE START" in df.columns else pd.Series([""])
         )
-        _plate_value = str(_plate_series.iloc[0]) if len(_plate_series) > 0 else ""
+        _plate_value = cls._first_value(_plate_series)
 
         header_rows = [
             "Program",
@@ -377,7 +459,7 @@ class SingleDatasetParser:
             "",
             _serial_value,
             "Name",
-            "",
+            cls._get_computer_name(original_file_path),
             _plate_value,
         ]
 
@@ -385,6 +467,7 @@ class SingleDatasetParser:
         _v2_2_header_fields: list[tuple[str, str]] = [
             ("MODEL NAME", "ModelName"),
             ("SOFTWARE VERSION", "Build"),
+            ("PLATE NAME", "Batch"),
             ("PROTOCOL NAME", "ProtocolName"),
             ("PROTOCOL VERSION", "ProtocolVersion"),
             ("PANEL NAME", "PanelName"),
@@ -395,32 +478,27 @@ class SingleDatasetParser:
             ("UPTAKE VOLUME", "MaxSampleUptakeVolume"),
             ("ACTIVE USER", "Operator"),
             ("AUTHORIZED USER", "AuthorizedUser"),
-            ("CALIBRATION STATE", "CalibrationState"),
-            ("CALIBRATION LOT", "CalibrationLot"),
-            ("CALIBRATION LOT EXPIRATION", "CalibrationLotExpiration"),
-            ("CALIBRATION LOT EXPIRED", "CalibrationLotExpired"),
-            ("CALIBRATION TIMESTAMP", "CalibrationTimestamp"),
-            ("VERIFICATION STATE", "VerificationState"),
-            ("VERIFICATION LOT", "VerificationLot"),
-            ("VERIFICATION LOT EXPIRATION", "VerificationLotExpiration"),
-            ("VERIFICATION LOT EXPIRED", "VerificationLotExpired"),
-            ("VERIFICATION TIMESTAMP", "VerificationTimestamp"),
-            ("FLUIDICS VER STATE", "FluidicsVerState"),
-            ("FLUIDICS VER TIMESTAMP", "FluidicsVerTimestamp"),
-            ("FLUIDICS 1 VER LOT", "Fluidics1VerLot"),
-            ("FLUIDICS 1 VER LOT EXPIRATION", "Fluidics1VerLotExpiration"),
-            ("FLUIDICS 1 VER LOT EXPIRED", "Fluidics1VerLotExpired"),
-            ("FLUIDICS 2 VER LOT", "Fluidics2VerLot"),
-            ("FLUIDICS 2 VER LOT EXPIRATION", "Fluidics2VerLotExpiration"),
-            ("FLUIDICS 2 VER LOT EXPIRED", "Fluidics2VerLotExpired"),
+            # Calibration/verification columns are not listed here: they are reported as
+            # calibration documents (see build_calibrations), not as custom information.
+            ("SIGNING USER", "SigningUser"),
+            ("PLATE GEOMETRY", "PlateGeometry"),
+            ("NORMALIZATION REGION", "NormalizationRegion"),
+            ("DD GATE LOW", "DDGateLow"),
+            ("DD GATE HIGH", "DDGateHigh"),
+            ("PLATE HEATER TEMP", "PlateHeaterTemp"),
+            ("OPERATING MODE", "OperatingMode"),
         ]
         for csv_col, header_key in _v2_2_header_fields:
             if csv_col in df.columns:
-                val = str(df[csv_col].iloc[0]) if len(df) > 0 else ""
+                val = cls._first_value(df[csv_col])
                 # Override "Build" with SOFTWARE VERSION if we haven't already
                 if header_key == "Build" and "Build" in header_rows:
                     idx = header_rows.index("Build")
                     header_vals[idx] = val
+                    continue
+                # Skip columns that report no value, so downstream fields are omitted
+                # entirely rather than reported as an empty string.
+                if not val:
                     continue
                 header_rows.append(header_key)
                 header_vals.append(val)
@@ -443,7 +521,91 @@ class SingleDatasetParser:
         calibration = pd.DataFrame()
         min_beads: float | None = None
 
-        return results, header, calibration, min_beads
+        return results, header, calibration, min_beads, cls.build_calibrations(df)
+
+    # Calibration/verification columns in the flat export, grouped into the calibration
+    # documents they describe: (name, state, timestamp, lot, lot expiration, lot expired).
+    _CALIBRATION_COLUMNS: ClassVar[list[tuple[str, str, str, str, str, str]]] = [
+        (
+            "Calibration",
+            "CALIBRATION STATE",
+            "CALIBRATION TIMESTAMP",
+            "CALIBRATION LOT",
+            "CALIBRATION LOT EXPIRATION",
+            "CALIBRATION LOT EXPIRED",
+        ),
+        (
+            "Verification",
+            "VERIFICATION STATE",
+            "VERIFICATION TIMESTAMP",
+            "VERIFICATION LOT",
+            "VERIFICATION LOT EXPIRATION",
+            "VERIFICATION LOT EXPIRED",
+        ),
+        (
+            "Fluidics Verification 1",
+            "FLUIDICS VER STATE",
+            "FLUIDICS VER TIMESTAMP",
+            "FLUIDICS 1 VER LOT",
+            "FLUIDICS 1 VER LOT EXPIRATION",
+            "FLUIDICS 1 VER LOT EXPIRED",
+        ),
+        (
+            "Fluidics Verification 2",
+            "FLUIDICS VER STATE",
+            "FLUIDICS VER TIMESTAMP",
+            "FLUIDICS 2 VER LOT",
+            "FLUIDICS 2 VER LOT EXPIRATION",
+            "FLUIDICS 2 VER LOT EXPIRED",
+        ),
+    ]
+
+    @classmethod
+    def build_calibrations(cls, df: pd.DataFrame) -> list[Calibration]:
+        """Build calibration documents from the flat export's calibration columns."""
+        calibrations = []
+        for (
+            name,
+            state_col,
+            time_col,
+            lot_col,
+            expiration_col,
+            expired_col,
+        ) in cls._CALIBRATION_COLUMNS:
+            time = cls._first_value(df[time_col]) if time_col in df.columns else ""
+            # Calibration time is the only required field of a calibration document.
+            if not time:
+                continue
+            custom_info = {
+                "lot number": (
+                    cls._first_value(df[lot_col]) if lot_col in df.columns else ""
+                ),
+                "lot expired": (
+                    cls._first_value(df[expired_col])
+                    if expired_col in df.columns
+                    else ""
+                ),
+            }
+            calibrations.append(
+                Calibration(
+                    name=name,
+                    time=time,
+                    report=(
+                        cls._first_value(df[state_col])
+                        if state_col in df.columns
+                        else None
+                    )
+                    or None,
+                    expiry_time=(
+                        cls._first_value(df[expiration_col])
+                        if expiration_col in df.columns
+                        else None
+                    )
+                    or None,
+                    custom_info={k: v for k, v in custom_info.items() if v} or None,
+                )
+            )
+        return calibrations
 
     @classmethod
     def _enrich_from_analyte_metadata(

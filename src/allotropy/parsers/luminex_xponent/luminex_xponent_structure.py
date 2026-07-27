@@ -48,6 +48,20 @@ from allotropy.parsers.utils.values import (
     try_non_nan_float_or_none,
 )
 
+# Header values that are reported on each measurement (as device control or sample custom
+# information). They must not also be swept into the document-level custom information.
+PER_MEASUREMENT_HEADER_KEYS = {
+    "ProtocolHeater",
+    "DDGate",
+    "SampleTimeout",
+    "ProtocolAnalysis",
+    "ProtocolMicrosphere",
+    "PlateReadDirection",
+    "BatchDescription",
+    "PanelName",
+    "BeadType",
+}
+
 
 @dataclass(frozen=True)
 class Header:
@@ -75,7 +89,8 @@ class Header:
     ) -> Header:
         sample_volume = header_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
 
-        header_row.mark_read({"Program", "ProtocolPlate", "Date"})
+        # ModelName is reported as the device system's model number.
+        header_row.mark_read({"Program", "ProtocolPlate", "Date", "ModelName"})
 
         return Header(
             model_number=cls._get_model_number(header_data),
@@ -106,11 +121,19 @@ class Header:
                 # Used for the measurement groups
                 "BatchStopTime": header_row.get(str, "BatchStopTime"),
                 "ProtocolDescription": header_row.get(str, "ProtocolDescription"),
+                # Remaining header values describe the run as a whole, so they are
+                # reported once at the document level rather than on each measurement.
+                **header_row.get_unread(skip=PER_MEASUREMENT_HEADER_KEYS),
             },
         )
 
     @classmethod
     def _get_model_number(cls, header_data: pd.DataFrame) -> str | None:
+        # The flat export reports the model in its own column rather than in the Program row.
+        if "ModelName" in header_data:
+            model_name = header_data["ModelName"].iloc[0]
+            if model_name:
+                return str(model_name)
         if "Program" not in header_data:
             return None
         program_data = header_data["Program"]
@@ -231,6 +254,7 @@ class Measurement:
             "TOTAL CLASSIFIED EVENTS",
             "TOTAL GATED EVENTS",
             "COUNT %CV",
+            "ACQUISITION DURATION",
         ]
 
         well_location, location_id = cls._get_location_details(location)
@@ -351,7 +375,9 @@ class Measurement:
             calculated_data=calculated_data,
             device_control_custom_info=device_control_custom_info,
             sample_custom_info=sample_custom_info,
-            measurement_custom_info=count_data.get_unread() | header_row.get_unread(),
+            # Only per-well values belong here. Run-level header values are reported once
+            # in the metadata custom info instead of being repeated on every measurement.
+            measurement_custom_info=count_data.get_unread(),
         )
 
     @classmethod
@@ -433,7 +459,11 @@ class Data:
             header=Header.create(
                 reader.header_data, header_row, reader.minimum_assay_bead_count_setting
             ),
-            calibrations=map_rows(reader.calibration_data, create_calibration),
+            calibrations=(
+                reader.calibrations
+                if reader.calibrations is not None
+                else map_rows(reader.calibration_data, create_calibration)
+            ),
             measurement_list=MeasurementList.create(reader.results_data, header_row),
         )
 
