@@ -1,6 +1,18 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "Weyland_Yutani_simple_correct.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_example_weyland_yutani",
+            "ASM converter version": "0.1.142",
+            "UNC path": "tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv",
+            "file name": "Weyland_Yutani_simple_correct.csv"
+        },
+        "device system document": {
+            "device identifier": "",
+            "model number": ""
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +21,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -30,8 +42,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -51,8 +63,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -72,8 +84,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -93,8 +105,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -114,8 +126,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -135,8 +147,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -156,8 +168,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -177,8 +189,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -198,8 +210,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -219,8 +231,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -240,8 +252,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -261,8 +273,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -282,8 +294,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -303,8 +315,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -324,8 +336,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "fluorescence detector",
-                                        "detection type": "Fluorescence"
+                                        "detection type": "Fluorescence",
+                                        "device type": "fluorescence detector"
                                     }
                                 ]
                             },
@@ -350,18 +362,6 @@
                     "container type": "well plate"
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "Weyland_Yutani_simple_correct.json",
-            "data system instance identifier": "N/A",
-            "UNC path": "tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv",
-            "file name": "Weyland_Yutani_simple_correct.csv",
-            "ASM converter name": "allotropy_example_weyland_yutani",
-            "ASM converter version": "0.1.118"
-        },
-        "device system document": {
-            "device identifier": "",
-            "model number": ""
-        }
+        ]
     }
 }

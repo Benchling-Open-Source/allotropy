@@ -1,6 +1,21 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "methodical_test_data_in_filename.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_msd_methodical_mind",
+            "ASM converter version": "0.1.142",
+            "file name": "22M0TALA85_2023-09-08-1=Data=33933.txt",
+            "software name": "MMPR 1.0.38",
+            "software version": "MMPR 1.0.38",
+            "UNC path": "Z:\\MSD-WP\\Export\\Data\\22M0TALA85_2023-09-08-1=Data=33933.txt"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "1298873245",
+            "model number": "HTS"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +24,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "luminescence detector",
                                         "detection type": "luminescence",
+                                        "device type": "luminescence detector",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
                                             "Det Param": "Standard",
@@ -27,9 +42,9 @@
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Plate #": 1.0,
                                     "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
+                                    "Barcode3": "<>"
                                 }
                             },
                             "luminescence": {
@@ -54,8 +69,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "luminescence detector",
                                         "detection type": "luminescence",
+                                        "device type": "luminescence detector",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
                                             "Det Param": "Standard",
@@ -72,9 +87,9 @@
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Plate #": 1.0,
                                     "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
+                                    "Barcode3": "<>"
                                 }
                             },
                             "luminescence": {
@@ -99,8 +114,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "luminescence detector",
                                         "detection type": "luminescence",
+                                        "device type": "luminescence detector",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
                                             "Det Param": "Standard",
@@ -117,9 +132,9 @@
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Plate #": 1.0,
                                     "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
+                                    "Barcode3": "<>"
                                 }
                             },
                             "luminescence": {
@@ -144,8 +159,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "luminescence detector",
                                         "detection type": "luminescence",
+                                        "device type": "luminescence detector",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
                                             "Det Param": "Standard",
@@ -162,9 +177,9 @@
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Plate #": 1.0,
                                     "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
+                                    "Barcode3": "<>"
                                 }
                             },
                             "luminescence": {
@@ -189,8 +204,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "luminescence detector",
                                         "detection type": "luminescence",
+                                        "device type": "luminescence detector",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
                                             "Det Param": "Standard",
@@ -207,9 +222,9 @@
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Plate #": 1.0,
                                     "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
+                                    "Barcode3": "<>"
                                 }
                             },
                             "luminescence": {
@@ -234,8 +249,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "luminescence detector",
                                         "detection type": "luminescence",
+                                        "device type": "luminescence detector",
                                         "custom information document": {
                                             "Spots Per Well": 1.0,
                                             "Det Param": "Standard",
@@ -252,9 +267,9 @@
                                 "well plate identifier": "*22M0TALA85N*",
                                 "custom information document": {
                                     "Stack ID": 0.1,
+                                    "Plate #": 1.0,
                                     "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
+                                    "Barcode3": "<>"
                                 }
                             },
                             "luminescence": {
@@ -272,21 +287,6 @@
                 },
                 "analyst": "dmc"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "methodical_test_data_in_filename.json",
-            "data system instance identifier": "N/A",
-            "file name": "22M0TALA85_2023-09-08-1=Data=33933.txt",
-            "UNC path": "Z:\\MSD-WP\\Export\\Data\\22M0TALA85_2023-09-08-1=Data=33933.txt",
-            "ASM converter name": "allotropy_msd_methodical_mind",
-            "ASM converter version": "0.1.87",
-            "software name": "MMPR 1.0.38",
-            "software version": "MMPR 1.0.38"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "HTS",
-            "equipment serial number": "1298873245"
-        }
+        ]
     }
 }

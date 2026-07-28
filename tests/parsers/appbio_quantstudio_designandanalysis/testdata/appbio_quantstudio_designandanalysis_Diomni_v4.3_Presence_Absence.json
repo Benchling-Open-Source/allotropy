@@ -5,7 +5,7 @@
             "ASM file identifier": "appbio_quantstudio_designandanalysis_Diomni_v4.3_Presence_Absence.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.134",
+            "ASM converter version": "0.1.142",
             "file name": "appbio_quantstudio_designandanalysis_Diomni_v4.3_Presence_Absence.xlsx",
             "software name": "Diomni",
             "software version": "4.3.0",
@@ -1813,10 +1813,10 @@
             }
         ],
         "custom information document": {
+            "Block serial number": 3.0,
             "Assay name": "HPV PCR 384_test_KG_Globin",
-            "Warning": "Diomni software converted file",
             "Assay version": "1.0.1",
-            "Block serial number": 3.0
+            "Warning": "Diomni software converted file"
         }
     }
 }

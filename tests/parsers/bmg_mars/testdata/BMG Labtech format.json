@@ -1,6 +1,20 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "BMG Labtech format.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_bmg_labtech_mars",
+            "ASM converter version": "0.1.142",
+            "file name": "BMG Labtech format.CSV",
+            "software name": "BMG MARS",
+            "UNC path": "C:\\Users\\Lab user\\Documents\\Discovery\\Data"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A",
+            "product manufacturer": "BMG LABTECH"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +23,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -51,8 +65,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -93,8 +107,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -135,8 +149,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -177,8 +191,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -219,8 +233,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -261,8 +275,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -303,8 +317,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -345,8 +359,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -387,8 +401,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -429,8 +443,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -471,8 +485,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -513,8 +527,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -555,8 +569,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -597,8 +611,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -639,8 +653,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -681,8 +695,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -723,8 +737,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -765,8 +779,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -807,8 +821,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -849,8 +863,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -891,8 +905,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -933,8 +947,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -975,8 +989,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1017,8 +1031,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1059,8 +1073,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1101,8 +1115,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1143,8 +1157,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1185,8 +1199,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1227,8 +1241,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1269,8 +1283,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1311,8 +1325,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1353,8 +1367,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1395,8 +1409,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1437,8 +1451,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1479,8 +1493,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1521,8 +1535,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1563,8 +1577,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1605,8 +1619,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1647,8 +1661,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1689,8 +1703,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1731,8 +1745,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1773,8 +1787,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1815,8 +1829,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1857,8 +1871,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1899,8 +1913,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1941,8 +1955,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -1983,8 +1997,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2025,8 +2039,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2067,8 +2081,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2109,8 +2123,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2151,8 +2165,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2193,8 +2207,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2235,8 +2249,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2277,8 +2291,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2319,8 +2333,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2361,8 +2375,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2403,8 +2417,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2445,8 +2459,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2487,8 +2501,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2529,8 +2543,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2571,8 +2585,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2613,8 +2627,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2655,8 +2669,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2697,8 +2711,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2739,8 +2753,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2781,8 +2795,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2823,8 +2837,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2865,8 +2879,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2907,8 +2921,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2949,8 +2963,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -2991,8 +3005,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3033,8 +3047,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3075,8 +3089,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3117,8 +3131,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3159,8 +3173,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3201,8 +3215,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3243,8 +3257,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3285,8 +3299,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3327,8 +3341,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3369,8 +3383,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3411,8 +3425,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3453,8 +3467,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3495,8 +3509,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3537,8 +3551,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3579,8 +3593,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3621,8 +3635,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3663,8 +3677,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3705,8 +3719,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3747,8 +3761,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3789,8 +3803,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3831,8 +3845,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3873,8 +3887,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3915,8 +3929,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3957,8 +3971,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -3999,8 +4013,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "absorbance detector",
                                         "detection type": "absorbance",
+                                        "device type": "absorbance detector",
                                         "detector wavelength setting": {
                                             "value": 1.0,
                                             "unit": "nm"
@@ -4034,20 +4048,6 @@
                 },
                 "analyst": "Discovery"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "BMG Labtech format.json",
-            "data system instance identifier": "N/A",
-            "file name": "BMG Labtech format.CSV",
-            "UNC path": "C:\\Users\\Lab user\\Documents\\Discovery\\Data",
-            "ASM converter name": "allotropy_bmg_labtech_mars",
-            "ASM converter version": "0.1.111",
-            "software name": "BMG MARS"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "N/A",
-            "product manufacturer": "BMG LABTECH"
-        }
+        ]
     }
 }

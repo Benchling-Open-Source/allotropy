@@ -1,6 +1,18 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
     "liquid handler aggregate document": {
+        "data system document": {
+            "ASM file identifier": "pipetting_example.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_coulter_biomek",
+            "ASM converter version": "0.1.142",
+            "file name": "pipetting_example.log",
+            "software name": "BioMek Software",
+            "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/pipetting_example.log"
+        },
+        "device system document": {
+            "product manufacturer": "Beckman Coulter"
+        },
         "liquid handler document": [
             {
                 "measurement aggregate document": {
@@ -248,18 +260,6 @@
                 },
                 "analyst": "KAWOLSKE"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "pipetting_example.json",
-            "data system instance identifier": "N/A",
-            "file name": "pipetting_example.log",
-            "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/pipetting_example.log",
-            "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.105",
-            "software name": "BioMek Software"
-        },
-        "device system document": {
-            "product manufacturer": "Beckman Coulter"
-        }
+        ]
     }
 }

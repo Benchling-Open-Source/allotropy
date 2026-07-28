@@ -1,6 +1,21 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-XR_example06_instrumentOutput.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
+            "ASM converter version": "0.1.142",
+            "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
+            "software name": "Vi-Cell XR",
+            "software version": "2.06",
+            "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "AW45484",
+            "model number": "Vi-Cell XR"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +24,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)"
                                     }
                                 ]
                             },
@@ -30,12 +45,12 @@
                                             "value": 50.4,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 7.8,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 15.5,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 7.8,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -78,8 +93,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)"
                                     }
                                 ]
                             },
@@ -99,12 +114,12 @@
                                             "value": 44.2,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 4.99,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 11.3,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.99,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -147,8 +162,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)"
                                     }
                                 ]
                             },
@@ -168,12 +183,12 @@
                                             "value": 39.9,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.91,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 7.3,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.91,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -209,21 +224,6 @@
                 },
                 "analyst": "Vi-Cell XR"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "Beckman_Vi-Cell-XR_example06_instrumentOutput.json",
-            "data system instance identifier": "N/A",
-            "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
-            "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
-            "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.101",
-            "software name": "Vi-Cell XR",
-            "software version": "2.06"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "equipment serial number": "AW45484",
-            "model number": "Vi-Cell XR"
-        }
+        ]
     }
 }

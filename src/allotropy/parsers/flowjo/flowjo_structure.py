@@ -1139,15 +1139,13 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
             return _get_keyword_value_by_name_from_sample(_sample, name)
 
         # Extract measurement-level metadata fields
-        measurement_custom_info = {}
-        if len(keyword_map) <= len(measurement_kw_set):
-            for name, value in keyword_map.items():
-                if name in measurement_kw_set:
-                    measurement_custom_info[name] = value
-        else:
-            for name in measurement_kw_set:
-                if (value := keyword_map.get(name)) is not None:
-                    measurement_custom_info[name] = value
+        # Iterate keyword_map, not the keyword set: set order varies between runs,
+        # which would make the serialized output nondeterministic.
+        measurement_custom_info = {
+            name: value
+            for name, value in keyword_map.items()
+            if name in measurement_kw_set
+        }
 
         for field, value in pre_root_measurement_fields.items():
             measurement_custom_info.setdefault(field, value)
@@ -1166,26 +1164,16 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 measurement_custom_info[field] = sample_value.strip()
 
         # Extract sample-level metadata fields
-        sample_custom_info = {}
-        if len(keyword_map) <= len(sample_kw_set):
-            for name, value in keyword_map.items():
-                if name in sample_kw_set:
-                    sample_custom_info[name] = value
-        else:
-            for name in sample_kw_set:
-                if (value := keyword_map.get(name)) is not None:
-                    sample_custom_info[name] = value
+        sample_custom_info = {
+            name: value for name, value in keyword_map.items() if name in sample_kw_set
+        }
 
         # Extract data processing document-level metadata fields
-        data_processing_custom_info = {}
-        if len(keyword_map) <= len(processed_kw_set):
-            for name, value in keyword_map.items():
-                if name in processed_kw_set:
-                    data_processing_custom_info[name] = value
-        else:
-            for name in processed_kw_set:
-                if (value := keyword_map.get(name)) is not None:
-                    data_processing_custom_info[name] = value
+        data_processing_custom_info = {
+            name: value
+            for name, value in keyword_map.items()
+            if name in processed_kw_set
+        }
 
         # Also extract root element fields for data processing document
         root_data_processing_fields = [

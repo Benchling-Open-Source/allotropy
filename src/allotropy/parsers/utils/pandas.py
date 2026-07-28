@@ -342,9 +342,13 @@ class SeriesData:
     def _get_custom_keys_from_str_or_set(
         self, key_or_keys: str | set[str]
     ) -> dict[str, float | str | None]:
+        matching_keys = self._get_matching_keys(key_or_keys)
+        # Report keys in the order they appear in the data. Iterating the matched set
+        # directly varies between runs, which makes serialized output nondeterministic.
+        ordered_keys = [key for key in self.series.index if key in matching_keys]
         return {
             key: value
-            for key in self._get_matching_keys(key_or_keys)
+            for key in ordered_keys
             if (
                 value := self._validate_raw(
                     self._get_custom_key(key), SeriesData.NOT_NAN

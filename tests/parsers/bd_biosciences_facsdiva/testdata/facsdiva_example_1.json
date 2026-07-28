@@ -1,6 +1,21 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/flow-cytometry/BENCHLING/2025/03/flow-cytometry.manifest",
     "flow cytometry aggregate document": {
+        "data system document": {
+            "ASM file identifier": "facsdiva_example_1.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_bd_biosciences_facsdiva",
+            "ASM converter version": "0.1.142",
+            "UNC path": "tests/parsers/bd_biosciences_facsdiva/testdata/facsdiva_example_1.xml",
+            "file name": "facsdiva_example_1.xml",
+            "software name": "BD FACSDiva",
+            "software version": "Version 6.2"
+        },
+        "device system document": {
+            "device identifier": "cytometer",
+            "equipment serial number": "1",
+            "model number": "LSRFortessa"
+        },
         "flow cytometry document": [
             {
                 "measurement aggregate document": {
@@ -32,7 +47,6 @@
                                         "data processing document": {
                                             "data processing time": "2019-04-15T16:27:27+00:00"
                                         },
-                                        "processed data identifier": "BD_BIOSCIENCES_FACSDIVA_TEST_ID_0",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -494,7 +508,8 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "BD_BIOSCIENCES_FACSDIVA_TEST_ID_0"
                                     }
                                 ]
                             },
@@ -1817,7 +1832,6 @@
                                         "data processing document": {
                                             "data processing time": "2019-04-15T16:27:27+00:00"
                                         },
-                                        "processed data identifier": "BD_BIOSCIENCES_FACSDIVA_TEST_ID_9",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -2279,7 +2293,8 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "BD_BIOSCIENCES_FACSDIVA_TEST_ID_9"
                                     }
                                 ]
                             },
@@ -3602,7 +3617,6 @@
                                         "data processing document": {
                                             "data processing time": "2019-04-15T16:27:27+00:00"
                                         },
-                                        "processed data identifier": "BD_BIOSCIENCES_FACSDIVA_TEST_ID_18",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -4057,7 +4071,8 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "BD_BIOSCIENCES_FACSDIVA_TEST_ID_18"
                                     }
                                 ]
                             },
@@ -5350,21 +5365,6 @@
                     ]
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "facsdiva_example_1.json",
-            "data system instance identifier": "N/A",
-            "UNC path": "tests/parsers/bd_biosciences_facsdiva/testdata/facsdiva_example_1.xml",
-            "file name": "facsdiva_example_1.xml",
-            "ASM converter name": "allotropy_bd_biosciences_facsdiva",
-            "ASM converter version": "0.1.113",
-            "software name": "BD FACSDiva",
-            "software version": "Version 6.2"
-        },
-        "device system document": {
-            "device identifier": "cytometer",
-            "equipment serial number": "1",
-            "model number": "LSRFortessa"
-        }
+        ]
     }
 }

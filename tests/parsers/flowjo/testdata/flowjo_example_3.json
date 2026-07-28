@@ -1,6 +1,20 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/flow-cytometry/BENCHLING/2025/03/flow-cytometry.manifest",
     "flow cytometry aggregate document": {
+        "data system document": {
+            "ASM file identifier": "flowjo_example_3.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_flowjo",
+            "ASM converter version": "0.1.142",
+            "UNC path": "tests/parsers/flowjo/testdata/flowjo_example_3.wsp",
+            "file name": "20250819%202L%20MKABCD.wsp",
+            "software name": "FlowJo",
+            "software version": "10.9.0"
+        },
+        "device system document": {
+            "device identifier": "cytometer",
+            "model number": "ID7000"
+        },
         "flow cytometry document": [
             {
                 "measurement aggregate document": {
@@ -151,7 +165,6 @@
                                                 "logRescale": "1"
                                             }
                                         },
-                                        "processed data identifier": "FLOWJO_TEST_ID_1",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -497,30 +510,31 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "FLOWJO_TEST_ID_1"
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "$ENDSTEXT": "0",
-                                "$DATATYPE": "F",
-                                "$BTIM": "15:38:26.92",
-                                "$TOT": "00050000",
-                                "$FIL": "A01.fcs",
-                                "$PAR": "22",
-                                "$SRC": ",",
-                                "$DATE": "01-JAN-2025",
-                                "$INST": "Company",
-                                "$BEGINANALYSIS": "0",
-                                "$NEXTDATA": "0",
-                                "$ENDANALYSIS": "0",
-                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
-                                "$BEGINDATA": "00000002864",
-                                "$BEGINSTEXT": "0",
                                 "FJ FCS VERSION": "3.1",
+                                "$TOT": "00050000",
+                                "$BEGINDATA": "00000002864",
                                 "$ENDDATA": "00004402863",
-                                "$MODE": "L",
+                                "$BEGINANALYSIS": "0",
+                                "$ENDANALYSIS": "0",
+                                "$BEGINSTEXT": "0",
+                                "$ENDSTEXT": "0",
+                                "$NEXTDATA": "0",
                                 "$BYTEORD": "1,2,3,4",
+                                "$DATATYPE": "F",
+                                "$MODE": "L",
+                                "$PAR": "22",
+                                "$BTIM": "15:38:26.92",
+                                "$DATE": "01-JAN-2025",
+                                "$FIL": "A01.fcs",
+                                "$INST": "Company",
+                                "$SRC": ",",
+                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
                                 "modDate": "Fri Sep 12 11:12:00 EDT 2025",
                                 "clientTimestamp": "1757689920380",
                                 "name": "GENERIC",
@@ -712,7 +726,6 @@
                                                 "logRescale": "1"
                                             }
                                         },
-                                        "processed data identifier": "FLOWJO_TEST_ID_7",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -1058,30 +1071,31 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "FLOWJO_TEST_ID_7"
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "$ENDSTEXT": "0",
-                                "$DATATYPE": "F",
-                                "$BTIM": "15:39:28.02",
-                                "$TOT": "00050000",
-                                "$FIL": "A02.fcs",
-                                "$PAR": "22",
-                                "$SRC": ",",
-                                "$DATE": "01-JAN-2025",
-                                "$INST": "Company",
-                                "$BEGINANALYSIS": "0",
-                                "$NEXTDATA": "0",
-                                "$ENDANALYSIS": "0",
-                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
-                                "$BEGINDATA": "00000002864",
-                                "$BEGINSTEXT": "0",
                                 "FJ FCS VERSION": "3.1",
+                                "$TOT": "00050000",
+                                "$BEGINDATA": "00000002864",
                                 "$ENDDATA": "00004402863",
-                                "$MODE": "L",
+                                "$BEGINANALYSIS": "0",
+                                "$ENDANALYSIS": "0",
+                                "$BEGINSTEXT": "0",
+                                "$ENDSTEXT": "0",
+                                "$NEXTDATA": "0",
                                 "$BYTEORD": "1,2,3,4",
+                                "$DATATYPE": "F",
+                                "$MODE": "L",
+                                "$PAR": "22",
+                                "$BTIM": "15:39:28.02",
+                                "$DATE": "01-JAN-2025",
+                                "$FIL": "A02.fcs",
+                                "$INST": "Company",
+                                "$SRC": ",",
+                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
                                 "modDate": "Fri Sep 12 11:12:00 EDT 2025",
                                 "clientTimestamp": "1757689920380",
                                 "name": "GENERIC",
@@ -1273,7 +1287,6 @@
                                                 "logRescale": "1"
                                             }
                                         },
-                                        "processed data identifier": "FLOWJO_TEST_ID_13",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -1619,30 +1632,31 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "FLOWJO_TEST_ID_13"
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "$ENDSTEXT": "0",
-                                "$DATATYPE": "F",
-                                "$BTIM": "15:40:15.62",
-                                "$TOT": "00050000",
-                                "$FIL": "A03.fcs",
-                                "$PAR": "22",
-                                "$SRC": ",",
-                                "$DATE": "01-JAN-2025",
-                                "$INST": "Company",
-                                "$BEGINANALYSIS": "0",
-                                "$NEXTDATA": "0",
-                                "$ENDANALYSIS": "0",
-                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
-                                "$BEGINDATA": "00000002864",
-                                "$BEGINSTEXT": "0",
                                 "FJ FCS VERSION": "3.1",
+                                "$TOT": "00050000",
+                                "$BEGINDATA": "00000002864",
                                 "$ENDDATA": "00004402863",
-                                "$MODE": "L",
+                                "$BEGINANALYSIS": "0",
+                                "$ENDANALYSIS": "0",
+                                "$BEGINSTEXT": "0",
+                                "$ENDSTEXT": "0",
+                                "$NEXTDATA": "0",
                                 "$BYTEORD": "1,2,3,4",
+                                "$DATATYPE": "F",
+                                "$MODE": "L",
+                                "$PAR": "22",
+                                "$BTIM": "15:40:15.62",
+                                "$DATE": "01-JAN-2025",
+                                "$FIL": "A03.fcs",
+                                "$INST": "Company",
+                                "$SRC": ",",
+                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
                                 "modDate": "Fri Sep 12 11:12:00 EDT 2025",
                                 "clientTimestamp": "1757689920380",
                                 "name": "GENERIC",
@@ -1834,7 +1848,6 @@
                                                 "logRescale": "1"
                                             }
                                         },
-                                        "processed data identifier": "FLOWJO_TEST_ID_19",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -2180,30 +2193,31 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "FLOWJO_TEST_ID_19"
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "$ENDSTEXT": "0",
-                                "$DATATYPE": "F",
-                                "$BTIM": "15:41:14.75",
-                                "$TOT": "00050000",
-                                "$FIL": "A04.fcs",
-                                "$PAR": "22",
-                                "$SRC": ",",
-                                "$DATE": "01-JAN-2025",
-                                "$INST": "Company",
-                                "$BEGINANALYSIS": "0",
-                                "$NEXTDATA": "0",
-                                "$ENDANALYSIS": "0",
-                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
-                                "$BEGINDATA": "00000002864",
-                                "$BEGINSTEXT": "0",
                                 "FJ FCS VERSION": "3.1",
+                                "$TOT": "00050000",
+                                "$BEGINDATA": "00000002864",
                                 "$ENDDATA": "00004402863",
-                                "$MODE": "L",
+                                "$BEGINANALYSIS": "0",
+                                "$ENDANALYSIS": "0",
+                                "$BEGINSTEXT": "0",
+                                "$ENDSTEXT": "0",
+                                "$NEXTDATA": "0",
                                 "$BYTEORD": "1,2,3,4",
+                                "$DATATYPE": "F",
+                                "$MODE": "L",
+                                "$PAR": "22",
+                                "$BTIM": "15:41:14.75",
+                                "$DATE": "01-JAN-2025",
+                                "$FIL": "A04.fcs",
+                                "$INST": "Company",
+                                "$SRC": ",",
+                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
                                 "modDate": "Fri Sep 12 11:12:00 EDT 2025",
                                 "clientTimestamp": "1757689920380",
                                 "name": "GENERIC",
@@ -2395,7 +2409,6 @@
                                                 "logRescale": "1"
                                             }
                                         },
-                                        "processed data identifier": "FLOWJO_TEST_ID_25",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -2741,30 +2754,31 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "FLOWJO_TEST_ID_25"
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "$ENDSTEXT": "0",
-                                "$DATATYPE": "F",
-                                "$BTIM": "15:42:06.38",
-                                "$TOT": "00050000",
-                                "$FIL": "A05.fcs",
-                                "$PAR": "22",
-                                "$SRC": ",",
-                                "$DATE": "01-JAN-2025",
-                                "$INST": "Company",
-                                "$BEGINANALYSIS": "0",
-                                "$NEXTDATA": "0",
-                                "$ENDANALYSIS": "0",
-                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
-                                "$BEGINDATA": "00000002864",
-                                "$BEGINSTEXT": "0",
                                 "FJ FCS VERSION": "3.1",
+                                "$TOT": "00050000",
+                                "$BEGINDATA": "00000002864",
                                 "$ENDDATA": "00004402863",
-                                "$MODE": "L",
+                                "$BEGINANALYSIS": "0",
+                                "$ENDANALYSIS": "0",
+                                "$BEGINSTEXT": "0",
+                                "$ENDSTEXT": "0",
+                                "$NEXTDATA": "0",
                                 "$BYTEORD": "1,2,3,4",
+                                "$DATATYPE": "F",
+                                "$MODE": "L",
+                                "$PAR": "22",
+                                "$BTIM": "15:42:06.38",
+                                "$DATE": "01-JAN-2025",
+                                "$FIL": "A05.fcs",
+                                "$INST": "Company",
+                                "$SRC": ",",
+                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
                                 "modDate": "Fri Sep 12 11:12:00 EDT 2025",
                                 "clientTimestamp": "1757689920380",
                                 "name": "GENERIC",
@@ -2956,7 +2970,6 @@
                                                 "logRescale": "1"
                                             }
                                         },
-                                        "processed data identifier": "FLOWJO_TEST_ID_31",
                                         "data region aggregate document": {
                                             "data region document": [
                                                 {
@@ -3302,30 +3315,31 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "processed data identifier": "FLOWJO_TEST_ID_31"
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "$ENDSTEXT": "0",
-                                "$DATATYPE": "F",
-                                "$BTIM": "15:42:49.47",
-                                "$TOT": "00050000",
-                                "$FIL": "A03.fcs",
-                                "$PAR": "22",
-                                "$SRC": ",",
-                                "$DATE": "01-JAN-2025",
-                                "$INST": "Company",
-                                "$BEGINANALYSIS": "0",
-                                "$NEXTDATA": "0",
-                                "$ENDANALYSIS": "0",
-                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
-                                "$BEGINDATA": "00000002864",
-                                "$BEGINSTEXT": "0",
                                 "FJ FCS VERSION": "3.1",
+                                "$TOT": "00050000",
+                                "$BEGINDATA": "00000002864",
                                 "$ENDDATA": "00004402863",
-                                "$MODE": "L",
+                                "$BEGINANALYSIS": "0",
+                                "$ENDANALYSIS": "0",
+                                "$BEGINSTEXT": "0",
+                                "$ENDSTEXT": "0",
+                                "$NEXTDATA": "0",
                                 "$BYTEORD": "1,2,3,4",
+                                "$DATATYPE": "F",
+                                "$MODE": "L",
+                                "$PAR": "22",
+                                "$BTIM": "15:42:49.47",
+                                "$DATE": "01-JAN-2025",
+                                "$FIL": "A03.fcs",
+                                "$INST": "Company",
+                                "$SRC": ",",
+                                "$SYS": "Microsoft Windows 10 Pro for Workstations",
                                 "modDate": "Fri Sep 12 11:12:00 EDT 2025",
                                 "clientTimestamp": "1757689920380",
                                 "name": "GENERIC",
@@ -3369,20 +3383,6 @@
                 }
             }
         ],
-        "data system document": {
-            "ASM file identifier": "flowjo_example_3.json",
-            "data system instance identifier": "N/A",
-            "UNC path": "tests/parsers/flowjo/testdata/flowjo_example_3.wsp",
-            "file name": "20250819%202L%20MKABCD.wsp",
-            "ASM converter name": "allotropy_flowjo",
-            "ASM converter version": "0.1.107",
-            "software name": "FlowJo",
-            "software version": "10.9.0"
-        },
-        "device system document": {
-            "device identifier": "cytometer",
-            "model number": "ID7000"
-        },
         "custom information document": {
             "$P1D": "Logarithmic,6,1",
             "$P2D": "Logarithmic,6,1",

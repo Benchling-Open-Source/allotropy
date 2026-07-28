@@ -81,7 +81,9 @@ def _create_processed_data(
     ) = _create_processed_data_cubes(amplification_data)
     extra_data = result.extra_data or {}
 
-    data_processing_field_names = {
+    # Ordered: these are reported in this order, and iterating a set would vary
+    # between runs, making serialized output nondeterministic.
+    data_processing_field_names = (
         "omit",
         "Method",
         "SNP Assay Name",
@@ -94,7 +96,7 @@ def _create_processed_data(
         "noamp",
         "expfail",
         "tholdfail",
-    }
+    )
 
     skip_fields = {
         "Allele2 Baseline End",

@@ -1,6 +1,21 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-XR_example05_instrumentOutput.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
+            "ASM converter version": "0.1.142",
+            "file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
+            "software name": "Vi-Cell XR",
+            "software version": "2.06",
+            "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "AV123456789",
+            "model number": "Vi-Cell XR"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,11 +24,11 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -40,22 +55,22 @@
                                             "custom information document": {
                                                 "Brightness (%)": 85.0,
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0
+                                                "Minimum circularity": 0.0,
+                                                "Decluster degree": "Medium"
                                             }
                                         },
                                         "viability (cell counter)": {
                                             "value": 98.4,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 3.06,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 3.1,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.06,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -75,8 +90,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. bg intensity": 203.1,
-                                            "Avg. cells / image": 20.5
+                                            "Avg. cells / image": 20.5,
+                                            "Avg. bg intensity": 203.1
                                         }
                                     }
                                 ]
@@ -108,11 +123,11 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -139,22 +154,22 @@
                                             "custom information document": {
                                                 "Brightness (%)": 85.0,
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0
+                                                "Minimum circularity": 0.0,
+                                                "Decluster degree": "Medium"
                                             }
                                         },
                                         "viability (cell counter)": {
                                             "value": 98.8,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 6.34,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 6.42,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.34,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -174,8 +189,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. bg intensity": 204.6,
-                                            "Avg. cells / image": 42.5
+                                            "Avg. cells / image": 42.5,
+                                            "Avg. bg intensity": 204.6
                                         }
                                     }
                                 ]
@@ -207,11 +222,11 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -238,22 +253,22 @@
                                             "custom information document": {
                                                 "Brightness (%)": 85.0,
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0
+                                                "Minimum circularity": 0.0,
+                                                "Decluster degree": "Medium"
                                             }
                                         },
                                         "viability (cell counter)": {
                                             "value": 98.8,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 9.21,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 9.32,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 9.21,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -273,8 +288,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. bg intensity": 203.0,
-                                            "Avg. cells / image": 61.6
+                                            "Avg. cells / image": 61.6,
+                                            "Avg. bg intensity": 203.0
                                         }
                                     }
                                 ]
@@ -306,11 +321,11 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -337,22 +352,22 @@
                                             "custom information document": {
                                                 "Brightness (%)": 85.0,
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0
+                                                "Minimum circularity": 0.0,
+                                                "Decluster degree": "Medium"
                                             }
                                         },
                                         "viability (cell counter)": {
                                             "value": 98.8,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 4.54,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 4.59,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.54,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
@@ -372,8 +387,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. bg intensity": 202.8,
-                                            "Avg. cells / image": 30.4
+                                            "Avg. cells / image": 30.4,
+                                            "Avg. bg intensity": 202.8
                                         }
                                     }
                                 ]
@@ -398,21 +413,6 @@
                 },
                 "analyst": "Vi-Cell XR"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "Beckman_Vi-Cell-XR_example05_instrumentOutput.json",
-            "data system instance identifier": "N/A",
-            "file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
-            "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
-            "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.101",
-            "software name": "Vi-Cell XR",
-            "software version": "2.06"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "equipment serial number": "AV123456789",
-            "model number": "Vi-Cell XR"
-        }
+        ]
     }
 }

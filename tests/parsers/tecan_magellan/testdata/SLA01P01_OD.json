@@ -1,6 +1,21 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "SLA01P01_OD.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_tecan_magellan",
+            "ASM converter version": "0.1.142",
+            "file name": "SLA01P01_OD.xlsx",
+            "software name": "Magellan",
+            "UNC path": "tests/parsers/tecan_magellan/testdata/SLA01P01_OD.xlsx"
+        },
+        "device system document": {
+            "device identifier": "ULTRA",
+            "equipment serial number": "12901000069",
+            "model number": "N/A",
+            "product manufacturer": "Tecan"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +24,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -31,13 +46,13 @@
                                 "location identifier": "A1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1462,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1462,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -59,8 +74,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -81,13 +96,13 @@
                                 "location identifier": "B1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.2118,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.2118,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -109,8 +124,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -131,13 +146,13 @@
                                 "location identifier": "C1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1661,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1661,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -159,8 +174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -181,13 +196,13 @@
                                 "location identifier": "D1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1469,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1469,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -209,8 +224,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -231,13 +246,13 @@
                                 "location identifier": "E1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1549,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1549,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -259,8 +274,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -281,13 +296,13 @@
                                 "location identifier": "F1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1458,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1458,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -309,8 +324,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -331,13 +346,13 @@
                                 "location identifier": "G1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1748,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1748,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -359,8 +374,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -381,13 +396,13 @@
                                 "location identifier": "H1",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1332,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1332,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -409,8 +424,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -431,13 +446,13 @@
                                 "location identifier": "A2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1418,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1418,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -459,8 +474,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -481,13 +496,13 @@
                                 "location identifier": "B2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1506,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1506,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -509,8 +524,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -531,13 +546,13 @@
                                 "location identifier": "C2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1602,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1602,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -559,8 +574,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -581,13 +596,13 @@
                                 "location identifier": "D2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1512,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1512,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -609,8 +624,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -631,13 +646,13 @@
                                 "location identifier": "E2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1469,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1469,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -659,8 +674,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -681,13 +696,13 @@
                                 "location identifier": "F2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1532,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1532,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -709,8 +724,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -731,13 +746,13 @@
                                 "location identifier": "G2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1745,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1745,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -759,8 +774,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -781,13 +796,13 @@
                                 "location identifier": "H2",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.149,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.149,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -809,8 +824,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -831,13 +846,13 @@
                                 "location identifier": "A3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1436,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1436,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -859,8 +874,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -881,13 +896,13 @@
                                 "location identifier": "B3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1503,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1503,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -909,8 +924,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -931,13 +946,13 @@
                                 "location identifier": "C3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1493,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1493,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -959,8 +974,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -981,13 +996,13 @@
                                 "location identifier": "D3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1552,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1552,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1009,8 +1024,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1031,13 +1046,13 @@
                                 "location identifier": "E3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1525,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1525,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1059,8 +1074,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1081,13 +1096,13 @@
                                 "location identifier": "F3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1471,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1471,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1109,8 +1124,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1131,13 +1146,13 @@
                                 "location identifier": "G3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1497,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1497,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1159,8 +1174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1181,13 +1196,13 @@
                                 "location identifier": "H3",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.155,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.155,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1209,8 +1224,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1231,13 +1246,13 @@
                                 "location identifier": "A4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1463,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1463,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1259,8 +1274,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1281,13 +1296,13 @@
                                 "location identifier": "B4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.122,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.122,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1309,8 +1324,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1331,13 +1346,13 @@
                                 "location identifier": "C4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1443,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1443,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1359,8 +1374,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1381,13 +1396,13 @@
                                 "location identifier": "D4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1309,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1309,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1409,8 +1424,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1431,13 +1446,13 @@
                                 "location identifier": "E4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1609,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1609,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1459,8 +1474,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1481,13 +1496,13 @@
                                 "location identifier": "F4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.156,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.156,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1509,8 +1524,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1531,13 +1546,13 @@
                                 "location identifier": "G4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1532,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1532,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1559,8 +1574,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1581,13 +1596,13 @@
                                 "location identifier": "H4",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1428,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1428,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1609,8 +1624,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1631,13 +1646,13 @@
                                 "location identifier": "A5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1533,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1533,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1659,8 +1674,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1681,13 +1696,13 @@
                                 "location identifier": "B5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1442,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1442,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1709,8 +1724,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1731,13 +1746,13 @@
                                 "location identifier": "C5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1679,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1679,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1759,8 +1774,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1781,13 +1796,13 @@
                                 "location identifier": "D5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1704,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1704,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1809,8 +1824,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1831,13 +1846,13 @@
                                 "location identifier": "E5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1675,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1675,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1859,8 +1874,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1881,13 +1896,13 @@
                                 "location identifier": "F5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1445,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1445,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1909,8 +1924,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1931,13 +1946,13 @@
                                 "location identifier": "G5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1507,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1507,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -1959,8 +1974,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -1981,13 +1996,13 @@
                                 "location identifier": "H5",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1661,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1661,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2009,8 +2024,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2031,13 +2046,13 @@
                                 "location identifier": "A6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1408,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1408,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2059,8 +2074,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2081,13 +2096,13 @@
                                 "location identifier": "B6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1493,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1493,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2109,8 +2124,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2131,13 +2146,13 @@
                                 "location identifier": "C6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1449,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1449,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2159,8 +2174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2181,13 +2196,13 @@
                                 "location identifier": "D6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1555,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1555,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2209,8 +2224,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2231,13 +2246,13 @@
                                 "location identifier": "E6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1478,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1478,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2259,8 +2274,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2281,13 +2296,13 @@
                                 "location identifier": "F6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1536,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1536,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2309,8 +2324,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2331,13 +2346,13 @@
                                 "location identifier": "G6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1441,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1441,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2359,8 +2374,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2381,13 +2396,13 @@
                                 "location identifier": "H6",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1456,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1456,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2409,8 +2424,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2431,13 +2446,13 @@
                                 "location identifier": "A7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1347,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1347,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2459,8 +2474,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2481,13 +2496,13 @@
                                 "location identifier": "B7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1413,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1413,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2509,8 +2524,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2531,13 +2546,13 @@
                                 "location identifier": "C7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1469,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1469,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2559,8 +2574,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2581,13 +2596,13 @@
                                 "location identifier": "D7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1463,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1463,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2609,8 +2624,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2631,13 +2646,13 @@
                                 "location identifier": "E7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1589,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1589,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2659,8 +2674,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2681,13 +2696,13 @@
                                 "location identifier": "F7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1719,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1719,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2709,8 +2724,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2731,13 +2746,13 @@
                                 "location identifier": "G7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1463,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1463,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2759,8 +2774,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2781,13 +2796,13 @@
                                 "location identifier": "H7",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1421,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1421,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2809,8 +2824,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2831,13 +2846,13 @@
                                 "location identifier": "A8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1084,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1084,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2859,8 +2874,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2881,13 +2896,13 @@
                                 "location identifier": "B8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1499,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1499,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2909,8 +2924,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2931,13 +2946,13 @@
                                 "location identifier": "C8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1603,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1603,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -2959,8 +2974,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -2981,13 +2996,13 @@
                                 "location identifier": "D8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1346,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1346,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3009,8 +3024,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3031,13 +3046,13 @@
                                 "location identifier": "E8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1586,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1586,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3059,8 +3074,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3081,13 +3096,13 @@
                                 "location identifier": "F8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1501,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1501,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3109,8 +3124,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3131,13 +3146,13 @@
                                 "location identifier": "G8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1464,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1464,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3159,8 +3174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3181,13 +3196,13 @@
                                 "location identifier": "H8",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1537,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1537,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3209,8 +3224,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3231,13 +3246,13 @@
                                 "location identifier": "A9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1368,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1368,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3259,8 +3274,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3281,13 +3296,13 @@
                                 "location identifier": "B9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1293,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1293,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3309,8 +3324,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3331,13 +3346,13 @@
                                 "location identifier": "C9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.127,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.127,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3359,8 +3374,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3381,13 +3396,13 @@
                                 "location identifier": "D9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1285,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1285,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3409,8 +3424,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3431,13 +3446,13 @@
                                 "location identifier": "E9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.141,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.141,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3459,8 +3474,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3481,13 +3496,13 @@
                                 "location identifier": "F9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1252,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1252,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3509,8 +3524,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3531,13 +3546,13 @@
                                 "location identifier": "G9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1464,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1464,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3559,8 +3574,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3581,13 +3596,13 @@
                                 "location identifier": "H9",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1256,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1256,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3609,8 +3624,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3631,13 +3646,13 @@
                                 "location identifier": "A10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1367,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1367,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3659,8 +3674,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3681,13 +3696,13 @@
                                 "location identifier": "B10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1369,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1369,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3709,8 +3724,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3731,13 +3746,13 @@
                                 "location identifier": "C10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1411,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1411,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3759,8 +3774,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3781,13 +3796,13 @@
                                 "location identifier": "D10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1231,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1231,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3809,8 +3824,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3831,13 +3846,13 @@
                                 "location identifier": "E10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1391,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1391,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3859,8 +3874,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3881,13 +3896,13 @@
                                 "location identifier": "F10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1361,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1361,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3909,8 +3924,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3931,13 +3946,13 @@
                                 "location identifier": "G10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1602,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1602,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -3959,8 +3974,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -3981,13 +3996,13 @@
                                 "location identifier": "H10",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.1476,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1476,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4009,8 +4024,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4031,13 +4046,13 @@
                                 "location identifier": "A11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0462,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0462,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4059,8 +4074,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4081,13 +4096,13 @@
                                 "location identifier": "B11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0455,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0455,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4109,8 +4124,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4131,13 +4146,13 @@
                                 "location identifier": "C11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0447,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0447,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4159,8 +4174,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4181,13 +4196,13 @@
                                 "location identifier": "D11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0459,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0459,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4209,8 +4224,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4231,13 +4246,13 @@
                                 "location identifier": "E11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0448,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0448,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4259,8 +4274,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4281,13 +4296,13 @@
                                 "location identifier": "F11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0448,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0448,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4309,8 +4324,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4331,13 +4346,13 @@
                                 "location identifier": "G11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0448,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0448,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4359,8 +4374,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4381,13 +4396,13 @@
                                 "location identifier": "H11",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0449,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0449,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4409,8 +4424,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4431,13 +4446,13 @@
                                 "location identifier": "A12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0487,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0487,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4459,8 +4474,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4481,13 +4496,13 @@
                                 "location identifier": "B12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0467,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0467,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4509,8 +4524,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4531,13 +4546,13 @@
                                 "location identifier": "C12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0451,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0451,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4559,8 +4574,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4581,13 +4596,13 @@
                                 "location identifier": "D12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0476,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0476,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4609,8 +4624,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4631,13 +4646,13 @@
                                 "location identifier": "E12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0511,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0511,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4659,8 +4674,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4681,13 +4696,13 @@
                                 "location identifier": "F12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0458,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0458,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4709,8 +4724,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4731,13 +4746,13 @@
                                 "location identifier": "G12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0453,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0453,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4759,8 +4774,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "number of averages": {
                                             "value": 1.0,
                                             "unit": "#"
@@ -4781,13 +4796,13 @@
                                 "location identifier": "H12",
                                 "well plate identifier": "96WEL008"
                             },
-                            "absorbance": {
-                                "value": 0.0461,
-                                "unit": "mAU"
-                            },
                             "compartment temperature": {
                                 "value": 23.4,
                                 "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.0461,
+                                "unit": "mAU"
                             }
                         }
                     ],
@@ -4802,21 +4817,6 @@
                 },
                 "analyst": "Unknown user"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "SLA01P01_OD.json",
-            "data system instance identifier": "N/A",
-            "file name": "SLA01P01_OD.xlsx",
-            "UNC path": "tests/parsers/tecan_magellan/testdata/SLA01P01_OD.xlsx",
-            "ASM converter name": "allotropy_tecan_magellan",
-            "ASM converter version": "0.1.105",
-            "software name": "Magellan"
-        },
-        "device system document": {
-            "device identifier": "ULTRA",
-            "model number": "N/A",
-            "equipment serial number": "12901000069",
-            "product manufacturer": "Tecan"
-        }
+        ]
     }
 }

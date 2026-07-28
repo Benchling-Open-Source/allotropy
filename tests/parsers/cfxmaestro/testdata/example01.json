@@ -1,6 +1,21 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
     "qpcr aggregate document": {
+        "data system document": {
+            "ASM file identifier": "example01.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_bio_rad_cfx_maestro",
+            "ASM converter version": "0.1.142",
+            "file name": "example01.csv",
+            "software name": "CFX Maestro",
+            "UNC path": "tests/parsers/cfxmaestro/testdata/example01.csv"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "N/A",
+            "model number": "N/A",
+            "product manufacturer": "Bio-Rad"
+        },
         "qpcr document": [
             {
                 "measurement aggregate document": {
@@ -3050,21 +3065,6 @@
                     }
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "example01.json",
-            "data system instance identifier": "N/A",
-            "file name": "example01.csv",
-            "UNC path": "tests/parsers/cfxmaestro/testdata/example01.csv",
-            "ASM converter name": "allotropy_bio_rad_cfx_maestro",
-            "ASM converter version": "0.1.113",
-            "software name": "CFX Maestro"
-        },
-        "device system document": {
-            "device identifier": "N/A",
-            "equipment serial number": "N/A",
-            "model number": "N/A",
-            "product manufacturer": "Bio-Rad"
-        }
+        ]
     }
 }

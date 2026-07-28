@@ -1,6 +1,25 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "skanit_data.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
+            "ASM converter version": "0.1.142",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx",
+            "file name": "skanit_data.xlsx",
+            "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
+            "software version": "7.0.0.50",
+            "custom information document": {
+                "ESW version": "1.00.38",
+                "Dispenser": "No"
+            }
+        },
+        "device system document": {
+            "device identifier": "Varioskan LUX",
+            "equipment serial number": "3020-81776",
+            "model number": "Varioskan LUX"
+        },
         "plate reader document": [
             {
                 "measurement aggregate document": {
@@ -9,16 +28,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -30,11 +49,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 1.7455,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -55,16 +74,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -76,11 +95,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 1.6148,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -101,16 +120,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -122,11 +141,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0805,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -147,16 +166,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -168,11 +187,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0865,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -193,16 +212,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -214,11 +233,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0743,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -239,16 +258,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -260,11 +279,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0774,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -285,16 +304,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -306,11 +325,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1245,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -331,16 +350,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -352,11 +371,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0914,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -377,16 +396,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -398,11 +417,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0761,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -423,16 +442,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -444,11 +463,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0778,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -469,16 +488,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -490,11 +509,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1483,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -515,16 +534,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -536,11 +555,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1768,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -561,16 +580,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -582,11 +601,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 1.3625,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -607,16 +626,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -628,11 +647,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 1.1336,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -653,16 +672,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -674,11 +693,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3925,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -699,16 +718,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -720,11 +739,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.461,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -745,16 +764,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -766,11 +785,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1506,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -791,16 +810,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -812,11 +831,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1452,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -837,16 +856,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -858,11 +877,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.829,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -883,16 +902,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -904,11 +923,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.8926,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -929,16 +948,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -950,11 +969,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2635,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -975,16 +994,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -996,11 +1015,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2679,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1021,16 +1040,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1042,11 +1061,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.6276,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1067,16 +1086,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1088,11 +1107,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.737,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1113,16 +1132,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1134,11 +1153,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.9252,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1159,16 +1178,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1180,11 +1199,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.953,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1205,16 +1224,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1226,11 +1245,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2837,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1251,16 +1270,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1272,11 +1291,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2678,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1297,16 +1316,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1318,11 +1337,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1058,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1343,16 +1362,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1364,11 +1383,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1021,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1389,16 +1408,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1410,11 +1429,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4054,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1435,16 +1454,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1456,11 +1475,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.5109,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1481,16 +1500,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1502,11 +1521,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1533,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1527,16 +1546,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1548,11 +1567,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1443,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1573,16 +1592,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1594,11 +1613,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3224,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1619,16 +1638,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1640,11 +1659,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3837,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1665,16 +1684,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1686,11 +1705,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.573,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1711,16 +1730,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1732,11 +1751,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.5763,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1757,16 +1776,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1778,11 +1797,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.9125,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1803,16 +1822,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1824,11 +1843,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.9411,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1849,16 +1868,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1870,11 +1889,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4575,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1895,16 +1914,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1916,11 +1935,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4357,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1941,16 +1960,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -1962,11 +1981,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.271,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -1987,16 +2006,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2008,11 +2027,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3048,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2033,16 +2052,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2054,11 +2073,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1117,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2079,16 +2098,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2100,11 +2119,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1059,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2125,16 +2144,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2146,11 +2165,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.19,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2171,16 +2190,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2192,11 +2211,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.262,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2217,16 +2236,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2238,11 +2257,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3996,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2263,16 +2282,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2284,11 +2303,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4006,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2309,16 +2328,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2330,11 +2349,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.5936,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2355,16 +2374,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2376,11 +2395,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.5507,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2401,16 +2420,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2422,11 +2441,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2488,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2447,16 +2466,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2468,11 +2487,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.284,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2493,16 +2512,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2514,11 +2533,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.9017,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2539,16 +2558,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2560,11 +2579,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.9641,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2585,16 +2604,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2606,11 +2625,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3821,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2631,16 +2650,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2652,11 +2671,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4055,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2677,16 +2696,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2698,11 +2717,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2567,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2723,16 +2742,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2744,11 +2763,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.235,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2769,16 +2788,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2790,11 +2809,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2403,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2815,16 +2834,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2836,11 +2855,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2398,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2861,16 +2880,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2882,11 +2901,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3468,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2907,16 +2926,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2928,11 +2947,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.3336,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2953,16 +2972,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -2974,11 +2993,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1641,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -2999,16 +3018,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3020,11 +3039,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1712,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3045,16 +3064,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3066,11 +3085,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4684,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3091,16 +3110,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3112,11 +3131,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4533,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3137,16 +3156,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3158,11 +3177,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2035,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3183,16 +3202,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3204,11 +3223,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1862,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3229,16 +3248,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3250,11 +3269,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1577,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3275,16 +3294,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3296,11 +3315,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.154,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3321,16 +3340,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3342,11 +3361,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1677,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3367,16 +3386,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3388,11 +3407,11 @@
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1577,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3413,16 +3432,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3434,11 +3453,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.115,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3459,16 +3478,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3480,11 +3499,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1239,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3505,16 +3524,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3526,11 +3545,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2031,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3551,16 +3570,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3572,11 +3591,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1964,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3597,16 +3616,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3618,11 +3637,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2585,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3643,16 +3662,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3664,11 +3683,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.2894,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3689,16 +3708,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3710,11 +3729,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1536,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3735,16 +3754,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3756,11 +3775,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1317,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3781,16 +3800,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3802,11 +3821,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1065,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3827,16 +3846,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3848,11 +3867,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1264,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3873,16 +3892,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3894,11 +3913,11 @@
                                 "sample role type": "blank role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0905,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3919,16 +3938,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3940,11 +3959,11 @@
                                 "sample role type": "blank role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.0916,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -3965,16 +3984,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -3986,11 +4005,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4253,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4011,16 +4030,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4032,11 +4051,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.4251,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4057,16 +4076,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4078,11 +4097,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.147,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4103,16 +4122,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4124,11 +4143,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1505,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4149,16 +4168,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4170,11 +4189,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1549,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4195,16 +4214,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4216,11 +4235,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.151,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4241,16 +4260,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4262,11 +4281,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1131,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4287,16 +4306,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4308,11 +4327,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1188,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4333,16 +4352,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4354,11 +4373,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1001,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4379,16 +4398,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "device type": "plate reader",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
                                             "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0,
-                                            "Plate adapter name": "96-well adapter for plate without lid"
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -4400,11 +4419,11 @@
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)",
                             "absorbance": {
                                 "value": 0.1032,
                                 "unit": "mAU"
-                            },
-                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
+                            }
                         }
                     ],
                     "measurement time": "2023-06-05T18:09:56+00:00",
@@ -4418,25 +4437,6 @@
                     "Session notes": "5. APOE potency MOA_EB_20230522_003"
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "skanit_data.json",
-            "data system instance identifier": "N/A",
-            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx",
-            "file name": "skanit_data.xlsx",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
-            "ASM converter version": "0.1.107",
-            "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
-            "software version": "7.0.0.50",
-            "custom information document": {
-                "Dispenser": "No",
-                "ESW version": "1.00.38"
-            }
-        },
-        "device system document": {
-            "device identifier": "Varioskan LUX",
-            "model number": "Varioskan LUX",
-            "equipment serial number": "3020-81776"
-        }
+        ]
     }
 }

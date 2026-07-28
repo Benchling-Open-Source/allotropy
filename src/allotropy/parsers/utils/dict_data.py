@@ -181,7 +181,8 @@ class DictData(dict[str, Any]):
 
     def _get_raw_many(self, keys: set[str]) -> dict[str, Any]:
         result: dict[str, Any] = {}
-        for k in keys:
+        # Insertion order, so serialized output does not vary between runs.
+        for k in (k for k in self if k in keys):
             if isinstance(k, str) and k in self:
                 self._read_keys.add(k)
                 result[k] = super().get(k)
@@ -237,7 +238,8 @@ class DictData(dict[str, Any]):
 
     def _get_typed_many(self, type_: Any, keys: set[str]) -> dict[str, Any]:
         result: dict[str, Any] = {}
-        for k in keys:
+        # Insertion order, so serialized output does not vary between runs.
+        for k in (k for k in self if k in keys):
             if not isinstance(k, str):
                 continue
             value = self._get_typed(type_, k, None)
@@ -352,7 +354,9 @@ class DictData(dict[str, Any]):
             msg = "key must be str | set[str] | None"
             raise AllotropeConversionError(msg)
 
-        for k in keys_to_check:
+        # Report keys in insertion order. Iterating keys_to_check directly varies
+        # between runs, which makes serialized output nondeterministic.
+        for k in (k for k in self if k in keys_to_check):
             if k in skip_set:
                 continue
             if k in self._read_keys:

@@ -57,8 +57,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -104,8 +104,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -163,8 +163,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -210,8 +210,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -269,8 +269,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -316,8 +316,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -375,8 +375,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -422,8 +422,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -481,8 +481,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -528,8 +528,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -587,8 +587,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -634,8 +634,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -693,8 +693,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -740,8 +740,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -799,8 +799,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         },
                         {
@@ -846,8 +846,8 @@
                             },
                             "custom information document": {
                                 "DF": "1/1.00000",
-                                "QC Message": "PASS: No QC issues found",
-                                "QC": "PASS"
+                                "QC": "PASS",
+                                "QC Message": "PASS: No QC issues found"
                             }
                         }
                     ],
@@ -861,7 +861,7 @@
             "UNC path": "tests/parsers/appbio_absolute_q/testdata/Appbio_AbsoluteQ_zip_test.zip",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
-            "ASM converter version": "0.1.80"
+            "ASM converter version": "0.1.142"
         },
         "calculated data aggregate document": {
             "calculated data document": [

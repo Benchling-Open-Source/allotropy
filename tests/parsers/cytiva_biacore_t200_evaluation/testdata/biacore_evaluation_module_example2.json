@@ -1,6 +1,26 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest",
     "binding affinity analyzer aggregate document": {
+        "data system document": {
+            "ASM file identifier": "biacore_evaluation_module_example2.json",
+            "data system instance identifier": "MASKED_SYSTEM_ID",
+            "ASM converter name": "allotropy_cytiva_biacore_t200_evaluation",
+            "ASM converter version": "0.1.142",
+            "file name": "biacore_evaluation_module_example2.bme",
+            "software name": "Biacore T200 Evaluation Software",
+            "software version": "3.0",
+            "UNC path": "tests/parsers/cytiva_biacore_t200_evaluation/testdata/biacore_evaluation_module_example2.bme",
+            "custom information document": {
+                "account identifier": "c172964",
+                "operating system type": "Win32NT",
+                "operating system version": "6.2.9200.0"
+            }
+        },
+        "device system document": {
+            "device identifier": "Biacore",
+            "model number": "T200",
+            "product manufacturer": "Cytiva"
+        },
         "binding affinity analyzer document": [
             {
                 "measurement aggregate document": {
@@ -78,11 +98,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [1, 45, 89, 133, 177, 221]
-                                    ],
                                     "measures": [
                                         [32357.66015625, 32351.669921875, 32353.880859375, 32351.529296875, 32351.2890625, 32349.94921875]
+                                    ],
+                                    "dimensions": [
+                                        [1, 45, 89, 133, 177, 221]
                                     ]
                                 }
                             },
@@ -199,11 +219,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [1, 56, 111, 166, 221, 276]
-                                    ],
                                     "measures": [
                                         [32349.390625, 32349.419921875, 32367.91015625, 32361.0390625, 32357.55078125, 32352.599609375]
+                                    ],
+                                    "dimensions": [
+                                        [1, 56, 111, 166, 221, 276]
                                     ]
                                 }
                             },
@@ -320,11 +340,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [1, 56, 111, 166, 221, 276]
-                                    ],
                                     "measures": [
                                         [32351.669921875, 32351.5, 32371.119140625, 32363.66015625, 32358.869140625, 32353.76953125]
+                                    ],
+                                    "dimensions": [
+                                        [1, 56, 111, 166, 221, 276]
                                     ]
                                 }
                             },
@@ -441,11 +461,11 @@
                                     ]
                                 },
                                 "data": {
-                                    "dimensions": [
-                                        [1, 56, 111, 166, 221, 276]
-                                    ],
                                     "measures": [
                                         [32352.8203125, 32352.640625, 32377.830078125, 32366.640625, 32360.2890625, 32355.30078125]
+                                    ],
+                                    "dimensions": [
+                                        [1, 56, 111, 166, 221, 276]
                                     ]
                                 }
                             },
@@ -486,26 +506,6 @@
                 },
                 "analyst": "c172964"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "biacore_evaluation_module_example2.json",
-            "data system instance identifier": "MASKED_SYSTEM_ID",
-            "file name": "biacore_evaluation_module_example2.bme",
-            "UNC path": "tests/parsers/cytiva_biacore_t200_evaluation/testdata/biacore_evaluation_module_example2.bme",
-            "ASM converter name": "allotropy_cytiva_biacore_t200_evaluation",
-            "ASM converter version": "0.1.118",
-            "software name": "Biacore T200 Evaluation Software",
-            "software version": "3.0",
-            "custom information document": {
-                "account identifier": "c172964",
-                "operating system type": "Win32NT",
-                "operating system version": "6.2.9200.0"
-            }
-        },
-        "device system document": {
-            "device identifier": "Biacore",
-            "model number": "T200",
-            "product manufacturer": "Cytiva"
-        }
+        ]
     }
 }
