@@ -130,6 +130,8 @@ class Calibration:
     name: str
     time: str
     report: str | None = None
+    expiry_time: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -325,10 +327,18 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return CalibrationAggregateDocument(
             calibration_document=[
-                CalibrationDocumentItem(
-                    calibration_name=calibration.name,
-                    calibration_report=calibration.report,
-                    calibration_time=self.get_date_time(calibration.time),
+                add_custom_information_document(
+                    CalibrationDocumentItem(
+                        calibration_name=calibration.name,
+                        calibration_report=calibration.report,
+                        calibration_time=self.get_date_time(calibration.time),
+                        expiry_time_prescription=(
+                            self.get_date_time(calibration.expiry_time)
+                            if calibration.expiry_time
+                            else None
+                        ),
+                    ),
+                    custom_info_doc=calibration.custom_info,
                 )
                 for calibration in calibrations
             ]

@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Model,
 )
@@ -31,6 +33,8 @@ class LuminexIntelliflexParser(VendorParser[Data, Model]):
     @classmethod
     def sniff(cls, named_file_contents: NamedFileContents) -> bool:
         try:
+            if named_file_contents.extension == "xlsx":
+                return cls._sniff_xlsx(named_file_contents)
             raw = named_file_contents.contents.read(8192)
             text = (
                 raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
@@ -54,6 +58,21 @@ class LuminexIntelliflexParser(VendorParser[Data, Model]):
             return False
         except Exception:
             return False
+
+    @classmethod
+    def _sniff_xlsx(cls, named_file_contents: NamedFileContents) -> bool:
+        workbook = openpyxl.load_workbook(
+            named_file_contents.get_bytes_stream(), read_only=True
+        )
+        try:
+            if LuminexXponentReader.RESULTS_SHEET_NAME not in workbook.sheetnames:
+                return False
+            sheet = workbook[LuminexXponentReader.RESULTS_SHEET_NAME]
+            header = next(sheet.iter_rows(max_row=1, values_only=True), None) or ()
+            columns = {str(cell) for cell in header if cell is not None}
+            return {"INSTRUMENT TYPE", "WELL LOCATION", "SAMPLE ID"}.issubset(columns)
+        finally:
+            workbook.close()
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = LuminexXponentReader(named_file_contents)
