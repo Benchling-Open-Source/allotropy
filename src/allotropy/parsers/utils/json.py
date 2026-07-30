@@ -120,10 +120,11 @@ class JsonData:
             self._get_matching_keys(regex) if regex else set(self.data.keys())
         )
 
-        # Get all unread keys
-        all_unread_keys = {
-            key for key in (matching_keys - self.read_keys) if key in self.data
-        }
+        # Get all unread keys, in the order they appear in the data. Iterating the set
+        # difference directly varies between runs, making serialized output
+        # nondeterministic.
+        unread = matching_keys - self.read_keys
+        all_unread_keys = [key for key in self.data if key in unread]
 
         # Filter to only include keys with non-dict, non-list values
         unread_keys = {}
@@ -134,7 +135,7 @@ class JsonData:
                 unread_keys[key] = value
 
         if all_unread_keys:
-            self.read_keys |= all_unread_keys
+            self.read_keys |= set(all_unread_keys)
 
         return unread_keys
 

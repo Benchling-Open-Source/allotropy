@@ -5,7 +5,7 @@
             "ASM file identifier": "Beckman_Vi-Cell-XR_report_format.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.134",
+            "ASM converter version": "0.1.143",
             "file name": "Beckman_Vi-Cell-XR_report_format.xlsx",
             "software name": "Vi-Cell XR",
             "software version": "2.04",
@@ -26,8 +26,8 @@
                                         "detection type": "brightfield",
                                         "device type": "brightfield imager (cell counter)",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -52,12 +52,12 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Decluster degree": "Medium",
-                                                "Viable cell spot area (%)": 5.0,
                                                 "Minimum circularity": 0.0,
                                                 "Cell brightness (%)": 85.0,
+                                                "Cell sharpness": 100.0,
                                                 "Viable cell spot brightness (%)": 75.0,
-                                                "Cell sharpness": 100.0
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Decluster degree": "Medium"
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -89,8 +89,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.89999389648438,
-                                            "Average cells / image": 18.299999237060547
+                                            "Average cells / image": 18.299999237060547,
+                                            "Avg. background intensity": 202.89999389648438
                                         }
                                     }
                                 ]

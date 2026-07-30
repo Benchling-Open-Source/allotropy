@@ -1,6 +1,24 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
     "liquid handler aggregate document": {
+        "data system document": {
+            "ASM file identifier": "CherryPick_Transfer_Complete.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_echo_cherry_pick",
+            "ASM converter version": "0.1.143",
+            "file name": "CherryPick_Transfer_Complete.csv",
+            "software name": "Echo Cherry Pick",
+            "software version": "1.8.2",
+            "UNC path": "tests/parsers/beckman_echo_cherry_pick/testdata/CherryPick_Transfer_Complete.csv"
+        },
+        "device system document": {
+            "equipment serial number": "E5XX-22154",
+            "model number": "Echo 525",
+            "product manufacturer": "Beckman Coulter",
+            "custom information document": {
+                "Instrument Software Version": "2.7.3"
+            }
+        },
         "liquid handler document": [
             {
                 "measurement aggregate document": {
@@ -22894,24 +22912,6 @@
                 },
                 "analyst": "BOS-LAB-IC"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "CherryPick_Transfer_Complete.json",
-            "data system instance identifier": "N/A",
-            "file name": "CherryPick_Transfer_Complete.csv",
-            "UNC path": "tests/parsers/beckman_echo_cherry_pick/testdata/CherryPick_Transfer_Complete.csv",
-            "ASM converter name": "allotropy_beckman_echo_cherry_pick",
-            "ASM converter version": "0.1.114",
-            "software name": "Echo Cherry Pick",
-            "software version": "1.8.2"
-        },
-        "device system document": {
-            "equipment serial number": "E5XX-22154",
-            "model number": "Echo 525",
-            "product manufacturer": "Beckman Coulter",
-            "custom information document": {
-                "Instrument Software Version": "2.7.3"
-            }
-        }
+        ]
     }
 }

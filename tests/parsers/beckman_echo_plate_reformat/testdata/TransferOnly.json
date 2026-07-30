@@ -1,6 +1,24 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
     "liquid handler aggregate document": {
+        "data system document": {
+            "ASM file identifier": "TransferOnly.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_echo_plate_reformat",
+            "ASM converter version": "0.1.143",
+            "file name": "TransferOnly.csv",
+            "software name": "Labcyte Echo Plate Reformat",
+            "software version": "1.7.2",
+            "UNC path": "tests/parsers/beckman_echo_plate_reformat/testdata/TransferOnly.csv"
+        },
+        "device system document": {
+            "equipment serial number": "E5XX-19119",
+            "model number": "Echo 525",
+            "product manufacturer": "Beckman Coulter",
+            "custom information document": {
+                "Instrument Software Version": "2.6.3"
+            }
+        },
         "liquid handler document": [
             {
                 "measurement aggregate document": {
@@ -182,24 +200,6 @@
                 },
                 "analyst": "LabAutomation"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "TransferOnly.json",
-            "data system instance identifier": "N/A",
-            "file name": "TransferOnly.csv",
-            "UNC path": "tests/parsers/beckman_echo_plate_reformat/testdata/TransferOnly.csv",
-            "ASM converter name": "allotropy_beckman_echo_plate_reformat",
-            "ASM converter version": "0.1.87",
-            "software name": "Labcyte Echo Plate Reformat",
-            "software version": "1.7.2"
-        },
-        "device system document": {
-            "equipment serial number": "E5XX-19119",
-            "model number": "Echo 525",
-            "product manufacturer": "Beckman Coulter",
-            "custom information document": {
-                "Instrument Software Version": "2.6.3"
-            }
-        }
+        ]
     }
 }

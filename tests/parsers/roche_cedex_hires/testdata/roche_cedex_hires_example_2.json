@@ -1,6 +1,28 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "roche_cedex_hires_example_2.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_roche_cedex_hires",
+            "ASM converter version": "0.1.143",
+            "file name": "roche_cedex_hires_example_2.xlsx",
+            "software name": "Cedex software",
+            "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_2.xlsx"
+        },
+        "device system document": {
+            "asset management identifier": "G037DE019",
+            "brand name": "Cedex",
+            "description": "my system",
+            "device identifier": "3714019",
+            "model number": "Cedex HiRes",
+            "product manufacturer": "Roche",
+            "custom information document": {
+                "Default system": 1.0,
+                "System description (processed)": "my system",
+                "Default system (processed)": 1.0
+            }
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -9,8 +31,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -34,12 +56,12 @@
                                             "value": 95.29307556,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 4.5295425,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 4.753276,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.5295425,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -118,8 +140,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -143,12 +165,12 @@
                                             "value": 95.52274323,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 4.2329905,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 4.4313955,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.2329905,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -227,8 +249,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -252,12 +274,12 @@
                                             "value": 95.76529694,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 5.6323785,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 5.88144,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 5.6323785,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -336,8 +358,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -361,12 +383,12 @@
                                             "value": 95.6820755,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 6.314132,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 6.599075,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.314132,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -445,8 +467,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -470,12 +492,12 @@
                                             "value": 94.00199127,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 3.98603975,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 4.240378,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.98603975,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -554,8 +576,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -579,12 +601,12 @@
                                             "value": 94.46669769,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 3.98181825,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 4.2150495,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.98181825,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -663,8 +685,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -688,12 +710,12 @@
                                             "value": 95.83587646,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 6.6307355,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 6.9188445,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.6307355,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -772,8 +794,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "cell counter",
                                         "detection type": "brightfield",
+                                        "device type": "cell counter",
                                         "sample volume setting": {
                                             "value": 300.0,
                                             "unit": "μL"
@@ -797,12 +819,12 @@
                                             "value": 95.60102844,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 6.2613645,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 6.549474,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.2613645,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -874,28 +896,6 @@
                 },
                 "analyst": "SuperUser"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "roche_cedex_hires_example_2.json",
-            "data system instance identifier": "N/A",
-            "file name": "roche_cedex_hires_example_2.xlsx",
-            "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_2.xlsx",
-            "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.74",
-            "software name": "Cedex software"
-        },
-        "device system document": {
-            "asset management identifier": "G037DE019",
-            "brand name": "Cedex",
-            "description": "my system",
-            "device identifier": "3714019",
-            "model number": "Cedex HiRes",
-            "product manufacturer": "Roche",
-            "custom information document": {
-                "System description (processed)": "my system",
-                "Default system (processed)": 1.0,
-                "Default system": 1.0
-            }
-        }
+        ]
     }
 }
