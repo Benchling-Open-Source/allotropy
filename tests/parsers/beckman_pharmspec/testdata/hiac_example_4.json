@@ -1,6 +1,19 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
+        "data system document": {
+            "ASM file identifier": "hiac_example_4.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_coulter_pharmspec",
+            "ASM converter version": "0.1.143",
+            "file name": "hiac_example_4.xlsx",
+            "software name": "PharmSpec",
+            "software version": "3.0",
+            "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_4.xlsx"
+        },
+        "device system document": {
+            "equipment serial number": "1808303021"
+        },
         "solution analyzer document": [
             {
                 "measurement aggregate document": {
@@ -90,6 +103,7 @@
                                         "distribution aggregate document": {
                                             "distribution document": [
                                                 {
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_0",
                                                     "particle size": {
                                                         "value": 2.0,
                                                         "unit": "µm"
@@ -109,10 +123,10 @@
                                                     "differential count": {
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
-                                                    },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_0"
+                                                    }
                                                 },
                                                 {
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_1",
                                                     "particle size": {
                                                         "value": 5.0,
                                                         "unit": "µm"
@@ -132,10 +146,10 @@
                                                     "differential count": {
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
-                                                    },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_1"
+                                                    }
                                                 },
                                                 {
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_2",
                                                     "particle size": {
                                                         "value": 10.0,
                                                         "unit": "µm"
@@ -155,10 +169,10 @@
                                                     "differential count": {
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
-                                                    },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_2"
+                                                    }
                                                 },
                                                 {
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_3",
                                                     "particle size": {
                                                         "value": 25.0,
                                                         "unit": "µm"
@@ -178,10 +192,10 @@
                                                     "differential count": {
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
-                                                    },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_3"
+                                                    }
                                                 },
                                                 {
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_4",
                                                     "particle size": {
                                                         "value": 50.0,
                                                         "unit": "µm"
@@ -201,8 +215,7 @@
                                                     "differential count": {
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
-                                                    },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_4"
+                                                    }
                                                 }
                                             ]
                                         }
@@ -215,19 +228,6 @@
                 },
                 "analyst": "MFC7094"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "hiac_example_4.json",
-            "data system instance identifier": "N/A",
-            "file name": "hiac_example_4.xlsx",
-            "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_4.xlsx",
-            "ASM converter name": "allotropy_beckman_coulter_pharmspec",
-            "ASM converter version": "0.1.105",
-            "software name": "PharmSpec",
-            "software version": "3.0"
-        },
-        "device system document": {
-            "equipment serial number": "1808303021"
-        }
+        ]
     }
 }

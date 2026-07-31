@@ -98,7 +98,7 @@ def get_reader_samples() -> pd.DataFrame:
             "sample role type",
             "col6",
             "analyte name",
-            "col8",
+            "dilution factor",
             "concentration unit",
             "flag",
             "concentration value",

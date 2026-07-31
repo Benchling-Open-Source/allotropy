@@ -1,6 +1,8 @@
+from io import BytesIO
 import re
 from unittest import mock
 
+import openpyxl
 import pandas as pd
 import pytest
 
@@ -15,6 +17,7 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
     StatisticsDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
@@ -250,18 +253,9 @@ def test_create_measurement_list() -> None:
                     Error(error="Another Warning."),
                 ],
                 calculated_data=[],
-                measurement_custom_info={
-                    "ProtocolName": "Order66",
-                    "ProtocolVersion": 5.0,
-                    "ProtocolReporterGain": "Pro MAP",
-                    "SampleVolume": "1 uL",
-                    "Build": "1.1.0",
-                    "Program": "xPonent",
-                    "SN": "SN1234",
-                    "ComputerName": "AAA000",
-                    "Batch": "ABC_0000",
-                    "BatchStartTime": "1/17/2024 7:41:29 AM",
-                },
+                # Header values are reported once at the document level, so only per-well
+                # values from the Count table appear here.
+                measurement_custom_info={},
                 sample_custom_info={
                     "BatchDescription": "Test Batch Description",
                     "PanelName": None,
@@ -326,6 +320,106 @@ class TestSingleDatasetParser:
     header_prefix = "INSTRUMENT TYPE,SERIAL NUMBER,SOFTWARE VERSION,PLATE NAME,PLATE START,WELL LOCATION,SAMPLE ID"
     row_prefix = "LX200,SN-1,3.1.0,Plate-1,2024-01-01 10:00:00,A1,S1"
 
+    @pytest.mark.parametrize(
+        ("file_path", "expected"),
+        [
+            # Exported to a network share: UNC separators replaced by underscores.
+            (
+                "____uspltmrlwg00060_results___Plate_1_INTELLIFLEX.xlsx",
+                "uspltmrlwg00060",
+            ),
+            ("/home/user/____host9_results___Plate_1.csv", "host9"),
+            # An actual UNC path reports the host directly.
+            (r"\\uspltmrlwg00060\results\Plate_1.xlsx", "uspltmrlwg00060"),
+            # No computer name to report.
+            ("CO024769_P4_Work_Unit_1955_INTELLIFLEX_1.csv", ""),
+            (r"C:\data\Plate_1.csv", ""),
+            ("", ""),
+            (None, ""),
+        ],
+    )
+    def test_get_computer_name(self, file_path: str | None, expected: str) -> None:
+        assert SingleDatasetParser._get_computer_name(file_path) == expected
+
+    @pytest.mark.parametrize(
+        ("value", "expected"),
+        [
+            ("xMAP INTELLIFLEX", "xMAP INTELLIFLEX"),
+            (7000, "7000"),
+            # "N/A" is read as NaN by pandas, and must not be reported as the text "nan".
+            (None, ""),
+            (float("nan"), ""),
+        ],
+    )
+    def test_first_value(self, value: object, expected: str) -> None:
+        assert SingleDatasetParser._first_value(pd.Series([value])) == expected
+
+    def test_first_value_of_empty_series(self) -> None:
+        assert SingleDatasetParser._first_value(pd.Series(dtype="object")) == ""
+
+    @pytest.mark.parametrize(
+        ("metric", "expected_section"),
+        [
+            ("MEDIAN", "Median"),
+            ("%CV", "%CV"),
+            # Trimmed CV must not be conflated with the untrimmed statistic.
+            ("TRIMMED %CV", "Trimmed %CV"),
+            ("NET MEDIAN", "Net MFI"),
+            ("NET NORMALIZED MEDIAN", "Net Normalized Median"),
+            ("NET AVERAGE MEDIAN", "Net Average Median"),
+            ("AVERAGE MFI", "Avg Net MFI"),
+            ("REPLICATE %CV", "%CV of Replicates"),
+            # A trailing parenthetical descriptor is dropped to give a stable name.
+            ("RATIO (RP1/RP2)", "Ratio"),
+        ],
+    )
+    def test_section_name_from_metric(self, metric: str, expected_section: str) -> None:
+        assert SingleDatasetParser.section_name_from_metric(metric) == expected_section
+
+    def test_parse_header_keeps_parenthetical_metric(self) -> None:
+        assert SingleDatasetParser.parse_header("R25: RP1 RATIO (RP1/RP2)") == (
+            "R25: RP1",
+            "RATIO (RP1/RP2)",
+        )
+
+    def test_build_calibrations(self) -> None:
+        df = pd.DataFrame(
+            {
+                "CALIBRATION STATE": ["Calibrated"],
+                "CALIBRATION TIMESTAMP": ["2026-07-20 09:48:43"],
+                "CALIBRATION LOT": ["C19796"],
+                "CALIBRATION LOT EXPIRATION": ["2028-02-27"],
+                "CALIBRATION LOT EXPIRED": ["False"],
+                "VERIFICATION STATE": ["Verified"],
+                "VERIFICATION TIMESTAMP": ["2026-07-21 10:05:31"],
+                "VERIFICATION LOT": ["C16784"],
+                "VERIFICATION LOT EXPIRATION": ["2027-10-29"],
+                "VERIFICATION LOT EXPIRED": ["False"],
+            }
+        )
+
+        assert SingleDatasetParser.build_calibrations(df) == [
+            Calibration(
+                name="Calibration",
+                time="2026-07-20 09:48:43",
+                report="Calibrated",
+                expiry_time="2028-02-27",
+                custom_info={"lot number": "C19796", "lot expired": "False"},
+            ),
+            Calibration(
+                name="Verification",
+                time="2026-07-21 10:05:31",
+                report="Verified",
+                expiry_time="2027-10-29",
+                custom_info={"lot number": "C16784", "lot expired": "False"},
+            ),
+        ]
+
+    def test_build_calibrations_without_timestamps(self) -> None:
+        # Calibration time is required, so a block without one is not reported.
+        df = pd.DataFrame({"CALIBRATION STATE": ["Calibrated"]})
+        assert SingleDatasetParser.build_calibrations(df) == []
+
     def test_parse_header_splits_analyte_and_metric(self) -> None:
         analyte, metric = SingleDatasetParser.parse_header("REPORTER 1 AVERAGE MFI")  # type: ignore[misc]
         assert analyte == "REPORTER 1"
@@ -345,7 +439,13 @@ class TestSingleDatasetParser:
             f"{self.row_prefix},100.5,30,200.0,50",
         ]
 
-        results, header, calibration, min_beads = SingleDatasetParser.parse(lines)
+        (
+            results,
+            header,
+            calibration,
+            min_beads,
+            _calibrations,
+        ) = SingleDatasetParser.parse(lines)
 
         # Expected sections
         assert "Median" in results
@@ -383,7 +483,13 @@ class TestSingleDatasetParser:
             f"{self.row_prefix},1.0,2.0,3.0,4.0,5.0,6.0",
         ]
 
-        results, header, calibration, min_beads = SingleDatasetParser.parse(lines)
+        (
+            results,
+            header,
+            calibration,
+            min_beads,
+            _calibrations,
+        ) = SingleDatasetParser.parse(lines)
 
         # Sections detected from input
         assert "Units" in results
@@ -405,7 +511,13 @@ class TestSingleDatasetParser:
             f"{self.row_prefix}",
         ]
 
-        _results, header, _calibration, _min_beads = SingleDatasetParser.parse(lines)
+        (
+            _results,
+            header,
+            _calibration,
+            _min_beads,
+            _calibrations,
+        ) = SingleDatasetParser.parse(lines)
 
         # Values should be propagated into the header table
         assert header["SN"].iloc[0] == "SN-1"
@@ -436,3 +548,18 @@ class TestSingleDatasetParser:
             "",
         ]
         assert LuminexXponentReader._is_single_dataset(lines) is True
+
+    def test_read_xlsx_without_results_sheet_then_raise(self) -> None:
+        workbook = openpyxl.Workbook()
+        workbook.remove(workbook.worksheets[0])
+        workbook.create_sheet("Plate History")
+        contents = BytesIO()
+        workbook.save(contents)
+        contents.seek(0)
+
+        with pytest.raises(
+            AllotropeConversionError, match="Unable to find sheet 'Results'"
+        ):
+            LuminexXponentReader(
+                NamedFileContents(contents=contents, original_file_path="plate.xlsx")
+            )
