@@ -54,7 +54,7 @@ class ThermoFisherDiomniReader:
 
         # Extract header rows
         header_df = df.iloc[:data_start_idx, :2].copy()
-        header_df.columns = ["key", "value"]
+        header_df.columns = pd.Index(["key", "value"])
 
         # Drop rows where key is None
         header_df = header_df[header_df["key"].notna()]
@@ -85,7 +85,7 @@ class ThermoFisherDiomniReader:
         data = df.iloc[data_start_idx + 1 :].copy()
 
         # Set column names from the header row
-        data.columns = df.iloc[data_start_idx].tolist()
+        data.columns = pd.Index(df.iloc[data_start_idx].tolist())
 
         # Reset index
         data = data.reset_index(drop=True)

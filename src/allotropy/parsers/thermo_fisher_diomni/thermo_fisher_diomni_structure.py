@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import PureWindowsPath
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -84,34 +85,52 @@ def create_measurement_groups(
     measurements = []
     for _, row in measurements_data.iterrows():
         # Extract sample identifier
-        sample_id = row.get("Sample")
+        sample_id: Any = row.get("Sample")
         if pd.isna(sample_id):
             sample_id = row.get("Well")
 
         # Extract target
-        target = row.get("Target", NOT_APPLICABLE)
+        target: Any = row.get("Target", NOT_APPLICABLE)
 
         # Determine sample role type from "Sample type" column
-        sample_type = row.get("Sample type")
+        sample_type_raw: Any = row.get("Sample type")
+        sample_type: str | None = (
+            str(sample_type_raw)
+            if sample_type_raw is not None and not pd.isna(sample_type_raw)
+            else None
+        )
         sample_role_type = _get_sample_role_type(sample_type)
 
         # Extract Cq value and other results
-        cq_value = try_float_or_none(row.get("Cq"))
-        reporter = row.get("Reporter")
-        delta_rn = try_float_or_none(row.get("Delta Rn"))
+        cq_raw: Any = row.get("Cq")
+        cq_value = try_float_or_none(cq_raw if not pd.isna(cq_raw) else None)
+        reporter: Any = row.get("Reporter")
+        delta_rn_raw: Any = row.get("Delta Rn")
+        delta_rn = try_float_or_none(
+            delta_rn_raw if not pd.isna(delta_rn_raw) else None
+        )
 
         # Build custom info from additional columns
-        custom_info = {}
-        if call := row.get("Call"):
-            custom_info["call"] = call
-        if cq_conf := try_float_or_none(row.get("Cq confidence")):
+        custom_info: dict[str, Any] = {}
+        call_raw: Any = row.get("Call")
+        if call_raw and not pd.isna(call_raw):
+            custom_info["call"] = str(call_raw)
+        cq_conf_raw: Any = row.get("Cq confidence")
+        cq_conf = try_float_or_none(cq_conf_raw if not pd.isna(cq_conf_raw) else None)
+        if cq_conf:  # Preserve original behavior: treats 0.0 as falsy
             custom_info["cq_confidence"] = cq_conf
-        if amp_score := try_float_or_none(row.get("Amp score")):
+        amp_score_raw: Any = row.get("Amp score")
+        amp_score = try_float_or_none(
+            amp_score_raw if not pd.isna(amp_score_raw) else None
+        )
+        if amp_score:  # Preserve original behavior: treats 0.0 as falsy
             custom_info["amp_score"] = amp_score
-        if amp_status := row.get("Amp status"):
-            custom_info["amp_status"] = amp_status
-        if quality_issues := row.get("Quality issue(s)"):
-            custom_info["quality_issues"] = quality_issues
+        amp_status_raw: Any = row.get("Amp status")
+        if amp_status_raw and not pd.isna(amp_status_raw):
+            custom_info["amp_status"] = str(amp_status_raw)
+        quality_issues_raw: Any = row.get("Quality issue(s)")
+        if quality_issues_raw and not pd.isna(quality_issues_raw):
+            custom_info["quality_issues"] = str(quality_issues_raw)
 
         # Create processed data
         processed_data = ProcessedData(
