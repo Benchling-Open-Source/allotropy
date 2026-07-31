@@ -18,7 +18,9 @@ from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none, try_int
+from allotropy.parsers.utils.values import (
+    try_float_or_none,
+)
 
 
 def create_metadata(header: SeriesData, file_path: str | None) -> Metadata:
@@ -34,7 +36,9 @@ def create_metadata(header: SeriesData, file_path: str | None) -> Metadata:
 
     # Extract file name
     file_name_raw = header.get(str, "File Name", "")
-    experimental_data_id = PureWindowsPath(file_name_raw).name if file_name_raw else NOT_APPLICABLE
+    experimental_data_id = (
+        PureWindowsPath(file_name_raw).name if file_name_raw else NOT_APPLICABLE
+    )
 
     return Metadata(
         asm_file_identifier=random_uuid_str(),
@@ -43,7 +47,9 @@ def create_metadata(header: SeriesData, file_path: str | None) -> Metadata:
         device_identifier=instrument_name,
         model_number=instrument_type,
         device_serial_number=instrument_serial,
-        measurement_method_identifier=header.get(str, "Quantification Cycle Method", NOT_APPLICABLE),
+        measurement_method_identifier=header.get(
+            str, "Quantification Cycle Method", NOT_APPLICABLE
+        ),
         software_name=software_name,
         software_version=software_version,
         data_system_instance_identifier=NOT_APPLICABLE,
@@ -63,13 +69,17 @@ def create_measurement_groups(
 
     # Extract file name for experimental data identifier
     file_name_raw = header.get(str, "File Name", "")
-    experimental_data_id = PureWindowsPath(file_name_raw).name if file_name_raw else NOT_APPLICABLE
+    experimental_data_id = (
+        PureWindowsPath(file_name_raw).name if file_name_raw else NOT_APPLICABLE
+    )
 
     # Get well volume from block type or sample volume
     well_volume = _get_well_volume(header, block_type)
 
     # Get measurement timestamp
-    measurement_time = header.get(str, "Run End Data/Time") or header.get(str, "Run End Date/Time", NOT_APPLICABLE)
+    measurement_time = header.get(str, "Run End Data/Time") or header.get(
+        str, "Run End Date/Time", NOT_APPLICABLE
+    )
 
     measurements = []
     for _, row in measurements_data.iterrows():

@@ -7,15 +7,14 @@ from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import VendorParser
-
 from allotropy.parsers.thermo_fisher_diomni.thermo_fisher_diomni_reader import (
     ThermoFisherDiomniReader,
 )
 from allotropy.parsers.thermo_fisher_diomni.thermo_fisher_diomni_structure import (
-    create_metadata,
     create_measurement_groups,
+    create_metadata,
 )
+from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ThermoFisherDiomniParser(VendorParser[Data, Model]):

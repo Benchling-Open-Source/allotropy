@@ -7,7 +7,6 @@ import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.pandas import (
-    df_to_series_data,
     read_excel,
     SeriesData,
 )
