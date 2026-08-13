@@ -10,6 +10,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_openlab_cds import constants
 from allotropy.parsers.agilent_openlab_cds.agilent_openlab_cds_decoder import (
     decode_data,
+    is_result_set,
 )
 from allotropy.parsers.agilent_openlab_cds.agilent_openlab_cds_structure import (
     create_measurement_groups,
@@ -22,13 +23,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
-    SUPPORTED_EXTENSIONS = "rslt"
+    SUPPORTED_EXTENSIONS = "rslt,zip"
     SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence"
     SCHEMA_MAPPER = Mapper
 
     @classmethod
-    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
-        return True
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        # .zip is shared with other parsers, so check for result set contents rather than extension.
+        return is_result_set(named_file_contents.get_bytes_stream())
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         structured_data = decode_data(named_file_contents.get_bytes_stream())

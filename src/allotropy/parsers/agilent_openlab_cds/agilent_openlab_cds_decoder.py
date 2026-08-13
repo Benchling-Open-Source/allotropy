@@ -1,4 +1,5 @@
 """ Decodes a zipped .rslt folder file into intermediate json"""
+from io import BytesIO
 import os
 from pathlib import Path
 import re
@@ -8,6 +9,15 @@ import zipfile
 
 import rainbow.agilent.chemstation as rb  # type: ignore
 import xmltodict
+
+from allotropy.exceptions import AllotropeConversionError
+
+# OpenLab CDS exports a result set as a .rslt folder, which always reaches us compressed. Users may
+# compress it a second time (e.g. right-click > Compress), producing an archive whose only member is
+# the result set archive, so we descend through a few layers of nesting to find the result set.
+ACAML_PATTERN = r".*acaml"
+NESTED_ARCHIVE_PATTERN = r".*\.(rslt|zip)$"
+MAX_ARCHIVE_NESTING = 3
 
 
 def merge_peak_with_signal_name(
@@ -273,6 +283,57 @@ def _get_matching_filenames(zip_ref: zipfile.ZipFile, pattern: str) -> list[str]
     ]
 
 
+def _get_first_matching_filename(
+    zip_ref: zipfile.ZipFile, pattern: str, description: str
+) -> str:
+    matching = _get_matching_filenames(zip_ref, pattern)
+    if not matching:
+        msg = f"Could not find {description} in Agilent OpenLab CDS result set."
+        raise AllotropeConversionError(msg)
+    return matching[0]
+
+
+def open_result_set(input_bytes: IO[bytes]) -> zipfile.ZipFile:
+    """
+    Open the archive containing the result set, unwrapping extra layers of compression.
+
+    Accepts the result set archive itself, or an archive that (re)compresses it, in which case the
+    result set is nested as a .rslt or .zip member.
+    :param input_bytes: the uploaded file contents
+    :return: an open ZipFile whose members include the ACAML file
+    """
+    try:
+        zip_ref = zipfile.ZipFile(input_bytes)
+    except zipfile.BadZipFile as err:
+        msg = "Agilent OpenLab CDS files must be a compressed .rslt result set."
+        raise AllotropeConversionError(msg) from err
+
+    for _ in range(MAX_ARCHIVE_NESTING):
+        if _get_matching_filenames(zip_ref, ACAML_PATTERN):
+            return zip_ref
+        nested = _get_matching_filenames(zip_ref, NESTED_ARCHIVE_PATTERN)
+        if not nested:
+            break
+        with zip_ref.open(nested[0]) as nested_archive:
+            nested_bytes = BytesIO(nested_archive.read())
+        try:
+            zip_ref = zipfile.ZipFile(nested_bytes)
+        except zipfile.BadZipFile:
+            break
+
+    msg = "Could not find ACAML file in Agilent OpenLab CDS result set."
+    raise AllotropeConversionError(msg)
+
+
+def is_result_set(input_bytes: IO[bytes]) -> bool:
+    """Report whether contents look like an OpenLab CDS result set, at any level of compression."""
+    try:
+        with open_result_set(input_bytes):
+            return True
+    except (AllotropeConversionError, OSError):
+        return False
+
+
 def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
     """
     decoded the files in input folder path and returns a structured data
@@ -284,8 +345,8 @@ def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
     total_injection_chromatogram_details: list[dict[str, Any]] = []
     total_peak_details: list[dict[str, Any]] = []
 
-    with zipfile.ZipFile(input_bytes) as zip_ref:
-        acaml_path = next(iter(_get_matching_filenames(zip_ref, ".*acaml")))
+    with open_result_set(input_bytes) as zip_ref:
+        acaml_path = _get_matching_filenames(zip_ref, ACAML_PATTERN)[0]
         with zip_ref.open(acaml_path) as acaml_file_data:
             acaml_file_content = acaml_file_data.read().decode("utf-8-sig")
             decoded_acaml_content = xmltodict.parse(acaml_file_content)
@@ -302,7 +363,9 @@ def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
         intermediate_metadata.pop("SampleMeasurement")
         intermediate_json["Metadata"] = intermediate_metadata
 
-        sequence_file_name = next(iter(_get_matching_filenames(zip_ref, r".*\.sqx")))
+        sequence_file_name = _get_first_matching_filename(
+            zip_ref, r".*\.sqx", "sequence (.sqx) file"
+        )
         with zip_ref.open(sequence_file_name, "r") as sequence_file:
             sequence_data = extract_sqx_file(sequence_file)
             injection_data["sequence_data"] = sequence_data
