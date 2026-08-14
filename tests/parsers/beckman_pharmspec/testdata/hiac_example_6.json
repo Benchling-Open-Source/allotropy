@@ -609,7 +609,10 @@
                             "measurement identifier": "Run 1",
                             "measurement time": "2026-05-26T16:40:00+00:00",
                             "sample document": {
-                                "sample identifier": "FC557"
+                                "sample identifier": "FC557",
+                                "custom information document": {
+                                    "container identifier": "FC557"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -744,7 +747,10 @@
                             "measurement identifier": "Run 2",
                             "measurement time": "2026-05-26T16:40:00+00:00",
                             "sample document": {
-                                "sample identifier": "FC557"
+                                "sample identifier": "FC557",
+                                "custom information document": {
+                                    "container identifier": "FC557"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -879,7 +885,10 @@
                             "measurement identifier": "Run 3",
                             "measurement time": "2026-05-26T16:40:00+00:00",
                             "sample document": {
-                                "sample identifier": "FC557"
+                                "sample identifier": "FC557",
+                                "custom information document": {
+                                    "container identifier": "FC557"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1014,7 +1023,10 @@
                             "measurement identifier": "Run 4",
                             "measurement time": "2026-05-26T16:40:00+00:00",
                             "sample document": {
-                                "sample identifier": "FC557"
+                                "sample identifier": "FC557",
+                                "custom information document": {
+                                    "container identifier": "FC557"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
