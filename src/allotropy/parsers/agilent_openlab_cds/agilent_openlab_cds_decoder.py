@@ -9,6 +9,9 @@ import zipfile
 import rainbow.agilent.chemstation as rb  # type: ignore
 import xmltodict
 
+# Chunk size used when spooling a large .dx member out of the outer archive.
+SPOOL_CHUNK_SIZE = 1024 * 1024
+
 
 def merge_peak_with_signal_name(
     peak_data: list[dict[str, Any]],
@@ -81,25 +84,20 @@ def extract_rx_file(rx_file: IO[bytes]) -> list[dict[str, Any]]:
         )
         with zip_ref.open(processed_file_path) as processed_file:
             peaks = xmltodict.parse(processed_file.read().decode("utf-8-sig"))
-            for peak in peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
-                "SignalResult"
-            ]:
+            result_data = peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"]
+            for peak in result_data["SignalResult"]:
                 peak_data = {}
                 if "Peak" in peak:
                     peak_data["Peak"] = peak["Peak"]
                     peak_data["Signal_ID"] = peak["Signal_ID"]["@id"]
                     peak_details.append(peak_data)
 
+            # Injections that were not processed against a calibration method have no
+            # identified compounds, so peaks are reported without compound metadata.
+            injection_compounds = result_data.get("InjectionCompound")
             peak_metadata_dict = {}
-            if isinstance(
-                peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
-                    "InjectionCompound"
-                ],
-                list,
-            ):
-                for item in peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
-                    "InjectionCompound"
-                ]:
+            if isinstance(injection_compounds, list):
+                for item in injection_compounds:
                     peak_id = item.get("@id")
                     if peak_id:
                         identification = item.get("Identification", None)
@@ -111,20 +109,16 @@ def extract_rx_file(rx_file: IO[bytes]) -> list[dict[str, Any]]:
                         )
                         if identification_id:
                             peak_metadata_dict[identification_id] = item
-            else:
+            elif injection_compounds:
                 peak_id = (
-                    peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
-                        "InjectionCompound"
-                    ]["Identification"]
+                    injection_compounds["Identification"]
                     .get("Qualified", {})
                     .get("Peaks", {})
                     .get("Peak_ID", {})
                     .get("@id")
                 )
                 if peak_id:
-                    peak_metadata_dict[peak_id] = peaks["ACAML"]["Doc"]["Content"][
-                        "Injections"
-                    ]["Result"]["InjectionCompound"]
+                    peak_metadata_dict[peak_id] = injection_compounds
 
             if isinstance(peak_details, list):
                 for peak_dict in peak_details:
@@ -215,6 +209,25 @@ def extract_sqx_file(sqx_file: IO[bytes]) -> dict[str, Any]:
             return sequence_sample_data
 
 
+def get_acaml_analysis_method(acaml_content: dict[str, Any]) -> str | None:
+    """
+    Reads the analysis method name from the acaml method documents.
+
+    Used as a fallback when the result set has no .sqx sequence file to read it from.
+    :param acaml_content: decoded acaml data
+    :return: the analysis method name, if all injections share exactly one
+    """
+    methods = acaml_content["ACAML"]["Doc"]["Content"].get("Method")
+    if not methods:
+        return None
+    names = {
+        method.get("Name")
+        for method in (methods if isinstance(methods, list) else [methods])
+        if method.get("Name")
+    }
+    return names.pop() if len(names) == 1 else None
+
+
 def decode_acaml_data(
     acaml_content: dict[str, Any]
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
@@ -258,7 +271,10 @@ def decode_acaml_data(
                 ] = signals["TraceID"]
         signal_details["Signal details"].append(signal_data)
     metadata_data["Instrument"] = instrument_data
-    metadata_data["SeparationMedium"] = content_data["Resources"]["SeparationMedium"]
+    # Sequences run without a registered column have no SeparationMedium resource.
+    metadata_data["SeparationMedium"] = content_data["Resources"].get(
+        "SeparationMedium"
+    )
     metadata_data["SampleSetup"] = content_data["Samples"]["Setup"]
     metadata_data["SampleMeasurement"] = content_data["Samples"]["MeasData"]
 
@@ -302,10 +318,16 @@ def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
         intermediate_metadata.pop("SampleMeasurement")
         intermediate_json["Metadata"] = intermediate_metadata
 
-        sequence_file_name = next(iter(_get_matching_filenames(zip_ref, r".*\.sqx")))
-        with zip_ref.open(sequence_file_name, "r") as sequence_file:
-            sequence_data = extract_sqx_file(sequence_file)
-            injection_data["sequence_data"] = sequence_data
+        # The sequence file is not always exported with the result set, in which case the
+        # analysis method is read from the acaml method documents instead.
+        sequence_file_names = _get_matching_filenames(zip_ref, r".*\.sqx")
+        if sequence_file_names:
+            with zip_ref.open(sequence_file_names[0], "r") as sequence_file:
+                injection_data["sequence_data"] = extract_sqx_file(sequence_file)
+        else:
+            injection_data["sequence_data"] = {
+                "AnalysisMethod": get_acaml_analysis_method(decoded_acaml_content)
+            }
 
         dx_files = _get_matching_filenames(zip_ref, r".*\.dx")
         for dx_file_name in dx_files:
@@ -314,9 +336,17 @@ def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
                 injection_data["pump_pressure_filename"] = injection_data[
                     "total_pressure_files"
                 ][name_without_ext]
-            with zip_ref.open(dx_file_name) as dx_file:
+            # .dx members are large (~75MB) and the files we need sit at the end of the
+            # archive. Spool one member at a time to a temp file so the nested ZipFile
+            # gets real random access instead of repeatedly re-reading a ZipExtFile.
+            with zip_ref.open(dx_file_name) as dx_file, tempfile.NamedTemporaryFile(
+                "w+b", suffix=".dx"
+            ) as spooled_dx:
+                while chunk := dx_file.read(SPOOL_CHUNK_SIZE):
+                    spooled_dx.write(chunk)
+                spooled_dx.seek(0)
                 total_injection_chromatogram_details.extend(
-                    extract_dx_file(dx_file, injection_data, dx_file_name)
+                    extract_dx_file(spooled_dx, injection_data, dx_file_name)
                 )
 
         rx_files = _get_matching_filenames(zip_ref, r".*\.rx")

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from functools import cached_property
 from io import BytesIO
 from pathlib import PureWindowsPath
+from typing import cast, IO
 
 from allotropy.types import IOType
 
@@ -36,3 +37,17 @@ class NamedFileContents:
             if isinstance(raw_content, str)
             else raw_content
         )
+
+    def get_seekable_bytes_stream(self, encoding: str = "utf-8") -> IO[bytes]:
+        """Return a seekable binary stream over the contents.
+
+        Unlike get_bytes_stream, this avoids reading the whole file into memory when
+        contents is already a seekable binary stream (e.g. a file handle opened by
+        allotrope_from_file). Use this for large container formats (zip, OLE) where the
+        reader only needs a few members and can seek to them.
+        """
+        contents = self.contents
+        if isinstance(contents.read(0), bytes) and contents.seekable():
+            contents.seek(0)
+            return cast(IO[bytes], contents)
+        return self.get_bytes_stream(encoding)
