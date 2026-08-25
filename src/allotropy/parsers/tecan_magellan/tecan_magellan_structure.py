@@ -43,9 +43,9 @@ class MeasurementSettings:
     measurement_mode: str
     measurement_type: MeasurementType
     wavelength_setting: float
-    number_of_averages: float
+    number_of_averages: float | None
     plate_identifier: str
-    temperature: float
+    temperature: float | None
     custom_info: dict[str, Any]
 
     @staticmethod
@@ -78,7 +78,11 @@ class MagellanMetadata:
     measurements_settings: dict[str, MeasurementSettings]
 
     @classmethod
-    def create(cls, metadata_lines: list[str]) -> MagellanMetadata:
+    def create(
+        cls,
+        metadata_lines: list[str],
+        measurement_temperatures: dict[str, float] | None = None,
+    ) -> MagellanMetadata:
         reader = LinesReader(metadata_lines)
         measurement_time = cls.parse_measurement_time(
             assert_not_none(reader.pop(), "Measurement Time")
@@ -99,7 +103,9 @@ class MagellanMetadata:
             analyst=analyst,
             device_identifier=device_identifier,
             equipment_serial_number=equipment_serial_number,
-            measurements_settings=cls._get_measurements_settings(reader),
+            measurements_settings=cls._get_measurements_settings(
+                reader, measurement_temperatures or {}
+            ),
         )
 
     @classmethod
@@ -117,12 +123,18 @@ class MagellanMetadata:
 
     @classmethod
     def _get_measurements_settings(
-        cls, reader: LinesReader
+        cls, reader: LinesReader, measurement_temperatures: dict[str, float]
     ) -> dict[str, MeasurementSettings]:
         settings_lines: list[list[str]] = []
         settings: dict[str, MeasurementSettings] = {}
         label_and_temps = []
         temp_line_re = r"Meas. temperature: (.+): ([\d\.]+) °C"
+
+        remaining_lines = reader.lines[reader.current_line :]
+        if not any(re.match(temp_line_re, line) for line in remaining_lines):
+            return cls._get_compact_measurement_settings(
+                remaining_lines, measurement_temperatures
+            )
 
         while not re.match(temp_line_re, (first_line := assert_not_none(reader.get()))):
             if match := re.match(r"Measurement \d.", first_line):
@@ -143,6 +155,62 @@ class MagellanMetadata:
             )
 
         return settings
+
+    @classmethod
+    def _get_compact_measurement_settings(
+        cls,
+        lines: list[str],
+        measurement_temperatures: dict[str, float],
+    ) -> dict[str, MeasurementSettings]:
+        stripped_lines = [line.strip() for line in lines]
+        measurement_mode = assert_not_none(
+            next((line for line in stripped_lines if line == "Absorbance"), None),
+            "Measurement Mode",
+        )
+        raw_wavelength = cls._get_prefixed_value(
+            stripped_lines, "Measurement wavelength"
+        ).split()[0]
+        label = cls._get_prefixed_value(stripped_lines, "Label")
+        plate_description = cls._get_prefixed_value(stripped_lines, "Plate Description")
+        plate_identifier_match = re.match(r"\[([^\]]+)\]", plate_description)
+        plate_identifier = (
+            plate_identifier_match.group(1)
+            if plate_identifier_match
+            else plate_description
+        )
+
+        custom_info = {"Plate Description": plate_description}
+        for key in ("Range", "Action"):
+            if value := cls._get_optional_prefixed_value(stripped_lines, key):
+                custom_info[key] = value
+
+        return {
+            label: MeasurementSettings(
+                measurement_mode=measurement_mode,
+                measurement_type=get_measurement_type(measurement_mode),
+                wavelength_setting=try_float(raw_wavelength, "Wavelength setting"),
+                number_of_averages=None,
+                plate_identifier=plate_identifier,
+                temperature=measurement_temperatures.get(label),
+                custom_info=custom_info,
+            )
+        }
+
+    @classmethod
+    def _get_prefixed_value(cls, lines: list[str], key: str) -> str:
+        return assert_not_none(cls._get_optional_prefixed_value(lines, key), key)
+
+    @staticmethod
+    def _get_optional_prefixed_value(lines: list[str], key: str) -> str | None:
+        prefix = f"{key}:"
+        return next(
+            (
+                line.removeprefix(prefix).strip()
+                for line in lines
+                if line.startswith(prefix)
+            ),
+            None,
+        )
 
 
 def create_metadata(data: MagellanMetadata, file_path: str) -> Metadata:
