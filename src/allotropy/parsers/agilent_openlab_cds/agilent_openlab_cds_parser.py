@@ -30,10 +30,11 @@ class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     @classmethod
     def sniff(cls, named_file_contents: NamedFileContents) -> bool:
         # .zip is shared with other parsers, so check for result set contents rather than extension.
-        return is_result_set(named_file_contents.get_bytes_stream())
+        # Result sets reach ~1GB, so avoid get_bytes_stream, which copies the whole file to memory.
+        return is_result_set(named_file_contents.get_seekable_bytes_stream())
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        structured_data = decode_data(named_file_contents.get_bytes_stream())
+        structured_data = decode_data(named_file_contents.get_seekable_bytes_stream())
         return Data(
             metadata=create_metadata(structured_data, named_file_contents),
             measurement_groups=[create_measurement_groups(structured_data)],

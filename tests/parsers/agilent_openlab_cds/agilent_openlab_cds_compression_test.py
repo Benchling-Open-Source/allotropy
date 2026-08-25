@@ -4,6 +4,7 @@ OpenLab CDS exports a .rslt result set folder, which reaches us compressed. User
 second time (e.g. right-click > Compress) and may keep either the .zip or the .rslt extension, so
 all of those shapes must produce the same ASM.
 """
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 import zipfile
@@ -67,7 +68,7 @@ def variants(tmp_path_factory: pytest.TempPathFactory) -> dict[str, Path]:
 
 
 @pytest.fixture(scope="module")
-def expected() -> dict[str, Any]:
+def expected() -> Mapping[str, Any]:
     return from_file(RESULT_SET, VENDOR)
 
 
@@ -97,7 +98,7 @@ def _without_file_paths(asm: Any) -> Any:
     ],
 )
 def test_recompressed_result_set_matches_result_set(
-    variant: str, variants: dict[str, Path], expected: dict[str, Any]
+    variant: str, variants: dict[str, Path], expected: Mapping[str, Any]
 ) -> None:
     actual = from_file(variants[variant], VENDOR)
     assert _without_file_paths(actual) == _without_file_paths(expected)
