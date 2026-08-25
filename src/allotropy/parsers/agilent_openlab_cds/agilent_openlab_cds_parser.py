@@ -31,7 +31,7 @@ class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
         return True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        structured_data = decode_data(named_file_contents.get_bytes_stream())
+        structured_data = decode_data(named_file_contents.get_seekable_bytes_stream())
         return Data(
             metadata=create_metadata(structured_data, named_file_contents),
             measurement_groups=[create_measurement_groups(structured_data)],

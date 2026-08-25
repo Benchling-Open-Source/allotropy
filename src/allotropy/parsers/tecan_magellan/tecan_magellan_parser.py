@@ -59,7 +59,9 @@ class TecanMagellanParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = TecanMagellanReader(named_file_contents)
-        metadata = MagellanMetadata.create(reader.metadata_lines)
+        metadata = MagellanMetadata.create(
+            reader.metadata_lines, reader.measurement_temperatures
+        )
         well_count = len(reader.data)
 
         return Data(
