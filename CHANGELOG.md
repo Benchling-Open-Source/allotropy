@@ -5,6 +5,15 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.144] - 2026-08-25
+
+### Fixed
+
+- Agilent OpenLab CDS - accept zipped result sets (#1252)
+- Tecan Magellan - support compact Magellan Pro 7.5 exports (#1258)
+- Cut OpenLab CDS peak memory 4x and handle optional ACAML metadata (#1254)
+- Report custom information keys in a stable order (#1249)
+
 ## [0.1.143] - 2026-07-28
 
 ### Fixed
