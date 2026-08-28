@@ -4,6 +4,8 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from typing import Any
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+
 
 @dataclass
 class Referenceable:
@@ -14,13 +16,13 @@ class Referenceable:
 class DataSource:
     feature: str
     reference: CalculatedDocument | Referenceable
-    value: float | None = None
+    value: JsonFloat | None = None
 
 
 @dataclass
 class CalculatedDocument(Referenceable):
     name: str
-    value: float
+    value: JsonFloat
     data_sources: list[DataSource]
     unit: str | None = None
     description: str | None = None

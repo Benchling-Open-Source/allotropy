@@ -7,7 +7,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_document
     iter_calculated_data_documents,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
-    create_calculated_data,
     create_measurement_groups,
     create_metadata,
     enrich_wells_with_results,
@@ -93,7 +92,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
                 melt_data,
                 result_metadata,
             ),
-            calculated_data=create_calculated_data(calculated_data_documents),
+            calculated_data=list(calculated_data_documents) or None,
         )
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

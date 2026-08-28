@@ -10,9 +10,7 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
-    CalculatedDataItem,
     DataProcessing,
-    DataSource,
     DistributionDocument,
     Error,
     Measurement,
@@ -27,6 +25,11 @@ from allotropy.parsers.beckman_pharmspec.constants import (
     VALID_CALCS,
 )
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import (
     map_rows,
     SeriesData,
@@ -197,7 +200,7 @@ def create_measurement_groups(
 
 def create_calculated_data(
     distributions: list[Distribution],
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     particle_size_sources = defaultdict(list)
     for source in [
         feature
@@ -208,14 +211,14 @@ def create_calculated_data(
         particle_size_sources[source.particle_size].append(source)
 
     return [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
+        CalculatedDocument(
+            uuid=random_uuid_str(),
             name=f"{distribution.name}_{name}".lower(),
             value=value,
             unit=UNIT_LOOKUP[name],
             data_sources=[
                 DataSource(
-                    identifier=x.distribution_identifier,
+                    reference=Referenceable(uuid=x.distribution_identifier),
                     feature=name.replace("_", " "),
                 )
                 for x in particle_size_sources[feature.particle_size]
