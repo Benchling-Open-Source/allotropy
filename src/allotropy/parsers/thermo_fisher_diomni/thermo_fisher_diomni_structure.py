@@ -1,4 +1,9 @@
-"""Data structures for Thermo Fisher Diomni parser."""
+"""Data structures for Thermo Fisher Diomni parser.
+
+Supports both Diomni v4.2.0 and v4.3.0 file formats:
+- v4.2.0: Has "Delta Rn", "Cq confidence", "Amp status"
+- v4.3.0: Has "Manual call", "Comment"; lacks the three v4.2.0 fields above
+"""
 
 from __future__ import annotations
 
@@ -112,34 +117,59 @@ def create_measurement_groups(
             cq_raw: Any = row.get("Cq")
             cq_value = try_float_or_none(cq_raw if not pd.isna(cq_raw) else None)
             reporter: Any = row.get("Reporter")
+
+            # Delta Rn - present in v4.2.0, removed in v4.3.0
             delta_rn_raw: Any = row.get("Delta Rn")
-            delta_rn = try_float_or_none(
-                delta_rn_raw if not pd.isna(delta_rn_raw) else None
+            delta_rn = (
+                try_float_or_none(delta_rn_raw if not pd.isna(delta_rn_raw) else None)
+                if delta_rn_raw is not None
+                else None
             )
 
             # Build custom info from additional columns
             custom_info: dict[str, Any] = {}
+
+            # Call - present in both versions
             call_raw: Any = row.get("Call")
             if call_raw and not pd.isna(call_raw):
                 custom_info["call"] = str(call_raw)
+
+            # Cq confidence - present in v4.2.0, removed in v4.3.0
             cq_conf_raw: Any = row.get("Cq confidence")
-            cq_conf = try_float_or_none(
-                cq_conf_raw if not pd.isna(cq_conf_raw) else None
-            )
-            if cq_conf:  # Preserve original behavior: treats 0.0 as falsy
-                custom_info["cq_confidence"] = cq_conf
+            if cq_conf_raw is not None:
+                cq_conf = try_float_or_none(
+                    cq_conf_raw if not pd.isna(cq_conf_raw) else None
+                )
+                if cq_conf:  # Preserve original behavior: treats 0.0 as falsy
+                    custom_info["cq_confidence"] = cq_conf
+
+            # Amp score - present in both versions
             amp_score_raw: Any = row.get("Amp score")
             amp_score = try_float_or_none(
                 amp_score_raw if not pd.isna(amp_score_raw) else None
             )
             if amp_score:  # Preserve original behavior: treats 0.0 as falsy
                 custom_info["amp_score"] = amp_score
+
+            # Amp status - present in v4.2.0, removed in v4.3.0
             amp_status_raw: Any = row.get("Amp status")
-            if amp_status_raw and not pd.isna(amp_status_raw):
+            if amp_status_raw is not None and not pd.isna(amp_status_raw):
                 custom_info["amp_status"] = str(amp_status_raw)
+
+            # Quality issue(s) - present in both versions
             quality_issues_raw: Any = row.get("Quality issue(s)")
             if quality_issues_raw and not pd.isna(quality_issues_raw):
                 custom_info["quality_issues"] = str(quality_issues_raw)
+
+            # Manual call - added in v4.3.0
+            manual_call_raw: Any = row.get("Manual call")
+            if manual_call_raw is not None and not pd.isna(manual_call_raw):
+                custom_info["manual_call"] = str(manual_call_raw)
+
+            # Comment - added in v4.3.0
+            comment_raw: Any = row.get("Comment")
+            if comment_raw is not None and not pd.isna(comment_raw):
+                custom_info["comment"] = str(comment_raw)
 
             # Create processed data
             processed_data = ProcessedData(

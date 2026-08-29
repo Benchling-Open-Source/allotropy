@@ -1,4 +1,7 @@
-"""Reader for Thermo Fisher Diomni Excel files."""
+"""Reader for Thermo Fisher Diomni Excel files.
+
+Supports both Diomni v4.2.0 and v4.3.0 file formats.
+"""
 
 from __future__ import annotations
 
@@ -10,6 +13,7 @@ from allotropy.parsers.utils.pandas import (
     read_excel,
     SeriesData,
 )
+from allotropy.types import IOType
 
 
 class ThermoFisherDiomniReader:
@@ -19,11 +23,13 @@ class ThermoFisherDiomniReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         """Initialize reader with file contents."""
-        # Read the Excel file - Diomni exports have a single sheet named "Target_Call"
+        # Read the Excel file - Diomni exports have a single sheet
+        # Sheet name changed from "Target_Call" (v4.2.0) to "Target Call" (v4.3.0)
+        sheet_name = self._get_sheet_name(named_file_contents.contents)
         df = read_excel(
             named_file_contents.contents,
             header=None,
-            sheet_name="Target_Call",
+            sheet_name=sheet_name,
             engine="calamine",
         )
 
@@ -35,6 +41,25 @@ class ThermoFisherDiomniReader:
 
         # Parse measurements section
         self.measurements = self._parse_measurements(df)
+
+    @staticmethod
+    def _get_sheet_name(contents: IOType) -> str:
+        """Determine the sheet name (changed between versions).
+
+        v4.2.0 uses "Target_Call" (underscore)
+        v4.3.0 uses "Target Call" (space)
+        """
+        # Note: pandas type stubs don't include 'calamine' engine yet, hence the type ignore
+        excel_file = pd.ExcelFile(contents, engine="calamine")  # type: ignore[arg-type]
+
+        # Try both possible sheet names
+        if "Target_Call" in excel_file.sheet_names:
+            return "Target_Call"
+        elif "Target Call" in excel_file.sheet_names:
+            return "Target Call"
+        else:
+            msg = f"Expected sheet 'Target_Call' or 'Target Call' not found. Available sheets: {excel_file.sheet_names}"
+            raise ValueError(msg)
 
     def _parse_header(self, df: pd.DataFrame) -> SeriesData:
         """Parse header/metadata section.
