@@ -226,6 +226,11 @@ def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
     )
 
 
+# Detection types whose ASM measurement schema requires a specific measured value; a
+# measurement must not be emitted when that value is absent.
+REQUIRED_PROPERTY_BY_DETECTION_TYPE = {"ph-detection": "ph"}
+
+
 def _get_measurements(sample: Sample) -> list[Measurement]:
     measurements = []
 
@@ -238,6 +243,10 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
         "osmolality-detection",
         "ph-detection",
     ]:
+        required_property = REQUIRED_PROPERTY_BY_DETECTION_TYPE.get(detection_type)
+        if required_property is not None and getattr(sample, required_property) is None:
+            continue
+
         kwargs = {
             key: getattr(sample, key)
             for key in DETECTION_PROPERTY_MAPPING[detection_type]
