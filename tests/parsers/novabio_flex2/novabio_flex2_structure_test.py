@@ -8,8 +8,10 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._0
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
+    create_measurement_groups,
     Sample,
     SampleData,
+    SampleList,
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
@@ -76,6 +78,44 @@ def test_create_sample() -> None:
     )
     assert sample.carbon_dioxide_saturation == 0
     assert sample.oxygen_saturation == 100.0
+
+
+def _get_detection_types(
+    ph: float | None, temperature: float | None
+) -> list[str | None]:
+    sample = Sample(
+        identifier="SAMPLE_1",
+        sample_type="Spent Media",
+        measurement_time="2025-02-09 10:40:00",
+        batch_identifier="BATCH_123",
+        analytes=[Analyte("glucose", 4.5, "g/L")],
+        ph=ph,
+        temperature=temperature,
+    )
+    groups = create_measurement_groups(
+        Title(processing_time="2025-02-09 104000", device_identifier=None),
+        SampleList(analyst="Kermit", samples=[sample]),
+    )
+    return [measurement.detection_type for measurement in groups[0].measurements]
+
+
+@pytest.mark.parametrize(
+    "ph,temperature,expected_detection_types",
+    [
+        # The pH-detector schema requires a pH value, so a vessel temperature on its own
+        # must not produce a pH measurement.
+        (None, 37.0, ["metabolite-detection"]),
+        (None, None, ["metabolite-detection"]),
+        (7.4, 37.0, ["metabolite-detection", "ph-detection"]),
+        (7.4, None, ["metabolite-detection", "ph-detection"]),
+    ],
+)
+def test_ph_detection_requires_ph_value(
+    ph: float | None,
+    temperature: float | None,
+    expected_detection_types: list[str],
+) -> None:
+    assert _get_detection_types(ph, temperature) == expected_detection_types
 
 
 def test_create_sample_list() -> None:
