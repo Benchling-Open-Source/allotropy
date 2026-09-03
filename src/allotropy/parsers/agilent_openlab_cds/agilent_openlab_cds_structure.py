@@ -45,6 +45,26 @@ def create_data_cube(
     )
 
 
+def get_brand_name(instrument_name: str | None) -> str | None:
+    """Reads the brand name out of the instrument name, e.g. "Luxo HPLC" -> "HPLC".
+
+    Instrument names are free text, so they do not always carry a brand.
+    """
+    tokens = instrument_name.split() if instrument_name else []
+    return tokens[1] if len(tokens) > 1 else None
+
+
+def get_column_info(intermediate_structured_data: dict[str, Any]) -> dict[str, Any]:
+    """Reads the column description, which is absent when no column was registered."""
+    separation_medium = intermediate_structured_data["Metadata"].get(
+        "SeparationMedium"
+    ) or [{}]
+    if isinstance(separation_medium, dict):
+        separation_medium = [separation_medium]
+    column: dict[str, Any] = separation_medium[0].get("Type", {}).get("Column", {})
+    return column
+
+
 def create_metadata(
     intermediate_structured_data: dict[str, Any], named_file_contents: NamedFileContents
 ) -> Metadata:
@@ -71,11 +91,9 @@ def create_metadata(
         .get("AgilentApp", {})
         .get("Version"),
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
-        brand_name=(
+        brand_name=get_brand_name(
             intermediate_structured_data["Metadata"]["Instrument"]["Name"]
-        ).split()[1]
-        if intermediate_structured_data["Metadata"]["Instrument"]["Name"]
-        else None,
+        ),
         device_identifier=intermediate_structured_data["Metadata"]["Instrument"].get(
             "@id"
         ),
@@ -111,9 +129,9 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             else None,
             start_unit="s",
             end_unit="s",
-            area=try_float_or_none(peak["Area"]["@val"]),
+            area=try_float_or_none(peak.get("Area", {}).get("@val")),
             area_unit="RFU.s"
-            if "LU" in peak["Area"]["@unit"]
+            if "LU" in (peak.get("Area", {}).get("@unit") or "")
             else "mAU.s"
             if "Area" in peak and peak["Area"].get("@unit")
             else None,
@@ -122,14 +140,14 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             if try_float_or_none(peak.get("Height", {}).get("@val")) is not None
             else None,
             height_unit="RFU"
-            if "LU" in peak["Height"]["@unit"]
+            if "LU" in (peak.get("Height", {}).get("@unit") or "")
             else "mAU"
             if "Height" in peak and peak["Height"].get("@unit")
             else None,
             relative_height=try_float_or_none(
                 peak.get("HeightPercent", {}).get("@val")
             ),
-            written_name=peak["Peak Metadata"].get("CompoundName"),
+            written_name=peak.get("Peak Metadata", {}).get("CompoundName"),
             retention_time=float(peak["RetentionTime"]["@val"]) * 60
             if peak.get("RetentionTime")
             and peak["RetentionTime"].get("@val") is not None
@@ -180,6 +198,7 @@ def create_measurements(
         ),
         None,
     )
+    column_info = get_column_info(intermediate_structured_data)
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
@@ -288,72 +307,31 @@ def create_measurements(
             if column_comp_dict
             else None,
             column_inner_diameter=try_float_or_none(
-                intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
-                    "Column"
-                ]
-                .get("Diameter", {})
-                .get("@val")
+                column_info.get("Diameter", {}).get("@val")
             ),
             chromatography_particle_size=try_float_or_none(
-                intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
-                    "Column"
-                ]
-                .get("ParticleSize", {})
-                .get("@val")
+                column_info.get("ParticleSize", {}).get("@val")
             ),
-            chromatography_length=float(
-                intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
-                    "Column"
-                ]["Length"]["@val"]
-            )
-            / 10
-            if "Length"
-            in intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
-                "Column"
-            ]
+            chromatography_length=float(column_info["Length"]["@val"]) / 10
+            if "Length" in column_info
             else None,
             column_product_manufacturer=column_comp_dict.get("Manufacturer")
             if column_comp_dict
             else None,
             column_custom_info={
                 "maximum temperature": {
-                    "value": try_float_or_none(
-                        intermediate_structured_data["Metadata"]["SeparationMedium"][0][
-                            "Type"
-                        ]["Column"]["MaxTemp"]["@val"]
-                    ),
+                    "value": try_float_or_none(column_info["MaxTemp"]["@val"]),
                     "unit": "degC"
-                    if intermediate_structured_data["Metadata"]["SeparationMedium"][0][
-                        "Type"
-                    ]["Column"]["MaxTemp"]["@unit"]
-                    == "°C"
-                    else (
-                        intermediate_structured_data["Metadata"]["SeparationMedium"][0][
-                            "Type"
-                        ]["Column"]["MaxTemp"]["@unit"]
-                        or "(unitless)"
-                    ),
+                    if column_info["MaxTemp"]["@unit"] == "°C"
+                    else (column_info["MaxTemp"]["@unit"] or "(unitless)"),
                 }
-                if "MaxTemp"
-                in intermediate_structured_data["Metadata"]["SeparationMedium"][0][
-                    "Type"
-                ]["Column"]
+                if "MaxTemp" in column_info
                 else None,
                 "maximum pressure": {
-                    "value": try_float_or_none(
-                        intermediate_structured_data["Metadata"]["SeparationMedium"][0][
-                            "Type"
-                        ]["Column"]["MaxPressure"]["@val"]
-                    ),
-                    "unit": intermediate_structured_data["Metadata"][
-                        "SeparationMedium"
-                    ][0]["Type"]["Column"]["MaxPressure"]["@unit"]
-                    or "(unitless)",
+                    "value": try_float_or_none(column_info["MaxPressure"]["@val"]),
+                    "unit": column_info["MaxPressure"]["@unit"] or "(unitless)",
                 }
-                if "MaxPressure"
-                in intermediate_structured_data["Metadata"]["SeparationMedium"][0][
-                    "Type"
-                ]["Column"]
+                if "MaxPressure" in column_info
                 else None,
                 "firmware version": column_comp_dict.get("FirmwareRevision")
                 if column_comp_dict
