@@ -69,6 +69,31 @@ Each mapper defines:
 - A `Mapper` class extending `SchemaMapper[Data, Model]` with `map_model()` method
 - The `MANIFEST` URL string for the `field_asm_manifest` field
 
+### Measurement grouping is per-schema, not per-parser
+
+One `MeasurementGroup` becomes one technique document (e.g. one `qpcr document`); each
+`Measurement` in it becomes one `measurement document` inside that group. **A new parser
+must use the same grouping as the parsers already on that schema mapper.** Inverting the
+nesting — many single-measurement groups where the convention is one group with many
+measurements — produces schema-valid but inconsistent output, and `--overwrite` will write
+the wrong shape as the expected JSON, so tests pass and nothing flags it.
+
+Before writing `create_measurement_groups()`, find the existing parsers
+(`grep -rl "schema_mappers.adm.{technique}" src/allotropy/parsers/`), read their grouping
+key, and confirm it against their committed expected JSON.
+
+Established conventions:
+
+| Schema mapper | One `MeasurementGroup` | One `Measurement` |
+|---|---|---|
+| `adm.pcr.rec._2024._09.qpcr` | one well | one target / reporter-dye channel in that well |
+
+For qPCR, group source rows with `df.groupby("Well")` — the rows are one-per-target, so a
+row-per-group loop is wrong. This holds even when the file has no target column (CFX
+Maestro emits `target DNA description: N/A` and distinguishes measurements by
+`reporter_dye_setting`). See `.claude/skills/parser-generator/skill.md` for the
+verification snippet.
+
 ## Field Naming Conventions
 
 Generated models use these naming patterns:
