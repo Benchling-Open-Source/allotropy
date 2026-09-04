@@ -105,6 +105,9 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
     RocheCedexHiResParser,
 )
 from allotropy.parsers.tecan_magellan.tecan_magellan_parser import TecanMagellanParser
+from allotropy.parsers.thermo_fisher_diomni.thermo_fisher_diomni_parser import (
+    ThermoFisherDiomniParser,
+)
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
 )
@@ -181,6 +184,7 @@ class Vendor(Enum):
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
     TECAN_MAGELLAN = "TECAN_MAGELLAN"
     BENCHLING_CHROMELEON = "BENCHLING_CHROMELEON"
+    THERMO_FISHER_DIOMNI = "THERMO_FISHER_DIOMNI"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_GENESYS_ON_BOARD = "THERMO_FISHER_GENESYS_ON_BOARD"
     THERMO_FISHER_NANODROP_8000 = "THERMO_FISHER_NANODROP_8000"
@@ -289,6 +293,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
     Vendor.TECAN_MAGELLAN: TecanMagellanParser,
     Vendor.BENCHLING_CHROMELEON: BenchlingChromeleonParser,
+    Vendor.THERMO_FISHER_DIOMNI: ThermoFisherDiomniParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_GENESYS_ON_BOARD: ThermoFisherGenesysOnBoardParser,
     Vendor.THERMO_FISHER_NANODROP_8000: Nanodrop8000Parser,
