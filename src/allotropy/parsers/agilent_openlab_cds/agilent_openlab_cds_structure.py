@@ -117,6 +117,44 @@ def create_metadata(
     )
 
 
+def get_molar_mass_custom_info(peak: dict[str, Any]) -> dict[str, Any]:
+    """Reads the peak's molar mass results, which ASM has no native concept for.
+
+    Only reported for size-exclusion methods with a GPC calibration, so usually absent.
+    """
+    return {
+        key: {
+            "value": try_float_or_none(peak[element].get("@val")),
+            "unit": unit,
+        }
+        for element, (key, unit) in constants.PEAK_MOLAR_MASS_FIELDS.items()
+        if isinstance(peak.get(element), dict)
+    }
+
+
+def get_total_peak_area(peaks: list[Peak] | None) -> dict[str, Any] | None:
+    """Sums the peak areas reported for a signal.
+
+    Reported as custom information because a processed data document holds only a peak list. Summing
+    the vendor's areas needs no integration parameters of our own, unlike deriving them from the
+    chromatogram would.
+    """
+    areas = [
+        (peak.area, peak.area_unit) for peak in peaks or [] if peak.area is not None
+    ]
+    units = {unit for _, unit in areas}
+    # A signal comes from a single detector, so its areas share a unit. Don't sum if they somehow
+    # do not, as the total would be meaningless.
+    if not areas or len(units) != 1:
+        return None
+    return {
+        "total peak area": {
+            "value": sum(area for area, _ in areas),
+            "unit": units.pop(),
+        }
+    }
+
+
 def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
     return [
         Peak(
@@ -180,6 +218,7 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             number_of_theoretical_plates__chromatography_=try_float_or_none(
                 peak.get("TheoreticalPlates_USP", {}).get("@val")
             ),
+            custom_info=get_molar_mass_custom_info(peak),
         )
         for peak in peak_structure
     ]
@@ -199,6 +238,11 @@ def create_measurements(
         None,
     )
     column_info = get_column_info(intermediate_structured_data)
+    peaks_by_measurement = {
+        i: create_peak(result_data["Peak"])
+        for i, result_data in enumerate(intermediate_structured_data["Result Data"])
+        if "Peak" in result_data
+    }
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
@@ -420,6 +464,14 @@ def create_measurements(
                         "signal"
                     ]
                     else None,
+                    # The signal name carries the detector settings the wavelength and bandwidth
+                    # fields above are read from, plus the reference setting, which is often "off"
+                    # and so has no numeric field to go in. Report it verbatim so nothing is lost.
+                    device_control_custom_info={
+                        "signal description": intermediate_structured_data[
+                            "Result Data"
+                        ][i]["Metadata"]["signal"]
+                    },
                 )
                 for module in intermediate_structured_data["Metadata"]["Instrument"][
                     "Module"
@@ -439,9 +491,8 @@ def create_measurements(
                     ]
                 )
             ],
-            peaks=create_peak(intermediate_structured_data["Result Data"][i]["Peak"])
-            if "Peak" in intermediate_structured_data["Result Data"][i]
-            else None,
+            peaks=peaks_by_measurement.get(i),
+            processed_data_custom_info=get_total_peak_area(peaks_by_measurement.get(i)),
             chromatogram_data_cube=create_data_cube(
                 label=f"{intermediate_structured_data['Result Data'][i]['Metadata']['signal'].split(',')[0]} chromatogram",
                 measures_value=intermediate_structured_data["Result Data"][i][
