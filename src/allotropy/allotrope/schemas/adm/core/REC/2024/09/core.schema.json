@@ -22,7 +22,10 @@
       "type": "object",
       "properties": {
         "value": {
-          "type": "number"
+          "anyOf": [
+            { "type": "number" },
+            { "type": "string", "enum": ["NaN", "+Infinity", "-Infinity"] }
+          ]
         },
         "unit": {
           "$ref": "#/$defs/tUnit"

@@ -32,6 +32,7 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     SampleRoleType,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
     TQuantityValue,
     TStatisticDatumRole,
 )
@@ -68,7 +69,7 @@ class Analyte:
     identifier: str
     name: str
     assay_bead_identifier: str
-    assay_bead_count: float
+    assay_bead_count: JsonFloat
     statistics: list[StatisticsDocument] | None = None
     statistic_datum_role: TStatisticDatumRole | None = None
     fluorescence: float | None = None
@@ -90,7 +91,7 @@ class Measurement:
     measurement_time: str
 
     # Settings
-    assay_bead_count: float
+    assay_bead_count: JsonFloat
 
     analytes: list[Analyte]
     errors: list[Error] | None = None

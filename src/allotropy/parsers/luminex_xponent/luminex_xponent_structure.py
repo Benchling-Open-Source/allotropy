@@ -19,6 +19,7 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
     StatisticDimension,
     StatisticsDocument,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.luminex_xponent.constants import (
@@ -44,6 +45,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
+    try_float_or_nan,
     try_non_nan_float_or_negative_zero,
     try_non_nan_float_or_none,
 )
@@ -216,7 +218,7 @@ class Measurement:
     sample_identifier: str
     location_identifier: str
     dilution_factor_setting: float
-    assay_bead_count: float
+    assay_bead_count: JsonFloat
     analytes: list[Analyte]
     calculated_data: list[CalculatedDocument]
     errors: list[Error] | None = None
@@ -315,7 +317,7 @@ class Measurement:
                     identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
                     assay_bead_identifier=assay_bead_identifier,
-                    assay_bead_count=count_data[float, analyte],
+                    assay_bead_count=try_float_or_nan(count_data.get(str, analyte)),
                     statistics=[
                         StatisticsDocument(
                             statistical_feature="fluorescence",
@@ -369,7 +371,7 @@ class Measurement:
             sample_identifier=count_data[str, "Sample"],
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=count_data[float, "Total Events"],
+            assay_bead_count=try_float_or_nan(count_data.get(str, "Total Events")),
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
