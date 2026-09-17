@@ -9,6 +9,7 @@ from typing import Any
 from dateutil.parser import parse, ParserError
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Calibration,
@@ -19,7 +20,6 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
     StatisticDimension,
     StatisticsDocument,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.luminex_xponent.constants import (
