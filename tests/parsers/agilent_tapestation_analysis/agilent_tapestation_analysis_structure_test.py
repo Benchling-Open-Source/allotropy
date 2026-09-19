@@ -4,8 +4,6 @@ import xml.etree.ElementTree as ET  # noqa: N817
 import pytest
 
 from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -25,6 +23,11 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     PRODUCT_MANUFACTURER,
     SCREEN_TAPE_MISMATCH_ERROR,
     SOFTWARE_NAME,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.testing.utils import mock_uuid_generation
@@ -181,62 +184,68 @@ def testcreate_measurement_groups_with_calculated_data() -> None:
             get_samples_xml(with_calculated_data=True)
         )
 
-    sample_data_source = DataSource(feature="sample", identifier="TEST_ID_0")
-    peak_1_data_source = DataSource(feature="peak", identifier="TEST_ID_2")
-    peak_2_data_source = DataSource(feature="peak", identifier="TEST_ID_7")
+    sample_data_source = DataSource(
+        feature="sample", reference=Referenceable(uuid="TEST_ID_0")
+    )
+    peak_1_data_source = DataSource(
+        feature="peak", reference=Referenceable(uuid="TEST_ID_2")
+    )
+    peak_2_data_source = DataSource(
+        feature="peak", reference=Referenceable(uuid="TEST_ID_7")
+    )
 
     assert calc_docs == [
-        CalculatedDataItem(
-            identifier="TEST_ID_1",
+        CalculatedDocument(
+            uuid="TEST_ID_1",
             name="Concentration",
             unit="(unitless)",
             value=58.2,
             data_sources=[sample_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_3",
+        CalculatedDocument(
+            uuid="TEST_ID_3",
             name="AssignedQuantity",
             unit="(unitless)",
             value=8.50,
             data_sources=[peak_1_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_4",
+        CalculatedDocument(
+            uuid="TEST_ID_4",
             name="FromPercent",
             unit="(unitless)",
             value=80.6,
             data_sources=[peak_1_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_5",
+        CalculatedDocument(
+            uuid="TEST_ID_5",
             name="Molarity",
             unit="(unitless)",
             value=131.0,
             data_sources=[peak_1_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_6",
+        CalculatedDocument(
+            uuid="TEST_ID_6",
             name="ToPercent",
             unit="(unitless)",
             value=85.4,
             data_sources=[peak_1_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_8",
+        CalculatedDocument(
+            uuid="TEST_ID_8",
             name="CalibratedQuantity",
             unit="(unitless)",
             value=11.3,
             data_sources=[peak_2_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_9",
+        CalculatedDocument(
+            uuid="TEST_ID_9",
             name="FromPercent",
             unit="(unitless)",
             value=41.1,
             data_sources=[peak_2_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_10",
+        CalculatedDocument(
+            uuid="TEST_ID_10",
             name="RunDistance",
             unit="(unitless)",
             value=46.5,
@@ -256,8 +265,12 @@ def testcreate_measurement_groups_with_regions() -> None:
             get_samples_xml(with_regions=True)
         )
 
-    region_1_data_source = DataSource(feature="data region", identifier="TEST_ID_3")
-    region_2_data_source = DataSource(feature="data region", identifier="TEST_ID_6")
+    region_1_data_source = DataSource(
+        feature="data region", reference=Referenceable(uuid="TEST_ID_3")
+    )
+    region_2_data_source = DataSource(
+        feature="data region", reference=Referenceable(uuid="TEST_ID_6")
+    )
 
     # Note: Data regions are ordered by <From> (region_start) ascending
     assert groups[0].measurements[0].processed_data.data_regions == [
@@ -285,29 +298,29 @@ def testcreate_measurement_groups_with_regions() -> None:
         ),
     ]
     assert calc_docs == [
-        CalculatedDataItem(
-            identifier="TEST_ID_4",
+        CalculatedDocument(
+            uuid="TEST_ID_4",
             name="AverageSize",
             unit="(unitless)",
             value=1944.0,
             data_sources=[region_1_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_5",
+        CalculatedDocument(
+            uuid="TEST_ID_5",
             name="Molarity",
             unit="(unitless)",
             value=0.765,
             data_sources=[region_1_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_7",
+        CalculatedDocument(
+            uuid="TEST_ID_7",
             name="AverageSize",
             unit="(unitless)",
             value=395.0,
             data_sources=[region_2_data_source],
         ),
-        CalculatedDataItem(
-            identifier="TEST_ID_8",
+        CalculatedDocument(
+            uuid="TEST_ID_8",
             name="Concentration",
             unit="(unitless)",
             value=1.11,

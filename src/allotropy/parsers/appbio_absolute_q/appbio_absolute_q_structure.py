@@ -14,8 +14,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -42,6 +40,11 @@ from allotropy.parsers.constants import (
     NEGATIVE_ZERO,
     NOT_APPLICABLE,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import map_rows, series_to_float_list, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -61,12 +64,17 @@ class CalculatedItem:
     ) -> list[DataSource]:
         if self.source == CalculatedDataSource.CALCULATED_DATA:
             return [
-                DataSource(calculated_data_ids[source_feature], source_feature)
+                DataSource(
+                    reference=Referenceable(uuid=calculated_data_ids[source_feature]),
+                    feature=source_feature,
+                )
                 for source_feature in self.source_features
             ]
         else:
             return [
-                DataSource(identifier, source_feature)
+                DataSource(
+                    reference=Referenceable(uuid=identifier), feature=source_feature
+                )
                 for source_feature in self.source_features
                 for identifier in measurement_ids
             ]
@@ -171,7 +179,7 @@ class WellItem:
     reporter_dye_data_cube: DataCube | None = None
     passive_reference_dye_data_cube: DataCube | None = None
     errors: list[Error] | None = None
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
     extra_data: dict[str, Any] | None = None
 
     @property
@@ -199,8 +207,8 @@ class WellItem:
             confidence_interval__95__=data.get(float, "95%CI"),
             fluorescence_intensity_threshold_setting=data.get(float, "Threshold"),
             calculated_data=[
-                CalculatedDataItem(
-                    identifier=calc_data.identifier,
+                CalculatedDocument(
+                    uuid=calc_data.identifier,
                     name=calc_data.name,
                     value=calc_data.value,
                     unit=calc_data.unit,
@@ -423,12 +431,12 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
 
 def create_calculated_data(
     wells: list[Well], groups: list[Group], common_columns: list[str]
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     if not groups:
         return []
     # Map measurement ids to group keys and get per-measurement calculated data items
     group_to_ids = defaultdict(list)
-    calculated_data_items: list[CalculatedDataItem] = []
+    calculated_data_items: list[CalculatedDocument] = []
     for well in wells:
         for item in well.items:
             group_to_ids[item.group_key].append(item.measurement_identifier)
@@ -474,17 +482,14 @@ def create_calculated_data(
 
     calculated_data_items.extend(
         [
-            CalculatedDataItem(
-                identifier=calculated_data.identifier,
+            CalculatedDocument(
+                uuid=calculated_data.identifier,
                 name=calculated_data.name,
                 value=calculated_data.value,
                 unit=calculated_data.unit,
-                data_sources=[
-                    DataSource(source.identifier, source.feature)
-                    for source in calculated_data.get_data_sources(
-                        group_to_ids[group.key], group.calculated_data_ids
-                    )
-                ],
+                data_sources=calculated_data.get_data_sources(
+                    group_to_ids[group.key], group.calculated_data_ids
+                ),
             )
             for group in groups
             for calculated_data in group.calculated_data
