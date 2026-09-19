@@ -62,6 +62,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -690,7 +693,13 @@
                                                 }
                                             ]
                                         },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_1"
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_1",
+                                        "custom information document": {
+                                            "total peak area": {
+                                                "value": 9967.199418961032,
+                                                "unit": "mAU.s"
+                                            }
+                                        }
                                     }
                                 ]
                             },
@@ -755,6 +764,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -1242,7 +1254,13 @@
                                                 }
                                             ]
                                         },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_3"
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_3",
+                                        "custom information document": {
+                                            "total peak area": {
+                                                "value": 3296.841759710523,
+                                                "unit": "mAU.s"
+                                            }
+                                        }
                                     }
                                 ]
                             },
@@ -1305,6 +1323,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -1582,7 +1603,13 @@
                                                 }
                                             ]
                                         },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_5"
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_5",
+                                        "custom information document": {
+                                            "total peak area": {
+                                                "value": 1494.043820791225,
+                                                "unit": "mAU.s"
+                                            }
+                                        }
                                     }
                                 ]
                             },
@@ -1786,6 +1813,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -2099,7 +2129,13 @@
                                                 }
                                             ]
                                         },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_11"
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_11",
+                                        "custom information document": {
+                                            "total peak area": {
+                                                "value": 4544.04968984369,
+                                                "unit": "mAU.s"
+                                            }
+                                        }
                                     }
                                 ]
                             },
