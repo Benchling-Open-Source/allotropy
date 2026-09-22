@@ -11,6 +11,7 @@ import rainbow.agilent.chemstation as rb  # type: ignore
 import xmltodict
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.agilent_openlab_cds import constants
 
 # OpenLab CDS exports a result set as a .rslt folder, which always reaches us compressed. Users may
 # compress it a second time (e.g. right-click > Compress), producing an archive whose only member is
@@ -37,6 +38,29 @@ def _as_list(value: Any) -> list[Any]:
     if value is None:
         return []
     return value if isinstance(value, list) else [value]
+
+
+def _attach_gpc_results(peak: dict[str, Any]) -> None:
+    """
+    Attaches the GPC/SEC molecular weight averages reported for a peak, when present.
+
+    OpenLab's GPC add-in does not write its results as native ACAML peak elements. It stores a
+    GPCPeakResults document, escaped as text, in a peak custom field named GPCResults, so the
+    values need a second parse to reach. Only peaks on the signal the processing method ran GPC
+    analysis against carry the field.
+    :param peak: the parsed Peak element, updated in place
+    """
+    custom_fields = _as_list((peak.get("ComplexCustomFields") or {}).get("CustomField"))
+    for custom_field in custom_fields:
+        if custom_field.get("@Name") != constants.GPC_RESULTS_FIELD:
+            continue
+        # The Value element carries a unit attribute, so xmltodict nests the document under #text.
+        value = custom_field.get("Value")
+        document = value.get("#text") if isinstance(value, dict) else value
+        if not document:
+            continue
+        peak["GPC Results"] = xmltodict.parse(document)["GPCPeakResults"]
+        return
 
 
 def merge_peak_with_signal_name(
@@ -154,11 +178,13 @@ def extract_rx_file(rx_file: IO[bytes]) -> list[dict[str, Any]]:
                             peak_dict["Peak"]["Peak Metadata"] = peak_metadata_dict[
                                 peak_id
                             ]
+                        _attach_gpc_results(peak_dict["Peak"])
                     elif isinstance(peak_dict.get("Peak"), list):
                         for peak in peak_dict["Peak"]:
                             peak_id = peak["@id"]
                             if peak_id in peak_metadata_dict:
                                 peak["Peak Metadata"] = peak_metadata_dict[peak_id]
+                            _attach_gpc_results(peak)
 
     return peak_details
 

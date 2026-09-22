@@ -117,6 +117,25 @@ def create_metadata(
     )
 
 
+def get_gpc_custom_info(peak: dict[str, Any]) -> dict[str, Any] | None:
+    """Reads the GPC/SEC molecular weight averages reported for a peak.
+
+    ASM has no molecular weight concept, so these are reported as peak custom information. Only
+    result sets processed with GPC analysis carry them, and then only on the analysed signal.
+    """
+    gpc_results = peak.get("GPC Results")
+    if not gpc_results:
+        return None
+    custom_info: dict[str, Any] = {
+        name: {"value": value, "unit": unit}
+        for tag, (name, unit) in constants.GPC_PEAK_RESULT_FIELDS.items()
+        if (value := try_float_or_none(gpc_results.get(tag))) is not None
+    }
+    if status := gpc_results.get(constants.GPC_RESULT_STATUS_FIELD):
+        custom_info[constants.GPC_RESULT_STATUS_KEY] = status
+    return custom_info or None
+
+
 def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
     return [
         Peak(
@@ -180,6 +199,7 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             number_of_theoretical_plates__chromatography_=try_float_or_none(
                 peak.get("TheoreticalPlates_USP", {}).get("@val")
             ),
+            custom_info=get_gpc_custom_info(peak),
         )
         for peak in peak_structure
     ]
