@@ -285,6 +285,12 @@ class Measurement:
                 error = "NaN"
             return Error(error=error, feature=f"{analyte} <{role}>") if error else None
 
+        def get_bead_count_error(raw_value: Any, feature: str) -> Error | None:
+            """NaN bead counts are reported via NEGATIVE_ZERO plus an error document."""
+            if try_non_nan_float_or_none(raw_value) is None:
+                return Error(error="NaN", feature=feature)
+            return None
+
         def get_statistic_dimensions(analyte: str) -> list[StatisticDimension]:
             statistic_dimensions = []
             for section, statistic_conf in STATISTIC_SECTIONS_CONF.items():
@@ -310,12 +316,19 @@ class Measurement:
         ]
         for analyte in analyte_keys:
             assay_bead_identifier = bead_ids_data.get(str, analyte, "N/A")
+            analyte_bead_count_raw = count_data.get(str, analyte)
+            if bead_count_error := get_bead_count_error(
+                analyte_bead_count_raw, f"{analyte} <assay bead count>"
+            ):
+                errors.append(bead_count_error)
             analytes.append(
                 Analyte(
                     identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
                     assay_bead_identifier=assay_bead_identifier,
-                    assay_bead_count=count_data[float, analyte],
+                    assay_bead_count=try_non_nan_float_or_negative_zero(
+                        analyte_bead_count_raw
+                    ),
                     statistics=[
                         StatisticsDocument(
                             statistical_feature="fluorescence",
@@ -364,12 +377,17 @@ class Measurement:
             "BeadType": header_row.get(str, "BeadType"),
         }
 
+        total_bead_count_raw = count_data.get(str, "Total Events")
+        if bead_count_error := get_bead_count_error(
+            total_bead_count_raw, "assay bead count"
+        ):
+            errors.append(bead_count_error)
         return Measurement(
             identifier=measurement_identifier,
             sample_identifier=count_data[str, "Sample"],
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=count_data[float, "Total Events"],
+            assay_bead_count=try_non_nan_float_or_negative_zero(total_bead_count_raw),
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
