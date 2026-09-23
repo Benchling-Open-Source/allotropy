@@ -16,7 +16,8 @@ GPC_RESULTS_FIELD = "GPCResults"
 
 # The molecular weight averages OpenLab reports for a peak, mapped from their tag in the
 # GPCPeakResults document to the name and unit used in the peak custom information document.
-# ASM has no molecular weight concept, so these can only be reported as custom information.
+# TODO(ASM gaps): we believe molecular weight averages should be introduced to ASM. ASM has no
+# molecular weight concept at any level, so these can only be reported as custom information.
 GPC_PEAK_RESULT_FIELDS = {
     "PeakMn": ("number average molecular weight", "g/mol"),
     "PeakMw": ("weight average molecular weight", "g/mol"),
