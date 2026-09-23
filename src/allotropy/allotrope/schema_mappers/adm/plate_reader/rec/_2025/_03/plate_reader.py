@@ -302,30 +302,32 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            return self._get_luminescence_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement)
-        elif measurement.type_ in [
-            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
-            MeasurementType.LUMINESCENCE_CUBE_DETECTOR,
-            MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
-        ]:
-            return self._get_profile_data_cube_measurement_document(measurement)
-        elif measurement.type_ in [
-            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
-            MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
-            MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
-            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
-            MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
-        ]:
-            return self._get_spectrum_data_cube_measurement_document(measurement)
-        else:
-            msg = f"Unexpected measurement type: {measurement.type_}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                return self._get_ultraviolet_absorbance_measurement_document(
+                    measurement
+                )
+            case MeasurementType.LUMINESCENCE:
+                return self._get_luminescence_measurement_document(measurement)
+            case MeasurementType.FLUORESCENCE:
+                return self._get_fluorescence_measurement_document(measurement)
+            case (
+                MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+                | MeasurementType.LUMINESCENCE_CUBE_DETECTOR
+                | MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+            ):
+                return self._get_profile_data_cube_measurement_document(measurement)
+            case (
+                MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+                | MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM
+                | MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM
+                | MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM
+                | MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM
+            ):
+                return self._get_spectrum_data_cube_measurement_document(measurement)
+            case _:
+                msg = f"Unexpected measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
