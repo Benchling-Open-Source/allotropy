@@ -353,7 +353,7 @@ def get_table_contents() -> str:
 ** Increased likelihood of bugs due to lack of "bake time" for discovering issues.
 * Working Draft - "Beta" - in development, not ready for production use:
 ** May be missing enough sample data for us to be confident about correctness of parser
-** May be in-progress, with signifcant known TODO work
+** May be in-progress, with significant known TODO work
 
 '''
 """
