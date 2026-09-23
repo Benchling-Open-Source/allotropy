@@ -5,6 +5,16 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.146] - 2026-09-22
+
+### Added
+
+- Agilent OpenLab CDS - report GPC/SEC molecular weight averages on peaks (#1269)
+
+### Fixed
+
+- Agilent OpenLab CDS - support single-injection result sets (#1266)
+
 ## [0.1.145] - 2026-09-08
 
 ### Added
