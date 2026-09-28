@@ -237,6 +237,11 @@ def create_measurements(
                 .get("Type")
             ),
             sample_custom_info={
+                "sample type": intermediate_structured_data["Result Data"][i][
+                    "Sample Data"
+                ]["SampleSetup"]
+                .get("DAParam", {})
+                .get("Type"),
                 "location identifier": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
                 ].get("Location"),

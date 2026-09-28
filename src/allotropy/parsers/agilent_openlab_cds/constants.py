@@ -6,8 +6,13 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
 
 DISPLAY_NAME = "Agilent OpenLab CDS"
 PRODUCT_MANUFACTURER = "Agilent"
+# OpenLab's sample type, set per row in the sequence table, mapped to the ASM sample role type.
+# The raw value is also reported as sample custom information, since OpenLab allows types that have
+# no ASM equivalent and an unmapped type would otherwise be dropped.
 SAMPLE_ROLE_TYPE = {
     "Blank": SampleRoleType.blank_role.value,
+    "Calibration": SampleRoleType.calibration_sample_role.value,
+    "Control": SampleRoleType.control_sample_role.value,
     "Sample": SampleRoleType.sample_role.value,
 }
 

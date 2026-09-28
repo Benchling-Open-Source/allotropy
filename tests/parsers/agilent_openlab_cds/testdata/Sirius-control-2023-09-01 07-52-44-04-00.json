@@ -5,10 +5,10 @@
             "ASM converter name": "allotropy_agilent_openlab_cds",
             "ASM converter version": "0.1.146",
             "data system instance identifier": "N/A",
-            "file name": "Sirius-single-injection-2023-09-01 07-52-44-04-00.rslt",
+            "file name": "Sirius-control-2023-09-01 07-52-44-04-00.rslt",
             "software name": "OpenLabCDS",
             "software version": "2.5 - Build  2.5.0-REL_2.5.0.842",
-            "UNC path": "tests/parsers/agilent_openlab_cds/testdata/Sirius-single-injection-2023-09-01 07-52-44-04-00.rslt"
+            "UNC path": "tests/parsers/agilent_openlab_cds/testdata/Sirius-control-2023-09-01 07-52-44-04-00.rslt"
         },
         "device system document": {
             "asset management identifier": "N/A",
@@ -742,6 +742,900 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
+                                        "device type": "DAD",
+                                        "detection type": "Absorbance",
+                                        "product manufacturer": "Agilent",
+                                        "equipment serial number": "DEAEK09115",
+                                        "model number": "G7117C",
+                                        "firmware version": "D.07.34 [0006]",
+                                        "detector wavelength setting": {
+                                            "value": 210.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector bandwidth setting": {
+                                            "value": 4.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "A 20",
+                                "sample role type": "control sample role",
+                                "custom information document": {
+                                    "sample type": "Control",
+                                    "location identifier": "D1F-A1",
+                                    "replicate": "1",
+                                    "sample amount": {
+                                        "value": 0.0,
+                                        "unit": "(unitless)"
+                                    }
+                                }
+                            },
+                            "chromatography column document": {
+                                "chromatography column part number": "G7116A",
+                                "chromatography column serial number": "DEAED27199",
+                                "product manufacturer": "Agilent",
+                                "custom information document": {
+                                    "firmware version": "D.07.34 [0006]"
+                                }
+                            },
+                            "measurement time": "2023-09-01T11:52:46.852818+00:00",
+                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_2",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 126.81396207295859,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "61f049bd-f37a-4c4f-92d1-a80ba4fd18fc",
+                                                    "relative peak height": {
+                                                        "value": 10.668050784384972,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 33.928419981866455,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 350.5465471205238,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 10.632798680374133,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 120.67923684731946,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 117.08337912087869,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 9.730582952079896,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 400.25159472880654,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "91871bee-770b-4b27-864d-8f18c86031b9",
+                                                    "relative peak height": {
+                                                        "value": 0.5443628436796882,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 1.731278895852422,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 20.776348066363465,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.6301894231098226,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 383.5932707509937,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 377.45019335760327,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 22.801401371203287,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 220.2875000000004,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "4428b32e-fee6-4be3-9d7b-7d2936dc9688",
+                                                    "relative peak height": {
+                                                        "value": 0.549797796473514,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 1.7485640929983193,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 28.823310539848688,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.8742703666305023,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 203.7058235867461,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 187.50670704845925,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 32.78079295154114,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 321.08750000000026,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "e8e7db37-9235-4a36-8df8-a5913172b584",
+                                                    "relative peak height": {
+                                                        "value": 0.5529209614340469,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 1.758496934020103,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 16.57285017619388,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.5026886755295483,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 310.78964592275065,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 306.08952702703084,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 14.997972972969453,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 187.50670704845925,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "74e92260-fee1-4fa9-8835-42df7b035d65",
+                                                    "relative peak height": {
+                                                        "value": 5.535711696103218,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 17.605648409438857,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 204.63296555032338,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 6.206939260812174,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 177.54958112874863,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 172.09534313725564,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 15.411363911203626,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 256.9305939226546,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "cc8fa570-449a-4557-8e58-d508baf77127",
+                                                    "relative peak height": {
+                                                        "value": 0.6761102979463683,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 2.1502854276215118,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 26.522034109712365,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.8044679133171717,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 244.9368197278935,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 238.02997438928514,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 18.900619533369508,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 155.9708826138383,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "cb0c5fa1-ab89-45c8-845e-d6077f8f5369",
+                                                    "relative peak height": {
+                                                        "value": 17.91046087788612,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 56.96201218156668,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 804.6127060668153,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 24.405560372951108,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 151.50067422434395,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 139.50939767106894,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 16.46148494276936,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 238.02997438928514,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "1ffa1df3-4d94-4041-b5a9-817503749c93",
+                                                    "relative peak height": {
+                                                        "value": 0.8038232139959235,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 2.5564606081128343,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 25.240938364124734,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.7656096410990925,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 231.33410675550255,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 220.81557663964813,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 17.214397749636994,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 139.48750000000015,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "082cf0da-b3c6-431e-ae88-b4721eb016e9",
+                                                    "relative peak height": {
+                                                        "value": 35.28676601208789,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 112.22520789012071,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 855.0869052042553,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 25.936546778009017,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 133.42187055999457,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 126.81396207295859,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 12.673537927041574,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 294.0848941368113,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "6ddbfc7c-8e63-4b6b-a433-c7cd5ca0ab74",
+                                                    "relative peak height": {
+                                                        "value": 8.417063382523917,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 26.769432132275405,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 210.2052775214732,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 6.375958958367785,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 275.25370254218456,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 257.08750000000003,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 36.99739413681128,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 377.45019335760327,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "468a6e9e-65cb-43e0-9f5a-8c48b46ef7a7",
+                                                    "relative peak height": {
+                                                        "value": 0.582840112506469,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 1.8536511045056694,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 20.020877770945223,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.6072744532544123,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 370.5835458452775,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 360.9125904704514,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 16.537602887151905,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 172.09534313725564,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "2a852411-d848-42ec-9e3d-85dbc3dc04d6",
+                                                    "relative peak height": {
+                                                        "value": 11.061576088812663,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 35.17997868476067,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 614.1619351649013,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 18.628796282258552,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 166.3800462731372,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 155.9708826138383,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 16.12446052341733,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 117.08337912087869,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "3e48197e-89ba-4605-a9a9-c475170a5bce",
+                                                    "relative peak height": {
+                                                        "value": 7.4105159321652065,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 23.568232089486514,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 119.6390640550421,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 3.628899194286684,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 116.68749999999991,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 107.32614042933778,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 9.757238691540904,
+                                                        "unit": "s"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_3"
+                                    }
+                                ]
+                            },
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "d20b7884-d7a6-4574-9d26-935d2f9ea915",
+                                "injection time": "2023-09-01T07:52:56.644349-04:00",
+                                "custom information document": {
+                                    "injection source": "HipAls",
+                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                    "injector position": "Front"
+                                }
+                            },
+                            "chromatogram data cube": {
+                                "label": "DAD1B chromatogram",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "measures": [
+                                        [0.5089789628982544, 0.5440190434455872, 0.5725398659706116, 0.5941838026046753]
+                                    ],
+                                    "dimensions": [
+                                        [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device identifier": "1d2f0cd2-5e72-4c14-94cc-e296707e3948",
+                                        "device type": "DAD",
+                                        "detection type": "Absorbance",
+                                        "product manufacturer": "Agilent",
+                                        "equipment serial number": "DEAEK09115",
+                                        "model number": "G7117C",
+                                        "firmware version": "D.07.34 [0006]",
+                                        "detector wavelength setting": {
+                                            "value": 228.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector bandwidth setting": {
+                                            "value": 4.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "A 20",
+                                "sample role type": "control sample role",
+                                "custom information document": {
+                                    "sample type": "Control",
+                                    "location identifier": "D1F-A1",
+                                    "replicate": "1",
+                                    "sample amount": {
+                                        "value": 0.0,
+                                        "unit": "(unitless)"
+                                    }
+                                }
+                            },
+                            "chromatography column document": {
+                                "chromatography column part number": "G7116A",
+                                "chromatography column serial number": "DEAED27199",
+                                "product manufacturer": "Agilent",
+                                "custom information document": {
+                                    "firmware version": "D.07.34 [0006]"
+                                }
+                            },
+                            "measurement time": "2023-09-01T11:52:46.852818+00:00",
+                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_4",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 156.0244501466279,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "68c97590-54e7-4e2b-80b8-b67381e405ce",
+                                                    "relative peak height": {
+                                                        "value": 16.28682815482164,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 24.69500362334162,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 350.5465965451406,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 23.462939417633404,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 151.4911158192093,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 139.5156652490887,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 16.508784897539222,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 294.4137599469531,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "585ef41a-2718-42ad-b5b6-5b60e8e664f5",
+                                                    "relative peak height": {
+                                                        "value": 21.39912014018658,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 32.44654787137203,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 232.53507036271677,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 15.564139895145066,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 275.2885046673554,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 257.4875,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 36.92625994695311,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 126.92586040216521,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "319a19b0-b09c-43b5-ba10-f6297ec8d1af",
+                                                    "relative peak height": {
+                                                        "value": 9.478540025205763,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 14.371894763140162,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 151.1547231070317,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 10.117154597713354,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 120.70269563239263,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 117.0665163934422,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 9.859344008723014,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 139.48750000000015,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "d22ff667-a031-4339-addc-44423ef0da3e",
+                                                    "relative peak height": {
+                                                        "value": 31.24029146672146,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 47.368284581337704,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 357.70165770597026,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 23.941845127175476,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 133.66785108024678,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 126.92586040216521,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 12.561639597834944,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 187.70535714285822,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "a05bd42a-cfb3-4cf3-af03-76d44bb69675",
+                                                    "relative peak height": {
+                                                        "value": 5.103794825466458,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 7.738660376936153,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 91.32490600887495,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 6.1125988902059465,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 177.4964119170993,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 171.98528869778946,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 15.720068445068787,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 171.98528869778946,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "67d2c375-a81b-47c0-a42e-cb31244e5378",
+                                                    "relative peak height": {
+                                                        "value": 10.049785108691836,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 15.238048643589153,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 264.11958034251217,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 17.678168248280564,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 166.43477272727336,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 156.0244501466279,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 15.960838551161523,
+                                                        "unit": "s"
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": 117.0665163934422,
+                                                        "unit": "s"
+                                                    },
+                                                    "identifier": "b1c54f74-879a-4c84-96e8-590f40817a3d",
+                                                    "relative peak height": {
+                                                        "value": 6.44164027890626,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak height": {
+                                                        "value": 9.767176795609501,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 46.66128671897879,
+                                                        "unit": "mAU.s"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 3.123153823846185,
+                                                        "unit": "%"
+                                                    },
+                                                    "retention time": {
+                                                        "value": 116.68749999999991,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 107.88749999999966,
+                                                        "unit": "s"
+                                                    },
+                                                    "peak width at baseline": {
+                                                        "value": 9.17901639344253,
+                                                        "unit": "s"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_5"
+                                    }
+                                ]
+                            },
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "d20b7884-d7a6-4574-9d26-935d2f9ea915",
+                                "injection time": "2023-09-01T07:52:56.644349-04:00",
+                                "custom information document": {
+                                    "injection source": "HipAls",
+                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                    "injector position": "Front"
+                                }
+                            },
+                            "chromatogram data cube": {
+                                "label": "DAD1D chromatogram",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "measures": [
+                                        [0.2966001629829407, 0.31794607639312744, 0.33582746982574463, 0.34843385219573975]
+                                    ],
+                                    "dimensions": [
+                                        [0.2875, 140.19166666666666, 280.0958333333333, 420.0]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
                                         "device type": "pump",
                                         "system pressure data cube": {
                                             "label": "pump pressure",
@@ -795,7 +1689,7 @@
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
-                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_2",
+                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_6",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 5.0,
@@ -803,6 +1697,78 @@
                                 },
                                 "injection identifier": "7a4a9a4f-cd42-4112-9849-34fb4a22feb0",
                                 "injection time": "2023-09-01T07:52:53.641081-04:00",
+                                "custom information document": {
+                                    "injection source": "HipAls",
+                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                    "injector position": "Front"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "pump",
+                                        "system pressure data cube": {
+                                            "label": "pump pressure",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "retention time",
+                                                        "unit": "s"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "pump pressure",
+                                                        "unit": "MPa"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "measures": [
+                                                    [0.0036000000000000003, 12.450500000000002, 0.009600000000000001, 12.3949]
+                                                ],
+                                                "dimensions": [
+                                                    [0.0, 2333.3333333333335, 4666.666666666667, 7000.0]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "A 20",
+                                "sample role type": "control sample role",
+                                "custom information document": {
+                                    "sample type": "Control",
+                                    "location identifier": "D1F-A1",
+                                    "replicate": "1",
+                                    "sample amount": {
+                                        "value": 0.0,
+                                        "unit": "(unitless)"
+                                    }
+                                }
+                            },
+                            "chromatography column document": {
+                                "chromatography column part number": "G7116A",
+                                "chromatography column serial number": "DEAED27199",
+                                "product manufacturer": "Agilent",
+                                "custom information document": {
+                                    "firmware version": "D.07.34 [0006]"
+                                }
+                            },
+                            "measurement time": "2023-09-01T11:52:46.852818+00:00",
+                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_8",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "d20b7884-d7a6-4574-9d26-935d2f9ea915",
+                                "injection time": "2023-09-01T07:52:56.644349-04:00",
                                 "custom information document": {
                                     "injection source": "HipAls",
                                     "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
@@ -854,7 +1820,7 @@
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
-                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_4",
+                            "measurement identifier": "AGILENT_OPENLAB_CDS_TEST_ID_10",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1142,7 +2108,7 @@
                                                 }
                                             ]
                                         },
-                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_5"
+                                        "processed data identifier": "AGILENT_OPENLAB_CDS_TEST_ID_11"
                                     }
                                 ]
                             },
