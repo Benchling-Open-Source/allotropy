@@ -1,15 +1,26 @@
-from allotropy.calcdocs.config import (
-    CalcDocsConfig,
-    CalculatedDataConfig,
-    MeasurementConfig,
+from allotropy.calcdocs import (
+    build_calc_docs,
+    CalcDoc,
+    FieldView,
+    Measurement as CalcMeasurement,
+    Node,
 )
 from allotropy.calcdocs.docs.example.parser_calcdocs.extractor import ExampleExtractor
-from allotropy.calcdocs.docs.example.parser_calcdocs.views import MeanView, SumView
 from allotropy.calcdocs.docs.example.parser_code.measurement import Measurement
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+
+
+def _example_nodes() -> list[Node]:
+    m = CalcMeasurement("measurement", field="m")
+    summation = CalcDoc("sumation", field="sum", sources=[m], view="mean_sum")
+    mean = CalcDoc("sum mean", field="mean", sources=[summation], view="mean")
+    return [m, summation, mean]
+
+
+EXAMPLE_NODES: list[Node] = _example_nodes()
 
 
 class ExampleParser:
@@ -37,41 +48,11 @@ class ExampleParser:
         self, measurements: list[Measurement]
     ) -> list[CalculatedDocument]:
         elements = ExampleExtractor.get_elements(measurements)
-
-        mean_view_data = MeanView().apply(elements)
-        sum_view_data = MeanView(sub_view=SumView()).apply(elements)
-
-        measurement_conf = MeasurementConfig(
-            name="measurement",
-            value="m",
-        )
-
-        sum_conf = CalculatedDataConfig(
-            name="sumation",
-            value="sum",
-            view_data=sum_view_data,
-            source_configs=(measurement_conf,),
-        )
-
-        mean_conf = CalculatedDataConfig(
-            name="sum mean",
-            value="mean",
-            view_data=mean_view_data,
-            source_configs=(sum_conf,),
-        )
-
-        configs = CalcDocsConfig(
-            [
-                sum_conf,
-                mean_conf,
-            ]
-        )
-
-        return [
-            calc_doc
-            for parent_calc_doc in configs.construct()
-            for calc_doc in parent_calc_doc.iter_struct()
-        ]
+        views = {
+            "mean": FieldView("mean").apply(elements),
+            "mean_sum": FieldView("mean", sub_view=FieldView("sum")).apply(elements),
+        }
+        return build_calc_docs(nodes=EXAMPLE_NODES, views=views)
 
     def create_data(self) -> None:
         measurements = self.read_data()

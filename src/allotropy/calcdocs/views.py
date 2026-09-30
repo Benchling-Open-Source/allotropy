@@ -6,6 +6,30 @@ from allotropy.calcdocs.extractor import Element
 from allotropy.calcdocs.view import Keys, View, ViewData
 
 
+class FieldView(View):
+    def __init__(self, field: str, sub_view: View | None = None):
+        super().__init__(name=field, sub_view=sub_view)
+        self.field = field
+
+    def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
+        items: dict[str, list[Element]] = defaultdict(list)
+        for element in elements:
+            if val := element.get_str(self.field):
+                items[val].append(element)
+        return dict(items)
+
+
+class UuidView(View):
+    def __init__(self, sub_view: View | None = None):
+        super().__init__(name="uuid", sub_view=sub_view)
+
+    def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
+        items: dict[str, list[Element]] = defaultdict(list)
+        for element in elements:
+            items[element.uuid].append(element)
+        return dict(items)
+
+
 class ViewWithReference(View):
     def __init__(
         self,
@@ -24,18 +48,14 @@ class ViewWithReference(View):
 
 
 class SampleView(ViewWithReference):
-    def __init__(
-        self,
-        sub_view: View | None = None,
-        reference: str | None = None,
-    ):
+    def __init__(self, sub_view: View | None = None, reference: str | None = None):
         super().__init__(name="sample_id", sub_view=sub_view, reference=reference)
 
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
-        items = defaultdict(list)
+        items: dict[str, list[Element]] = defaultdict(list)
         for element in elements:
             if sample_identifier := element.get_str("sample_identifier"):
-                items[str(sample_identifier)].append(element)
+                items[sample_identifier].append(element)
         return dict(items)
 
 
@@ -43,7 +63,7 @@ class TargetView(ViewWithReference):
     def __init__(
         self,
         sub_view: View | None = None,
-        is_reference: bool = False,  # noqa: FBT001 FBT002
+        is_reference: bool = False,  # noqa: FBT001, FBT002
         reference: str | None = None,
         blacklist: list[str] | None = None,
     ):
@@ -52,11 +72,11 @@ class TargetView(ViewWithReference):
         self.blacklist = blacklist
 
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
-        items = defaultdict(list)
+        items: dict[str, list[Element]] = defaultdict(list)
         for element in elements:
             if target_dna := element.get_str("target_dna_description"):
                 if self.blacklist is None or target_dna not in self.blacklist:
-                    items[str(target_dna)].append(element)
+                    items[target_dna].append(element)
         return dict(items)
 
     def filter_keys(self, keys: Keys) -> Keys:
@@ -70,26 +90,14 @@ class TargetView(ViewWithReference):
         return super().apply(elements)
 
 
-class UuidView(View):
-    def __init__(self, sub_view: ViewWithReference | None = None):
-        super().__init__(name="uuid", sub_view=sub_view)
-
-    def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
-        items = defaultdict(list)
-        for element in elements:
-            if uuid := element.get_str("uuid"):
-                items[str(uuid)].append(element)
-        return dict(items)
-
-
 class TargetRoleView(View):
-    def __init__(self, sub_view: ViewWithReference | None = None):
+    def __init__(self, sub_view: View | None = None):
         super().__init__(name="target_dna", sub_view=sub_view)
 
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
-        items = defaultdict(list)
+        items: dict[str, list[Element]] = defaultdict(list)
         for element in elements:
-            if target_dna := element.get_str_or_none("target_dna_description"):
+            if target_dna := element.get_str("target_dna_description"):
                 if element.get_str("sample_role_type") == "standard sample role":
-                    items[str(target_dna)].append(element)
+                    items[target_dna].append(element)
         return dict(items)

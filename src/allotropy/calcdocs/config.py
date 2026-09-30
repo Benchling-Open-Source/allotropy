@@ -73,8 +73,6 @@ class CalculatedDataConfig:
         if not data_sources:
             return None
 
-        if self.name == "B22 goodness of fit":
-            pass
         return CalculatedDocument(
             uuid=random_uuid_str(),
             name=self.name,
@@ -115,6 +113,33 @@ class CalculatedDataConfig:
             for keys in self.view_data.iter_keys()
             if (calc_doc := self.get_calc_doc(keys, cache))
         ]
+
+
+@dataclass(frozen=True)
+class CalculatedDataConfigWithOptional(CalculatedDataConfig):
+    optional: bool = False
+
+    def iter_data_sources(
+        self,
+        parent_keys: Keys,
+        elements: list[Element],
+        cache: dict[str, CalculatedDocument | None],
+    ) -> Iterator[DataSource]:
+        keys = self.view_data.filter_keys(parent_keys)
+        item = self.view_data.get_item(keys)
+        sub_keys_iterator = item.iter_keys() if isinstance(item, ViewData) else [Keys()]
+
+        for sub_keys in sub_keys_iterator:
+            new_keys = keys.append(sub_keys)
+            if calc_doc := self.get_calc_doc(new_keys, cache):
+                yield DataSource(
+                    feature=calc_doc.name,
+                    reference=calc_doc,
+                    value=calc_doc.value,
+                )
+            elif self.optional:
+                for sub_config in self.source_configs:
+                    yield from sub_config.iter_data_sources(new_keys, elements, cache)
 
 
 @dataclass(frozen=True)

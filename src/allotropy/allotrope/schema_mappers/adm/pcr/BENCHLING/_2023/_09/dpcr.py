@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, TypeVar
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
@@ -26,7 +26,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueNumber,
     TQuantityValueNumberPerMicroliter,
@@ -35,28 +34,19 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
+from allotropy.parsers.utils.calculated_data_documents.mapping import (
+    map_calculated_data_documents_for_dpcr,
+)
 from allotropy.parsers.utils.values import quantity_or_none
-
-
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
 
 
 @dataclass(frozen=True)
 class Error:
     error: str
     error_feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
 
 
 @dataclass(frozen=True)
@@ -126,10 +116,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
-
-
-CubeClass = TypeVar("CubeClass")
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -256,32 +243,14 @@ class Mapper(SchemaMapper[Data, Model]):
         return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data_items: list[CalculatedDocument] | None
     ) -> TCalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return TCalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
-                    calculated_data_name=calculated_data_item.name,
-                    calculated_datum=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.identifier,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return map_calculated_data_documents_for_dpcr(  # type: ignore[no-any-return]
+            calculated_data_items,
+            TCalculatedDataAggregateDocument,
+            CalculatedDataDocumentItem,
+            DataSourceAggregateDocument,
+            DataSourceDocumentItem,
         )
 
     def _get_error_aggregate_document(
