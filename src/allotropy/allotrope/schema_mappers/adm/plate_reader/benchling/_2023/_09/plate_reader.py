@@ -294,19 +294,19 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         doc: MeasurementDocumentItem
-        if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            doc = self._get_optical_imaging_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            doc = self._get_luminescence_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            doc = self._get_fluorescence_measurement_document(measurement)
-        else:
-            msg = f"Unexpected measurement type: {measurement.type}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.OPTICAL_IMAGING:
+                doc = self._get_optical_imaging_measurement_document(measurement)
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
+            case MeasurementType.LUMINESCENCE:
+                doc = self._get_luminescence_measurement_document(measurement)
+            case MeasurementType.FLUORESCENCE:
+                doc = self._get_fluorescence_measurement_document(measurement)
+            case _:
+                msg = f"Unexpected measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
         return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_optical_imaging_measurement_document(

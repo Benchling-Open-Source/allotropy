@@ -221,20 +221,22 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
-                measurement, metadata
-            )
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement, metadata)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
-            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
-                measurement, metadata
-            )
-        else:
-            msg = f"Invalid measurement type: {measurement.type_}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                return self._get_ultraviolet_absorbance_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.FLUORESCENCE:
+                return self._get_fluorescence_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
+                return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+                    measurement, metadata
+                )
+            case _:
+                msg = f"Invalid measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
