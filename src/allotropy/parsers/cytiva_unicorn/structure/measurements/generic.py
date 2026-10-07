@@ -124,6 +124,10 @@ class UnicornMeasurement(Measurement):
                     data_cube_component,
                     transformation,
                 )
+                # Curves with no recorded points (e.g. an unused UV channel)
+                # produce empty arrays, which are invalid in the ASM schema.
+                if not any(data_cube.dimensions):
+                    return None
                 return data_cube
         return None
 
