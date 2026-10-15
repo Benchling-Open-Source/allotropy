@@ -6,9 +6,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
-    CalculatedData,
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -57,6 +54,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_c
     StandardCurveCreator,
 )
 from allotropy.parsers.constants import NEGATIVE_ZERO
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 
 
 def create_metadata(
@@ -243,25 +243,8 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     ]
 
 
-def create_calculated_data(data: Data) -> CalculatedData:
-    return CalculatedData(
-        items=[
-            CalculatedDataItem(
-                identifier=calc_doc.uuid,
-                name=calc_doc.name,
-                value=calc_doc.value,
-                unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=data_source.reference.uuid,
-                        feature=data_source.feature,
-                    )
-                    for data_source in calc_doc.data_sources
-                ],
-            )
-            for calc_doc in data.calculated_documents
-        ],
-    )
+def create_calculated_data(data: Data) -> list[CalculatedDocument] | None:
+    return data.calculated_documents or None
 
 
 def create_data(reader: DesignQuantstudioReader) -> Data:

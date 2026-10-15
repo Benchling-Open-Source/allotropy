@@ -1,23 +1,15 @@
 from collections.abc import Iterator
 
-from allotropy.calcdocs.appbio_quantstudio_designandanalysis.config import (
-    CalculatedDataConfigWithOptional,
+from allotropy.calcdocs import (
+    build_calc_docs,
+    CalcDoc,
+    Measurement,
+    Node,
 )
 from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
     AppbioQuantstudioDAExtractor,
 )
-from allotropy.calcdocs.appbio_quantstudio_designandanalysis.views import (
-    SampleView,
-    TargetRoleView,
-    TargetView,
-    UuidView,
-)
-from allotropy.calcdocs.config import (
-    CalcDocsConfig,
-    CalculatedDataConfig,
-    MeasurementConfig,
-)
-from allotropy.calcdocs.view import ViewData
+from allotropy.calcdocs.views import SampleView, TargetRoleView, TargetView, UuidView
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     WellItem,
 )
@@ -25,368 +17,330 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
 
+CTR = Measurement(
+    "cycle threshold result", field="cycle_threshold_result", required=True
+)
+NORM_REPORTER = Measurement(
+    "normalized reporter result", field="normalized_reporter_result"
+)
 
-def ctr() -> MeasurementConfig:
-    return MeasurementConfig(
-        name="cycle threshold result",
-        value="cycle_threshold_result",
-        required=True,
+
+def _standard_curve_nodes() -> list[Node]:
+    y_intercept = CalcDoc(
+        "y intercept",
+        field="y_intercept",
+        sources=[CTR],
+        view="tdna_role",
     )
-
-
-def norm_reporter_result() -> MeasurementConfig:
-    return MeasurementConfig(
-        name="normalized reporter result",
-        value="normalized_reporter_result",
+    slope = CalcDoc("slope", field="slope", sources=[CTR], view="tdna_role")
+    quantity = CalcDoc(
+        "quantity",
+        field="quantity",
+        sources=[CTR, y_intercept, slope],
+        view="sid_tdna_uuid",
     )
-
-
-def amplification_score(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="amplification score",
-        value="amp_score",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    amp_score = CalcDoc(
+        "amplification score",
+        field="amp_score",
+        sources=[CTR],
+        view="sid_tdna_uuid",
     )
-
-
-def cq_confidence(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="cq confidence",
-        value="cq_conf",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    cq_conf = CalcDoc(
+        "cq confidence",
+        field="cq_conf",
+        sources=[CTR],
+        view="sid_tdna_uuid",
     )
-
-
-def y_intercept(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="y intercept",
-        value="y_intercept",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    quantity_mean = CalcDoc(
+        "quantity mean", field="quantity_mean", sources=[quantity], view="sid_tdna"
     )
-
-
-def slope(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="slope",
-        value="slope",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    quantity_sd = CalcDoc(
+        "quantity sd", field="quantity_sd", sources=[quantity], view="sid_tdna"
     )
-
-
-def ct_mean(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="ct mean",
-        value="ct_mean",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    ct_mean = CalcDoc("ct mean", field="ct_mean", sources=[CTR], view="sid_tdna")
+    ct_sd = CalcDoc("ct sd", field="ct_sd", sources=[CTR], view="sid_tdna")
+    r_squared = CalcDoc("r^2", field="r_squared", sources=[CTR], view="tdna_role")
+    efficiency = CalcDoc(
+        "efficiency",
+        field="efficiency",
+        sources=[CTR],
+        view="tdna_role",
     )
-
-
-def ct_sd(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="ct sd",
-        value="ct_sd",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    standard_deviation = CalcDoc(
+        "standard deviation",
+        field="standard_deviation",
+        sources=[CTR],
+        view="sid_tdna_uuid",
     )
-
-
-def ct_se(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="ct se",
-        value="ct_se",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    standard_error = CalcDoc(
+        "standard error",
+        field="standard_error",
+        sources=[CTR],
+        view="sid_tdna_uuid",
     )
+    return [
+        CTR,
+        quantity,
+        amp_score,
+        cq_conf,
+        quantity_mean,
+        quantity_sd,
+        ct_mean,
+        ct_sd,
+        y_intercept,
+        r_squared,
+        slope,
+        efficiency,
+        standard_deviation,
+        standard_error,
+    ]
 
 
-def r_squared(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="r^2",
-        value="r_squared",
-        view_data=view_data,
-        source_configs=(ctr(),),
+STANDARD_CURVE_NODES: list[Node] = _standard_curve_nodes()
+
+
+def _relative_standard_curve_nodes() -> list[Node]:
+    y_intercept = CalcDoc(
+        "y intercept",
+        field="y_intercept",
+        sources=[CTR],
+        view="tdna_role",
+        source_only=True,
     )
-
-
-def efficiency(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="efficiency",
-        value="efficiency",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    slope = CalcDoc(
+        "slope",
+        field="slope",
+        sources=[CTR],
+        view="tdna_role",
+        source_only=True,
     )
-
-
-def standard_deviation(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="standard deviation",
-        value="standard_deviation",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    quantity = CalcDoc(
+        "quantity",
+        field="quantity",
+        sources=[CTR, y_intercept, slope],
+        view="sid_tdna_uuid",
     )
-
-
-def standard_error(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="standard error",
-        value="standard_error",
-        view_data=view_data,
-        source_configs=(ctr(),),
+    amp_score = CalcDoc(
+        "amplification score",
+        field="amp_score",
+        sources=[CTR],
+        view="sid_tdna_uuid",
     )
-
-
-def rn_mean(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="rn mean",
-        value="rn_mean",
-        view_data=view_data,
-        source_configs=(norm_reporter_result(),),
+    cq_conf = CalcDoc(
+        "cq confidence",
+        field="cq_conf",
+        sources=[CTR],
+        view="sid_tdna_uuid",
     )
-
-
-def rn_sd(view_data: ViewData) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="rn sd",
-        value="rn_sd",
-        view_data=view_data,
-        source_configs=(norm_reporter_result(),),
+    ct_mean = CalcDoc("ct mean", field="ct_mean", sources=[CTR], view="sid_tdna")
+    ct_sd = CalcDoc("ct sd", field="ct_sd", sources=[CTR], view="sid_tdna")
+    ct_sd_ref = CalcDoc(
+        "ct sd",
+        field="ct_sd",
+        sources=[CTR],
+        view="sid_tdna_ref",
+        source_only=True,
     )
-
-
-def quantity(
-    view_data: ViewData,
-    y_intercept_conf: CalculatedDataConfig | None = None,
-    slope_conf: CalculatedDataConfig | None = None,
-) -> CalculatedDataConfig:
-    ctr_conf = ctr()
-    return CalculatedDataConfig(
-        name="quantity",
-        value="quantity",
-        view_data=view_data,
-        source_configs=tuple(
-            config for config in [ctr_conf, y_intercept_conf, slope_conf] if config
-        ),
+    ct_se = CalcDoc(
+        "ct se",
+        field="ct_se",
+        sources=[CTR],
+        view="sid_tdna",
+        source_only=True,
     )
-
-
-def quantity_mean(
-    view_data: ViewData,
-    quantity_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="quantity mean",
-        value="quantity_mean",
-        view_data=view_data,
-        source_configs=(quantity_conf,),
+    ct_se_ref = CalcDoc(
+        "ct se",
+        field="ct_se",
+        sources=[CTR],
+        view="sid_tdna_ref",
+        source_only=True,
     )
-
-
-def quantity_sd(
-    view_data: ViewData,
-    quantity_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="quantity sd",
-        value="quantity_sd",
-        view_data=view_data,
-        source_configs=(quantity_conf,),
+    delta_equivalent_ct_sd = CalcDoc(
+        "delta equivalent ct sd",
+        field="delta_ct_sd",
+        sources=[ct_sd, ct_sd_ref],
+        view="sid_tdna",
     )
-
-
-def delta_ct_sd(
-    view_data: ViewData,
-    ct_sd_conf: CalculatedDataConfig,
-    ref_ct_sd_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="delta equivalent ct sd",
-        value="delta_ct_sd",
-        view_data=view_data,
-        source_configs=(ct_sd_conf, ref_ct_sd_conf),
+    delta_equivalent_ct_se = CalcDoc(
+        "delta equivalent ct se",
+        field="delta_ct_se",
+        sources=[ct_se, ct_se_ref],
+        view="sid_tdna",
     )
-
-
-def delta_ct_se(
-    view_data: ViewData,
-    ct_sd_conf: CalculatedDataConfig,
-    ref_ct_sd_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="delta equivalent ct se",
-        value="delta_ct_se",
-        view_data=view_data,
-        source_configs=(ct_sd_conf, ref_ct_sd_conf),
+    quantity_mean = CalcDoc(
+        "quantity mean",
+        field="quantity_mean",
+        sources=[quantity],
+        view="sid_tdna",
+        source_only=True,
     )
-
-
-def relative_rq(
-    view_data: ViewData,
-    quantity_mean_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="relative rq",
-        value="rq",
-        view_data=view_data,
-        source_configs=(quantity_mean_conf,),
+    relative_rq = CalcDoc(
+        "relative rq",
+        field="rq",
+        sources=[quantity_mean],
+        view="sid_tdna",
+        source_only=True,
     )
-
-
-def relative_rq_min(
-    view_data: ViewData,
-    rq_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="relative rq min",
-        value="rq_min",
-        view_data=view_data,
-        source_configs=(rq_conf,),
+    relative_rq_min = CalcDoc(
+        "relative rq min", field="rq_min", sources=[relative_rq], view="sid_tdna"
     )
-
-
-def relative_rq_max(
-    view_data: ViewData,
-    rq_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="relative rq max",
-        value="rq_max",
-        view_data=view_data,
-        source_configs=(rq_conf,),
+    relative_rq_max = CalcDoc(
+        "relative rq max", field="rq_max", sources=[relative_rq], view="sid_tdna"
     )
-
-
-def eq_ct_mean(
-    view_data: ViewData,
-    ct_mean_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="equivalent ct mean",
-        value="eq_ct_mean",
-        view_data=view_data,
-        source_configs=(ct_mean_conf,),
+    # Deep dependency chain for rq_min/rq_max
+    equivalent_ct_mean = CalcDoc(
+        "equivalent ct mean",
+        field="eq_ct_mean",
+        sources=[ct_mean],
+        view="sid_tdna",
+        source_only=True,
     )
-
-
-def adj_eq_ct_mean(
-    view_data: ViewData,
-    eq_ct_mean_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfigWithOptional(
-        name="adjusted equivalent ct mean",
-        value="adj_eq_ct_mean",
-        view_data=view_data,
+    adjusted_equivalent_ct_mean = CalcDoc(
+        "adjusted equivalent ct mean",
+        field="adj_eq_ct_mean",
+        sources=[equivalent_ct_mean],
+        view="sid_tdna",
+        source_only=True,
         optional=True,
-        source_configs=(eq_ct_mean_conf,),
     )
-
-
-def delta_ct(
-    view_data: ViewData,
-    adj_eq_ct_mean_conf: CalculatedDataConfig,
-    ref_adj_eq_ct_mean_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="delta equivalent ct mean",
-        value="delta_ct_mean",
-        view_data=view_data,
-        source_configs=(adj_eq_ct_mean_conf, ref_adj_eq_ct_mean_conf),
+    adjusted_equivalent_ct_mean_ref = CalcDoc(
+        "adjusted equivalent ct mean",
+        field="adj_eq_ct_mean",
+        sources=[equivalent_ct_mean],
+        view="sid_tdna_ref",
+        source_only=True,
+        optional=True,
     )
-
-
-def delta_delta_ct(
-    view_data: ViewData,
-    delta_ct_conf: CalculatedDataConfig,
-    ref_delta_ct_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="delta delta equivalent ct",
-        value="delta_delta_ct",
-        view_data=view_data,
-        source_configs=(delta_ct_conf, ref_delta_ct_conf),
+    delta_equivalent_ct_mean = CalcDoc(
+        "delta equivalent ct mean",
+        field="delta_ct_mean",
+        sources=[adjusted_equivalent_ct_mean, adjusted_equivalent_ct_mean_ref],
+        view="sid_tdna",
+        source_only=True,
     )
-
-
-def rq(
-    view_data: ViewData,
-    delta_delta_ct_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="rq",
-        value="rq",
-        view_data=view_data,
-        source_configs=(delta_delta_ct_conf,),
+    delta_equivalent_ct_mean_ref_sample = CalcDoc(
+        "delta equivalent ct mean",
+        field="delta_ct_mean",
+        sources=[adjusted_equivalent_ct_mean, adjusted_equivalent_ct_mean_ref],
+        view="sid_ref_tdna",
+        source_only=True,
     )
-
-
-def rq_min(
-    view_data: ViewData,
-    rq_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="rq min",
-        value="rq_min",
-        view_data=view_data,
-        source_configs=(rq_conf,),
+    delta_delta_equivalent_ct = CalcDoc(
+        "delta delta equivalent ct",
+        field="delta_delta_ct",
+        sources=[delta_equivalent_ct_mean, delta_equivalent_ct_mean_ref_sample],
+        view="sid_tdna",
+        source_only=True,
     )
-
-
-def rq_max(
-    view_data: ViewData,
-    rq_conf: CalculatedDataConfig,
-) -> CalculatedDataConfig:
-    return CalculatedDataConfig(
-        name="rq max",
-        value="rq_max",
-        view_data=view_data,
-        source_configs=(rq_conf,),
+    rq = CalcDoc(
+        "rq",
+        field="rq",
+        sources=[delta_delta_equivalent_ct],
+        view="sid_tdna",
+        source_only=True,
     )
+    rq_min = CalcDoc("rq min", field="rq_min", sources=[rq], view="sid_tdna_blacklist")
+    rq_max = CalcDoc("rq max", field="rq_max", sources=[rq], view="sid_tdna_blacklist")
+    return [
+        CTR,
+        quantity,
+        amp_score,
+        cq_conf,
+        ct_mean,
+        ct_sd,
+        ct_sd_ref,
+        ct_se,
+        ct_se_ref,
+        delta_equivalent_ct_sd,
+        delta_equivalent_ct_se,
+        quantity_mean,
+        relative_rq,
+        relative_rq_min,
+        relative_rq_max,
+        equivalent_ct_mean,
+        adjusted_equivalent_ct_mean,
+        adjusted_equivalent_ct_mean_ref,
+        delta_equivalent_ct_mean,
+        delta_equivalent_ct_mean_ref_sample,
+        delta_delta_equivalent_ct,
+        rq,
+        rq_min,
+        rq_max,
+        y_intercept,
+        slope,
+    ]
+
+
+RELATIVE_STANDARD_CURVE_NODES: list[Node] = _relative_standard_curve_nodes()
+
+
+def _presence_absence_nodes() -> list[Node]:
+    quantity = CalcDoc(
+        "quantity",
+        field="quantity",
+        sources=[CTR],
+        view="sid_tdna_uuid",
+    )
+    amp_score = CalcDoc(
+        "amplification score",
+        field="amp_score",
+        sources=[CTR],
+        view="sid_tdna_uuid",
+    )
+    cq_conf = CalcDoc(
+        "cq confidence",
+        field="cq_conf",
+        sources=[CTR],
+        view="sid_tdna_uuid",
+    )
+    rn_mean = CalcDoc(
+        "rn mean",
+        field="rn_mean",
+        sources=[NORM_REPORTER],
+        view="sid_tdna",
+    )
+    rn_sd = CalcDoc("rn sd", field="rn_sd", sources=[NORM_REPORTER], view="sid_tdna")
+    return [
+        CTR,
+        NORM_REPORTER,
+        quantity,
+        amp_score,
+        cq_conf,
+        rn_mean,
+        rn_sd,
+    ]
+
+
+PRESENCE_ABSENCE_NODES: list[Node] = _presence_absence_nodes()
+
+
+def _primary_analysis_nodes() -> list[Node]:
+    ct_mean = CalcDoc("ct mean", field="ct_mean", sources=[CTR], view="sid_tdna")
+    ct_sd = CalcDoc("ct sd", field="ct_sd", sources=[CTR], view="sid_tdna")
+    ct_se = CalcDoc("ct se", field="ct_se", sources=[CTR], view="sid_tdna")
+    return [
+        CTR,
+        ct_mean,
+        ct_sd,
+        ct_se,
+    ]
+
+
+PRIMARY_ANALYSIS_NODES: list[Node] = _primary_analysis_nodes()
 
 
 def iter_standard_curve_calc_docs(
     well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Y-intercept, Slope, Quantity, Amp score, Cq confidence,
-    # Quantity Mean, Quantity SD, Ct Mean, Ct SD
-    # R^2, Efficiency, Standard Deviation, Standard Error
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
-
-    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
-    sid_tdna_uuid_view_data = SampleView(
-        sub_view=TargetView(sub_view=UuidView())
-    ).apply(elements)
-    tdna_view_data = TargetRoleView().apply(elements)
-
-    quantity_conf = quantity(
-        sid_tdna_uuid_view_data,
-        y_intercept(tdna_view_data),
-        slope(tdna_view_data),
-    )
-
-    configs = CalcDocsConfig(
-        [
-            quantity_conf,
-            amplification_score(sid_tdna_uuid_view_data),
-            cq_confidence(sid_tdna_uuid_view_data),
-            quantity_mean(sid_tdna_view_data, quantity_conf),
-            quantity_sd(sid_tdna_view_data, quantity_conf),
-            ct_mean(sid_tdna_view_data),
-            ct_sd(sid_tdna_view_data),
-            y_intercept(tdna_view_data),
-            r_squared(tdna_view_data),
-            slope(tdna_view_data),
-            efficiency(tdna_view_data),
-            standard_deviation(sid_tdna_uuid_view_data),
-            standard_error(sid_tdna_uuid_view_data),
-        ]
-    )
-
-    for calc_doc in configs.construct():
-        yield from calc_doc.iter_struct()
+    views = {
+        "sid_tdna": SampleView(sub_view=TargetView()).apply(elements),
+        "sid_tdna_uuid": SampleView(sub_view=TargetView(sub_view=UuidView())).apply(
+            elements
+        ),
+        "tdna_role": TargetRoleView().apply(elements),
+    }
+    yield from build_calc_docs(nodes=STANDARD_CURVE_NODES, views=views)
 
 
 def iter_relative_standard_curve_calc_docs(
@@ -394,199 +348,44 @@ def iter_relative_standard_curve_calc_docs(
     r_sample: str | None,
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
-    # Y-Intercept, Slope, Quantity, Amp score, Cq confidence,
-    # Ct Mean, Ct SD, Ct SE,
-    # Delta Ct SD, Delta Ct SE,
-    # Relative RQ min, Relative RQ max, Relative RQ, Quantity Mean,
-    # RQ min, RQ max, RQ, Delta Delta Ct, Delta Ct,
-    # Adjusted equivalent Ct mean, equivalent Ct mean
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
-
-    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
-    sid_ref_tdna_view_data = SampleView(
-        reference=r_sample, sub_view=TargetView()
-    ).apply(elements)
-    sid_tdna_ref_view_data = SampleView(
-        sub_view=TargetView(is_reference=True, reference=r_target)
-    ).apply(elements)
-    sid_tdna_blacklist_view_data = SampleView(
-        sub_view=TargetView(blacklist=[r_target] if r_target is not None else None)
-    ).apply(elements)
-    sid_tdna_uuid_view_data = SampleView(
-        sub_view=TargetView(sub_view=UuidView())
-    ).apply(elements)
-    tdna_view_data = TargetRoleView().apply(elements)
-
-    quantity_conf = quantity(
-        sid_tdna_uuid_view_data,
-        y_intercept(tdna_view_data),
-        slope(tdna_view_data),
-    )
-
-    configs = CalcDocsConfig(
-        [
-            quantity_conf,
-            amplification_score(sid_tdna_uuid_view_data),
-            cq_confidence(sid_tdna_uuid_view_data),
-            ct_mean(sid_tdna_view_data),
-            ct_sd(sid_tdna_view_data),
-            delta_ct_sd(
-                sid_tdna_view_data,
-                ct_sd(sid_tdna_view_data),
-                ct_sd(sid_tdna_ref_view_data),
-            ),
-            delta_ct_se(
-                sid_tdna_view_data,
-                ct_se(sid_tdna_view_data),
-                ct_se(sid_tdna_ref_view_data),
-            ),
-            relative_rq_min(
-                sid_tdna_view_data,
-                relative_rq(
-                    sid_tdna_view_data,
-                    quantity_mean(sid_tdna_view_data, quantity_conf),
-                ),
-            ),
-            relative_rq_max(
-                sid_tdna_view_data,
-                relative_rq(
-                    sid_tdna_view_data,
-                    quantity_mean(sid_tdna_view_data, quantity_conf),
-                ),
-            ),
-            rq_min(
-                sid_tdna_blacklist_view_data,
-                rq(
-                    sid_tdna_view_data,
-                    delta_delta_ct(
-                        sid_tdna_view_data,
-                        delta_ct(
-                            sid_tdna_view_data,
-                            adj_eq_ct_mean(
-                                sid_tdna_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                            adj_eq_ct_mean(
-                                sid_tdna_ref_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                        ),
-                        delta_ct(
-                            sid_ref_tdna_view_data,
-                            adj_eq_ct_mean(
-                                sid_tdna_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                            adj_eq_ct_mean(
-                                sid_tdna_ref_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            rq_max(
-                sid_tdna_blacklist_view_data,
-                rq(
-                    sid_tdna_view_data,
-                    delta_delta_ct(
-                        sid_tdna_view_data,
-                        delta_ct(
-                            sid_tdna_view_data,
-                            adj_eq_ct_mean(
-                                sid_tdna_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                            adj_eq_ct_mean(
-                                sid_tdna_ref_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                        ),
-                        delta_ct(
-                            sid_ref_tdna_view_data,
-                            adj_eq_ct_mean(
-                                sid_tdna_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                            adj_eq_ct_mean(
-                                sid_tdna_ref_view_data,
-                                eq_ct_mean(
-                                    sid_tdna_view_data,
-                                    ct_mean(sid_tdna_view_data),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ]
-    )
-
-    for calc_doc in configs.construct():
-        yield from calc_doc.iter_struct()
+    views = {
+        "sid_tdna": SampleView(sub_view=TargetView()).apply(elements),
+        "sid_tdna_uuid": SampleView(sub_view=TargetView(sub_view=UuidView())).apply(
+            elements
+        ),
+        "sid_ref_tdna": SampleView(reference=r_sample, sub_view=TargetView()).apply(
+            elements
+        ),
+        "sid_tdna_ref": SampleView(
+            sub_view=TargetView(is_reference=True, reference=r_target)
+        ).apply(elements),
+        "sid_tdna_blacklist": SampleView(
+            sub_view=TargetView(blacklist=[r_target] if r_target is not None else None)
+        ).apply(elements),
+        "tdna_role": TargetRoleView().apply(elements),
+    }
+    yield from build_calc_docs(nodes=RELATIVE_STANDARD_CURVE_NODES, views=views)
 
 
 def iter_presence_absence_calc_docs(
     well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Quantity, Amp score, Cq confidence, Rn Mean, Rn SD
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
-
-    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
-    sid_tdna_uuid_view_data = SampleView(
-        sub_view=TargetView(sub_view=UuidView())
-    ).apply(elements)
-
-    configs = CalcDocsConfig(
-        [
-            quantity(sid_tdna_uuid_view_data),
-            amplification_score(sid_tdna_uuid_view_data),
-            cq_confidence(sid_tdna_uuid_view_data),
-            rn_mean(sid_tdna_view_data),
-            rn_sd(sid_tdna_view_data),
-        ]
-    )
-
-    for calc_doc in configs.construct():
-        yield from calc_doc.iter_struct()
+    views = {
+        "sid_tdna": SampleView(sub_view=TargetView()).apply(elements),
+        "sid_tdna_uuid": SampleView(sub_view=TargetView(sub_view=UuidView())).apply(
+            elements
+        ),
+    }
+    yield from build_calc_docs(nodes=PRESENCE_ABSENCE_NODES, views=views)
 
 
 def iter_primary_analysis_calc_docs(
     well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Ct Mean, Ct SD, Ct SE
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
-
-    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
-
-    configs = CalcDocsConfig(
-        [
-            ct_mean(sid_tdna_view_data),
-            ct_sd(sid_tdna_view_data),
-            ct_se(sid_tdna_view_data),
-        ]
-    )
-
-    for calc_doc in configs.construct():
-        yield from calc_doc.iter_struct()
+    views = {
+        "sid_tdna": SampleView(sub_view=TargetView()).apply(elements),
+    }
+    yield from build_calc_docs(nodes=PRIMARY_ANALYSIS_NODES, views=views)
