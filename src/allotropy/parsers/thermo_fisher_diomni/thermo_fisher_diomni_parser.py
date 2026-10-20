@@ -21,7 +21,7 @@ class ThermoFisherDiomniParser(VendorParser[Data, Model]):
     """Parser for Thermo Fisher Diomni files."""
 
     DISPLAY_NAME = "Thermo Fisher Diomni"
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherDiomniReader.SUPPORTED_EXTENSIONS
     SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
