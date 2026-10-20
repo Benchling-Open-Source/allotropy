@@ -17,7 +17,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropeParsingError,
 )
-from allotropy.parsers.utils.encoding import determine_encoding
+from allotropy.parsers.utils.encoding import bom_encoding, determine_encoding
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_is_type,
@@ -190,6 +190,10 @@ def read_csv(
     possible_encodings: list[str | None] = [None]
     if encoding:
         possible_encodings = determine_encoding(filepath_or_buffer, encoding)
+    elif hasattr(filepath_or_buffer, "read") and (
+        bom := bom_encoding(filepath_or_buffer)
+    ):
+        possible_encodings = [bom]
 
     for encoding in possible_encodings:
         if encoding is not None:
