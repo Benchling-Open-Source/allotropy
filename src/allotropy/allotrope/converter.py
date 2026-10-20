@@ -4,9 +4,11 @@ from collections.abc import Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
 import keyword
+import re
 import sys
 import types
 from typing import Any, get_args, get_origin, get_type_hints, TypeVar, Union
+import unicodedata
 
 from allotropy.allotrope.path_util import get_model_class_from_schema
 from allotropy.schema_gen.naming import default_json_name
@@ -49,8 +51,33 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
 # ---------------------------------------------------------------------------
 
 
+# Any character the table above does not cover and that cannot appear verbatim
+# in a Python identifier is written as _U<hex>_. "Verbatim" matters: Python
+# NFKC-normalizes identifiers, so a key like "Volume (µL)" would otherwise
+# become a field named with GREEK SMALL LETTER MU (U+03BC) instead of MICRO SIGN
+# (U+00B5), and make_dataclass rejects the keyword argument.
+_EMPTY_KEY = "_EMPTY_"
+_UNICODE_ESCAPE_PATTERN = re.compile(r"_U([0-9A-F]{4,6})_")
+
+
+def _is_verbatim_identifier_char(char: str) -> bool:
+    return (char == "_" or char.isalnum()) and unicodedata.normalize(
+        "NFKC", char
+    ) == char
+
+
+def _escape_non_identifier_chars(key: str) -> str:
+    return "".join(
+        char if _is_verbatim_identifier_char(char) else f"_U{ord(char):04X}_"
+        for char in key
+    )
+
+
 def _convert_model_key_to_dict_key(key: str) -> str:
     """Decode a Python-safe field name back to the original JSON key."""
+    if key == _EMPTY_KEY:
+        return ""
+    key = _UNICODE_ESCAPE_PATTERN.sub(lambda m: chr(int(m.group(1), 16)), key)
     if key.startswith("_KW"):
         key = key[3:]
     if key.startswith("___") and key[3].isdigit():
@@ -61,13 +88,15 @@ def _convert_model_key_to_dict_key(key: str) -> str:
 
 
 def _convert_dict_to_model_key(key: str) -> str:
+    if not key:
+        return _EMPTY_KEY
     if keyword.iskeyword(key):
         key = f"_KW{key}"
     if key[0].isdigit():
         key = f"___{key}"
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(dict_val, model_val)
-    return key
+    return _escape_non_identifier_chars(key)
 
 
 def _unstructure_custom_information_document(model: Any) -> dict[str, Any]:
