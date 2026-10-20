@@ -2,6 +2,7 @@ from collections.abc import Mapping
 import copy
 import json
 from pathlib import Path
+import threading
 from typing import Any
 
 import jsonschema
@@ -261,13 +262,22 @@ def _get_schema_by_path(schema_path: Path) -> dict[str, Any]:
     return schema
 
 
-_validator_cache: dict[str, Any] = {}
+# Validators are cached per thread. A validator holds a jsonschema RefResolver,
+# and RefResolver keeps a mutable stack of resolution scopes (push_scope /
+# pop_scope around every $ref). Shared across threads, one thread resolves a
+# $ref against another thread's scope and valid documents fail with
+# "Unresolvable JSON pointer". The schema dicts themselves are read-only and
+# stay shared; each RefResolver copies the store into its own mapping.
+_thread_local = threading.local()
 
 
 def _get_validator(schema_path: Path) -> Any:
-    """Get a cached validator for a schema path."""
+    """Get a validator for a schema path, cached per thread."""
     key = str(schema_path)
-    cached = _validator_cache.get(key)
+    validator_cache: dict[str, Any] | None = getattr(_thread_local, "validators", None)
+    if validator_cache is None:
+        validator_cache = _thread_local.validators = {}
+    cached = validator_cache.get(key)
     if cached is not None:
         return cached
     schema = _get_schema_by_path(schema_path)
@@ -280,7 +290,7 @@ def _get_validator(schema_path: Path) -> Any:
     validator = FastDraft202012Validator(
         schema, resolver=resolver, format_checker=FORMAT_CHECKER
     )
-    _validator_cache[key] = validator
+    validator_cache[key] = validator
     return validator
 
 
