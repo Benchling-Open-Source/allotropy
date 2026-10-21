@@ -41,8 +41,16 @@ class ViCellBluParser(VendorParser[Data, Model]):
             lines = text.splitlines()
             if not lines:
                 return False
-            header = lines[0]
-            return "Viability (%)" in header and "Viable (x10^6) cells/mL" in header
+            # Summary export has results on the first line; the per-image detail
+            # export starts with sample settings and has results on the "Image#" line.
+            results_header = next(
+                (line for line in lines if line.lstrip('"').startswith("Image#")),
+                lines[0],
+            )
+            return (
+                "Viability (%)" in results_header
+                and "Viable (x10^6) cells/mL" in results_header
+            )
         except Exception:
             return False
 
