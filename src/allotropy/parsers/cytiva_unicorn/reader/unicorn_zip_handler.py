@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+from re import search
 from zipfile import ZipFile
 
 from allotropy.exceptions import AllotropeConversionError
@@ -90,8 +91,19 @@ class UnicornZipHandler(ZipHandler):
             raw_content, mark_read={"attr:FormatVersion", "attr:UNICORNVersion"}
         )
 
-    def get_chrom_1(self) -> StrictXmlElement:
-        b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
+    def get_chromatogram_paths(self) -> list[str]:
+        numbered_paths = [
+            (int(match.group(1)), name)
+            for name in self.name_list
+            if (match := search(r"Chrom\.(\d+)\.Xml$", name))
+        ]
+        if not numbered_paths:
+            msg = "Unable to find any chromatogram file in the export."
+            raise AllotropeConversionError(msg)
+        return [name for _, name in sorted(numbered_paths)]
+
+    def get_chromatogram(self, inner_path: str) -> StrictXmlElement:
+        b_stream = self.get_file(inner_path)
         raw_content = self.filter_xml_metadata(b_stream).read()
         return StrictXmlElement.create_from_bytes(raw_content)
 
