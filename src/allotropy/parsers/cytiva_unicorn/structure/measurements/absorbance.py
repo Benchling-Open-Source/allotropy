@@ -47,7 +47,9 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         pass
 
     @classmethod
-    def get_peaks(cls, _: UnicornZipHandler) -> list[Peak]:
+    def get_peaks(
+        cls, _handler: UnicornZipHandler, _chromatogram_path: str
+    ) -> list[Peak]:
         return []
 
     @classmethod
@@ -56,6 +58,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
+        chromatogram_path: str,
     ) -> UnicornMeasurement | None:
         element = cls.filter_curve_or_none(elements, cls.get_curve_regex())
         if element is None:
@@ -83,7 +86,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
                     ),
                 )
             ],
-            peaks=cls.get_peaks(handler),
+            peaks=cls.get_peaks(handler, chromatogram_path),
             processed_data_custom_info=cls.get_processed_data_custom_info(element),
         )
         return measurement
@@ -155,10 +158,15 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
         }
 
     @classmethod
-    def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
-        chrom_1 = handler.get_chrom_1()
-        chrom_1.get_unread()  # chrom_1 data is read in create_measurement_groups
-        peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
+    def get_peaks(
+        cls, handler: UnicornZipHandler, chromatogram_path: str
+    ) -> list[Peak]:
+        chromatogram = handler.get_chromatogram(chromatogram_path)
+        # Chromatogram data is read in create_measurement_group
+        chromatogram.get_unread()
+        peaks = chromatogram.recursive_find_or_none(
+            ["PeakTables", "PeakTable", "Peaks"]
+        )
         output = []
         for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1):
             peak_obj = Peak(
