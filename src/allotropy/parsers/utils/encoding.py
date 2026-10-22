@@ -14,11 +14,34 @@ def _get_contents(contents: bytes | IO[bytes] | IO[str]) -> str | bytes:
     return actual_contents
 
 
+def bom_encoding(contents: bytes | IO[bytes] | IO[str]) -> str | None:
+    """Return "UTF-16" if the bytes start with a UTF-16 byte order mark, else None.
+
+    A UTF-16 BOM can never decode as UTF-8, so honoring it when the caller
+    gave no encoding only turns failures into successes. Instrument software
+    writes UTF-16 exports (e.g. SoftMax Pro, Vi-Cell BLU, GENESYS, VISIONlite).
+    """
+    if isinstance(contents, bytes):
+        head: str | bytes = contents[:2]
+    else:
+        # Leave the stream where it was: some readers consume a header line
+        # and hand over the rest. A BOM can only be at offset 0, so a stream
+        # that is already past it has nothing to detect.
+        position = contents.tell()
+        if position != 0:
+            return None
+        head = contents.read(2)
+        contents.seek(position)
+    if isinstance(head, bytes) and head in (b"\xff\xfe", b"\xfe\xff"):
+        return "UTF-16"
+    return None
+
+
 def determine_encoding(
     contents: bytes | IO[bytes] | IO[str], encoding: str | None
 ) -> list[str | None]:
     if not encoding:
-        return [DEFAULT_ENCODING]
+        return [bom_encoding(contents) or DEFAULT_ENCODING]
     if encoding != CHARDET_ENCODING:
         return [encoding]
 
