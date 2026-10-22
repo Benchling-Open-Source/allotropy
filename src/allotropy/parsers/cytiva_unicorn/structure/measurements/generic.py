@@ -100,7 +100,7 @@ class UnicornMeasurement(Measurement):
         names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
         if data_name := curve_element.recursive_find_or_none(names):
             if name := data_name.get_text_or_none():
-                return handler.get_zip_from_pattern(name)
+                return handler.get_zip_from_file_name(name)
         return None
 
     @classmethod
