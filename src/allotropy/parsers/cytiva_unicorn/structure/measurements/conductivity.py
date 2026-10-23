@@ -15,6 +15,10 @@ from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
+from allotropy.parsers.cytiva_unicorn.structure.peaks import (
+    create_peaks,
+    PeakTables,
+)
 from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
     StaticDocs,
 )
@@ -30,6 +34,7 @@ class ConductivityMeasurement(UnicornMeasurement):
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
+        peak_tables: PeakTables,
     ) -> UnicornMeasurement | None:
         element = cls.filter_curve_or_none(elements, r"^Cond$")
         measurement = cls.get_measurement(
@@ -62,6 +67,7 @@ class ConductivityMeasurement(UnicornMeasurement):
                     ),
                 )
             ],
+            peaks=(create_peaks(peak_tables, element) if element is not None else None),
             processed_data_custom_info=cls.get_processed_data_custom_info(element),
         )
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None

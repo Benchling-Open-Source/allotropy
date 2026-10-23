@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+from re import escape, search
 from zipfile import ZipFile
 
 from allotropy.exceptions import AllotropeConversionError
@@ -90,10 +91,30 @@ class UnicornZipHandler(ZipHandler):
             raw_content, mark_read={"attr:FormatVersion", "attr:UNICORNVersion"}
         )
 
-    def get_chrom_1(self) -> StrictXmlElement:
-        b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
-        raw_content = self.filter_xml_metadata(b_stream).read()
-        return StrictXmlElement.create_from_bytes(raw_content)
+    def get_chromatograms(self) -> list[StrictXmlElement]:
+        # A result can hold several chromatograms (one per evaluation tab in Unicorn),
+        # each stored as "<chromatogram name>.Xml". The default Chrom.1 is listed first.
+        inner_paths = sorted(
+            (path for path in self.name_list if path.endswith(".Xml")),
+            key=lambda path: not search(r"Chrom\.1\.Xml$", path),
+        )
+        chromatograms = []
+        for inner_path in inner_paths:
+            raw_content = self.filter_xml_metadata(self.get_file(inner_path)).read()
+            element = StrictXmlElement.create_from_bytes(raw_content)
+            if element.element.tag == "Chromatogram":
+                chromatograms.append(element)
+        if not chromatograms:
+            msg = "Unable to find any chromatogram in the Unicorn result."
+            raise AllotropeConversionError(msg)
+        return chromatograms
+
+    def get_zip_from_file_name(self, file_name: str) -> UnicornZipHandler:
+        # Chromatogram names are user-defined and one may be a suffix of another
+        # (e.g. "Test" and "Column Test"), so prefer an exact member name match.
+        pattern = rf"{escape(file_name)}(\.zip)?$"
+        inner_path = self.get_inner_path_or_none(rf"(^|/){pattern}")
+        return self.get_zip(inner_path or self.get_inner_path(pattern))
 
     def get_column_type_data(self) -> StrictXmlElement:
         column_type_data = self.get_zip_from_pattern("ColumnTypeData(.zip)?$")
