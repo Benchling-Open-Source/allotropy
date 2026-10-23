@@ -5,6 +5,8 @@ from enum import Enum
 import importlib
 from pathlib import Path
 
+import pytest
+
 from allotropy.allotrope.converter import (
     add_custom_information_document,
     structure,
@@ -429,6 +431,28 @@ class TestCustomInformationDocument:
         structured = structure_custom_information_document(doc, "test")
         result = _unstructure_custom_information_document(structured)
         assert result == doc
+
+    @pytest.mark.parametrize(
+        "key",
+        [
+            "Dilution Volume (\u00b5L)",  # MICRO SIGN, NFKC-normalized by Python
+            "Area (\u00b5m\u00b2)",
+            "Mean \u00b1 SD",
+            "1 \u00d7 PBS",
+            "A+B; C|D",
+            'Label "quoted" <x> {y} `z`!',
+            "",
+        ],
+    )
+    def test_keys_that_are_not_python_identifiers_roundtrip(self, key: str) -> None:
+        from allotropy.allotrope.converter import (
+            _unstructure_custom_information_document,
+            structure_custom_information_document,
+        )
+
+        doc = {key: 2.5, "plain": "value"}
+        structured = structure_custom_information_document(doc, "test")
+        assert _unstructure_custom_information_document(structured) == doc
 
 
 # ---------------------------------------------------------------------------
