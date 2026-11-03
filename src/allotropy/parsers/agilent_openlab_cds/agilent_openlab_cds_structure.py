@@ -117,19 +117,23 @@ def create_metadata(
     )
 
 
-def get_molar_mass_custom_info(peak: dict[str, Any]) -> dict[str, Any]:
-    """Reads the peak's molar mass results, which ASM has no native concept for.
+def get_gpc_custom_info(peak: dict[str, Any]) -> dict[str, Any] | None:
+    """Reads the GPC/SEC molecular weight averages reported for a peak.
 
-    Only reported for size-exclusion methods with a GPC calibration, so usually absent.
+    ASM has no molecular weight concept, so these are reported as peak custom information. Only
+    result sets processed with GPC analysis carry them, and then only on the analysed signal.
     """
-    return {
-        key: {
-            "value": try_float_or_none(peak[element].get("@val")),
-            "unit": unit,
-        }
-        for element, (key, unit) in constants.PEAK_MOLAR_MASS_FIELDS.items()
-        if isinstance(peak.get(element), dict)
+    gpc_results = peak.get("GPC Results")
+    if not gpc_results:
+        return None
+    custom_info: dict[str, Any] = {
+        name: {"value": value, "unit": unit}
+        for tag, (name, unit) in constants.GPC_PEAK_RESULT_FIELDS.items()
+        if (value := try_float_or_none(gpc_results.get(tag))) is not None
     }
+    if status := gpc_results.get(constants.GPC_RESULT_STATUS_FIELD):
+        custom_info[constants.GPC_RESULT_STATUS_KEY] = status
+    return custom_info or None
 
 
 def get_total_peak_area(peaks: list[Peak] | None) -> dict[str, Any] | None:
@@ -218,7 +222,7 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             number_of_theoretical_plates__chromatography_=try_float_or_none(
                 peak.get("TheoreticalPlates_USP", {}).get("@val")
             ),
-            custom_info=get_molar_mass_custom_info(peak),
+            custom_info=get_gpc_custom_info(peak),
         )
         for peak in peak_structure
     ]
@@ -261,6 +265,11 @@ def create_measurements(
                 .get("Type")
             ),
             sample_custom_info={
+                "sample type": intermediate_structured_data["Result Data"][i][
+                    "Sample Data"
+                ]["SampleSetup"]
+                .get("DAParam", {})
+                .get("Type"),
                 "location identifier": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
                 ].get("Location"),

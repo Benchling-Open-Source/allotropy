@@ -3,7 +3,7 @@
     "liquid chromatography aggregate document": {
         "data system document": {
             "ASM converter name": "allotropy_agilent_openlab_cds",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.146",
             "data system instance identifier": "N/A",
             "file name": "Sirius-2023-09-01 07-52-44-04-00.rslt",
             "software name": "OpenLabCDS",
@@ -73,6 +73,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -773,7 +774,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -1332,7 +1335,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -1693,6 +1698,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -1762,7 +1768,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -1824,6 +1832,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {

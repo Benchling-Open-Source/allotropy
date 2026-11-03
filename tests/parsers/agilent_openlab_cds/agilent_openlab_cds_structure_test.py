@@ -1,8 +1,4 @@
-"""Tests for OpenLab CDS peak results that the test data files do not cover.
-
-Molar mass results are only reported for size-exclusion methods with a GPC calibration, and no
-result set we have was acquired with one, so they are covered here from peak data directly.
-"""
+"""Tests for OpenLab CDS total peak area edge cases that the test data files do not cover."""
 from typing import Any
 
 import pytest
@@ -27,28 +23,6 @@ def _peak(**elements: Any) -> dict[str, Any]:
         "EndTime": {"@val": "2.81", "@unit": "min"},
         **elements,
     }
-
-
-def test_peak_reports_molar_mass_results() -> None:
-    (peak,) = create_peak(
-        [
-            _peak(
-                Mn={"@val": "148532.0"},
-                Mw={"@val": "151203.5"},
-                PD={"@val": "1.018"},
-            )
-        ]
-    )
-    assert peak.custom_info == {
-        "Mn": {"value": 148532.0, "unit": "g/mol"},
-        "Mw": {"value": 151203.5, "unit": "g/mol"},
-        "polydispersity": {"value": 1.018, "unit": "(unitless)"},
-    }
-
-
-def test_peak_without_molar_mass_results_reports_none() -> None:
-    (peak,) = create_peak([_peak()])
-    assert peak.custom_info == {}
 
 
 def test_total_peak_area_sums_areas() -> None:

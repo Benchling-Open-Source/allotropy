@@ -36,6 +36,7 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)\s*$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
+LUMINESCENCE_FULL_HEADER_LENGTH = 30
 VALID_NAN_VALUES = ("Masked", "Range?", "Error")
 
 
@@ -1146,18 +1147,35 @@ class LuminescencePlateBlock(PlateBlock):
             _,  # first_column
             _,  # num_columns,
             num_wells_raw,
-            _,  # excitation_wavelengths_str
-            _,  # cutoff
-            _,  # cutoff_filters_str,
-            _,  # sweep_wave
-            _,  # sweep_wavelength
-            reads_per_well,
-            pmt_gain,
-            _,  # start_integration_time
-            _,  # end_integration_time
-            _,  # first_row
-            num_rows,
-        ] = header[:30]
+        ] = header[:19]
+
+        reads_per_well: int | None
+        pmt_gain: str | None
+        if len(header) >= LUMINESCENCE_FULL_HEADER_LENGTH:
+            [
+                _,  # excitation_wavelengths_str
+                _,  # cutoff
+                _,  # cutoff_filters_str,
+                _,  # sweep_wave
+                _,  # sweep_wavelength
+                reads_per_well_raw,
+                pmt_gain,
+                _,  # start_integration_time
+                _,  # end_integration_time
+                _,  # first_row
+                num_rows,
+            ] = header[19:LUMINESCENCE_FULL_HEADER_LENGTH]
+            reads_per_well = try_int(reads_per_well_raw, "reads_per_well")
+        else:
+            # Some exports omit the detector settings fields and use the same
+            # layout as absorbance plates, with first_row and num_rows
+            # directly after num_wells.
+            [
+                _,  # first_row
+                num_rows,
+            ] = header[19:21]
+            reads_per_well = None
+            pmt_gain = None
 
         cls.check_export_version(export_version)
         read_type = cls.check_read_type(read_type_raw)
@@ -1192,7 +1210,7 @@ class LuminescencePlateBlock(PlateBlock):
             read_time=try_float_or_none(read_time),
             read_interval=try_float_or_none(read_interval),
             scan_position=None,
-            reads_per_well=try_int(reads_per_well, "reads_per_well"),
+            reads_per_well=reads_per_well,
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
             excitation_wavelengths=None,

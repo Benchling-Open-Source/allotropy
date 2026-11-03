@@ -5,6 +5,54 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.149] - 2026-10-21
+
+### Fixed
+
+- NovaBio Flex2 - do not emit measurements that have no measured value CUST-12697 (#1278)
+
+## [0.1.148] - 2026-10-07
+
+### Fixed
+
+- Cytiva Unicorn - skip curves with no data points (#1275)
+
+## [0.1.147] - 2026-09-28
+
+### Added
+
+- Agilent OpenLab CDS - report sample type (#1273)
+
+## [0.1.146] - 2026-09-22
+
+### Added
+
+- Agilent OpenLab CDS - report GPC/SEC molecular weight averages on peaks (#1269)
+
+### Fixed
+
+- Agilent OpenLab CDS - support single-injection result sets (#1266)
+
+## [0.1.145] - 2026-09-08
+
+### Added
+
+- Thermo Fisher Diomni - initial implementation (#1251)
+- Beckman Coulter PharmSpec - add container id to the sample custom document (#1253)
+
+### Fixed
+
+- NovaBio Flex2 - do not emit pH measurement when only vessel temperature is present (#1261)
+
+## [0.1.144] - 2026-08-25
+
+### Fixed
+
+- Agilent OpenLab CDS - accept zipped result sets (#1252)
+- Tecan Magellan - support compact Magellan Pro 7.5 exports (#1258)
+- Cut OpenLab CDS peak memory 4x and handle optional ACAML metadata (#1254)
+- Report custom information keys in a stable order (#1249)
+
 ## [0.1.143] - 2026-07-28
 
 ### Fixed

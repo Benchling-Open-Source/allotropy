@@ -1,4 +1,5 @@
 import re
+from typing import Any
 
 import pandas as pd
 import pytest
@@ -7,9 +8,15 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._0
     Analyte,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.novabio_flex2.constants import (
+    DETECTION_PROPERTY_MAPPING,
+    MEASURED_PROPERTIES_BY_DETECTION_TYPE,
+)
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
+    create_measurement_groups,
     Sample,
     SampleData,
+    SampleList,
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
@@ -76,6 +83,90 @@ def test_create_sample() -> None:
     )
     assert sample.carbon_dioxide_saturation == 0
     assert sample.oxygen_saturation == 100.0
+
+
+def _get_detection_types(**sample_properties: Any) -> list[str | None]:
+    sample = Sample(
+        identifier="SAMPLE_1",
+        sample_type="Spent Media",
+        measurement_time="2025-02-09 10:40:00",
+        batch_identifier="BATCH_123",
+        **{"analytes": [Analyte("glucose", 4.5, "g/L")], **sample_properties},
+    )
+    groups = create_measurement_groups(
+        Title(processing_time="2025-02-09 104000", device_identifier=None),
+        SampleList(analyst="Kermit", samples=[sample]),
+    )
+    return [measurement.detection_type for measurement in groups[0].measurements]
+
+
+@pytest.mark.parametrize(
+    "ph,temperature,expected_detection_types",
+    [
+        # The pH-detector schema requires a pH value, so a vessel temperature on its own
+        # must not produce a pH measurement.
+        (None, 37.0, ["metabolite-detection"]),
+        (None, None, ["metabolite-detection"]),
+        (7.4, 37.0, ["metabolite-detection", "ph-detection"]),
+        (7.4, None, ["metabolite-detection", "ph-detection"]),
+    ],
+)
+def test_ph_detection_requires_ph_value(
+    ph: float | None,
+    temperature: float | None,
+    expected_detection_types: list[str],
+) -> None:
+    assert (
+        _get_detection_types(ph=ph, temperature=temperature) == expected_detection_types
+    )
+
+
+@pytest.mark.parametrize(
+    "sample_properties,expected_detection_types",
+    [
+        # Units come from the file's unit row and are set on every sample, so they must not
+        # produce a measurement on their own.
+        (
+            {
+                "total_cell_density_unit": "x10^6Cells/mL",
+                "viable_cell_density_unit": "x10^6Cells/mL",
+            },
+            ["metabolite-detection"],
+        ),
+        ({"po2_unit": "mmHg", "pco2_unit": "mmHg"}, ["metabolite-detection"]),
+        (
+            {"cell_type_processing_method": "CHO", "cell_density_dilution_factor": 1.0},
+            ["metabolite-detection"],
+        ),
+        ({"analytes": []}, []),
+        (
+            {
+                "viability": 84.5,
+                "viable_cell_density": 20.235,
+                "viable_cell_density_unit": "x10^6Cells/mL",
+                "cell_density_dilution_factor": 6.0,
+            },
+            ["metabolite-detection", "cell-counting"],
+        ),
+        (
+            {"po2": 38.2, "po2_unit": "mmHg", "pco2": 42.0, "pco2_unit": "mmHg"},
+            ["metabolite-detection", "blood-gas-detection"],
+        ),
+        ({"osmolality": 322.0}, ["metabolite-detection", "osmolality-detection"]),
+    ],
+)
+def test_measurements_require_measured_value(
+    sample_properties: dict[str, Any],
+    expected_detection_types: list[str],
+) -> None:
+    assert _get_detection_types(**sample_properties) == expected_detection_types
+
+
+@pytest.mark.parametrize("detection_type", DETECTION_PROPERTY_MAPPING)
+def test_measured_properties_are_detection_properties(detection_type: str) -> None:
+    assert set(MEASURED_PROPERTIES_BY_DETECTION_TYPE[detection_type]) <= set(
+        DETECTION_PROPERTY_MAPPING[detection_type]
+    )
 
 
 def test_create_sample_list() -> None:
