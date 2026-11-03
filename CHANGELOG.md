@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Beckman Vi-Cell BLU - support per-sample detail export (#1277)
 - Agilent OpenLab CDS - report signal description (#1259)
+- Beckman Vi-Cell BLU - support per-sample detail export (#1277)
 
 ### Fixed
 
