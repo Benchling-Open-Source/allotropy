@@ -43,13 +43,12 @@ class ViCellBluParser(VendorParser[Data, Model]):
                 return False
             # Summary export has results on the first line; the per-image detail
             # export starts with sample settings and has results on the "Image#" line.
-            results_header = next(
-                (line for line in lines if line.lstrip('"').startswith("Image#")),
-                lines[0],
-            )
-            return (
-                "Viability (%)" in results_header
-                and "Viable (x10^6) cells/mL" in results_header
+            return any(
+                "Viability (%)" in header and "Viable (x10^6) cells/mL" in header
+                for header in [
+                    lines[0],
+                    *(line for line in lines if line.lstrip('"').startswith("Image#")),
+                ]
             )
         except Exception:
             return False
