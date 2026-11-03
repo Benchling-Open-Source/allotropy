@@ -37,12 +37,23 @@ def test_total_peak_area_without_peaks_is_not_reported() -> None:
     assert _total_peak_area() is None
 
 
+def test_total_peak_area_without_any_area_unit_is_not_reported() -> None:
+    assert (
+        _total_peak_area(
+            _peak(Area={"@val": "100.0", "@unit": ""}),
+            _peak(Area={"@val": "200.0", "@unit": ""}),
+        )
+        is None
+    )
+
+
 @pytest.mark.parametrize(
     "area",
     [
         pytest.param({}, id="empty"),
         pytest.param({"@val": "", "@unit": "mAU·s"}, id="unparseable"),
         pytest.param({"@val": "200.0"}, id="no unit"),
+        pytest.param({"@val": "200.0", "@unit": ""}, id="empty unit"),
     ],
 )
 def test_total_peak_area_with_a_peak_lacking_an_area_is_not_reported(

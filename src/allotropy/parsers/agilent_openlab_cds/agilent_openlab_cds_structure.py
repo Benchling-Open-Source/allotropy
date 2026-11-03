@@ -153,7 +153,7 @@ def get_total_peak_area(
     if (
         not peaks
         or len(source_units) != 1
-        or None in source_units
+        or not all(source_units)
         or any(peak.area is None for peak in peaks)
     ):
         return None
