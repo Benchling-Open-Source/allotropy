@@ -5,6 +5,27 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.151] - 2026-11-03
+
+### Added
+
+- Beckman Vi-Cell BLU - support per-sample detail export (#1277)
+- Agilent OpenLab CDS - report signal description (#1259)
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - support luminescence plate headers without detector settings (#1290)
+
+### Changed
+
+- Consolidate calculated data documents into a shared mapping (#1223)
+
+## [0.1.150] - 2026-10-23
+
+### Fixed
+
+- Cytiva Unicorn - read all chromatograms and per-curve peak tables (#1287)
+
 ## [0.1.149] - 2026-10-21
 
 ### Fixed
