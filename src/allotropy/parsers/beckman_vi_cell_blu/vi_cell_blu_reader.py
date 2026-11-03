@@ -15,16 +15,7 @@ IMAGE_HEADER_KEY = "Image#"
 TOTAL_ROW_KEY = "Total"
 
 
-def _read_single_row_csv(header: list[str], values: list[str]) -> pd.DataFrame:
-    buffer = StringIO()
-    writer = csv.writer(buffer)
-    writer.writerow(header)
-    writer.writerow(values)
-    buffer.seek(0)
-    return read_csv(buffer, index_col=False)
-
-
-def _read_detail_block(rows: list[list[str]]) -> pd.DataFrame:
+def _flatten_detail_block(rows: list[list[str]]) -> dict[str, str]:
     """Flatten one sample of the per-image detail export into a single summary row.
 
     A block is: sample settings header + values, a reagent table, then a per-image
@@ -47,7 +38,26 @@ def _read_detail_block(rows: list[list[str]]) -> pd.DataFrame:
     )
     header += rows[image_idx][1:]
     values += total[1:]
-    return _read_single_row_csv(header, values)
+    return dict(zip(header, values, strict=False))
+
+
+def _read_detail_export(rows: list[list[str]]) -> pd.DataFrame:
+    block_starts = [
+        i for i, row in enumerate(rows) if row and row[0] == SAMPLE_HEADER_KEY
+    ]
+    samples = [
+        _flatten_detail_block(rows[start:end])
+        for start, end in zip(block_starts, [*block_starts[1:], len(rows)], strict=True)
+    ]
+    # Write all samples to one CSV and read it once, so column types are inferred
+    # across every sample the same way as for the summary export.
+    header = list(dict.fromkeys(key for sample in samples for key in sample))
+    buffer = StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=header)
+    writer.writeheader()
+    writer.writerows(samples)
+    buffer.seek(0)
+    return read_csv(buffer, index_col=False)
 
 
 class ViCellBluReader:
@@ -55,23 +65,11 @@ class ViCellBluReader:
 
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
-        lines = read_to_lines(named_file_contents)
-        rows = list(csv.reader(lines))
+        text = "\n".join(read_to_lines(named_file_contents))
+        rows = list(csv.reader(StringIO(text)))
         if not cls.is_detail_export(rows):
-            return read_csv(StringIO("\n".join(lines)), index_col=False)
-
-        block_starts = [
-            i for i, row in enumerate(rows) if row and row[0] == SAMPLE_HEADER_KEY
-        ]
-        return pd.concat(
-            [
-                _read_detail_block(rows[start:end])
-                for start, end in zip(
-                    block_starts, [*block_starts[1:], len(rows)], strict=True
-                )
-            ],
-            ignore_index=True,
-        )
+            return read_csv(StringIO(text), index_col=False)
+        return _read_detail_export(rows)
 
     @staticmethod
     def is_detail_export(rows: list[list[str]]) -> bool:
