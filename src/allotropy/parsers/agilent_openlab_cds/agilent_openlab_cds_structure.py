@@ -136,35 +136,6 @@ def get_gpc_custom_info(peak: dict[str, Any]) -> dict[str, Any] | None:
     return custom_info or None
 
 
-def get_total_peak_area(
-    peak_structure: list[dict[str, Any]], peaks: list[Peak]
-) -> dict[str, Any] | None:
-    """Sums the peak areas reported for a signal.
-
-    Reported as custom information because a processed data document holds only a peak list. Summing
-    the vendor's areas needs no integration parameters of our own, unlike deriving them from the
-    chromatogram would.
-    """
-    # Compared before create_peak normalizes them, which maps differently scaled units (e.g. mAU·s
-    # and mAU·min) to the same ASM unit.
-    source_units = {peak.get("Area", {}).get("@unit") for peak in peak_structure}
-    # A signal comes from a single detector, so its areas share a unit. A total over mixed units
-    # would be meaningless, and one missing a peak's area would be incomplete.
-    if (
-        not peaks
-        or len(source_units) != 1
-        or not all(source_units)
-        or any(peak.area is None for peak in peaks)
-    ):
-        return None
-    return {
-        "total peak area": {
-            "value": sum(peak.area for peak in peaks if peak.area is not None),
-            "unit": peaks[0].area_unit,
-        }
-    }
-
-
 def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
     return [
         Peak(
@@ -248,17 +219,6 @@ def create_measurements(
         None,
     )
     column_info = get_column_info(intermediate_structured_data)
-    peaks_by_measurement = {
-        i: create_peak(result_data["Peak"])
-        for i, result_data in enumerate(intermediate_structured_data["Result Data"])
-        if "Peak" in result_data
-    }
-    total_peak_area_by_measurement = {
-        i: get_total_peak_area(
-            intermediate_structured_data["Result Data"][i]["Peak"], peaks
-        )
-        for i, peaks in peaks_by_measurement.items()
-    }
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
@@ -512,8 +472,9 @@ def create_measurements(
                     ]
                 )
             ],
-            peaks=peaks_by_measurement.get(i),
-            processed_data_custom_info=total_peak_area_by_measurement.get(i),
+            peaks=create_peak(intermediate_structured_data["Result Data"][i]["Peak"])
+            if "Peak" in intermediate_structured_data["Result Data"][i]
+            else None,
             chromatogram_data_cube=create_data_cube(
                 label=f"{intermediate_structured_data['Result Data'][i]['Metadata']['signal'].split(',')[0]} chromatogram",
                 measures_value=intermediate_structured_data["Result Data"][i][
