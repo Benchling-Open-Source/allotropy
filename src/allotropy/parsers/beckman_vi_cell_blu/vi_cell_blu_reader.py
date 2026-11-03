@@ -81,7 +81,7 @@ class ViCellBluReader:
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         text = "\n".join(read_to_lines(named_file_contents)).removeprefix("\ufeff")
-        rows = list(csv.reader(StringIO(text)))
+        rows = list(csv.reader(StringIO(text, newline=None)))
         if not cls.is_detail_export(rows):
             return read_csv(StringIO(text), index_col=False)
         return _read_detail_export(rows)
