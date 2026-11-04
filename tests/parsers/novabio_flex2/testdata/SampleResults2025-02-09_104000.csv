@@ -1,0 +1,5 @@
+"Date & Time","Sample ID","Sample Type","Gluc","Lac","Na+","K+","pH","PO2","PCO2","Vessel ID","Batch ID","Vessel Temperature (°C)","Operator",
+,,,g / L,g / L,mmol / L,mmol / L,-,mmHg,mmHg,,,,,
+2/9/2025  10:40:00 AM,BN7-1-071-D4-BR2-METREDO,NO CDV,4.50,0.18,140.0,4.22,,191.6,46.8,3L Bioreactor,BATCH_123,37.0,jdoe,
+2/9/2025  10:45:00 AM,BN7-1-071-D4-BR2-PHTEMP,Spent Media,4.10,0.22,138.4,4.31,7.400,182.0,13.8,3L Bioreactor,BATCH_123,37.0,jdoe,
+2/9/2025  10:50:00 AM,BN7-1-071-D4-BR2-PHONLY,Spent Media,3.90,0.25,137.2,4.18,7.250,158.3,15.1,3L Bioreactor,BATCH_123,,jdoe,

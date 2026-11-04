@@ -11,6 +11,7 @@ import rainbow.agilent.chemstation as rb  # type: ignore
 import xmltodict
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.agilent_openlab_cds import constants
 
 # OpenLab CDS exports a result set as a .rslt folder, which always reaches us compressed. Users may
 # compress it a second time (e.g. right-click > Compress), producing an archive whose only member is
@@ -21,6 +22,45 @@ MAX_ARCHIVE_NESTING = 3
 
 # Chunk size used when spooling a large .dx member out of the outer archive.
 SPOOL_CHUNK_SIZE = 1024 * 1024
+
+
+def _as_list(value: Any) -> list[Any]:
+    """
+    Normalizes a repeated XML element to a list.
+
+    xmltodict represents a repeated element as a list, but collapses it to a single dict when the
+    document holds exactly one occurrence -- e.g. a sequence acquired with one injection, whose
+    Injections and Samples sections each carry a single entry. Callers that iterate or index need
+    the list form in both cases.
+    :param value: the parsed value of a repeated element
+    :return: the value as a list
+    """
+    if value is None:
+        return []
+    return value if isinstance(value, list) else [value]
+
+
+def _attach_gpc_results(peak: dict[str, Any]) -> None:
+    """
+    Attaches the GPC/SEC molecular weight averages reported for a peak, when present.
+
+    OpenLab's GPC add-in does not write its results as native ACAML peak elements. It stores a
+    GPCPeakResults document, escaped as text, in a peak custom field named GPCResults, so the
+    values need a second parse to reach. Only peaks on the signal the processing method ran GPC
+    analysis against carry the field.
+    :param peak: the parsed Peak element, updated in place
+    """
+    custom_fields = _as_list((peak.get("ComplexCustomFields") or {}).get("CustomField"))
+    for custom_field in custom_fields:
+        if custom_field.get("@Name") != constants.GPC_RESULTS_FIELD:
+            continue
+        # The Value element carries a unit attribute, so xmltodict nests the document under #text.
+        value = custom_field.get("Value")
+        document = value.get("#text") if isinstance(value, dict) else value
+        if not document:
+            continue
+        peak["GPC Results"] = xmltodict.parse(document)["GPCPeakResults"]
+        return
 
 
 def merge_peak_with_signal_name(
@@ -95,7 +135,7 @@ def extract_rx_file(rx_file: IO[bytes]) -> list[dict[str, Any]]:
         with zip_ref.open(processed_file_path) as processed_file:
             peaks = xmltodict.parse(processed_file.read().decode("utf-8-sig"))
             result_data = peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"]
-            for peak in result_data["SignalResult"]:
+            for peak in _as_list(result_data["SignalResult"]):
                 peak_data = {}
                 if "Peak" in peak:
                     peak_data["Peak"] = peak["Peak"]
@@ -138,11 +178,13 @@ def extract_rx_file(rx_file: IO[bytes]) -> list[dict[str, Any]]:
                             peak_dict["Peak"]["Peak Metadata"] = peak_metadata_dict[
                                 peak_id
                             ]
+                        _attach_gpc_results(peak_dict["Peak"])
                     elif isinstance(peak_dict.get("Peak"), list):
                         for peak in peak_dict["Peak"]:
                             peak_id = peak["@id"]
                             if peak_id in peak_metadata_dict:
                                 peak["Peak Metadata"] = peak_metadata_dict[peak_id]
+                            _attach_gpc_results(peak)
 
     return peak_details
 
@@ -227,12 +269,9 @@ def get_acaml_analysis_method(acaml_content: dict[str, Any]) -> str | None:
     :param acaml_content: decoded acaml data
     :return: the analysis method name, if all injections share exactly one
     """
-    methods = acaml_content["ACAML"]["Doc"]["Content"].get("Method")
-    if not methods:
-        return None
     names = {
         method.get("Name")
-        for method in (methods if isinstance(methods, list) else [methods])
+        for method in _as_list(acaml_content["ACAML"]["Doc"]["Content"].get("Method"))
         if method.get("Name")
     }
     return names.pop() if len(names) == 1 else None
@@ -252,6 +291,7 @@ def decode_acaml_data(
     signal_details: dict[str, Any] = {"Signal details": []}
 
     content_data = acaml_content["ACAML"]["Doc"]["Content"]
+    injections = _as_list(content_data["Injections"]["MeasData"])
     instrument_fields = [
         "Name",
         "Technique",
@@ -264,13 +304,15 @@ def decode_acaml_data(
     for key in instrument_fields:
         if key in content_data["Resources"]["Instrument"]:
             instrument_data[key] = content_data["Resources"]["Instrument"][key]
-        elif key in content_data["Injections"]["MeasData"][0]:
-            instrument_data[key] = content_data["Injections"]["MeasData"][0][key]
+        elif injections and key in injections[0]:
+            instrument_data[key] = injections[0][key]
         elif key in acaml_content["ACAML"]["Doc"]["DocInfo"]:
             instrument_data[key] = acaml_content["ACAML"]["Doc"]["DocInfo"][key]
-    for measurements in content_data["Injections"]["MeasData"]:
+    if "Module" in instrument_data:
+        instrument_data["Module"] = _as_list(instrument_data["Module"])
+    for measurements in injections:
         signal_data = {}
-        for signals in measurements["Signal"]:
+        for signals in _as_list(measurements["Signal"]):
             signal_data["Name"] = signals["BinaryData"]["DataItem"]["Name"].split(".")[
                 0
             ]
@@ -285,8 +327,8 @@ def decode_acaml_data(
     metadata_data["SeparationMedium"] = content_data["Resources"].get(
         "SeparationMedium"
     )
-    metadata_data["SampleSetup"] = content_data["Samples"]["Setup"]
-    metadata_data["SampleMeasurement"] = content_data["Samples"]["MeasData"]
+    metadata_data["SampleSetup"] = _as_list(content_data["Samples"]["Setup"])
+    metadata_data["SampleMeasurement"] = _as_list(content_data["Samples"]["MeasData"])
 
     return metadata_data, pump_pressure_file, signal_details
 

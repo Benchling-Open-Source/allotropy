@@ -3,7 +3,7 @@
     "liquid chromatography aggregate document": {
         "data system document": {
             "ASM converter name": "allotropy_agilent_openlab_cds",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.146",
             "data system instance identifier": "N/A",
             "file name": "Luxo HPLC-2023-09-01 07-52-44-04-00.rslt",
             "software name": "OpenLabCDS",
@@ -63,6 +63,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -71,6 +74,7 @@
                                 "sample identifier": "MPS23-17 60 40 10x 2",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A8",
                                     "replicate": "1",
                                     "sample amount": {
@@ -724,13 +728,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 200",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A4",
                                     "replicate": "1",
                                     "sample amount": {
@@ -1244,6 +1253,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -1252,6 +1264,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -1937,13 +1950,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -2487,13 +2505,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -2848,6 +2871,7 @@
                                 "sample identifier": "MPS23-17 60 40 10x 1",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A7",
                                     "replicate": "1",
                                     "sample amount": {
@@ -2898,13 +2922,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 100",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A3",
                                     "replicate": "1",
                                     "sample amount": {
@@ -3264,6 +3293,7 @@
                                 "sample identifier": "MPS23-17 60 40 10x 2",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A8",
                                     "replicate": "1",
                                     "sample amount": {
@@ -3335,6 +3365,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -3385,6 +3416,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -3393,6 +3427,7 @@
                                 "sample identifier": "MPS23-17 60 40 10x 2",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A8",
                                     "replicate": "1",
                                     "sample amount": {
@@ -3906,13 +3941,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 50",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A2",
                                     "replicate": "1",
                                     "sample amount": {
@@ -4300,7 +4340,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -4351,13 +4393,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 100",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A3",
                                     "replicate": "1",
                                     "sample amount": {
@@ -5046,6 +5093,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -5054,6 +5104,7 @@
                                 "sample identifier": "MPS23-17 as is 10x 2",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A6",
                                     "replicate": "1",
                                     "sample amount": {
@@ -5653,6 +5704,7 @@
                                 "sample identifier": "MPS23-17 as is 10x 2",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A6",
                                     "replicate": "1",
                                     "sample amount": {
@@ -5703,6 +5755,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -5711,6 +5766,7 @@
                                 "sample identifier": "MPS-23-17 as is 10x 1",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A5",
                                     "replicate": "1",
                                     "sample amount": {
@@ -6385,6 +6441,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -6454,7 +6511,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 50",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A2",
                                     "replicate": "1",
                                     "sample amount": {
@@ -6524,7 +6583,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 200",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A4",
                                     "replicate": "1",
                                     "sample amount": {
@@ -6575,6 +6636,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -6583,6 +6647,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -7126,6 +7191,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -7134,6 +7202,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -7502,6 +7571,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -7510,6 +7582,7 @@
                                 "sample identifier": "MPS23-17 as is 10x 2",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A6",
                                     "replicate": "1",
                                     "sample amount": {
@@ -7983,6 +8056,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -7991,6 +8067,7 @@
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
                                 "custom information document": {
+                                    "sample type": "Blank",
                                     "location identifier": "1",
                                     "replicate": "1",
                                     "sample amount": {
@@ -8359,13 +8436,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 50",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A2",
                                     "replicate": "1",
                                     "sample amount": {
@@ -9084,6 +9166,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -9092,6 +9177,7 @@
                                 "sample identifier": "MPS23-17 60 40 10x 1",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A7",
                                     "replicate": "1",
                                     "sample amount": {
@@ -9500,6 +9586,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -9508,6 +9597,7 @@
                                 "sample identifier": "MPS-23-17 as is 10x 1",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A5",
                                     "replicate": "1",
                                     "sample amount": {
@@ -10003,7 +10093,9 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 100",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A3",
                                     "replicate": "1",
                                     "sample amount": {
@@ -10054,13 +10146,18 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1D,Sig=228,4  Ref=360,100"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "A 200",
+                                "sample role type": "calibration sample role",
                                 "custom information document": {
+                                    "sample type": "Calibration",
                                     "location identifier": "D1F-A4",
                                     "replicate": "1",
                                     "sample amount": {
@@ -10434,6 +10531,9 @@
                                         "detector bandwidth setting": {
                                             "value": 4.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "signal description": "DAD1B,Sig=210,4  Ref=360,100"
                                         }
                                     }
                                 ]
@@ -10442,6 +10542,7 @@
                                 "sample identifier": "MPS23-17 60 40 10x 1",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A7",
                                     "replicate": "1",
                                     "sample amount": {
@@ -11116,6 +11217,7 @@
                                 "sample identifier": "MPS-23-17 as is 10x 1",
                                 "sample role type": "sample role",
                                 "custom information document": {
+                                    "sample type": "Sample",
                                     "location identifier": "D1F-A5",
                                     "replicate": "1",
                                     "sample amount": {

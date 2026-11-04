@@ -31,6 +31,7 @@ from allotropy.parsers.cytiva_unicorn.structure.measurements.pressure import (
 from allotropy.parsers.cytiva_unicorn.structure.measurements.temperature import (
     TemperatureMeasurement,
 )
+from allotropy.parsers.cytiva_unicorn.structure.peaks import get_peak_tables
 from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
     StaticDocs,
 )
@@ -42,20 +43,39 @@ from allotropy.parsers.utils.strict_xml_element import (
 def create_measurement_groups(
     handler: UnicornZipHandler, results: StrictXmlElement
 ) -> list[MeasurementGroup]:
-    chrom_1 = handler.get_chrom_1()
-    analysis_settings = chrom_1.find_or_none("AnalysisSettings")
-    event_curves = chrom_1.find_or_none("EventCurves")
-    curves = chrom_1.find("Curves")
+    return [
+        create_measurement_group(handler, results, chromatogram)
+        for chromatogram in handler.get_chromatograms()
+    ]
+
+
+def create_measurement_group(
+    handler: UnicornZipHandler,
+    results: StrictXmlElement,
+    chromatogram: StrictXmlElement,
+) -> MeasurementGroup:
+    analysis_settings = chromatogram.find_or_none("AnalysisSettings")
+    event_curves = chromatogram.find_or_none("EventCurves")
+    curves = chromatogram.find("Curves")
     elements = curves.findall("Curve")
+    peak_tables = get_peak_tables(chromatogram)
 
     static_docs = StaticDocs.create(
         handler, curves.find("Curve"), results, analysis_settings
     )
     measurements = [
-        AbsorbanceMeasurement1.create_or_none(handler, elements, static_docs),
-        AbsorbanceMeasurement2.create_or_none(handler, elements, static_docs),
-        AbsorbanceMeasurement3.create_or_none(handler, elements, static_docs),
-        ConductivityMeasurement.create_or_none(handler, elements, static_docs),
+        AbsorbanceMeasurement1.create_or_none(
+            handler, elements, static_docs, peak_tables
+        ),
+        AbsorbanceMeasurement2.create_or_none(
+            handler, elements, static_docs, peak_tables
+        ),
+        AbsorbanceMeasurement3.create_or_none(
+            handler, elements, static_docs, peak_tables
+        ),
+        ConductivityMeasurement.create_or_none(
+            handler, elements, static_docs, peak_tables
+        ),
         PhMeasurement.create_or_none(handler, elements, static_docs),
         ConcentrationMeasurement.create_or_none(handler, elements, static_docs),
         PressureMeasurement.create_or_none(handler, elements, static_docs),
@@ -66,7 +86,7 @@ def create_measurement_groups(
     for element in elements:
         element.mark_read("attr:CurveDataType")
 
-    chrom_1.mark_read(
+    chromatogram.mark_read(
         {
             "element:TimeUnit",
             "element:VolumeUnit",
@@ -75,19 +95,17 @@ def create_measurement_groups(
         }
     )
 
-    return [
-        MeasurementGroup(
-            measurements=[measurement for measurement in measurements if measurement],
-            fractions=create_fractions(event_curves) if event_curves else None,
-            logs=create_logs(event_curves) if event_curves else None,
-            measurement_aggregate_custom_info={
-                "RunIndex": results.get_sub_text_or_none("RunIndex"),
-                "RunType": results.get_sub_text_or_none("RunType"),
-                "Name": results.get_sub_text_or_none("Name"),
-                **dict(sorted(chrom_1.get_unread().items())),
-            },
-        )
-    ]
+    return MeasurementGroup(
+        measurements=[measurement for measurement in measurements if measurement],
+        fractions=create_fractions(event_curves) if event_curves else None,
+        logs=create_logs(event_curves) if event_curves else None,
+        measurement_aggregate_custom_info={
+            "RunIndex": results.get_sub_text_or_none("RunIndex"),
+            "RunType": results.get_sub_text_or_none("RunType"),
+            "Name": results.get_sub_text_or_none("Name"),
+            **dict(sorted(chromatogram.get_unread().items())),
+        },
+    )
 
 
 def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
