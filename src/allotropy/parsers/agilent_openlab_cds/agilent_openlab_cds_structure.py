@@ -237,6 +237,11 @@ def create_measurements(
                 .get("Type")
             ),
             sample_custom_info={
+                "sample type": intermediate_structured_data["Result Data"][i][
+                    "Sample Data"
+                ]["SampleSetup"]
+                .get("DAParam", {})
+                .get("Type"),
                 "location identifier": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
                 ].get("Location"),
@@ -440,6 +445,14 @@ def create_measurements(
                         "signal"
                     ]
                     else None,
+                    # The signal name carries the detector settings the wavelength and bandwidth
+                    # fields above are read from, plus the reference setting, which is often "off"
+                    # and so has no numeric field to go in. Report it verbatim so nothing is lost.
+                    device_control_custom_info={
+                        "signal description": intermediate_structured_data[
+                            "Result Data"
+                        ][i]["Metadata"]["signal"]
+                    },
                 )
                 for module in intermediate_structured_data["Metadata"]["Instrument"][
                     "Module"
