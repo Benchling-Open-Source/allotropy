@@ -27,7 +27,6 @@ from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     DataSourceDocumentItem,
     DataSystemDocument,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMicroliterPerMinute,
@@ -38,6 +37,9 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValuePerSecond,
     TQuantityValueResponseUnit,
     TQuantityValueSecondTime,
+)
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -390,31 +392,12 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDocument] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.uuid,
-                    calculated_data_name=calculated_data_item.name,
-                    calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=assert_not_none(calculated_data_item.unit),
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.reference.uuid,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
         )

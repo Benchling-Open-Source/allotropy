@@ -7,9 +7,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
-    CalculatedData,
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -302,25 +299,8 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
 
 def create_calculated_data(
     calculated_data_documents: Iterable[CalculatedDocument],
-) -> CalculatedData:
-    return CalculatedData(
-        items=[
-            CalculatedDataItem(
-                identifier=cal_doc.uuid,
-                name=cal_doc.name,
-                value=cal_doc.value,
-                unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=data_source.reference.uuid,
-                        feature=data_source.feature,
-                    )
-                    for data_source in cal_doc.data_sources
-                ],
-            )
-            for cal_doc in calculated_data_documents
-        ],
-    )
+) -> list[CalculatedDocument]:
+    return list(calculated_data_documents)
 
 
 def get_well_item_results(
