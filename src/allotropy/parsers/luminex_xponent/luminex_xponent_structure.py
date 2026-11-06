@@ -327,11 +327,26 @@ class Measurement:
 
             for section_name, unit in CALCULATED_DATA_SECTIONS.items():
                 calculated_data_section = results_data.get(section_name, pd.DataFrame())
-                # Some sections don't include the location as an index, in those cases we cannot associate
-                # the calculated data with the measurement.
-                if location not in calculated_data_section.index:
+                # Try to match by location first (per-well data), then by sample (aggregate data)
+                sample_id = count_data[str, "Sample"]
+                if location in calculated_data_section.index:
+                    index_key = location
+                elif sample_id in calculated_data_section.index:
+                    index_key = sample_id
+                else:
                     continue
-                raw_value = calculated_data_section.at[location, analyte]
+
+                # For sample-indexed sections, ensure we get a single value not a Series
+                try:
+                    raw_value = calculated_data_section.at[index_key, analyte]
+                except (ValueError, KeyError):
+                    # Skip if analyte doesn't exist in this section
+                    continue
+
+                # If raw_value is a Series (shouldn't happen with .at), take first value
+                if isinstance(raw_value, pd.Series):
+                    raw_value = raw_value.iloc[0]
+
                 if error := get_statistics_error(raw_value, analyte, section_name):
                     errors.append(error)
                 calculated_data_id = random_uuid_str()
