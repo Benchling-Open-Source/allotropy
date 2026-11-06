@@ -20,7 +20,26 @@ class ChemometecNucleoviewParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "ChemoMetec Nucleoview"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NucleoviewReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Dark Field"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            named_file_contents.contents.seek(0)
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            if "Viability (%)" not in text:
+                return False
+            lines = text.splitlines()
+            for line in lines[:5]:
+                if ":\t" in line or ";" in line:
+                    return True
+            return False
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         df = NucleoviewReader.read(named_file_contents.contents)

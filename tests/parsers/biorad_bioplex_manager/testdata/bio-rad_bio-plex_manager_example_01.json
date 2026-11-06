@@ -1,6 +1,27 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/multi-analyte-profiling/BENCHLING/2024/09/multi-analyte-profiling.manifest",
     "multi analyte profiling aggregate document": {
+        "data system document": {
+            "ASM file identifier": "bio-rad_bio-plex_manager_example_01.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_bio_rad_bio_plex_manager",
+            "ASM converter version": "0.1.143",
+            "file name": "bio-rad_bio-plex_manager_example_01.xml",
+            "software name": "Bio-Plex Manager",
+            "software version": "6.2.0.175",
+            "UNC path": "tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_example_01.xml"
+        },
+        "device system document": {
+            "equipment serial number": "LX12345678912",
+            "firmware version": "2.6.1",
+            "product manufacturer": "Bio-Rad",
+            "custom information document": {
+                "AuthorName": "foobar",
+                "NativeDocumentName": "test file",
+                "XmlExportDateTime": "2024-01-09T13:20:40Z",
+                "XmlExportUser": "waldo"
+            }
+        },
         "multi analyte profiling document": [
             {
                 "measurement aggregate document": {
@@ -8458,27 +8479,6 @@
                 },
                 "analyst": "baz"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "bio-rad_bio-plex_manager_example_01.json",
-            "data system instance identifier": "N/A",
-            "file name": "bio-rad_bio-plex_manager_example_01.xml",
-            "UNC path": "tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_example_01.xml",
-            "ASM converter name": "allotropy_bio_rad_bio_plex_manager",
-            "ASM converter version": "0.1.113",
-            "software name": "Bio-Plex Manager",
-            "software version": "6.2.0.175"
-        },
-        "device system document": {
-            "equipment serial number": "LX12345678912",
-            "firmware version": "2.6.1",
-            "product manufacturer": "Bio-Rad",
-            "custom information document": {
-                "AuthorName": "foobar",
-                "NativeDocumentName": "test file",
-                "XmlExportDateTime": "2024-01-09T13:20:40Z",
-                "XmlExportUser": "waldo"
-            }
-        }
+        ]
     }
 }

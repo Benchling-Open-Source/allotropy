@@ -23,7 +23,22 @@ class RocheCedexBiohtParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Roche Cedex BioHT"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = RocheCedexBiohtReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Metabolite Detection"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            return "#ARC-FILE#" in lines[0]
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = RocheCedexBiohtReader(named_file_contents.contents)

@@ -25,7 +25,12 @@ class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Example Weyland Yutani"
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = ExampleWeylandYutaniReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:  # noqa: ARG003
+        return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ExampleWeylandYutaniReader(named_file_contents)

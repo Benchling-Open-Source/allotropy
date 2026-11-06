@@ -192,10 +192,10 @@ def _path_component_to_python(component: str) -> str:
     """Convert a path component to a valid Python identifier.
 
     - Lowercase
-    - Replace hyphens with underscores
+    - Replace hyphens and dots with underscores
     - Prefix digits with underscore
     """
-    result = component.lower().replace("-", "_")
+    result = component.lower().replace("-", "_").replace(".", "_")
     if result and result[0].isdigit():
         result = "_" + result
     return result

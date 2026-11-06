@@ -23,7 +23,26 @@ class Nanodrop8000Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Scientific NanoDrop 8000"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = Nanodrop8000Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            for line in lines[:5]:
+                fields = line.split("\t")
+                if len(fields) > 1 and any(
+                    f.strip().lower() == "plate id" for f in fields
+                ):
+                    return True
+            return False
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = Nanodrop8000Reader(named_file_contents)

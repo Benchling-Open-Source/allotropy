@@ -31,7 +31,6 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     SampleRoleType,
     ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
@@ -43,6 +42,9 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
     TQuantityValueSecondTime,
+)
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -271,22 +273,24 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            return self._get_luminescence_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement)
-        elif measurement.type_ in [
-            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
-            MeasurementType.LUMINESCENCE_CUBE_DETECTOR,
-            MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
-        ]:
-            return self._get_profile_data_cube_measurement_document(measurement)
-        else:
-            msg = f"Unexpected measurement type: {measurement.type_}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                return self._get_ultraviolet_absorbance_measurement_document(
+                    measurement
+                )
+            case MeasurementType.LUMINESCENCE:
+                return self._get_luminescence_measurement_document(measurement)
+            case MeasurementType.FLUORESCENCE:
+                return self._get_fluorescence_measurement_document(measurement)
+            case (
+                MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+                | MeasurementType.LUMINESCENCE_CUBE_DETECTOR
+                | MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+            ):
+                return self._get_profile_data_cube_measurement_document(measurement)
+            case _:
+                msg = f"Unexpected measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
@@ -576,36 +580,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDocument] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                add_custom_information_document(
-                    CalculatedDataDocumentItem(
-                        calculated_data_identifier=calculated_data_item.uuid,
-                        calculated_data_name=calculated_data_item.name,
-                        calculation_description=calculated_data_item.description,
-                        calculated_result=TQuantityValue(
-                            value=calculated_data_item.value,
-                            unit=calculated_data_item.unit or "(unitless)",
-                        ),
-                        data_source_aggregate_document=DataSourceAggregateDocument(
-                            data_source_document=[
-                                DataSourceDocumentItem(
-                                    data_source_identifier=item.reference.uuid,
-                                    data_source_feature=item.feature,
-                                )
-                                for item in calculated_data_item.data_sources
-                            ]
-                        ),
-                    ),
-                    calculated_data_item.custom_info,
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
+            default_unit="(unitless)",
         )
 
     def _get_error_aggregate_document(

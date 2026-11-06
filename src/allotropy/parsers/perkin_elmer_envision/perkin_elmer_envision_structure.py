@@ -119,10 +119,12 @@ class CalculatedPlateInfo(PlateInfo):
     def create(data: SeriesData) -> CalculatedPlateInfo:
         formula = data[str, "Formula"]
 
-        name = assert_not_none(
-            search(r"^([^=]*)=", formula),
-            msg="Unable to find expected formula name for calculated results section.",
-        ).group(1)
+        # Standard formulas embed the name before an '=' (e.g.
+        # "Calc 1: General = (X / Y) * Z where ..."). Some formulas are a plain
+        # description with no '=' (e.g. "Calc 1: OD450 direct absorbance value at
+        # 450 nm"), in which case the whole formula string is the name.
+        formula_name_match = search(r"^([^=]*)=", formula)
+        name = formula_name_match.group(1) if formula_name_match else formula
 
         plate_number, barcode = PlateInfo.get_plate_number_and_barcode(data)
 

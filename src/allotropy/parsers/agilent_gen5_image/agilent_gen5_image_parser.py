@@ -24,7 +24,20 @@ class AgilentGen5ImageParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent Gen5 Image"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Optical Imaging"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read()
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            return any(line.startswith("Software Version") for line in lines[:5])
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = AgilentGen5Reader(named_file_contents)

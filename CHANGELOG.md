@@ -5,6 +5,242 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.151] - 2026-11-03
+
+### Added
+
+- Agilent OpenLab CDS - report signal description (#1259)
+- Beckman Vi-Cell BLU - support per-sample detail export (#1277)
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - support luminescence plate headers without detector settings (#1290)
+
+### Changed
+
+- Consolidate calculated data documents into a shared mapping (#1223)
+
+## [0.1.150] - 2026-10-23
+
+### Fixed
+
+- Cytiva Unicorn - read all chromatograms and per-curve peak tables (#1287)
+
+## [0.1.149] - 2026-10-21
+
+### Fixed
+
+- NovaBio Flex2 - do not emit measurements that have no measured value CUST-12697 (#1278)
+
+## [0.1.148] - 2026-10-07
+
+### Fixed
+
+- Cytiva Unicorn - skip curves with no data points (#1275)
+
+## [0.1.147] - 2026-09-28
+
+### Added
+
+- Agilent OpenLab CDS - report sample type (#1273)
+
+## [0.1.146] - 2026-09-22
+
+### Added
+
+- Agilent OpenLab CDS - report GPC/SEC molecular weight averages on peaks (#1269)
+
+### Fixed
+
+- Agilent OpenLab CDS - support single-injection result sets (#1266)
+
+## [0.1.145] - 2026-09-08
+
+### Added
+
+- Thermo Fisher Diomni - initial implementation (#1251)
+- Beckman Coulter PharmSpec - add container id to the sample custom document (#1253)
+
+### Fixed
+
+- NovaBio Flex2 - do not emit pH measurement when only vessel temperature is present (#1261)
+
+## [0.1.144] - 2026-08-25
+
+### Fixed
+
+- Agilent OpenLab CDS - accept zipped result sets (#1252)
+- Tecan Magellan - support compact Magellan Pro 7.5 exports (#1258)
+- Cut OpenLab CDS peak memory 4x and handle optional ACAML metadata (#1254)
+- Report custom information keys in a stable order (#1249)
+
+## [0.1.143] - 2026-07-28
+
+### Fixed
+
+- Capture all IntelliFlex 2.1/2.2 data and accept Excel exports (#1248)
+
+## [0.1.142] - 2026-07-23
+
+### Fixed
+
+- Support EnVision calculated formulas without a name prefix (#1246)
+- Handle dilutions, replicate measurements, and mmol/l unit in Roche Cedex Bio HT (#1244)
+- Handle multiple spaces in Raw Data line for BMG MARS parser (#1243)
+
+## [0.1.141] - 2026-07-14
+
+### Fixed
+
+- Handle trailing tabs and quoted fields in Agilent Gen5 parser (#1241)
+- Support SpectraMax 340PC-384 kinetic files in SoftMax Pro parser (#1240)
+
+## [0.1.140] - 2026-06-30
+
+### Fixed
+
+- Support HIAC Run Counter format in .xlsx files for Beckman PharmSpec parser (#1238)
+
+## [0.1.139] - 2026-06-29
+
+### Fixed
+
+- Surface previously skipped columns as custom info in NovaBio Flex2 parser (#1236)
+
+## [0.1.138] - 2026-06-29
+
+### Fixed
+
+- Handle special characters in Machine ID in Mabtech APEX parser (#1234)
+
+## [0.1.137] - 2026-06-17
+
+### Added
+
+- Add HIAC .xls file support to Beckman PharmSpec parser (#1232)
+
+### Fixed
+
+- Accept numeric-only Machine ID in Mabtech APEX parser (#1231)
+
+## [0.1.136] - 2026-06-11
+
+### Fixed
+
+- Make space optional in Cytiva UNICORN UV curve regexes (#1229)
+
+## [0.1.135] - 2026-06-10
+
+### Added
+
+- Add Diomni v4.2/4.3 file support to QuantStudio Design & Analysis parser (#1224)
+- Add Vi-Cell XR single-sample report format support (#1222)
+- Add SUPPORTED_DETECTION_MODES to parsers for auto-generated table (#1219)
+
+## [0.1.134] - 2026-06-02
+
+### Fixed
+
+- Make schema registry building fully deterministic (#1220)
+
+## [0.1.133] - 2026-06-02
+
+### Fixed
+
+- Upgrade jsonschema from <4.18.0 to >=4.18.0 (#1217)
+
+## [0.1.132] - 2026-06-01
+
+### Fixed
+
+- Report Peak of Interest data as calculated data in Stunner parser (#1215)
+
+## [0.1.131] - 2026-06-01
+
+### Fixed
+
+- Resolve duplicate columns in Stunner DLS output (#1213)
+- Correct peak height and area unit conversions in Chromeleon parser (#1212)
+
+## [0.1.130] - 2026-05-26
+
+### Fixed
+
+- Map relative area group and calibration points in Chromeleon parser (#1210)
+
+## [0.1.129] - 2026-05-26
+
+### Fixed
+
+- Map missing fields in Chromeleon parser for adapter migration (#1207)
+
+## [0.1.128] - 2026-05-21
+
+### Fixed
+
+- Support new PkN column format in Stunner parser (#1205)
+- Recognize Evaluation-Kinetics sheet and SCK analyte lookup (#1204)
+- Handle QuantStudio Stop Time and non-ASCII delta columns (#1203)
+
+## [0.1.127] - 2026-05-18
+
+### Added
+
+- Add Claude skill for generating Allotropy parsers (#1160)
+
+### Fixed
+
+- Support bare UV curve name in Cytiva Unicorn parser (#1200)
+- Handle transposed flow cell format in Biacore Insight parser (#1199)
+
+## [0.1.126] - 2026-04-30
+
+### Added
+
+- Add vendor auto-discovery from file contents (#1195)
+
+## [0.1.125] - 2026-04-22
+
+### Fixed
+
+- Strip document-signature footer from Intelliflex v2.2 CSV (#1193)
+
+## [0.1.123] - 2026-04-21
+
+### Added
+
+- Cytiva Biacore T200 Evaluation -- Update parser to extract kinetics data (kd, ka, RMax, chi-squared, errors) (#1183)
+
+## [0.1.122] - 2026-04-21
+
+### Fixed
+
+- Fall back to .tabular.schema.json in manifest lookup (#1190)
+
+## [0.1.121] - 2026-04-21
+
+### Added
+
+- Generate REC/2023/03 liquid chromatography tabular schema models (#1188)
+
+## [0.1.120] - 2026-04-21
+
+### Added
+
+- Generate REC/2024/03 liquid chromatography schema models (#1186)
+
+## [0.1.119] - 2026-04-20
+
+### Added
+
+- Add Intelliflex v2.2 flat CSV format support (#1184)
+- Migrate example_weyland_yutani to REC/2025/03 plate reader schema (#1177)
+- Add technique shorthand to schema scripts (#1178)
+
+### Changed
+
+- Implement modular schema generation  (#1176)
+
 ## [0.1.118] - 2026-04-10
 
 ### Added

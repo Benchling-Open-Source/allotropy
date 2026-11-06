@@ -27,7 +27,12 @@ class CytivaBiacoreT200ControlParser(VendorParser[MapperData, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "blr"
+    SUPPORTED_DETECTION_MODES = "Surface Plasmon Resonance"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
+        return True
 
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
         base_data = DictData(decode_data(named_file_contents))

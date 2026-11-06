@@ -2,6 +2,23 @@
 
 from __future__ import annotations
 
-from typing import Any
+from dataclasses import dataclass, field
 
-MeasurementDocumentItems = Any
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMillimeterOfMercury,
+    TQuantityValuePercent,
+)
+
+
+@dataclass(frozen=True, kw_only=True)
+class MeasurementDocumentItems:
+    carbon_dioxide_saturation: TQuantityValuePercent | None = None
+    oxygen_saturation: TQuantityValuePercent | None = None
+    p_co2: TQuantityValueMillimeterOfMercury | None = field(
+        default=None, metadata={"json_name": "pCO2"}
+    )
+    p_o2: TQuantityValueMillimeterOfMercury | None = field(
+        default=None, metadata={"json_name": "pO2"}
+    )
+    temperature: TQuantityValueDegreeCelsius | None = None

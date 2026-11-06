@@ -25,6 +25,7 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
     Measurement,
     MeasurementGroup,
     Metadata,
+    ProcessedData,
     ReportPoint,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
@@ -148,64 +149,78 @@ def create_measurements(
     device_control_custom_info: DictType,
     data: Data,
 ) -> list[Measurement]:
-    return [
-        Measurement(
-            identifier=measurement.identifier,
-            type_=measurement.type_,
-            sample_identifier=measurement.sample_identifier,
-            location_identifier=measurement.location_identifier,
-            sample_role_type=measurement.sample_role_type,
-            concentration=measurement.concentration,
-            device_control_document=[
-                DeviceControlDocument(
-                    device_type=measurement.device_type,
-                    flow_cell_identifier=measurement.flow_cell_identifier,
-                    flow_path=measurement.flow_path,
-                    flow_rate=measurement.flow_rate,
-                    contact_time=measurement.contact_time,
-                    dilution=measurement.dilution,
-                    device_control_custom_info=dict(
-                        device_control_custom_info
-                    ),  # copy to avoid modifying the original
+    measurements = []
+    for measurement in measurements_data:
+        # Create report points
+        report_points = (
+            [
+                ReportPoint(
+                    identifier=rp_data.identifier,
+                    identifier_role=rp_data.identifier_role,
+                    absolute_resonance=rp_data.absolute_resonance,
+                    relative_resonance=rp_data.relative_resonance,
+                    time_setting=rp_data.time_setting,
+                    custom_info=rp_data.custom_info,
                 )
-            ],
-            sample_custom_info={
-                **data.application_template_details.get_nested(
-                    "racks"
-                ).get_keys_as_dict(
-                    {
-                        "Rack1": (str, "_Rack1", None),
-                        "Rack2": (str, "_Rack2", None),
-                        "Lock Positions": (bool, "_LockPositions", None),
-                    }
-                ),
-                "molecular weight": quantity_or_none(
-                    TQuantityValueDalton, measurement.molecular_weight
-                ),
-                **measurement.sample_custom_info,
-            },
-            sensorgram_data_cube=_get_sensorgram_datacube(measurement.sensorgram_data),
-            report_point_data=(
-                [
-                    ReportPoint(
-                        identifier=rp_data.identifier,
-                        identifier_role=rp_data.identifier_role,
-                        absolute_resonance=rp_data.absolute_resonance,
-                        relative_resonance=rp_data.relative_resonance,
-                        time_setting=rp_data.time_setting,
-                        custom_info=rp_data.custom_info,
-                    )
-                    for rp_data in measurement.report_point_data
-                ]
-                if measurement.report_point_data is not None
-                else None
-            ),
-            # for Mobilization experiments
-            method_name=measurement.method_name,
-            ligand_identifier=measurement.ligand_identifier,
+                for rp_data in measurement.report_point_data
+            ]
+            if measurement.report_point_data is not None
+            else None
         )
-        for measurement in measurements_data
-    ]
+
+        # Wrap report points in a ProcessedData object (required by new schema)
+        processed_data = (
+            [ProcessedData(model_name="N/A")] if report_points is not None else None
+        )
+
+        measurements.append(
+            Measurement(
+                identifier=measurement.identifier,
+                type_=measurement.type_,
+                sample_identifier=measurement.sample_identifier,
+                location_identifier=measurement.location_identifier,
+                sample_role_type=measurement.sample_role_type,
+                concentration=measurement.concentration,
+                device_control_document=[
+                    DeviceControlDocument(
+                        device_type=measurement.device_type,
+                        flow_cell_identifier=measurement.flow_cell_identifier,
+                        flow_path=measurement.flow_path,
+                        flow_rate=measurement.flow_rate,
+                        contact_time=measurement.contact_time,
+                        dilution=measurement.dilution,
+                        device_control_custom_info=dict(
+                            device_control_custom_info
+                        ),  # copy to avoid modifying the original
+                    )
+                ],
+                sample_custom_info={
+                    **data.application_template_details.get_nested(
+                        "racks"
+                    ).get_keys_as_dict(
+                        {
+                            "Rack1": (str, "_Rack1", None),
+                            "Rack2": (str, "_Rack2", None),
+                            "Lock Positions": (bool, "_LockPositions", None),
+                        }
+                    ),
+                    "molecular weight": quantity_or_none(
+                        TQuantityValueDalton, measurement.molecular_weight
+                    ),
+                    **measurement.sample_custom_info,
+                },
+                sensorgram_data_cube=_get_sensorgram_datacube(
+                    measurement.sensorgram_data
+                ),
+                report_point_data=report_points,
+                processed_data=processed_data,
+                # for Mobilization experiments
+                method_name=measurement.method_name,
+                ligand_identifier=measurement.ligand_identifier,
+            )
+        )
+
+    return measurements
 
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
