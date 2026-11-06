@@ -1,0 +1,506 @@
+{
+  "$defs": {
+    "measurementDocumentItems": {
+      "oneOf": [
+        {
+          "properties": {
+            "fluorescence emission profile data cube": {
+              "$asm.pattern": "datacube",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002965",
+              "allOf": [
+                {
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                },
+                {
+                  "properties": {
+                    "cube-structure": {
+                      "properties": {
+                        "dimensions": {
+                          "maxItems": 1,
+                          "minItems": 1,
+                          "prefixItems": [
+                            {
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "@componentDatatype": {
+                                      "const": "double"
+                                    },
+                                    "concept": {
+                                      "const": "elapsed time"
+                                    },
+                                    "unit": {
+                                      "const": "s"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "measures": {
+                          "contains": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "@componentDatatype": {
+                                    "const": "double"
+                                  },
+                                  "concept": {
+                                    "const": "fluorescence"
+                                  },
+                                  "unit": {
+                                    "const": "RFU"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "maxItems": 1,
+                          "minItems": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "fluorescence emission profile data cube"
+          ]
+        },
+        {
+          "properties": {
+            "fluorescence emission spectrum data cube": {
+              "$asm.pattern": "datacube",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002482",
+              "allOf": [
+                {
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                },
+                {
+                  "properties": {
+                    "cube-structure": {
+                      "properties": {
+                        "dimensions": {
+                          "maxItems": 1,
+                          "minItems": 1,
+                          "prefixItems": [
+                            {
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "@componentDatatype": {
+                                      "const": "double"
+                                    },
+                                    "concept": {
+                                      "const": "wavelength"
+                                    },
+                                    "unit": {
+                                      "const": "nm"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "measures": {
+                          "contains": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "@componentDatatype": {
+                                    "const": "double"
+                                  },
+                                  "concept": {
+                                    "const": "fluorescence"
+                                  },
+                                  "unit": {
+                                    "const": "RFU"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "maxItems": 1,
+                          "minItems": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "fluorescence emission spectrum data cube"
+          ]
+        },
+        {
+          "properties": {
+            "fluorescence excitation spectrum data cube": {
+              "$asm.pattern": "datacube",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002481",
+              "allOf": [
+                {
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                },
+                {
+                  "properties": {
+                    "cube-structure": {
+                      "properties": {
+                        "dimensions": {
+                          "maxItems": 1,
+                          "minItems": 1,
+                          "prefixItems": [
+                            {
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "@componentDatatype": {
+                                      "const": "double"
+                                    },
+                                    "concept": {
+                                      "const": "wavelength"
+                                    },
+                                    "unit": {
+                                      "const": "nm"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "measures": {
+                          "contains": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "@componentDatatype": {
+                                    "const": "double"
+                                  },
+                                  "concept": {
+                                    "const": "fluorescence"
+                                  },
+                                  "unit": {
+                                    "const": "RFU"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "maxItems": 1,
+                          "minItems": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "fluorescence excitation spectrum data cube"
+          ]
+        },
+        {
+          "properties": {
+            "chromatogram data cube": {
+              "$asm.pattern": "datacube",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002550",
+              "allOf": [
+                {
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                },
+                {
+                  "properties": {
+                    "cube-structure": {
+                      "properties": {
+                        "dimensions": {
+                          "maxItems": 1,
+                          "minItems": 1,
+                          "prefixItems": [
+                            {
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "@componentDatatype": {
+                                      "const": "double"
+                                    },
+                                    "concept": {
+                                      "const": "retention time"
+                                    },
+                                    "unit": {
+                                      "const": "s"
+                                    }
+                                  }
+                                },
+                                {
+                                  "properties": {
+                                    "@componentDatatype": {
+                                      "const": "double"
+                                    },
+                                    "concept": {
+                                      "const": "retention volume"
+                                    },
+                                    "unit": {
+                                      "const": "mL"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "measures": {
+                          "contains": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "@componentDatatype": {
+                                    "const": "double"
+                                  },
+                                  "concept": {
+                                    "const": "fluorescence"
+                                  },
+                                  "unit": {
+                                    "const": "RFU"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "maxItems": 1,
+                          "minItems": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "chromatogram data cube"
+          ]
+        }
+      ],
+      "properties": {
+        "device control aggregate document": {
+          "properties": {
+            "device control document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "detector bandwidth setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "detector wavelength setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "excitation bandwidth setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "excitation wavelength setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "number of scans setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003051",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%23"
+                          }
+                        ]
+                      },
+                      "polarization orientation setting": {
+                        "$asm.pattern": "category datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003197",
+                        "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Resource",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tNamed"
+                      },
+                      "read interval setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002454",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/s"
+                          }
+                        ]
+                      },
+                      "total measurement time setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002455",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/s"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/orderedItem"
+                  }
+                ]
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "processed data aggregate document": {
+          "properties": {
+            "processed data document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "peak list": {
+                        "$asm.pattern": "aggregate datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                        "properties": {
+                          "peak": {
+                            "$asm.array-mixed": false,
+                            "$asm.array-ordered": true,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "allOf": [
+                                {
+                                  "$asm.pattern": "aggregate datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                                  "properties": {
+                                    "peak area": {
+                                      "$asm.pattern": "quantity datum",
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "oneOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/RFU.s"
+                                            },
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/RFU.mL"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "peak height": {
+                                      "$asm.pattern": "quantity datum",
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/RFU"
+                                        }
+                                      ]
+                                    },
+                                    "peak value at end": {
+                                      "$asm.pattern": "quantity datum",
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001181",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/RFU"
+                                        }
+                                      ]
+                                    },
+                                    "peak value at start": {
+                                      "$asm.pattern": "quantity datum",
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001179",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/RFU"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/orderedItem"
+                                }
+                              ]
+                            },
+                            "minItems": 0,
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/fluorescence/REC/2026/03/fluorescence-cube-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

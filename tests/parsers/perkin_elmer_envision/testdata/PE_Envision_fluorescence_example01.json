@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1017,7 +1017,7 @@
             "ASM file identifier": "PE_Envision_fluorescence_example01.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_perkinelmer_envision",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "PE_Envision_fluorescence_example01.csv",
             "software name": "EnVision Workstation",
             "software version": "1.14.3049.1193",
@@ -1113,7 +1113,9 @@
                             "fluorescence": {
                                 "value": 31441.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -1195,7 +1197,9 @@
                             "fluorescence": {
                                 "value": 80368.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -1203,15 +1207,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -1297,7 +1299,9 @@
                             "fluorescence": {
                                 "value": 31278.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -1379,7 +1383,9 @@
                             "fluorescence": {
                                 "value": 79711.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -1387,15 +1393,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -1481,7 +1485,9 @@
                             "fluorescence": {
                                 "value": 31727.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -1563,7 +1569,9 @@
                             "fluorescence": {
                                 "value": 80353.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -1571,15 +1579,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -1665,7 +1671,9 @@
                             "fluorescence": {
                                 "value": 32350.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -1747,7 +1755,9 @@
                             "fluorescence": {
                                 "value": 82252.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -1755,15 +1765,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -1849,7 +1857,9 @@
                             "fluorescence": {
                                 "value": 32415.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -1931,7 +1941,9 @@
                             "fluorescence": {
                                 "value": 79802.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -1939,15 +1951,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -2033,7 +2043,9 @@
                             "fluorescence": {
                                 "value": 32847.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -2115,7 +2127,9 @@
                             "fluorescence": {
                                 "value": 82187.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -2123,15 +2137,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -2217,7 +2229,9 @@
                             "fluorescence": {
                                 "value": 19603.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -2299,7 +2313,9 @@
                             "fluorescence": {
                                 "value": 82168.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -2307,15 +2323,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -2401,7 +2415,9 @@
                             "fluorescence": {
                                 "value": 19063.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -2483,7 +2499,9 @@
                             "fluorescence": {
                                 "value": 79948.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -2491,15 +2509,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -2585,7 +2601,9 @@
                             "fluorescence": {
                                 "value": 19621.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -2667,7 +2685,9 @@
                             "fluorescence": {
                                 "value": 81887.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -2675,15 +2695,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -2769,7 +2787,9 @@
                             "fluorescence": {
                                 "value": 19543.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -2851,7 +2871,9 @@
                             "fluorescence": {
                                 "value": 81749.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -2859,15 +2881,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -2953,7 +2973,9 @@
                             "fluorescence": {
                                 "value": 19799.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -3035,7 +3057,9 @@
                             "fluorescence": {
                                 "value": 82610.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -3043,15 +3067,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -3137,7 +3159,9 @@
                             "fluorescence": {
                                 "value": 20087.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -3219,7 +3243,9 @@
                             "fluorescence": {
                                 "value": 82843.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -3227,15 +3253,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -3321,7 +3345,9 @@
                             "fluorescence": {
                                 "value": 12762.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -3403,7 +3429,9 @@
                             "fluorescence": {
                                 "value": 85211.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -3411,15 +3439,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -3505,7 +3531,9 @@
                             "fluorescence": {
                                 "value": 12502.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -3587,7 +3615,9 @@
                             "fluorescence": {
                                 "value": 84002.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -3595,15 +3625,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -3689,7 +3717,9 @@
                             "fluorescence": {
                                 "value": 12582.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -3771,7 +3801,9 @@
                             "fluorescence": {
                                 "value": 85346.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -3779,15 +3811,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -3873,7 +3903,9 @@
                             "fluorescence": {
                                 "value": 12842.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -3955,7 +3987,9 @@
                             "fluorescence": {
                                 "value": 84877.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -3963,15 +3997,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -4057,7 +4089,9 @@
                             "fluorescence": {
                                 "value": 13071.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -4139,7 +4173,9 @@
                             "fluorescence": {
                                 "value": 87871.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -4147,15 +4183,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -4241,7 +4275,9 @@
                             "fluorescence": {
                                 "value": 12914.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -4323,7 +4359,9 @@
                             "fluorescence": {
                                 "value": 87789.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -4331,15 +4369,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -4425,7 +4461,9 @@
                             "fluorescence": {
                                 "value": 8153.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -4507,7 +4545,9 @@
                             "fluorescence": {
                                 "value": 81127.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -4515,15 +4555,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -4609,7 +4647,9 @@
                             "fluorescence": {
                                 "value": 8018.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -4691,7 +4731,9 @@
                             "fluorescence": {
                                 "value": 80365.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -4699,15 +4741,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -4793,7 +4833,9 @@
                             "fluorescence": {
                                 "value": 8093.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -4875,7 +4917,9 @@
                             "fluorescence": {
                                 "value": 82166.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -4883,15 +4927,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -4977,7 +5019,9 @@
                             "fluorescence": {
                                 "value": 8387.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -5059,7 +5103,9 @@
                             "fluorescence": {
                                 "value": 82453.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -5067,15 +5113,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -5161,7 +5205,9 @@
                             "fluorescence": {
                                 "value": 8142.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -5243,7 +5289,9 @@
                             "fluorescence": {
                                 "value": 84026.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -5251,15 +5299,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -5345,7 +5391,9 @@
                             "fluorescence": {
                                 "value": 8294.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -5427,7 +5475,9 @@
                             "fluorescence": {
                                 "value": 82521.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -5435,15 +5485,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -5529,7 +5577,9 @@
                             "fluorescence": {
                                 "value": 5792.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -5611,7 +5661,9 @@
                             "fluorescence": {
                                 "value": 81900.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -5619,15 +5671,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -5713,7 +5763,9 @@
                             "fluorescence": {
                                 "value": 5630.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -5795,7 +5847,9 @@
                             "fluorescence": {
                                 "value": 80721.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -5803,15 +5857,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -5897,7 +5949,9 @@
                             "fluorescence": {
                                 "value": 5882.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -5979,7 +6033,9 @@
                             "fluorescence": {
                                 "value": 83612.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -5987,15 +6043,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -6081,7 +6135,9 @@
                             "fluorescence": {
                                 "value": 6063.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -6163,7 +6219,9 @@
                             "fluorescence": {
                                 "value": 83485.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -6171,15 +6229,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -6265,7 +6321,9 @@
                             "fluorescence": {
                                 "value": 5956.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -6347,7 +6405,9 @@
                             "fluorescence": {
                                 "value": 84916.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -6355,15 +6415,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -6449,7 +6507,9 @@
                             "fluorescence": {
                                 "value": 6096.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -6531,7 +6591,9 @@
                             "fluorescence": {
                                 "value": 84517.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -6539,15 +6601,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -6633,7 +6693,9 @@
                             "fluorescence": {
                                 "value": 4671.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -6715,7 +6777,9 @@
                             "fluorescence": {
                                 "value": 82995.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -6723,15 +6787,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -6817,7 +6879,9 @@
                             "fluorescence": {
                                 "value": 4477.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -6899,7 +6963,9 @@
                             "fluorescence": {
                                 "value": 80250.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -6907,15 +6973,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -7001,7 +7065,9 @@
                             "fluorescence": {
                                 "value": 4639.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -7083,7 +7149,9 @@
                             "fluorescence": {
                                 "value": 82889.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -7091,15 +7159,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -7185,7 +7251,9 @@
                             "fluorescence": {
                                 "value": 4854.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -7267,7 +7335,9 @@
                             "fluorescence": {
                                 "value": 84629.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -7275,15 +7345,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -7369,7 +7437,9 @@
                             "fluorescence": {
                                 "value": 4728.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -7451,7 +7521,9 @@
                             "fluorescence": {
                                 "value": 83293.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -7459,15 +7531,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -7553,7 +7623,9 @@
                             "fluorescence": {
                                 "value": 4822.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -7635,7 +7707,9 @@
                             "fluorescence": {
                                 "value": 85499.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -7643,15 +7717,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -7737,7 +7809,9 @@
                             "fluorescence": {
                                 "value": 3887.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -7819,7 +7893,9 @@
                             "fluorescence": {
                                 "value": 80779.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -7827,15 +7903,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -7921,7 +7995,9 @@
                             "fluorescence": {
                                 "value": 3814.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -8003,7 +8079,9 @@
                             "fluorescence": {
                                 "value": 79099.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -8011,15 +8089,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -8105,7 +8181,9 @@
                             "fluorescence": {
                                 "value": 3954.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -8187,7 +8265,9 @@
                             "fluorescence": {
                                 "value": 82346.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -8195,15 +8275,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -8289,7 +8367,9 @@
                             "fluorescence": {
                                 "value": 3979.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -8371,7 +8451,9 @@
                             "fluorescence": {
                                 "value": 83081.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -8379,15 +8461,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -8473,7 +8553,9 @@
                             "fluorescence": {
                                 "value": 4044.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -8555,7 +8637,9 @@
                             "fluorescence": {
                                 "value": 83822.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -8563,15 +8647,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -8657,7 +8739,9 @@
                             "fluorescence": {
                                 "value": 4139.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -8739,7 +8823,9 @@
                             "fluorescence": {
                                 "value": 84290.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -8747,15 +8833,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -8841,7 +8925,9 @@
                             "fluorescence": {
                                 "value": 3266.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -8923,7 +9009,9 @@
                             "fluorescence": {
                                 "value": 81011.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -8931,15 +9019,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -9025,7 +9111,9 @@
                             "fluorescence": {
                                 "value": 3354.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -9107,7 +9195,9 @@
                             "fluorescence": {
                                 "value": 80977.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -9115,15 +9205,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -9209,7 +9297,9 @@
                             "fluorescence": {
                                 "value": 3252.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -9291,7 +9381,9 @@
                             "fluorescence": {
                                 "value": 81456.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -9299,15 +9391,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -9393,7 +9483,9 @@
                             "fluorescence": {
                                 "value": 3405.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -9475,7 +9567,9 @@
                             "fluorescence": {
                                 "value": 84428.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -9483,15 +9577,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -9577,7 +9669,9 @@
                             "fluorescence": {
                                 "value": 3342.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -9659,7 +9753,9 @@
                             "fluorescence": {
                                 "value": 82202.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -9667,15 +9763,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             },
             {
@@ -9761,7 +9855,9 @@
                             "fluorescence": {
                                 "value": 3339.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         },
                         {
                             "device control aggregate document": {
@@ -9843,7 +9939,9 @@
                             "fluorescence": {
                                 "value": 81633.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "analytical method identifier": "100302",
+                            "experimental data identifier": "3134"
                         }
                     ],
                     "measurement time": "2022-10-13T15:08:06+00:00",
@@ -9851,15 +9949,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "analytical method identifier": "100302",
-                    "experimental data identifier": "3134",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Assay Started": "10/13/2022 3:06:23 PM",
-                        "Assay Finished": "10/13/2022 3:08:15 PM",
-                        "Assay Exported": "10/13/2022 3:08:15 PM",
-                        "Protocol Name": "HTRF LASER Eu 665/620"
-                    }
+                    "container type": "well plate"
+                },
+                "custom information document": {
+                    "Assay Started": "10/13/2022 3:06:23 PM",
+                    "Assay Finished": "10/13/2022 3:08:15 PM",
+                    "Assay Exported": "10/13/2022 3:08:15 PM",
+                    "Protocol Name": "HTRF LASER Eu 665/620"
                 }
             }
         ]

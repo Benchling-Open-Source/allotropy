@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "data system document": {
             "ASM file identifier": "SLA01P01_OD.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_tecan_magellan",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "SLA01P01_OD.xlsx",
             "software name": "Magellan",
             "UNC path": "tests/parsers/tecan_magellan/testdata/SLA01P01_OD.xlsx"
@@ -53,7 +53,9 @@
                             "absorbance": {
                                 "value": 0.1462,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -61,8 +63,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -103,7 +103,9 @@
                             "absorbance": {
                                 "value": 0.2118,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -111,8 +113,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -153,7 +153,9 @@
                             "absorbance": {
                                 "value": 0.1661,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -161,8 +163,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -203,7 +203,9 @@
                             "absorbance": {
                                 "value": 0.1469,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -211,8 +213,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -253,7 +253,9 @@
                             "absorbance": {
                                 "value": 0.1549,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -261,8 +263,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -303,7 +303,9 @@
                             "absorbance": {
                                 "value": 0.1458,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -311,8 +313,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -353,7 +353,9 @@
                             "absorbance": {
                                 "value": 0.1748,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -361,8 +363,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -403,7 +403,9 @@
                             "absorbance": {
                                 "value": 0.1332,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -411,8 +413,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -453,7 +453,9 @@
                             "absorbance": {
                                 "value": 0.1418,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -461,8 +463,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -503,7 +503,9 @@
                             "absorbance": {
                                 "value": 0.1506,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -511,8 +513,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -553,7 +553,9 @@
                             "absorbance": {
                                 "value": 0.1602,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -561,8 +563,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -603,7 +603,9 @@
                             "absorbance": {
                                 "value": 0.1512,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -611,8 +613,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -653,7 +653,9 @@
                             "absorbance": {
                                 "value": 0.1469,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -661,8 +663,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -703,7 +703,9 @@
                             "absorbance": {
                                 "value": 0.1532,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -711,8 +713,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -753,7 +753,9 @@
                             "absorbance": {
                                 "value": 0.1745,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -761,8 +763,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -803,7 +803,9 @@
                             "absorbance": {
                                 "value": 0.149,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -811,8 +813,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -853,7 +853,9 @@
                             "absorbance": {
                                 "value": 0.1436,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -861,8 +863,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -903,7 +903,9 @@
                             "absorbance": {
                                 "value": 0.1503,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -911,8 +913,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -953,7 +953,9 @@
                             "absorbance": {
                                 "value": 0.1493,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -961,8 +963,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1003,7 +1003,9 @@
                             "absorbance": {
                                 "value": 0.1552,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1011,8 +1013,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1053,7 +1053,9 @@
                             "absorbance": {
                                 "value": 0.1525,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1061,8 +1063,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1103,7 +1103,9 @@
                             "absorbance": {
                                 "value": 0.1471,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1111,8 +1113,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1153,7 +1153,9 @@
                             "absorbance": {
                                 "value": 0.1497,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1161,8 +1163,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1203,7 +1203,9 @@
                             "absorbance": {
                                 "value": 0.155,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1211,8 +1213,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1253,7 +1253,9 @@
                             "absorbance": {
                                 "value": 0.1463,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1261,8 +1263,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1303,7 +1303,9 @@
                             "absorbance": {
                                 "value": 0.122,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1311,8 +1313,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1353,7 +1353,9 @@
                             "absorbance": {
                                 "value": 0.1443,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1361,8 +1363,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1403,7 +1403,9 @@
                             "absorbance": {
                                 "value": 0.1309,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1411,8 +1413,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1453,7 +1453,9 @@
                             "absorbance": {
                                 "value": 0.1609,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1461,8 +1463,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1503,7 +1503,9 @@
                             "absorbance": {
                                 "value": 0.156,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1511,8 +1513,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1553,7 +1553,9 @@
                             "absorbance": {
                                 "value": 0.1532,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1561,8 +1563,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1603,7 +1603,9 @@
                             "absorbance": {
                                 "value": 0.1428,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1611,8 +1613,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1653,7 +1653,9 @@
                             "absorbance": {
                                 "value": 0.1533,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1661,8 +1663,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1703,7 +1703,9 @@
                             "absorbance": {
                                 "value": 0.1442,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1711,8 +1713,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1753,7 +1753,9 @@
                             "absorbance": {
                                 "value": 0.1679,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1761,8 +1763,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1803,7 +1803,9 @@
                             "absorbance": {
                                 "value": 0.1704,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1811,8 +1813,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1853,7 +1853,9 @@
                             "absorbance": {
                                 "value": 0.1675,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1861,8 +1863,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1903,7 +1903,9 @@
                             "absorbance": {
                                 "value": 0.1445,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1911,8 +1913,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -1953,7 +1953,9 @@
                             "absorbance": {
                                 "value": 0.1507,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -1961,8 +1963,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2003,7 +2003,9 @@
                             "absorbance": {
                                 "value": 0.1661,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2011,8 +2013,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2053,7 +2053,9 @@
                             "absorbance": {
                                 "value": 0.1408,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2061,8 +2063,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2103,7 +2103,9 @@
                             "absorbance": {
                                 "value": 0.1493,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2111,8 +2113,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2153,7 +2153,9 @@
                             "absorbance": {
                                 "value": 0.1449,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2161,8 +2163,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2203,7 +2203,9 @@
                             "absorbance": {
                                 "value": 0.1555,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2211,8 +2213,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2253,7 +2253,9 @@
                             "absorbance": {
                                 "value": 0.1478,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2261,8 +2263,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2303,7 +2303,9 @@
                             "absorbance": {
                                 "value": 0.1536,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2311,8 +2313,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2353,7 +2353,9 @@
                             "absorbance": {
                                 "value": 0.1441,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2361,8 +2363,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2403,7 +2403,9 @@
                             "absorbance": {
                                 "value": 0.1456,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2411,8 +2413,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2453,7 +2453,9 @@
                             "absorbance": {
                                 "value": 0.1347,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2461,8 +2463,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2503,7 +2503,9 @@
                             "absorbance": {
                                 "value": 0.1413,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2511,8 +2513,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2553,7 +2553,9 @@
                             "absorbance": {
                                 "value": 0.1469,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2561,8 +2563,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2603,7 +2603,9 @@
                             "absorbance": {
                                 "value": 0.1463,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2611,8 +2613,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2653,7 +2653,9 @@
                             "absorbance": {
                                 "value": 0.1589,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2661,8 +2663,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2703,7 +2703,9 @@
                             "absorbance": {
                                 "value": 0.1719,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2711,8 +2713,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2753,7 +2753,9 @@
                             "absorbance": {
                                 "value": 0.1463,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2761,8 +2763,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2803,7 +2803,9 @@
                             "absorbance": {
                                 "value": 0.1421,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2811,8 +2813,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2853,7 +2853,9 @@
                             "absorbance": {
                                 "value": 0.1084,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2861,8 +2863,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2903,7 +2903,9 @@
                             "absorbance": {
                                 "value": 0.1499,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2911,8 +2913,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -2953,7 +2953,9 @@
                             "absorbance": {
                                 "value": 0.1603,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -2961,8 +2963,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3003,7 +3003,9 @@
                             "absorbance": {
                                 "value": 0.1346,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3011,8 +3013,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3053,7 +3053,9 @@
                             "absorbance": {
                                 "value": 0.1586,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3061,8 +3063,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3103,7 +3103,9 @@
                             "absorbance": {
                                 "value": 0.1501,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3111,8 +3113,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3153,7 +3153,9 @@
                             "absorbance": {
                                 "value": 0.1464,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3161,8 +3163,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3203,7 +3203,9 @@
                             "absorbance": {
                                 "value": 0.1537,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3211,8 +3213,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3253,7 +3253,9 @@
                             "absorbance": {
                                 "value": 0.1368,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3261,8 +3263,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3303,7 +3303,9 @@
                             "absorbance": {
                                 "value": 0.1293,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3311,8 +3313,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3353,7 +3353,9 @@
                             "absorbance": {
                                 "value": 0.127,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3361,8 +3363,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3403,7 +3403,9 @@
                             "absorbance": {
                                 "value": 0.1285,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3411,8 +3413,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3453,7 +3453,9 @@
                             "absorbance": {
                                 "value": 0.141,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3461,8 +3463,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3503,7 +3503,9 @@
                             "absorbance": {
                                 "value": 0.1252,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3511,8 +3513,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3553,7 +3553,9 @@
                             "absorbance": {
                                 "value": 0.1464,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3561,8 +3563,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3603,7 +3603,9 @@
                             "absorbance": {
                                 "value": 0.1256,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3611,8 +3613,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3653,7 +3653,9 @@
                             "absorbance": {
                                 "value": 0.1367,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3661,8 +3663,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3703,7 +3703,9 @@
                             "absorbance": {
                                 "value": 0.1369,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3711,8 +3713,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3753,7 +3753,9 @@
                             "absorbance": {
                                 "value": 0.1411,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3761,8 +3763,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3803,7 +3803,9 @@
                             "absorbance": {
                                 "value": 0.1231,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3811,8 +3813,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3853,7 +3853,9 @@
                             "absorbance": {
                                 "value": 0.1391,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3861,8 +3863,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3903,7 +3903,9 @@
                             "absorbance": {
                                 "value": 0.1361,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3911,8 +3913,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -3953,7 +3953,9 @@
                             "absorbance": {
                                 "value": 0.1602,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -3961,8 +3963,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4003,7 +4003,9 @@
                             "absorbance": {
                                 "value": 0.1476,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4011,8 +4013,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4053,7 +4053,9 @@
                             "absorbance": {
                                 "value": 0.0462,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4061,8 +4063,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4103,7 +4103,9 @@
                             "absorbance": {
                                 "value": 0.0455,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4111,8 +4113,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4153,7 +4153,9 @@
                             "absorbance": {
                                 "value": 0.0447,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4161,8 +4163,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4203,7 +4203,9 @@
                             "absorbance": {
                                 "value": 0.0459,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4211,8 +4213,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4253,7 +4253,9 @@
                             "absorbance": {
                                 "value": 0.0448,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4261,8 +4263,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4303,7 +4303,9 @@
                             "absorbance": {
                                 "value": 0.0448,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4311,8 +4313,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4353,7 +4353,9 @@
                             "absorbance": {
                                 "value": 0.0448,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4361,8 +4363,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4403,7 +4403,9 @@
                             "absorbance": {
                                 "value": 0.0449,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4411,8 +4413,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4453,7 +4453,9 @@
                             "absorbance": {
                                 "value": 0.0487,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4461,8 +4463,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4503,7 +4503,9 @@
                             "absorbance": {
                                 "value": 0.0467,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4511,8 +4513,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4553,7 +4553,9 @@
                             "absorbance": {
                                 "value": 0.0451,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4561,8 +4563,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4603,7 +4603,9 @@
                             "absorbance": {
                                 "value": 0.0476,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4611,8 +4613,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4653,7 +4653,9 @@
                             "absorbance": {
                                 "value": 0.0511,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4661,8 +4663,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4703,7 +4703,9 @@
                             "absorbance": {
                                 "value": 0.0458,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4711,8 +4713,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4753,7 +4753,9 @@
                             "absorbance": {
                                 "value": 0.0453,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4761,8 +4763,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
@@ -4803,7 +4803,9 @@
                             "absorbance": {
                                 "value": 0.0461,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp"
                         }
                     ],
                     "measurement time": "2021-07-06T09:43:07+00:00",
@@ -4811,8 +4813,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\200609_DHT_OD.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\06072021-001.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Unknown user"
