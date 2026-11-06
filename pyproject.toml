@@ -69,6 +69,11 @@ dependencies = [
   "xmltodict >= 0.13.0",
 ]
 
+[project.optional-dependencies]
+testdata = [
+  "allotropy-testdata >= 0.1.151",
+]
+
 [project.urls]
 Documentation = "https://github.com/Benchling-Open-Source/allotropy#readme"
 Issues = "https://github.com/Benchling-Open-Source/allotropy/issues"
@@ -148,6 +153,8 @@ create-parser = "scripts/create_parser.py {args:}"
 update-instrument-table = "scripts/update_supported_instruments_table.py {args:}"
 update-version = "scripts/update_version.py {args:}"
 json-to-csv = "scripts/json_to_csv_convert.py {args:}"
+build-all = "scripts/build_all.py {args:}"
+publish-all = "scripts/publish_all.py {args:}"
 
 [tool.hatch.envs.win-scripts]
 platforms = ["windows"]
@@ -159,6 +166,8 @@ create-parser = "python scripts\\create_parser.py {args:}"
 update-instrument-table = "python scripts\\update_supported_instruments_table.py {args:}"
 update-version = "python scripts\\update_version.py {args:}"
 json-to-csv = "python scripts\\json_to_csv_convert.py {args:}"
+build-all = "python scripts\\build_all.py {args:}"
+publish-all = "python scripts\\publish_all.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
 run = "scripts/visualization.py {args:}"
@@ -223,7 +232,7 @@ cov = [
 ]
 
 [tool.pytest.ini_options]
-pythonpath = "src"
+pythonpath = ["src", "testdata/src"]
 markers = [
   "long: mark a test that takes a long time to run",
 ]
