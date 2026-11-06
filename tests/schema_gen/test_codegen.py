@@ -1038,6 +1038,39 @@ class TestSchemaCodeGeneratorGenerate:
         assert "name: Any" not in source
         assert "experimental_data_identifier: Any" in source
 
+    def test_required_property_from_base_variant_ref_not_redeclared(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "variantType": {
+                        "type": "object",
+                        "properties": {"name": {"type": "string"}},
+                    },
+                    "parentType": {
+                        "type": "object",
+                        "properties": {"other": {"type": "string"}},
+                        "anyOf": [{"$ref": "#/$defs/variantType"}],
+                    },
+                    "childType": {
+                        "allOf": [
+                            {"$ref": "#/$defs/parentType"},
+                            {
+                                "type": "object",
+                                "properties": {"extra": {"type": "integer"}},
+                                "required": ["name"],
+                            },
+                        ]
+                    },
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "class ChildType(ParentType):" in source
+        assert "name: Any" not in source
+
 
 # ---------------------------------------------------------------------------
 # GeneratedClass — validation and render variants

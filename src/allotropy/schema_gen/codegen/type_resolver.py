@@ -431,6 +431,8 @@ class TypeResolver:
                     for variant in part.get(variant_key, []):
                         if isinstance(variant, dict):
                             names.update(variant.get("properties", {}))
+                            if "$ref" in variant:
+                                nested_refs.append(variant["$ref"])
             if nested_refs:
                 nested = self._inherited_property_names(ref_url, nested_refs, seen)
                 if nested is None:
