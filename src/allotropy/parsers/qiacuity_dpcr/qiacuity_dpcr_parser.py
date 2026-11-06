@@ -25,7 +25,25 @@ class QiacuitydPCRParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Qiacuity dPCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = QiacuitydPCRReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if len(lines) < 2:
+                return False
+            if not lines[0].strip().lstrip("\ufeff").startswith("sep="):
+                return False
+            header = lines[1] if len(lines) > 1 else ""
+            return "Partitions" in header or "Sample/NTC" in header
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = QiacuitydPCRReader(named_file_contents)

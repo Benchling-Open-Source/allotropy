@@ -6,9 +6,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import (
-    CalculatedData,
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -57,6 +54,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_c
     StandardCurveCreator,
 )
 from allotropy.parsers.constants import NEGATIVE_ZERO
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 
 
 def create_metadata(
@@ -166,13 +166,22 @@ def _create_melt_curve_data_cube(
 
 def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurement:
     header = data.header
+    multicomponent = well.multicomponent_data
+    reporter_dye = well_item.reporter_dye_setting
+    passive_dye = header.passive_reference_dye_setting
+    # Only request dye columns that actually exist in multicomponent data
+    if multicomponent is not None:
+        if reporter_dye is not None and reporter_dye not in multicomponent.columns:
+            reporter_dye = None
+        if passive_dye is not None and passive_dye not in multicomponent.columns:
+            passive_dye = None
     (
         reporter_dye_data_cube,
         passive_reference_dye_data_cube,
     ) = _create_multicomponent_data_cubes(
-        well.multicomponent_data,
-        well_item.reporter_dye_setting,
-        header.passive_reference_dye_setting,
+        multicomponent,
+        reporter_dye,
+        passive_dye,
     )
     return Measurement(
         identifier=well_item.uuid,
@@ -234,25 +243,8 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     ]
 
 
-def create_calculated_data(data: Data) -> CalculatedData:
-    return CalculatedData(
-        items=[
-            CalculatedDataItem(
-                identifier=calc_doc.uuid,
-                name=calc_doc.name,
-                value=calc_doc.value,
-                unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=data_source.reference.uuid,
-                        feature=data_source.feature,
-                    )
-                    for data_source in calc_doc.data_sources
-                ],
-            )
-            for calc_doc in data.calculated_documents
-        ],
-    )
+def create_calculated_data(data: Data) -> list[CalculatedDocument]:
+    return list(data.calculated_documents)
 
 
 def create_data(reader: DesignQuantstudioReader) -> Data:

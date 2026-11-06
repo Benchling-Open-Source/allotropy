@@ -7,9 +7,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import (
-    CalculatedData,
-    CalculatedDataItem,
-    DataSource,
     Error,
     Measurement,
     MeasurementGroup,
@@ -81,7 +78,9 @@ def _create_processed_data(
     ) = _create_processed_data_cubes(amplification_data)
     extra_data = result.extra_data or {}
 
-    data_processing_field_names = {
+    # Ordered: these are reported in this order, and iterating a set would vary
+    # between runs, making serialized output nondeterministic.
+    data_processing_field_names = (
         "omit",
         "Method",
         "SNP Assay Name",
@@ -94,7 +93,7 @@ def _create_processed_data(
         "noamp",
         "expfail",
         "tholdfail",
-    }
+    )
 
     skip_fields = {
         "Allele2 Baseline End",
@@ -300,25 +299,8 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
 
 def create_calculated_data(
     calculated_data_documents: Iterable[CalculatedDocument],
-) -> CalculatedData:
-    return CalculatedData(
-        items=[
-            CalculatedDataItem(
-                identifier=cal_doc.uuid,
-                name=cal_doc.name,
-                value=cal_doc.value,
-                unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=data_source.reference.uuid,
-                        feature=data_source.feature,
-                    )
-                    for data_source in cal_doc.data_sources
-                ],
-            )
-            for cal_doc in calculated_data_documents
-        ],
-    )
+) -> list[CalculatedDocument]:
+    return list(calculated_data_documents)
 
 
 def get_well_item_results(

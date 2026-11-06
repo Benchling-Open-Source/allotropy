@@ -345,20 +345,27 @@ def test_create_calculated_plate_info_with_no_formula() -> None:
         CalculatedPlateInfo.create(data)
 
 
-def test_create_calculated_plate_info_with_invalid_formula() -> None:
+def test_create_calculated_plate_info_with_formula_without_name() -> None:
+    # Some formulas are a plain description with no "name =" prefix; the whole
+    # formula string is used as the name.
     data = SeriesData(
         pd.Series(
             {
                 "Plate": "dummy",
                 "Measured height": "0",
-                "Formula": "invalid formula",
+                "Formula": "Calc 1: OD450 direct absorbance value at 450 nm",
                 "Measurement date": "10/13/2022 3:08:06 PM",
             }
         )
     )
-    msg = "Unable to find expected formula name for calculated results section."
-    with pytest.raises(AllotropeConversionError, match=msg):
-        CalculatedPlateInfo.create(data)
+    calculated_plate_info = CalculatedPlateInfo.create(data)
+    assert (
+        calculated_plate_info.name == "Calc 1: OD450 direct absorbance value at 450 nm"
+    )
+    assert (
+        calculated_plate_info.formula
+        == "Calc 1: OD450 direct absorbance value at 450 nm"
+    )
 
 
 def test_create_basic_assay_info() -> None:

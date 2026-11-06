@@ -244,6 +244,8 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    analyst: str | None = None
+    submitter: str | None = None
     fractions: list[Fraction] | None = None
     logs: list[Log] | None = None
     measurement_aggregate_custom_info: dict[str, Any] | None = None
@@ -317,7 +319,8 @@ class Mapper(SchemaMapper[Data, Model]):
         self, group: MeasurementGroup, metadata: Metadata
     ) -> LiquidChromatographyDocumentItem:
         return LiquidChromatographyDocumentItem(
-            analyst=metadata.analyst,
+            analyst=group.analyst or metadata.analyst,
+            submitter=group.submitter,
             measurement_aggregate_document=add_custom_information_document(
                 MeasurementAggregateDocument(
                     measurement_document=[

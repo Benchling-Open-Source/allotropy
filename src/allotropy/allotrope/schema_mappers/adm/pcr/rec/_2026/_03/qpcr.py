@@ -3,6 +3,7 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.models.adm.core.rec._2026._03.core import TStringValue
 from allotropy.allotrope.models.adm.core.rec._2026._03.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -33,15 +34,21 @@ from allotropy.allotrope.models.adm.pcr.rec._2026._03.qpcr import (
     SampleDocument,
     SampleRoleType as ModelSampleRoleType,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMicroliter,
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -82,30 +89,20 @@ class SampleRoleType(str, Enum):
     reference_sample_role = "reference sample role"
 
 
-@dataclass
-class DataSource:
-    identifier: str
-    feature: str
+@dataclass(frozen=True, kw_only=True)
+class MeasurementAggregateDocumentWithExperimentalDataIdentifier(
+    MeasurementAggregateDocument
+):
+    # The REC 2026/03 qpcr schema lists "experimental data identifier" as required on the
+    # measurement aggregate document without declaring the property, so the generated model
+    # has no field for it.
+    experimental_data_identifier: TStringValue
 
 
 @dataclass
 class Error:
     error: str
     feature: str
-
-
-@dataclass
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-
-
-@dataclass
-class CalculatedData:
-    items: list[CalculatedDataItem]
 
 
 @dataclass
@@ -208,7 +205,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: CalculatedData | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 CubeClass = TypeVar("CubeClass")
@@ -243,7 +240,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement_group in data.measurement_groups
                     ],
                     calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                        data
+                        data.calculated_data
                     ),
                 ),
                 data.metadata.custom_info,
@@ -256,7 +253,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return QpcrDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
+                MeasurementAggregateDocumentWithExperimentalDataIdentifier(
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
                     container_type=ModelContainerType(metadata.container_type.value),
@@ -400,32 +397,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, data: Data
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not data.calculated_data or not data.calculated_data.items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calc_doc.identifier,
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=data_source.identifier,
-                                data_source_feature=data_source.feature,
-                            )
-                            for data_source in calc_doc.data_sources
-                        ],
-                    ),
-                    calculated_data_name=calc_doc.name,
-                    calculation_description=None,
-                    calculated_result=TQuantityValue(
-                        value=calc_doc.value, unit=calc_doc.unit
-                    ),
-                )
-                for calc_doc in data.calculated_data.items
-            ],
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
+            default_unit=UNITLESS,
         )
 
     def _get_error_aggregate_document(

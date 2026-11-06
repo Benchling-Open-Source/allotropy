@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import SampleRoleType
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import SampleRoleType
 from allotropy.calcdocs.extractor import Element
 from allotropy.calcdocs.view import Keys, View, ViewData
 

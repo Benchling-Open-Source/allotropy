@@ -22,6 +22,8 @@ class VendorParser(ABC, Generic[Data, Model]):
     RELEASE_STATE: ReleaseState
     # Comma separated list of file extensions that this parser supports.
     SUPPORTED_EXTENSIONS: str
+    # Detection modes supported by this parser, displayed in the supported instruments table.
+    SUPPORTED_DETECTION_MODES: str | None = None
     # The schema mapper to use for mapping to ASM
     SCHEMA_MAPPER: Callable[..., SchemaMapper[Data, Model]]
 
@@ -32,6 +34,10 @@ class VendorParser(ABC, Generic[Data, Model]):
 
     def _get_mapper(self) -> SchemaMapper[Data, Model]:
         return self.SCHEMA_MAPPER(self.asm_converter_name, self._get_date_time)
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:  # noqa: ARG003
+        return False
 
     @abstractmethod
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

@@ -20,7 +20,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     MULTIPLATE_FILE_ERROR,
     NO_PLATE_DATA_ERROR,
 )
-from allotropy.parsers.lines_reader import SectionLinesReader
+from allotropy.parsers.lines_reader import read_to_lines, SectionLinesReader
 from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -31,7 +31,8 @@ class AgilentGen5Reader:
     SUPPORTED_EXTENSIONS = "txt"
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        reader = SectionLinesReader.create(named_file_contents)
+        lines = [line.rstrip("\t") for line in read_to_lines(named_file_contents)]
+        reader = SectionLinesReader(lines)
 
         plate_readers = list(reader.iter_sections("^Software Version"))
         if not plate_readers:
@@ -75,7 +76,14 @@ class AgilentGen5Reader:
         last_read_label: str | None = None
 
         while lines := list(plate_reader.pop_until_empty()):
-            section_name = lines[0].split("\t")[0].strip(":")
+            section_name = self._get_section_name(lines[0])
+
+            # Check if this is a single-line section header with data in the next block
+            if len(lines) == 1 and section_name in ("Layout", "Results"):
+                plate_reader.drop_empty()
+                next_lines = list(plate_reader.pop_until_empty())
+                if next_lines:
+                    lines = [lines[0], *next_lines]
 
             # Check if this is a "Read X:label" section (single line, starts with "Read ")
             # If so, store the label and immediately read the next section
@@ -87,26 +95,49 @@ class AgilentGen5Reader:
                 if not lines:
                     # No data section after the label, just continue
                     continue
-                section_name = lines[0].split("\t")[0].strip(":")
+                section_name = self._get_section_name(lines[0])
 
             # If this is a Time section, associate it with a read label if we have one
             if section_name == "Time":
                 if last_read_label:
                     # Format: "Read X:label" -> Time section
-                    self.kinetic_sections[last_read_label] = lines
+                    self.kinetic_sections[last_read_label] = self._strip_leading_tab(
+                        lines
+                    )
                     last_read_label = None
                 elif last_section_name:
                     # Format: "{label}" section followed by Time section
                     # Store with just the label as key for kinetic files
-                    self.kinetic_sections[last_section_name] = lines
+                    self.kinetic_sections[last_section_name] = self._strip_leading_tab(
+                        lines
+                    )
                 else:
                     # Standalone Time section (shouldn't happen, but store it anyway)
-                    self.sections[section_name] = lines
+                    self.sections[section_name] = self._strip_leading_tab(lines)
             else:
-                self.sections[section_name] = lines
+                self.sections[section_name] = self._strip_leading_tab(lines)
                 last_section_name = section_name
 
             plate_reader.drop_empty()
+
+    @staticmethod
+    def _get_section_name(line: str) -> str:
+        fields = line.split("\t")
+        for field in fields:
+            name = field.strip('"').strip(":")
+            if name:
+                return name
+        return ""
+
+    @staticmethod
+    def _strip_leading_tab(lines: list[str]) -> list[str]:
+        if len(lines) < 2:
+            return lines
+        non_header = lines[1:] if not lines[0].startswith("\t") else lines
+        non_empty = [line for line in non_header if line.strip()]
+        if non_empty and all(line.startswith("\t") for line in non_empty):
+            return [line[1:] if line.startswith("\t") else line for line in lines]
+        return lines
 
     def get_required_section(self, section_name: str) -> list[str]:
         """Get a required section, raises error if not found."""

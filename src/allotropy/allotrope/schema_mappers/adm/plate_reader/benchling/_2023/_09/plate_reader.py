@@ -45,7 +45,6 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
-    TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
@@ -58,10 +57,16 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import (
     assert_not_none,
     quantity_or_none,
@@ -109,16 +114,6 @@ class ProcessedData:
     features: list[ImageFeature]
     identifier: str | None = None
     data_processing_document: dict[str, Any] | None = None
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: JsonFloat
-    unit: str
-    data_sources: list[DataSource]
-    description: str | None = None
 
 
 @dataclass(frozen=True)
@@ -221,7 +216,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -294,19 +289,19 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         doc: MeasurementDocumentItem
-        if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            doc = self._get_optical_imaging_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            doc = self._get_luminescence_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            doc = self._get_fluorescence_measurement_document(measurement)
-        else:
-            msg = f"Unexpected measurement type: {measurement.type}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.OPTICAL_IMAGING:
+                doc = self._get_optical_imaging_measurement_document(measurement)
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
+            case MeasurementType.LUMINESCENCE:
+                doc = self._get_luminescence_measurement_document(measurement)
+            case MeasurementType.FLUORESCENCE:
+                doc = self._get_fluorescence_measurement_document(measurement)
+            case _:
+                msg = f"Unexpected measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
         return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_optical_imaging_measurement_document(
@@ -625,27 +620,14 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
-                    calculated_data_name=calculated_data_item.name,
-                    calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
-                    ),
-                    data_source_aggregate_document=self._get_data_source_aggregate_document(
-                        calculated_data_item.data_sources
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
         )
 
     def _get_data_source_aggregate_document(

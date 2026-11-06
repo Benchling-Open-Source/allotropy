@@ -23,6 +23,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     DEVICE_TYPE,
     FILENAME_REGEX,
     INVALID_FILENAME_MESSAGE,
+    MEASURED_PROPERTIES_BY_DETECTION_TYPE,
     MODEL_NUMBER,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
@@ -89,10 +90,6 @@ class Sample:
             cell_density_dilution = cell_density_dilution.split(":")[0]
 
         unused_keys = {
-            "Sample Time",
-            "PCO2 @ Temp",
-            "PO2 @ Temp",
-            "pH @ Temp",
             "Operator",
             "Osm",
         }
@@ -230,6 +227,13 @@ def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
     )
 
 
+def _has_measured_value(sample: Sample, detection_type: str) -> bool:
+    return any(
+        getattr(sample, key) not in (None, [])
+        for key in MEASURED_PROPERTIES_BY_DETECTION_TYPE[detection_type]
+    )
+
+
 def _get_measurements(sample: Sample) -> list[Measurement]:
     measurements = []
 
@@ -242,6 +246,9 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
         "osmolality-detection",
         "ph-detection",
     ]:
+        if not _has_measured_value(sample, detection_type):
+            continue
+
         kwargs = {
             key: getattr(sample, key)
             for key in DETECTION_PROPERTY_MAPPING[detection_type]
@@ -253,14 +260,13 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
         }
         if data_processing:
             kwargs["data_processing"] = DataProcessing(**data_processing)
-        if any(value is not None for value in kwargs.values()):
-            measurements.append(
-                _create_measurement(
-                    sample,
-                    detection_type=detection_type,
-                    **kwargs,
-                )
+        measurements.append(
+            _create_measurement(
+                sample,
+                detection_type=detection_type,
+                **kwargs,
             )
+        )
 
     return measurements
 

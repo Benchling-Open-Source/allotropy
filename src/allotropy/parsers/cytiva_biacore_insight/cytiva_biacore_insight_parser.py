@@ -1,3 +1,5 @@
+import openpyxl
+
 from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     Model,
 )
@@ -26,7 +28,20 @@ class CytivaBiacoreInsightParser(VendorParser[MapperData, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = CytivaBiacoreInsightReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Surface Plasmon Resonance"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            sheet_names = set(wb.sheetnames)
+            wb.close()
+            return "Properties" in sheet_names and "Report point table" in sheet_names
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
         reader = CytivaBiacoreInsightReader.create(named_file_contents)
