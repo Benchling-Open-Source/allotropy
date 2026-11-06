@@ -1,0 +1,752 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/pcr/REC/2026/03/qpcr.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "properties": {
+        "qpcr aggregate document": {
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/hierarchy.schema#/$defs/techniqueAggregateDocument"
+            },
+            {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002899",
+              "properties": {
+                "device system document": {
+                  "required": [
+                    "device identifier",
+                    "model number",
+                    "equipment serial number"
+                  ]
+                },
+                "qpcr document": {
+                  "$asm.array-mixed": false,
+                  "$asm.array-ordered": true,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/hierarchy.schema#/$defs/techniqueDocument"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002900",
+                        "properties": {
+                          "measurement aggregate document": {
+                            "properties": {
+                              "container type": {
+                                "$asm.pattern": "class datum",
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001987",
+                                "allOf": [
+                                  {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tClass"
+                                  },
+                                  {
+                                    "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/equipment#AFE_0000407",
+                                    "enum": [
+                                      "reactor",
+                                      "controlled lab reactor",
+                                      "tube",
+                                      "well plate",
+                                      "differential scanning calorimetry pan",
+                                      "PCR reaction block",
+                                      "vial rack",
+                                      "pan",
+                                      "reservoir",
+                                      "array card block",
+                                      "capillary",
+                                      "disintegration apparatus basket",
+                                      "jar",
+                                      "container",
+                                      "tray",
+                                      "basket",
+                                      "cell holder"
+                                    ],
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "experiment type": {
+                                "$asm.pattern": "value datum",
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002229",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                              },
+                              "measurement document": {
+                                "items": {
+                                  "allOf": [
+                                    {
+                                      "properties": {
+                                        "device control aggregate document": {
+                                          "properties": {
+                                            "device control document": {
+                                              "items": {
+                                                "allOf": [
+                                                  {
+                                                    "properties": {
+                                                      "annealing duration setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002905",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/s"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "annealing temperature setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002904",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/degC"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "denaturing duration setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002903",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/s"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "denaturing temperature setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002902",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/degC"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "measurement method identifier": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002003",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "passive reference dye setting": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002234",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "primer extension duration setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002907",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/s"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "primer extension temperature setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002906",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/degC"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "qPCR detection chemistry": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002233",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "quencher dye setting": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002244",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "reporter dye setting": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002243",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "total cycle number setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002901",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "measurement method identifier"
+                                                    ]
+                                                  },
+                                                  {
+                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/orderedItem"
+                                                  }
+                                                ]
+                                              },
+                                              "minItems": 1
+                                            }
+                                          }
+                                        },
+                                        "melting curve data cube": {
+                                          "$asm.pattern": "datacube",
+                                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002913",
+                                          "allOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                                            },
+                                            {
+                                              "properties": {
+                                                "cube-structure": {
+                                                  "properties": {
+                                                    "dimensions": {
+                                                      "maxItems": 1,
+                                                      "minItems": 1,
+                                                      "prefixItems": [
+                                                        {
+                                                          "properties": {
+                                                            "@componentDatatype": {
+                                                              "const": "double"
+                                                            },
+                                                            "concept": {
+                                                              "const": "temperature"
+                                                            },
+                                                            "unit": {
+                                                              "const": "degC"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    },
+                                                    "measures": {
+                                                      "contains": {
+                                                        "oneOf": [
+                                                          {
+                                                            "properties": {
+                                                              "@componentDatatype": {
+                                                                "const": "double"
+                                                              },
+                                                              "concept": {
+                                                                "const": "fluorescence"
+                                                              },
+                                                              "unit": {
+                                                                "const": "RFU"
+                                                              }
+                                                            }
+                                                          },
+                                                          {
+                                                            "properties": {
+                                                              "@componentDatatype": {
+                                                                "const": "double"
+                                                              },
+                                                              "concept": {
+                                                                "const": "slope"
+                                                              },
+                                                              "unit": {
+                                                                "const": "(unitless)"
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      },
+                                                      "maxItems": 2,
+                                                      "minItems": 2
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "passive reference data cube": {
+                                          "$asm.pattern": "datacube",
+                                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002912",
+                                          "allOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                                            },
+                                            {
+                                              "properties": {
+                                                "cube-structure": {
+                                                  "properties": {
+                                                    "dimensions": {
+                                                      "maxItems": 1,
+                                                      "minItems": 1,
+                                                      "prefixItems": [
+                                                        {
+                                                          "properties": {
+                                                            "@componentDatatype": {
+                                                              "const": "double"
+                                                            },
+                                                            "concept": {
+                                                              "const": "cycle count"
+                                                            },
+                                                            "unit": {
+                                                              "const": "#"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    },
+                                                    "measures": {
+                                                      "contains": {
+                                                        "oneOf": [
+                                                          {
+                                                            "properties": {
+                                                              "@componentDatatype": {
+                                                                "const": "double"
+                                                              },
+                                                              "concept": {
+                                                                "const": "fluorescence"
+                                                              },
+                                                              "unit": {
+                                                                "const": "RFU"
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      },
+                                                      "maxItems": 1,
+                                                      "minItems": 1
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "processed data aggregate document": {
+                                          "properties": {
+                                            "processed data document": {
+                                              "items": {
+                                                "allOf": [
+                                                  {
+                                                    "properties": {
+                                                      "baseline corrected reporter data cube": {
+                                                        "$asm.pattern": "datacube",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002310",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                                                          },
+                                                          {
+                                                            "properties": {
+                                                              "cube-structure": {
+                                                                "properties": {
+                                                                  "dimensions": {
+                                                                    "maxItems": 1,
+                                                                    "minItems": 1,
+                                                                    "prefixItems": [
+                                                                      {
+                                                                        "properties": {
+                                                                          "@componentDatatype": {
+                                                                            "const": "double"
+                                                                          },
+                                                                          "concept": {
+                                                                            "const": "cycle count"
+                                                                          },
+                                                                          "unit": {
+                                                                            "const": "#"
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  "measures": {
+                                                                    "contains": {
+                                                                      "oneOf": [
+                                                                        {
+                                                                          "properties": {
+                                                                            "@componentDatatype": {
+                                                                              "const": "double"
+                                                                            },
+                                                                            "concept": {
+                                                                              "const": "baseline corrected reporter result"
+                                                                            },
+                                                                            "unit": {
+                                                                              "const": "(unitless)"
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      ]
+                                                                    },
+                                                                    "maxItems": 1,
+                                                                    "minItems": 1
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      },
+                                                      "baseline corrected reporter result": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002248",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "cycle threshold result (qPCR)": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002246",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "data processing document": {
+                                                        "properties": {
+                                                          "automatic baseline determination enabled setting": {
+                                                            "$asm.pattern": "value datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002237",
+                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tBooleanValue"
+                                                          },
+                                                          "automatic cycle threshold enabled setting": {
+                                                            "$asm.pattern": "value datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002235",
+                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tBooleanValue"
+                                                          },
+                                                          "baseline determination end cycle setting": {
+                                                            "$asm.pattern": "quantity datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002239",
+                                                            "allOf": [
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                              },
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%23"
+                                                              }
+                                                            ]
+                                                          },
+                                                          "baseline determination start cycle setting": {
+                                                            "$asm.pattern": "quantity datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002238",
+                                                            "allOf": [
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                              },
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%23"
+                                                              }
+                                                            ]
+                                                          },
+                                                          "cycle threshold value setting (qPCR)": {
+                                                            "$asm.pattern": "quantity datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002236",
+                                                            "allOf": [
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                              },
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                              }
+                                                            ]
+                                                          },
+                                                          "genotyping qPCR method identifier": {
+                                                            "$asm.pattern": "value datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002908",
+                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                          },
+                                                          "genotyping qPCR method setting (qPCR)": {
+                                                            "$asm.pattern": "quantity datum",
+                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002909",
+                                                            "allOf": [
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                              },
+                                                              {
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      },
+                                                      "genotyping qPCR result": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002910",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "normalized reporter data cube": {
+                                                        "$asm.pattern": "datacube",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002309",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                                                          },
+                                                          {
+                                                            "properties": {
+                                                              "cube-structure": {
+                                                                "properties": {
+                                                                  "dimensions": {
+                                                                    "maxItems": 1,
+                                                                    "minItems": 1,
+                                                                    "prefixItems": [
+                                                                      {
+                                                                        "properties": {
+                                                                          "@componentDatatype": {
+                                                                            "const": "double"
+                                                                          },
+                                                                          "concept": {
+                                                                            "const": "cycle count"
+                                                                          },
+                                                                          "unit": {
+                                                                            "const": "#"
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  "measures": {
+                                                                    "contains": {
+                                                                      "oneOf": [
+                                                                        {
+                                                                          "properties": {
+                                                                            "@componentDatatype": {
+                                                                              "const": "double"
+                                                                            },
+                                                                            "concept": {
+                                                                              "const": "normalized reporter result"
+                                                                            },
+                                                                            "unit": {
+                                                                              "const": "(unitless)"
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      ]
+                                                                    },
+                                                                    "maxItems": 1,
+                                                                    "minItems": 1
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      },
+                                                      "normalized reporter result": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002247",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/orderedItem"
+                                                  }
+                                                ]
+                                              },
+                                              "minItems": 1
+                                            }
+                                          }
+                                        },
+                                        "reporter data cube": {
+                                          "$asm.pattern": "datacube",
+                                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002911",
+                                          "allOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/cube.schema#/$defs/tDatacube"
+                                            },
+                                            {
+                                              "properties": {
+                                                "cube-structure": {
+                                                  "properties": {
+                                                    "dimensions": {
+                                                      "maxItems": 1,
+                                                      "minItems": 1,
+                                                      "prefixItems": [
+                                                        {
+                                                          "properties": {
+                                                            "@componentDatatype": {
+                                                              "const": "double"
+                                                            },
+                                                            "concept": {
+                                                              "const": "cycle count"
+                                                            },
+                                                            "unit": {
+                                                              "const": "#"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    },
+                                                    "measures": {
+                                                      "contains": {
+                                                        "oneOf": [
+                                                          {
+                                                            "properties": {
+                                                              "@componentDatatype": {
+                                                                "const": "double"
+                                                              },
+                                                              "concept": {
+                                                                "const": "fluorescence"
+                                                              },
+                                                              "unit": {
+                                                                "const": "RFU"
+                                                              }
+                                                            }
+                                                          }
+                                                        ]
+                                                      },
+                                                      "maxItems": 1,
+                                                      "minItems": 1
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "sample document": {
+                                          "properties": {
+                                            "mass concentration": {
+                                              "$asm.pattern": "quantity datum",
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/pg~1mL"
+                                                }
+                                              ]
+                                            },
+                                            "vial location identifier": {
+                                              "$asm.pattern": "value datum",
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002464",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                            },
+                                            "well location identifier": {
+                                              "$asm.pattern": "value datum",
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002240",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                            },
+                                            "well plate identifier": {
+                                              "$asm.pattern": "value datum",
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002888",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                            }
+                                          },
+                                          "required": [
+                                            "location identifier"
+                                          ]
+                                        },
+                                        "target DNA description": {
+                                          "$asm.pattern": "value datum",
+                                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002241",
+                                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                        }
+                                      },
+                                      "required": [
+                                        "measurement identifier",
+                                        "measurement time"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              "plate well count": {
+                                "$asm.pattern": "quantity datum",
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002231",
+                                "allOf": [
+                                  {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                  },
+                                  {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%23"
+                                  }
+                                ]
+                              },
+                              "well volume": {
+                                "$asm.pattern": "quantity datum",
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002232",
+                                "allOf": [
+                                  {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                  },
+                                  {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%CE%BCL"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "experimental data identifier",
+                              "experiment type",
+                              "container type",
+                              "well volume"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "qpcr document"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/asm"
+    }
+  ],
+  "required": [
+    "$asm.manifest"
+  ]
+}

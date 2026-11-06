@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_example05.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "appbio_quantstudio_example05.txt",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
@@ -138,7 +138,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "experimental data identifier": "QuantStudio96-Well Comparative Ct Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -275,7 +276,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "experimental data identifier": "QuantStudio96-Well Comparative Ct Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -350,7 +352,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "experimental data identifier": "QuantStudio96-Well Comparative Ct Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",

@@ -7,7 +7,7 @@ from typing import Any, TypeVar
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import SampleRoleType
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2026._03.qpcr import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
     AppBioQuantStudioReader,
