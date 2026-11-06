@@ -34,13 +34,13 @@ def main() -> None:
         print("Aborted.")
         sys.exit(0)
 
-    # Publish main allotropy package
-    print("\n📤 Publishing allotropy...")
-    run_command(["hatch", "publish", *extra_args], ROOT)
-
-    # Publish allotropy-testdata package
+    # Publish allotropy-testdata first: allotropy[testdata] requires it, so the
+    # dependency must exist on the index before allotropy references it.
     print("\n📤 Publishing allotropy-testdata...")
     run_command(["hatch", "publish", *extra_args], ROOT / "testdata")
+
+    print("\n📤 Publishing allotropy...")
+    run_command(["hatch", "publish", *extra_args], ROOT)
 
     print("\n✅ Successfully published both packages!")
 

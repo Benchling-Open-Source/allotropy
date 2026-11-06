@@ -50,13 +50,35 @@ from allotropy_testdata import get_file
 input_file = get_file("appbio_quantstudio", "appbio_quantstudio_example01.txt")
 ```
 
+## What is included
+
+Only the contents of `tests/parsers/*/testdata/` are packaged (no test code). Files larger than 10 MB are excluded to keep the wheel within PyPI's size limit. The excluded files are:
+
+- `cytiva_biacore_t200_evaluation`: `biacore_evaluation_module_example.bme` (232 MB), `biacore_evaluation_module_example3.bme` (141 MB), `biacore_evaluation_module_example4.bme` (78 MB)
+- `cytiva_biacore_insight`: `Insight evaluaiton software kinetics and affinity.json`
+- `appbio_quantstudio_designandanalysis`: four large negative-case files under `testdata/invalid/`
+
+Because of this, a few inputs available in the repository are missing from the package. Get them from the [repository](https://github.com/Benchling-Open-Source/allotropy) if needed.
+
+## File pairing
+
+`get_test_files` follows the convention of allotropy's own parser tests:
+
+- Files are found recursively under a vendor's `testdata/` folder.
+- The expected output of `<dir>/x.ext` is `<dir>/x.json`.
+- Parsers with JSON input keep inputs in an `input/` folder; `<dir>/input/x.json` is paired with `<dir>/output/x.json`.
+- A `.rslt` folder is a single input.
+- Paths containing `error`, `exclude` or `invalid` are negative cases. They are not returned as inputs but can be read with `get_file("vendor", "errors/name.ext")`.
+
 ## Versioning
 
-This package is versioned in lockstep with the main allotropy package. Version `0.1.116` of allotropy-testdata contains test files that correspond to allotropy `0.1.116`.
+`allotropy-testdata` is versioned independently of allotropy. Its version starts at the allotropy version it was first released with and is bumped (in `testdata/src/allotropy_testdata/__about__.py`) only when test data changes. The `testdata` extra of allotropy requires `allotropy-testdata >= <version>`, so raise that minimum when a release of allotropy depends on newer data.
 
-## Size Warning
+Release with `scripts/build_all.py` and `scripts/publish_all.py` (publishing is interactive). Only a wheel is built for allotropy-testdata, since an sdist would not contain the data.
 
-This package is significantly larger (~600MB) than the main allotropy package due to containing binary and data files. It is intended as an optional dependency for testing purposes.
+## Size
+
+The wheel is about 54 MB. It is intended as an optional dependency for testing purposes.
 
 ## License
 

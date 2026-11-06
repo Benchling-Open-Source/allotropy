@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Build both allotropy and allotropy-testdata packages."""
+"""Build both allotropy and allotropy-testdata packages.
+
+The two distributions are versioned independently.
+"""
 
 from pathlib import Path
 import subprocess
@@ -31,12 +34,13 @@ def main() -> None:
 
     # Build allotropy-testdata package
     print("\n📦 Building allotropy-testdata...")
-    run_command(["hatch", "build", "--clean"], ROOT / "testdata")
+    # Wheel only: an sdist would not contain the test data.
+    run_command(["hatch", "build", "--clean", "-t", "wheel"], ROOT / "testdata")
 
     print("\n✅ Successfully built both packages!")
-    print(f"\nBoth packages built to: {ROOT / 'dist'}")
-    print("  - allotropy-0.1.116-py3-none-any.whl")
-    print("  - allotropy_testdata-0.1.116-py3-none-any.whl")
+    for dist_dir in (ROOT / "dist", ROOT / "testdata" / "dist"):
+        for artifact in sorted(dist_dir.glob("*")):
+            print(f"  - {artifact} ({artifact.stat().st_size / 1e6:.1f} MB)")
 
 
 if __name__ == "__main__":

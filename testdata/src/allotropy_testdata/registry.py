@@ -63,51 +63,73 @@ def get_vendor_dir(vendor: str) -> Path:
     return vendor_dir
 
 
+_EXCLUDED_KEYWORDS = ("error", "exclude", "invalid")
+_FOLDER_INPUT_SUFFIXES = (".rslt",)
+_JSON_INPUT_DIR = "input"
+_JSON_OUTPUT_DIR = "output"
+
+
+def _is_input_file(vendor_dir: Path, path: Path) -> bool:
+    relative = path.relative_to(vendor_dir)
+    if any(part.startswith(".") or part == "__pycache__" for part in relative.parts):
+        return False
+    if any(keyword in relative.as_posix().lower() for keyword in _EXCLUDED_KEYWORDS):
+        return False
+    if path.is_dir():
+        return path.suffix in _FOLDER_INPUT_SUFFIXES
+    if any(parent.suffix in _FOLDER_INPUT_SUFFIXES for parent in relative.parents):
+        return False
+    # Parsers with JSON input keep inputs in an input/ folder, so .json is only an
+    # output elsewhere.
+    if relative.parent.name == _JSON_INPUT_DIR:
+        return True
+    return path.suffix.lower() not in (".json", ".parquet", ".py", ".pyc")
+
+
+def _expected_output_path(path: Path) -> Path:
+    if path.parent.name == _JSON_INPUT_DIR:
+        return (path.parent.parent / _JSON_OUTPUT_DIR / path.name).with_suffix(".json")
+    return path.with_suffix(".json")
+
+
 def get_input_files(vendor: str) -> list[Path]:
-    """Get all input files for a vendor.
+    """Get all positive-case input files for a vendor.
+
+    Mirrors allotropy's own parser tests: files are found recursively, JSON files
+    are inputs only when they live in an ``input/`` folder, ``.rslt`` folders are
+    inputs as a whole, and paths containing "error", "exclude" or "invalid" are
+    negative-case files that are not returned (use ``get_file`` to access them).
 
     Args:
         vendor: Vendor name (e.g., 'appbio_quantstudio')
 
     Returns:
-        List of paths to input files (sorted by name)
+        List of paths to input files (sorted)
     """
     vendor_dir = get_vendor_dir(vendor)
-
-    # Get all files that are not .json (outputs are .json)
-    input_files = [
-        f
-        for f in vendor_dir.iterdir()
-        if f.is_file() and f.suffix != ".json" and not f.name.startswith(".")
-    ]
-    return sorted(input_files)
+    return sorted(
+        path for path in vendor_dir.rglob("*") if _is_input_file(vendor_dir, path)
+    )
 
 
 def get_output_files(vendor: str) -> list[Path]:
-    """Get all output files (expected ASM JSON) for a vendor.
+    """Get the expected ASM JSON output for each input file of a vendor.
 
     Args:
         vendor: Vendor name (e.g., 'appbio_quantstudio')
 
     Returns:
-        List of paths to output .json files (sorted by name)
+        List of paths to expected output .json files (sorted)
     """
-    vendor_dir = get_vendor_dir(vendor)
-
-    # Outputs are always .json files
-    output_files = [
-        f
-        for f in vendor_dir.iterdir()
-        if f.is_file() and f.suffix == ".json" and not f.name.startswith(".")
-    ]
-    return sorted(output_files)
+    return sorted(get_test_files(vendor).values())
 
 
 def get_test_files(vendor: str) -> dict[Path, Path]:
     """Get all input/output file pairs for a vendor.
 
-    Matches input files to their corresponding output .json files by stem name.
-    For example: 'example01.txt' -> 'example01.json'
+    The expected output of ``<dir>/x.ext`` is ``<dir>/x.json``. For parsers with
+    JSON input, ``<dir>/input/x.json`` is paired with ``<dir>/output/x.json``.
+    Inputs without an existing expected output are omitted.
 
     Args:
         vendor: Vendor name (e.g., 'appbio_quantstudio')
@@ -115,20 +137,12 @@ def get_test_files(vendor: str) -> dict[Path, Path]:
     Returns:
         Dictionary mapping input file paths to output file paths
     """
-    input_files = get_input_files(vendor)
-    output_files = get_output_files(vendor)
-
-    # Create a map of stem -> output file
-    output_map = {f.stem: f for f in output_files}
-
-    # Match inputs to outputs by stem
-    test_pairs: dict[Path, Path] = {}
-    for input_file in input_files:
-        output_file = output_map.get(input_file.stem)
-        if output_file:
-            test_pairs[input_file] = output_file
-
-    return test_pairs
+    pairs: dict[Path, Path] = {}
+    for input_file in get_input_files(vendor):
+        output_file = _expected_output_path(input_file)
+        if output_file.is_file():
+            pairs[input_file] = output_file
+    return pairs
 
 
 def get_file(vendor: str, filename: str) -> Path:

@@ -71,7 +71,7 @@ dependencies = [
 
 [project.optional-dependencies]
 testdata = [
-  "allotropy-testdata == 0.1.116",
+  "allotropy-testdata >= 0.1.151",
 ]
 
 [project.urls]
@@ -232,7 +232,7 @@ cov = [
 ]
 
 [tool.pytest.ini_options]
-pythonpath = "src"
+pythonpath = ["src", "testdata/src"]
 markers = [
   "long: mark a test that takes a long time to run",
 ]
