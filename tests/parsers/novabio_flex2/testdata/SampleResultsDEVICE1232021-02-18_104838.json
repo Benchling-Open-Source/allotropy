@@ -1,6 +1,20 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/BENCHLING/2024/09/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
+        "data system document": {
+            "ASM file identifier": "SampleResultsDEVICE1232021-02-18_104838.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_novabio_flex2",
+            "ASM converter version": "0.1.143",
+            "file name": "SampleResultsDEVICE1232021-02-18_104838.csv",
+            "software name": "NovaBio Flex",
+            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsDEVICE1232021-02-18_104838.csv"
+        },
+        "device system document": {
+            "device identifier": "DEVICE123",
+            "model number": "Flex2",
+            "product manufacturer": "Nova Biomedical"
+        },
         "solution analyzer document": [
             {
                 "measurement aggregate document": {
@@ -9,15 +23,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.51,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 3.94
+                                            "Chemistry Flow Time": 7.5,
+                                            "pH / Gas Flow Time": 3.94,
+                                            "Cell Density Flow": 5.51
                                         }
                                     }
                                 ]
@@ -28,9 +42,13 @@
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.34,
+                                    "PCO2 @ Temp": 10.3,
+                                    "PO2 @ Temp": 197.1,
+                                    "Sample Time": "2/18/2021  10:28:04 AM"
                                 }
                             },
                             "analyte aggregate document": {
@@ -105,15 +123,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "cell-counting",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.51,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 3.94
+                                            "Chemistry Flow Time": 7.5,
+                                            "pH / Gas Flow Time": 3.94,
+                                            "Cell Density Flow": 5.51
                                         }
                                     }
                                 ]
@@ -124,30 +142,34 @@
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.34,
+                                    "PCO2 @ Temp": 10.3,
+                                    "PO2 @ Temp": 197.1,
+                                    "Sample Time": "2/18/2021  10:28:04 AM"
                                 }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "viability (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
                                             }
                                         },
+                                        "viability (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "%"
+                                        },
                                         "total cell density (cell counter)": {
                                             "value": 0.17,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.0,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "total cell count": {
@@ -166,15 +188,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.51,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 3.94
+                                            "Chemistry Flow Time": 7.5,
+                                            "pH / Gas Flow Time": 3.94,
+                                            "Cell Density Flow": 5.51
                                         }
                                     }
                                 ]
@@ -185,9 +207,13 @@
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.34,
+                                    "PCO2 @ Temp": 10.3,
+                                    "PO2 @ Temp": 197.1,
+                                    "Sample Time": "2/18/2021  10:28:04 AM"
                                 }
                             },
                             "pO2": {
@@ -211,15 +237,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "osmolality-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.51,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 3.94
+                                            "Chemistry Flow Time": 7.5,
+                                            "pH / Gas Flow Time": 3.94,
+                                            "Cell Density Flow": 5.51
                                         }
                                     }
                                 ]
@@ -230,9 +256,13 @@
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.34,
+                                    "PCO2 @ Temp": 10.3,
+                                    "PO2 @ Temp": 197.1,
+                                    "Sample Time": "2/18/2021  10:28:04 AM"
                                 }
                             },
                             "osmolality": {
@@ -244,15 +274,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.51,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 3.94
+                                            "Chemistry Flow Time": 7.5,
+                                            "pH / Gas Flow Time": 3.94,
+                                            "Cell Density Flow": 5.51
                                         }
                                     }
                                 ]
@@ -263,9 +293,13 @@
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.34,
+                                    "PCO2 @ Temp": 10.3,
+                                    "PO2 @ Temp": 197.1,
+                                    "Sample Time": "2/18/2021  10:28:04 AM"
                                 }
                             },
                             "pH": {
@@ -289,15 +323,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.57,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.4,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 4.0
+                                            "Chemistry Flow Time": 7.57,
+                                            "pH / Gas Flow Time": 4.0,
+                                            "Cell Density Flow": 5.4
                                         }
                                     }
                                 ]
@@ -308,9 +342,13 @@
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.262,
+                                    "PCO2 @ Temp": 14.5,
+                                    "PO2 @ Temp": 211.9,
+                                    "Sample Time": "2/18/2021  10:33:17 AM"
                                 }
                             },
                             "analyte aggregate document": {
@@ -385,15 +423,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "cell-counting",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.57,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.4,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 4.0
+                                            "Chemistry Flow Time": 7.57,
+                                            "pH / Gas Flow Time": 4.0,
+                                            "Cell Density Flow": 5.4
                                         }
                                     }
                                 ]
@@ -404,30 +442,34 @@
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.262,
+                                    "PCO2 @ Temp": 14.5,
+                                    "PO2 @ Temp": 211.9,
+                                    "Sample Time": "2/18/2021  10:33:17 AM"
                                 }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "viability (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 10.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "data processing document": {
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
                                             }
                                         },
+                                        "viability (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "%"
+                                        },
                                         "total cell density (cell counter)": {
                                             "value": 0.18,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 10.0,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "total cell count": {
@@ -446,15 +488,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.57,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.4,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 4.0
+                                            "Chemistry Flow Time": 7.57,
+                                            "pH / Gas Flow Time": 4.0,
+                                            "Cell Density Flow": 5.4
                                         }
                                     }
                                 ]
@@ -465,9 +507,13 @@
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.262,
+                                    "PCO2 @ Temp": 14.5,
+                                    "PO2 @ Temp": 211.9,
+                                    "Sample Time": "2/18/2021  10:33:17 AM"
                                 }
                             },
                             "pO2": {
@@ -491,15 +537,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "osmolality-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.57,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.4,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 4.0
+                                            "Chemistry Flow Time": 7.57,
+                                            "pH / Gas Flow Time": 4.0,
+                                            "Cell Density Flow": 5.4
                                         }
                                     }
                                 ]
@@ -510,9 +556,13 @@
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.262,
+                                    "PCO2 @ Temp": 14.5,
+                                    "PO2 @ Temp": 211.9,
+                                    "Sample Time": "2/18/2021  10:33:17 AM"
                                 }
                             },
                             "osmolality": {
@@ -524,15 +574,15 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.57,
-                                            "Vessel Pressure (psi)": 0.0,
-                                            "Cell Density Flow": 5.4,
                                             "Valid Images": 47.0,
+                                            "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
-                                            "pH / Gas Flow Time": 4.0
+                                            "Chemistry Flow Time": 7.57,
+                                            "pH / Gas Flow Time": 4.0,
+                                            "Cell Density Flow": 5.4
                                         }
                                     }
                                 ]
@@ -543,9 +593,13 @@
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:1",
                                     "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "pH @ Temp": 7.262,
+                                    "PCO2 @ Temp": 14.5,
+                                    "PO2 @ Temp": 211.9,
+                                    "Sample Time": "2/18/2021  10:33:17 AM"
                                 }
                             },
                             "pH": {
@@ -569,12 +623,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.78,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.78,
                                             "pH / Gas Flow Time": 3.88
                                         }
                                     }
@@ -586,8 +640,12 @@
                                 "sample identifier": "SAMPLE 0003",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.288,
+                                    "PCO2 @ Temp": 13.8,
+                                    "PO2 @ Temp": 182.0,
+                                    "Sample Time": "2/18/2021  10:38:33 AM"
                                 }
                             },
                             "analyte aggregate document": {
@@ -662,12 +720,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.78,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.78,
                                             "pH / Gas Flow Time": 3.88
                                         }
                                     }
@@ -679,8 +737,12 @@
                                 "sample identifier": "SAMPLE 0003",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.288,
+                                    "PCO2 @ Temp": 13.8,
+                                    "PO2 @ Temp": 182.0,
+                                    "Sample Time": "2/18/2021  10:38:33 AM"
                                 }
                             },
                             "pO2": {
@@ -704,12 +766,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.78,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.78,
                                             "pH / Gas Flow Time": 3.88
                                         }
                                     }
@@ -721,8 +783,12 @@
                                 "sample identifier": "SAMPLE 0003",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.288,
+                                    "PCO2 @ Temp": 13.8,
+                                    "PO2 @ Temp": 182.0,
+                                    "Sample Time": "2/18/2021  10:38:33 AM"
                                 }
                             },
                             "pH": {
@@ -746,12 +812,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.72,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.72,
                                             "pH / Gas Flow Time": 3.83
                                         }
                                     }
@@ -763,8 +829,12 @@
                                 "sample identifier": "SAMPLE 0004",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.215,
+                                    "PCO2 @ Temp": 17.9,
+                                    "PO2 @ Temp": 154.6,
+                                    "Sample Time": "2/18/2021  10:41:08 AM"
                                 }
                             },
                             "analyte aggregate document": {
@@ -839,12 +909,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.72,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.72,
                                             "pH / Gas Flow Time": 3.83
                                         }
                                     }
@@ -856,8 +926,12 @@
                                 "sample identifier": "SAMPLE 0004",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.215,
+                                    "PCO2 @ Temp": 17.9,
+                                    "PO2 @ Temp": 154.6,
+                                    "Sample Time": "2/18/2021  10:41:08 AM"
                                 }
                             },
                             "pO2": {
@@ -881,12 +955,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.72,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.72,
                                             "pH / Gas Flow Time": 3.83
                                         }
                                     }
@@ -898,8 +972,12 @@
                                 "sample identifier": "SAMPLE 0004",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.215,
+                                    "PCO2 @ Temp": 17.9,
+                                    "PO2 @ Temp": 154.6,
+                                    "Sample Time": "2/18/2021  10:41:08 AM"
                                 }
                             },
                             "pH": {
@@ -923,12 +1001,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.5,
                                             "pH / Gas Flow Time": 3.88
                                         }
                                     }
@@ -940,8 +1018,12 @@
                                 "sample identifier": "SAMPLE 0005",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.252,
+                                    "PCO2 @ Temp": 15.1,
+                                    "PO2 @ Temp": 158.3,
+                                    "Sample Time": "2/18/2021  10:43:33 AM"
                                 }
                             },
                             "analyte aggregate document": {
@@ -1016,12 +1098,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.5,
                                             "pH / Gas Flow Time": 3.88
                                         }
                                     }
@@ -1033,8 +1115,12 @@
                                 "sample identifier": "SAMPLE 0005",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.252,
+                                    "PCO2 @ Temp": 15.1,
+                                    "PO2 @ Temp": 158.3,
+                                    "Sample Time": "2/18/2021  10:43:33 AM"
                                 }
                             },
                             "pO2": {
@@ -1058,12 +1144,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.5,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.5,
                                             "pH / Gas Flow Time": 3.88
                                         }
                                     }
@@ -1075,8 +1161,12 @@
                                 "sample identifier": "SAMPLE 0005",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.252,
+                                    "PCO2 @ Temp": 15.1,
+                                    "PO2 @ Temp": 158.3,
+                                    "Sample Time": "2/18/2021  10:43:33 AM"
                                 }
                             },
                             "pH": {
@@ -1100,12 +1190,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.73,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.73,
                                             "pH / Gas Flow Time": 4.02
                                         }
                                     }
@@ -1117,8 +1207,12 @@
                                 "sample identifier": "SAMPLE 0006",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.278,
+                                    "PCO2 @ Temp": 10.1,
+                                    "PO2 @ Temp": 176.2,
+                                    "Sample Time": "2/18/2021  10:46:05 AM"
                                 }
                             },
                             "analyte aggregate document": {
@@ -1193,12 +1287,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.73,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.73,
                                             "pH / Gas Flow Time": 4.02
                                         }
                                     }
@@ -1210,8 +1304,12 @@
                                 "sample identifier": "SAMPLE 0006",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.278,
+                                    "PCO2 @ Temp": 10.1,
+                                    "PO2 @ Temp": 176.2,
+                                    "Sample Time": "2/18/2021  10:46:05 AM"
                                 }
                             },
                             "pO2": {
@@ -1235,12 +1333,12 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
+                                        "device type": "solution-analyzer",
                                         "custom information document": {
-                                            "Chemistry Flow Time": 7.73,
                                             "Vessel Pressure (psi)": 0.0,
                                             "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 7.73,
                                             "pH / Gas Flow Time": 4.02
                                         }
                                     }
@@ -1252,8 +1350,12 @@
                                 "sample identifier": "SAMPLE 0006",
                                 "description": "Simple",
                                 "custom information document": {
+                                    "Pre-Dilution Multiplier": 1.0,
                                     "Chemistry Dilution Ratio": "1:1",
-                                    "Pre-Dilution Multiplier": 1.0
+                                    "pH @ Temp": 7.278,
+                                    "PCO2 @ Temp": 10.1,
+                                    "PO2 @ Temp": 176.2,
+                                    "Sample Time": "2/18/2021  10:46:05 AM"
                                 }
                             },
                             "pH": {
@@ -1270,20 +1372,6 @@
                 },
                 "analyst": "Unither"
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "SampleResultsDEVICE1232021-02-18_104838.json",
-            "data system instance identifier": "N/A",
-            "file name": "SampleResultsDEVICE1232021-02-18_104838.csv",
-            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsDEVICE1232021-02-18_104838.csv",
-            "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.105",
-            "software name": "NovaBio Flex"
-        },
-        "device system document": {
-            "device identifier": "DEVICE123",
-            "model number": "Flex2",
-            "product manufacturer": "Nova Biomedical"
-        }
+        ]
     }
 }

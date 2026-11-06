@@ -22,7 +22,36 @@ class ViCellBluParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman Coulter Vi-Cell BLU"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ViCellBluReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Brightfield"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            if isinstance(raw, bytes):
+                if raw[:2] == b"\xff\xfe":
+                    text = raw[2:].decode("utf-16-le", errors="replace")
+                elif raw[:2] == b"\xfe\xff":
+                    text = raw[2:].decode("utf-16-be", errors="replace")
+                else:
+                    text = raw.decode("utf-8", errors="replace")
+            else:
+                text = raw
+            lines = text.splitlines()
+            if not lines:
+                return False
+            # Summary export has results on the first line; the per-image detail
+            # export starts with sample settings and has results on the "Image#" line.
+            return any(
+                "Viability (%)" in header and "Viable (x10^6) cells/mL" in header
+                for header in [
+                    lines[0],
+                    *(line for line in lines if line.lstrip('"').startswith("Image#")),
+                ]
+            )
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return Data(

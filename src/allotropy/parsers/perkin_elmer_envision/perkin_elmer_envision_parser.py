@@ -23,7 +23,23 @@ class PerkinElmerEnvisionParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "PerkinElmer Envision"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"
+    SUPPORTED_DETECTION_MODES = "Absorbance, Fluorescence, Luminescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            for line in lines[:20]:
+                if line.startswith("Plate information"):
+                    return True
+            return False
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         lines = read_to_lines(named_file_contents)

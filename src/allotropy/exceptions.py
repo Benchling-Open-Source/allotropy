@@ -33,6 +33,10 @@ class AllotropeConversionError(AllotropyError):
     ...
 
 
+class AllotropeVendorNotFoundError(AllotropyError):
+    ...
+
+
 def list_values(values: Collection[Any] | type[Enum]) -> list[str]:
     return sorted([str(v.value if isinstance(v, Enum) else v) for v in values])
 

@@ -16,7 +16,6 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solu
     MeasurementGroup,
     Metadata,
 )
-from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
     BELOW_TEST_RANGE,
@@ -32,6 +31,8 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 UNIT_CONVERSIONS: dict[str, tuple[str, float]] = {
     "mg/L": ("g/L", 0.001),
     "mM": ("mmol/L", 1.0),
+    # Some files report a lowercase-liter variant that means the same thing.
+    "mmol/l": ("mmol/L", 1.0),
 }
 
 
@@ -62,6 +63,7 @@ class RawMeasurement:
     concentration_value: JsonFloat
     unit: str
     analyte_code: str
+    dilution_factor: str | None = None
     error: str | None = None
     custom_info: dict[str, Any] | None = None
 
@@ -69,6 +71,11 @@ class RawMeasurement:
     def create(data: SeriesData) -> RawMeasurement:
         flag = data.get(str, "flag", "").strip()
         error = FLAG_TO_ERROR[flag] if flag else None
+
+        # V6/V7 files report a dilution factor (e.g. "1/5") for measurements that were
+        # diluted before reading. The same analyte may be measured at multiple dilutions
+        # in one sample, so it distinguishes otherwise-identical measurements.
+        dilution_factor = data.get(str, "dilution factor", "").strip() or None
 
         concentration_value = data.get(float, "concentration value", NaN)
 
@@ -87,6 +94,7 @@ class RawMeasurement:
             value,
             unit,
             data[str, "analyte code"],
+            dilution_factor,
             error,
             custom_info=dict(
                 sorted(
@@ -96,6 +104,7 @@ class RawMeasurement:
                             "analyte code": data.get(str, "analyte code"),
                             "record type": data.get(str, "row type"),
                             "flag": error or None,
+                            "dilution factor": dilution_factor,
                         },
                         **data.get_unread(
                             skip={
@@ -142,7 +151,9 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
     current_measurement_time = measurements[0].measurement_time
     previous_measurement_time = current_measurement_time
     for analyte in measurements:
-        analyte_id = f"{analyte.name}_{analyte.analyte_code}"
+        # Include dilution factor in the id so the same analyte measured at different
+        # dilutions within a group is not treated as a duplicate measurement.
+        analyte_id = f"{analyte.name}_{analyte.analyte_code}_{analyte.dilution_factor}"
         time_diff = parser.parse(analyte.measurement_time) - parser.parse(
             previous_measurement_time
         )
@@ -151,16 +162,16 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
         if analyte_id in groups[current_measurement_time]:
             if analyte.concentration_value is NaN:
                 continue
-            # NOTE: if this fails, it's probably because MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE is too big
-            # and we're erroneously grouping two groups of measurements into one.
-            # We could potentially make this more robust by just splitting into a new group if a duplicate
-            # measurement is found, but cross that bridge when we come to it.
             if (
                 groups[current_measurement_time][analyte_id].concentration_value
                 is not NaN
             ):
-                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group. {analyte.concentration_value} vs {groups[current_measurement_time][analyte_id].concentration_value}"
-                raise AllotropyParserError(msg)
+                # A real duplicate measurement of the same analyte (same dilution) within
+                # the time window means we've observed a second round of measurements for
+                # the sample. Start a new group so both rounds are preserved rather than
+                # colliding. (This can also happen if MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE
+                # is too large and is erroneously merging distinct rounds.)
+                current_measurement_time = analyte.measurement_time
         groups[current_measurement_time][analyte_id] = analyte
         previous_measurement_time = analyte.measurement_time
 

@@ -61,7 +61,10 @@ def add_to_parser_factory(parser_name: str, enum_name: str, class_name: str) -> 
 
 
 def create_parser(
-    name: str, schema_path: Path, display_name: str | None = None
+    name: str,
+    schema_path: Path,
+    display_name: str | None = None,
+    detection_modes: str | None = None,
 ) -> None:
     name = name.replace(" ", "_").replace("-", "_").lower()
     enum_name = name.upper()
@@ -84,6 +87,8 @@ def create_parser(
     Path(tests_dir, "__init__.py").touch()
     Path(tests_dir, "testdata").mkdir()
 
+    detection_modes_value = f'"{detection_modes}"' if detection_modes else "None"
+
     template_replacements = {
         "PARSER_NAME": name,
         "CLASS_NAME_PREFIX": class_name_prefix,
@@ -92,6 +97,7 @@ def create_parser(
         "MODEL_IMPORT_PATH": import_path,
         "MAPPER_IMPORT_PATH": import_path.replace("models", "schema_mappers"),
         "MANIFEST": manifest,
+        "SUPPORTED_DETECTION_MODES": detection_modes_value,
     }
     write_template_files(
         parser_dir,
@@ -119,8 +125,15 @@ def create_parser(
 @click.option(
     "--display_name", help="Display name for parser, defaults to title case of NAME"
 )
+@click.option(
+    "--detection_modes",
+    help="Comma-separated detection modes (e.g. 'Absorbance, Fluorescence')",
+)
 def _create_parser(
-    name: str, schema_regex: str, display_name: str | None = None
+    name: str,
+    schema_regex: str,
+    display_name: str | None = None,
+    detection_modes: str | None = None,
 ) -> None:
     """Create parser with name NAME for schema found with SCHEMA_REGEX."""
     if "parser" in name.lower():
@@ -135,7 +148,7 @@ def _create_parser(
         msg = f"Found more than one schema with schema regex, please narrow down: {[str(p) for p in schema_paths]}"
         raise ValueError(msg)
 
-    create_parser(name, schema_paths[0], display_name)
+    create_parser(name, schema_paths[0], display_name, detection_modes)
 
     from allotropy.parser_factory import update_supported_instruments
 

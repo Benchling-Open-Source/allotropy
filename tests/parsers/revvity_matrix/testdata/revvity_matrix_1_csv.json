@@ -1,6 +1,18 @@
 {
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "revvity_matrix_1_csv.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_revvity_matrix",
+            "ASM converter version": "0.1.151",
+            "file name": "revvity_matrix_1_csv.csv",
+            "software name": "Revvity Matrix",
+            "UNC path": "tests/parsers/revvity_matrix/testdata/revvity_matrix_1_csv.csv"
+        },
+        "device system document": {
+            "device identifier": "N/A"
+        },
         "cell counting document": [
             {
                 "measurement aggregate document": {
@@ -18,17 +30,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_1",
                                         "viability (cell counter)": {
                                             "value": 87.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.28,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.62,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.28,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -55,6 +66,7 @@
                                             "value": 177.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_1",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 9.53,
                                             "unit": "µm"
@@ -85,17 +97,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_3",
                                         "viability (cell counter)": {
                                             "value": 87.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.23,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.56,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.23,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -122,6 +133,7 @@
                                             "value": 168.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_3",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.94,
                                             "unit": "µm"
@@ -152,17 +164,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_5",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.17,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.55,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.17,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -189,6 +200,7 @@
                                             "value": 195.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_5",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 11.59,
                                             "unit": "µm"
@@ -219,17 +231,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_7",
                                         "viability (cell counter)": {
                                             "value": 84.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.17,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.58,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.17,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -256,6 +267,7 @@
                                             "value": 209.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_7",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 11.04,
                                             "unit": "µm"
@@ -286,17 +298,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_9",
                                         "viability (cell counter)": {
                                             "value": 84.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.35,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.79,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.35,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -323,6 +334,7 @@
                                             "value": 226.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_9",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.93,
                                             "unit": "µm"
@@ -353,17 +365,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_11",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.11,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.49,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.11,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -390,6 +401,7 @@
                                             "value": 194.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_11",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 11.25,
                                             "unit": "µm"
@@ -420,17 +432,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_13",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.3,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.72,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.3,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -457,6 +468,7 @@
                                             "value": 217.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_13",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.85,
                                             "unit": "µm"
@@ -487,17 +499,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_15",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.02,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.37,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.02,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -524,6 +535,7 @@
                                             "value": 180.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_15",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.99,
                                             "unit": "µm"
@@ -554,17 +566,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_17",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.14,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.53,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.14,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -591,6 +602,7 @@
                                             "value": 203.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_17",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.95,
                                             "unit": "µm"
@@ -621,17 +633,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_19",
                                         "viability (cell counter)": {
                                             "value": 96.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 0.678,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 0.709,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.678,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -658,6 +669,7 @@
                                             "value": 16.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_19",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 15.54,
                                             "unit": "µm"
@@ -708,17 +720,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_21",
                                         "viability (cell counter)": {
                                             "value": 83.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.98,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.39,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.98,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -745,6 +756,7 @@
                                             "value": 209.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_21",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.95,
                                             "unit": "µm"
@@ -775,17 +787,16 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_23",
                                         "viability (cell counter)": {
                                             "value": 84.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.95,
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 2.33,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.95,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "dead cell density (cell counter)": {
@@ -812,6 +823,7 @@
                                             "value": 195.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_23",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 11.22,
                                             "unit": "µm"
@@ -842,16 +854,15 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_25",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
+                                        "total cell density (cell counter)": {
                                             "value": 1.83,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
+                                        "viable cell density (cell counter)": {
                                             "value": 1.83,
                                             "unit": "10^6 cells/mL"
                                         },
@@ -879,6 +890,7 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_25",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 12.96,
                                             "unit": "µm"
@@ -941,16 +953,15 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_27",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
+                                        "total cell density (cell counter)": {
                                             "value": 2.08,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
+                                        "viable cell density (cell counter)": {
                                             "value": 2.08,
                                             "unit": "10^6 cells/mL"
                                         },
@@ -978,6 +989,7 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_27",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 12.62,
                                             "unit": "µm"
@@ -1040,16 +1052,15 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_29",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
+                                        "total cell density (cell counter)": {
                                             "value": 1.81,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
+                                        "viable cell density (cell counter)": {
                                             "value": 1.81,
                                             "unit": "10^6 cells/mL"
                                         },
@@ -1077,6 +1088,7 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_29",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 13.02,
                                             "unit": "µm"
@@ -1139,16 +1151,15 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_31",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
+                                        "total cell density (cell counter)": {
                                             "value": 1.8,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
+                                        "viable cell density (cell counter)": {
                                             "value": 1.8,
                                             "unit": "10^6 cells/mL"
                                         },
@@ -1176,6 +1187,7 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_31",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 13.17,
                                             "unit": "µm"
@@ -1238,16 +1250,15 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_33",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
+                                        "total cell density (cell counter)": {
                                             "value": 1.73,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
+                                        "viable cell density (cell counter)": {
                                             "value": 1.73,
                                             "unit": "10^6 cells/mL"
                                         },
@@ -1275,6 +1286,7 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_33",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 11.83,
                                             "unit": "µm"
@@ -1337,16 +1349,15 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_35",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
+                                        "total cell density (cell counter)": {
                                             "value": 1.61,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell density (cell counter)": {
+                                        "viable cell density (cell counter)": {
                                             "value": 1.61,
                                             "unit": "10^6 cells/mL"
                                         },
@@ -1374,6 +1385,7 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_35",
                                         "average viable cell diameter (cell counter)": {
                                             "value": 10.74,
                                             "unit": "µm"
@@ -1420,18 +1432,6 @@
                     ]
                 }
             }
-        ],
-        "data system document": {
-            "ASM file identifier": "revvity_matrix_1_csv.json",
-            "data system instance identifier": "N/A",
-            "file name": "revvity_matrix_1_csv.csv",
-            "UNC path": "tests/parsers/revvity_matrix/testdata/revvity_matrix_1_csv.csv",
-            "ASM converter name": "allotropy_revvity_matrix",
-            "ASM converter version": "0.1.118",
-            "software name": "Revvity Matrix"
-        },
-        "device system document": {
-            "device identifier": "N/A"
-        }
+        ]
     }
 }

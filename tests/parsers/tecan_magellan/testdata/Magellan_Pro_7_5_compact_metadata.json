@@ -1,0 +1,214 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "data system document": {
+            "ASM file identifier": "Magellan_Pro_7_5_compact_metadata.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_tecan_magellan",
+            "ASM converter version": "0.1.143",
+            "file name": "Magellan_Pro_7_5_compact_metadata.xlsx",
+            "software name": "Magellan",
+            "UNC path": "tests/parsers/tecan_magellan/testdata/Magellan_Pro_7_5_compact_metadata.xlsx"
+        },
+        "device system document": {
+            "device identifier": "Example Device",
+            "equipment serial number": "000000000",
+            "model number": "N/A",
+            "product manufacturer": "Tecan"
+        },
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "Absorbance",
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 492.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Plate Description": "[Example_Plate] - Example 96 Well Plate",
+                                            "Range": "A1:B2",
+                                            "Action": "Move out"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "TECAN_MAGELLAN_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "Example_Plate_A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Example_Plate"
+                            },
+                            "compartment temperature": {
+                                "value": 0.0,
+                                "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.1,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2025-01-01T10:00:00+00:00",
+                    "plate well count": {
+                        "value": 4,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
+                    "container type": "well plate"
+                },
+                "analyst": "Example User"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "Absorbance",
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 492.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Plate Description": "[Example_Plate] - Example 96 Well Plate",
+                                            "Range": "A1:B2",
+                                            "Action": "Move out"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "TECAN_MAGELLAN_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "Example_Plate_B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Example_Plate"
+                            },
+                            "compartment temperature": {
+                                "value": 0.0,
+                                "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.2,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2025-01-01T10:00:00+00:00",
+                    "plate well count": {
+                        "value": 4,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
+                    "container type": "well plate"
+                },
+                "analyst": "Example User"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "Absorbance",
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 492.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Plate Description": "[Example_Plate] - Example 96 Well Plate",
+                                            "Range": "A1:B2",
+                                            "Action": "Move out"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "TECAN_MAGELLAN_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "Example_Plate_A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Example_Plate"
+                            },
+                            "compartment temperature": {
+                                "value": 0.0,
+                                "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.3,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2025-01-01T10:00:00+00:00",
+                    "plate well count": {
+                        "value": 4,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
+                    "container type": "well plate"
+                },
+                "analyst": "Example User"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "Absorbance",
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 492.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Plate Description": "[Example_Plate] - Example 96 Well Plate",
+                                            "Range": "A1:B2",
+                                            "Action": "Move out"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "TECAN_MAGELLAN_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "Example_Plate_B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Example_Plate"
+                            },
+                            "compartment temperature": {
+                                "value": 0.0,
+                                "unit": "degC"
+                            },
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2025-01-01T10:00:00+00:00",
+                    "plate well count": {
+                        "value": 4,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
+                    "container type": "well plate"
+                },
+                "analyst": "Example User"
+            }
+        ]
+    }
+}

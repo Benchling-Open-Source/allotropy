@@ -17,7 +17,23 @@ class CfxmaestroParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = CFXMaestroReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            raw = named_file_contents.contents.read(8192)
+            text = (
+                raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
+            )
+            lines = text.splitlines()
+            if not lines:
+                return False
+            header = lines[0]
+            return "Well" in header and "Fluor" in header
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = CFXMaestroReader(named_file_contents)

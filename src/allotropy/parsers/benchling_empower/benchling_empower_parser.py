@@ -1,3 +1,5 @@
+import json
+
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Model,
 )
@@ -22,7 +24,21 @@ class BenchlingEmpowerParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BenchlingEmpowerReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Absorbance"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            data = json.load(named_file_contents.contents)
+            return (
+                isinstance(data, dict)
+                and "values" in data
+                and isinstance(data["values"], dict)
+                and "fields" in data["values"]
+            )
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BenchlingEmpowerReader(named_file_contents)

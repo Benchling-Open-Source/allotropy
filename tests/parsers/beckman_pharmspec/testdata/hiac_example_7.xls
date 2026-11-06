@@ -1,0 +1,441 @@
+ <html> 
+<head> <link href= "" type="text/css" rel="stylesheet">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<style type="text/css">
+@media print {
+thead {display: table-header-group;}
+}
+</style>
+</head> 
+
+<body>
+
+
+<p align=center>
+<table border = 0 width = "100%" align = center>
+
+ <tr> 
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 18;font-family: Times New Roman;color: Blue;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" colspan = 4 valign = top >Run Counter Test</td>
+</tr>
+
+<tr>
+<td colspan=4>&nbsp;</td></tr>
+
+<tr>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Sample Name</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: MilliQ_end</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Sensor Model</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: HRLD150</td>
+</tr>
+
+<tr>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Container ID</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: MilliQ_end</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Sensor Serial Number</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 2310303276</td>
+</tr>
+
+<tr>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Project ID / Study</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: ABCL623 10L in-use T24h</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Operator Name</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: HIAC Admin</td>
+</tr>
+
+<tr>
+<td width = "25%" > </td>
+<td width = "25%" > </td>
+
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Sample Date</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 5/6/2026 2:28:58 PM</td>
+</tr>
+
+<tr>
+<td width = "25%" > </td>
+<td width = "25%" > </td>
+
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >View Volume (%)</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 100.00</td>
+</tr>
+</table>
+
+<table border = 0 width = "100%" align = center>
+
+ <tr> 
+<td colspan = 4 valign = top >&nbsp;</td>
+</tr>
+
+<tr>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Sample Volume (mL)</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 0.2</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >No Of Runs</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 4</td>
+
+</tr>
+
+<tr>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Tare Volume (mL)</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 0.2</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >Dilution Factor</td>
+
+<td width = "25%" style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;" valign = top >: 1</td>
+
+</tr>
+
+<tr>
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;">Run1 </td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: left;">: Discarded </td></tr>
+
+<tr>
+<td>&nbsp;</td></tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=1 width = "100%" align = center BORDERCOLOR=darkgray>
+<thead>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: Red;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" width = "16%"  valign = top>Run No.</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: Red;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" width = "16%" valign = top>Particle Size(&#181;m)</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: Red;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" width = "16%"  valign = top>Cumulative Count</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: Red;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" width = "16%"  valign = top>Differential Count</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: Red;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" width = "16%"  valign = top>Cumulative Counts/mL</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 14;font-family: Times New Roman;color: Red;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;" width = "16%"  valign = top>Differential Counts/mL</td>
+
+</tr>
+</thead>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top rowspan =4>Run 1</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>2.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>5.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>10.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>25.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top rowspan =4>Run 2</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>2.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>5.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>10.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>25.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top rowspan =4>Run 3</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>2.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>5.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>10.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>25.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top rowspan =4>Run 4</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>2.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>5.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>10.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>25.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top rowspan =4>Average</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>2.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>5.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>10.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+<tr>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>25.000</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+<td style = "VERTICAL-ALIGN: text-top;padding-right:2px;padding-left:2px;font-size: 12;font-family: Times New Roman;color: #400040;font-style: normal;font-weight: normal;text-decoration: none;text-align: right;" width = "16%"  valign = top>0.00</td>
+
+</tr>
+
+</table>
+
+<table border = 0 width = "100%" align = center>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+</table>
+</p>
+
+
+</body>
+</html>

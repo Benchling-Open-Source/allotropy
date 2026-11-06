@@ -3,8 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from io import StringIO
 import re
-from typing import Any
+from typing import Any, ClassVar
 
+import openpyxl
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
@@ -33,12 +34,34 @@ class ViCellData:
     version: XrVersion
 
 
+def _is_report_format(named_file_contents: NamedFileContents) -> bool:
+    """Detect the single-sample report format by checking for key-value layout."""
+    if named_file_contents.extension not in ("xls", "xlsx"):
+        return False
+    try:
+        wb = openpyxl.load_workbook(
+            named_file_contents.get_bytes_stream(), read_only=True, data_only=True
+        )
+        ws = wb[wb.sheetnames[0]]
+        rows = list(ws.iter_rows(min_row=4, max_row=4, values_only=True))
+        wb.close()
+        if rows and rows[0][0] == "Sample ID":
+            return True
+    except Exception:
+        return False
+    return False
+
+
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
-    reader: ViCellXRReader | ViCellXRTXTReader = (
-        ViCellXRTXTReader(named_file_contents)
-        if named_file_contents.extension == "txt"
-        else ViCellXRReader(named_file_contents)
-    )
+    if named_file_contents.extension == "txt":
+        reader: ViCellXRReader | ViCellXRTXTReader | ViCellXRReportReader = (
+            ViCellXRTXTReader(named_file_contents)
+        )
+    elif _is_report_format(named_file_contents):
+        named_file_contents.contents.seek(0)
+        reader = ViCellXRReportReader(named_file_contents)
+    else:
+        reader = ViCellXRReader(named_file_contents)
     return ViCellData(reader.data, reader.serial_number, reader.version)
 
 
@@ -125,6 +148,83 @@ class ViCellXRReader:
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
         return SeriesData(info)
+
+
+class ViCellXRReportReader:
+    """Reader for the single-sample report format exported by Vi-CELL XR 2.04."""
+
+    data: list[SeriesData]
+    serial_number: str | None
+    version: XrVersion
+
+    RESULTS_FIELDS: ClassVar[dict[str, int]] = {
+        "Total cells": 9,
+        "Viable cells": 10,
+        "Viability (%)": 11,
+        "Total cells/ml (x10^6)": 12,
+        "Viable cells/ml (x10^6)": 13,
+        "Avg. diam. (microns)": 14,
+        "Avg. circ.": 15,
+        "Images": 16,
+        "Average cells / image": 17,
+        "Avg. background intensity": 18,
+    }
+
+    SETTINGS_FIELDS: ClassVar[dict[str, int]] = {
+        "Cell type": 9,
+        "Minimum diameter (microns)": 10,
+        "Maximum diameter (microns)": 11,
+        "Minimum circularity": 12,
+        "Dilution factor": 13,
+        "Cell brightness (%)": 14,
+        "Cell sharpness": 15,
+        "Viable cell spot brightness (%)": 16,
+        "Viable cell spot area (%)": 17,
+        "Decluster degree": 18,
+        "Aspirate cycles": 19,
+        "Trypan blue mixing cycles": 20,
+    }
+
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
+        wb = openpyxl.load_workbook(
+            named_file_contents.get_bytes_stream(), read_only=True, data_only=True
+        )
+        ws = wb[wb.sheetnames[0]]
+        self.rows = list(ws.iter_rows(values_only=True))
+        wb.close()
+
+        self.version = _get_file_version(str(self.rows[0][0]))
+        self.serial_number = None
+        self.data = self._read_data()
+
+    def _read_data(self) -> list[SeriesData]:
+        data: dict[str, Any] = {}
+
+        data["Sample ID"] = self.rows[3][2]
+        data["File name"] = self.rows[4][2]
+        data[DATE_HEADER] = self.rows[5][2]
+        comment = self.rows[6][2] if len(self.rows) > 6 else None
+        if comment:
+            data["Comment"] = comment
+
+        for field, row_idx in self.RESULTS_FIELDS.items():
+            if row_idx < len(self.rows):
+                val = self.rows[row_idx][3]
+                if val is not None:
+                    data[field] = val
+
+        for field, row_idx in self.SETTINGS_FIELDS.items():
+            if row_idx < len(self.rows):
+                val = self.rows[row_idx][8]
+                if val is not None:
+                    data[field] = val
+
+        series = pd.Series(data)
+        series[DATE_HEADER] = pd.to_datetime(
+            series[DATE_HEADER],
+            format="%d %b %Y  %I:%M:%S %p",
+        )
+        return [SeriesData(series)]
 
 
 class ViCellXRTXTReader:
