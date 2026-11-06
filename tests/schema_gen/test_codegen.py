@@ -1007,7 +1007,9 @@ class TestSchemaCodeGeneratorGenerate:
         assert "experimental_data_identifier: Any" in source
         assert "from typing import Any" in source
 
-    def test_required_property_from_base_class_not_redeclared(self) -> None:
+    def test_required_property_from_base_class_inherited_undeclared_added(
+        self,
+    ) -> None:
         schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
         schemas = {
             schema_url: {
@@ -1022,7 +1024,7 @@ class TestSchemaCodeGeneratorGenerate:
                             {
                                 "type": "object",
                                 "properties": {"extra": {"type": "integer"}},
-                                "required": ["name"],
+                                "required": ["name", "experimental data identifier"],
                             },
                         ]
                     },
@@ -1034,6 +1036,7 @@ class TestSchemaCodeGeneratorGenerate:
         source = modules[schema_url].render()
         assert "class ChildType(ParentType):" in source
         assert "name: Any" not in source
+        assert "experimental_data_identifier: Any" in source
 
 
 # ---------------------------------------------------------------------------
