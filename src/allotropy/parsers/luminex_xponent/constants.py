@@ -66,6 +66,8 @@ STATISTIC_SECTIONS_CONF = {
 CALCULATED_DATA_SECTIONS: dict[str, str] = {
     "Net MFI": "RFU",
     "Avg Net MFI": "RFU",
+    "Result": "(unitless)",
+    "Avg Result": "(unitless)",
     "Test Result": "(unitless)",
     "% Recovery": "(unitless)",
     "%CV of Replicates": "(unitless)",
@@ -109,14 +111,24 @@ SINGLE_DATASET_RESULTS_METRIC_WORDS: set[str] = {
     "REGION",
     "BACKGROUND",
     "REPLICATE",
+    "REPLICATES",
     "RATIO",
+    "RESULT",
+    "RECOVERY",
+    "RANGE",
+    "COMMENTS",
+    "EXPECTED",
+    "CONCENTRATION",
 }
 
 # Allowed section names for Luminex Xponent reports. Any other name should raise an error upstream.
 ALLOWED_SECTION_NAMES: set[str] = {
     "Median",
     "Test Result",
+    "Result",
+    "Avg Result",
     "Range",
+    "Avg Range",
     "Net MFI",
     "Count",
     "Mean",
@@ -127,6 +139,7 @@ ALLOWED_SECTION_NAMES: set[str] = {
     "Trimmed Std Dev",
     "Std Dev",
     "% CV",
+    "%CV Replicates",
     "Expected Result",
     "Units",
     "Per Bead Count",
@@ -134,4 +147,10 @@ ALLOWED_SECTION_NAMES: set[str] = {
     "Analysis Types",
     "Audit Logs",
     "Warnings/Errors",
+    "Comments",
+    "Standard Expected Concentration",
+    "Control Expected Concentration",
+    "Control Range - Low",
+    "Control Range - High",
+    "Analysis Coefficients",
 }
