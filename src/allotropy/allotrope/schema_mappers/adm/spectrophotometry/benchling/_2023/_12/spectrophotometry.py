@@ -3,12 +3,15 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
+)
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    AbsorptionSpectrumDataCube,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -28,21 +31,22 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueKiloDalton,
     TQuantityValueMicroliter,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
-    TQuantityValuePerMolarPerCentimeter,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-    TDatacube,
-    TQuantityValue,
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -148,7 +152,7 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     brand_name: str | None = None
-    container_type: ContainerType | None = None
+    container_type: ContainerType | str | None = None
 
     file_name: str | None = None
     data_system_instance_id: str | None = None
@@ -179,9 +183,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    unc_path=data.metadata.unc_path,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                 ),
@@ -207,7 +211,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         assert_not_none(measurement_group.measurement_time)
                     ),
                     experiment_type=measurement_group.experiment_type,
-                    container_type=metadata.container_type,
+                    container_type=metadata.container_type,  # type: ignore[arg-type]
                     measurement_document=[
                         self._get_measurement_document_item(measurement, metadata)
                         for measurement in measurement_group.measurements
@@ -220,20 +224,22 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
-                measurement, metadata
-            )
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement, metadata)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
-            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
-                measurement, metadata
-            )
-        else:
-            msg = f"Invalid measurement type: {measurement.type_}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                return self._get_ultraviolet_absorbance_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.FLUORESCENCE:
+                return self._get_fluorescence_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
+                return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+                    measurement, metadata
+                )
+            case _:
+                msg = f"Invalid measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -307,7 +313,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
             absorption_spectrum_data_cube=assert_not_none(
-                get_data_cube(measurement.data_cube, TDatacube),
+                get_data_cube(measurement.data_cube, AbsorptionSpectrumDataCube),
                 msg="Parser must provide absorption spectrum data cube",
             ),
         )
@@ -408,13 +414,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 "E1%": quantity_or_none(
                     TQuantityValueUnitless, data.custom_info.get("E1%")
                 ),
-                "ext. coeff x10e3": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter,
-                    data.custom_info.get("ext. coeff x10e3"),
+                "ext. coeff x10e3": (
+                    TQuantityValue(value=v, unit="M-1cm-1")
+                    if (v := data.custom_info.get("ext. coeff x10e3")) is not None
+                    else None
                 ),
-                "ext.c.": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter,
-                    data.custom_info.get("ext.c. (l/(mol*cm))"),
+                "ext.c.": (
+                    TQuantityValue(value=v, unit="M-1cm-1")
+                    if (v := data.custom_info.get("ext.c. (l/(mol*cm))")) is not None
+                    else None
                 ),
                 "conc. factor": quantity_or_none(
                     TQuantityValueNanogramPerMicroliter,
@@ -439,34 +447,12 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDocument] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.uuid,
-                    calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=assert_not_none(calculated_data_item.unit),
-                    ),
-                    data_source_aggregate_document=(
-                        DataSourceAggregateDocument(
-                            data_source_document=[
-                                DataSourceDocumentItem(
-                                    data_source_identifier=item.reference.uuid,
-                                    data_source_feature=item.feature,
-                                )
-                                for item in calculated_data_item.data_sources
-                            ]
-                        )
-                        if calculated_data_item.data_sources
-                        else None
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
         )

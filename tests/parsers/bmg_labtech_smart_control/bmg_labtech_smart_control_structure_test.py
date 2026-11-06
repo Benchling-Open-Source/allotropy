@@ -4,7 +4,9 @@ from unittest.mock import MagicMock, patch
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+    SampleRoleType,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reader import (
     BmgLabtechSmartControlReader,

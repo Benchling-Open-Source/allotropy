@@ -59,7 +59,12 @@ class FlowjoParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "wsp"
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, _named_file_contents: NamedFileContents) -> bool:
+        return True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         try:

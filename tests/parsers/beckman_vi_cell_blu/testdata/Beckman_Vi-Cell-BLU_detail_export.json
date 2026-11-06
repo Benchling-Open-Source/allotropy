@@ -1,0 +1,138 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-BLU_detail_export.json",
+            "data system instance identifier": "N/A",
+            "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
+            "ASM converter version": "0.1.147",
+            "file name": "Beckman_Vi-Cell-BLU_detail_export.csv",
+            "software name": "Vi-Cell BLU",
+            "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_detail_export.csv"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Vi-Cell BLU"
+        },
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "detection type": "brightfield",
+                                        "device type": "brightfield imager (cell counter)",
+                                        "custom information document": {
+                                            "Aspiration cycles": 3.0,
+                                            "Mixing cycles": 3.0,
+                                            "Wash": "Normal Wash"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_0",
+                            "measurement time": "2026-09-29T13:42:31+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Cell sharpness": 7.0,
+                                                "Minimum circularity": 0.5,
+                                                "Decluster degree": "Medium",
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Viable spot area (%)": 5.0,
+                                                "Average background intensity": 134.0,
+                                                "Bubble count": 0.0,
+                                                "Cluster count": 0.0
+                                            }
+                                        },
+                                        "viability (cell counter)": {
+                                            "value": 97.8,
+                                            "unit": "%"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.3063,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.2095,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 15.72,
+                                            "unit": "µm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 15.82,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 11528,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 11269,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.92,
+                                            "unit": "(unitless)"
+                                        },
+                                        "average viable cell circularity": {
+                                            "value": 0.93,
+                                            "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Average cells per image": 115.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "20-7"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images for analysis": 100.0,
+                                            "Images": 100.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Concentration Adjustment Factor (%)": 0.0,
+                                "ROW": "G",
+                                "COLUMN": 8.0,
+                                "Part number": "C01234",
+                                "Lot number": 100200.0,
+                                "Reagent": "Trypan Blue",
+                                "Expiration": "6/10/2027 12:00:00 AM",
+                                "In service date": "9/29/2026 12:00:00 AM",
+                                "Effective expiration": "12/28/2026 12:00:00 AM"
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-CELL"
+            }
+        ]
+    }
+}

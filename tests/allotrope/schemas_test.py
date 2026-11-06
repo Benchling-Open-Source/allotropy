@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from allotropy.allotrope.schema_parser.path_util import SCHEMA_DIR_PATH
+from allotropy.allotrope.path_util import SCHEMA_DIR_PATH
 
 
 def test_custom_schemas_have_changenotes() -> None:

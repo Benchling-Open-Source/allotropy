@@ -1,0 +1,102 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/metabolite-analyzer/REC/2024/03/metabolite-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "measurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "analyte aggregate document"
+      ],
+      "properties": {
+        "analyte aggregate document": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002319",
+          "$asm.pattern": "aggregate datum",
+          "required": [
+            "analyte document"
+          ],
+          "properties": {
+            "analyte document": {
+              "type": "array",
+              "$asm.array-ordered": false,
+              "$asm.array-mixed": false,
+              "$asm.pattern": "indexed datum",
+              "items": {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002320",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "analyte name": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001604",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema#/$defs/tStringValue"
+                  },
+                  "volume concentration": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002110",
+                    "$asm.pattern": "quantity datum",
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema#/$defs/tQuantityValue"
+                      },
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/mL~1L"
+                      }
+                    ]
+                  },
+                  "molar concentration": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002006",
+                    "$asm.pattern": "quantity datum",
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema#/$defs/tQuantityValue"
+                      },
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/mmol~1L"
+                      }
+                    ]
+                  },
+                  "mass concentration": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                    "$asm.pattern": "quantity datum",
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema#/$defs/tQuantityValue"
+                      },
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/g~1L"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "analyte name"
+                ],
+                "anyOf": [
+                  {
+                    "required": [
+                      "mass concentration"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "molar concentration"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "volume concentration"
+                    ]
+                  }
+                ]
+              },
+              "minItems": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

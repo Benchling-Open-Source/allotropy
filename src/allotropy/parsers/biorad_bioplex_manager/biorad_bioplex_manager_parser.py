@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import xml.etree.ElementTree as ET  # noqa: N817
+
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Model,
 )
@@ -26,7 +28,25 @@ class BioradBioplexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Bio-Rad Bio-Plex Manager"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xml"
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            tree = ET.parse(named_file_contents.contents)  # noqa: S314
+            root = tree.getroot()
+            child_tags = {
+                child.tag.split("}")[-1] if "}" in child.tag else child.tag
+                for child in root
+            }
+            return (
+                "Samples" in child_tags
+                and "Wells" in child_tags
+                and "PlateDimensions" in child_tags
+            )
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BioradBioplexReader(named_file_contents)

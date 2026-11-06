@@ -1,5 +1,7 @@
 """ Constants file for Thermo SkanIt"""
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
+    SampleRoleType,
+)
 
 SAMPLE_ROLE_MAPPINGS = {
     "Un": SampleRoleType.unknown_sample_role,

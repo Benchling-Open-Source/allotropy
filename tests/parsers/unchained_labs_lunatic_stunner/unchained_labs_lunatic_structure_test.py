@@ -143,9 +143,11 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
     calculated_data_dict = {data.name: data for data in (calculated_data or [])}
 
     for item in CALCULATED_DATA_LOOKUP[wavelength]:
-        if item["column"] in well_plate_data:
-            calculated_data_item = calculated_data_dict[item["name"]]
-            assert calculated_data_item.value == well_plate_data[item["column"]]
+        column = str(item["column"])
+        name = str(item["name"])
+        if column in well_plate_data:
+            calculated_data_item = calculated_data_dict[name]
+            assert calculated_data_item.value == well_plate_data[column]
 
 
 def test_create_well_plate() -> None:

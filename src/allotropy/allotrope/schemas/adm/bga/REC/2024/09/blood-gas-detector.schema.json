@@ -1,0 +1,62 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/bga/REC/2024/09/blood-gas-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "pO2": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002924",
+          "$asm.pattern": "quantity datum",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mmHg"
+            }
+          ]
+        },
+        "pCO2": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002923",
+          "$asm.pattern": "quantity datum",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mmHg"
+            }
+          ]
+        },
+        "carbon dioxide saturation": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002921",
+          "$asm.pattern": "quantity datum",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/%25"
+            }
+          ]
+        },
+        "oxygen saturation": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002922",
+          "$asm.pattern": "quantity datum",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/%25"
+            }
+          ]
+        }
+      },
+      "required": [
+        "pO2",
+        "pCO2"
+      ]
+    }
+  }
+}

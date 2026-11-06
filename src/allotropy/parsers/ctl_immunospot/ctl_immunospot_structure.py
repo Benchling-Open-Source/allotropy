@@ -5,12 +5,12 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueSquareMillimeter,
-    TQuantityValueUnitless,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
@@ -49,13 +49,15 @@ def _create_measurement(
 
     location_identifier = f"{well_row}{well_col}"
     data_processing_document = {
-        "Min. SpotSize": quantity_or_none(
-            TQuantityValueSquareMillimeter,
-            get_value_or_none(header_data, "Min. SpotSize"),
+        "Min. SpotSize": (
+            TQuantityValue(value=v, unit="mm^2")
+            if (v := get_value_or_none(header_data, "Min. SpotSize")) is not None
+            else None
         ),
-        "Max. SpotSize": quantity_or_none(
-            TQuantityValueSquareMillimeter,
-            get_value_or_none(header_data, "Max. SpotSize"),
+        "Max. SpotSize": (
+            TQuantityValue(value=v, unit="mm^2")
+            if (v := get_value_or_none(header_data, "Max. SpotSize")) is not None
+            else None
         ),
         "Spot Separation": quantity_or_none(
             TQuantityValueUnitless,

@@ -1,4 +1,6 @@
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
+    SampleRoleType,
+)
 
 BRAND_NAME = "Biacore"
 PRODUCT_MANUFACTURER = "Cytiva"

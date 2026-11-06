@@ -1,0 +1,244 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/absorbance/REC/2024/09/absorbance-spectrum-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "device control aggregate document": {
+          "properties": {
+            "device control document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "detector wavelength setting": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "detector bandwidth setting": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance wavelength setting": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001254",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance bandwidth setting": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001253",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance reference bandwidth setting": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001251",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance reference wavelength setting": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001252",
+                        "$asm.pattern": "quantity datum",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nm"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/orderedItem"
+                  }
+                ]
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "three-dimensional ultraviolet spectrum data cube": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002551",
+          "$asm.pattern": "datacube",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema#/$defs/tDatacube"
+            },
+            {
+              "properties": {
+                "cube-structure": {
+                  "properties": {
+                    "dimensions": {
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "prefixItems": [
+                        {
+                          "properties": {
+                            "concept": {
+                              "const": "retention time"
+                            },
+                            "unit": {
+                              "const": "s"
+                            },
+                            "@componentDatatype": {
+                              "const": "double"
+                            }
+                          }
+                        },
+                        {
+                          "properties": {
+                            "concept": {
+                              "const": "wavelength"
+                            },
+                            "unit": {
+                              "const": "nm"
+                            },
+                            "@componentDatatype": {
+                              "const": "double"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "measures": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "contains": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "concept": {
+                                "const": "absorbance"
+                              },
+                              "unit": {
+                                "const": "mAU"
+                              },
+                              "@componentDatatype": {
+                                "const": "double"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "processed data aggregate document": {
+          "properties": {
+            "processed data document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "peak list": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                        "$asm.pattern": "aggregate datum",
+                        "type": "object",
+                        "properties": {
+                          "peak": {
+                            "$asm.array-ordered": true,
+                            "$asm.array-mixed": false,
+                            "$asm.pattern": "indexed datum",
+                            "type": "array",
+                            "items": {
+                              "allOf": [
+                                {
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                                  "$asm.pattern": "aggregate datum",
+                                  "type": "object",
+                                  "properties": {
+                                    "peak height": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mAU"
+                                        }
+                                      ]
+                                    },
+                                    "peak area": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "oneOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mAU.s"
+                                            },
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mAU.mL"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/orderedItem"
+                                }
+                              ]
+                            },
+                            "minItems": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

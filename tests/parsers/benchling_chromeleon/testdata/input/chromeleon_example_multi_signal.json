@@ -1,0 +1,123 @@
+{
+  "device information": {
+    "pump model number": "VF-P10-A",
+    "uv model number": "VF-D40-A",
+    "sampler model number": "VF-A10-A"
+  },
+  "sequence": {
+    "sequence creation time": "2026-02-13T10:00:00+01:00",
+    "sequence directory": "ChromeleonLocal",
+    "sequence name": "Test_MultiSignal",
+    "sequence update operator": "operator1",
+    "sequence update time": "2026-02-14T15:00:00+01:00",
+    "custom formulas": []
+  },
+  "injections": [
+    {
+      "injection number": 1,
+      "injection name": "MQW",
+      "injection identifier": "99999999-8888-7777-6666-555555555555",
+      "injection time": "2026-02-14T21:52:50+01:00",
+      "injection position": "B:A1",
+      "injection status": "Finished",
+      "injection type": "Unknown",
+      "description": "",
+      "sample identifier": "",
+      "location identifier": "B:A1",
+      "last update user name": "Instrument Controller",
+      "creation user name": "PD01",
+      "detection type": "single channel",
+      "injection volume setting": 4.0,
+      "injection volume setting unit": "uL",
+      "custom variables": {
+        "ColumnValvePosition": 1.0
+      },
+      "signals": [
+        {
+          "signal name": "UV_VIS_1",
+          "detection type": "single channel",
+          "detector sampling rate setting": "unknown",
+          "detector offset setting": "unknown",
+          "bandwidth setting": 4.0,
+          "wavelength setting": 220.0,
+          "reference bandwidth setting": null,
+          "reference wavelength setting": null,
+          "chromatogram": {
+            "x": [
+              0.0,
+              0.5,
+              1.0,
+              1.5,
+              2.0
+            ],
+            "y": [
+              0.0,
+              0.5,
+              1.0,
+              0.5,
+              0.0
+            ]
+          },
+          "peaks": []
+        },
+        {
+          "signal name": "UV_VIS_2",
+          "detection type": "single channel",
+          "detector sampling rate setting": "unknown",
+          "detector offset setting": "unknown",
+          "bandwidth setting": 4.0,
+          "wavelength setting": 280.0,
+          "reference bandwidth setting": null,
+          "reference wavelength setting": null,
+          "chromatogram": {
+            "x": [
+              0.0,
+              0.5,
+              1.0,
+              1.5,
+              2.0
+            ],
+            "y": [
+              0.0,
+              0.3,
+              0.8,
+              0.3,
+              0.0
+            ]
+          },
+          "peaks": [
+            {
+              "identifier": "1",
+              "name": "Peak1",
+              "start time": 0.4,
+              "end time": 1.6,
+              "retention time": 1.0,
+              "area": 8000.0,
+              "height": 800.0,
+              "relative peak area": 100.0,
+              "relative peak height": 100.0,
+              "peak width at half height": 0.6,
+              "peak width at 5 % of height": null,
+              "peak width at 10 % of height": null,
+              "peak width at baseline": null,
+              "amount": null,
+              "relative retention time": null,
+              "capacity factor": null,
+              "chromatographic peak resolution": null,
+              "number of theoretical plates by peak width at half height": null,
+              "asymmetry factor measured at 5 % height": null,
+              "start value baseline": null,
+              "stop value baseline": null,
+              "peak right width at 10 % of height": null,
+              "peak left width at 10 % of height": null,
+              "group area": null,
+              "rel ce area total": null,
+              "chromatographic peak resolution (USP)": null,
+              "asymmetry aia": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

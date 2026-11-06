@@ -82,3 +82,26 @@ DATA_PROCESSING_FIELDS = [
     "cell_type_processing_method",
     "cell_density_dilution_factor",
 ]
+
+# Properties holding a measured value for each detection type. A measurement is only reported when at
+# least one of these is present: units, data processing settings and the temperature at which pH was
+# measured do not constitute a measurement on their own.
+MEASURED_PROPERTIES_BY_DETECTION_TYPE = {
+    "metabolite-detection": ["analytes"],
+    "blood-gas-detection": [
+        "po2",
+        "pco2",
+        "carbon_dioxide_saturation",
+        "oxygen_saturation",
+    ],
+    "ph-detection": ["ph"],
+    "osmolality-detection": ["osmolality"],
+    "cell-counting": [
+        "viability",
+        "total_cell_density",
+        "viable_cell_density",
+        "average_live_cell_diameter",
+        "total_cell_count",
+        "viable_cell_count",
+    ],
+}

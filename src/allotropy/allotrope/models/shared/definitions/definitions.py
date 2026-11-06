@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
@@ -9,14 +9,14 @@ from allotropy.exceptions import AllotropeConversionError
 
 @dataclass(kw_only=True)
 class TBooleanValueItem:
-    field_type: TClass
+    field_type: TClass = field(metadata={"json_name": "@type"})
     value: bool
 
 
 @dataclass(kw_only=True)
 class TIntValueItem:
     value: int
-    field_type: str
+    field_type: str = field(metadata={"json_name": "@type"})
 
 
 TIntValue = int | TIntValueItem
@@ -26,7 +26,7 @@ TIntegerValue = TIntValue
 @dataclass(kw_only=True)
 class TDoubleValueItem:
     value: float
-    field_type: str
+    field_type: str = field(metadata={"json_name": "@type"})
 
 
 TDoubleValue = float | TDoubleValueItem
@@ -36,14 +36,14 @@ TDecimalValue = TDoubleValue
 
 @dataclass(kw_only=True)
 class TDateTimeValueItem:
-    field_type: TClass
+    field_type: TClass = field(metadata={"json_name": "@type"})
     value: str
 
 
 @dataclass(kw_only=True)
 class TStringValueItem:
     value: str
-    field_type: str
+    field_type: str = field(metadata={"json_name": "@type"})
 
 
 TBooleanArray = list[bool]
@@ -115,15 +115,7 @@ class TQuantityValue:
     value: JsonFloat
     unit: TUnit
     has_statistic_datum_role: TStatisticDatumRole | None = None
-    field_type: TClass | None = None
-
-
-@dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValue:
-    value: float | None
-    unit: TUnit
-    has_statistic_datum_role: TStatisticDatumRole | None = None
-    field_type: TClass | None = None
+    field_type: TClass | None = field(default=None, metadata={"json_name": "@type"})
 
 
 class FieldComponentDatatype(Enum):
@@ -163,11 +155,15 @@ class TFunction:
 
 @dataclass(kw_only=True)
 class TDatacubeComponent:
-    field_componentDatatype: FieldComponentDatatype
+    field_componentDatatype: FieldComponentDatatype = field(
+        metadata={"json_name": "@componentDatatype"}
+    )
     concept: TClass
     unit: TUnit | None = None
     scale: Scale | None = None
-    field_asm_fill_value: str | float | int | bool | None = None
+    field_asm_fill_value: str | float | int | bool | None = field(
+        default=None, metadata={"json_name": "$asm.fill-value"}
+    )
 
 
 TDimensionArray = TNumberArray | TBooleanArray | TStringArray
@@ -227,10 +223,12 @@ class TDatacubeData:
 @dataclass(kw_only=True)
 class TDatacube:
     label: str | None = None
-    cube_structure: TDatacubeStructure | None = None
+    cube_structure: TDatacubeStructure | None = field(
+        default=None, metadata={"json_name": "cube-structure"}
+    )
     data: TDatacubeData | None = None
 
 
 @dataclass(kw_only=True)
 class OrderedItem:
-    field_index: int | None = None
+    field_index: int | None = field(default=None, metadata={"json_name": "@index"})

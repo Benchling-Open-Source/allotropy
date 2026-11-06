@@ -1,6 +1,6 @@
 # We must import this to get all subclasses of TQuantityValue in scope
-import allotropy.allotrope.models.shared.definitions.custom  # noqa: F401
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+import allotropy.allotrope.models.shared.definitions.quantity_values  # noqa: F401
 from allotropy.allotrope.models.shared.definitions.units import (
     MillimolePerLiter,
     MillivoltTimesSecond,

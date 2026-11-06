@@ -2,33 +2,34 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
-    AnalyteAggregateDocument,
-    AnalyteDocument,
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
-    DistributionAggregateDocument,
-    DistributionDocumentItem,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
+    AnalyteAggregateDocument,
+    AnalyteDocumentItem,
+    DataProcessingDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
+    DistributionAggregateDocument,
+    DistributionDocumentItem,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
     SolutionAnalyzerDocumentItem,
-    TQuantityValueModel,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueCell,
     TQuantityValueCountsPerMilliliter,
     TQuantityValueDegreeCelsius,
@@ -46,9 +47,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePH,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
+)
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -165,25 +172,10 @@ class Metadata:
 
 
 @dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-
-
-@dataclass(frozen=True)
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 def get_ml_hg_or_kpa_quantity_value(
@@ -230,14 +222,14 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                     data_system_document=add_custom_information_document(
                         DataSystemDocument(
-                            ASM_file_identifier=data.metadata.asm_file_identifier,
+                            asm_file_identifier=data.metadata.asm_file_identifier,
                             data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                             file_name=data.metadata.file_name,
-                            UNC_path=data.metadata.unc_path,
+                            unc_path=data.metadata.unc_path,
                             software_name=data.metadata.software_name,
                             software_version=data.metadata.software_version,
-                            ASM_converter_name=self.converter_name,
-                            ASM_converter_version=ASM_CONVERTER_VERSION,
+                            asm_converter_name=self.converter_name,
+                            asm_converter_version=ASM_CONVERTER_VERSION,
                         ),
                         None,
                     ),
@@ -280,9 +272,9 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         return add_custom_information_document(
-            MeasurementDocument(
+            MeasurementDocumentItem(
                 measurement_identifier=measurement.identifier,
                 measurement_time=self.get_date_time(measurement.measurement_time),
                 sample_document=self._get_sample_document(measurement),
@@ -327,11 +319,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 absorbance=quantity_or_none(
                     TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
                 ),
-                pO2=quantity_or_none(
+                p_o2=quantity_or_none(
                     get_ml_hg_or_kpa_quantity_value("pO2", measurement.po2_unit),  # type: ignore[arg-type]
                     measurement.po2,
                 ),
-                pCO2=quantity_or_none(
+                p_co2=quantity_or_none(
                     get_ml_hg_or_kpa_quantity_value("pCO2", measurement.pco2_unit),  # type: ignore[arg-type]
                     measurement.pco2,
                 ),
@@ -341,7 +333,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 oxygen_saturation=quantity_or_none(
                     TQuantityValuePercent, measurement.oxygen_saturation
                 ),
-                pH=quantity_or_none(TQuantityValuePH, measurement.ph),
+                p_h=quantity_or_none(TQuantityValuePH, measurement.ph),
                 temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius, measurement.temperature
                 ),
@@ -362,21 +354,21 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement.custom_info,
         )
 
-    def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
+    def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocumentItem:
         if analyte.unit == "g/L":
-            return AnalyteDocument(
+            return AnalyteDocumentItem(
                 analyte_name=analyte.name,
                 mass_concentration=TQuantityValueGramPerLiter(value=analyte.value),
             )
         elif analyte.unit == "mL/L":
-            return AnalyteDocument(
+            return AnalyteDocumentItem(
                 analyte_name=analyte.name,
                 volume_concentration=TQuantityValueMilliliterPerLiter(
                     value=analyte.value
                 ),
             )
         elif analyte.unit == "mmol/L":
-            return AnalyteDocument(
+            return AnalyteDocumentItem(
                 analyte_name=analyte.name,
                 molar_concentration=TQuantityValueMillimolePerLiter(
                     value=analyte.value
@@ -384,7 +376,7 @@ class Mapper(SchemaMapper[Data, Model]):
             )
         elif analyte.unit == "U/L":
             if analyte.name == "ldh":
-                return AnalyteDocument(
+                return AnalyteDocumentItem(
                     analyte_name=analyte.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
                         value=analyte.value * 0.0167
@@ -496,30 +488,12 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
-                    calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValueModel(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.identifier,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
         )

@@ -2,9 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
-    AnalyteAggregateDocument,
-    AnalyteDocumentItem,
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     CalibrationAggregateDocument,
@@ -12,34 +10,41 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+    StatisticDimensionAggregateDocument,
+    StatisticDimensionDocumentItem,
+    StatisticsAggregateDocument,
+    StatisticsDocumentItem,
+)
+from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
+    AnalyteAggregateDocument,
+    AnalyteDocumentItem,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
     MultiAnalyteProfilingAggregateDocument,
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
-    StatisticDimensionAggregateDocument,
-    StatisticDimensionDocumentItem,
-    StatisticsAggregateDocument,
-    StatisticsDocumentItem,
-    TQuantityValueModel,
+    SampleRoleType,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TQuantityValue,
+    TStatisticDatumRole,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMicroliter,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TStatisticDatumRole,
-)
 from allotropy.allotrope.models.shared.definitions.units import Unitless
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
+)
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -95,7 +100,7 @@ class Measurement:
 
     # Optional metadata
     description: str | None = None
-    sample_role_type: SampleRoleType | None = None
+    sample_role_type: SampleRoleType | str | None = None
     well_plate_identifier: str | None = None
 
     # Optional settings
@@ -128,6 +133,8 @@ class Calibration:
     name: str
     time: str
     report: str | None = None
+    expiry_time: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -176,12 +183,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
+                    unc_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    asm_file_identifier=data.metadata.asm_file_identifier,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 multi_analyte_profiling_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -205,7 +212,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     method_version=measurement_group.method_version,
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
-                    container_type=measurement_group.container_type,
+                    container_type=measurement_group.container_type,  # type: ignore[arg-type]
                     plate_well_count=quantity_or_none(
                         TQuantityValueNumber, measurement_group.plate_well_count
                     ),
@@ -271,11 +278,11 @@ class Mapper(SchemaMapper[Data, Model]):
                                 StatisticsAggregateDocument(
                                     statistics_document=[
                                         StatisticsDocumentItem(
-                                            statistical_feature=statistic.statistical_feature,
+                                            statistical_feature=statistic.statistical_feature,  # type: ignore[arg-type]
                                             statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
                                                 statistic_dimension_document=[
                                                     StatisticDimensionDocumentItem(
-                                                        statistical_value=TQuantityValueModel(
+                                                        statistical_value=TQuantityValue(
                                                             value=dimension.value,
                                                             unit=dimension.unit,
                                                             has_statistic_datum_role=dimension.statistic_datum_role,
@@ -312,11 +319,7 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             description=measurement.description,
-            sample_role_type=(
-                measurement.sample_role_type.value
-                if measurement.sample_role_type
-                else None
-            ),
+            sample_role_type=measurement.sample_role_type,  # type: ignore[arg-type]
             well_plate_identifier=measurement.well_plate_identifier,
         )
 
@@ -327,10 +330,18 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return CalibrationAggregateDocument(
             calibration_document=[
-                CalibrationDocumentItem(
-                    calibration_name=calibration.name,
-                    calibration_report=calibration.report,
-                    calibration_time=self.get_date_time(calibration.time),
+                add_custom_information_document(
+                    CalibrationDocumentItem(
+                        calibration_name=calibration.name,
+                        calibration_report=calibration.report,
+                        calibration_time=self.get_date_time(calibration.time),
+                        expiry_time_prescription=(
+                            self.get_date_time(calibration.expiry_time)
+                            if calibration.expiry_time
+                            else None
+                        ),
+                    ),
+                    custom_info_doc=calibration.custom_info,
                 )
                 for calibration in calibrations
             ]
@@ -350,31 +361,13 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDocument] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.uuid,
-                    calculated_data_name=calculated_data_item.name,
-                    calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValueModel(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit or Unitless.unit,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.reference.uuid,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
+            default_unit=Unitless.unit,
         )

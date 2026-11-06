@@ -240,7 +240,7 @@ class DeviceControlData:
         device_control_data = DeviceControlData()
 
         for line in lines:
-            strp_line = str(line.strip())
+            strp_line = str(line.strip().strip('"').strip())
             if strp_line == "Fluorescence Polarization":
                 device_control_data.is_polarization = True
                 continue

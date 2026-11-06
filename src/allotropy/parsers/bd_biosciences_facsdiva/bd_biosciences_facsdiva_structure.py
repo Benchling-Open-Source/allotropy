@@ -2,12 +2,12 @@ from enum import Enum
 import math
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueSecondTime,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,

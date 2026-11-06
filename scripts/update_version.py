@@ -10,7 +10,7 @@ from dateutil import tz
 import semantic_version  # type: ignore
 
 from allotropy.__about__ import __version__
-from allotropy.allotrope.schema_parser.path_util import ALLOTROPY_DIR, ROOT_DIR
+from allotropy.allotrope.path_util import ALLOTROPY_DIR, ROOT_DIR
 
 SECTION_TO_PREFIX = {
     "feat": "Added",

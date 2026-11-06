@@ -1,8 +1,9 @@
 from dataclasses import fields, MISSING
 
-# We must import this to get all subclasses of TQuantityValue in scope
-import allotropy.allotrope.models.shared.definitions.custom  # noqa: F401
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+
+# We must import this to get all subclasses of TQuantityValue in scope
+import allotropy.allotrope.models.shared.definitions.quantity_values  # noqa: F401
 
 
 def _clean_unit(unit: str) -> str:

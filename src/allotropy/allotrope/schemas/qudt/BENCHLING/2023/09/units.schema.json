@@ -1,0 +1,270 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/qudt/BENCHLING/2023/09/units.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Number": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "#"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NumberPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "#/μL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Unitless": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "(unitless)"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeFluorescenceUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RFU"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeLightUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RLU"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Centimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "cm"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "SquareCentimetersPerGram": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "cm^2/g"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "DegreeCelsius": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "degC"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "GramPerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "g/L"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "KiloDalton": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "kDa"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliAbsorbanceUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mAU"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilligramPerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mg/L"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilligramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mg/mL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Millimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mm"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NanogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ng/mL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NanogramPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ng/µL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Nanometer": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "nm"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PicogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pg/mL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PartsPerBillion": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ppb"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PartsPerMillion": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ppm"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "SecondTime": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "s"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MicrogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ug/mL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MicrogramPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ug/µL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Microliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "μL"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    }
+  }
+}

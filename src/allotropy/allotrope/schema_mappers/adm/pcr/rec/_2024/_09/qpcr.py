@@ -3,39 +3,51 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    DataProcessingDocument,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
+    BaselineCorrectedReporterDataCube,
+    ContainerType as ModelContainerType,
+    DataProcessingDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
+    MeltingCurveDataCube,
     Model,
+    NormalizedReporterDataCube,
+    PassiveReferenceDataCube,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     QpcrAggregateDocument,
     QpcrDocumentItem,
+    ReporterDataCube,
     SampleDocument,
-    TQuantityValueModel,
+    SampleRoleType as ModelSampleRoleType,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMicroliter,
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TDatacube,
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -77,29 +89,9 @@ class SampleRoleType(str, Enum):
 
 
 @dataclass
-class DataSource:
-    identifier: str
-    feature: str
-
-
-@dataclass
 class Error:
     error: str
     feature: str
-
-
-@dataclass
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-
-
-@dataclass
-class CalculatedData:
-    items: list[CalculatedDataItem]
 
 
 @dataclass
@@ -202,7 +194,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: CalculatedData | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 CubeClass = TypeVar("CubeClass")
@@ -216,7 +208,7 @@ class Mapper(SchemaMapper[Data, Model]):
             field_asm_manifest=self.MANIFEST,
             qpcr_aggregate_document=add_custom_information_document(
                 QpcrAggregateDocument(
-                    device_system_document=DeviceSystemDocument(
+                    device_system_document=DeviceSystemDocument(  # type: ignore[arg-type]
                         device_identifier=data.metadata.device_identifier,
                         model_number=data.metadata.model_number,
                         equipment_serial_number=data.metadata.device_serial_number,
@@ -225,19 +217,19 @@ class Mapper(SchemaMapper[Data, Model]):
                     data_system_document=DataSystemDocument(
                         data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                     ),
                     qpcr_document=[
                         self._get_technique_document(measurement_group, data.metadata)
                         for measurement_group in data.measurement_groups
                     ],
                     calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                        data
+                        data.calculated_data
                     ),
                 ),
                 data.metadata.custom_info,
@@ -253,9 +245,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 MeasurementAggregateDocument(
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
-                    container_type=metadata.container_type.value,
+                    container_type=ModelContainerType(metadata.container_type.value),
                     well_volume=TQuantityValueMicroliter(
-                        value=measurement_group.well_volume
+                        value=measurement_group.well_volume,
                     ),
                     plate_well_count=quantity_or_none(
                         TQuantityValueNumber, measurement_group.plate_well_count
@@ -277,11 +269,28 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement: Measurement,
         metadata: Metadata,
     ) -> MeasurementDocumentItem:
+        # TODO(ASM gaps): we believe these values should be added to ASM.
+        custom_info_doc = {"group identifier": measurement.group_identifier}
+        sample_doc = add_custom_information_document(
+            SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                sample_role_type=(
+                    None
+                    if measurement.sample_role_type is None
+                    else ModelSampleRoleType(measurement.sample_role_type.value)
+                ),
+                well_location_identifier=measurement.well_location_identifier,
+                well_plate_identifier=measurement.well_plate_identifier,
+                location_identifier=measurement.location_identifier,
+            ),
+            (measurement.sample_custom_info or {}) | custom_info_doc,
+        )
+
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.timestamp),
-            target_DNA_description=measurement.target_identifier,
-            sample_document=self._get_sample_document(measurement),
+            target_dna_description=measurement.target_identifier,
+            sample_document=sample_doc,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -291,7 +300,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueUnitless,
                             measurement.total_cycle_number_setting,
                         ),
-                        qPCR_detection_chemistry=measurement.pcr_detection_chemistry,
+                        q_pcr_detection_chemistry=measurement.pcr_detection_chemistry,
                         reporter_dye_setting=measurement.reporter_dye_setting,
                         quencher_dye_setting=measurement.quencher_dye_setting,
                         passive_reference_dye_setting=measurement.passive_reference_dye_setting,
@@ -302,37 +311,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 self._get_processed_data_aggregate_document(measurement.processed_data)
             ),
             reporter_data_cube=get_data_cube(
-                measurement.reporter_dye_data_cube, TDatacube
+                measurement.reporter_dye_data_cube, ReporterDataCube
             ),
             passive_reference_data_cube=get_data_cube(
-                measurement.passive_reference_dye_data_cube, TDatacube
+                measurement.passive_reference_dye_data_cube, PassiveReferenceDataCube
             ),
             melting_curve_data_cube=get_data_cube(
-                measurement.melting_curve_data_cube, TDatacube
+                measurement.melting_curve_data_cube, MeltingCurveDataCube
             ),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
         )
         return add_custom_information_document(measurement_doc, measurement.custom_info)
-
-    def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        # TODO(ASM gaps): we believe these values should be added to ASM.
-        custom_info_doc = {"group identifier": measurement.group_identifier}
-        sample_doc = SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            sample_role_type=(
-                None
-                if measurement.sample_role_type is None
-                else measurement.sample_role_type.value
-            ),
-            well_location_identifier=measurement.well_location_identifier,
-            well_plate_identifier=measurement.well_plate_identifier,
-            location_identifier=measurement.location_identifier,
-        )
-        return add_custom_information_document(
-            sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc
-        )
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
@@ -343,11 +334,11 @@ class Mapper(SchemaMapper[Data, Model]):
             data_processing_document=add_custom_information_document(
                 DataProcessingDocument(
                     automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                    cycle_threshold_value_setting__qPCR_=quantity_or_none(
+                    cycle_threshold_value_setting__q_pcr_=quantity_or_none(
                         TQuantityValueUnitless, data.cycle_threshold_value_setting
                     ),
                     automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
-                    genotyping_qPCR_method_setting__qPCR_=quantity_or_none(
+                    genotyping_q_pcr_method_setting__q_pcr_=quantity_or_none(
                         TQuantityValueUnitless,
                         data.genotyping_determination_method_setting,
                     ),
@@ -362,23 +353,22 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data.data_processing_custom_info,
             ),
-            cycle_threshold_result__qPCR_=quantity_or_none(
+            cycle_threshold_result__q_pcr_=quantity_or_none(
                 TQuantityValueUnitless, data.cycle_threshold_result
             ),
             normalized_reporter_result=quantity_or_none(
                 TQuantityValueUnitless, data.normalized_reporter_result
             ),
             baseline_corrected_reporter_result=quantity_or_none(
-                TQuantityValueUnitless,
-                data.baseline_corrected_reporter_result,
+                TQuantityValueUnitless, data.baseline_corrected_reporter_result
             ),
-            genotyping_qPCR_result=data.genotyping_determination_result,
+            genotyping_q_pcr_result=data.genotyping_determination_result,
             normalized_reporter_data_cube=get_data_cube(
-                data.normalized_reporter_data_cube, TDatacube
+                data.normalized_reporter_data_cube, NormalizedReporterDataCube
             ),
             baseline_corrected_reporter_data_cube=get_data_cube(
                 data.baseline_corrected_reporter_data_cube,
-                TDatacube,
+                BaselineCorrectedReporterDataCube,
             ),
         )
         return ProcessedDataAggregateDocument(
@@ -388,32 +378,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, data: Data
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not data.calculated_data or not data.calculated_data.items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calc_doc.identifier,
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=data_source.identifier,
-                                data_source_feature=data_source.feature,
-                            )
-                            for data_source in calc_doc.data_sources
-                        ],
-                    ),
-                    calculated_data_name=calc_doc.name,
-                    calculation_description=None,
-                    calculated_result=TQuantityValueModel(
-                        value=calc_doc.value, unit=calc_doc.unit
-                    ),
-                )
-                for calc_doc in data.calculated_data.items
-            ],
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
+            default_unit=UNITLESS,
         )
 
     def _get_error_aggregate_document(

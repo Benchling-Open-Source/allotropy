@@ -208,6 +208,25 @@ def _parse_parameter_string(param_string: str, parameters_dict: dict[str, Any]) 
                                         else None,
                                         "units": _get_parameter_units(param_name),
                                     }
+                    else:
+                        # Handle direct format: "0:KD|value|error" (for affinity analysis)
+                        param_parts = param_data.split("|")
+                        if len(param_parts) >= 3:
+                            param_name = param_parts[0].lower()  # kd, rmax
+                            value = param_parts[1]
+                            error = param_parts[2]
+
+                            # Extract affinity parameters (KD, Rmax)
+                            if param_name in ["ka", "kd", "rmax", "kon", "koff"]:
+                                parameters_dict[param_name] = {
+                                    "value": float(value)
+                                    if value and value != ""
+                                    else None,
+                                    "error": float(error)
+                                    if error and error != ""
+                                    else None,
+                                    "units": _get_parameter_units(param_name),
+                                }
     except AllotropeParsingError:
         # Silently ignore parsing errors - acceptable for parameter parsing
         pass
@@ -241,7 +260,104 @@ def _extract_kinetic_analysis(
     # Try to find model fits with kinetic parameters
     for _root_key, root_value in parsed_xml.items():
         if isinstance(root_value, dict):
-            # Look for modelFits structure
+            # Extract flow cell from CurveSet at root level (prioritize over path-based ID)
+            curve_set = root_value.get("CurveSet", {})
+            actual_flow_cell_id = None
+            if isinstance(curve_set, dict):
+                subsets = [k for k in curve_set.keys() if k.startswith("Subset")]
+                for subset_key in subsets:
+                    subset = curve_set.get(subset_key, {})
+                    curve_name = subset.get("CurveName", "")
+                    if "Fc=" in curve_name:
+                        # Extract flow cell from "Fc=2-1" format
+                        fc_match = re.search(r"Fc=([\d-]+)", curve_name)
+                        if fc_match:
+                            actual_flow_cell_id = fc_match.group(1)
+                            break
+
+            # Use actual flow cell ID from CurveSet, fall back to path-based ID
+            current_flow_cell_id = actual_flow_cell_id or flow_cell_id
+
+            # First, try the newer "Fits" structure (e.g., Fits/Fit0, Fits/Fit1, ...)
+            fits = root_value.get("Fits", {})
+            if fits:
+                # Find all Fit entries (Fit0, Fit1, etc.)
+                fit_keys = [k for k in fits.keys() if k.startswith("Fit")]
+                for fit_key in fit_keys:
+                    fit = fits[fit_key]
+                    if isinstance(fit, dict):
+
+                        # Extract parameters
+                        parameters = fit.get("Parameters")
+                        chi2 = fit.get("Chi2")
+
+                        if current_flow_cell_id and parameters:
+                            # Create structure for this flow cell if it doesn't exist
+                            if current_flow_cell_id not in kinetic_analysis:
+                                kinetic_analysis[current_flow_cell_id] = {
+                                    "parameters": {},
+                                    "calculated": {},
+                                    "fit_quality": {},
+                                }
+
+                            # Handle string format parameters
+                            if isinstance(parameters, str):
+                                _parse_parameter_string(
+                                    parameters,
+                                    kinetic_analysis[current_flow_cell_id][
+                                        "parameters"
+                                    ],
+                                )
+
+                                # Handle KD values from affinity analysis
+                                params = kinetic_analysis[current_flow_cell_id][
+                                    "parameters"
+                                ]
+
+                                # Check if this is affinity analysis (has KD in parameters but not ka)
+                                # In affinity, "kd" is actually the equilibrium KD in Molar units
+                                if "kd" in params and "ka" not in params:
+                                    # This is affinity analysis - move KD to calculated section
+                                    kd_param = params["kd"]
+                                    kinetic_analysis[current_flow_cell_id][
+                                        "calculated"
+                                    ]["KD"] = {
+                                        "value": kd_param.get("value"),
+                                        "error": kd_param.get("error"),
+                                        "units": "M",
+                                    }
+                                    # Remove from parameters to avoid confusion
+                                    del params["kd"]
+                                elif "ka" in params and "kd" in params:
+                                    # This is kinetics analysis - calculate KD from ka and kd
+                                    ka_val = params["ka"].get("value")
+                                    kd_val = params["kd"].get("value")
+                                    if ka_val and kd_val and ka_val != 0:
+                                        kd_m_value = kd_val / ka_val
+                                        kinetic_analysis[current_flow_cell_id][
+                                            "calculated"
+                                        ]["Kd_M"] = {"value": kd_m_value, "units": "M"}
+
+                        # Extract Chi2
+                        if chi2 and current_flow_cell_id:
+                            if current_flow_cell_id not in kinetic_analysis:
+                                kinetic_analysis[current_flow_cell_id] = {
+                                    "parameters": {},
+                                    "calculated": {},
+                                    "fit_quality": {},
+                                }
+                            try:
+                                chi2_value = float(chi2) if chi2 != "NaN" else None
+                                kinetic_analysis[current_flow_cell_id]["fit_quality"][
+                                    "Chi2"
+                                ] = {
+                                    "value": chi2_value,
+                                    "units": "dimensionless",
+                                }
+                            except (ValueError, TypeError):
+                                pass
+
+            # Also check for older modelFits structure
             model_fits = root_value.get("modelFits", {}).get("modelFits", {})
             if "modelFit" in model_fits:
                 model_fit_list = model_fits["modelFit"]

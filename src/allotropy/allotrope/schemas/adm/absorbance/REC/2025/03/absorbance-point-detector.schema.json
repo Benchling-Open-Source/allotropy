@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "absorbance": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001157",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/mAU"
+            }
+          ]
+        },
+        "device control aggregate document": {
+          "properties": {
+            "device control document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "detector bandwidth setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "detector wavelength setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance bandwidth setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001253",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance reference bandwidth setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001251",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance reference wavelength setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001252",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      },
+                      "electronic absorbance wavelength setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001254",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/nm"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/orderedItem"
+                  }
+                ]
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "mass concentration": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/pg~1mL"
+            }
+          ]
+        },
+        "transmittance": {
+          "$asm.pattern": "quantity datum",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002261",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
+            },
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/(unitless)"
+            }
+          ]
+        }
+      },
+      "required": [
+        "absorbance"
+      ]
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/absorbance/REC/2025/03/absorbance-point-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -100,7 +100,7 @@ class UnicornMeasurement(Measurement):
         names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
         if data_name := curve_element.recursive_find_or_none(names):
             if name := data_name.get_text_or_none():
-                return handler.get_zip_from_pattern(name)
+                return handler.get_zip_from_file_name(name)
         return None
 
     @classmethod
@@ -124,6 +124,10 @@ class UnicornMeasurement(Measurement):
                     data_cube_component,
                     transformation,
                 )
+                # Curves with no recorded points (e.g. an unused UV channel)
+                # produce empty arrays, which are invalid in the ASM schema.
+                if not any(data_cube.dimensions):
+                    return None
                 return data_cube
         return None
 

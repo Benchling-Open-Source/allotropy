@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )

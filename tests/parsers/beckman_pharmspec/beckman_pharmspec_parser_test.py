@@ -2,11 +2,13 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.models.adm.core.rec._2024._09.hierarchy import (
     DeviceSystemDocument,
+)
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     DistributionAggregateDocument,
     DistributionDocumentItem,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     ProcessedDataAggregateDocument,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
@@ -37,90 +39,50 @@ def test_get_model() -> None:
         == "1808303021"
     )
 
-    assert (
-        model.solution_analyzer_aggregate_document.solution_analyzer_document[
-            0
-        ].measurement_aggregate_document.measurement_document
-        is not None
+    meas_agg = model.solution_analyzer_aggregate_document.solution_analyzer_document[
+        0
+    ].measurement_aggregate_document
+    assert meas_agg is not None
+
+    assert meas_agg.measurement_document is not None
+
+    assert isinstance(
+        meas_agg.measurement_document[0],
+        MeasurementDocumentItem,
     )
 
     assert isinstance(
-        model.solution_analyzer_aggregate_document.solution_analyzer_document[
-            0
-        ].measurement_aggregate_document.measurement_document[0],
-        MeasurementDocument,
-    )
-
-    assert isinstance(
-        model.solution_analyzer_aggregate_document.solution_analyzer_document[0]
-        .measurement_aggregate_document.measurement_document[0]
-        .sample_document,
+        meas_agg.measurement_document[0].sample_document,
         SampleDocument,
     )
 
     assert (
-        model.solution_analyzer_aggregate_document.solution_analyzer_document[0]
-        .measurement_aggregate_document.measurement_document[0]
-        .sample_document.sample_identifier
+        meas_agg.measurement_document[0].sample_document.sample_identifier
         == "ExampleTimepoint"
     )
 
-    assert (
-        len(
-            model.solution_analyzer_aggregate_document.solution_analyzer_document[
-                0
-            ].measurement_aggregate_document.measurement_document
-        )
-        == 2
-    )
-    for elem in model.solution_analyzer_aggregate_document.solution_analyzer_document[
-        0
-    ].measurement_aggregate_document.measurement_document:
-        assert isinstance(elem, MeasurementDocument)
+    assert len(meas_agg.measurement_document) == 2
+    for elem in meas_agg.measurement_document:
+        assert isinstance(elem, MeasurementDocumentItem)
         assert isinstance(elem.measurement_identifier, str)
         assert isinstance(
             elem.processed_data_aggregate_document, ProcessedDataAggregateDocument
         )
         assert len(elem.processed_data_aggregate_document.processed_data_document) == 1
+        pdd = elem.processed_data_aggregate_document.processed_data_document[0]
         assert isinstance(
-            elem.processed_data_aggregate_document.processed_data_document[
-                0
-            ].distribution_aggregate_document,
-            DistributionAggregateDocument,
+            pdd.distribution_aggregate_document, DistributionAggregateDocument
         )
-        assert (
-            len(
-                elem.processed_data_aggregate_document.processed_data_document[
-                    0
-                ].distribution_aggregate_document.distribution_document,
-            )
-            == 5
-        )
+        dist_docs = pdd.distribution_aggregate_document.distribution_document
+        assert dist_docs is not None
+        assert len(dist_docs) == 5
 
-        assert isinstance(
-            elem.processed_data_aggregate_document.processed_data_document[
-                0
-            ].distribution_aggregate_document.distribution_document[0],
-            DistributionDocumentItem,
-        )
-
-        # 5 rows in the distribution document
-        assert (
-            len(
-                elem.processed_data_aggregate_document.processed_data_document[
-                    0
-                ].distribution_aggregate_document.distribution_document
-            )
-            == 5
-        )
+        assert isinstance(dist_docs[0], DistributionDocumentItem)
 
         # Ensure correct order and particle sizes
         for i, particle_size in enumerate([2, 5, 10, 25, 50]):
-            test = (
-                elem.processed_data_aggregate_document.processed_data_document[0]
-                .distribution_aggregate_document.distribution_document[i]
-                .particle_size
-            )
+            test = dist_docs[i].particle_size
+            assert test is not None
             assert test.value == particle_size
 
 

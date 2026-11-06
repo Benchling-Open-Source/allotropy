@@ -9,7 +9,7 @@ from allotropy.exceptions import AllotropeSerializationError
 
 def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
     try:
-        allotrope_dict = unstructure(model)
+        allotrope_dict: dict[str, Any] = unstructure(model)
     except Exception as e:
         msg = f"Failed to serialize allotrope model: {e}"
         raise AllotropeSerializationError(msg) from e

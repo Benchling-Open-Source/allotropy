@@ -26,37 +26,27 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueNumber,
     TQuantityValueNumberPerMicroliter,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import quantity_or_none
-
-
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
 
 
 @dataclass(frozen=True)
 class Error:
     error: str
     error_feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
 
 
 @dataclass(frozen=True)
@@ -119,14 +109,14 @@ class Metadata:
     analyst: str | None = None
     measurement_time: str | None = None
     brand_name: str | None = None
-    container_type: ContainerType | None = None
+    container_type: ContainerType | str | None = None
 
 
 @dataclass(frozen=True)
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 CubeClass = TypeVar("CubeClass")
@@ -137,7 +127,8 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            dPCR_aggregate_document=DPCRAggregateDocument(
+            field_asm_manifest=self.MANIFEST,
+            d_pcr_aggregate_document=DPCRAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
                     brand_name=data.metadata.brand_name,
@@ -145,19 +136,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
+                    unc_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    asm_converter_name=self.converter_name,
+                    asm_converter_version=ASM_CONVERTER_VERSION,
                 ),
-                dPCR_document=[
+                d_pcr_document=[
                     self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
                     data.calculated_data
                 ),
-            )
+            ),
         )
 
     def _get_technique_document(
@@ -172,7 +163,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 error_aggregate_document=self._get_error_aggregate_document(
                     measurement_group.errors
                 ),
-                container_type=metadata.container_type,
+                container_type=metadata.container_type,  # type: ignore[arg-type]
                 measurement_document=[
                     self._get_measurement_document(measurement, metadata)
                     for measurement in measurement_group.measurements
@@ -195,7 +186,7 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
-            target_DNA_description=measurement.target_identifier,
+            target_dna_description=measurement.target_identifier,
             total_partition_count=TQuantityValueNumber(
                 value=measurement.total_partition_count
             ),
@@ -233,10 +224,12 @@ class Mapper(SchemaMapper[Data, Model]):
                             value=measurement.positive_partition_count
                         ),
                         negative_partition_count=quantity_or_none(
-                            TQuantityValueNumber, measurement.negative_partition_count
+                            TQuantityValueNumber,
+                            measurement.negative_partition_count,
                         ),
-                        confidence_interval__95__=quantity_or_none(
-                            TQuantityValueNumber, measurement.confidence_interval__95__
+                        confidence_interval__95_=quantity_or_none(
+                            TQuantityValueNumber,
+                            measurement.confidence_interval__95__,
                         ),
                         data_processing_document=DataProcessingDocument(
                             fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
@@ -253,32 +246,16 @@ class Mapper(SchemaMapper[Data, Model]):
         return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> TCalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return TCalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
-                    calculated_data_name=calculated_data_item.name,
-                    calculated_datum=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.identifier,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=TCalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
+            result_field="calculated_datum",
+            description_field="calculated_data_description",
         )
 
     def _get_error_aggregate_document(

@@ -5,14 +5,17 @@ from enum import Enum
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import TDatacube
+from allotropy.allotrope.models.adm.core.benchling._2023._09.hierarchy import (
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
+)
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    ContainerType,
+    ContainerType as ModelContainerType,
     CustomInformationAggregateDocument,
     CustomInformationDocumentItem,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -23,7 +26,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     LuminescencePointDetectionDeviceControlAggregateDocument,
     LuminescencePointDetectionDeviceControlDocumentItem,
     MeasurementAggregateDocument,
-    MeasurementDocument,
+    MeasurementDocumentItem,
     Model,
     OpticalImagingAggregateDocument,
     OpticalImagingDeviceControlAggregateDocument,
@@ -33,13 +36,17 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
-    ScanPositionSettingPlateReader,
-    TransmittedLightSetting,
+    SampleRoleType,
+    ScanPositionSettingPlateReader as ModelScanPositionSettingPlateReader,
+    TransmittedLightSetting as ModelTransmittedLightSetting,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
@@ -50,16 +57,16 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-    TDatacube,
-    TQuantityValue,
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import (
     assert_not_none,
     quantity_or_none,
@@ -72,6 +79,20 @@ class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
     FLUORESCENCE = "FLUORESCENCE"
     LUMINESCENCE = "LUMINESCENCE"
+
+
+class ScanPositionSettingPlateReader(Enum):
+    bottom_scan_position__plate_reader_ = "bottom scan position (plate reader)"
+    scan_position_configuration__plate_reader_ = (
+        "scan position configuration (plate reader)"
+    )
+    top_scan_position__plate_reader_ = "top scan position (plate reader)"
+
+
+class TransmittedLightSetting(Enum):
+    brightfield = "brightfield"
+    darkfield = "darkfield"
+    phase_contrast = "phase contrast"
 
 
 @dataclass(frozen=True)
@@ -93,16 +114,6 @@ class ProcessedData:
     features: list[ImageFeature]
     identifier: str | None = None
     data_processing_document: dict[str, Any] | None = None
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: JsonFloat
-    unit: str
-    data_sources: list[DataSource]
-    description: str | None = None
 
 
 @dataclass(frozen=True)
@@ -205,7 +216,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -224,11 +235,11 @@ class Mapper(SchemaMapper[Data, Model]):
                     data_system_document=DataSystemDocument(
                         data_system_instance_identifier=data.metadata.data_system_instance_id,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
                         software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
                     ),
                     plate_reader_document=[
                         self._get_technique_document(measurement_group)
@@ -253,7 +264,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     analytical_method_identifier=measurement_group.analytical_method_identifier,
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=measurement_group.experiment_type,
-                    container_type=ContainerType.well_plate,
+                    container_type=ModelContainerType.well_plate,
                     plate_well_count=TQuantityValueNumber(
                         value=measurement_group.plate_well_count
                     ),
@@ -277,25 +288,25 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        doc: MeasurementDocument
-        if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            doc = self._get_optical_imaging_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            doc = self._get_luminescence_measurement_document(measurement)
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            doc = self._get_fluorescence_measurement_document(measurement)
-        else:
-            msg = f"Unexpected measurement type: {measurement.type}"
-            raise AllotropyParserError(msg)
+    ) -> MeasurementDocumentItem:
+        doc: MeasurementDocumentItem
+        match measurement.type_:
+            case MeasurementType.OPTICAL_IMAGING:
+                doc = self._get_optical_imaging_measurement_document(measurement)
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
+            case MeasurementType.LUMINESCENCE:
+                doc = self._get_luminescence_measurement_document(measurement)
+            case MeasurementType.FLUORESCENCE:
+                doc = self._get_fluorescence_measurement_document(measurement)
+            case _:
+                msg = f"Unexpected measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
         return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_optical_imaging_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = OpticalImagingDeviceControlDocumentItem(
             device_type=measurement.device_type,
             firmware_version=measurement.firmware_version,
@@ -322,7 +333,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless,
                 measurement.magnification_setting,
             ),
-            transmitted_light_setting=measurement.transmitted_light_setting,
+            transmitted_light_setting=ModelTransmittedLightSetting(
+                measurement.transmitted_light_setting.value
+            )
+            if measurement.transmitted_light_setting
+            else None,
             auto_focus_setting=measurement.auto_focus_setting,
             fluorescent_tag_setting=measurement.fluorescent_tag_setting,
             image_count_setting=quantity_or_none(
@@ -339,10 +354,10 @@ class Mapper(SchemaMapper[Data, Model]):
             "LED filter": measurement.led_filter,
         }
 
-        return MeasurementDocument(
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
+            device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(  # type: ignore[arg-type]
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
@@ -372,7 +387,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = (
             UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                 device_type=measurement.device_type,
@@ -401,10 +416,10 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement_custom_info = {
             "electronic absorbance reference absorbance": measurement.electronic_absorbance_reference_absorbance
         }
-        measurement_doc = MeasurementDocument(
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(  # type: ignore[arg-type]
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
@@ -426,7 +441,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = LuminescencePointDetectionDeviceControlDocumentItem(
             device_type=measurement.device_type,
             firmware_version=measurement.firmware_version,
@@ -443,12 +458,16 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMillimeter,
                 measurement.detector_distance_setting,
             ),
-            scan_position_setting__plate_reader_=measurement.scan_position_setting,
+            scan_position_setting__plate_reader_=ModelScanPositionSettingPlateReader(
+                measurement.scan_position_setting.value
+            )
+            if measurement.scan_position_setting
+            else None,
             detector_gain_setting=measurement.detector_gain_setting,
             detector_carriage_speed_setting=measurement.detector_carriage_speed,
         )
 
-        return MeasurementDocument(
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
@@ -472,7 +491,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
-    ) -> MeasurementDocument:
+    ) -> MeasurementDocumentItem:
         device_control_document = FluorescencePointDetectionDeviceControlDocumentItem(
             device_type=measurement.device_type,
             firmware_version=measurement.firmware_version,
@@ -501,7 +520,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMillimeter,
                 measurement.detector_distance_setting,
             ),
-            scan_position_setting__plate_reader_=measurement.scan_position_setting,
+            scan_position_setting__plate_reader_=ModelScanPositionSettingPlateReader(
+                measurement.scan_position_setting.value
+            )
+            if measurement.scan_position_setting
+            else None,
             detector_gain_setting=measurement.detector_gain_setting,
             number_of_averages=quantity_or_none(
                 TQuantityValueNumber, measurement.number_of_averages
@@ -509,9 +532,9 @@ class Mapper(SchemaMapper[Data, Model]):
             detector_carriage_speed_setting=measurement.detector_carriage_speed,
         )
 
-        return MeasurementDocument(
+        return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
-            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(  # type: ignore[arg-type]
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
@@ -541,9 +564,7 @@ class Mapper(SchemaMapper[Data, Model]):
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
             batch_identifier=measurement.batch_identifier,
-            sample_role_type=measurement.sample_role_type.value
-            if measurement.sample_role_type
-            else None,
+            sample_role_type=measurement.sample_role_type,
         )
         return add_custom_information_document(sample_doc, custom_info)
 
@@ -599,27 +620,14 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
-                    calculated_data_name=calculated_data_item.name,
-                    calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
-                    ),
-                    data_source_aggregate_document=self._get_data_source_aggregate_document(
-                        calculated_data_item.data_sources
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
         )
 
     def _get_data_source_aggregate_document(

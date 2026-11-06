@@ -2,14 +2,16 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_handler import (
+from allotropy.allotrope.models.adm.core.benchling._2024._09.hierarchy import (
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
     DeviceDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+)
+from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_handler import (
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     LiquidHandlerAggregateDocument,
     LiquidHandlerDocumentItem,
     MeasurementAggregateDocument,
@@ -17,7 +19,7 @@ from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_ha
     Model,
     SampleDocument,
 )
-from allotropy.allotrope.models.shared.definitions.custom import (
+from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueMicroliter,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -133,13 +135,13 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.metadata.device_system_custom_info,
                     ),
                     data_system_document=DataSystemDocument(
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        asm_file_identifier=data.metadata.asm_file_identifier,
                         file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
+                        unc_path=data.metadata.unc_path,
                         data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                         software_name=data.metadata.software_name,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        asm_converter_name=self.converter_name,
+                        asm_converter_version=ASM_CONVERTER_VERSION,
                         software_version=data.metadata.software_version,
                     ),
                 ),

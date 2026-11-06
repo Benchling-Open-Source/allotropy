@@ -69,6 +69,15 @@ CALCULATED_DATA_SECTIONS: dict[str, str] = {
     "Test Result": "(unitless)",
     "% Recovery": "(unitless)",
     "%CV of Replicates": "(unitless)",
+    "Background": "RFU",
+    "Net Normalized Median": "RFU",
+    # v2.2 IntelliFlex per-analyte metrics
+    "Net Average Median": "RFU",
+    "Net Normalized Average Median": "RFU",
+    "Ratio": "(unitless)",
+    # Trimmed CV has no dedicated statistic-datum role in the ASM schema, so it is
+    # reported as calculated data rather than a statistic dimension.
+    "Trimmed %CV": "(unitless)",
 }
 
 # Known metric names in the columns of the single dataset results table
@@ -95,6 +104,12 @@ SINGLE_DATASET_RESULTS_METRIC_WORDS: set[str] = {
     "FACTOR",
     "SETTING",
     "UNITS",
+    "ANALYTE",
+    "NAME",
+    "REGION",
+    "BACKGROUND",
+    "REPLICATE",
+    "RATIO",
 }
 
 # Allowed section names for Luminex Xponent reports. Any other name should raise an error upstream.

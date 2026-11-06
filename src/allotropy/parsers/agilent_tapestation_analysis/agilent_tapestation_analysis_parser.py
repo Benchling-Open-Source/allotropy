@@ -21,7 +21,21 @@ class AgilentTapestationAnalysisParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent TapeStation Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xml"
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            tree = ET.parse(named_file_contents.contents)  # noqa: S314
+            root = tree.getroot()
+            child_tags = {
+                child.tag.split("}")[-1] if "}" in child.tag else child.tag
+                for child in root
+            }
+            return "FileInformation" in child_tags and "ScreenTapes" in child_tags
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         try:
