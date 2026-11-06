@@ -1,0 +1,205 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2026/03/cell-counting.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "properties": {
+        "cell counting aggregate document": {
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/hierarchy.schema#/$defs/techniqueAggregateDocument"
+            },
+            {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002859",
+              "properties": {
+                "cell counting document": {
+                  "$asm.array-mixed": false,
+                  "$asm.array-ordered": true,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/hierarchy.schema#/$defs/techniqueDocument"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002860",
+                        "properties": {
+                          "measurement aggregate document": {
+                            "properties": {
+                              "measurement document": {
+                                "items": {
+                                  "allOf": [
+                                    {
+                                      "properties": {
+                                        "device control aggregate document": {
+                                          "properties": {
+                                            "device control document": {
+                                              "items": {
+                                                "allOf": [
+                                                  {
+                                                    "properties": {
+                                                      "detector gain setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002250",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "exposure duration setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/ms"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "illumination setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002861",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%25"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "sample volume setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%CE%BCL"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/orderedItem"
+                                                  }
+                                                ]
+                                              },
+                                              "minItems": 1
+                                            }
+                                          }
+                                        },
+                                        "processed data aggregate document": {
+                                          "properties": {
+                                            "processed data document": {
+                                              "items": {
+                                                "properties": {
+                                                  "data processing document": {
+                                                    "properties": {
+                                                      "cell density dilution factor": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001109",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "cell type processing method": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001110",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "maximum cell diameter setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002864",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%C2%B5m"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "minimum cell diameter setting": {
+                                                        "$asm.pattern": "quantity datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002863",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%C2%B5m"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "minItems": 1
+                                            }
+                                          },
+                                          "required": [
+                                            "processed data document"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "measurement time",
+                                        "measurement identifier",
+                                        "processed data aggregate document"
+                                      ]
+                                    },
+                                    {
+                                      "anyOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2026/03/fluorescence-cell-counting.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/cell-counting/REC/2026/03/cell-counting-detector.schema#/$defs/measurementDocumentItems"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "cell counting document"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/asm"
+    }
+  ],
+  "required": [
+    "$asm.manifest"
+  ]
+}
