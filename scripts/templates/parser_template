@@ -23,6 +23,7 @@ class $CLASS_NAME_PREFIX$Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = $CLASS_NAME_PREFIX$Reader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = $SUPPORTED_DETECTION_MODES$
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

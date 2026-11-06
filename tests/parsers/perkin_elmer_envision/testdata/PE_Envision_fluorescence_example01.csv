@@ -1,13 +1,13 @@
 Plate information 
 Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Chamber temperature at end,Humidity at start,Humidity at end,Ambient temperature at start,Ambient temperature at end,Formula,Measurement date,
-1,1,"=""""",N/A,N/A,N/A,N/A,N/A,N/A,N/A,Calc 1: General = (X / Y) * Z where X = AC HTRF Laser [Eu](1) channel 1 window 1  Y = AC HTRF Laser [Eu](1) channel 2 window 1  Z = 10000,10/13/2022 3:08:06 PM,
+1,1,"=""""",N/A,N/A,N/A,N/A,N/A,N/A,N/A,Calc 1: HTRF ratio value for AC HTRF Laser [Eu],10/13/2022 3:08:06 PM,
 
 Background information
 Plate,Label,Result,Signal,Flashes/Time,Meastime,MeasInfo,
 1,AC HTRF Laser [Eu],0,162,50,00:00:00.000,De=1st Ex=Top Em=Top Wdw=1 (14),
 1,AC HTRF Laser [Eu],0,260,50,00:00:00.000,De=2nd Ex=Top Em=Top Wdw=1 (142),
 
-Calculated results: Calc 1: General = (X / Y) * Z where X = AC HTRF Laser [Eu](1) channel 1 window 1  Y = AC HTRF Laser [Eu](1) channel 2 window 1  Z = 10000
+Calculated results: Calc 1: HTRF ratio value for AC HTRF Laser [Eu]
 ,01,02,03,04,05,06,07,08,09,10,11,12,
 A,3912.12920565,3923.92517971,3948.45245355,,3933.03506298,4061.92827247,3996.61746992,,,,,,
 B,2385.72193555,2384.42487617,2396.10683014,,2390.61028269,2396.68321027,2424.70697585,,,,,,
@@ -119,8 +119,8 @@ H,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,
 Calculations:
 Plate,,,,1
  Formula index,,,,Calc 1
- Formula name,,,,General
- Formula,,,,(X / Y) * Z where X = AC HTRF Laser [Eu](1) channel 1 window 1  Y = AC HTRF Laser [Eu](1) channel 2 window 1  Z = 10000
+ Formula name,,,,HTRF ratio value for AC HTRF Laser [Eu]
+ Formula,,,,HTRF ratio value for AC HTRF Laser [Eu]
 
 Auto export parameters:
 Export format,,,,Plate2

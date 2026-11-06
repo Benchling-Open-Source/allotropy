@@ -5,6 +5,8 @@ from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.path_util import ROOT_DIR
+from allotropy.exceptions import AllotropeVendorNotFoundError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
@@ -103,6 +105,9 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
     RocheCedexHiResParser,
 )
 from allotropy.parsers.tecan_magellan.tecan_magellan_parser import TecanMagellanParser
+from allotropy.parsers.thermo_fisher_diomni.thermo_fisher_diomni_parser import (
+    ThermoFisherDiomniParser,
+)
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
 )
@@ -179,6 +184,7 @@ class Vendor(Enum):
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
     TECAN_MAGELLAN = "TECAN_MAGELLAN"
     BENCHLING_CHROMELEON = "BENCHLING_CHROMELEON"
+    THERMO_FISHER_DIOMNI = "THERMO_FISHER_DIOMNI"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_GENESYS_ON_BOARD = "THERMO_FISHER_GENESYS_ON_BOARD"
     THERMO_FISHER_NANODROP_8000 = "THERMO_FISHER_NANODROP_8000"
@@ -204,6 +210,10 @@ class Vendor(Enum):
             ext.strip().lower()
             for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
         ]
+
+    @property
+    def supported_detection_modes(self) -> str | None:
+        return self.get_parser().SUPPORTED_DETECTION_MODES
 
     @property
     def manifests(self) -> list[str]:
@@ -283,6 +293,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
     Vendor.TECAN_MAGELLAN: TecanMagellanParser,
     Vendor.BENCHLING_CHROMELEON: BenchlingChromeleonParser,
+    Vendor.THERMO_FISHER_DIOMNI: ThermoFisherDiomniParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_GENESYS_ON_BOARD: ThermoFisherGenesysOnBoardParser,
     Vendor.THERMO_FISHER_NANODROP_8000: Nanodrop8000Parser,
@@ -294,6 +305,40 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.THERMO_SKANIT: ThermoSkanItParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticStunnerParser,
 }
+
+
+def discover_vendor(named_file_contents: NamedFileContents) -> Vendor:
+    extension = named_file_contents.extension
+    candidates = [v for v in Vendor if extension in v.supported_extensions]
+    # Pass 1: collect all sniff matches.
+    sniffed: list[Vendor] = []
+    for vendor in candidates:
+        parser_cls = _VENDOR_TO_PARSER[vendor]
+        named_file_contents.contents.seek(0)
+        try:
+            if parser_cls.sniff(named_file_contents):
+                sniffed.append(vendor)
+        except Exception:  # noqa: S112
+            continue
+    # Exactly one sniff match — return without try-parse.
+    if len(sniffed) == 1:
+        return sniffed[0]
+    # Pass 2: multiple sniff matches — try parsing to disambiguate.
+    # No sniff matches — try parsing all candidates as fallback.
+    try_parse = sniffed or candidates
+    for vendor in try_parse:
+        named_file_contents.contents.seek(0)
+        try:
+            vendor.get_parser().create_data(named_file_contents)
+            return vendor
+        except Exception:  # noqa: S112
+            continue
+    # If sniff matched but try-parse failed (e.g. encoding issues unrelated to
+    # discovery), trust the sniff result rather than raising.
+    if sniffed:
+        return sniffed[0]
+    msg = f"No vendor could be identified for file with extension '.{extension}'."
+    raise AllotropeVendorNotFoundError(msg)
 
 
 def get_table_contents() -> str:
@@ -308,7 +353,7 @@ def get_table_contents() -> str:
 ** Increased likelihood of bugs due to lack of "bake time" for discovering issues.
 * Working Draft - "Beta" - in development, not ready for production use:
 ** May be missing enough sample data for us to be confident about correctness of parser
-** May be in-progress, with signifcant known TODO work
+** May be in-progress, with significant known TODO work
 
 '''
 """
@@ -319,16 +364,16 @@ def get_table_contents() -> str:
             continue
         table_data[vendor.technique].append(vendor)
 
-    contents += '[cols="4*^.^"]\n'
+    contents += '[cols="5*^.^"]\n'
     contents += "|===\n"
-    contents += (
-        "|Instrument Category|Instrument Software|Release Status|Exported ASM Schema\n"
-    )
+    contents += "|Instrument Category|Instrument Software|Release Status|Exported ASM Schema|Supported Detection Modes\n"
     for technique in sorted(table_data):
         vendors = table_data[technique]
-        contents += f".{len(vendors)}+|{technique}|{vendors[0].display_name}|{vendors[0].release_state}|{vendors[0].asm_versions[0]}\n"
+        modes = vendors[0].supported_detection_modes or "N/A"
+        contents += f".{len(vendors)}+|{technique}|{vendors[0].display_name}|{vendors[0].release_state}|{vendors[0].asm_versions[0]}|{modes}\n"
         for vendor in vendors[1:]:
-            contents += f"|{vendor.display_name}|{vendor.release_state}|{vendor.asm_versions[0]}\n"
+            modes = vendor.supported_detection_modes or "N/A"
+            contents += f"|{vendor.display_name}|{vendor.release_state}|{vendor.asm_versions[0]}|{modes}\n"
     contents += "|==="
 
     return contents

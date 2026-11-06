@@ -525,8 +525,11 @@ def _generate_shared_units_source(all_units: dict[str, str]) -> str:
         "",
     ]
 
-    # Sort entries by class name for deterministic output
-    sorted_entries = sorted(all_units.items(), key=lambda x: x[1])
+    # Sort entries by (class_name, const) for deterministic output.
+    # Secondary sort on const is critical: when multiple unit strings map to the
+    # same descriptive name (e.g. "nM" and "nmol/dm^3" → Nanomolar), the first
+    # gets the base name and later ones get numeric suffixes (Nanomolar2, etc.).
+    sorted_entries = sorted(all_units.items(), key=lambda x: (x[1], x[0]))
 
     # Deduplicate class names with numeric suffix
     used_names: set[str] = {"HasUnit"}
@@ -626,10 +629,12 @@ def _regenerate_quantity_values(
     ]
 
     # Deduplicate by class name — multiple unit strings can map to the same
-    # descriptive name (e.g., "ug/µL" and "μg/μL" both → MicrogramPerMicroliter).
-    # First writer wins (dict preserves insertion order).
+    # descriptive name (e.g., "nM" and "nmol/dm^3" both → Nanomolar).
+    # Sort by (class_name, unit_str) so the alphabetically-first unit string
+    # wins deterministically, regardless of schema processing order.
+    sorted_entries = sorted(unit_descriptive_names.items(), key=lambda x: (x[1], x[0]))
     seen: dict[str, str] = {}  # class_name → unit_str
-    for unit_str, descriptive in unit_descriptive_names.items():
+    for unit_str, descriptive in sorted_entries:
         name = f"TQuantityValue{descriptive}"
         if name not in seen:
             seen[name] = unit_str

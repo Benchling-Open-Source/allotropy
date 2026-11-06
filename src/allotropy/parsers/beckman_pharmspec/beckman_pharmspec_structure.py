@@ -10,9 +10,7 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
-    CalculatedDataItem,
     DataProcessing,
-    DataSource,
     DistributionDocument,
     Error,
     Measurement,
@@ -27,6 +25,11 @@ from allotropy.parsers.beckman_pharmspec.constants import (
     VALID_CALCS,
 )
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import (
     map_rows,
     SeriesData,
@@ -81,6 +84,7 @@ class Header:
     repetition_setting: int
     sample_volume_setting: float
     sample_identifier: str
+    container_identifier: str | None
     dilution_factor_setting: float
     analyst: str
     equipment_serial_number: str
@@ -112,10 +116,11 @@ class Header:
         return Header(
             measurement_time=data[str, "Sample Date"].replace(".", "-"),
             flush_volume_setting=0,
-            detector_view_volume=data[float, "View Volume"],
+            detector_view_volume=data[float, ("View Volume", "View Volume (%)")],
             repetition_setting=data[int, "No Of Runs"],
             sample_volume_setting=data[float, "Sample Volume (mL)"],
-            sample_identifier=data[str, "Probe"],
+            sample_identifier=data[str, ("Probe", "Sample Name")],
+            container_identifier=data.get(str, "Container ID"),
             dilution_factor_setting=data[float, "Dilution Factor"],
             analyst=data[str, "Operator Name"],
             software_version=Header._get_software_version_report_string(data),
@@ -172,20 +177,33 @@ def create_measurement_groups(
                         "model number": header.custom_info.pop("Sensor Model", None),
                     },
                     sample_custom_info={
-                        "batch identifier": header.custom_info.pop("Batch-Nr", None)
-                        if header.custom_info.get("Batch-Nr", None) != "-"
-                        else None,
+                        "batch identifier": (
+                            header.custom_info.pop("Batch-Nr", None)
+                            if header.custom_info.get("Batch-Nr", None) != "-"
+                            else None
+                        ),
+                        "container identifier": (
+                            header.container_identifier
+                            if header.container_identifier != "-"
+                            else None
+                        ),
                     },
                     custom_info={
-                        "Ro-Nr": header.custom_info.pop("Ro-Nr", None)
-                        if header.custom_info.get("Ro-Nr", None) != "-"
-                        else None,
-                        "observation 1": header.custom_info.pop("Bemerkungen 1", None)
-                        if header.custom_info.get("Bemerkungen 1", None) != "-"
-                        else None,
-                        "observation 2": header.custom_info.pop("Bemerkungen 2", None)
-                        if header.custom_info.get("Bemerkungen 2", None) != "-"
-                        else None,
+                        "Ro-Nr": (
+                            header.custom_info.pop("Ro-Nr", None)
+                            if header.custom_info.get("Ro-Nr", None) != "-"
+                            else None
+                        ),
+                        "observation 1": (
+                            header.custom_info.pop("Bemerkungen 1", None)
+                            if header.custom_info.get("Bemerkungen 1", None) != "-"
+                            else None
+                        ),
+                        "observation 2": (
+                            header.custom_info.pop("Bemerkungen 2", None)
+                            if header.custom_info.get("Bemerkungen 2", None) != "-"
+                            else None
+                        ),
                     },
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]
@@ -197,7 +215,7 @@ def create_measurement_groups(
 
 def create_calculated_data(
     distributions: list[Distribution],
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     particle_size_sources = defaultdict(list)
     for source in [
         feature
@@ -208,15 +226,15 @@ def create_calculated_data(
         particle_size_sources[source.particle_size].append(source)
 
     return [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
+        CalculatedDocument(
+            uuid=random_uuid_str(),
             name=f"{distribution.name}_{name}".lower(),
             value=value,
             unit=UNIT_LOOKUP[name],
             data_sources=[
                 DataSource(
-                    identifier=x.distribution_identifier,
                     feature=name.replace("_", " "),
+                    reference=Referenceable(uuid=x.distribution_identifier),
                 )
                 for x in particle_size_sources[feature.particle_size]
             ],

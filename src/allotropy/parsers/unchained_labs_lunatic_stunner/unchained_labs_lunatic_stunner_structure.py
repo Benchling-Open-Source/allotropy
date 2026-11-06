@@ -56,44 +56,63 @@ from allotropy.parsers.utils.values import (
 )
 
 
+def _extract_peak_info(
+    well_plate_data: SeriesData, prefix: str, index: str
+) -> dict[str, Any] | None:
+    """Extract a single peak's data using the given column prefix (e.g. 'peak 1' or 'pk1')."""
+    peak_info: dict[str, Any] = {}
+
+    # Old format: "peak N mean dia (nm)", "peak N intensity (%)", etc.
+    # New format: "pkN intensity mean dia. (nm)", "pkN intensity area (%)", etc.
+    field_mappings: list[tuple[str, list[str]]] = [
+        (
+            "peak mean diameter",
+            [f"{prefix} mean dia (nm)", f"{prefix} intensity mean dia. (nm)"],
+        ),
+        ("peak mode diameter", [f"{prefix} mode dia (nm)"]),
+        ("peak est. MW", [f"{prefix} est. mw (kda)"]),
+        ("peak intensity", [f"{prefix} intensity (%)", f"{prefix} intensity area (%)"]),
+        ("peak mass", [f"{prefix} mass (%)", f"{prefix} mass area (%)"]),
+        ("peak mass mean diameter", [f"{prefix} mass mean dia. (nm)"]),
+        ("peak rayleigh ratio", [f"{prefix} rayleigh ratio r (1/km)"]),
+        ("peak diffusion coefficient", [f"{prefix} diffusion coefficient (um^2/s)"]),
+    ]
+
+    for output_key, candidate_columns in field_mappings:
+        for col in candidate_columns:
+            val = well_plate_data.get(float, col)
+            if val is not None:
+                peak_info[output_key] = val
+                break
+
+    peak_info["peak index"] = index
+
+    if len(peak_info) > 1:
+        return peak_info
+    return None
+
+
 def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
     """Extract peak data from well plate data and return as list of peak info dictionaries."""
     peak_data = []
 
-    peak_pattern = re.compile(r"peak (\d+) ")
-    peak_numbers = set()
+    # Detect which format is used by scanning column names
+    old_pattern = re.compile(r"peak (\d+) ")
+    new_pattern = re.compile(r"pk(\d+) ")
+    peak_numbers: set[int] = set()
+    uses_new_format = False
 
     for column in well_plate_data.series.index:
-        match = peak_pattern.match(str(column).lower())
-        if match:
+        col_lower = str(column).lower()
+        if match := old_pattern.match(col_lower):
             peak_numbers.add(int(match.group(1)))
+        elif match := new_pattern.match(col_lower):
+            peak_numbers.add(int(match.group(1)))
+            uses_new_format = True
 
     for peak_num in sorted(peak_numbers):
-        peak_info: dict[str, Any] = {}
-
-        mean_dia = well_plate_data.get(float, f"peak {peak_num} mean dia (nm)")
-        if mean_dia is not None:
-            peak_info["peak mean diameter"] = mean_dia
-
-        mode_dia = well_plate_data.get(float, f"peak {peak_num} mode dia (nm)")
-        if mode_dia is not None:
-            peak_info["peak mode diameter"] = mode_dia
-
-        est_mw = well_plate_data.get(float, f"peak {peak_num} est. mw (kda)")
-        if est_mw is not None:
-            peak_info["peak est. MW"] = est_mw
-
-        intensity = well_plate_data.get(float, f"peak {peak_num} intensity (%)")
-        if intensity is not None:
-            peak_info["peak intensity"] = intensity
-
-        mass = well_plate_data.get(float, f"peak {peak_num} mass (%)")
-        if mass is not None:
-            peak_info["peak mass"] = mass
-
-        peak_info["peak index"] = str(peak_num)
-
-        if len(peak_info) > 1:
+        prefix = f"pk{peak_num}" if uses_new_format else f"peak {peak_num}"
+        if peak_info := _extract_peak_info(well_plate_data, prefix, str(peak_num)):
             peak_data.append(peak_info)
 
     return peak_data
@@ -219,7 +238,9 @@ def _create_measurement(
         well_plate_identifier=well_plate_data.get(str, "plate id"),
         batch_identifier=well_plate_data.get(str, "sample group"),
         firmware_version=header.get(str, "client version"),
-        number_of_averages=well_plate_data.get(float, "number of acquisitions"),
+        number_of_averages=well_plate_data.get(
+            float, ("number of acquisitions", "number of acquisitions (total)")
+        ),
         integration_time=well_plate_data.get(float, "acquisition time (s)"),
         compartment_temperature=well_plate_data.get(float, "temperature (°c)"),
         sample_custom_info={
@@ -234,13 +255,18 @@ def _create_measurement(
             "molecular weight (kda)": well_plate_data.get(
                 float, "molecular weight (kda)"
             ),
+            "sample role type": well_plate_data.get(str, "b/s/f/r"),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
             "column": header.get(str, "column") or well_plate_data.get(str, "column"),
             "Number of acquisitions used": well_plate_data.get(
-                str, "number of acquisitions used"
+                str,
+                (
+                    "number of acquisitions used",
+                    "number of acquisitions used (total)",
+                ),
             ),
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
@@ -409,20 +435,27 @@ def _get_calculated_data_values(
     error_documents: list[ErrorDocument] = []
     for wavelength_column in wavelength_columns:
         for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-            value, is_na = _get_calculated_value_and_is_na(
-                well_plate_data, item["column"]
-            )
-            # Only create error docs when the cell is the literal "N/A"
+            canonical_column = str(item["column"])
+            alt_columns = item.get("alt_columns", [])
+            columns_to_try = [
+                canonical_column,
+                *(alt_columns if isinstance(alt_columns, list) else []),
+            ]
+            value: float | None = None
+            is_na = False
+            for col in columns_to_try:
+                value, is_na = _get_calculated_value_and_is_na(well_plate_data, col)
+                if value is not None:
+                    break
             if is_na:
                 error_documents.append(
                     ErrorDocument(
                         error=NOT_APPLICABLE,
-                        error_feature=item["name"],
+                        error_feature=str(item["name"]),
                     )
                 )
-            # Skip missing cells entirely; include numeric values
             if value is not None:
-                calculated_data_values[item["column"]] = value
+                calculated_data_values[canonical_column] = value
     return calculated_data_values, error_documents
 
 
@@ -481,6 +514,40 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
                     "background wvl. (nm)",
                     "plate id",
                     "plate position",
+                    "analyte",
+                    "buffer",
+                    "b/s/f/r",
+                    "acquisition filtering",
+                    "number of acquisitions",
+                    "number of acquisitions used",
+                    "number of acquisitions (total)",
+                    "number of acquisitions used (total)",
+                    "acquisition time (s)",
+                    "temperature (°c)",
+                    "molecular weight (kda)",
+                    # DLS calculated data columns
+                    "intercept",
+                    "number of peaks",
+                    "number of angles",
+                    r"^angles measured.*",
+                    r"^z.avg dia.*",
+                    "pdi",
+                    r"^sd dia.*",
+                    r"^diffusion coefficient.*",
+                    r"^rayleigh ratio r.*",
+                    r"^optical contrast constant.*",
+                    r"^viscosity at.*",
+                    r"^ri at.*",
+                    r"^derived intensity.*",
+                    r"^diameter @.*",
+                    r"^kc/r.*",
+                    r"^kd .*",
+                    r"^b22.*",
+                    # Peak columns (pk1, pk2, ..., pkoi, peak 1, peak 2, ...)
+                    r"^pk\d+.*",
+                    r"^pkoi.*",
+                    r"^peak \d+.*",
+                    r"^peak of interest.*",
                     # Strings to skip since these are already captured as measurements/calculated data
                     # Skip absorbance spectrum measurements with a### (10mm)
                     r"^a\d{3} \(10mm\)$",

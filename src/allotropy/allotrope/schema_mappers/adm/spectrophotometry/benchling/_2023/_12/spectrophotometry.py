@@ -45,6 +45,9 @@ from allotropy.allotrope.models.shared.definitions.quantity_values import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.schema_mappers.calculated_data import (
+    get_calculated_data_aggregate_document,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -221,20 +224,22 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
-        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
-                measurement, metadata
-            )
-        elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement, metadata)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
-            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
-                measurement, metadata
-            )
-        else:
-            msg = f"Invalid measurement type: {measurement.type_}"
-            raise AllotropyParserError(msg)
+        match measurement.type_:
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                return self._get_ultraviolet_absorbance_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.FLUORESCENCE:
+                return self._get_fluorescence_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
+                return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+                    measurement, metadata
+                )
+            case _:
+                msg = f"Invalid measurement type: {measurement.type_}"
+                raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -442,34 +447,12 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDocument] | None
+        self, calculated_data: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
-        if not calculated_data_items:
-            return None
-
-        return CalculatedDataAggregateDocument(
-            calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.uuid,
-                    calculated_data_name=calculated_data_item.name,
-                    calculated_result=TQuantityValue(
-                        value=calculated_data_item.value,
-                        unit=assert_not_none(calculated_data_item.unit),
-                    ),
-                    data_source_aggregate_document=(
-                        DataSourceAggregateDocument(
-                            data_source_document=[
-                                DataSourceDocumentItem(
-                                    data_source_identifier=item.reference.uuid,
-                                    data_source_feature=item.feature,
-                                )
-                                for item in calculated_data_item.data_sources
-                            ]
-                        )
-                        if calculated_data_item.data_sources
-                        else None
-                    ),
-                )
-                for calculated_data_item in calculated_data_items
-            ]
+        return get_calculated_data_aggregate_document(
+            calculated_data,
+            aggregate_document_class=CalculatedDataAggregateDocument,
+            document_item_class=CalculatedDataDocumentItem,
+            data_source_aggregate_document_class=DataSourceAggregateDocument,
+            data_source_document_item_class=DataSourceDocumentItem,
         )

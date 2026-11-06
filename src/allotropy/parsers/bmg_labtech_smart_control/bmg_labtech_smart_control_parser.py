@@ -1,5 +1,7 @@
 from functools import partial
 
+import openpyxl
+
 from allotropy.allotrope.models.adm.plate_reader.rec._2026._03.plate_reader import (
     Model,
 )
@@ -26,7 +28,23 @@ class BmgLabtechSmartControlParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BmgLabtechSmartControlReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_DETECTION_MODES = "Fluorescence"
     SCHEMA_MAPPER = Mapper
+
+    @classmethod
+    def sniff(cls, named_file_contents: NamedFileContents) -> bool:
+        try:
+            wb = openpyxl.load_workbook(
+                named_file_contents.get_bytes_stream(), read_only=True
+            )
+            sheet_names = {name.lower() for name in wb.sheetnames}
+            wb.close()
+            return (
+                "protocol information" in sheet_names
+                and "microplate end point" in sheet_names
+            )
+        except Exception:
+            return False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BmgLabtechSmartControlReader(named_file_contents)
