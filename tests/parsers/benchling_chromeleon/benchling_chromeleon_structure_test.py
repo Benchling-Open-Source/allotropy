@@ -201,3 +201,21 @@ def test_create_measurement_groups(mock_data: dict[str, Any]) -> None:
     assert peak.relative_retention_time == 9
     assert peak.width_at_half_height == 1.5365257465210709
     assert peak.written_name == "Substance 1"
+
+
+def test_create_measurement_groups_reports_peak_and_calibration_type(
+    mock_data: dict[str, Any]
+) -> None:
+    raw_peak = mock_data["injections"][0]["signals"][0]["peaks"][0]
+    raw_peak["peak type"] = "BMB"
+    raw_peak["calibration type"] = "Lin"
+
+    measurement_groups = create_measurement_groups(
+        injections=mock_data["injections"],
+    )
+
+    peaks = measurement_groups[0].measurements[0].peaks
+    assert peaks is not None
+    assert peaks[0].custom_info is not None
+    assert peaks[0].custom_info["peak type"] == "BMB"
+    assert peaks[0].custom_info["calibration type"] == "Lin"
