@@ -436,6 +436,24 @@ class TypeResolver:
             )
             deps |= extract_type_references(type_str)
 
+        # A schema can require a property it does not declare (e.g. REC 2026/03 qpcr requires
+        # "experimental data identifier" on the measurement aggregate document). Output must still
+        # contain it to validate, so emit an untyped required field.
+        if not base_classes:
+            for prop_name in schema.get("required", []):
+                if prop_name in properties or any(
+                    prop_name.startswith(p) for p in ASM_METADATA_PREFIXES
+                ):
+                    continue
+                fields_list.append(
+                    FieldDef(
+                        python_name=property_name_to_python(prop_name),
+                        type_str="Any",
+                        json_name=prop_name,
+                        is_required=True,
+                    )
+                )
+
         return GeneratedClass(
             name=class_name,
             fields=fields_list,

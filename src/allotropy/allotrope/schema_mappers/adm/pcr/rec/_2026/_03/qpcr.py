@@ -3,7 +3,6 @@ from enum import Enum
 from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
-from allotropy.allotrope.models.adm.core.rec._2026._03.core import TStringValue
 from allotropy.allotrope.models.adm.core.rec._2026._03.hierarchy import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -87,16 +86,6 @@ class SampleRoleType(str, Enum):
     specimen_role = "specimen role"
     quality_control_sample_role = "quality control sample role"
     reference_sample_role = "reference sample role"
-
-
-@dataclass(frozen=True, kw_only=True)
-class MeasurementAggregateDocumentWithExperimentalDataIdentifier(
-    MeasurementAggregateDocument
-):
-    # The REC 2026/03 qpcr schema lists "experimental data identifier" as required on the
-    # measurement aggregate document without declaring the property, so the generated model
-    # has no field for it.
-    experimental_data_identifier: TStringValue
 
 
 @dataclass
@@ -253,7 +242,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return QpcrDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocumentWithExperimentalDataIdentifier(
+                MeasurementAggregateDocument(
                     experimental_data_identifier=measurement_group.experimental_data_identifier,
                     experiment_type=metadata.experiment_type,
                     container_type=ModelContainerType(metadata.container_type.value),

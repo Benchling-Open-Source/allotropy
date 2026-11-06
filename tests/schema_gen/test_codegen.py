@@ -987,6 +987,54 @@ class TestSchemaCodeGeneratorGenerate:
         assert "field_schema" not in source
         assert "field_id" not in source
 
+    def test_required_undeclared_property_is_untyped_required_field(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "myDoc": {
+                        "type": "object",
+                        "properties": {"name": {"type": "string"}},
+                        "required": ["name", "experimental data identifier"],
+                    }
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "name: str" in source
+        assert "experimental_data_identifier: Any" in source
+        assert "from typing import Any" in source
+
+    def test_required_property_from_base_class_not_redeclared(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "parentType": {
+                        "type": "object",
+                        "properties": {"name": {"type": "string"}},
+                    },
+                    "childType": {
+                        "allOf": [
+                            {"$ref": "#/$defs/parentType"},
+                            {
+                                "type": "object",
+                                "properties": {"extra": {"type": "integer"}},
+                                "required": ["name"],
+                            },
+                        ]
+                    },
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "class ChildType(ParentType):" in source
+        assert "name: Any" not in source
+
 
 # ---------------------------------------------------------------------------
 # GeneratedClass — validation and render variants

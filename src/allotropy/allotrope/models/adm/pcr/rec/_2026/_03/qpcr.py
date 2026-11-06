@@ -302,6 +302,7 @@ class MeasurementAggregateDocument:
     container_type: ContainerType
     experiment_type: TStringValue
     well_volume: TQuantityValueMicroliter
+    experimental_data_identifier: Any
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
