@@ -79,7 +79,7 @@ class StaticDocs:
         sample_identifier_2 = None
         try:
             sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID_2")
-            sample_identifier = sample_result.find("Keyword2").get_text(
+            sample_identifier_2 = sample_result.find("Keyword2").get_text(
                 "Sample_ID_2 keyword2"
             )
         except AllotropeConversionError:
@@ -88,7 +88,7 @@ class StaticDocs:
         sample_identifier_3 = None
         try:
             sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID_3")
-            sample_identifier = sample_result.find("Keyword2").get_text(
+            sample_identifier_3 = sample_result.find("Keyword2").get_text(
                 "Sample_ID_3 keyword2"
             )
         except AllotropeConversionError:
