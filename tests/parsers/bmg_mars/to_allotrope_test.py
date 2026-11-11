@@ -23,3 +23,32 @@ def test_to_allotrope_unsupported_kinetic_file() -> None:
             TestParser.VENDOR,
             encoding=CHARDET_ENCODING,
         )
+
+
+@pytest.mark.parametrize(
+    ("file_name", "expected_well_count"),
+    [
+        # The column header line ends with a trailing comma, which adds an empty column.
+        ("BMG Labtech format.CSV", 96),
+        ("PHERAstar output file.CSV", 96),
+        # Only 6 of the 32 rows of this 1536 well plate are in the file.
+        ("24-10-16 15-09-52 Luminescence 1536.csv", 1536),
+        ("16-03-03 13-25-45 472 QC 384 FI.csv", 384),
+    ],
+)
+def test_to_allotrope_plate_well_count(
+    file_name: str, expected_well_count: int
+) -> None:
+    allotrope_dict = from_file(
+        f"{TESTDATA}/{file_name}", TestParser.VENDOR, encoding=CHARDET_ENCODING
+    )
+
+    plate_documents = allotrope_dict["plate reader aggregate document"][
+        "plate reader document"
+    ]
+    assert plate_documents
+    for plate_document in plate_documents:
+        assert plate_document["measurement aggregate document"]["plate well count"] == {
+            "value": expected_well_count,
+            "unit": "#",
+        }

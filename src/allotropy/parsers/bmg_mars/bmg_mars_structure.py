@@ -21,7 +21,7 @@ from allotropy.exceptions import (
     valid_value_or_raise,
 )
 from allotropy.parsers.bmg_mars import constants
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NOT_APPLICABLE, round_to_nearest_well_count
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
@@ -176,14 +176,42 @@ def _create_measurement(
     )
 
 
+def _row_number(row_name: str) -> int:
+    # MARS labels rows A-Z, then a-z for the rows of a 1536 well plate past Z.
+    if row_name.isupper():
+        return ord(row_name) - ord("A") + 1
+    return ord(row_name) - ord("a") + 27
+
+
+def _get_plate_well_count(data: pd.DataFrame) -> int:
+    # The data block can leave out rows that were not read, and a trailing comma in the
+    # column header line adds an empty column, so the size of the block is not the size
+    # of the plate. Use the last row and column labels instead.
+    rows = [
+        _row_number(str(row_name).strip())
+        for row_name in data.index
+        if re.fullmatch(r"[A-Za-z]", str(row_name).strip())
+    ]
+    columns = [
+        int(str(col_name).strip())
+        for col_name in data.columns
+        if str(col_name).strip().isdigit()
+    ]
+    if not rows or not columns:
+        return int(data.size)
+    well_count = max(rows) * max(columns)
+    return round_to_nearest_well_count(well_count) or well_count
+
+
 def create_measurement_groups(
     data: pd.DataFrame,
     header: Header,
 ) -> list[MeasurementGroup]:
+    plate_well_count = _get_plate_well_count(data)
     return [
         MeasurementGroup(
             measurement_time=f"{header.date} {header.time}",
-            plate_well_count=data.size,
+            plate_well_count=plate_well_count,
             experiment_type=header.test_name,
             experimental_data_identifier=header.id2,
             analyst=header.user,
