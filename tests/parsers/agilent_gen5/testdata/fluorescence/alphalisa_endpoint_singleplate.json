@@ -2073,7 +2073,7 @@
             "ASM file identifier": "alphalisa_endpoint_singleplate.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/alphalisa_endpoint_singleplate.txt",
             "file name": "alphalisa_endpoint_singleplate.txt",
             "software name": "Gen5",
@@ -2159,7 +2159,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2205,7 +2208,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2263,7 +2269,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2321,7 +2330,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2379,7 +2391,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2437,7 +2452,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2495,7 +2513,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2553,7 +2574,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2611,7 +2635,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2657,7 +2684,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2715,7 +2745,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2770,7 +2803,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2828,7 +2864,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2886,7 +2925,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2944,7 +2986,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3002,7 +3047,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3060,7 +3108,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3114,7 +3165,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3160,7 +3214,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3218,7 +3275,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3276,7 +3336,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3322,7 +3385,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3380,7 +3446,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3435,7 +3504,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3490,7 +3562,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3545,7 +3620,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3600,7 +3678,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3655,7 +3736,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3710,7 +3794,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3765,7 +3852,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3820,7 +3910,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3875,7 +3968,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3930,7 +4026,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -3973,7 +4072,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4028,7 +4130,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4071,7 +4176,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4126,7 +4234,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4181,7 +4292,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4236,7 +4350,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4279,7 +4396,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4334,7 +4454,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4377,7 +4500,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4432,7 +4558,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4487,7 +4616,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4542,7 +4674,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4585,7 +4720,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4640,7 +4778,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4691,7 +4832,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4746,7 +4890,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4801,7 +4948,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4856,7 +5006,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4911,7 +5064,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -4966,7 +5122,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5021,7 +5180,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5076,7 +5238,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5131,7 +5296,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5186,7 +5354,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5241,7 +5412,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5284,7 +5458,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5339,7 +5516,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5394,7 +5574,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5449,7 +5632,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5504,7 +5690,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5559,7 +5748,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5614,7 +5806,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5669,7 +5864,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5724,7 +5922,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5779,7 +5980,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5834,7 +6038,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5889,7 +6096,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5944,7 +6154,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -5999,7 +6212,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6054,7 +6270,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6109,7 +6328,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6164,7 +6386,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6219,7 +6444,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6274,7 +6502,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6329,7 +6560,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6384,7 +6618,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6439,7 +6676,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6494,7 +6734,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6537,7 +6780,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6592,7 +6838,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6643,7 +6892,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6698,7 +6950,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6753,7 +7008,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6808,7 +7066,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6863,7 +7124,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6918,7 +7182,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -6961,7 +7228,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -7004,7 +7274,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -7059,7 +7332,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -7114,7 +7390,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -7157,7 +7436,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -7200,7 +7482,10 @@
                                             "value": 3.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "100"
+                                        "detector gain setting": "100",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },

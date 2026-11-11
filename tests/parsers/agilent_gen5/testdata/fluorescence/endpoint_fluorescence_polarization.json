@@ -7209,7 +7209,7 @@
             "ASM file identifier": "endpoint_fluorescence_polarization.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_fluorescence_polarization.txt",
             "file name": "endpoint_fluorescence_polarization.txt",
             "software name": "Gen5",
@@ -7315,6 +7315,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -7383,6 +7384,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -7439,6 +7441,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -7507,6 +7510,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -7563,6 +7567,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -7631,6 +7636,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -7687,6 +7693,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -7755,6 +7762,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -7811,6 +7819,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -7879,6 +7888,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -7935,6 +7945,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8003,6 +8014,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8059,6 +8071,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8127,6 +8140,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8183,6 +8197,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8251,6 +8266,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8307,6 +8323,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8375,6 +8392,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8431,6 +8449,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8499,6 +8518,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8555,6 +8575,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8623,6 +8644,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8679,6 +8701,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8747,6 +8770,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8803,6 +8827,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8871,6 +8896,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -8927,6 +8953,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -8995,6 +9022,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9051,6 +9079,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9119,6 +9148,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9175,6 +9205,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9243,6 +9274,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9299,6 +9331,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9367,6 +9400,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9423,6 +9457,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9491,6 +9526,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9547,6 +9583,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9615,6 +9652,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9671,6 +9709,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9739,6 +9778,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9795,6 +9835,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9863,6 +9904,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -9919,6 +9961,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -9987,6 +10030,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10043,6 +10087,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10111,6 +10156,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10167,6 +10213,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10235,6 +10282,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10291,6 +10339,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10359,6 +10408,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10415,6 +10465,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10483,6 +10534,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10539,6 +10591,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10607,6 +10660,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10663,6 +10717,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10731,6 +10786,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10787,6 +10843,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10855,6 +10912,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -10911,6 +10969,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -10979,6 +11038,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11035,6 +11095,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11103,6 +11164,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11159,6 +11221,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11227,6 +11290,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11283,6 +11347,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11351,6 +11416,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11407,6 +11473,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11475,6 +11542,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11531,6 +11599,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11599,6 +11668,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11655,6 +11725,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11723,6 +11794,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11779,6 +11851,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11847,6 +11920,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -11903,6 +11977,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -11971,6 +12046,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12027,6 +12103,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12095,6 +12172,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12151,6 +12229,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12219,6 +12298,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12275,6 +12355,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12343,6 +12424,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12399,6 +12481,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12467,6 +12550,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12523,6 +12607,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12591,6 +12676,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12647,6 +12733,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12715,6 +12802,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12771,6 +12859,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12839,6 +12928,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -12895,6 +12985,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -12963,6 +13054,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13019,6 +13111,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13087,6 +13180,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13143,6 +13237,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13211,6 +13306,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13267,6 +13363,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13335,6 +13432,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13391,6 +13489,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13459,6 +13558,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13515,6 +13615,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13583,6 +13684,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13639,6 +13741,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13707,6 +13810,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13763,6 +13867,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13831,6 +13936,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -13887,6 +13993,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -13955,6 +14062,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14011,6 +14119,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14079,6 +14188,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14135,6 +14245,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14203,6 +14314,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14259,6 +14371,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14327,6 +14440,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14383,6 +14497,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14451,6 +14566,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14507,6 +14623,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14575,6 +14692,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14631,6 +14749,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14699,6 +14818,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14755,6 +14875,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14823,6 +14944,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -14879,6 +15001,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -14947,6 +15070,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15003,6 +15127,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15071,6 +15196,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15127,6 +15253,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15195,6 +15322,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15251,6 +15379,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15319,6 +15448,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15375,6 +15505,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15443,6 +15574,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15499,6 +15631,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15567,6 +15700,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15623,6 +15757,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15691,6 +15826,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15747,6 +15883,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15815,6 +15952,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15871,6 +16009,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -15939,6 +16078,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -15995,6 +16135,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16063,6 +16204,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16119,6 +16261,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16187,6 +16330,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16243,6 +16387,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16311,6 +16456,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16367,6 +16513,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16435,6 +16582,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16491,6 +16639,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16559,6 +16708,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16615,6 +16765,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16683,6 +16834,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16739,6 +16891,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16807,6 +16960,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16863,6 +17017,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -16931,6 +17086,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -16987,6 +17143,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17055,6 +17212,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17111,6 +17269,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17179,6 +17338,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17235,6 +17395,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17303,6 +17464,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17359,6 +17521,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17427,6 +17590,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17483,6 +17647,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17551,6 +17716,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17607,6 +17773,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17675,6 +17842,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17731,6 +17899,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17799,6 +17968,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17855,6 +18025,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -17923,6 +18094,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -17979,6 +18151,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18047,6 +18220,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18103,6 +18277,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18171,6 +18346,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18227,6 +18403,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18295,6 +18472,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18351,6 +18529,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18419,6 +18598,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18475,6 +18655,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18543,6 +18724,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18599,6 +18781,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18667,6 +18850,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18723,6 +18907,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18791,6 +18976,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18847,6 +19033,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -18915,6 +19102,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -18971,6 +19159,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19039,6 +19228,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19095,6 +19285,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19163,6 +19354,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19219,6 +19411,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19287,6 +19480,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19343,6 +19537,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19411,6 +19606,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19467,6 +19663,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19535,6 +19732,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19591,6 +19789,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19659,6 +19858,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19715,6 +19915,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19783,6 +19984,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19839,6 +20041,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -19907,6 +20110,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -19963,6 +20167,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20031,6 +20236,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20087,6 +20293,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20155,6 +20362,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20211,6 +20419,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20279,6 +20488,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20335,6 +20545,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20403,6 +20614,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20459,6 +20671,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20527,6 +20740,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20583,6 +20797,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20651,6 +20866,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20707,6 +20923,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20775,6 +20992,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20831,6 +21049,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -20899,6 +21118,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -20955,6 +21175,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21023,6 +21244,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21079,6 +21301,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21147,6 +21370,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21203,6 +21427,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21271,6 +21496,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21327,6 +21553,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21395,6 +21622,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21451,6 +21679,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21519,6 +21748,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21575,6 +21805,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21643,6 +21874,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21699,6 +21931,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21767,6 +22000,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21823,6 +22057,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -21891,6 +22126,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -21947,6 +22183,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }
@@ -22015,6 +22252,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Parallel"
                                         }
                                     }
@@ -22071,6 +22309,7 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
+                                            "Reading Type": "Reader",
                                             "Direction of emitted light": "Perpendicular"
                                         }
                                     }

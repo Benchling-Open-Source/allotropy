@@ -6881,7 +6881,7 @@
             "ASM file identifier": "endpoint_singleplate_filter_withoutStepLabel_withCalculatedValues.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_singleplate_filter_withoutStepLabel_withCalculatedValues.txt",
             "file name": "endpoint_singleplate_filter_withoutStepLabel_withCalculatedValues.txt",
             "software name": "Gen5",
@@ -6988,6 +6988,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7053,6 +7056,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7106,6 +7112,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7171,6 +7180,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7224,6 +7236,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7289,6 +7304,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7342,6 +7360,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7407,6 +7428,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7460,6 +7484,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7525,6 +7552,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7578,6 +7608,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7643,6 +7676,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7696,6 +7732,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7761,6 +7800,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7814,6 +7856,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7879,6 +7924,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7932,6 +7980,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7997,6 +8048,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8050,6 +8104,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8115,6 +8172,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8168,6 +8228,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8233,6 +8296,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8286,6 +8352,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8351,6 +8420,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8404,6 +8476,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8469,6 +8544,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8522,6 +8600,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8587,6 +8668,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8640,6 +8724,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8705,6 +8792,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8758,6 +8848,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8823,6 +8916,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8876,6 +8972,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8941,6 +9040,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8994,6 +9096,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9059,6 +9164,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9112,6 +9220,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9177,6 +9288,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9230,6 +9344,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9295,6 +9412,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9348,6 +9468,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9413,6 +9536,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9466,6 +9592,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9531,6 +9660,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9584,6 +9716,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9649,6 +9784,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9702,6 +9840,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9767,6 +9908,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9820,6 +9964,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9885,6 +10032,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9938,6 +10088,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10003,6 +10156,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10056,6 +10212,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10121,6 +10280,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10174,6 +10336,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10239,6 +10404,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10300,6 +10468,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10373,6 +10544,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10426,6 +10600,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10491,6 +10668,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10544,6 +10724,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10609,6 +10792,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10662,6 +10848,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10727,6 +10916,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10780,6 +10972,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10845,6 +11040,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10898,6 +11096,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -10963,6 +11164,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11016,6 +11220,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11081,6 +11288,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11134,6 +11344,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11199,6 +11412,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11252,6 +11468,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11317,6 +11536,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11370,6 +11592,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11435,6 +11660,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11488,6 +11716,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11553,6 +11784,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11606,6 +11840,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11671,6 +11908,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11724,6 +11964,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11789,6 +12032,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11842,6 +12088,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11907,6 +12156,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -11960,6 +12212,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12025,6 +12280,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12078,6 +12336,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12143,6 +12404,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12196,6 +12460,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12261,6 +12528,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12314,6 +12584,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12379,6 +12652,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12432,6 +12708,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12497,6 +12776,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12550,6 +12832,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12615,6 +12900,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12668,6 +12956,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12733,6 +13024,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12786,6 +13080,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12851,6 +13148,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12904,6 +13204,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -12969,6 +13272,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13022,6 +13328,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13087,6 +13396,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13140,6 +13452,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13205,6 +13520,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13258,6 +13576,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13323,6 +13644,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13376,6 +13700,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13441,6 +13768,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13494,6 +13824,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13559,6 +13892,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13612,6 +13948,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13677,6 +14016,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13730,6 +14072,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13795,6 +14140,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13848,6 +14196,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13913,6 +14264,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -13966,6 +14320,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14031,6 +14388,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14084,6 +14444,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14149,6 +14512,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14202,6 +14568,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14267,6 +14636,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14320,6 +14692,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14385,6 +14760,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14438,6 +14816,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14503,6 +14884,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14556,6 +14940,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14621,6 +15008,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14674,6 +15064,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14739,6 +15132,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14792,6 +15188,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14857,6 +15256,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14910,6 +15312,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -14975,6 +15380,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15028,6 +15436,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15093,6 +15504,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15146,6 +15560,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15211,6 +15628,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15264,6 +15684,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15329,6 +15752,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15382,6 +15808,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15447,6 +15876,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15500,6 +15932,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15565,6 +16000,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15618,6 +16056,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15683,6 +16124,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15736,6 +16180,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15801,6 +16248,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15854,6 +16304,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15919,6 +16372,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -15972,6 +16428,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16037,6 +16496,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16090,6 +16552,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16155,6 +16620,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16208,6 +16676,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16273,6 +16744,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16326,6 +16800,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16391,6 +16868,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16444,6 +16924,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16509,6 +16992,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16562,6 +17048,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16627,6 +17116,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16680,6 +17172,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16745,6 +17240,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16798,6 +17296,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16863,6 +17364,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16916,6 +17420,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -16981,6 +17488,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17042,6 +17552,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17115,6 +17628,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17168,6 +17684,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17233,6 +17752,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17286,6 +17808,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17351,6 +17876,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17404,6 +17932,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17469,6 +18000,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17522,6 +18056,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17587,6 +18124,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17640,6 +18180,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17705,6 +18248,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17758,6 +18304,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17823,6 +18372,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17876,6 +18428,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17941,6 +18496,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -17994,6 +18552,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -18059,6 +18620,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -18112,6 +18676,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -18177,6 +18744,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 400.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -18230,6 +18800,9 @@
                                         "wavelength filter cutoff setting": {
                                             "value": 510.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
