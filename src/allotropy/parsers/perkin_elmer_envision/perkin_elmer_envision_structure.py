@@ -790,15 +790,18 @@ def _create_measurement(
     well_location = f"{result.col}{result.row}"
     ex_filter = data.labels.excitation_filter
     em_filter = data.labels.get_emission_filter(plate_info.emission_filter_id)
+    # The plate type info is shared by every measurement, so copy it before moving
+    # the plate type name out of it, or only the first measurement would report it.
+    plate_type_custom_info = dict(data.plate_type_info.custom_info)
     sample_custom_info = {
         **plate_info.sample_custom_info,
-        "Name of the plate type": data.plate_type_info.custom_info.pop(
+        "Name of the plate type": plate_type_custom_info.pop(
             "Name of the plate type", None
         ),
     }
     device_control_custom_info = {
         **plate_info.device_control_custom_info,
-        **data.plate_type_info.custom_info,
+        **plate_type_custom_info,
     }
     return Measurement(
         type_=read_type.measurement_type,
