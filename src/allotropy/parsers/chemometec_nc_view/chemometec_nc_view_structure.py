@@ -1,7 +1,7 @@
 from decimal import Decimal
 from pathlib import Path
 
-from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2026._03.cell_counting import (
     Measurement,
     MeasurementGroup,
     Metadata,

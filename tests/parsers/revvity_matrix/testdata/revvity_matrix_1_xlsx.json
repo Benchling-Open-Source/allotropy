@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
         "data system document": {
             "ASM file identifier": "revvity_matrix_1_xlsx.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_revvity_matrix",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "revvity_matrix_1_xlsx.xlsx",
             "software name": "Revvity Matrix",
             "UNC path": "tests/parsers/revvity_matrix/testdata/revvity_matrix_1_xlsx.xlsx"
@@ -50,10 +50,6 @@
                                             "value": 8.88,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 9.53,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 4.5,
                                             "unit": "µm"
@@ -70,7 +66,11 @@
                                             "value": 177.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_1"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_1",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 9.53,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -117,10 +117,6 @@
                                             "value": 10.25,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.94,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 5.66,
                                             "unit": "µm"
@@ -137,7 +133,11 @@
                                             "value": 168.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_3"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_3",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.94,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -184,10 +184,6 @@
                                             "value": 10.86,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 11.59,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 6.69,
                                             "unit": "µm"
@@ -204,7 +200,11 @@
                                             "value": 195.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_5"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_5",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 11.59,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -251,10 +251,6 @@
                                             "value": 10.24,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 11.04,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 6.08,
                                             "unit": "µm"
@@ -271,7 +267,11 @@
                                             "value": 209.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_7"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_7",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 11.04,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -318,10 +318,6 @@
                                             "value": 10.06,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.93,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 5.44,
                                             "unit": "µm"
@@ -338,7 +334,11 @@
                                             "value": 226.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_9"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_9",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.93,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -385,10 +385,6 @@
                                             "value": 10.4,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 11.25,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 5.7,
                                             "unit": "µm"
@@ -405,7 +401,11 @@
                                             "value": 194.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_11"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_11",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 11.25,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -452,10 +452,6 @@
                                             "value": 10.02,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.85,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 5.42,
                                             "unit": "µm"
@@ -472,7 +468,11 @@
                                             "value": 217.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_13"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_13",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.85,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -519,10 +519,6 @@
                                             "value": 10.21,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.99,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 5.72,
                                             "unit": "µm"
@@ -539,7 +535,11 @@
                                             "value": 180.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_15"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_15",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.99,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -586,10 +586,6 @@
                                             "value": 10.23,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.95,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 6.24,
                                             "unit": "µm"
@@ -606,7 +602,11 @@
                                             "value": 203.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_17"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_17",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.95,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -653,10 +653,6 @@
                                             "value": 15.15,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 15.54,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 6.51,
                                             "unit": "µm"
@@ -673,7 +669,11 @@
                                             "value": 16.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_19"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_19",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 15.54,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -740,10 +740,6 @@
                                             "value": 9.96,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.95,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 5.24,
                                             "unit": "µm"
@@ -760,7 +756,11 @@
                                             "value": 209.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_21"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_21",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.95,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -807,10 +807,6 @@
                                             "value": 10.18,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 11.22,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 4.88,
                                             "unit": "µm"
@@ -827,7 +823,11 @@
                                             "value": 195.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_23"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_23",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 11.22,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -874,10 +874,6 @@
                                             "value": 12.96,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 12.96,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 0.0,
                                             "unit": "µm"
@@ -894,7 +890,11 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_25"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_25",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 12.96,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -973,10 +973,6 @@
                                             "value": 12.62,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 12.62,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 0.0,
                                             "unit": "µm"
@@ -993,7 +989,11 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_27"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_27",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 12.62,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -1072,10 +1072,6 @@
                                             "value": 13.02,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.02,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 0.0,
                                             "unit": "µm"
@@ -1092,7 +1088,11 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_29"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_29",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.02,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -1171,10 +1171,6 @@
                                             "value": 13.17,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.17,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 0.0,
                                             "unit": "µm"
@@ -1191,7 +1187,11 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_31"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_31",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.17,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -1270,10 +1270,6 @@
                                             "value": 11.83,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 11.83,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 0.0,
                                             "unit": "µm"
@@ -1290,7 +1286,11 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_33"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_33",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 11.83,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
@@ -1369,10 +1369,6 @@
                                             "value": 10.74,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 10.74,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 0.0,
                                             "unit": "µm"
@@ -1389,7 +1385,11 @@
                                             "value": 0.0,
                                             "unit": "cell"
                                         },
-                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_35"
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_35",
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 10.74,
+                                            "unit": "µm"
+                                        }
                                     }
                                 ]
                             },
