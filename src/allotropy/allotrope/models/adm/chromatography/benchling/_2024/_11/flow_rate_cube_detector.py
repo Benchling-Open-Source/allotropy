@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacube,
@@ -12,6 +13,7 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
 
 @dataclass(frozen=True, kw_only=True)
 class SampleFlowRateDataCube(TDatacube):
+    sample_flow_rate_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
@@ -19,6 +21,7 @@ class SampleFlowRateDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class SystemFlowRateDataCube(TDatacube):
+    system_flow_rate_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )

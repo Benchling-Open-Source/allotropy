@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1041,7 +1041,7 @@
             "ASM file identifier": "appbio_quantstudio_example07.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "appbio_quantstudio_example07.txt",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
@@ -1175,7 +1175,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -1317,7 +1318,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -1460,7 +1462,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -1603,7 +1606,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -1746,7 +1750,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -1889,7 +1894,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2027,7 +2033,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "IPC"
+                            "target DNA description": "IPC",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2170,7 +2177,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "IPC"
+                            "target DNA description": "IPC",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2251,7 +2259,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "IPC"
+                            "target DNA description": "IPC",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2332,7 +2341,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "IPC"
+                            "target DNA description": "IPC",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2413,7 +2423,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "IPC"
+                            "target DNA description": "IPC",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2494,7 +2505,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "IPC"
+                            "target DNA description": "IPC",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2570,7 +2582,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2651,7 +2664,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2732,7 +2746,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",
@@ -2813,7 +2828,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example 2",

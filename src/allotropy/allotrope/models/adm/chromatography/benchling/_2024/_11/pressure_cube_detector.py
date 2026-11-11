@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
     TDatacube,
@@ -12,6 +13,7 @@ from allotropy.allotrope.models.adm.core.benchling._2023._09.cube import (
 
 @dataclass(frozen=True, kw_only=True)
 class DerivedColumnPressureDataCube(TDatacube):
+    derived_column_pressure_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
@@ -19,6 +21,7 @@ class DerivedColumnPressureDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class PostColumnPressureDataCube(TDatacube):
+    column_pressure_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
@@ -26,6 +29,7 @@ class PostColumnPressureDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class PreColumnPressureDataCube(TDatacube):
+    column_pressure_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
@@ -33,6 +37,7 @@ class PreColumnPressureDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class SamplePressureDataCube(TDatacube):
+    sample_pressure_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
@@ -40,6 +45,7 @@ class SamplePressureDataCube(TDatacube):
 
 @dataclass(frozen=True, kw_only=True)
 class SystemPressureDataCube(TDatacube):
+    system_pressure_data_cube: Any
     cube_structure: TDatacubeStructure | None = field(
         default=None, metadata={"json_name": "cube-structure"}
     )
