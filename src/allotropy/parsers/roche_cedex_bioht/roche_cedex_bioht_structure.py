@@ -9,7 +9,7 @@ from dateutil import parser
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2026._03.solution_analyzer import (
     Analyte,
     Error,
     Measurement,
