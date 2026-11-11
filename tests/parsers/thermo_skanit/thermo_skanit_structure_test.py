@@ -3,10 +3,10 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2026._03.plate_reader import (
     SampleRoleType,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     MeasurementType,
 )
 from allotropy.parsers.thermo_skanit.constants import PLATE_IDENTIFIER_PATTERN

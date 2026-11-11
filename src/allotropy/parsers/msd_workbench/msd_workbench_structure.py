@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,

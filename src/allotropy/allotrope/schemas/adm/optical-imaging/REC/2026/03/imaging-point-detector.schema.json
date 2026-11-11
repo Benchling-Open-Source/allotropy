@@ -1,0 +1,90 @@
+{
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "device control aggregate document": {
+          "properties": {
+            "device control document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "auto focus enabled setting": {
+                        "$asm.pattern": "boolean datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003074",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tBooleanValue"
+                      },
+                      "exposure duration setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/ms"
+                          }
+                        ]
+                      },
+                      "illumination mode setting": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003073",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                      },
+                      "illumination setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002861",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%25"
+                          }
+                        ]
+                      },
+                      "image count setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002932",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                          }
+                        ]
+                      },
+                      "magnification setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002226",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "illumination mode setting"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "image aggregate document"
+      ]
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/optical-imaging/REC/2026/03/imaging-point-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

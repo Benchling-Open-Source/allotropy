@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1473,7 +1473,7 @@
             "ASM file identifier": "fluroescence_endpoint_example1.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_bmg_labtech_smart_control",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "fluroescence_endpoint_example1.xlsx",
             "software name": "SMART Control",
             "UNC path": "tests/parsers/bmg_labtech_smart_control/testdata/fluroescence_endpoint_example1.xlsx",
@@ -1561,7 +1561,8 @@
                             "fluorescence": {
                                 "value": 4180171.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -1569,14 +1570,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1652,7 +1652,8 @@
                             "fluorescence": {
                                 "value": 4192572.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -1660,14 +1661,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1743,7 +1743,8 @@
                             "fluorescence": {
                                 "value": 4175643.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -1751,14 +1752,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1830,7 +1830,8 @@
                             "fluorescence": {
                                 "value": 141150.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -1838,14 +1839,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1917,7 +1917,8 @@
                             "fluorescence": {
                                 "value": 140118.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -1925,14 +1926,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2004,7 +2004,8 @@
                             "fluorescence": {
                                 "value": 143423.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2012,14 +2013,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2091,7 +2091,8 @@
                             "fluorescence": {
                                 "value": 137265.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2099,14 +2100,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2178,7 +2178,8 @@
                             "fluorescence": {
                                 "value": 139562.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2186,14 +2187,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2265,7 +2265,8 @@
                             "fluorescence": {
                                 "value": 141466.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2273,14 +2274,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2356,7 +2356,8 @@
                             "fluorescence": {
                                 "value": 936573.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2364,14 +2365,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2447,7 +2447,8 @@
                             "fluorescence": {
                                 "value": 948872.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2455,14 +2456,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2538,7 +2538,8 @@
                             "fluorescence": {
                                 "value": 949879.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2546,14 +2547,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2625,7 +2625,8 @@
                             "fluorescence": {
                                 "value": 139209.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2633,14 +2634,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2712,7 +2712,8 @@
                             "fluorescence": {
                                 "value": 138340.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2720,14 +2721,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2799,7 +2799,8 @@
                             "fluorescence": {
                                 "value": 141608.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2807,14 +2808,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2886,7 +2886,8 @@
                             "fluorescence": {
                                 "value": 124794.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2894,14 +2895,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2973,7 +2973,8 @@
                             "fluorescence": {
                                 "value": 120938.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -2981,14 +2982,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3060,7 +3060,8 @@
                             "fluorescence": {
                                 "value": 127622.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3068,14 +3069,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3151,7 +3151,8 @@
                             "fluorescence": {
                                 "value": 245118.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3159,14 +3160,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3242,7 +3242,8 @@
                             "fluorescence": {
                                 "value": 240450.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3250,14 +3251,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3333,7 +3333,8 @@
                             "fluorescence": {
                                 "value": 240701.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3341,14 +3342,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3420,7 +3420,8 @@
                             "fluorescence": {
                                 "value": 133411.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3428,14 +3429,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3507,7 +3507,8 @@
                             "fluorescence": {
                                 "value": 131535.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3515,14 +3516,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3594,7 +3594,8 @@
                             "fluorescence": {
                                 "value": 133959.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3602,14 +3603,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3681,7 +3681,8 @@
                             "fluorescence": {
                                 "value": 120802.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3689,14 +3690,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3768,7 +3768,8 @@
                             "fluorescence": {
                                 "value": 122105.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3776,14 +3777,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3855,7 +3855,8 @@
                             "fluorescence": {
                                 "value": 122885.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3863,14 +3864,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3946,7 +3946,8 @@
                             "fluorescence": {
                                 "value": 129834.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -3954,14 +3955,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4037,7 +4037,8 @@
                             "fluorescence": {
                                 "value": 128890.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4045,14 +4046,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4128,7 +4128,8 @@
                             "fluorescence": {
                                 "value": 128195.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4136,14 +4137,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4215,7 +4215,8 @@
                             "fluorescence": {
                                 "value": 111199.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4223,14 +4224,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4302,7 +4302,8 @@
                             "fluorescence": {
                                 "value": 110793.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4310,14 +4311,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4389,7 +4389,8 @@
                             "fluorescence": {
                                 "value": 114035.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4397,14 +4398,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4476,7 +4476,8 @@
                             "fluorescence": {
                                 "value": 100602.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4484,14 +4485,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4563,7 +4563,8 @@
                             "fluorescence": {
                                 "value": 100254.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4571,14 +4572,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4650,7 +4650,8 @@
                             "fluorescence": {
                                 "value": 101906.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4658,14 +4659,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4741,7 +4741,8 @@
                             "fluorescence": {
                                 "value": 78921.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4749,14 +4750,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4832,7 +4832,8 @@
                             "fluorescence": {
                                 "value": 78180.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4840,14 +4841,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4923,7 +4923,8 @@
                             "fluorescence": {
                                 "value": 77794.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -4931,14 +4932,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5010,7 +5010,8 @@
                             "fluorescence": {
                                 "value": 112599.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5018,14 +5019,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5097,7 +5097,8 @@
                             "fluorescence": {
                                 "value": 111393.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5105,14 +5106,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5184,7 +5184,8 @@
                             "fluorescence": {
                                 "value": 112301.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5192,14 +5193,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5271,7 +5271,8 @@
                             "fluorescence": {
                                 "value": 110545.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5279,14 +5280,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5358,7 +5358,8 @@
                             "fluorescence": {
                                 "value": 112584.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5366,14 +5367,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5445,7 +5445,8 @@
                             "fluorescence": {
                                 "value": 115467.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5453,14 +5454,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5536,7 +5536,8 @@
                             "fluorescence": {
                                 "value": 52612.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5544,14 +5545,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5627,7 +5627,8 @@
                             "fluorescence": {
                                 "value": 52609.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5635,14 +5636,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5718,7 +5718,8 @@
                             "fluorescence": {
                                 "value": 52434.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5726,14 +5727,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5805,7 +5805,8 @@
                             "fluorescence": {
                                 "value": 113039.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5813,14 +5814,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5892,7 +5892,8 @@
                             "fluorescence": {
                                 "value": 111491.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5900,14 +5901,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5979,7 +5979,8 @@
                             "fluorescence": {
                                 "value": 113683.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -5987,14 +5988,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6066,7 +6066,8 @@
                             "fluorescence": {
                                 "value": 110460.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6074,14 +6075,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6153,7 +6153,8 @@
                             "fluorescence": {
                                 "value": 111989.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6161,14 +6162,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6240,7 +6240,8 @@
                             "fluorescence": {
                                 "value": 114746.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6248,14 +6249,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6331,7 +6331,8 @@
                             "fluorescence": {
                                 "value": 43280.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6339,14 +6340,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6422,7 +6422,8 @@
                             "fluorescence": {
                                 "value": 42331.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6430,14 +6431,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6513,7 +6513,8 @@
                             "fluorescence": {
                                 "value": 42187.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6521,14 +6522,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6600,7 +6600,8 @@
                             "fluorescence": {
                                 "value": 112467.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6608,14 +6609,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6687,7 +6687,8 @@
                             "fluorescence": {
                                 "value": 108916.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6695,14 +6696,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6774,7 +6774,8 @@
                             "fluorescence": {
                                 "value": 111612.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6782,14 +6783,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6861,7 +6861,8 @@
                             "fluorescence": {
                                 "value": 126789.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6869,14 +6870,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6948,7 +6948,8 @@
                             "fluorescence": {
                                 "value": 128907.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -6956,14 +6957,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7035,7 +7035,8 @@
                             "fluorescence": {
                                 "value": 128631.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7043,14 +7044,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7126,7 +7126,8 @@
                             "fluorescence": {
                                 "value": 39170.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7134,14 +7135,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7217,7 +7217,8 @@
                             "fluorescence": {
                                 "value": 37170.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7225,14 +7226,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7308,7 +7308,8 @@
                             "fluorescence": {
                                 "value": 36681.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7316,14 +7317,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7395,7 +7395,8 @@
                             "fluorescence": {
                                 "value": 113589.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7403,14 +7404,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7482,7 +7482,8 @@
                             "fluorescence": {
                                 "value": 112104.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7490,14 +7491,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7569,7 +7569,8 @@
                             "fluorescence": {
                                 "value": 114436.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7577,14 +7578,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7656,7 +7656,8 @@
                             "fluorescence": {
                                 "value": 124840.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7664,14 +7665,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7743,7 +7743,8 @@
                             "fluorescence": {
                                 "value": 123179.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7751,14 +7752,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7830,7 +7830,8 @@
                             "fluorescence": {
                                 "value": 125179.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7838,14 +7839,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7917,7 +7917,8 @@
                             "fluorescence": {
                                 "value": 33324.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -7925,14 +7926,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8004,7 +8004,8 @@
                             "fluorescence": {
                                 "value": 32795.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -8012,14 +8013,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8091,7 +8091,8 @@
                             "fluorescence": {
                                 "value": 32522.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "RiboGreen NB-user-5097655-0067"
                         }
                     ],
                     "measurement time": "2024-11-06T12:40:59+00:00",
@@ -8099,14 +8100,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "RiboGreen NB-user-5097655-0067",
                     "experiment type": "Quant-iT_96 Pico/RiboGreen",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 9.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 9.0
+                }
             }
         ]
     }
