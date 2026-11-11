@@ -5,6 +5,22 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.152] - 2026-11-07
+
+### Added
+
+- Luminex XPONENT - support additional calculated data columns (#1296)
+- QuantStudio Design & Analysis - Add support for alternative field names  (#1295)
+
+### Fixed
+
+- Benchling Chromeleon - report peak type and calibration type (#1294)
+- AppBio QuantStudio RT-PCR - require cycle threshold result as calculated data source (#1293)
+
+### Changed
+
+- Use match statements in measurement document dispatch (#1272)
+
 ## [0.1.151] - 2026-11-03
 
 ### Added
