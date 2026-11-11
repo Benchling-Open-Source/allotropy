@@ -154,14 +154,16 @@ def _extract_kinetic_parameter_error(
     if not kinetic_result:
         return None
 
+    # Match names exactly: "kd" (dissociation rate) and "KD" (dissociation constant)
+    # only differ by case.
     # Search through parameters for matching parameter names
     for param in kinetic_result.parameters:
-        if param.name.lower() in [name.lower() for name in parameter_names]:
+        if param.name in parameter_names:
             return float(param.error) if param.error is not None else None
 
     # Also check calculated section for KD error (affinity analysis)
     for calc in kinetic_result.calculated:
-        if calc.name.lower() in [name.lower() for name in parameter_names]:
+        if calc.name in parameter_names:
             return float(calc.error) if calc.error is not None else None
 
     return None
