@@ -72,7 +72,7 @@ def _read_detail_export(rows: list[list[str]]) -> pd.DataFrame:
     writer.writeheader()
     writer.writerows(samples)
     buffer.seek(0)
-    return read_csv(buffer, index_col=False)
+    return read_csv(buffer, index_col=False, dtype={SAMPLE_HEADER_KEY: str})
 
 
 class ViCellBluReader:
@@ -83,7 +83,10 @@ class ViCellBluReader:
         text = "\n".join(read_to_lines(named_file_contents)).removeprefix("\ufeff")
         rows = list(csv.reader(StringIO(text, newline=None)))
         if not cls.is_detail_export(rows):
-            return read_csv(StringIO(text), index_col=False)
+            # Read sample IDs as text, so numeric IDs keep their leading zeros.
+            return read_csv(
+                StringIO(text), index_col=False, dtype={SAMPLE_HEADER_KEY: str}
+            )
         return _read_detail_export(rows)
 
     @staticmethod
