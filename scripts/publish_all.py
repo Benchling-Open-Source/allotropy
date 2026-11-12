@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Publish both allotropy and allotropy-testdata packages to PyPI."""
 
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -15,7 +16,11 @@ def run_command(cmd: list[str], cwd: Path) -> None:
     print(f"In: {cwd}")
     print(f"{'='*60}\n")
 
-    result = subprocess.run(cmd, cwd=cwd, check=False)  # noqa: S603
+    # `hatch run scripts:...` sets HATCH_ENV_ACTIVE=scripts; testdata/ is a
+    # separate hatch project without that env, so nested hatch calls must not
+    # inherit it.
+    env = {k: v for k, v in os.environ.items() if k != "HATCH_ENV_ACTIVE"}
+    result = subprocess.run(cmd, cwd=cwd, env=env, check=False)  # noqa: S603
     if result.returncode != 0:
         print(f"\n❌ Command failed: {' '.join(cmd)}", file=sys.stderr)
         sys.exit(1)
