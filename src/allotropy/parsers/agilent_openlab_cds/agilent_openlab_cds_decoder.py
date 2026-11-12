@@ -210,18 +210,39 @@ def extract_dx_file(
             acmd_data = injection_file_data.read().decode("utf-8-sig")
             injection_data = xmltodict.parse(acmd_data)
             injection_data["ACMD"]["InjectionInfo"].pop("Signals")
-            for sample_setup in injection_metadata_data["SampleSetup"]:
-                if (
-                    sample_setup["IdentParam"]["Name"]
-                    in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
-                ):
-                    sample_data["SampleSetup"] = sample_setup
+            # Sample names need not be unique within a sequence (e.g. a blank run at the start and
+            # end), so the sample records are found through the injection the .dx file holds.
+            injection_id = injection_metadata_data["injection_ids"].get(
+                Path(dx_file_name).name
+            )
             for sample_measurement in injection_metadata_data["SampleMeasurement"]:
-                if (
-                    sample_measurement["IdentParam"]["Name"]
-                    in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
-                ):
+                if injection_id in {
+                    item.get("@id")
+                    for item in _as_list(sample_measurement.get("InjectionMeasData_ID"))
+                }:
                     sample_data["SampleMeasurement"] = sample_measurement
+            sample_setup_id = (
+                sample_data.get("SampleMeasurement", {})
+                .get("SampleSetup_ID", {})
+                .get("@id")
+            )
+            for sample_setup in injection_metadata_data["SampleSetup"]:
+                if sample_setup_id and sample_setup.get("@id") == sample_setup_id:
+                    sample_data["SampleSetup"] = sample_setup
+            # Fall back to matching by sample name when the records are not linked by id.
+            if "SampleSetup" not in sample_data:
+                for sample_setup in injection_metadata_data["SampleSetup"]:
+                    if (
+                        sample_setup["IdentParam"]["Name"]
+                        in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
+                    ):
+                        sample_data["SampleSetup"] = sample_setup
+                for sample_measurement in injection_metadata_data["SampleMeasurement"]:
+                    if (
+                        sample_measurement["IdentParam"]["Name"]
+                        in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
+                    ):
+                        sample_data["SampleMeasurement"] = sample_measurement
 
             sample_data["sequence_data"] = injection_metadata_data["sequence_data"]
             sample_data.update(injection_data["ACMD"]["InjectionInfo"])
@@ -327,6 +348,12 @@ def decode_acaml_data(
     metadata_data["SeparationMedium"] = content_data["Resources"].get(
         "SeparationMedium"
     )
+    metadata_data["InjectionIds"] = {
+        injection.get("BinaryData", {})
+        .get("DataItem", {})
+        .get("Name"): injection.get("@id")
+        for injection in injections
+    }
     metadata_data["SampleSetup"] = _as_list(content_data["Samples"]["Setup"])
     metadata_data["SampleMeasurement"] = _as_list(content_data["Samples"]["MeasData"])
 
@@ -407,6 +434,7 @@ def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
         injection_data["SampleSetup"] = intermediate_metadata["SampleSetup"]
         injection_data["SampleMeasurement"] = intermediate_metadata["SampleMeasurement"]
         injection_data["signal_details"] = injection_signal_details
+        injection_data["injection_ids"] = intermediate_metadata.pop("InjectionIds")
         intermediate_metadata.pop("SampleSetup")
         intermediate_metadata.pop("SampleMeasurement")
         intermediate_json["Metadata"] = intermediate_metadata
