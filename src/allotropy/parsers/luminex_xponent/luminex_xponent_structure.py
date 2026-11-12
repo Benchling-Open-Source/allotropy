@@ -303,13 +303,63 @@ class Measurement:
                 )
             return statistic_dimensions
 
+        # Get Comments section if available
+        comments_data = results_data.get("Comments")
+
+        # Get Expected Concentration sections if available
+        standard_expected_conc = results_data.get("Standard Expected Concentration")
+        control_expected_conc = results_data.get("Control Expected Concentration")
+
         analytes = []
         calculated_data = []
         analyte_keys = [
             key for key in count_data.series.index if key not in metadata_keys
         ]
+        sample_id = count_data[str, "Sample"]
+
         for analyte in analyte_keys:
             assay_bead_identifier = bead_ids_data.get(str, analyte, "N/A")
+
+            # Build analyte custom_info
+            analyte_custom_info: dict[str, Any] = {}
+
+            # Add comment if available
+            if comments_data is not None and location in comments_data.index:
+                comment = comments_data.at[location, analyte]
+                if comment and str(comment).strip():
+                    analyte_custom_info["comment"] = str(comment)
+
+            # Add expected concentration if this is a standard or control
+            expected_conc = None
+            if (
+                standard_expected_conc is not None
+                and sample_id in standard_expected_conc.index
+            ):
+                try:
+                    expected_conc = standard_expected_conc.at[sample_id, analyte]
+                    if expected_conc and not (
+                        isinstance(expected_conc, float) and pd.isna(expected_conc)
+                    ):
+                        analyte_custom_info["standard expected concentration"] = float(
+                            expected_conc
+                        )
+                except (KeyError, ValueError):
+                    pass
+            elif (
+                control_expected_conc is not None
+                and sample_id in control_expected_conc.index
+            ):
+                try:
+                    expected_conc = control_expected_conc.at[sample_id, analyte]
+                    if expected_conc and not (
+                        isinstance(expected_conc, float) and pd.isna(expected_conc)
+                    ):
+                        analyte_custom_info["control expected concentration"] = float(
+                            expected_conc
+                        )
+                except (KeyError, ValueError):
+                    pass
+
             analytes.append(
                 Analyte(
                     identifier=(analyte_identifier := random_uuid_str()),
@@ -322,6 +372,7 @@ class Measurement:
                             statistic_dimensions=get_statistic_dimensions(analyte),
                         ),
                     ],
+                    custom_info=analyte_custom_info if analyte_custom_info else None,
                 )
             )
 
