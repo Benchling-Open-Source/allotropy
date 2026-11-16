@@ -106,6 +106,10 @@ class Population:
     data_region_identifier: str | None = None
     count: int | None = None
     parent_population_identifier: str | None = None
+    parent_population_by_name: str | None = None
+    gating_path: str | None = None
+    gating_depth: int | None = None
+    phenotype: str | None = None
     sub_populations: list[Population] | None = None
     statistics: list[Statistic] | None = None
     custom_info: dict[str, Any] | None = None
@@ -336,6 +340,21 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_population_document(
         self, population: Population
     ) -> PopulationDocumentItem:
+        # Combine existing custom_info with new gating fields
+        custom_info = dict(population.custom_info) if population.custom_info else {}
+
+        # Add gating fields to custom info
+        if population.parent_population_by_name is not None:
+            custom_info[
+                "parent_population_by_name"
+            ] = population.parent_population_by_name
+        if population.gating_path is not None:
+            custom_info["gating_path"] = population.gating_path
+        if population.gating_depth is not None:
+            custom_info["gating_depth"] = str(population.gating_depth)
+        if population.phenotype is not None:
+            custom_info["phenotype"] = population.phenotype
+
         return add_custom_information_document(
             PopulationDocumentItem(
                 population_identifier=population.population_identifier,
@@ -357,7 +376,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     population.statistics
                 ),
             ),
-            population.custom_info,
+            custom_info if custom_info else None,
         )
 
     def _get_compensation_matrix_document(
