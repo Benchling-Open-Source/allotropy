@@ -17,7 +17,7 @@ UNC_HOST = re.compile(rb"\\{2,}([A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)\\")
 EMAIL = re.compile(
     rb"[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,})"
 )
-SENSITIVITY_LABEL = re.compile(rb'name="MSIP_Label_[^"]*"')
+SENSITIVITY_LABEL = re.compile(rb"MSIP_Label_[A-Za-z0-9_-]*")
 PLACEHOLDER_DOMAIN = re.compile(rb"(^|\.)example\.(com|net|org)$", re.IGNORECASE)
 
 
