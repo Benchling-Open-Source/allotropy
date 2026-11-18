@@ -27,7 +27,7 @@ def _testdata_files() -> Iterator[Path]:
             yield path
 
 
-def _scannable_contents(path: Path) -> list[bytes]:
+def _raw_contents(path: Path) -> list[bytes]:
     if zipfile.is_zipfile(path):
         with zipfile.ZipFile(path) as archive:
             return [
@@ -37,8 +37,12 @@ def _scannable_contents(path: Path) -> list[bytes]:
             ]
     if path.stat().st_size > MAX_SCANNED_FILE_SIZE:
         return []
-    # Dropping NUL bytes lets the same patterns match UTF-16 encoded exports.
-    return [path.read_bytes().replace(b"\x00", b"")]
+    return [path.read_bytes()]
+
+
+def _scannable_contents(path: Path) -> list[bytes]:
+    # Dropping NUL bytes lets the same patterns match UTF-16 encoded content.
+    return [content.replace(b"\x00", b"") for content in _raw_contents(path)]
 
 
 def _find_identifiers(content: bytes) -> list[str]:
