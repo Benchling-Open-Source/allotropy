@@ -755,6 +755,8 @@ class MultipleDatasetParser:
                     empty_pat=constants.LUMINEX_EMPTY_PATTERN,
                     header=0,
                     index_col=0,
+                    # Sample names are identifiers, keep them as written ("001" must not become 1).
+                    dtype={"Sample": str},
                     na_values=["NaN", "nan", "-NaN", "-nan", "None", "null", "NULL"],
                     keep_default_na=False,  # Prevent pandas from interpreting empty strings as NaN.
                 )
