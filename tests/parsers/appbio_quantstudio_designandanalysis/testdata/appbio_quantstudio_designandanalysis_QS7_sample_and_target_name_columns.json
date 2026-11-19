@@ -1,0 +1,280 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "qpcr aggregate document": {
+        "data system document": {
+            "ASM file identifier": "appbio_quantstudio_designandanalysis_QS7_sample_and_target_name_columns.json",
+            "data system instance identifier": "localhost",
+            "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
+            "ASM converter version": "0.1.151",
+            "file name": "appbio_quantstudio_designandanalysis_QS7_sample_and_target_name_columns.xlsx",
+            "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_designandanalysis_QS7_sample_and_target_name_columns.xlsx"
+        },
+        "device system document": {
+            "device identifier": "QS7-Eng1",
+            "equipment serial number": "N/A",
+            "model number": "QuantStudio(TM) 7 Flex System",
+            "product manufacturer": "ThermoFisher Scientific"
+        },
+        "qpcr document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "qPCR detection chemistry": "SYBR_GREEN",
+                                        "reporter dye setting": "SYBR",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_0",
+                            "measurement time": "2025-11-19T14:35:32-05:00",
+                            "sample document": {
+                                "sample identifier": "Sample1",
+                                "location identifier": "1",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "Omit": "False",
+                                    "Ct Mean": 13.33574199676514,
+                                    "Ct SD": 0.08015806972980499
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.046681,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 24,
+                                                "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "prfdrop": "N",
+                                                "BADROX": "N",
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "Omit": "False"
+                                            }
+                                        },
+                                        "cycle threshold result (qPCR)": {
+                                            "value": 13.29590797424316,
+                                            "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Tm1": 82.0679702758789
+                                        }
+                                    }
+                                ]
+                            },
+                            "target DNA description": "Illumina Adapter"
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "qPCR detection chemistry": "SYBR_GREEN",
+                                        "reporter dye setting": "VIC",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_1",
+                            "measurement time": "2025-11-19T14:35:32-05:00",
+                            "sample document": {
+                                "sample identifier": "Sample1",
+                                "location identifier": "1",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "Omit": "False",
+                                    "Ct Mean": 13.33574199676514,
+                                    "Ct SD": 0.08015806972980499
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.046681,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 24,
+                                                "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "prfdrop": "N",
+                                                "BADROX": "N",
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "Omit": "False"
+                                            }
+                                        },
+                                        "cycle threshold result (qPCR)": {
+                                            "value": 25.5,
+                                            "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Tm1": 82.0679702758789
+                                        }
+                                    }
+                                ]
+                            },
+                            "target DNA description": "RNase P"
+                        }
+                    ],
+                    "experimental data identifier": "QS7_Standard_Curve.eds",
+                    "experiment type": "primary analysis experiment",
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 40,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "qPCR detection chemistry": "SYBR_GREEN",
+                                        "reporter dye setting": "SYBR",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_2",
+                            "measurement time": "2025-11-19T14:35:32-05:00",
+                            "sample document": {
+                                "sample identifier": "Sample1",
+                                "location identifier": "2",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "A2",
+                                "custom information document": {
+                                    "Omit": "False",
+                                    "Ct Mean": 13.33574199676514,
+                                    "Ct SD": 0.08015806972980499
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
+                                                "value": 0.046681,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 24,
+                                                "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "prfdrop": "N",
+                                                "BADROX": "N",
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "Omit": "False"
+                                            }
+                                        },
+                                        "cycle threshold result (qPCR)": {
+                                            "value": 13.42801475524902,
+                                            "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Tm1": 82.0679702758789
+                                        }
+                                    }
+                                ]
+                            },
+                            "target DNA description": "Illumina Adapter"
+                        }
+                    ],
+                    "experimental data identifier": "QS7_Standard_Curve.eds",
+                    "experiment type": "primary analysis experiment",
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 40,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    }
+                }
+            }
+        ],
+        "custom information document": {
+            "Calibration Background is expired": "No",
+            "Calibration Background performed on": "10-22-2025",
+            "Calibration Normalization FAM-ROX is expired": "No",
+            "Calibration Normalization FAM-ROX performed on": "10-22-2025",
+            "Calibration Normalization VIC-ROX is expired": "No",
+            "Calibration Normalization VIC-ROX performed on": "10-22-2025",
+            "Calibration Pure Dye FAM is expired": "No",
+            "Calibration Pure Dye FAM performed on": "10-22-2025",
+            "Calibration Pure Dye MUS PURPLE is expired": "Yes",
+            "Calibration Pure Dye MUS PURPLE performed on": "06-20-2023",
+            "Calibration Pure Dye NED is expired": "No",
+            "Calibration Pure Dye NED performed on": "10-22-2025",
+            "Calibration Pure Dye ROX is expired": "No",
+            "Calibration Pure Dye ROX performed on": "10-22-2025",
+            "Calibration Pure Dye SYBR is expired": "No",
+            "Calibration Pure Dye SYBR performed on": "10-22-2025",
+            "Calibration Pure Dye TAMRA is expired": "No",
+            "Calibration Pure Dye TAMRA performed on": "10-22-2025",
+            "Calibration Pure Dye TEXAS RED is expired": "No",
+            "Calibration Pure Dye TEXAS RED performed on": "10-21-2025",
+            "Calibration Pure Dye VIC is expired": "No",
+            "Calibration Pure Dye VIC performed on": "10-22-2025",
+            "Calibration ROI is expired": "No",
+            "Calibration ROI performed on": "10-22-2025",
+            "Calibration Uniformity is expired": "No",
+            "Calibration Uniformity performed on": "10-22-2025",
+            "Date Created": "2025-11-19 14:24:07 PM EST",
+            "Experiment Name": "QS7_Standard_Curve",
+            "Experiment Type": "Standard Curve",
+            "Signal Smoothing On": "true",
+            "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2"
+        }
+    }
+}
