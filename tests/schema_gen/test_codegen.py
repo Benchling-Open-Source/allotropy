@@ -763,6 +763,28 @@ class TestSchemaCodeGeneratorGenerate:
         assert "BaseType" in tech_source
         assert "import" in tech_source
 
+    def test_required_only_any_of_generates_optional_fields(self) -> None:
+        schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
+        schemas = {
+            schema_url: {
+                "$defs": {
+                    "measurementDocumentItems": {
+                        "anyOf": [{"required": ["a"]}, {"required": ["b"]}],
+                        "properties": {
+                            "a": {"type": "string"},
+                            "b": {"type": "string"},
+                        },
+                    }
+                }
+            }
+        }
+        gen = _make_generator(schemas)
+        modules = gen.generate_all()
+        source = modules[schema_url].render()
+        assert "class MeasurementDocumentItems:" in source
+        assert "a: str | None = None" in source
+        assert "b: str | None = None" in source
+
     def test_type_alias_for_ref(self) -> None:
         schema_url = f"{BASE}adm/test/REC/2024/09/test.schema"
         schemas = {

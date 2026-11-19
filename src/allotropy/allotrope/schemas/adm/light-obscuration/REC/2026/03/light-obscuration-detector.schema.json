@@ -1,0 +1,217 @@
+{
+  "$defs": {
+    "measurementDocumentItems": {
+      "properties": {
+        "device control aggregate document": {
+          "properties": {
+            "device control document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "detector view volume": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002491",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/mL"
+                          }
+                        ]
+                      },
+                      "flush volume setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002493",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/mL"
+                          }
+                        ]
+                      },
+                      "repetition setting": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001678",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#int",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tIntValue"
+                      },
+                      "sample volume setting": {
+                        "$asm.pattern": "quantity datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",
+                        "allOf": [
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                          },
+                          {
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/mL"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "detector view volume",
+                      "flush volume setting",
+                      "repetition setting",
+                      "sample volume setting"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "processed data aggregate document": {
+          "properties": {
+            "processed data document": {
+              "items": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "data processing document": {
+                        "properties": {
+                          "data processing omission setting": {
+                            "$asm.pattern": "value datum",
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002497",
+                            "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tBooleanValue"
+                          },
+                          "dilution factor setting": {
+                            "$asm.pattern": "quantity datum",
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002498",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "dilution factor setting"
+                        ]
+                      },
+                      "distribution aggregate document": {
+                        "$asm.pattern": "aggregate datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003057",
+                        "properties": {
+                          "distribution document": {
+                            "$asm.array-mixed": false,
+                            "$asm.array-ordered": true,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "$asm.pattern": "aggregate datum",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002193",
+                              "properties": {
+                                "cumulative count": {
+                                  "$asm.pattern": "quantity datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002132",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                    }
+                                  ]
+                                },
+                                "cumulative particle density": {
+                                  "$asm.pattern": "quantity datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002495",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/Counts~1mL"
+                                    }
+                                  ]
+                                },
+                                "differential count": {
+                                  "$asm.pattern": "quantity datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002494",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/(unitless)"
+                                    }
+                                  ]
+                                },
+                                "differential particle density": {
+                                  "$asm.pattern": "quantity datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002496",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/Counts~1mL"
+                                    }
+                                  ]
+                                },
+                                "distribution identifier": {
+                                  "$asm.pattern": "value datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003058",
+                                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tStringValue"
+                                },
+                                "particle size": {
+                                  "$asm.pattern": "quantity datum",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002027",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2026/03/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2026/03/units.schema#/$defs/%C2%B5m"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "particle size",
+                                "cumulative count",
+                                "cumulative particle density",
+                                "differential particle density",
+                                "differential count"
+                              ],
+                              "type": "object"
+                            },
+                            "minItems": 1,
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "distribution document"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "distribution aggregate document"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "processed data document"
+          ]
+        }
+      },
+      "required": [
+        "processed data aggregate document"
+      ]
+    }
+  },
+  "$id": "http://purl.allotrope.org/json-schemas/adm/light-obscuration/REC/2026/03/light-obscuration-detector.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

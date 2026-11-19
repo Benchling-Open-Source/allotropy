@@ -83,6 +83,16 @@ def _is_constraint_only_overlay(prop_schema: dict[str, Any]) -> bool:
     return bool(prop_schema) and prop_schema.keys() <= _CONSTRAINT_ONLY_KEYS
 
 
+def _is_required_only_any_of(schema: dict[str, Any]) -> bool:
+    """Return True if every anyOf variant only lists required property names."""
+    any_of = schema.get("anyOf", [])
+    return (
+        "properties" in schema
+        and bool(any_of)
+        and all(isinstance(v, dict) and v.keys() == {"required"} for v in any_of)
+    )
+
+
 def extract_unit_const(schema: dict[str, Any]) -> str | None:
     """Extract the const unit value from a unit ``$defs`` entry.
 
@@ -182,8 +192,10 @@ class TypeResolver:
         if "oneOf" in schema:
             return self._generate_one_of(module, schema_url, class_name, schema)
 
-        # Handle anyOf patterns (union types like tNumericValue, tOrderedValue)
-        if "anyOf" in schema:
+        # Handle anyOf patterns (union types like tNumericValue, tOrderedValue).
+        # An anyOf whose variants only list required names ("at least one of these
+        # properties") constrains the object's properties instead of defining a union.
+        if "anyOf" in schema and not _is_required_only_any_of(schema):
             return self._generate_any_of(module, schema_url, class_name, schema)
 
         # Handle enum types
